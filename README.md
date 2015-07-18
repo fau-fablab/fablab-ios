@@ -7,7 +7,7 @@ Before building the project, you have to set up Carthage!
 
 Setup Carthage:
 --
--   Install [Carthage](https://github.com/Carthage/Carthage/blob/master/README.md)
+-   Install [Carthage](https://github.com/Carthage/Carthage#installing-carthage)
 -   Run `carthage bootstrap`
 
 Update dependencies:
