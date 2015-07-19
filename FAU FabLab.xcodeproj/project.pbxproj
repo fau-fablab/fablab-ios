@@ -14,6 +14,8 @@
 		5060B1DF1B4EFE2A008B41FD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5060B1DE1B4EFE2A008B41FD /* Images.xcassets */; };
 		5060B1E21B4EFE2A008B41FD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5060B1E01B4EFE2A008B41FD /* LaunchScreen.xib */; };
 		5060B1EE1B4EFE2A008B41FD /* FAU_FabLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1ED1B4EFE2A008B41FD /* FAU_FabLabTests.swift */; };
+		507493681B5BFE6F0035BEB4 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */; };
+		5074936B1B5C00000035BEB4 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 5074936A1B5C00000035BEB4 /* test.json */; };
 		507BA38E1B5A7C0300E5DCF3 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 507BA38D1B5A7C0300E5DCF3 /* Cartfile */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,8 @@
 		5060B1E71B4EFE2A008B41FD /* FAU FabLabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FAU FabLabTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5060B1EC1B4EFE2A008B41FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5060B1ED1B4EFE2A008B41FD /* FAU_FabLabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAU_FabLabTests.swift; sourceTree = "<group>"; };
+		507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		5074936A1B5C00000035BEB4 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		507BA38D1B5A7C0300E5DCF3 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -47,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				507493681B5BFE6F0035BEB4 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +68,7 @@
 		5060B1C71B4EFE29008B41FD = {
 			isa = PBXGroup;
 			children = (
+				507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */,
 				507BA38D1B5A7C0300E5DCF3 /* Cartfile */,
 				5060B1D21B4EFE2A008B41FD /* FAU FabLab */,
 				5060B1EA1B4EFE2A008B41FD /* FAU FabLabTests */,
@@ -89,6 +95,7 @@
 				5060B1DE1B4EFE2A008B41FD /* Images.xcassets */,
 				5060B1E01B4EFE2A008B41FD /* LaunchScreen.xib */,
 				5060B1D31B4EFE2A008B41FD /* Supporting Files */,
+				5074936A1B5C00000035BEB4 /* test.json */,
 			);
 			path = "FAU FabLab";
 			sourceTree = "<group>";
@@ -128,6 +135,7 @@
 				5060B1CC1B4EFE2A008B41FD /* Sources */,
 				5060B1CD1B4EFE2A008B41FD /* Frameworks */,
 				5060B1CE1B4EFE2A008B41FD /* Resources */,
+				507493691B5BFE860035BEB4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -201,6 +209,7 @@
 			files = (
 				5060B1DD1B4EFE2A008B41FD /* Main.storyboard in Resources */,
 				5060B1E21B4EFE2A008B41FD /* LaunchScreen.xib in Resources */,
+				5074936B1B5C00000035BEB4 /* test.json in Resources */,
 				507BA38E1B5A7C0300E5DCF3 /* Cartfile in Resources */,
 				5060B1DF1B4EFE2A008B41FD /* Images.xcassets in Resources */,
 			);
@@ -214,6 +223,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		507493691B5BFE860035BEB4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5060B1CC1B4EFE2A008B41FD /* Sources */ = {
@@ -354,6 +380,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "FAU FabLab/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -367,6 +397,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "FAU FabLab/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
