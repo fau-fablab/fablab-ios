@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        if let file = NSBundle(forClass:AppDelegate.self).pathForResource("test", ofType: "json") {
+            let data = NSData(contentsOfFile: file)!
+            let json = JSON(data:data)
+            println(json)
+        } else {
+            println(JSON.nullJSON)
+        }
+        
         return true
     }
 
