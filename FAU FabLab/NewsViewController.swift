@@ -24,7 +24,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10 //TODO: 10 elements in table
+        return newsMgr.news.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -32,8 +32,8 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "test")
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         
-        cell.textLabel?.text = "Test Title"
-        cell.detailTextLabel?.text = "Description Blah Blah Blah Text 12142"
+        cell.textLabel?.text = newsMgr.news[indexPath.row].title
+        cell.detailTextLabel?.text = newsMgr.news[indexPath.row].desc
         
         return cell
     }
