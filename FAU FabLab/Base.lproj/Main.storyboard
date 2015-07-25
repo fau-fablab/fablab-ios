@@ -17,26 +17,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8p4-iO-VO2">
-                                <rect key="frame" x="16" y="64" width="568" height="487"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZKo-ro-hrN">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="News" id="SF8-oY-SYK"/>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8p4-iO-VO2">
+                                <rect key="frame" x="16" y="69" width="568" height="482"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="9pv-A4-QxB" id="aAF-mM-IiI"/>
+                                    <outlet property="delegate" destination="9pv-A4-QxB" id="Qfz-zi-TkM"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ZKo-ro-hrN" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="KhZ-F6-C8C"/>
-                            <constraint firstItem="8p4-iO-VO2" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" id="Rj9-X8-NES"/>
-                            <constraint firstItem="8p4-iO-VO2" firstAttribute="top" secondItem="ZKo-ro-hrN" secondAttribute="bottom" id="TdA-b9-62J"/>
-                            <constraint firstItem="8p4-iO-VO2" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="aAt-Dh-OEb"/>
-                            <constraint firstItem="8p4-iO-VO2" firstAttribute="centerX" secondItem="ZKo-ro-hrN" secondAttribute="centerX" id="eCU-gw-5I7"/>
-                            <constraint firstAttribute="trailing" secondItem="ZKo-ro-hrN" secondAttribute="trailing" id="mnT-Ug-AVf"/>
-                            <constraint firstItem="ZKo-ro-hrN" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="yFs-16-IrQ"/>
+                            <constraint firstItem="ZKo-ro-hrN" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="RB7-1y-v7P"/>
+                            <constraint firstItem="8p4-iO-VO2" firstAttribute="top" secondItem="ZKo-ro-hrN" secondAttribute="bottom" constant="5" id="SRY-8N-OHY"/>
+                            <constraint firstAttribute="trailing" secondItem="ZKo-ro-hrN" secondAttribute="trailing" id="SpP-mc-KP9"/>
+                            <constraint firstItem="ZKo-ro-hrN" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="WRp-KQ-Ws7"/>
+                            <constraint firstItem="8p4-iO-VO2" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="cKJ-ed-dx3"/>
+                            <constraint firstItem="8p4-iO-VO2" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" id="f9M-K7-3J7"/>
+                            <constraint firstItem="8p4-iO-VO2" firstAttribute="centerX" secondItem="ZKo-ro-hrN" secondAttribute="centerX" id="zX3-d2-osl"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="News" image="first" id="acW-dT-cKf"/>
@@ -57,26 +61,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="bdT-cG-dow">
-                                <rect key="frame" x="16" y="64" width="568" height="487"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dud-tu-I7j">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Veranstaltungen" id="zFW-Ko-X9M"/>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="AZ1-iU-YxM">
+                                <rect key="frame" x="16" y="69" width="568" height="482"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="8rJ-Kc-sve" id="Ipk-lK-5kL"/>
+                                    <outlet property="delegate" destination="8rJ-Kc-sve" id="oaB-lj-f4b"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="dud-tu-I7j" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="Ng5-Vc-C8l"/>
-                            <constraint firstItem="bdT-cG-dow" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="XOP-Ws-CCA"/>
-                            <constraint firstItem="dud-tu-I7j" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="YQS-jD-6q6"/>
-                            <constraint firstItem="bdT-cG-dow" firstAttribute="bottom" secondItem="Djb-ko-YwX" secondAttribute="top" id="dhY-sG-bZI"/>
-                            <constraint firstItem="dud-tu-I7j" firstAttribute="centerX" secondItem="bdT-cG-dow" secondAttribute="centerX" id="kRa-fO-mkV"/>
-                            <constraint firstItem="bdT-cG-dow" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="r97-Ob-OaS"/>
-                            <constraint firstItem="dud-tu-I7j" firstAttribute="bottom" secondItem="bdT-cG-dow" secondAttribute="top" id="rkm-gJ-bRb"/>
+                            <constraint firstItem="dud-tu-I7j" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="8GA-S7-rap"/>
+                            <constraint firstItem="AZ1-iU-YxM" firstAttribute="bottom" secondItem="Djb-ko-YwX" secondAttribute="top" id="I0P-TL-M8A"/>
+                            <constraint firstItem="AZ1-iU-YxM" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="Jde-M8-Rim"/>
+                            <constraint firstItem="AZ1-iU-YxM" firstAttribute="top" secondItem="dud-tu-I7j" secondAttribute="bottom" constant="5" id="OtI-9l-lXw"/>
+                            <constraint firstAttribute="trailing" secondItem="dud-tu-I7j" secondAttribute="trailing" id="UAl-gr-89d"/>
+                            <constraint firstItem="dud-tu-I7j" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="c7A-DZ-mF3"/>
+                            <constraint firstItem="AZ1-iU-YxM" firstAttribute="centerX" secondItem="dud-tu-I7j" secondAttribute="centerX" id="hd5-8F-R9n"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Veranstaltungen" image="second" id="cPa-gy-q4n"/>
@@ -85,33 +93,141 @@
             </objects>
             <point key="canvasLocation" x="750" y="360"/>
         </scene>
-        <!--Warenkorb-->
-        <scene sceneID="Ohl-g8-4tI">
+        <!--Produkt suchen-->
+        <scene sceneID="tda-UB-Mvw">
             <objects>
-                <viewController id="dNC-Az-wbH" sceneMemberID="viewController">
+                <viewController title="Produkt suchen" id="YOP-IL-BaU" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="qV1-W5-07I"/>
-                        <viewControllerLayoutGuide type="bottom" id="eBF-fV-hRP"/>
+                        <viewControllerLayoutGuide type="top" id="I9Y-Ab-fth"/>
+                        <viewControllerLayoutGuide type="bottom" id="u7Y-Nt-pji"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="cgg-5U-qB7">
+                    <view key="view" contentMode="scaleToFill" id="z3B-Nd-IJq">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Third View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="f0u-j0-8qr">
-                                <rect key="frame" x="215" y="279" width="170" height="42"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yAb-sD-y5J">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Produkt suchen" id="fNv-0N-D4X"/>
+                                </items>
+                            </navigationBar>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="R7Z-UK-evd">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="YOP-IL-BaU" id="vnl-Rr-gso"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="R7Z-UK-evd" firstAttribute="top" secondItem="yAb-sD-y5J" secondAttribute="bottom" id="04P-bD-OFs"/>
+                            <constraint firstItem="R7Z-UK-evd" firstAttribute="trailing" secondItem="yAb-sD-y5J" secondAttribute="trailing" id="EkR-s1-8RT"/>
+                            <constraint firstItem="R7Z-UK-evd" firstAttribute="leading" secondItem="yAb-sD-y5J" secondAttribute="leading" id="Nsc-rI-Wol"/>
+                            <constraint firstItem="yAb-sD-y5J" firstAttribute="top" secondItem="I9Y-Ab-fth" secondAttribute="bottom" id="P7F-kP-ox8"/>
+                            <constraint firstItem="R7Z-UK-evd" firstAttribute="leading" secondItem="z3B-Nd-IJq" secondAttribute="leading" id="fJ6-s1-K3e"/>
+                            <constraint firstAttribute="trailing" secondItem="yAb-sD-y5J" secondAttribute="trailing" id="wOc-Ox-Lun"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Produkt suchen" image="first" id="Ckf-F4-b20"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="eab-kO-p12" id="ZAm-Za-EKg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XdC-vR-fPp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="eab-kO-p12">
+                    <connections>
+                        <outlet property="delegate" destination="YOP-IL-BaU" id="ZwS-OG-2R0"/>
+                        <outlet property="searchBar" destination="R7Z-UK-evd" id="5o3-73-96z"/>
+                        <outlet property="searchContentsController" destination="YOP-IL-BaU" id="YvD-Pf-QPf"/>
+                        <outlet property="searchResultsDataSource" destination="YOP-IL-BaU" id="dTt-Oa-F20"/>
+                        <outlet property="searchResultsDelegate" destination="YOP-IL-BaU" id="Ehc-Pv-ChC"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="-494" y="768"/>
+        </scene>
+        <!--Produkt scannen-->
+        <scene sceneID="AfJ-J4-0g5">
+            <objects>
+                <viewController title="Produkt scannen" id="4Rd-fW-vJI" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9Dw-mD-DCt"/>
+                        <viewControllerLayoutGuide type="bottom" id="sgJ-uk-wme"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VBY-M8-nTx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cVF-NP-8b4">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Produkt scannen" id="0rM-lF-ofP"/>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scanner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="beZ-RX-nnk">
+                                <rect key="frame" x="268" y="289" width="64" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="beZ-RX-nnk" firstAttribute="centerX" secondItem="VBY-M8-nTx" secondAttribute="centerX" id="48b-wW-KpF"/>
+                            <constraint firstItem="cVF-NP-8b4" firstAttribute="top" secondItem="9Dw-mD-DCt" secondAttribute="bottom" id="DDe-CW-C9v"/>
+                            <constraint firstItem="sgJ-uk-wme" firstAttribute="top" secondItem="beZ-RX-nnk" secondAttribute="bottom" constant="241" id="dDt-JT-Znf"/>
+                            <constraint firstItem="beZ-RX-nnk" firstAttribute="centerX" secondItem="cVF-NP-8b4" secondAttribute="centerX" id="mvx-MS-UfG"/>
+                            <constraint firstItem="cVF-NP-8b4" firstAttribute="leading" secondItem="VBY-M8-nTx" secondAttribute="leading" id="pDK-Tw-XxZ"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Warenkorb" id="0ne-GM-vRe"/>
+                    <tabBarItem key="tabBarItem" title="Produkt scannen" image="first" id="LvB-5i-Erh"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ISG-II-ZbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hlf-Cv-uGC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1392" y="6"/>
+            <point key="canvasLocation" x="134" y="768"/>
+        </scene>
+        <!--Warenkorb-->
+        <scene sceneID="xuf-rf-THF">
+            <objects>
+                <viewController title="Warenkorb" id="ooQ-nD-6sq" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="f20-An-xKa"/>
+                        <viewControllerLayoutGuide type="bottom" id="249-cg-0zG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hqQ-J3-3kM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Agt-YQ-7T9">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Warenkorb" id="9NT-gQ-6cG">
+                                        <barButtonItem key="rightBarButtonItem" title="Produkt hinzufügen" id="zco-Vh-qqt"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HiJ-eq-InG">
+                                <rect key="frame" x="16" y="69" width="568" height="482"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Agt-YQ-7T9" firstAttribute="leading" secondItem="hqQ-J3-3kM" secondAttribute="leading" id="1k4-zq-TQV"/>
+                            <constraint firstItem="HiJ-eq-InG" firstAttribute="centerX" secondItem="Agt-YQ-7T9" secondAttribute="centerX" id="3a5-hW-day"/>
+                            <constraint firstItem="HiJ-eq-InG" firstAttribute="leading" secondItem="hqQ-J3-3kM" secondAttribute="leadingMargin" id="7I6-bV-x6c"/>
+                            <constraint firstItem="HiJ-eq-InG" firstAttribute="bottom" secondItem="249-cg-0zG" secondAttribute="top" id="Gm0-4g-ERf"/>
+                            <constraint firstItem="HiJ-eq-InG" firstAttribute="top" secondItem="Agt-YQ-7T9" secondAttribute="bottom" constant="5" id="I1U-W2-5WQ"/>
+                            <constraint firstAttribute="trailing" secondItem="Agt-YQ-7T9" secondAttribute="trailing" id="S0n-j2-6sx"/>
+                            <constraint firstItem="Agt-YQ-7T9" firstAttribute="top" secondItem="f20-An-xKa" secondAttribute="bottom" id="zhs-gn-6ae"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Warenkorb" image="first" id="kBk-Ta-hCe"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yPP-es-UzN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="-744"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -126,7 +242,9 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="dNC-Az-wbH" kind="relationship" relationship="viewControllers" id="l28-er-xlN"/>
+                        <segue destination="YOP-IL-BaU" kind="relationship" relationship="viewControllers" id="383-tC-QT0"/>
+                        <segue destination="4Rd-fW-vJI" kind="relationship" relationship="viewControllers" id="Gl7-4z-Zij"/>
+                        <segue destination="ooQ-nD-6sq" kind="relationship" relationship="viewControllers" id="uUG-zj-FI2"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
