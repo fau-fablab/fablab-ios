@@ -28,6 +28,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "test")
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         
         cell.textLabel?.text = "Test Title"
         cell.detailTextLabel?.text = "Description Blah Blah Blah Text 12142"

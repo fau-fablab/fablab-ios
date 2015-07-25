@@ -203,7 +203,7 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Warenkorb" id="9NT-gQ-6cG">
-                                        <barButtonItem key="rightBarButtonItem" title="Produkt hinzufügen" id="zco-Vh-qqt"/>
+                                        <barButtonItem key="rightBarButtonItem" title="+ Produkt" id="zco-Vh-qqt"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
