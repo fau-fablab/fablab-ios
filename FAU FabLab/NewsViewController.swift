@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  NewsViewController.swift
 //  FAU FabLab
 //
 //  Created by Max Jalowski on 09.07.15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class NewsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

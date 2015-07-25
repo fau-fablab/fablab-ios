@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  EventsViewController.swift
 //  FAU FabLab
 //
 //  Created by Max Jalowski on 09.07.15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class EventsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
