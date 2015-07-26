@@ -3,6 +3,7 @@ import SwiftyJSON
 import Foundation.NSURL
 
 typealias NewsLoadFinished = () -> Void;
+typealias NewsLoadProgress = () -> Void;
 
 var newsMgr: NewsManager = NewsManager()
 
@@ -25,7 +26,7 @@ class NewsManager: NSObject {
         return news.count;
     }
 
-    func getNews(onCompletion: NewsLoadFinished) {
+    func getNews(onProgress: NewsLoadProgress, onCompletion: NewsLoadFinished) {
         if (!isLoading && !newsLoaded) {
             isLoading = true;
             RestManager.sharedInstance.fetchNews {
@@ -42,13 +43,13 @@ class NewsManager: NSObject {
                     let decodedString = attributedString.string // The Weeknd ‘King Of The Fall’
 
                     self.addNews(subJson["title"].string!, desc:decodedString )
-                    onCompletion()
+                    onProgress()
                 }
                 self.isLoading = false;
                 self.newsLoaded = true;
+                onCompletion()
             }
         }
-        onCompletion()
     }
 
     func addNews(title: String, desc: String) {

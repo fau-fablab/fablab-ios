@@ -2,15 +2,23 @@ import UIKit
 
 class NewsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet var actInd : UIActivityIndicatorView!
     @IBOutlet var tableView: UITableView!
+
+    let textCellIdentifier = "NewsEntryCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView = UITableView(frame: self.view!.frame)
-        self.tableView!.delegate = self
-        self.tableView!.dataSource = self
-        self.view?.addSubview(self.tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
+
+        actInd = UIActivityIndicatorView(frame: CGRectMake(0,0, 50, 50)) as UIActivityIndicatorView
+            actInd.center = self.view.center
+            actInd.hidesWhenStopped = true
+            actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+            view.addSubview(actInd)
+            actInd.startAnimating()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -19,11 +27,19 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        newsMgr.getNews({
-            dispatch_async(dispatch_get_main_queue(), {
-                self.tableView.reloadData()
-            })
-        })
+        newsMgr.getNews(
+            {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.tableView.reloadData()
+                })
+            },
+            onCompletion:{
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.tableView.reloadData()
+                    self.actInd.stopAnimating();
+                })
+            }
+        )
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,24 +47,28 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
 
-    // UITableViewDataSource
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+
+        let row = indexPath.row;
+        println("Clicked ! ")
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = newsMgr.getCount();
-        return count;
+        return newsMgr.getCount();
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as? UITableViewCell
+        let row = indexPath.row
 
-        let cellIdentifier = "NewsEntryCell"
-
-        var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? UITableViewCell
-
-        if(nil == cell){
-            cell = UITableViewCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
-        }
-
-        cell!.textLabel?.text = newsMgr.news[indexPath.row].title
-        cell!.detailTextLabel?.text = newsMgr.news[indexPath.row].description
+        cell!.textLabel?.text = newsMgr.news[row].title
+        cell!.detailTextLabel?.text = newsMgr.news[row].description
 
         return cell!;
     }
