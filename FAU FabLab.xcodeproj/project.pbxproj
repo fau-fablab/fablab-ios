@@ -19,6 +19,7 @@
 		5060B1EE1B4EFE2A008B41FD /* FAU_FabLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1ED1B4EFE2A008B41FD /* FAU_FabLabTests.swift */; };
 		507493681B5BFE6F0035BEB4 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */; };
 		507BA38E1B5A7C0300E5DCF3 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 507BA38D1B5A7C0300E5DCF3 /* Cartfile */; };
+		924352441B653F3C00CBFA0C /* NewsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924352431B653F3C00CBFA0C /* NewsCustomCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		5060B1ED1B4EFE2A008B41FD /* FAU_FabLabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAU_FabLabTests.swift; sourceTree = "<group>"; };
 		507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		507BA38D1B5A7C0300E5DCF3 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		924352431B653F3C00CBFA0C /* NewsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsCustomCell.swift; path = ../NewsCustomCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 		500A2CA11B63DCF4005CC8CF /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				924352431B653F3C00CBFA0C /* NewsCustomCell.swift */,
 				5060B1D71B4EFE2A008B41FD /* NewsViewController.swift */,
 				5060B1D91B4EFE2A008B41FD /* EventsViewController.swift */,
 			);
@@ -276,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				500C6CFA1B641D5A00F595F0 /* NewsManager.swift in Sources */,
+				924352441B653F3C00CBFA0C /* NewsCustomCell.swift in Sources */,
 				5060B1DA1B4EFE2A008B41FD /* EventsViewController.swift in Sources */,
 				5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */,
 				5060B1D81B4EFE2A008B41FD /* NewsViewController.swift in Sources */,

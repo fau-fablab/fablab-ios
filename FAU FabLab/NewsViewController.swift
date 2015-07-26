@@ -5,7 +5,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var actInd : UIActivityIndicatorView!
     @IBOutlet var tableView: UITableView!
 
-    let textCellIdentifier = "NewsEntryCell"
+    let textCellIdentifier = "NewsEntryCustomCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,14 +64,10 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as? UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier) as? NewsCustomCell
         let row = indexPath.row
-
-        cell!.textLabel?.text = newsMgr.news[row].title
-        cell!.detailTextLabel?.text = newsMgr.news[row].description
-        if let link = newsMgr.news[row].imageLink{
-            cell!.imageView?.imageFromUrl(link)
-        }
+        cell!.configure(newsMgr.news[row].title, description:newsMgr.news[row].description, image:newsMgr.news[row].imageLink)
+        //cell!.detailTextLabel?.text = newsMgr.news[row].description
         return cell!;
     }
 }
