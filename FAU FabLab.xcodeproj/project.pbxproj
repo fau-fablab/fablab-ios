@@ -20,6 +20,7 @@
 		507BA38E1B5A7C0300E5DCF3 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 507BA38D1B5A7C0300E5DCF3 /* Cartfile */; };
 		924352441B653F3C00CBFA0C /* NewsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924352431B653F3C00CBFA0C /* NewsCustomCell.swift */; };
 		924352461B654CF200CBFA0C /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924352451B654CF200CBFA0C /* Kingfisher.framework */; };
+		924352481B65500600CBFA0C /* news_nopicture.png in Resources */ = {isa = PBXBuildFile; fileRef = 924352471B65500600CBFA0C /* news_nopicture.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		507BA38D1B5A7C0300E5DCF3 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		924352431B653F3C00CBFA0C /* NewsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsCustomCell.swift; path = ../NewsCustomCell.swift; sourceTree = "<group>"; };
 		924352451B654CF200CBFA0C /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
+		924352471B65500600CBFA0C /* news_nopicture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = news_nopicture.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		5060B1C71B4EFE29008B41FD = {
 			isa = PBXGroup;
 			children = (
+				924352471B65500600CBFA0C /* news_nopicture.png */,
 				924352451B654CF200CBFA0C /* Kingfisher.framework */,
 				507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */,
 				507BA38D1B5A7C0300E5DCF3 /* Cartfile */,
@@ -235,6 +238,7 @@
 			files = (
 				5060B1DD1B4EFE2A008B41FD /* Main.storyboard in Resources */,
 				5060B1E21B4EFE2A008B41FD /* LaunchScreen.xib in Resources */,
+				924352481B65500600CBFA0C /* news_nopicture.png in Resources */,
 				507BA38E1B5A7C0300E5DCF3 /* Cartfile in Resources */,
 				5060B1DF1B4EFE2A008B41FD /* Images.xcassets in Resources */,
 			);
