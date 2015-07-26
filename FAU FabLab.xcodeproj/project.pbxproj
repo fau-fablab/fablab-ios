@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35CE1FADE30B199C937B1FB4 /* RestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE10F6A2FA166D8AD6E2FA /* RestManager.swift */; };
 		500C6CFA1B641D5A00F595F0 /* NewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500C6CF91B641D5A00F595F0 /* NewsManager.swift */; };
 		5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1D51B4EFE2A008B41FD /* AppDelegate.swift */; };
 		5060B1D81B4EFE2A008B41FD /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1D71B4EFE2A008B41FD /* NewsViewController.swift */; };
@@ -16,7 +17,6 @@
 		5060B1E21B4EFE2A008B41FD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5060B1E01B4EFE2A008B41FD /* LaunchScreen.xib */; };
 		5060B1EE1B4EFE2A008B41FD /* FAU_FabLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1ED1B4EFE2A008B41FD /* FAU_FabLabTests.swift */; };
 		507493681B5BFE6F0035BEB4 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */; };
-		5074936B1B5C00000035BEB4 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 5074936A1B5C00000035BEB4 /* test.json */; };
 		507BA38E1B5A7C0300E5DCF3 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 507BA38D1B5A7C0300E5DCF3 /* Cartfile */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		35CE10F6A2FA166D8AD6E2FA /* RestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestManager.swift; sourceTree = "<group>"; };
 		500C6CF91B641D5A00F595F0 /* NewsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsManager.swift; sourceTree = "<group>"; };
 		5060B1D01B4EFE2A008B41FD /* FAU FabLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FAU FabLab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5060B1D41B4EFE2A008B41FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -44,7 +45,6 @@
 		5060B1EC1B4EFE2A008B41FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5060B1ED1B4EFE2A008B41FD /* FAU_FabLabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAU_FabLabTests.swift; sourceTree = "<group>"; };
 		507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
-		5074936A1B5C00000035BEB4 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		507BA38D1B5A7C0300E5DCF3 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				500C6CF91B641D5A00F595F0 /* NewsManager.swift */,
+				35CE10F6A2FA166D8AD6E2FA /* RestManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -114,7 +115,6 @@
 				5060B1DE1B4EFE2A008B41FD /* Images.xcassets */,
 				5060B1E01B4EFE2A008B41FD /* LaunchScreen.xib */,
 				5060B1D31B4EFE2A008B41FD /* Supporting Files */,
-				5074936A1B5C00000035BEB4 /* test.json */,
 			);
 			path = "FAU FabLab";
 			sourceTree = "<group>";
@@ -228,7 +228,6 @@
 			files = (
 				5060B1DD1B4EFE2A008B41FD /* Main.storyboard in Resources */,
 				5060B1E21B4EFE2A008B41FD /* LaunchScreen.xib in Resources */,
-				5074936B1B5C00000035BEB4 /* test.json in Resources */,
 				507BA38E1B5A7C0300E5DCF3 /* Cartfile in Resources */,
 				5060B1DF1B4EFE2A008B41FD /* Images.xcassets in Resources */,
 			);
@@ -269,6 +268,7 @@
 				5060B1DA1B4EFE2A008B41FD /* EventsViewController.swift in Sources */,
 				5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */,
 				5060B1D81B4EFE2A008B41FD /* NewsViewController.swift in Sources */,
+				35CE1FADE30B199C937B1FB4 /* RestManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

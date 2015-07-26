@@ -1,38 +1,59 @@
-//
-//  NewsManager.swift
-//  FAU FabLab
-//
-//  Created by Max Jalowski on 25.07.15.
-//  Copyright (c) 2015 FAU MAD FabLab. All rights reserved.
-//
-
 import UIKit
+import SwiftyJSON
+import Foundation.NSURL
+
+typealias NewsLoadFinished = () -> Void;
 
 var newsMgr: NewsManager = NewsManager()
 
 struct newsEntry {
-    var title = "Title"
-    var desc = "Description Blah Blah"
+    var title: String
+    var description: String;
 }
 
 class NewsManager: NSObject {
-    
+
     var news = [newsEntry]()
-    
+    var isLoading = false;
+    var newsLoaded = false;
+
     override init() {
         super.init()
-        addNews("News 1", desc: "Description 1 blah blah blah")
-        addNews("News 2", desc: "Description 2 blah blah blah")
-        addNews("News 3", desc: "Description 3 blah blah blah")
-        addNews("News 4", desc: "Description 4 blah blah blah")
-        addNews("News 5", desc: "Description 5 blah blah blah")
-        addNews("News 6", desc: "Description 6 blah blah blah")
-        addNews("News 7", desc: "Description 7 blah blah blah")
     }
-    
+
+    func getCount() -> Int {
+        return news.count;
+    }
+
+    func getNews(onCompletion: NewsLoadFinished) {
+        if (!isLoading && !newsLoaded) {
+            isLoading = true;
+            RestManager.sharedInstance.fetchNews {
+                json in
+                for (index: String, subJson: JSON) in json {
+
+                    //Decode html
+                    let htmlText = subJson["description"].string!.dataUsingEncoding(NSUTF8StringEncoding)!
+                    let attributedOptions : [String: AnyObject] = [
+                            NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+                            NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding
+                    ]
+                    let attributedString = NSAttributedString(data: htmlText, options: attributedOptions, documentAttributes: nil, error: nil)!
+                    let decodedString = attributedString.string // The Weeknd ‘King Of The Fall’
+
+                    self.addNews(subJson["title"].string!, desc:decodedString )
+                    onCompletion()
+                }
+                self.isLoading = false;
+                self.newsLoaded = true;
+            }
+        }
+        onCompletion()
+    }
+
     func addNews(title: String, desc: String) {
-        news.append(newsEntry(title: title, desc: desc))
+        news.append(newsEntry(title: title, description: desc))
     }
-    
+
 }
 
