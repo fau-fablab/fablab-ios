@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35CE136729E0E2E338A424F6 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE1569ADDBA4418E182720 /* extensions.swift */; };
 		35CE1FADE30B199C937B1FB4 /* RestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE10F6A2FA166D8AD6E2FA /* RestManager.swift */; };
 		500C6CFA1B641D5A00F595F0 /* NewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500C6CF91B641D5A00F595F0 /* NewsManager.swift */; };
 		5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1D51B4EFE2A008B41FD /* AppDelegate.swift */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		35CE10F6A2FA166D8AD6E2FA /* RestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestManager.swift; sourceTree = "<group>"; };
+		35CE1569ADDBA4418E182720 /* extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		500C6CF91B641D5A00F595F0 /* NewsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsManager.swift; sourceTree = "<group>"; };
 		5060B1D01B4EFE2A008B41FD /* FAU FabLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FAU FabLab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5060B1D41B4EFE2A008B41FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -67,6 +69,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		35CE17E4ECFEE65BF8FD2C05 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				35CE1569ADDBA4418E182720 /* extensions.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 		500A2CA11B63DCF4005CC8CF /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +125,7 @@
 				5060B1DE1B4EFE2A008B41FD /* Images.xcassets */,
 				5060B1E01B4EFE2A008B41FD /* LaunchScreen.xib */,
 				5060B1D31B4EFE2A008B41FD /* Supporting Files */,
+				35CE17E4ECFEE65BF8FD2C05 /* Tools */,
 			);
 			path = "FAU FabLab";
 			sourceTree = "<group>";
@@ -269,6 +280,7 @@
 				5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */,
 				5060B1D81B4EFE2A008B41FD /* NewsViewController.swift in Sources */,
 				35CE1FADE30B199C937B1FB4 /* RestManager.swift in Sources */,
+				35CE136729E0E2E338A424F6 /* extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

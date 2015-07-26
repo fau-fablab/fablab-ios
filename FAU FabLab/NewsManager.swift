@@ -9,7 +9,8 @@ var newsMgr: NewsManager = NewsManager()
 
 struct newsEntry {
     var title: String
-    var description: String;
+    var description: String
+    var imageLink: String?
 }
 
 class NewsManager: NSObject {
@@ -42,7 +43,7 @@ class NewsManager: NSObject {
                     let attributedString = NSAttributedString(data: htmlText, options: attributedOptions, documentAttributes: nil, error: nil)!
                     let decodedString = attributedString.string // The Weeknd ‘King Of The Fall’
 
-                    self.addNews(subJson["title"].string!, desc:decodedString )
+                    self.addNews(subJson["title"].string!, desc:decodedString, imageLink: subJson["linkToPreviewImage"].string)
                     onProgress()
                 }
                 self.isLoading = false;
@@ -52,8 +53,8 @@ class NewsManager: NSObject {
         }
     }
 
-    func addNews(title: String, desc: String) {
-        news.append(newsEntry(title: title, description: desc))
+    func addNews(title: String, desc: String, imageLink: String?) {
+        news.append(newsEntry(title: title, description: desc, imageLink: imageLink))
     }
 
 }

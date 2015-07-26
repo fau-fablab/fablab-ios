@@ -69,7 +69,9 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         cell!.textLabel?.text = newsMgr.news[row].title
         cell!.detailTextLabel?.text = newsMgr.news[row].description
-
+        if let link = newsMgr.news[row].imageLink{
+            cell!.imageView?.imageFromUrl(link)
+        }
         return cell!;
     }
 }
