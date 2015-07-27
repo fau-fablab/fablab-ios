@@ -18,6 +18,9 @@
 		5060B1EE1B4EFE2A008B41FD /* FAU_FabLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1ED1B4EFE2A008B41FD /* FAU_FabLabTests.swift */; };
 		507493681B5BFE6F0035BEB4 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */; };
 		507BA38E1B5A7C0300E5DCF3 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 507BA38D1B5A7C0300E5DCF3 /* Cartfile */; };
+		84DC93151B669EBD00981977 /* BarcodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC93141B669EBD00981977 /* BarcodeViewController.swift */; };
+		84E7C82F1B66A07200A24193 /* RSBarcodes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DC93121B669E0100981977 /* RSBarcodes.framework */; };
+		84E7C8301B66A07200A24193 /* RSBarcodes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84DC93121B669E0100981977 /* RSBarcodes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		924352441B653F3C00CBFA0C /* NewsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924352431B653F3C00CBFA0C /* NewsCustomCell.swift */; };
 		924352461B654CF200CBFA0C /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924352451B654CF200CBFA0C /* Kingfisher.framework */; };
 		924352481B65500600CBFA0C /* news_nopicture.png in Resources */ = {isa = PBXBuildFile; fileRef = 924352471B65500600CBFA0C /* news_nopicture.png */; };
@@ -32,6 +35,20 @@
 			remoteInfo = "FAU FabLab";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		84E7C8311B66A07200A24193 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				84E7C8301B66A07200A24193 /* RSBarcodes.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		35CE10F6A2FA166D8AD6E2FA /* RestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestManager.swift; sourceTree = "<group>"; };
@@ -49,6 +66,8 @@
 		5060B1ED1B4EFE2A008B41FD /* FAU_FabLabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAU_FabLabTests.swift; sourceTree = "<group>"; };
 		507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		507BA38D1B5A7C0300E5DCF3 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		84DC93121B669E0100981977 /* RSBarcodes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RSBarcodes.framework; path = Carthage/Build/iOS/RSBarcodes.framework; sourceTree = "<group>"; };
+		84DC93141B669EBD00981977 /* BarcodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeViewController.swift; sourceTree = "<group>"; };
 		924352431B653F3C00CBFA0C /* NewsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsCustomCell.swift; path = ../NewsCustomCell.swift; sourceTree = "<group>"; };
 		924352451B654CF200CBFA0C /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		924352471B65500600CBFA0C /* news_nopicture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = news_nopicture.png; sourceTree = "<group>"; };
@@ -59,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84E7C82F1B66A07200A24193 /* RSBarcodes.framework in Frameworks */,
 				924352461B654CF200CBFA0C /* Kingfisher.framework in Frameworks */,
 				507493681B5BFE6F0035BEB4 /* SwiftyJSON.framework in Frameworks */,
 			);
@@ -80,6 +100,7 @@
 				924352431B653F3C00CBFA0C /* NewsCustomCell.swift */,
 				5060B1D71B4EFE2A008B41FD /* NewsViewController.swift */,
 				5060B1D91B4EFE2A008B41FD /* EventsViewController.swift */,
+				84DC93141B669EBD00981977 /* BarcodeViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -96,6 +117,7 @@
 		5060B1C71B4EFE29008B41FD = {
 			isa = PBXGroup;
 			children = (
+				84DC93121B669E0100981977 /* RSBarcodes.framework */,
 				924352471B65500600CBFA0C /* news_nopicture.png */,
 				924352451B654CF200CBFA0C /* Kingfisher.framework */,
 				507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */,
@@ -165,6 +187,7 @@
 				5060B1CD1B4EFE2A008B41FD /* Frameworks */,
 				5060B1CE1B4EFE2A008B41FD /* Resources */,
 				507493691B5BFE860035BEB4 /* ShellScript */,
+				84E7C8311B66A07200A24193 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -204,7 +227,7 @@
 				TargetAttributes = {
 					5060B1CF1B4EFE2A008B41FD = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 3928PFTW6V;
+						DevelopmentTeam = M94J3XEHM7;
 					};
 					5060B1E61B4EFE2A008B41FD = {
 						CreatedOnToolsVersion = 6.4;
@@ -282,6 +305,7 @@
 				5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */,
 				5060B1D81B4EFE2A008B41FD /* NewsViewController.swift in Sources */,
 				35CE1FADE30B199C937B1FB4 /* RestManager.swift in Sources */,
+				84DC93151B669EBD00981977 /* BarcodeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,9 +441,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Checkouts/RSBarcodes_Swift/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = "FAU FabLab/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -436,9 +461,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Checkouts/RSBarcodes_Swift/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = "FAU FabLab/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;

@@ -1,3 +1,4 @@
 # SwiftyJSON
 github "FAU-Inf2/SwiftyJSON" >= 2.2.1
 github "onevcat/Kingfisher" >= 1.4
+github "yeahdongcn/RSBarcodes_Swift" >= 0.0.8
