@@ -165,3 +165,5 @@ Carthage
 Carthage.checkout
 Carthage.build
 
+fastlane/report.xml
+*.app.dSYM.zip
