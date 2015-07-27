@@ -1,4 +1,3 @@
-
 import UIKit
 import AVFoundation
 import RSBarcodes
@@ -9,7 +8,7 @@ class BarcodeViewController: RSCodeReaderViewController {
         super.viewDidLoad()
         
         
-        //Optional: Mark the found place
+        //Optional: Mark where code was found
         self.focusMarkLayer.strokeColor = UIColor.greenColor().CGColor
         self.cornersLayer.strokeColor = UIColor.greenColor().CGColor
         
@@ -22,7 +21,7 @@ class BarcodeViewController: RSCodeReaderViewController {
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 let popupMessageView = UIAlertView(
                     title: "Barcode gescannt!",
-                    message: "Barcode typ: " + barcodes[0].type + "  Wert: " + barcodes[0].stringValue,
+                    message: "Barcode Typ: " + barcodes[0].type + "  Code: " + barcodes[0].stringValue,
                     delegate: nil,
                     cancelButtonTitle: "Toll")
                 popupMessageView.show()
@@ -33,7 +32,6 @@ class BarcodeViewController: RSCodeReaderViewController {
         //VALID BARCODE TYPES:  (Bin mir nicht sicher welche wir alles bruachen...)
         
         //Ignore some
-        
         //let types = NSMutableArray(array: self.output.availableMetadataObjectTypes)
         //types.removeObject(AVMetadataObjectTypeQRCode)
         //self.output.metadataObjectTypes = NSArray(array: types) as [AnyObject]
