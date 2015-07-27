@@ -1,0 +1,133 @@
+# Customise this file, documentation can be found here:
+# https://github.com/KrauseFx/fastlane/tree/master/docs
+# All available actions: https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# By default, fastlane will send which actions are used
+# No personal data is shared, more information on https://github.com/fastlane/enhancer
+# Uncomment the following line to opt out
+# opt_out_usage
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+
+fastlane_version "1.4.0"
+
+default_platform :ios
+
+platform :ios do
+
+  before_all do |lane|
+    if ENV["HIPCHAT_API_TOKEN"]
+      ENV["HIPCHAT_API_VERSION"] = "1"
+      ENV["LOG_URL"] = ENV["LOG_BASE_URL"] + "/" + ENV["LOG_FILE"]
+      ENV["GITHUB_COMMIT_LINK"] = ENV["GITHUB_REPO_URL"] + "/commit/" + `git rev-parse HEAD`.strip
+      if lane.to_s != 'clean'
+        hipchatnoicon(
+          message: "Running lane: " + lane.to_s,
+          channel: "Fablab",
+          show_icon: false
+        )
+      end
+    end
+  end
+
+  desc "Clean project with xctool"
+  lane :clean do
+    if ENV["HIPCHAT_API_TOKEN"]
+      commit_sha = `git rev-parse HEAD`.strip
+      commit_author = `git --no-pager show -s --format='%an <%ae>' #{commit_sha}`.strip
+      commit_author = CGI.escapeHTML(commit_author)
+
+      log_url = ENV["LOG_URL"]
+      github_commit_link = ENV["GITHUB_COMMIT_LINK"]
+
+      hipchatnoicon(
+        message: "Start build for commit <a href='#{github_commit_link}'>#{commit_sha[0..8]}</a> by #{commit_author}, see <a href='#{log_url}'>log file</a>.",
+        channel: "Fablab",
+        show_icon: false
+      )
+    end
+
+    xctool "-project FAU\\ Fablab.xcodeproj \
+        -scheme 'FAU FabLab' \
+        -configuration Release \
+        -sdk iphonesimulator \
+        clean"
+  end
+
+  desc "Build project with xctool"
+  lane :build do
+    carthageverbose(
+      verbose: true
+    )
+    xctool "-project FAU\\ Fablab.xcodeproj \
+        -scheme 'FAU FabLab' \
+        -configuration Release \
+        -sdk iphonesimulator \
+        build"
+  end
+
+  desc "Run tests for project with xctool"
+  lane :test do
+    xctool "-project FAU\\ Fablab.xcodeproj \
+        -scheme 'FAU FabLab' \
+        -configuration Release \
+        -sdk iphonesimulator \
+        test -freshSimulator -resetSimulator -freshInstall"
+  end
+
+  desc "Build and deploy the ipa file"
+  lane :deploy do
+    ipa(
+      scheme: "FAU FabLab"
+    )
+
+    if ENV["HIPCHAT_API_TOKEN"]
+      sh "sh deploy.sh"
+      
+      commit_sha = `git rev-parse HEAD`.strip;
+
+      log_url = ENV["LOG_URL"]
+      github_commit_link = ENV["GITHUB_COMMIT_LINK"]
+
+      hipchatnoicon(
+        message: "Build for commit <a href='#{github_commit_link}'>#{commit_sha[0..8]}</a> successful! See <a href='#{log_url}'>log file</a>. <img class='remoticon' title='(success)' alt='(success)' height='25' src='https://dujrsrsgsd3nh.cloudfront.net/img/emoticons/success-1414025948.png'>",
+        channel: "Fablab",
+        success: true,
+        show_icon: false
+      )
+    end
+  end
+
+  after_all do |lane|
+    # This block is called, only if the executed lane was successful
+    if ENV["LOG_FILE"]
+      sh "sh uploadLog.sh"
+    end
+  end
+
+  error do |lane, exception|
+    if ENV["LOG_FILE"]
+      sh "sh uploadLog.sh"
+    end
+    if ENV["HIPCHAT_API_TOKEN"]
+      commit_sha = `git rev-parse HEAD`.strip;
+      log_url = ENV["LOG_URL"]
+      github_commit_link = ENV["GITHUB_COMMIT_LINK"]
+      hipchatnoicon(
+        message: "Build for commit <a href='#{github_commit_link}'>#{commit_sha[0..8]}</a> failed in lane: " + lane.to_s + ", see <a href='#{log_url}'>log file</a>. <img class='remoticon' title='(fail)' alt='(fail)' height='25' src='https://dujrsrsgsd3nh.cloudfront.net/img/emoticons/facepalm-1417752010.png'>",
+        #exception.message TODO cut to 10000 chars
+        channel: "Fablab",
+        success: false,
+        show_icon: false
+      )
+    end
+  end
+end
