@@ -24,6 +24,7 @@
 		924352441B653F3C00CBFA0C /* NewsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924352431B653F3C00CBFA0C /* NewsCustomCell.swift */; };
 		924352461B654CF200CBFA0C /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924352451B654CF200CBFA0C /* Kingfisher.framework */; };
 		924352481B65500600CBFA0C /* news_nopicture.png in Resources */ = {isa = PBXBuildFile; fileRef = 924352471B65500600CBFA0C /* news_nopicture.png */; };
+		925AC32F1B6C245700057C7F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925AC32E1B6C245700057C7F /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		924352431B653F3C00CBFA0C /* NewsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsCustomCell.swift; path = ../NewsCustomCell.swift; sourceTree = "<group>"; };
 		924352451B654CF200CBFA0C /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		924352471B65500600CBFA0C /* news_nopicture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = news_nopicture.png; sourceTree = "<group>"; };
+		925AC32E1B6C245700057C7F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				84E7C82F1B66A07200A24193 /* RSBarcodes.framework in Frameworks */,
 				924352461B654CF200CBFA0C /* Kingfisher.framework in Frameworks */,
 				507493681B5BFE6F0035BEB4 /* SwiftyJSON.framework in Frameworks */,
+				925AC32F1B6C245700057C7F /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +120,7 @@
 		5060B1C71B4EFE29008B41FD = {
 			isa = PBXGroup;
 			children = (
+				925AC32E1B6C245700057C7F /* Alamofire.framework */,
 				84DC93121B669E0100981977 /* RSBarcodes.framework */,
 				924352471B65500600CBFA0C /* news_nopicture.png */,
 				924352451B654CF200CBFA0C /* Kingfisher.framework */,
@@ -285,6 +289,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 			);
 			outputPaths = (
 			);
