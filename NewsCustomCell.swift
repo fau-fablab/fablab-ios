@@ -9,7 +9,7 @@ public class NewsCustomCell : UITableViewCell{
 
     public func configure(text: String, description:String ,image: String?) {
         titleLabel.text = text
-        descriptionLabel.text = text;
+        descriptionLabel.text = description;
 
         if let link = image{
             previewImage.kf_setImageWithURL(NSURL(string: link)!, placeholderImage: nil)

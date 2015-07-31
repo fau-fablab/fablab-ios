@@ -57,6 +57,20 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         let row = indexPath.row;
         println("Clicked ! ")
     }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        println(segue.identifier)
+        if segue.identifier == "NewsDetailSegue" {
+            let destination = segue.destinationViewController as? NewsDetailsViewController
+            let selectedRow = tableView.indexPathForSelectedRow()!.row
+
+            let title = newsMgr.news[selectedRow].title;
+            let description = newsMgr.news[selectedRow].description;
+            let image = newsMgr.news[selectedRow].imageLink;
+
+            destination!.configure(title, desc:description, imageLink: image)
+        }
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return newsMgr.getCount();

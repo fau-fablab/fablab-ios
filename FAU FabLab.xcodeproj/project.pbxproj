@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35CE1EC8B6D71BD665EA0BB0 /* NewsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE1772764DD8B1E3B5AB36 /* NewsDetailsViewController.swift */; };
 		35CE1FADE30B199C937B1FB4 /* RestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE10F6A2FA166D8AD6E2FA /* RestManager.swift */; };
 		500C6CFA1B641D5A00F595F0 /* NewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500C6CF91B641D5A00F595F0 /* NewsManager.swift */; };
 		5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1D51B4EFE2A008B41FD /* AppDelegate.swift */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		35CE10F6A2FA166D8AD6E2FA /* RestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestManager.swift; sourceTree = "<group>"; };
+		35CE1772764DD8B1E3B5AB36 /* NewsDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetailsViewController.swift; sourceTree = "<group>"; };
 		500C6CF91B641D5A00F595F0 /* NewsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsManager.swift; sourceTree = "<group>"; };
 		5060B1D01B4EFE2A008B41FD /* FAU FabLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FAU FabLab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5060B1D41B4EFE2A008B41FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				5060B1D71B4EFE2A008B41FD /* NewsViewController.swift */,
 				5060B1D91B4EFE2A008B41FD /* EventsViewController.swift */,
 				84DC93141B669EBD00981977 /* BarcodeViewController.swift */,
+				35CE1772764DD8B1E3B5AB36 /* NewsDetailsViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				5060B1D81B4EFE2A008B41FD /* NewsViewController.swift in Sources */,
 				35CE1FADE30B199C937B1FB4 /* RestManager.swift in Sources */,
 				84DC93151B669EBD00981977 /* BarcodeViewController.swift in Sources */,
+				35CE1EC8B6D71BD665EA0BB0 /* NewsDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
