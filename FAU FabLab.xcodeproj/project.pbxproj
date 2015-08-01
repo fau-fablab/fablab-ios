@@ -26,6 +26,7 @@
 		924352461B654CF200CBFA0C /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924352451B654CF200CBFA0C /* Kingfisher.framework */; };
 		924352481B65500600CBFA0C /* news_nopicture.png in Resources */ = {isa = PBXBuildFile; fileRef = 924352471B65500600CBFA0C /* news_nopicture.png */; };
 		925AC32F1B6C245700057C7F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925AC32E1B6C245700057C7F /* Alamofire.framework */; };
+		925D9F921B6CF2680004E4FD /* ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 925D9F911B6CF2680004E4FD /* ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		924352451B654CF200CBFA0C /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		924352471B65500600CBFA0C /* news_nopicture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = news_nopicture.png; sourceTree = "<group>"; };
 		925AC32E1B6C245700057C7F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		925D9F911B6CF2680004E4FD /* ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer"; path = "FAU FabLab/ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 		5060B1C71B4EFE29008B41FD = {
 			isa = PBXGroup;
 			children = (
+				925D9F931B6CF5880004E4FD /* certificates */,
 				925AC32E1B6C245700057C7F /* Alamofire.framework */,
 				84DC93121B669E0100981977 /* RSBarcodes.framework */,
 				924352471B65500600CBFA0C /* news_nopicture.png */,
@@ -181,6 +184,14 @@
 				5060B1EC1B4EFE2A008B41FD /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		925D9F931B6CF5880004E4FD /* certificates */ = {
+			isa = PBXGroup;
+			children = (
+				925D9F911B6CF2680004E4FD /* ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer */,
+			);
+			name = certificates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,6 +280,7 @@
 				5060B1DD1B4EFE2A008B41FD /* Main.storyboard in Resources */,
 				5060B1E21B4EFE2A008B41FD /* LaunchScreen.xib in Resources */,
 				924352481B65500600CBFA0C /* news_nopicture.png in Resources */,
+				925D9F921B6CF2680004E4FD /* ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer in Resources */,
 				507BA38E1B5A7C0300E5DCF3 /* Cartfile in Resources */,
 				5060B1DF1B4EFE2A008B41FD /* Images.xcassets in Resources */,
 			);
