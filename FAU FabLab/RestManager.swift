@@ -1,34 +1,37 @@
 import Foundation
 import SwiftyJSON
+import Alamofire
 
-typealias ServiceResponse = (JSON, NSError?) -> Void
+typealias JsonServiceResponse = (JSON, NSError?) -> Void
 
 class RestManager {
-
+    
     static let sharedInstance = RestManager()
 
-    let apiUrl = "https://52.28.16.59:4433"
-
-    func fetchNews(onCompletion: (JSON) -> Void) {
-        let route = apiUrl + "/news/all";
-        makeHTTPGetRequest(route, onCompletion: { json, err in
-            if(err != nil){
-                //TODO error handling
-                println("Error");
-            }
-            onCompletion(json as JSON)
-        })
+    var manager:Manager;
+    let devApiUrl = "https://ec2-52-28-16-59.eu-central-1.compute.amazonaws.com:4433"
+    
+    init(){
+        let serverTrustPolicies: [String: ServerTrustPolicy] = [
+            "ec2-52-28-16-59.eu-central-1.compute.amazonaws.com": .PinCertificates(
+                certificates: ServerTrustPolicy.certificatesInBundle(),
+                validateCertificateChain: true,
+                validateHost: true
+            )
+        ]
+        
+        manager = Manager(
+            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
+        )
     }
-
-    func makeHTTPGetRequest(path: String, onCompletion: ServiceResponse) {
-        let request = NSMutableURLRequest(URL: NSURL(string: path)!)
-
-        let session = NSURLSession.sharedSession()
-
-        let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            let json:JSON = JSON(data: data)
-            onCompletion(json, error)
-        })
-        task.resume()
+    
+    func makeJsonRequest(resource: String, onCompletion : JsonServiceResponse) {
+        manager.request(.GET, devApiUrl+resource, parameters: nil)
+            .responseJSON { (req, res, json, error) in
+                println(self.devApiUrl+resource);
+                var json = JSON(json!);
+                onCompletion(json, error);
+        }
     }
 }

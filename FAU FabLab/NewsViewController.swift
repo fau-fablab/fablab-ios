@@ -28,12 +28,10 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         newsMgr.getNews(
-            {
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.tableView.reloadData()
-                })
-            },
-            onCompletion:{
+            onCompletion:{ error in
+                if(error != nil){
+                    println("Error!");
+                }
                 dispatch_async(dispatch_get_main_queue(), {
                     self.tableView.reloadData()
                     self.actInd.stopAnimating();
