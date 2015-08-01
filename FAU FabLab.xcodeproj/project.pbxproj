@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		35CE1EC8B6D71BD665EA0BB0 /* NewsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE1772764DD8B1E3B5AB36 /* NewsDetailsViewController.swift */; };
 		35CE1FADE30B199C937B1FB4 /* RestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE10F6A2FA166D8AD6E2FA /* RestManager.swift */; };
-		500C6CFA1B641D5A00F595F0 /* NewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500C6CF91B641D5A00F595F0 /* NewsManager.swift */; };
+		500C6CFA1B641D5A00F595F0 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500C6CF91B641D5A00F595F0 /* NewsModel.swift */; };
 		5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1D51B4EFE2A008B41FD /* AppDelegate.swift */; };
 		5060B1D81B4EFE2A008B41FD /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1D71B4EFE2A008B41FD /* NewsViewController.swift */; };
 		5060B1DA1B4EFE2A008B41FD /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1D91B4EFE2A008B41FD /* EventsViewController.swift */; };
@@ -56,7 +56,7 @@
 /* Begin PBXFileReference section */
 		35CE10F6A2FA166D8AD6E2FA /* RestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestManager.swift; sourceTree = "<group>"; };
 		35CE1772764DD8B1E3B5AB36 /* NewsDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetailsViewController.swift; sourceTree = "<group>"; };
-		500C6CF91B641D5A00F595F0 /* NewsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsManager.swift; sourceTree = "<group>"; };
+		500C6CF91B641D5A00F595F0 /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		5060B1D01B4EFE2A008B41FD /* FAU FabLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FAU FabLab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5060B1D41B4EFE2A008B41FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5060B1D51B4EFE2A008B41FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,7 +116,7 @@
 		500A2CA21B63FB6E005CC8CF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				500C6CF91B641D5A00F595F0 /* NewsManager.swift */,
+				500C6CF91B641D5A00F595F0 /* NewsModel.swift */,
 				35CE10F6A2FA166D8AD6E2FA /* RestManager.swift */,
 			);
 			name = Model;
@@ -319,7 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				500C6CFA1B641D5A00F595F0 /* NewsManager.swift in Sources */,
+				500C6CFA1B641D5A00F595F0 /* NewsModel.swift in Sources */,
 				924352441B653F3C00CBFA0C /* NewsCustomCell.swift in Sources */,
 				5060B1DA1B4EFE2A008B41FD /* EventsViewController.swift in Sources */,
 				5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */,

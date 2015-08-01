@@ -6,6 +6,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var tableView: UITableView!
 
     let textCellIdentifier = "NewsEntryCustomCell"
+    let model = NewsModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        newsMgr.getNews(
+        model.getNews(
             onCompletion:{ error in
                 if(error != nil){
                     println("Error!");
@@ -62,23 +63,23 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
             let destination = segue.destinationViewController as? NewsDetailsViewController
             let selectedRow = tableView.indexPathForSelectedRow()!.row
 
-            let title = newsMgr.news[selectedRow].title;
-            let description = newsMgr.news[selectedRow].description;
-            let image = newsMgr.news[selectedRow].imageLink;
+            let title = model.news[selectedRow].title;
+            let description = model.news[selectedRow].description;
+            let image = model.news[selectedRow].imageLink;
 
             destination!.configure(title, desc:description, imageLink: image)
         }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newsMgr.getCount();
+        return model.getCount();
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier) as? NewsCustomCell
         let row = indexPath.row
-        cell!.configure(newsMgr.news[row].title, description:newsMgr.news[row].description, image:newsMgr.news[row].imageLink)
+        cell!.configure(model.news[row].title, description:model.news[row].description, image:model.news[row].imageLink)
         //cell!.detailTextLabel?.text = newsMgr.news[row].description
         return cell!;
     }

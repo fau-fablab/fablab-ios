@@ -4,15 +4,13 @@ import Foundation.NSURL
 
 typealias NewsLoadFinished = (NSError?) -> Void;
 
-var newsMgr: NewsManager = NewsManager()
-
 struct newsEntry {
     var title: String
     var description: String
     var imageLink: String?
 }
 
-class NewsManager: NSObject {
+public class NewsModel: NSObject {
 
     let resource = "/news";
 
