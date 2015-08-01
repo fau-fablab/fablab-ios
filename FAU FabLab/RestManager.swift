@@ -7,7 +7,7 @@ class RestManager {
 
     static let sharedInstance = RestManager()
 
-    let apiUrl = "http://52.28.16.59"
+    let apiUrl = "https://52.28.16.59:4433"
 
     func fetchNews(onCompletion: (JSON) -> Void) {
         let route = apiUrl + "/news/all";
