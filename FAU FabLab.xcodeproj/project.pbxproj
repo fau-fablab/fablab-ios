@@ -27,6 +27,7 @@
 		927901E11B6D3F6300F95B09 /* NewsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927901DF1B6D3F6300F95B09 /* NewsDetailsViewController.swift */; };
 		927901E21B6D3F6300F95B09 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927901E01B6D3F6300F95B09 /* NewsViewController.swift */; };
 		927901E51B6D4AE300F95B09 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927901E41B6D4AE300F95B09 /* NewsModel.swift */; };
+		928054F41B6D893300D0D4FB /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 928054F31B6D893300D0D4FB /* ObjectMapper.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		927901DF1B6D3F6300F95B09 /* NewsDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetailsViewController.swift; sourceTree = "<group>"; };
 		927901E01B6D3F6300F95B09 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		927901E41B6D4AE300F95B09 /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
+		928054F31B6D893300D0D4FB /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			files = (
 				84E7C82F1B66A07200A24193 /* RSBarcodes.framework in Frameworks */,
 				924352461B654CF200CBFA0C /* Kingfisher.framework in Frameworks */,
+				928054F41B6D893300D0D4FB /* ObjectMapper.framework in Frameworks */,
 				507493681B5BFE6F0035BEB4 /* SwiftyJSON.framework in Frameworks */,
 				925AC32F1B6C245700057C7F /* Alamofire.framework in Frameworks */,
 			);
@@ -181,6 +184,7 @@
 		927901B91B6D39FF00F95B09 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				928054F31B6D893300D0D4FB /* ObjectMapper.framework */,
 				925AC32E1B6C245700057C7F /* Alamofire.framework */,
 				84DC93121B669E0100981977 /* RSBarcodes.framework */,
 				924352451B654CF200CBFA0C /* Kingfisher.framework */,
@@ -385,6 +389,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
 			);
 			outputPaths = (
 			);
