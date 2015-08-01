@@ -12,7 +12,7 @@ class NewsDetailsViewController : UIViewController{
     var newsImageLink: String?;
     var imageUrl: NSURL?;
     
-    func configure(title: String, desc: String, imageLink: String?){
+    func configure(#title: String, desc: String, imageLink: String?){
         newsTitle = title
         newsDescription = desc
         newsImageLink = imageLink;

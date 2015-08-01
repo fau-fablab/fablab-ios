@@ -8,8 +8,8 @@ class RestManager {
     
     static let sharedInstance = RestManager()
 
-    var manager:Manager;
-    let devApiUrl = "https://ec2-52-28-16-59.eu-central-1.compute.amazonaws.com:4433"
+    private var manager:Manager;
+    private let devApiUrl = "https://ec2-52-28-16-59.eu-central-1.compute.amazonaws.com:4433"
     
     init(){
         let serverTrustPolicies: [String: ServerTrustPolicy] = [

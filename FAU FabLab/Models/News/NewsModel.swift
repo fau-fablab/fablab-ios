@@ -12,11 +12,10 @@ struct newsEntry {
 
 public class NewsModel: NSObject {
 
-    let resource = "/news";
-
-    var news = [newsEntry]()
-    var isLoading = false;
-    var newsLoaded = false;
+    private let resource = "/news";
+    private var news = [newsEntry]()
+    private var isLoading = false;
+    private var newsLoaded = false;
 
     override init() {
         super.init()
@@ -57,6 +56,10 @@ public class NewsModel: NSObject {
 
     func addNews(title: String, desc: String, imageLink: String?) {
         news.append(newsEntry(title: title, description: desc, imageLink: imageLink))
+    }
+    
+    func getNews(position:Int) -> newsEntry{
+        return news[position];
     }
 
 }

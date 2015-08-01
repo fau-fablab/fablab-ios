@@ -5,8 +5,8 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var actInd : UIActivityIndicatorView!
     @IBOutlet var tableView: UITableView!
 
-    let textCellIdentifier = "NewsEntryCustomCell"
-    let model = NewsModel()
+    private let textCellIdentifier = "NewsEntryCustomCell"
+    private let model = NewsModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +28,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
         model.getNews(
             onCompletion:{ error in
                 if(error != nil){
@@ -50,24 +51,13 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         return 1
     }
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-
-        let row = indexPath.row;
-        println("Clicked ! ")
-    }
-
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         println(segue.identifier)
         if segue.identifier == "NewsDetailSegue" {
             let destination = segue.destinationViewController as? NewsDetailsViewController
-            let selectedRow = tableView.indexPathForSelectedRow()!.row
 
-            let title = model.news[selectedRow].title;
-            let description = model.news[selectedRow].description;
-            let image = model.news[selectedRow].imageLink;
-
-            destination!.configure(title, desc:description, imageLink: image)
+            let news = model.getNews(tableView.indexPathForSelectedRow()!.row);
+            destination!.configure(title: news.title, desc:news.description, imageLink: news.imageLink)
         }
     }
     
@@ -78,9 +68,10 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier) as? NewsCustomCell
-        let row = indexPath.row
-        cell!.configure(model.news[row].title, description:model.news[row].description, image:model.news[row].imageLink)
-        //cell!.detailTextLabel?.text = newsMgr.news[row].description
+        let news = model.getNews(indexPath.row);
+
+        cell!.configure(title: news.title, description: news.description, image: news.imageLink)
+
         return cell!;
     }
 }
