@@ -15,6 +15,9 @@
 		507BA38E1B5A7C0300E5DCF3 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 507BA38D1B5A7C0300E5DCF3 /* Cartfile */; };
 		84E7C82F1B66A07200A24193 /* RSBarcodes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DC93121B669E0100981977 /* RSBarcodes.framework */; };
 		84E7C8301B66A07200A24193 /* RSBarcodes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84DC93121B669E0100981977 /* RSBarcodes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		92078EB71B6E270E00A21AD9 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92078EB61B6E270E00A21AD9 /* Product.swift */; };
+		92078EB91B6E293400A21AD9 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92078EB81B6E293400A21AD9 /* Location.swift */; };
+		92078EBB1B6E29B200A21AD9 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92078EBA1B6E29B200A21AD9 /* Category.swift */; };
 		924352461B654CF200CBFA0C /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924352451B654CF200CBFA0C /* Kingfisher.framework */; };
 		925AC32F1B6C245700057C7F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925AC32E1B6C245700057C7F /* Alamofire.framework */; };
 		927901BD1B6D3A7F00F95B09 /* ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 927901BC1B6D3A7F00F95B09 /* ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer */; };
@@ -69,6 +72,9 @@
 		507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		507BA38D1B5A7C0300E5DCF3 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		84DC93121B669E0100981977 /* RSBarcodes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RSBarcodes.framework; path = Carthage/Build/iOS/RSBarcodes.framework; sourceTree = "<group>"; };
+		92078EB61B6E270E00A21AD9 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		92078EB81B6E293400A21AD9 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		92078EBA1B6E29B200A21AD9 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		924352451B654CF200CBFA0C /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		925AC32E1B6C245700057C7F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		927901BC1B6D3A7F00F95B09 /* ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer"; sourceTree = "<group>"; };
@@ -123,6 +129,7 @@
 		500A2CA21B63FB6E005CC8CF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				92078EB51B6E26F100A21AD9 /* Productsearch */,
 				928054F71B6DA0BA00D0D4FB /* Events */,
 				927901E31B6D4ABB00F95B09 /* News */,
 			);
@@ -186,6 +193,16 @@
 				5060B1EC1B4EFE2A008B41FD /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		92078EB51B6E26F100A21AD9 /* Productsearch */ = {
+			isa = PBXGroup;
+			children = (
+				92078EB61B6E270E00A21AD9 /* Product.swift */,
+				92078EB81B6E293400A21AD9 /* Location.swift */,
+				92078EBA1B6E29B200A21AD9 /* Category.swift */,
+			);
+			path = Productsearch;
 			sourceTree = "<group>";
 		};
 		927901B91B6D39FF00F95B09 /* Libraries */ = {
@@ -426,12 +443,15 @@
 				5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */,
 				928054F61B6D8A0C00D0D4FB /* News.swift in Sources */,
 				928054F91B6DA0D900D0D4FB /* Event.swift in Sources */,
+				92078EB71B6E270E00A21AD9 /* Product.swift in Sources */,
+				92078EB91B6E293400A21AD9 /* Location.swift in Sources */,
 				927901CA1B6D3B9300F95B09 /* RestManager.swift in Sources */,
 				927901D71B6D3EED00F95B09 /* NewsCustomCell.swift in Sources */,
 				928054FB1B6DA22000D0D4FB /* EventModel.swift in Sources */,
 				927901DC1B6D3F5700F95B09 /* BarcodeViewController.swift in Sources */,
 				927901DE1B6D3F5C00F95B09 /* EventsViewController.swift in Sources */,
 				927901E21B6D3F6300F95B09 /* NewsViewController.swift in Sources */,
+				92078EBB1B6E29B200A21AD9 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
