@@ -41,7 +41,7 @@ class ProductsearchModel : NSObject{
                 if let productList = self.mapper.mapArray(json) {
                     for tmp in productList {
                         self.addProduct(tmp)
-                        println(tmp)
+                        println(tmp.name)
                     }
                 }
         

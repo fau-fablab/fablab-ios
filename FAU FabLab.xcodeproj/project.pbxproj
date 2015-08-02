@@ -19,6 +19,7 @@
 		92078EB91B6E293400A21AD9 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92078EB81B6E293400A21AD9 /* Location.swift */; };
 		92078EBB1B6E29B200A21AD9 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92078EBA1B6E29B200A21AD9 /* Category.swift */; };
 		92078EBD1B6E2D9D00A21AD9 /* ProductsearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92078EBC1B6E2D9D00A21AD9 /* ProductsearchModel.swift */; };
+		92078EC01B6E471200A21AD9 /* ProductsearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92078EBF1B6E471200A21AD9 /* ProductsearchViewController.swift */; };
 		924352461B654CF200CBFA0C /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924352451B654CF200CBFA0C /* Kingfisher.framework */; };
 		925AC32F1B6C245700057C7F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925AC32E1B6C245700057C7F /* Alamofire.framework */; };
 		927901BD1B6D3A7F00F95B09 /* ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 927901BC1B6D3A7F00F95B09 /* ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer */; };
@@ -77,6 +78,7 @@
 		92078EB81B6E293400A21AD9 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		92078EBA1B6E29B200A21AD9 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		92078EBC1B6E2D9D00A21AD9 /* ProductsearchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsearchModel.swift; sourceTree = "<group>"; };
+		92078EBF1B6E471200A21AD9 /* ProductsearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsearchViewController.swift; sourceTree = "<group>"; };
 		924352451B654CF200CBFA0C /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		925AC32E1B6C245700057C7F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		927901BC1B6D3A7F00F95B09 /* ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer"; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		500A2CA11B63DCF4005CC8CF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				92078EBE1B6E46EC00A21AD9 /* Productsearch */,
 				927901DA1B6D3F3D00F95B09 /* BarcodeScanner */,
 				927901D91B6D3F3800F95B09 /* Events */,
 				927901D81B6D3EFC00F95B09 /* News */,
@@ -204,6 +207,14 @@
 				92078EB81B6E293400A21AD9 /* Location.swift */,
 				92078EBA1B6E29B200A21AD9 /* Category.swift */,
 				92078EBC1B6E2D9D00A21AD9 /* ProductsearchModel.swift */,
+			);
+			path = Productsearch;
+			sourceTree = "<group>";
+		};
+		92078EBE1B6E46EC00A21AD9 /* Productsearch */ = {
+			isa = PBXGroup;
+			children = (
+				92078EBF1B6E471200A21AD9 /* ProductsearchViewController.swift */,
 			);
 			path = Productsearch;
 			sourceTree = "<group>";
@@ -447,6 +458,7 @@
 				928054F61B6D8A0C00D0D4FB /* News.swift in Sources */,
 				928054F91B6DA0D900D0D4FB /* Event.swift in Sources */,
 				92078EB71B6E270E00A21AD9 /* Product.swift in Sources */,
+				92078EC01B6E471200A21AD9 /* ProductsearchViewController.swift in Sources */,
 				92078EBD1B6E2D9D00A21AD9 /* ProductsearchModel.swift in Sources */,
 				92078EB91B6E293400A21AD9 /* Location.swift in Sources */,
 				927901CA1B6D3B9300F95B09 /* RestManager.swift in Sources */,

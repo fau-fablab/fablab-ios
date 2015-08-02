@@ -216,7 +216,7 @@
         <!--Produkt suchen-->
         <scene sceneID="tda-UB-Mvw">
             <objects>
-                <viewController title="Produkt suchen" id="YOP-IL-BaU" sceneMemberID="viewController">
+                <viewController title="Produkt suchen" id="YOP-IL-BaU" customClass="ProductsearchViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="I9Y-Ab-fth"/>
                         <viewControllerLayoutGuide type="bottom" id="u7Y-Nt-pji"/>
@@ -238,6 +238,18 @@
                                     <outlet property="delegate" destination="YOP-IL-BaU" id="vnl-Rr-gso"/>
                                 </connections>
                             </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="Cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yE4-2y-yzv">
+                                <rect key="frame" x="0.0" y="108" width="600" height="443"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="TZJ-J3-Kid">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TZJ-J3-Kid" id="6pd-L0-B0i">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -251,7 +263,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Produkt suchen" image="first" id="Ckf-F4-b20"/>
                     <connections>
+                        <outlet property="searchBar" destination="R7Z-UK-evd" id="7zr-To-Jq9"/>
                         <outlet property="searchDisplayController" destination="eab-kO-p12" id="ZAm-Za-EKg"/>
+                        <outlet property="tableView" destination="yE4-2y-yzv" id="Rar-sy-NWs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XdC-vR-fPp" userLabel="First Responder" sceneMemberID="firstResponder"/>
