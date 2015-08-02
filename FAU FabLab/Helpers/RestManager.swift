@@ -26,8 +26,8 @@ class RestManager {
         )
     }
     
-    func makeJsonRequest(resource: String, onCompletion : JsonServiceResponse) {
-        manager.request(.GET, devApiUrl+resource, parameters: nil)
+    func makeJsonRequest(resource: String, params: [String : String]?, onCompletion : JsonServiceResponse) {
+        manager.request(.GET, devApiUrl+resource, parameters: params)
             .responseJSON { (req, res, json, error) in
                 println(self.devApiUrl+resource);
                 onCompletion(json!, error);

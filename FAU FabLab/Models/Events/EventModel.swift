@@ -8,7 +8,7 @@ class EventModel : NSObject{
     private let resource = "/ical";
     private var events = [Event]()
     private var isLoading = false;
-    private var newsLoaded = false;
+    private var loaded = false;
     private var mapper:Mapper<Event>;
     
     override init() {
@@ -17,10 +17,10 @@ class EventModel : NSObject{
     }
     
     func fetchEvents(#onCompletion: EventLoadFinished) {
-        if (!isLoading && !newsLoaded) {
+        if (!isLoading && !loaded) {
             isLoading = true;
             
-            RestManager.sharedInstance.makeJsonRequest(resource, onCompletion: {
+            RestManager.sharedInstance.makeJsonRequest(resource, params: nil, onCompletion: {
                 json, err in
                 if (err != nil) {
                     println("ERROR! ", err);
@@ -35,7 +35,7 @@ class EventModel : NSObject{
                 
                 onCompletion(nil);
                 self.isLoading = false;
-                self.newsLoaded = true;
+                self.loaded = true;
             })
         }
     }

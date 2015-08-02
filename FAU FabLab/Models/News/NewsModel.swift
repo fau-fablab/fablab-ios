@@ -26,7 +26,7 @@ public class NewsModel: NSObject {
         if (!isLoading && !newsLoaded) {
             isLoading = true;
 
-            RestManager.sharedInstance.makeJsonRequest(resource, onCompletion: {
+            RestManager.sharedInstance.makeJsonRequest(resource, params: nil, onCompletion: {
                 json, err in
                 if (err != nil) {
                     println("ERROR! ", err);
