@@ -22,7 +22,7 @@ public class NewsModel: NSObject {
         return news.count;
     }
 
-    func getNews(#onCompletion: NewsLoadFinished) {
+    func fetchNews(#onCompletion: NewsLoadFinished) {
         if (!isLoading && !newsLoaded) {
             isLoading = true;
 

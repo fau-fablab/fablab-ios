@@ -29,7 +29,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        model.getNews(
+        model.fetchNews(
             onCompletion:{ error in
                 if(error != nil){
                     println("Error!");
