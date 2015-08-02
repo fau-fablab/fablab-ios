@@ -29,6 +29,8 @@
 		927901E51B6D4AE300F95B09 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927901E41B6D4AE300F95B09 /* NewsModel.swift */; };
 		928054F41B6D893300D0D4FB /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 928054F31B6D893300D0D4FB /* ObjectMapper.framework */; };
 		928054F61B6D8A0C00D0D4FB /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928054F51B6D8A0C00D0D4FB /* News.swift */; };
+		928054F91B6DA0D900D0D4FB /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928054F81B6DA0D900D0D4FB /* Event.swift */; };
+		928054FB1B6DA22000D0D4FB /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928054FA1B6DA22000D0D4FB /* EventModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,8 @@
 		927901E41B6D4AE300F95B09 /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		928054F31B6D893300D0D4FB /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		928054F51B6D8A0C00D0D4FB /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		928054F81B6DA0D900D0D4FB /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		928054FA1B6DA22000D0D4FB /* EventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +123,7 @@
 		500A2CA21B63FB6E005CC8CF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				928054F71B6DA0BA00D0D4FB /* Events */,
 				927901E31B6D4ABB00F95B09 /* News */,
 			);
 			path = Models;
@@ -281,6 +286,15 @@
 			path = News;
 			sourceTree = "<group>";
 		};
+		928054F71B6DA0BA00D0D4FB /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				928054F81B6DA0D900D0D4FB /* Event.swift */,
+				928054FA1B6DA22000D0D4FB /* EventModel.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -411,8 +425,10 @@
 				927901E11B6D3F6300F95B09 /* NewsDetailsViewController.swift in Sources */,
 				5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */,
 				928054F61B6D8A0C00D0D4FB /* News.swift in Sources */,
+				928054F91B6DA0D900D0D4FB /* Event.swift in Sources */,
 				927901CA1B6D3B9300F95B09 /* RestManager.swift in Sources */,
 				927901D71B6D3EED00F95B09 /* NewsCustomCell.swift in Sources */,
+				928054FB1B6DA22000D0D4FB /* EventModel.swift in Sources */,
 				927901DC1B6D3F5700F95B09 /* BarcodeViewController.swift in Sources */,
 				927901DE1B6D3F5C00F95B09 /* EventsViewController.swift in Sources */,
 				927901E21B6D3F6300F95B09 /* NewsViewController.swift in Sources */,
