@@ -1,6 +1,7 @@
 import UIKit
 import SwiftyJSON
 import Foundation.NSURL
+import ObjectMapper
 
 typealias NewsLoadFinished = (NSError?) -> Void;
 
@@ -13,11 +14,13 @@ struct newsEntry {
 public class NewsModel: NSObject {
 
     private let resource = "/news";
-    private var news = [newsEntry]()
+    private var news = [News]()
     private var isLoading = false;
     private var newsLoaded = false;
+    private var mapper:Mapper<News>;
 
     override init() {
+        mapper = Mapper<News>()
         super.init()
     }
 
@@ -35,18 +38,13 @@ public class NewsModel: NSObject {
                     println("ERROR! ", err);
                     onCompletion(err)
                 }
-                for (index: String, subJson: JSON) in json {
-                    //Decode html
-                    let htmlText = subJson["description"].string!.dataUsingEncoding(NSUTF8StringEncoding)!
-                    let attributedOptions: [String:AnyObject] = [
-                            NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-                            NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding
-                    ]
-                    let attributedString = NSAttributedString(data: htmlText, options: attributedOptions, documentAttributes: nil, error: nil)!
-                    let decodedString = attributedString.string
-
-                    self.addNews(subJson["title"].string!, desc: decodedString, imageLink: subJson["linkToPreviewImage"].string)
+                
+                if let news = self.mapper.mapArray(json) {
+                    for tmp in news {
+                        self.addNews(tmp)
+                    }
                 }
+                
                 onCompletion(nil);
                 self.isLoading = false;
                 self.newsLoaded = true;
@@ -54,11 +52,11 @@ public class NewsModel: NSObject {
         }
     }
 
-    func addNews(title: String, desc: String, imageLink: String?) {
-        news.append(newsEntry(title: title, description: desc, imageLink: imageLink))
+    func addNews(entry:News) {
+        news.append(entry)
     }
     
-    func getNews(position:Int) -> newsEntry{
+    func getNews(position:Int) -> News{
         return news[position];
     }
 

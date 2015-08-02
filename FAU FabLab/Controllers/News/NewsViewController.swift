@@ -57,7 +57,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
             let destination = segue.destinationViewController as? NewsDetailsViewController
 
             let news = model.getNews(tableView.indexPathForSelectedRow()!.row);
-            destination!.configure(title: news.title, desc:news.description, imageLink: news.imageLink)
+            destination!.configure(title: news.title!, desc:news.description!, imageLink: news.linkToPreviewImage)
         }
     }
     
@@ -70,7 +70,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier) as? NewsCustomCell
         let news = model.getNews(indexPath.row);
 
-        cell!.configure(title: news.title, description: news.description, image: news.imageLink)
+        cell!.configure(title: news.title!, description: news.description!, image: news.linkToPreviewImage)
 
         return cell!;
     }

@@ -2,7 +2,7 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 
-typealias JsonServiceResponse = (JSON, NSError?) -> Void
+typealias JsonServiceResponse = (AnyObject, NSError?) -> Void
 
 class RestManager {
     
@@ -30,8 +30,7 @@ class RestManager {
         manager.request(.GET, devApiUrl+resource, parameters: nil)
             .responseJSON { (req, res, json, error) in
                 println(self.devApiUrl+resource);
-                var json = JSON(json!);
-                onCompletion(json, error);
+                onCompletion(json!, error);
         }
     }
 }

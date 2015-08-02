@@ -28,6 +28,7 @@
 		927901E21B6D3F6300F95B09 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927901E01B6D3F6300F95B09 /* NewsViewController.swift */; };
 		927901E51B6D4AE300F95B09 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927901E41B6D4AE300F95B09 /* NewsModel.swift */; };
 		928054F41B6D893300D0D4FB /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 928054F31B6D893300D0D4FB /* ObjectMapper.framework */; };
+		928054F61B6D8A0C00D0D4FB /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928054F51B6D8A0C00D0D4FB /* News.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		927901E01B6D3F6300F95B09 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		927901E41B6D4AE300F95B09 /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		928054F31B6D893300D0D4FB /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
+		928054F51B6D8A0C00D0D4FB /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				927901E41B6D4AE300F95B09 /* NewsModel.swift */,
+				928054F51B6D8A0C00D0D4FB /* News.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				927901E51B6D4AE300F95B09 /* NewsModel.swift in Sources */,
 				927901E11B6D3F6300F95B09 /* NewsDetailsViewController.swift in Sources */,
 				5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */,
+				928054F61B6D8A0C00D0D4FB /* News.swift in Sources */,
 				927901CA1B6D3B9300F95B09 /* RestManager.swift in Sources */,
 				927901D71B6D3EED00F95B09 /* NewsCustomCell.swift in Sources */,
 				927901DC1B6D3F5700F95B09 /* BarcodeViewController.swift in Sources */,
