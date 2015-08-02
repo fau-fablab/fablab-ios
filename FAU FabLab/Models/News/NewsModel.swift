@@ -5,12 +5,6 @@ import ObjectMapper
 
 typealias NewsLoadFinished = (NSError?) -> Void;
 
-struct newsEntry {
-    var title: String
-    var description: String
-    var imageLink: String?
-}
-
 public class NewsModel: NSObject {
 
     private let resource = "/news";
