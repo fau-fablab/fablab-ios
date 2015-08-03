@@ -31,7 +31,7 @@ class ProductsearchModel : NSObject{
         let params = ["search": name]
         
         if(!isLoading){
-            RestManager.sharedInstance.makeJsonRequest(endpoint, params: params, onCompletion: {
+            RestManager.sharedInstance.makeJsonGetRequest(endpoint, params: params, onCompletion: {
                 json, err in
                 if (err != nil) {
                         println("ERROR! ", err);
@@ -56,7 +56,7 @@ class ProductsearchModel : NSObject{
         let endpoint = resource + "/find/id"
         let params = ["search": id]
         if(!isLoading){
-            RestManager.sharedInstance.makeJsonRequest(endpoint, params: params, onCompletion: {
+            RestManager.sharedInstance.makeJsonGetRequest(endpoint, params: params, onCompletion: {
                 json, err in
                 println("GOT: \(json)")
                 
