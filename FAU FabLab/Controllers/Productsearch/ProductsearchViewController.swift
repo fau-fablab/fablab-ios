@@ -15,7 +15,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "searchByBarcodeScanner:", name: "barcodeScannerNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "searchByBarcodeScanner:", name: "ProductScannerNotification", object: nil)
     }
     
     

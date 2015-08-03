@@ -359,7 +359,7 @@
         <!--Warenkorb-->
         <scene sceneID="xuf-rf-THF">
             <objects>
-                <viewController title="Warenkorb" id="ooQ-nD-6sq" sceneMemberID="viewController">
+                <viewController title="Warenkorb" id="ooQ-nD-6sq" customClass="CheckoutViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="f20-An-xKa"/>
                         <viewControllerLayoutGuide type="bottom" id="249-cg-0zG"/>
@@ -368,10 +368,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HiJ-eq-InG">
-                                <rect key="frame" x="16" y="69" width="568" height="482"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Agt-YQ-7T9">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
@@ -379,25 +375,38 @@
                                         <barButtonItem key="leftBarButtonItem" title="+ Produkt" id="cLP-YG-OvT"/>
                                         <barButtonItem key="rightBarButtonItem" title="Bezahlen" id="mKw-50-bi8">
                                             <connections>
-                                                <segue destination="dAF-j1-LQU" kind="show" id="upQ-jC-Nuc"/>
+                                                <segue destination="dAF-j1-LQU" kind="popoverPresentation" popoverAnchorBarButtonItem="mKw-50-bi8" id="WKA-KL-fkC">
+                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                </segue>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="Cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Cw4-Ky-LeW">
+                                <rect key="frame" x="0.0" y="72" width="600" height="471"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="uIh-DG-Ipf">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uIh-DG-Ipf" id="15d-Lz-t4P">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Agt-YQ-7T9" firstAttribute="leading" secondItem="hqQ-J3-3kM" secondAttribute="leading" id="1k4-zq-TQV"/>
-                            <constraint firstItem="HiJ-eq-InG" firstAttribute="centerX" secondItem="Agt-YQ-7T9" secondAttribute="centerX" id="3a5-hW-day"/>
-                            <constraint firstItem="HiJ-eq-InG" firstAttribute="leading" secondItem="hqQ-J3-3kM" secondAttribute="leadingMargin" id="7I6-bV-x6c"/>
-                            <constraint firstItem="HiJ-eq-InG" firstAttribute="bottom" secondItem="249-cg-0zG" secondAttribute="top" id="Gm0-4g-ERf"/>
-                            <constraint firstItem="HiJ-eq-InG" firstAttribute="top" secondItem="Agt-YQ-7T9" secondAttribute="bottom" constant="5" id="I1U-W2-5WQ"/>
                             <constraint firstAttribute="trailing" secondItem="Agt-YQ-7T9" secondAttribute="trailing" id="S0n-j2-6sx"/>
                             <constraint firstItem="Agt-YQ-7T9" firstAttribute="top" secondItem="f20-An-xKa" secondAttribute="bottom" id="zhs-gn-6ae"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Warenkorb" image="first" id="kBk-Ta-hCe"/>
+                    <connections>
+                        <outlet property="tableView" destination="Cw4-Ky-LeW" id="pDX-ON-wsu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yPP-es-UzN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -20,7 +20,7 @@ class CheckoutCodeScannerViewController: RSCodeReaderViewController {
                 
                 self.dismissViewControllerAnimated(true, completion:nil )
                 
-                NSNotificationCenter.defaultCenter().postNotificationName("barcodeScannerNotification", object: checkoutCode)
+                NSNotificationCenter.defaultCenter().postNotificationName("CheckoutScannerNotification", object: checkoutCode)
                 
             })
             

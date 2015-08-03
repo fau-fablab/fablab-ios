@@ -17,7 +17,7 @@ class ProductsearchCodeScannerViewController: RSCodeReaderViewController {
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 let productId = self.getProductIdFromBarcode(barcodes[0])
                 self.tabBarController?.selectedIndex = 2
-                NSNotificationCenter.defaultCenter().postNotificationName("barcodeScannerNotification", object: productId)
+                NSNotificationCenter.defaultCenter().postNotificationName("ProductScannerNotification", object: productId)
             })
         
         }
