@@ -15,5 +15,4 @@ class CartToServerEntry : Mappable{
         productId <- map["product_id"]
         amount <- map["amount"]
     }
-    
 }
