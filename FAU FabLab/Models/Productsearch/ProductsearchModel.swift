@@ -51,5 +51,31 @@ class ProductsearchModel : NSObject{
 
         }
     }
+    
+    func searchProductById(id:String, onCompletion: ProductSearchFinished){
+        let endpoint = resource + "/find/id"
+        let params = ["search": id]
+        
+        if(!isLoading){
+            RestManager.sharedInstance.makeJsonRequest(endpoint, params: params, onCompletion: {
+                json, err in
+                if (err != nil) {
+                    println("ERROR! ", err);
+                    onCompletion(err)
+                }
+                
+                if let productList = self.mapper.mapArray(json) {
+                    for tmp in productList {
+                        self.addProduct(tmp)
+                        println(tmp.name)
+                    }
+                }
+                
+                onCompletion(nil);
+                self.isLoading = false;
+            })
+            
+        }
+    }
 
 }

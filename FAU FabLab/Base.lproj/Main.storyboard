@@ -216,7 +216,7 @@
         <!--Produkt suchen-->
         <scene sceneID="tda-UB-Mvw">
             <objects>
-                <viewController title="Produkt suchen" id="YOP-IL-BaU" customClass="ProductsearchViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProductsearchView" title="Produkt suchen" id="YOP-IL-BaU" customClass="ProductsearchViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="I9Y-Ab-fth"/>
                         <viewControllerLayoutGuide type="bottom" id="u7Y-Nt-pji"/>
@@ -364,7 +364,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarView" id="49e-Tb-3d3" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>

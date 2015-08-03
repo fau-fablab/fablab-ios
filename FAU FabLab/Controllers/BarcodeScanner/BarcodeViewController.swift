@@ -25,6 +25,11 @@ class BarcodeViewController: RSCodeReaderViewController {
                     delegate: nil,
                     cancelButtonTitle: "Toll")
                 popupMessageView.show()
+                
+                
+                let vc = self.storyboard!.instantiateViewControllerWithIdentifier("TabBarView") as! UITabBarController
+                vc.selectedIndex = 2
+                self.presentViewController(vc, animated: true, completion: nil)
             })
         
         }
