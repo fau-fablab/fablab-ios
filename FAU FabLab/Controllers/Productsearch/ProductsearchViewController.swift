@@ -6,8 +6,18 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     
+    
+    
     private var searchActive = false;
     private var model = ProductsearchModel()
+
+    
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "searchByBarcodeScanner:", name: "barcodeScannerNotification", object: nil)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +26,8 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         tableView.dataSource = self
         searchBar.delegate = self
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -39,6 +51,15 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
                 self.tableView.reloadData()
             })
         })
+    }
+    
+    func searchByBarcodeScanner(notification:NSNotification) {
+            println("Got Notification from Barcodescanner, productId: \(notification.object)")
+            model.searchProductById(notification.object as! String, onCompletion: { err in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadData()
+                })
+            })
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

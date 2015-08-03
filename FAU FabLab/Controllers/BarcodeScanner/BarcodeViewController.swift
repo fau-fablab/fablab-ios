@@ -17,19 +17,15 @@ class BarcodeViewController: RSCodeReaderViewController {
         self.barcodesHandler = { barcodes in
             self.session.stopRunning()
             
+          
+            
             //show UI Alert
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                let popupMessageView = UIAlertView(
-                    title: "Barcode gescannt!",
-                    message: "Barcode Typ: " + barcodes[0].type + "  Code: " + barcodes[0].stringValue,
-                    delegate: nil,
-                    cancelButtonTitle: "Toll")
-                popupMessageView.show()
                 
-                
-                let vc = self.storyboard!.instantiateViewControllerWithIdentifier("TabBarView") as! UITabBarController
-                vc.selectedIndex = 2
-                self.presentViewController(vc, animated: true, completion: nil)
+                let productId = self.getProductIdFromBarcode(barcodes[0])
+                self.tabBarController?.selectedIndex = 2
+                NSNotificationCenter.defaultCenter().postNotificationName("barcodeScannerNotification", object: productId)
+   
             })
         
         }
@@ -58,5 +54,15 @@ class BarcodeViewController: RSCodeReaderViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         self.navigationController?.navigationBarHidden = false
+    }
+    
+    private func getProductIdFromBarcode(barcode: AVMetadataMachineReadableCodeObject) -> String{
+        if (barcode.type == AVMetadataObjectTypeEAN13Code) {
+            let productId = barcode.stringValue as NSString
+            return productId.substringWithRange(NSRange(location: 8, length: 4))
+        } else {
+            let productId = barcode.stringValue as NSString
+            return productId.substringWithRange(NSRange(location: 3, length: 4))
+        }
     }
 }

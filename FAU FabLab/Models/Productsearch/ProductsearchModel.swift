@@ -55,7 +55,6 @@ class ProductsearchModel : NSObject{
     func searchProductById(id:String, onCompletion: ProductSearchFinished){
         let endpoint = resource + "/find/id"
         let params = ["search": id]
-        
         if(!isLoading){
             RestManager.sharedInstance.makeJsonRequest(endpoint, params: params, onCompletion: {
                 json, err in
@@ -70,8 +69,8 @@ class ProductsearchModel : NSObject{
                         println(tmp.name)
                     }
                 }
-                
-                onCompletion(nil);
+                //TODO Auskommentiert -> ID suche geht nicht und die Zeile verursacht aktuell einen Absturz
+                //onCompletion(nil);
                 self.isLoading = false;
             })
             
