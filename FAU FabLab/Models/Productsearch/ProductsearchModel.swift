@@ -58,19 +58,19 @@ class ProductsearchModel : NSObject{
         if(!isLoading){
             RestManager.sharedInstance.makeJsonRequest(endpoint, params: params, onCompletion: {
                 json, err in
+                println("GOT: \(json)")
+                
                 if (err != nil) {
                     println("ERROR! ", err);
                     onCompletion(err)
                 }
-                
-                if let productList = self.mapper.mapArray(json) {
-                    for tmp in productList {
-                        self.addProduct(tmp)
-                        println(tmp.name)
-                    }
+                if let product = self.mapper.map(json) {
+                    println(product)
                 }
-                //TODO Auskommentiert -> ID suche geht nicht und die Zeile verursacht aktuell einen Absturz
-                //onCompletion(nil);
+                
+                
+        
+                onCompletion(nil);
                 self.isLoading = false;
             })
             
