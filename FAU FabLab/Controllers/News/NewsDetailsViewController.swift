@@ -3,8 +3,7 @@ import UIKit
 
 class NewsDetailsViewController : UIViewController{
 
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var descriptionLabel: UILabel!
+    @IBOutlet var descriptionText: UITextView!
     @IBOutlet var previewImage: UIImageView!
 
     var newsTitle: String?;
@@ -21,8 +20,9 @@ class NewsDetailsViewController : UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        titleLabel.text = newsTitle;
-        descriptionLabel.text = newsDescription;
+        self.title = newsTitle; // sets the title in the navigation-bar
+        descriptionText.text = newsDescription;
+        
         if(newsImageLink != nil){
             previewImage.kf_setImageWithURL(NSURL(string: newsImageLink!)!, placeholderImage: nil)
         }

@@ -82,7 +82,7 @@
             </objects>
             <point key="canvasLocation" x="1562" y="-318"/>
         </scene>
-        <!--News Details View Controller-->
+        <!--News-->
         <scene sceneID="shy-KU-sCI">
             <objects>
                 <viewController id="qcq-Tu-HC1" customClass="NewsDetailsViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
@@ -94,53 +94,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANJ-tY-bB2">
-                                <rect key="frame" x="16" y="200" width="568" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="pF0-st-rk8"/>
-                                </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="Title">
-                                        <attributes>
-                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1S-eU-xzg">
-                                <rect key="frame" x="16" y="229" width="568" height="322"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="news_nopicture.png" translatesAutoresizingMaskIntoConstraints="NO" id="QSW-LP-qh5">
                                 <rect key="frame" x="0.0" y="72" width="600" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="mle-xd-a0j"/>
                                 </constraints>
                             </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="jO6-XV-PqA">
+                                <rect key="frame" x="16" y="208" width="568" height="343"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QSW-LP-qh5" firstAttribute="centerX" secondItem="ANJ-tY-bB2" secondAttribute="centerX" id="2Da-ZY-unQ"/>
-                            <constraint firstItem="ANJ-tY-bB2" firstAttribute="leading" secondItem="Ove-DS-XqB" secondAttribute="leadingMargin" id="5ti-ge-hOe"/>
-                            <constraint firstItem="s1S-eU-xzg" firstAttribute="bottom" secondItem="tAn-uQ-092" secondAttribute="top" id="AVb-Qs-IjN"/>
+                            <constraint firstItem="jO6-XV-PqA" firstAttribute="leading" secondItem="Ove-DS-XqB" secondAttribute="leadingMargin" id="JYW-hP-1sW"/>
                             <constraint firstItem="QSW-LP-qh5" firstAttribute="top" secondItem="h14-3o-lg4" secondAttribute="bottom" constant="8" symbolic="YES" id="PXm-rd-uuC"/>
-                            <constraint firstItem="ANJ-tY-bB2" firstAttribute="top" secondItem="QSW-LP-qh5" secondAttribute="bottom" id="Urm-wU-Flv"/>
-                            <constraint firstItem="s1S-eU-xzg" firstAttribute="trailing" secondItem="ANJ-tY-bB2" secondAttribute="trailing" id="VA3-V8-VWm"/>
+                            <constraint firstItem="jO6-XV-PqA" firstAttribute="bottom" secondItem="tAn-uQ-092" secondAttribute="top" id="X5w-KC-fxK"/>
                             <constraint firstAttribute="trailing" secondItem="QSW-LP-qh5" secondAttribute="trailing" id="YOz-Uo-pqh"/>
-                            <constraint firstItem="s1S-eU-xzg" firstAttribute="leading" secondItem="ANJ-tY-bB2" secondAttribute="leading" id="aDr-57-q5m"/>
                             <constraint firstItem="QSW-LP-qh5" firstAttribute="leading" secondItem="Ove-DS-XqB" secondAttribute="leading" id="cfB-tE-ztm"/>
-                            <constraint firstItem="s1S-eU-xzg" firstAttribute="top" secondItem="ANJ-tY-bB2" secondAttribute="bottom" constant="8" symbolic="YES" id="zVF-qd-qBi"/>
+                            <constraint firstItem="jO6-XV-PqA" firstAttribute="top" secondItem="QSW-LP-qh5" secondAttribute="bottom" constant="8" symbolic="YES" id="ghq-cy-ddC"/>
+                            <constraint firstItem="jO6-XV-PqA" firstAttribute="centerX" secondItem="QSW-LP-qh5" secondAttribute="centerX" id="q9g-FZ-gYk"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="News" id="Lal-CP-IHX"/>
                     <connections>
-                        <outlet property="descriptionLabel" destination="s1S-eU-xzg" id="vcf-Sv-MMV"/>
+                        <outlet property="descriptionText" destination="jO6-XV-PqA" id="7pR-Tx-t75"/>
                         <outlet property="previewImage" destination="QSW-LP-qh5" id="ejp-DQ-LvA"/>
-                        <outlet property="titleLabel" destination="ANJ-tY-bB2" id="Zu7-7n-GSR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6TU-I7-Bdc" userLabel="First Responder" sceneMemberID="firstResponder"/>
