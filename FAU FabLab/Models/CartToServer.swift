@@ -5,7 +5,7 @@ import ObjectMapper
 class CartToServer : Mappable{
 
     var cartCode: String?
-    var status: String?
+    var status = CartToServerStatus.SHOPPING
     var cartEntries = [CartToServerEntry]()
     var pushId: String? //Will we support Push?
 
