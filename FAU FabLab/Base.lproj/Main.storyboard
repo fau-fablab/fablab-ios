@@ -2,8 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -19,14 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZKo-ro-hrN">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <items>
-                                    <navigationItem title="News" id="SF8-oY-SYK"/>
-                                </items>
-                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8p4-iO-VO2">
-                                <rect key="frame" x="16" y="69" width="568" height="482"/>
+                                <rect key="frame" x="16" y="0.0" width="568" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsEntryCustomCell" rowHeight="75" id="6cu-tJ-dDd" customClass="NewsCustomCell" customModule="FAU_FabLab" customModuleProvider="target">
@@ -63,7 +55,7 @@
                                             <outlet property="descriptionLabel" destination="9CC-3z-Mto" id="24j-RB-vCY"/>
                                             <outlet property="previewImage" destination="bfq-2a-JOw" id="zlM-uM-zj3"/>
                                             <outlet property="titleLabel" destination="Oha-yc-KGX" id="H4w-LC-skM"/>
-                                            <segue destination="qcq-Tu-HC1" kind="showDetail" identifier="NewsDetailSegue" id="n01-RF-b8J"/>
+                                            <segue destination="qcq-Tu-HC1" kind="show" identifier="NewsDetailSegue" id="n01-RF-b8J"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -75,25 +67,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ZKo-ro-hrN" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="RB7-1y-v7P"/>
-                            <constraint firstItem="8p4-iO-VO2" firstAttribute="top" secondItem="ZKo-ro-hrN" secondAttribute="bottom" constant="5" id="SRY-8N-OHY"/>
-                            <constraint firstAttribute="trailing" secondItem="ZKo-ro-hrN" secondAttribute="trailing" id="SpP-mc-KP9"/>
-                            <constraint firstItem="ZKo-ro-hrN" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="WRp-KQ-Ws7"/>
-                            <constraint firstItem="8p4-iO-VO2" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="cKJ-ed-dx3"/>
-                            <constraint firstItem="8p4-iO-VO2" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" id="f9M-K7-3J7"/>
-                            <constraint firstItem="8p4-iO-VO2" firstAttribute="centerX" secondItem="ZKo-ro-hrN" secondAttribute="centerX" id="zX3-d2-osl"/>
+                            <constraint firstItem="8p4-iO-VO2" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" constant="16" id="AEs-GO-bUO"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="8p4-iO-VO2" secondAttribute="bottom" id="Fl8-L0-LFg"/>
+                            <constraint firstItem="8p4-iO-VO2" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="gRM-Kv-1Rr"/>
+                            <constraint firstAttribute="trailing" secondItem="8p4-iO-VO2" secondAttribute="trailing" constant="16" id="xOB-MQ-exT"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="News" image="first" id="acW-dT-cKf"/>
+                    <navigationItem key="navigationItem" title="News" id="fNv-5k-vXK"/>
                     <connections>
                         <outlet property="tableView" destination="8p4-iO-VO2" id="L9f-zA-DQG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-320"/>
+            <point key="canvasLocation" x="1562" y="-318"/>
         </scene>
-        <!--News Details View Controller-->
+        <!--News-->
         <scene sceneID="shy-KU-sCI">
             <objects>
                 <viewController id="qcq-Tu-HC1" customClass="NewsDetailsViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
@@ -105,66 +94,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xpe-VN-b5O">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="xSJ-Dq-WGa"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="News" id="VX6-Mp-x1E"/>
-                                </items>
-                            </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="news_nopicture.png" translatesAutoresizingMaskIntoConstraints="NO" id="QSW-LP-qh5">
-                                <rect key="frame" x="0.0" y="64" width="600" height="128"/>
+                                <rect key="frame" x="0.0" y="72" width="600" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="mle-xd-a0j"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANJ-tY-bB2">
-                                <rect key="frame" x="16" y="200" width="568" height="21"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Title">
-                                        <attributes>
-                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1S-eU-xzg">
-                                <rect key="frame" x="16" y="229" width="568" height="427"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="jO6-XV-PqA">
+                                <rect key="frame" x="16" y="208" width="568" height="343"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ANJ-tY-bB2" firstAttribute="leading" secondItem="Ove-DS-XqB" secondAttribute="leadingMargin" id="1Do-Jb-aja"/>
-                            <constraint firstItem="ANJ-tY-bB2" firstAttribute="top" secondItem="QSW-LP-qh5" secondAttribute="bottom" constant="8" symbolic="YES" id="9ck-dH-y84"/>
-                            <constraint firstItem="ANJ-tY-bB2" firstAttribute="baseline" secondItem="s1S-eU-xzg" secondAttribute="firstBaseline" constant="-28" id="FG4-kU-JLX"/>
-                            <constraint firstItem="QSW-LP-qh5" firstAttribute="trailing" secondItem="xpe-VN-b5O" secondAttribute="trailing" id="JnM-Hi-YxF"/>
-                            <constraint firstItem="QSW-LP-qh5" firstAttribute="top" secondItem="xpe-VN-b5O" secondAttribute="bottom" id="LqU-53-9FB"/>
-                            <constraint firstItem="QSW-LP-qh5" firstAttribute="leading" secondItem="xpe-VN-b5O" secondAttribute="leading" id="MHq-AN-R7B"/>
-                            <constraint firstItem="ANJ-tY-bB2" firstAttribute="trailing" secondItem="s1S-eU-xzg" secondAttribute="trailing" id="PeD-gP-Jdh"/>
-                            <constraint firstItem="s1S-eU-xzg" firstAttribute="leading" secondItem="ANJ-tY-bB2" secondAttribute="leading" id="Pw4-vb-0jG"/>
-                            <constraint firstItem="ANJ-tY-bB2" firstAttribute="centerX" secondItem="QSW-LP-qh5" secondAttribute="centerX" id="TY2-7G-3lv"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="s1S-eU-xzg" secondAttribute="bottom" constant="-56" id="afO-u8-gZd"/>
-                            <constraint firstItem="xpe-VN-b5O" firstAttribute="top" secondItem="h14-3o-lg4" secondAttribute="bottom" id="lvF-4g-iPH"/>
-                            <constraint firstAttribute="trailing" secondItem="QSW-LP-qh5" secondAttribute="trailing" id="u97-q8-wYF"/>
-                            <constraint firstItem="QSW-LP-qh5" firstAttribute="leading" secondItem="Ove-DS-XqB" secondAttribute="leading" id="ubu-8z-csH"/>
-                            <constraint firstItem="s1S-eU-xzg" firstAttribute="top" secondItem="QSW-LP-qh5" secondAttribute="bottom" constant="37" id="z35-Tq-jd2"/>
-                            <constraint firstItem="tAn-uQ-092" firstAttribute="top" secondItem="ANJ-tY-bB2" secondAttribute="bottom" constant="379" id="zyf-OH-pxJ"/>
+                            <constraint firstItem="jO6-XV-PqA" firstAttribute="leading" secondItem="Ove-DS-XqB" secondAttribute="leadingMargin" id="JYW-hP-1sW"/>
+                            <constraint firstItem="QSW-LP-qh5" firstAttribute="top" secondItem="h14-3o-lg4" secondAttribute="bottom" constant="8" symbolic="YES" id="PXm-rd-uuC"/>
+                            <constraint firstItem="jO6-XV-PqA" firstAttribute="bottom" secondItem="tAn-uQ-092" secondAttribute="top" id="X5w-KC-fxK"/>
+                            <constraint firstAttribute="trailing" secondItem="QSW-LP-qh5" secondAttribute="trailing" id="YOz-Uo-pqh"/>
+                            <constraint firstItem="QSW-LP-qh5" firstAttribute="leading" secondItem="Ove-DS-XqB" secondAttribute="leading" id="cfB-tE-ztm"/>
+                            <constraint firstItem="jO6-XV-PqA" firstAttribute="top" secondItem="QSW-LP-qh5" secondAttribute="bottom" constant="8" symbolic="YES" id="ghq-cy-ddC"/>
+                            <constraint firstItem="jO6-XV-PqA" firstAttribute="centerX" secondItem="QSW-LP-qh5" secondAttribute="centerX" id="q9g-FZ-gYk"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="News" id="Lal-CP-IHX"/>
                     <connections>
-                        <outlet property="descriptionLabel" destination="s1S-eU-xzg" id="vcf-Sv-MMV"/>
+                        <outlet property="descriptionText" destination="jO6-XV-PqA" id="7pR-Tx-t75"/>
                         <outlet property="previewImage" destination="QSW-LP-qh5" id="ejp-DQ-LvA"/>
-                        <outlet property="titleLabel" destination="ANJ-tY-bB2" id="Zu7-7n-GSR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6TU-I7-Bdc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1446" y="-318"/>
+            <point key="canvasLocation" x="2258" y="-318"/>
         </scene>
         <!--Veranstaltungen-->
         <scene sceneID="wg7-f3-ORb">
@@ -423,7 +387,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="l0O-yt-wAF" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="YOP-IL-BaU" kind="relationship" relationship="viewControllers" id="383-tC-QT0"/>
                         <segue destination="4Rd-fW-vJI" kind="relationship" relationship="viewControllers" id="Gl7-4z-Zij"/>
@@ -433,6 +397,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--News-->
+        <scene sceneID="PjO-4O-WFa">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="l0O-yt-wAF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="News" image="first" id="acW-dT-cKf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hFE-yc-3JB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="r3r-xK-iqT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ax8-Z7-GBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="750" y="-320"/>
         </scene>
     </scenes>
     <resources>
