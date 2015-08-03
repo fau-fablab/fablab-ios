@@ -1,17 +1,13 @@
-//
-//  EventsViewController.swift
-//  FAU FabLab
-//
-//  Created by Max Jalowski on 09.07.15.
-//  Copyright (c) 2015 FAU MAD FabLab. All rights reserved.
-//
 
 import UIKit
 
 class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
-
+    
+    @IBOutlet var actInd : UIActivityIndicatorView!
     @IBOutlet var tableView: UITableView!
     private let model = EventModel()
+    
+    private let textCellIdentifier = "EventsEntryCustomCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,17 +15,34 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.delegate = self
         tableView.dataSource = self
         
-        model.fetchEvents(onCompletion: { error in
-            if(error != nil){
-                println("Error!");
-            }
-            dispatch_async(dispatch_get_main_queue(), {
-                self.tableView.reloadData()
-            })
-        })
-        // Do any additional setup after loading the view, typically from a nib.
+        actInd = UIActivityIndicatorView(frame: CGRectMake(0,0, 50, 50)) as UIActivityIndicatorView
+        actInd.center = self.view.center
+        actInd.hidesWhenStopped = true
+        actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        view.addSubview(actInd)
+        actInd.startAnimating()
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        model.fetchEvents(
+            onCompletion:{ error in
+                if(error != nil){
+                    println("Error!");
+                }
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.tableView.reloadData()
+                    self.actInd.stopAnimating();
+                })
+            }
+        )
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -41,16 +54,13 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier) as? EventsCustomCell
+        let event = model.getEvent(indexPath.row);
         
-        let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "test")
-        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        // todo day, month, time
+        cell!.configure(day: "04", month: "Aug", title: event.summery!, time: "10:00 - 12:00 Uhr", place: event.location);
         
-        let event = model.getEvent(indexPath.row)
-    
-        cell.textLabel?.text = event.summery
-        cell.detailTextLabel?.text = event.url
-        
-        return cell
+        return cell!;
     }
 
 
