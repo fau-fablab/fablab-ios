@@ -1,10 +1,6 @@
 import Foundation
 import ObjectMapper
-/*
-    ALL CartToServer CLASSES ARE ONLY USED FOR TRANSFERING THE CART TO THE SERVER
-    --> SERVER ONLY ACCEPTS PRODUCTS WITH 'ID' AND 'AMOUNT' (==> CartToServerEntry)
-*/
-
+import SwiftyJSON
 
 
 typealias updateCartCheckoutStatus = (NSError?) -> Void;
@@ -22,14 +18,12 @@ class CheckoutModel : NSObject{
     func startCheckoutProcess(cart: Cart, onCompletion: updateCartCheckoutStatus){
         cart.setStatus(Cart.CartStatus.PENDING)
         
-        let JSONString = mapper.toJSON(cart)
         
-        //println("Starting Checkout: \(cart.cartCode) OBJ: \(JSONString)")
         
-        let params = ["code" : "asdf"]
+        //["cartCode" : String(stringInterpolationSegment: cart.cartCode)]
         
         if(!isSent){
-            RestManager.sharedInstance.makeJsonPostRequest(resource, params: params, onCompletion:  {
+            RestManager.sharedInstance.makeJsonPostRequest(resource, params: nil, onCompletion:  {
                 json, err in
                 if (err != nil) {
                     println("ERROR! ", err);
