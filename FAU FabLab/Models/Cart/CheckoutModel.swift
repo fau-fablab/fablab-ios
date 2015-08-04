@@ -1,6 +1,5 @@
 import Foundation
 import ObjectMapper
-
 /*
     ALL CartToServer CLASSES ARE ONLY USED FOR TRANSFERING THE CART TO THE SERVER
     --> SERVER ONLY ACCEPTS PRODUCTS WITH 'ID' AND 'AMOUNT' (==> CartToServerEntry)
@@ -13,7 +12,6 @@ typealias updateCartCheckoutStatus = (NSError?) -> Void;
 class CheckoutModel : NSObject{
     
     private let resource = "/carts"
-    private var cart : Cart?
     private var mapper = Mapper<Cart>();
     private var isSent = false;
     
@@ -21,15 +19,17 @@ class CheckoutModel : NSObject{
         super.init()
     }
     
-    func startCheckoutProcess(code: String, cart: Cart, onCompletion: updateCartCheckoutStatus){
-        self.cart = cart
-        cart.setCode(code)
+    func startCheckoutProcess(cart: Cart, onCompletion: updateCartCheckoutStatus){
         cart.setStatus(Cart.CartStatus.PENDING)
         
-        println("Starting Checkout: \(code) \(cart)")
+        let JSONString = mapper.toJSON(cart)
+        
+        //println("Starting Checkout: \(cart.cartCode) OBJ: \(JSONString)")
+        
+        let params = ["code" : "asdf"]
         
         if(!isSent){
-            RestManager.sharedInstance.makeJsonPostRequest(resource, params: nil, onCompletion:  {
+            RestManager.sharedInstance.makeJsonPostRequest(resource, params: params, onCompletion:  {
                 json, err in
                 if (err != nil) {
                     println("ERROR! ", err);

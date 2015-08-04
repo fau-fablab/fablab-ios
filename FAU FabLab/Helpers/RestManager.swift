@@ -29,16 +29,19 @@ class RestManager {
     func makeJsonGetRequest(resource: String, params: [String : String]?, onCompletion : JsonServiceResponse) {
         manager.request(.GET, devApiUrl+resource, parameters: params)
             .responseJSON { (req, res, json, error) in
-                println("GET: \(self.devApiUrl+resource)");
+                println("GET: \(self.devApiUrl+resource) JSONAnswer: \(json)");
                 onCompletion(json!, error);
         }
     }
     
     func makeJsonPostRequest(resource: String, params: [String : String]?, onCompletion : JsonServiceResponse) {
-        manager.request(.POST, devApiUrl+resource, parameters: params)
+        manager.request(.POST, devApiUrl+resource, parameters: params, encoding: .JSON)
             .responseJSON { (req, res, json, error) in
-                println("POST: \(self.devApiUrl+resource) DATA: \(json)");
-                onCompletion(json!, error);
+                println("POST: \(self.devApiUrl+resource) JSONAnswer: \(json)");
+                if (json != nil){
+                    onCompletion(json!, error);
+                }
         }
     }
+   
 }

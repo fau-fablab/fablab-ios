@@ -10,7 +10,8 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //TODO Delete vor commit
+        self.tabBarController?.selectedIndex = 4
         tableView.delegate = self
         tableView.dataSource = self
 

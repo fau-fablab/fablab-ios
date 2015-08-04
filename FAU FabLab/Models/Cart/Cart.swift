@@ -1,11 +1,16 @@
 
 import Foundation
 import ObjectMapper
+import SwiftyJSON
 
 class Cart : Mappable{
     
-    enum CartStatus{
-        case SHOPPING, PENDING, PAID, CANCELLED, FAILED
+    enum CartStatus : String{
+        case SHOPPING = "SHOPPING"
+        case PENDING = "PENDING"
+        case PAID = "PAID"
+        case CANCELLED = "CANCELLED"
+        case FAILED = "FAILED"
     }
 
     private(set) var cartCode: String?
@@ -13,7 +18,7 @@ class Cart : Mappable{
     private(set) var entries = [CartEntry]()
     
     init(){
-        
+        CartStatus.SHOPPING
     }
     
 
@@ -47,6 +52,15 @@ class Cart : Mappable{
     func mapping(map: Map) {
         status <- map["status"]
         cartCode <- map["cartCode"]
-        entries <- map["cart"]
+        entries <- map["items"]
     }
+    
+    func toJson() -> JSON{
+        var json: JSON = ["cartCode": 0, "items" : ""]
+        json["cartCode"] = "23"
+        return json
+    }
+
+
+    
 }
