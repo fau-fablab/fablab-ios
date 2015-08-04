@@ -31,7 +31,8 @@ class Event : Mappable{
     
     func getDateFormatter() -> NSDateFormatter {
         var dateFmt = NSDateFormatter()
-        dateFmt.timeZone = NSTimeZone.defaultTimeZone()
+        //dateFmt.timeZone = NSTimeZone.systemTimeZone()
+        dateFmt.timeZone = NSTimeZone(name: "UTC")
         dateFmt.dateFormat = "yyyyMMdd'T'HHmmss'Z'"
         return dateFmt
     }

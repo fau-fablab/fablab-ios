@@ -57,13 +57,64 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier) as? EventsCustomCell
         let event = model.getEvent(indexPath.row);
         
-        // todo day, month, time
-        cell!.configure(day: "04", month: "Aug", title: event.summery!, time: "10:00 - 12:00 Uhr", place: event.location);
+        let startDate = event.getStartAsDate()
+        let day = getDayFromDate(startDate)
+        let month = getMonthFromDate(startDate)
+        
+        var today = false
+        if sameDay(startDate, date2: NSDate()) {
+            today = true
+        }
+        
+        let endDate = event.getEndAsDate()
+        var time = ""
+        if sameDay(startDate, date2: endDate) {
+            time = getTimeFromDate(startDate) + " - " + getTimeFromDate(event.getEndAsDate()) + " Uhr"
+        } else {
+            time = getTimeFromDate(startDate) + " - "
+                + getDayFromDate(endDate) + ". " + getMonthFromDate(endDate) + ", "
+                + getTimeFromDate(event.getEndAsDate()) + " Uhr"
+        }
+        
+        // configure cell
+        cell!.configure(today: today, day: day, month: month, title: event.summery!, time: time, place: event.location);
         
         return cell!;
     }
 
-
+    func getDateFormatter(format: String) -> NSDateFormatter {
+        var dateFmt = NSDateFormatter()
+        //dateFmt.timeZone = NSTimeZone.systemTimeZone()
+        dateFmt.timeZone = NSTimeZone(name: "UTC+2")
+        dateFmt.dateFormat = format
+        return dateFmt
+    }
+    
+    func getDayFromDate(date: NSDate) -> String {
+        return getDateFormatter("dd").stringFromDate(date)
+    }
+    
+    func getMonthFromDate(date: NSDate) -> String {
+        return getDateFormatter("MMM").stringFromDate(date)
+    }
+    
+    func getYearFromDate(date: NSDate) -> String {
+        return getDateFormatter("yyyy").stringFromDate(date)
+    }
+    
+    func getTimeFromDate(date: NSDate) -> String {
+        return getDateFormatter("HH:mm").stringFromDate(date)
+    }
+    
+    func sameDay(date1: NSDate, date2: NSDate) -> Bool {
+        if (getDayFromDate(date1) == getDayFromDate(date2))
+            && (getMonthFromDate(date1) == getMonthFromDate(date2))
+            && (getYearFromDate(date1) == getYearFromDate(date2)) {
+            return true
+        } else {
+            return false
+        }
+    }
 
 }
 

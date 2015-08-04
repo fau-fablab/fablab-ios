@@ -11,10 +11,10 @@ public class EventsCustomCell : UITableViewCell{
     @IBOutlet var timeLabel: UILabel!
     //@IBOutlet var placeLabel: UILabel!
         
-    public func configure(#day: String, month: String, title: String, time: String?, place: String?) {
+    public func configure(#today: Bool, day: String, month: String, title: String, time: String?, place: String?) {
         
         // if today, then show text "Heute"
-        if day == "03" {
+        if today {
             heuteLabel.text = "Heute";
             dayLabel.text = "";
             monthLabel.text = "";
