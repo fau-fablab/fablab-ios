@@ -17,8 +17,8 @@
 		50DBE9041B6FA93000685B07 /* EventsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */; };
 		8419B6101B6F6050000275A8 /* CheckoutCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8419B60F1B6F6050000275A8 /* CheckoutCodeScannerViewController.swift */; };
 		8419B6131B6F7089000275A8 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8419B6121B6F7089000275A8 /* CartViewController.swift */; };
-		842314681B70BBAB0074B670 /* CheckoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842314671B70BBAB0074B670 /* CheckoutModel.swift */; };
 		8423146B1B70BC750074B670 /* CartEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8423146A1B70BC750074B670 /* CartEntry.swift */; };
+		842A28521B71744C0017417D /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A28511B71744C0017417D /* CartModel.swift */; };
 		84E7C82F1B66A07200A24193 /* RSBarcodes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DC93121B669E0100981977 /* RSBarcodes.framework */; };
 		84E7C8301B66A07200A24193 /* RSBarcodes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84DC93121B669E0100981977 /* RSBarcodes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		92078EB71B6E270E00A21AD9 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92078EB61B6E270E00A21AD9 /* Product.swift */; };
@@ -84,8 +84,8 @@
 		50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCustomCell.swift; sourceTree = "<group>"; };
 		8419B60F1B6F6050000275A8 /* CheckoutCodeScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutCodeScannerViewController.swift; sourceTree = "<group>"; };
 		8419B6121B6F7089000275A8 /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
-		842314671B70BBAB0074B670 /* CheckoutModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckoutModel.swift; path = Cart/CheckoutModel.swift; sourceTree = "<group>"; };
 		8423146A1B70BC750074B670 /* CartEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartEntry.swift; sourceTree = "<group>"; };
+		842A28511B71744C0017417D /* CartModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
 		84DC93121B669E0100981977 /* RSBarcodes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RSBarcodes.framework; path = Carthage/Build/iOS/RSBarcodes.framework; sourceTree = "<group>"; };
 		92078EB61B6E270E00A21AD9 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		92078EB81B6E293400A21AD9 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -228,8 +228,8 @@
 			isa = PBXGroup;
 			children = (
 				92B54A951B6FE97600AADB11 /* Cart.swift */,
-				842314671B70BBAB0074B670 /* CheckoutModel.swift */,
 				8423146A1B70BC750074B670 /* CartEntry.swift */,
+				842A28511B71744C0017417D /* CartModel.swift */,
 			);
 			name = Cart;
 			sourceTree = "<group>";
@@ -501,13 +501,13 @@
 				92078EB91B6E293400A21AD9 /* Location.swift in Sources */,
 				927901CA1B6D3B9300F95B09 /* RestManager.swift in Sources */,
 				502DB1521B7150370036EF6B /* EventsDetailViewController.swift in Sources */,
-				842314681B70BBAB0074B670 /* CheckoutModel.swift in Sources */,
 				8423146B1B70BC750074B670 /* CartEntry.swift in Sources */,
 				927901D71B6D3EED00F95B09 /* NewsCustomCell.swift in Sources */,
 				928054FB1B6DA22000D0D4FB /* EventModel.swift in Sources */,
 				50DBE9041B6FA93000685B07 /* EventsCustomCell.swift in Sources */,
 				927901DC1B6D3F5700F95B09 /* ProductsearchCodeScannerViewController.swift in Sources */,
 				927901DE1B6D3F5C00F95B09 /* EventsViewController.swift in Sources */,
+				842A28521B71744C0017417D /* CartModel.swift in Sources */,
 				92B54A961B6FE97600AADB11 /* Cart.swift in Sources */,
 				927901E21B6D3F6300F95B09 /* NewsViewController.swift in Sources */,
 				8419B6131B6F7089000275A8 /* CartViewController.swift in Sources */,
