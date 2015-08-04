@@ -214,7 +214,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fie-Dj-17f">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fie-Dj-17f">
                                 <rect key="frame" x="30" y="232" width="540" height="319"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -266,10 +266,10 @@
             </objects>
             <point key="canvasLocation" x="3086" y="352"/>
         </scene>
-        <!--Veranstaltungen-->
+        <!--Termine-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController title="Veranstaltungen" id="8rJ-Kc-sve" customClass="EventsViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Termine" id="8rJ-Kc-sve" customClass="EventsViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -374,7 +374,7 @@
                             <constraint firstItem="AZ1-iU-YxM" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="ad1-hW-f0k"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Veranstaltungen" id="J5E-cZ-saa">
+                    <navigationItem key="navigationItem" title="Termine" id="J5E-cZ-saa">
                         <barButtonItem key="rightBarButtonItem" title="Warenkorb" id="btL-Oh-ws3"/>
                     </navigationItem>
                     <connections>
@@ -663,11 +663,11 @@
             </objects>
             <point key="canvasLocation" x="1110" y="-344"/>
         </scene>
-        <!--Veranstaltungen-->
+        <!--Termine-->
         <scene sceneID="qfj-MK-Brk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vq6-YY-mEa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Veranstaltungen" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Termine" image="second" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="re7-OQ-BFT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
