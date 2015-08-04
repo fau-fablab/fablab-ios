@@ -1,10 +1,12 @@
 import UIKit
 import Foundation
 
-class CheckoutViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
+
+class CartViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
 
     @IBOutlet weak var tableView: UITableView!
-    
+    private var checkoutModel = CheckoutModel()
+    private var cart = Cart()
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -20,16 +22,7 @@ class CheckoutViewController : UIViewController, UITableViewDataSource, UITableV
     
     
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-
-    
-    func checkoutCodeScanned(notification:NSNotification) {
-        println("Got Notification from Scanner, code: \(notification.object)")
-    
-    }
+   
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -44,4 +37,22 @@ class CheckoutViewController : UIViewController, UITableViewDataSource, UITableV
         
         return cell;
     }
+    
+    //Checkout process
+    private func checkoutCodeScanned(notification:NSNotification) {
+        println("Got Notification from Scanner, code: \(notification.object)")
+    }
+    
+    
+    private func checkout(){
+        checkoutModel.startCheckoutProcess("1234", cart: cart, onCompletion: { error in
+            println(error)
+            println("DONE")
+        })
+        
+    }
+    @IBAction func stupidDummyTestMethod(sender: AnyObject) {
+        self.checkout()
+    }
+
 }

@@ -1,13 +1,13 @@
+
 import Foundation
 import ObjectMapper
 
-class CartToServerEntry : Mappable{
-    
+class CartEntry : Mappable{
     var productId: String?
     var amount: Double = 0.0
     
     class func newInstance() -> Mappable {
-        return CartToServerEntry()
+        return CartEntry()
     }
     
     // Mappable
@@ -15,4 +15,5 @@ class CartToServerEntry : Mappable{
         productId <- map["product_id"]
         amount <- map["amount"]
     }
+
 }

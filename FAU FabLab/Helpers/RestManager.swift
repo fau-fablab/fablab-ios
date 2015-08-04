@@ -9,7 +9,7 @@ class RestManager {
     static let sharedInstance = RestManager()
 
     private var manager:Manager;
-    private let devApiUrl = "https://ec2-52-28-16-59.eu-central-1.compute.amazonaws.com:4433"
+    private let devApiUrl = "https://ec2-52-28-16-59.eu-central-1.compute.amazonaws.com:4433" //ec2-52-28-16-59.eu-central-1.compute.amazonaws.com/
     
     init(){
         let serverTrustPolicies: [String: ServerTrustPolicy] = [
@@ -37,7 +37,7 @@ class RestManager {
     func makeJsonPostRequest(resource: String, params: [String : String]?, onCompletion : JsonServiceResponse) {
         manager.request(.POST, devApiUrl+resource, parameters: params)
             .responseJSON { (req, res, json, error) in
-                println("POST: \(self.devApiUrl+resource)");
+                println("POST: \(self.devApiUrl+resource) DATA: \(json)");
                 onCompletion(json!, error);
         }
     }

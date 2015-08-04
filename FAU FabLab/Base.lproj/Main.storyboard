@@ -398,7 +398,7 @@
         <!--Warenkorb-->
         <scene sceneID="xuf-rf-THF">
             <objects>
-                <viewController title="Warenkorb" id="ooQ-nD-6sq" customClass="CheckoutViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Warenkorb" id="ooQ-nD-6sq" customClass="CartViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="f20-An-xKa"/>
                         <viewControllerLayoutGuide type="bottom" id="249-cg-0zG"/>
@@ -414,9 +414,7 @@
                                         <barButtonItem key="leftBarButtonItem" title="+ Produkt" id="cLP-YG-OvT"/>
                                         <barButtonItem key="rightBarButtonItem" title="Bezahlen" id="mKw-50-bi8">
                                             <connections>
-                                                <segue destination="dAF-j1-LQU" kind="popoverPresentation" popoverAnchorBarButtonItem="mKw-50-bi8" id="WKA-KL-fkC">
-                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                                </segue>
+                                                <action selector="stupidDummyTestMethod:" destination="ooQ-nD-6sq" id="IzQ-mw-w4I"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
