@@ -3,7 +3,7 @@ import Foundation
 import ObjectMapper
 import SwiftyJSON
 
-class Cart : Mappable{
+class Cart : NSObject{
     
     enum CartStatus : String{
         case SHOPPING = "SHOPPING"
@@ -17,15 +17,13 @@ class Cart : Mappable{
     private(set) var status = CartStatus.SHOPPING
     private(set) var entries = [CartEntry]()
     
-    init(){
+    override init(){
         CartStatus.SHOPPING
+        super.init()
     }
     
 
 
-    class func newInstance() -> Mappable {
-        return Cart()
-    }
     
     func getCount() -> Int{
         return entries.count;
@@ -49,18 +47,19 @@ class Cart : Mappable{
     }
     
     
-    func mapping(map: Map) {
-        status <- map["status"]
-        cartCode <- map["cartCode"]
-        entries <- map["items"]
+    func serialize() -> NSDictionary{
+        var items = [NSDictionary]()
+        for item in entries{
+            items.append(item.serialize())
+        }
+        
+        let cart = [
+            "cartCode": cartCode as String!,
+            "items": items,
+            "status": status.rawValue
+        ]
+        return cart
     }
     
-    func toJson() -> JSON{
-        var json: JSON = ["cartCode": 0, "items" : ""]
-        json["cartCode"] = "23"
-        return json
-    }
-
-
     
 }

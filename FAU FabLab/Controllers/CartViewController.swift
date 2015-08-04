@@ -47,7 +47,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     
     private func checkout(code: String){
         cart.setCode(code)
-        checkoutModel.startCheckoutProcess(cart, onCompletion: { error in
+        checkoutModel.sendCartToServer(cart, onCompletion: { error in
             
         })
         

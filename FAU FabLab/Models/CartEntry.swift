@@ -2,32 +2,17 @@
 import Foundation
 import ObjectMapper
 
-class CartEntry : Mappable{
+class CartEntry : NSObject{
     private(set) var product = Product()
     private(set) var amount  = 0.0
     
     init(product: Product, amount: Double){
         self.product = product
         self.amount = amount
+        super.init()
     }
     
-    init(){}
-    
-    class func newInstance() -> Mappable {
-        return CartEntry()
+    func serialize() -> NSDictionary{
+        return ["productId" : product.productId as String!, "amount" : amount]
     }
-    
-    // Mappable
-    func mapping(map: Map) {
-        product <- (map["productId"], productToId)
-        amount <- map["amount"]
-    }
-    
-    let productToId = TransformOf<Product, String>(
-        fromJSON: { (value: String?) -> Product? in
-            return nil
-        }, toJSON: { (product: Product?) -> String? in
-            return product!.productId
-    })
-    
 }

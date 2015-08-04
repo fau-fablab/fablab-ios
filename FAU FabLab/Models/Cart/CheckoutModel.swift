@@ -8,38 +8,36 @@ typealias updateCartCheckoutStatus = (NSError?) -> Void;
 class CheckoutModel : NSObject{
     
     private let resource = "/carts"
-    private var mapper = Mapper<Cart>();
-    private var isSent = false;
+    private var isLoading = false;
     
     override init(){
         super.init()
     }
     
-    func startCheckoutProcess(cart: Cart, onCompletion: updateCartCheckoutStatus){
+    func sendCartToServer(cart: Cart, onCompletion: updateCartCheckoutStatus){
+        println("CALLED")
         cart.setStatus(Cart.CartStatus.PENDING)
         
-        
-        
-        //["cartCode" : String(stringInterpolationSegment: cart.cartCode)]
-        
-        if(!isSent){
-            RestManager.sharedInstance.makeJsonPostRequest(resource, params: nil, onCompletion:  {
+        let cartAsDict = cart.serialize()
+        if(!isLoading){
+            isLoading = true
+            
+
+            RestManager.sharedInstance.makeJsonPostRequest(resource, params: cartAsDict, onCompletion:  {
                 json, err in
                 if (err != nil) {
-                    println("ERROR! ", err);
+                    println("ERROR! ", err)
                     onCompletion(err)
                 }
-                
                 println(json)
                 
-                onCompletion(nil);
-                self.isSent = false;
+                onCompletion(nil)
             })
+            isLoading = false
         }
-
         
     }
     
-    
+ 
 
 }
