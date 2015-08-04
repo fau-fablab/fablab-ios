@@ -48,6 +48,20 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        println(segue.identifier)
+        if segue.identifier == "EventsDetailSegue" {
+            let destination = segue.destinationViewController as? EventsDetailsViewController
+            
+            let event = model.getEvent(tableView.indexPathForSelectedRow()!.row);
+            
+            let start = getDateStringFromDate(event.getStartAsDate())
+            let end = getDateStringFromDate(event.getEndAsDate())
+            
+            destination!.configure(title: event.summery!, start: start, end: end, location: event.location, description: event.description)
+        }
+    }
+    
     // UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.getCount() 
@@ -104,6 +118,10 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func getTimeFromDate(date: NSDate) -> String {
         return getDateFormatter("HH:mm").stringFromDate(date)
+    }
+    
+    func getDateStringFromDate(date: NSDate) -> String {
+        return getDateFormatter("dd.MM.yyy - HH:mm").stringFromDate(date)
     }
     
     func sameDay(date1: NSDate, date2: NSDate) -> Bool {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		502DB1521B7150370036EF6B /* EventsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502DB1511B7150370036EF6B /* EventsDetailViewController.swift */; };
 		5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1D51B4EFE2A008B41FD /* AppDelegate.swift */; };
 		5060B1DD1B4EFE2A008B41FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5060B1DB1B4EFE2A008B41FD /* Main.storyboard */; };
 		5060B1E21B4EFE2A008B41FD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5060B1E01B4EFE2A008B41FD /* LaunchScreen.xib */; };
@@ -69,6 +70,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		502DB1511B7150370036EF6B /* EventsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsDetailViewController.swift; sourceTree = "<group>"; };
 		5060B1D01B4EFE2A008B41FD /* FAU FabLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FAU FabLab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5060B1D41B4EFE2A008B41FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5060B1D51B4EFE2A008B41FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				927901DD1B6D3F5C00F95B09 /* EventsViewController.swift */,
+				502DB1511B7150370036EF6B /* EventsDetailViewController.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				92078EBD1B6E2D9D00A21AD9 /* ProductsearchModel.swift in Sources */,
 				92078EB91B6E293400A21AD9 /* Location.swift in Sources */,
 				927901CA1B6D3B9300F95B09 /* RestManager.swift in Sources */,
+				502DB1521B7150370036EF6B /* EventsDetailViewController.swift in Sources */,
 				842314681B70BBAB0074B670 /* CheckoutModel.swift in Sources */,
 				8423146B1B70BC750074B670 /* CartEntry.swift in Sources */,
 				927901D71B6D3EED00F95B09 /* NewsCustomCell.swift in Sources */,
