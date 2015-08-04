@@ -20,6 +20,12 @@ class Product : Mappable{
         return Product()
     }
     
+    init(){}
+    
+    func setId(id: String){
+        productId = id
+    }
+    
     // Mappable
     func mapping(map: Map) {
         productId <- map["product_id"]

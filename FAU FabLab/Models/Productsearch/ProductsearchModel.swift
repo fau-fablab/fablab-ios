@@ -1,5 +1,6 @@
 import Foundation
 import ObjectMapper
+import SwiftyJSON
 
 typealias ProductSearchFinished = (NSError?) -> Void;
 

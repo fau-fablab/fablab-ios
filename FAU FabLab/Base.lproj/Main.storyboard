@@ -398,7 +398,7 @@
         <!--Warenkorb-->
         <scene sceneID="xuf-rf-THF">
             <objects>
-                <viewController title="Warenkorb" id="ooQ-nD-6sq" customClass="CheckoutViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Warenkorb" id="ooQ-nD-6sq" customClass="CartViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="f20-An-xKa"/>
                         <viewControllerLayoutGuide type="bottom" id="249-cg-0zG"/>
@@ -414,7 +414,8 @@
                                         <barButtonItem key="leftBarButtonItem" title="+ Produkt" id="cLP-YG-OvT"/>
                                         <barButtonItem key="rightBarButtonItem" title="Bezahlen" id="mKw-50-bi8">
                                             <connections>
-                                                <segue destination="dAF-j1-LQU" kind="popoverPresentation" popoverAnchorBarButtonItem="mKw-50-bi8" id="WKA-KL-fkC">
+                                                <action selector="stupidDummyTestMethod:" destination="ooQ-nD-6sq" id="IzQ-mw-w4I"/>
+                                                <segue destination="dAF-j1-LQU" kind="popoverPresentation" popoverAnchorBarButtonItem="mKw-50-bi8" id="nAX-7n-unC">
                                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                                 </segue>
                                             </connections>
@@ -423,7 +424,7 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="Cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Cw4-Ky-LeW">
-                                <rect key="frame" x="0.0" y="72" width="600" height="471"/>
+                                <rect key="frame" x="0.0" y="306" width="600" height="237"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="uIh-DG-Ipf">
@@ -434,6 +435,52 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkU-C6-8nA">
+                                <rect key="frame" x="118" y="121" width="151" height="30"/>
+                                <state key="normal" title="&quot;SCAN CODE&quot;">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="SCAN:" destination="ooQ-nD-6sq" eventType="touchUpInside" id="ZZp-Ak-NTn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Q8-vz-PAr">
+                                <rect key="frame" x="165" y="246" width="112" height="30"/>
+                                <state key="normal" title="STATUS">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="STATUS:" destination="ooQ-nD-6sq" eventType="touchUpInside" id="doU-vB-MFL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NjE-w1-CUl">
+                                <rect key="frame" x="198" y="170" width="46" height="30"/>
+                                <state key="normal" title="POST ">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="POST2:" destination="ooQ-nD-6sq" eventType="touchUpInside" id="vZ7-M1-zY8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfr-h5-Cl6">
+                                <rect key="frame" x="288" y="170" width="46" height="30"/>
+                                <state key="normal" title="PAID">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="PAID:" destination="ooQ-nD-6sq" eventType="touchUpInside" id="pCh-Z3-zN2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abo-eL-dWn">
+                                <rect key="frame" x="285" y="246" width="90" height="30"/>
+                                <state key="normal" title="CANCELLED">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="CANCELLED:" destination="ooQ-nD-6sq" eventType="touchUpInside" id="Nuc-uT-P21"/>
+                                    <action selector="PAID:" destination="ooQ-nD-6sq" eventType="touchUpInside" id="dd6-CO-4Rt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
