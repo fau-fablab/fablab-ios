@@ -1,7 +1,6 @@
 import Foundation
-import SwiftyJSON
 import Alamofire
-
+import SwiftyJSON
 typealias JsonServiceResponse = (AnyObject, NSError?) -> Void
 
 class RestManager {
@@ -35,13 +34,29 @@ class RestManager {
     }
     
     func makeJsonPostRequest(resource: String, params: [String : String]?, onCompletion : JsonServiceResponse) {
-        manager.request(.POST, devApiUrl+resource, parameters: params, encoding: .JSON)
+        let request = manager.request(.POST, devApiUrl+resource, parameters: params, encoding: .JSON)
             .responseJSON { (req, res, json, error) in
-                println("POST: \(self.devApiUrl+resource) JSONAnswer: \(json)");
+                //println("POST: \(self.devApiUrl+resource) JSONAnswer: \(json)");
                 if (json != nil){
                     onCompletion(json!, error);
                 }
         }
+        debugPrintln(request)
     }
-   
+    
+    func testRequest(resource: String, parameters: [String : String]?, onCompletion : JsonServiceResponse){
+        let json = ["password": "dummyPassword"]
+        let request = manager.request(.POST, resource, parameters: json, encoding: .JSON)
+            .responseString { (req, res, json, error) in
+                println("JSON: \(json)");
+                println("error: \(error)");
+                if (json != nil){
+                    onCompletion(json!, error);
+                }
+        }
+        debugPrintln(request)
+    }
+    
+    
+    
 }

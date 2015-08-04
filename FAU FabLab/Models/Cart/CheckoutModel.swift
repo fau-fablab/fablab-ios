@@ -22,11 +22,8 @@ class CheckoutModel : NSObject{
     func startCheckoutProcess(cart: Cart, onCompletion: updateCartCheckoutStatus){
         cart.setStatus(Cart.CartStatus.PENDING)
         
-        let JSONString = mapper.toJSON(cart)
         
-        //println("Starting Checkout: \(cart.cartCode) OBJ: \(JSONString)")
-        
-        let params = ["code" : "asdf"]
+        let params = ["cartCode" : "\(cart.cartCode)"]
         
         if(!isSent){
             RestManager.sharedInstance.makeJsonPostRequest(resource, params: params, onCompletion:  {

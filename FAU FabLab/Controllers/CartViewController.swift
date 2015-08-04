@@ -69,19 +69,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
             self.cart.addEntry(e1)
             self.cart.addEntry(e2)
             self.cart.setStatus(Cart.CartStatus.PENDING)
-            self.cart.setCode(String(json as! Int))
-            
-            RestManager.sharedInstance.makeJsonPostRequest("/carts", params: nil, onCompletion:  {
-                    json, err in
-                    if (err != nil) {
-                        println("ERROR! ", err);
-                        
-                    }
-                    
-                    println(json)
-                    
-                })
-            
+            self.checkout(String(json as! Int))
         })
 
     }
