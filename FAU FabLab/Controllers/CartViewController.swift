@@ -73,10 +73,6 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         })
 
     }
-    @IBAction func POST2(sender: AnyObject) {
-        println("POST BUTTON")
-    }
-    
     
     @IBAction func STATUS(sender: AnyObject) {
         let requ = "/\(cart.cartCode)"

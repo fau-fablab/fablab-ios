@@ -23,7 +23,7 @@ class CheckoutModel : NSObject{
         //["cartCode" : String(stringInterpolationSegment: cart.cartCode)]
         
         if(!isSent){
-            RestManager.sharedInstance.makeJsonPostRequest(resource, cart: cart, onCompletion:  {
+            RestManager.sharedInstance.makeJsonPostRequest(resource, params: nil, onCompletion:  {
                 json, err in
                 if (err != nil) {
                     println("ERROR! ", err);

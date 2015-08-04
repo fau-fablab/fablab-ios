@@ -33,29 +33,27 @@ class RestManager {
         }
     }
     
-    func makeJsonPostRequest(resource: String, cart: Cart, onCompletion : JsonServiceResponse) {
+    func makeJsonPostRequest(resource: String, params: [String : String]?, onCompletion : JsonServiceResponse) {
         
-        let test = "asdf"
+        var temp1 : String! = "adsf"
+        let parameters = [
+            "cartCode": temp1,
+            "baz": ["a", 1],
+            "qux": [
+                "x": 1,
+                "y": 2,
+                "z": 3
+            ],
+            "asdf" : "asdf"
+        ]
         
-        let asdf = ["title" : "asdf", "body": "I iz fisrt", "userId": 1]
-        
-        let values = ["06786984572365", "06644857247565", "06649998782227"]
-        
-        let request = Alamofire.request(.POST, resource, parameters: asdf, encoding: .JSON)
-        //debugPrintln(request)
-    }
-    
-    func testRequest(resource: String, parameters: [String : String]?, onCompletion : JsonServiceResponse){
-        let json = ["password": "dummyPassword"]
-        let request = manager.request(.POST, resource, parameters: json, encoding: .JSON)
-            .responseString { (req, res, json, error) in
-                println("JSON: \(json)");
-                println("error: \(error)");
-                if (json != nil){
-                    onCompletion(json!, error);
-                }
+        Alamofire.request(.POST, "http://httpbin.org/post", parameters: parameters as? [String : AnyObject], encoding: .JSON)
+            .responseJSON {(request, response, JSON, error) in
+                println(JSON)
         }
-        debugPrintln(request)
+
+        
+       
     }
     
     
