@@ -33,15 +33,16 @@ class RestManager {
         }
     }
     
-    func makeJsonPostRequest(resource: String, params: [String : String]?, onCompletion : JsonServiceResponse) {
-        let request = manager.request(.POST, devApiUrl+resource, parameters: params, encoding: .JSON)
-            .responseJSON { (req, res, json, error) in
-                //println("POST: \(self.devApiUrl+resource) JSONAnswer: \(json)");
-                if (json != nil){
-                    onCompletion(json!, error);
-                }
-        }
-        debugPrintln(request)
+    func makeJsonPostRequest(resource: String, cart: Cart, onCompletion : JsonServiceResponse) {
+        
+        let test = "asdf"
+        
+        let asdf = ["title" : "asdf", "body": "I iz fisrt", "userId": 1]
+        
+        let values = ["06786984572365", "06644857247565", "06649998782227"]
+        
+        let request = Alamofire.request(.POST, resource, parameters: asdf, encoding: .JSON)
+        //debugPrintln(request)
     }
     
     func testRequest(resource: String, parameters: [String : String]?, onCompletion : JsonServiceResponse){
