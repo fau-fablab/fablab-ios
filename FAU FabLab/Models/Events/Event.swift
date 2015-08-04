@@ -28,6 +28,20 @@ class Event : Mappable{
         description <- map["description"]
         allday <- map["allday"]
     }
+    
+    func getDateFormatter() -> NSDateFormatter {
+        var dateFmt = NSDateFormatter()
+        dateFmt.timeZone = NSTimeZone.defaultTimeZone()
+        dateFmt.dateFormat = "yyyyMMdd'T'HHmmss'Z'"
+        return dateFmt
+    }
 
+    func getStartAsDate() -> NSDate {
+        return getDateFormatter().dateFromString(start!)!
+    }
+    
+    func getEndAsDate() -> NSDate {
+        return getDateFormatter().dateFromString(end!)!
+    }
 }
 
