@@ -467,9 +467,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="yE4-2y-yzv" firstAttribute="leading" secondItem="z3B-Nd-IJq" secondAttribute="leadingMargin" constant="-16" id="CNx-4x-wOR"/>
+                            <constraint firstItem="u7Y-Nt-pji" firstAttribute="top" secondItem="yE4-2y-yzv" secondAttribute="bottom" id="E9J-eu-BbD"/>
                             <constraint firstItem="yAb-sD-y5J" firstAttribute="top" secondItem="I9Y-Ab-fth" secondAttribute="bottom" id="P7F-kP-ox8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0kA-u0-HSB" secondAttribute="trailing" constant="-16" id="Slk-zM-WVz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yE4-2y-yzv" secondAttribute="trailing" constant="-16" id="VtT-6C-ASe"/>
+                            <constraint firstItem="yE4-2y-yzv" firstAttribute="top" secondItem="0kA-u0-HSB" secondAttribute="bottom" id="Zgd-wF-edV"/>
                             <constraint firstItem="0kA-u0-HSB" firstAttribute="leading" secondItem="z3B-Nd-IJq" secondAttribute="leadingMargin" constant="-16" id="d5P-cU-f9J"/>
                             <constraint firstAttribute="trailing" secondItem="yAb-sD-y5J" secondAttribute="trailing" id="wOc-Ox-Lun"/>
                         </constraints>
