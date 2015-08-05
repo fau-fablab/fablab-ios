@@ -8,8 +8,7 @@ class CartModel : NSObject{
     private let resource = "/carts"
     private var isLoading = false;
     private var cart = Cart()
-    
-    
+
     
     /*                      Checkout process              */
     
