@@ -23,6 +23,10 @@ class ProductsearchModel : NSObject{
         products.append(entry)
     }
     
+    private func clearProducts() {
+        products.removeAll(keepCapacity: false)
+    }
+    
     func getProduct(position:Int) -> Product{
         return products[position];
     }
@@ -32,6 +36,7 @@ class ProductsearchModel : NSObject{
         let params = ["search": name]
         
         if(!isLoading){
+            self.clearProducts()
             RestManager.sharedInstance.makeJsonGetRequest(endpoint, params: params, onCompletion: {
                 json, err in
                 if (err != nil) {
