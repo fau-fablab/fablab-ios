@@ -25,6 +25,8 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
+        searchBar.showsCancelButton = true
+    
     }
     
     
@@ -43,9 +45,11 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchActive = false;
+        searchBar.resignFirstResponder();
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        self.searchBar.resignFirstResponder()
         model.searchProductByName(searchBar.text, onCompletion: { err in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.tableView.reloadData()
