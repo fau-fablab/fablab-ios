@@ -434,20 +434,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yAb-sD-y5J">
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yAb-sD-y5J">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Produkt suchen" id="fNv-0N-D4X"/>
                                 </items>
                             </navigationBar>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="R7Z-UK-evd">
-                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="YOP-IL-BaU" id="vnl-Rr-gso"/>
-                                </connections>
-                            </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="Cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yE4-2y-yzv">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="Cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yE4-2y-yzv">
                                 <rect key="frame" x="0.0" y="108" width="600" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -458,35 +451,36 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="YOP-IL-BaU" id="wbe-cZ-gIa"/>
+                                    <outlet property="delegate" destination="YOP-IL-BaU" id="H40-lq-jTF"/>
+                                </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0kA-u0-HSB">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="YOP-IL-BaU" id="N3N-jY-8On"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="R7Z-UK-evd" firstAttribute="top" secondItem="yAb-sD-y5J" secondAttribute="bottom" id="04P-bD-OFs"/>
-                            <constraint firstItem="R7Z-UK-evd" firstAttribute="trailing" secondItem="yAb-sD-y5J" secondAttribute="trailing" id="EkR-s1-8RT"/>
-                            <constraint firstItem="R7Z-UK-evd" firstAttribute="leading" secondItem="yAb-sD-y5J" secondAttribute="leading" id="Nsc-rI-Wol"/>
+                            <constraint firstItem="yE4-2y-yzv" firstAttribute="leading" secondItem="z3B-Nd-IJq" secondAttribute="leadingMargin" constant="-16" id="CNx-4x-wOR"/>
                             <constraint firstItem="yAb-sD-y5J" firstAttribute="top" secondItem="I9Y-Ab-fth" secondAttribute="bottom" id="P7F-kP-ox8"/>
-                            <constraint firstItem="R7Z-UK-evd" firstAttribute="leading" secondItem="z3B-Nd-IJq" secondAttribute="leading" id="fJ6-s1-K3e"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0kA-u0-HSB" secondAttribute="trailing" constant="-16" id="Slk-zM-WVz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yE4-2y-yzv" secondAttribute="trailing" constant="-16" id="VtT-6C-ASe"/>
+                            <constraint firstItem="0kA-u0-HSB" firstAttribute="leading" secondItem="z3B-Nd-IJq" secondAttribute="leadingMargin" constant="-16" id="d5P-cU-f9J"/>
                             <constraint firstAttribute="trailing" secondItem="yAb-sD-y5J" secondAttribute="trailing" id="wOc-Ox-Lun"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Produkt suchen" image="first" id="Ckf-F4-b20"/>
                     <connections>
-                        <outlet property="searchBar" destination="R7Z-UK-evd" id="7zr-To-Jq9"/>
-                        <outlet property="searchDisplayController" destination="eab-kO-p12" id="ZAm-Za-EKg"/>
+                        <outlet property="searchBar" destination="0kA-u0-HSB" id="Iwc-EW-El8"/>
                         <outlet property="tableView" destination="yE4-2y-yzv" id="Rar-sy-NWs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XdC-vR-fPp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="eab-kO-p12">
-                    <connections>
-                        <outlet property="delegate" destination="YOP-IL-BaU" id="ZwS-OG-2R0"/>
-                        <outlet property="searchBar" destination="R7Z-UK-evd" id="5o3-73-96z"/>
-                        <outlet property="searchContentsController" destination="YOP-IL-BaU" id="YvD-Pf-QPf"/>
-                        <outlet property="searchResultsDataSource" destination="YOP-IL-BaU" id="dTt-Oa-F20"/>
-                        <outlet property="searchResultsDelegate" destination="YOP-IL-BaU" id="Ehc-Pv-ChC"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="-494" y="768"/>
         </scene>
