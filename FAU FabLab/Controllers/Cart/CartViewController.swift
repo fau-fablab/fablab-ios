@@ -79,19 +79,8 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
                 
             }
         }
-        disableSpinner()
     }
     
-
-    func enableSpinner(){
-        activityIndicatorView.startAnimating();
-        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
-    }
-    
-    func disableSpinner(){
-        activityIndicatorView.stopAnimating();
-        UIApplication.sharedApplication().endIgnoringInteractionEvents()
-    }
 
     
     /*                      DEV BUTTONS                 */
@@ -100,15 +89,10 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
 
 
     @IBAction func DummyScanButtonTouched(sender: AnyObject) {
-        self.enableSpinner()
-        
         RestManager.sharedInstance.makeJsonGetRequest("/checkout/createCode", params: ["password": "dummyPassword"])
         { (code, error) -> Void in
             self.cartModel.sendCartToServer(String(code as! Int))
         }
-
     }
-
     
-
 }
