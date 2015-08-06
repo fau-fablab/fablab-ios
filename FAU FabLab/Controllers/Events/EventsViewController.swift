@@ -55,10 +55,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             let event = model.getEvent(tableView.indexPathForSelectedRow()!.row);
             
-            let start = getDateStringFromDate(event.getStartAsDate())
-            let end = getDateStringFromDate(event.getEndAsDate())
-            
-            destination!.configure(title: event.summery!, start: start, end: end, location: event.location, description: event.description)
+            destination!.configure(title: event.summery!, start: event.startDateString, end: event.endDateString, location: event.location, description: event.description)
         }
     }
     
@@ -70,69 +67,23 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier) as? EventsCustomCell
         let event = model.getEvent(indexPath.row);
-        
-        let startDate = event.getStartAsDate()
-        let day = getDayFromDate(startDate)
-        let month = getMonthFromDate(startDate)
-        
-        var today = false
-        if sameDay(startDate, date2: NSDate()) {
-            today = true
-        }
-        
-        let endDate = event.getEndAsDate()
+
         var time = ""
-        if sameDay(startDate, date2: endDate) {
-            time = getTimeFromDate(startDate) + " - " + getTimeFromDate(event.getEndAsDate()) + " Uhr"
+        if event.isOneDay {
+            time = event.startTimeString + " - " + event.endTimeString + " Uhr"
         } else {
-            time = getTimeFromDate(startDate) + " - "
-                + getDayFromDate(endDate) + ". " + getMonthFromDate(endDate) + ", "
-                + getTimeFromDate(event.getEndAsDate()) + " Uhr"
+            time = event.startTimeString + " - "
+                + event.endDayString + ". " + event.endMonthString + ", "
+                + event.endTimeString + " Uhr"
         }
         
         // configure cell
-        cell!.configure(today: today, day: day, month: month, title: event.summery!, time: time, place: event.location);
+        cell!.configure(today: event.isToday, day: event.startDayString, month: event.startMonthString, title: event.summery!, time: time, place: event.location);
         
         return cell!;
     }
+    
 
-    func getDateFormatter(format: String) -> NSDateFormatter {
-        var dateFmt = NSDateFormatter()
-        //dateFmt.timeZone = NSTimeZone.systemTimeZone()
-        dateFmt.timeZone = NSTimeZone(name: "UTC+2")
-        dateFmt.dateFormat = format
-        return dateFmt
-    }
-    
-    func getDayFromDate(date: NSDate) -> String {
-        return getDateFormatter("dd").stringFromDate(date)
-    }
-    
-    func getMonthFromDate(date: NSDate) -> String {
-        return getDateFormatter("MMM").stringFromDate(date)
-    }
-    
-    func getYearFromDate(date: NSDate) -> String {
-        return getDateFormatter("yyyy").stringFromDate(date)
-    }
-    
-    func getTimeFromDate(date: NSDate) -> String {
-        return getDateFormatter("HH:mm").stringFromDate(date)
-    }
-    
-    func getDateStringFromDate(date: NSDate) -> String {
-        return getDateFormatter("dd.MM.yyy - HH:mm").stringFromDate(date)
-    }
-    
-    func sameDay(date1: NSDate, date2: NSDate) -> Bool {
-        if (getDayFromDate(date1) == getDayFromDate(date2))
-            && (getMonthFromDate(date1) == getMonthFromDate(date2))
-            && (getYearFromDate(date1) == getYearFromDate(date2)) {
-            return true
-        } else {
-            return false
-        }
-    }
 
 }
 
