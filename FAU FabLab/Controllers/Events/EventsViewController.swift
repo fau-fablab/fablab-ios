@@ -8,6 +8,8 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     private let model = EventModel()
     
     private let textCellIdentifier = "EventsEntryCustomCell"
+    
+    private let doorButtonController = DoorNavigationButtonController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,16 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
         view.addSubview(actInd)
         actInd.startAnimating()
+        
+        doorButtonController.updateButtons(self)
+    }
+        
+    func showText() {
+        doorButtonController.showText(self)
+    }
+    
+    func showButton() {
+        doorButtonController.showButton(self)
     }
 
     override func viewWillAppear(animated: Bool) {

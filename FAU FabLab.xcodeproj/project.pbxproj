@@ -18,6 +18,7 @@
 		5060B1EE1B4EFE2A008B41FD /* FAU_FabLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1ED1B4EFE2A008B41FD /* FAU_FabLabTests.swift */; };
 		507493681B5BFE6F0035BEB4 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */; };
 		507BA38E1B5A7C0300E5DCF3 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 507BA38D1B5A7C0300E5DCF3 /* Cartfile */; };
+		50CB912B1B73D246000F4FB8 /* DoorNavigationButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB912A1B73D246000F4FB8 /* DoorNavigationButtonController.swift */; };
 		50DBE9041B6FA93000685B07 /* EventsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */; };
 		8419B6101B6F6050000275A8 /* CheckoutCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8419B60F1B6F6050000275A8 /* CheckoutCodeScannerViewController.swift */; };
 		8429B79A1B739C6D004C7DA0 /* RSBarcodes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DC93121B669E0100981977 /* RSBarcodes.framework */; };
@@ -91,6 +92,7 @@
 		5060B1ED1B4EFE2A008B41FD /* FAU_FabLabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAU_FabLabTests.swift; sourceTree = "<group>"; };
 		507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		507BA38D1B5A7C0300E5DCF3 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		50CB912A1B73D246000F4FB8 /* DoorNavigationButtonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoorNavigationButtonController.swift; sourceTree = "<group>"; };
 		50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCustomCell.swift; sourceTree = "<group>"; };
 		8419B60F1B6F6050000275A8 /* CheckoutCodeScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutCodeScannerViewController.swift; sourceTree = "<group>"; };
 		84DC93121B669E0100981977 /* RSBarcodes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RSBarcodes.framework; path = Carthage/Build/iOS/RSBarcodes.framework; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				927901DA1B6D3F3D00F95B09 /* BarcodeScanner */,
 				927901D91B6D3F3800F95B09 /* Events */,
 				927901D81B6D3EFC00F95B09 /* News */,
+				50AD1B231B73F5440014E065 /* DoorState */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -245,6 +248,14 @@
 				5060B1EC1B4EFE2A008B41FD /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		50AD1B231B73F5440014E065 /* DoorState */ = {
+			isa = PBXGroup;
+			children = (
+				50CB912A1B73D246000F4FB8 /* DoorNavigationButtonController.swift */,
+			);
+			name = DoorState;
 			sourceTree = "<group>";
 		};
 		8419B6111B6F7071000275A8 /* Cart */ = {
@@ -540,6 +551,7 @@
 				502DB1521B7150370036EF6B /* EventsDetailViewController.swift in Sources */,
 				92C2F3151B7399AC0086481B /* CartViewController.swift in Sources */,
 				927901D71B6D3EED00F95B09 /* NewsCustomCell.swift in Sources */,
+				50CB912B1B73D246000F4FB8 /* DoorNavigationButtonController.swift in Sources */,
 				928054FB1B6DA22000D0D4FB /* EventModel.swift in Sources */,
 				50DBE9041B6FA93000685B07 /* EventsCustomCell.swift in Sources */,
 				927901DC1B6D3F5700F95B09 /* ProductsearchCodeScannerViewController.swift in Sources */,
