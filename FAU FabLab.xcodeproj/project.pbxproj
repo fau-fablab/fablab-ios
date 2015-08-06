@@ -16,7 +16,8 @@
 		507BA38E1B5A7C0300E5DCF3 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 507BA38D1B5A7C0300E5DCF3 /* Cartfile */; };
 		50DBE9041B6FA93000685B07 /* EventsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */; };
 		8419B6101B6F6050000275A8 /* CheckoutCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8419B60F1B6F6050000275A8 /* CheckoutCodeScannerViewController.swift */; };
-		8419B6131B6F7089000275A8 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8419B6121B6F7089000275A8 /* CartViewController.swift */; };
+		8429B79A1B739C6D004C7DA0 /* RSBarcodes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DC93121B669E0100981977 /* RSBarcodes.framework */; };
+		8429B79B1B739C6D004C7DA0 /* RSBarcodes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84DC93121B669E0100981977 /* RSBarcodes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		92078EB71B6E270E00A21AD9 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92078EB61B6E270E00A21AD9 /* Product.swift */; };
 		92078EB91B6E293400A21AD9 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92078EB81B6E293400A21AD9 /* Location.swift */; };
 		92078EBB1B6E29B200A21AD9 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92078EBA1B6E29B200A21AD9 /* Category.swift */; };
@@ -53,6 +54,20 @@
 			remoteInfo = "FAU FabLab";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8429B79C1B739C6D004C7DA0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8429B79B1B739C6D004C7DA0 /* RSBarcodes.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		502DB1511B7150370036EF6B /* EventsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsDetailViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +120,7 @@
 				928054F41B6D893300D0D4FB /* ObjectMapper.framework in Frameworks */,
 				507493681B5BFE6F0035BEB4 /* SwiftyJSON.framework in Frameworks */,
 				925AC32F1B6C245700057C7F /* Alamofire.framework in Frameworks */,
+				8429B79A1B739C6D004C7DA0 /* RSBarcodes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +374,7 @@
 				5060B1CD1B4EFE2A008B41FD /* Frameworks */,
 				5060B1CE1B4EFE2A008B41FD /* Resources */,
 				507493691B5BFE860035BEB4 /* ShellScript */,
+				8429B79C1B739C6D004C7DA0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
