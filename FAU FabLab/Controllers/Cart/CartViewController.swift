@@ -46,13 +46,11 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
 
     //Observer -> Scanner
     func checkoutCodeScanned(notification:NSNotification) {
-        println("Got Notification from Scanner, code: \(notification.object)")
         cartModel.sendCartToServer(notification.object as! String)
     }
     
     //Observer -> Status changed
     func checkoutStatusChanged(notification:NSNotification) {
-        println("Got Notification from checkoutModel \(notification.object)")
         if let newStatus = Cart.CartStatus(rawValue: notification.object as! String) {
             switch(newStatus){
                 case Cart.CartStatus.SHOPPING:

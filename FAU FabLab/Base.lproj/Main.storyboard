@@ -489,6 +489,9 @@
                             <constraint firstItem="vWA-4f-gso" firstAttribute="top" secondItem="zuB-I0-PWh" secondAttribute="bottom" id="wwx-Lj-r6q"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="yhg-v3-FHy" id="0vj-j4-Zje"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BgR-fc-JMh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

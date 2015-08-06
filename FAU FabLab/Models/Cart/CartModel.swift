@@ -36,17 +36,12 @@ class CartModel : NSObject{
     }
     
     
-    func cancelCheckoutProcessByUser(onCompletion: updatePayOrCancelView){
+    func cancelCheckoutProcessByUser(){
         let code = cart.cartCode as String!
         if(!isLoading){
             isLoading = true
             RestManager.sharedInstance.makePostRequest(checkoutResource + "/cancelled/\(code)" , params: nil, onCompletion:  {
                 json, err in
-                if (err == nil) {
-                    self.cart.setStatus(Cart.CartStatus.CANCELLED)
-                    self.notifyControllerAboutStatusChange()
-                    onCompletion()
-                }
             })
             isLoading = false
         }
@@ -80,11 +75,6 @@ class CartModel : NSObject{
             
             println(json)
         })
-        //Got update --> self.notifyControllerAboutStatusChange()
-        
-        //Paid: self.cartWasSuccessfulyPaid()
-        //Cancelled: self.checkoutCancelledOrFailed()
-        
     }
     
     func checkoutSuccessfulyPaid(){
@@ -123,17 +113,13 @@ class CartModel : NSObject{
         cart.addEntry(e2)
     }
     
-    func simulatePayChecoutProcess(onCompletion: updatePayOrCancelView){
+    func simulatePayChecoutProcess(){
         let code = cart.cartCode as String!
         if(!isLoading){
             isLoading = true
             RestManager.sharedInstance.makePostRequest(checkoutResource + "/paid/\(code)" , params: nil, onCompletion:  {
                 json, err in
-                if (err == nil) {
-                    self.cart.setStatus(Cart.CartStatus.PAID)
-                    self.notifyControllerAboutStatusChange()
-                    onCompletion()
-                }
+                
             })
             isLoading = false
         }
