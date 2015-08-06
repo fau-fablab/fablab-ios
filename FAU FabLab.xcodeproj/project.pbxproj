@@ -681,7 +681,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Checkouts/RSBarcodes_Swift/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = "FAU FabLab/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -701,7 +700,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Checkouts/RSBarcodes_Swift/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = "FAU FabLab/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
