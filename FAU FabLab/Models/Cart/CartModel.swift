@@ -22,7 +22,7 @@ class CartModel : NSObject{
         let cartAsDict = cart.serialize()
         if(!isLoading){
             isLoading = true
-            RestManager.sharedInstance.makeJsonPostRequest(cartResource, params: cartAsDict, onCompletion:  {
+            RestManager.sharedInstance.makePostRequest(cartResource, params: cartAsDict, onCompletion:  {
                 json, err in
                 if (err == nil) {
                     self.cart.setStatus(Cart.CartStatus.PENDING)
@@ -38,7 +38,7 @@ class CartModel : NSObject{
         let code = cart.cartCode as String!
         if(!isLoading){
             isLoading = true
-            RestManager.sharedInstance.makeJsonPostRequest(checkoutResource + "/cancelled/\(code)" , params: nil, onCompletion:  {
+            RestManager.sharedInstance.makePostRequest(checkoutResource + "/cancelled/\(code)" , params: nil, onCompletion:  {
                 json, err in
                 if (err == nil) {
                     self.cart.setStatus(Cart.CartStatus.CANCELLED)
@@ -98,7 +98,7 @@ class CartModel : NSObject{
         let code = cart.cartCode as String!
         if(!isLoading){
             isLoading = true
-            RestManager.sharedInstance.makeJsonPostRequest(checkoutResource + "/paid/\(code)" , params: nil, onCompletion:  {
+            RestManager.sharedInstance.makePostRequest(checkoutResource + "/paid/\(code)" , params: nil, onCompletion:  {
                 json, err in
                 if (err == nil) {
                     self.cart.setStatus(Cart.CartStatus.PAID)
