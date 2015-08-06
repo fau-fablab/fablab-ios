@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		35CE1B736F661DCF4D7020F6 /* Uom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE1CE6C8A1BE4967D0633F /* Uom.swift */; };
 		35CE1DB996BC6DE917A5E446 /* DoorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE11756F88B8009C549B94 /* DoorState.swift */; };
+		35CE1DD759134EC89DBD0D29 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE11C7BEE60991B0702A2A /* Debug.swift */; };
 		35CE1E13F0E8E25DBCE8E9C9 /* DoorStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE1698E311B04F89744CDB /* DoorStateModel.swift */; };
 		502DB1521B7150370036EF6B /* EventsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502DB1511B7150370036EF6B /* EventsDetailViewController.swift */; };
 		5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1D51B4EFE2A008B41FD /* AppDelegate.swift */; };
@@ -75,6 +76,7 @@
 
 /* Begin PBXFileReference section */
 		35CE11756F88B8009C549B94 /* DoorState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoorState.swift; sourceTree = "<group>"; };
+		35CE11C7BEE60991B0702A2A /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		35CE1698E311B04F89744CDB /* DoorStateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoorStateModel.swift; sourceTree = "<group>"; };
 		35CE1CE6C8A1BE4967D0633F /* Uom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uom.swift; sourceTree = "<group>"; };
 		502DB1511B7150370036EF6B /* EventsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsDetailViewController.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				927901C91B6D3B9300F95B09 /* RestManager.swift */,
+				35CE11C7BEE60991B0702A2A /* Debug.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				35CE1B736F661DCF4D7020F6 /* Uom.swift in Sources */,
 				35CE1DB996BC6DE917A5E446 /* DoorState.swift in Sources */,
 				35CE1E13F0E8E25DBCE8E9C9 /* DoorStateModel.swift in Sources */,
+				35CE1DD759134EC89DBD0D29 /* Debug.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
