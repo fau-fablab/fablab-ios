@@ -7,14 +7,16 @@ class DoorStateModel : NSObject {
     private let space = "FAU+FabLab";
     private let mapper = Mapper<DoorState>()
 
-    func getDoorState() -> DoorState{
+    private var doorState: DoorState?;
+
+    func getDoorState() {
         let endpoint = resource + "/spaces/" + space
 
         RestManager.sharedInstance.makeJsonGetRequest(endpoint, params: nil, onCompletion: {
             json, err in
 
             if(err == nil){
-                return self.mapper.map(json);
+                self.doorState = self.mapper.map(json);
             }
 
             //TODO error handling
