@@ -4,7 +4,6 @@ import UIKit
 
 class DoorNavigationButtonController: NSObject {
 
-    private let doorState = DoorState()
     private let dsm = DoorStateModel()
     
     private let red = UIColor(red: 0.81, green: 0.12, blue: 0.18, alpha: 1.0)
@@ -20,7 +19,7 @@ class DoorNavigationButtonController: NSObject {
         let buttonClosed = getClosedText(vc)
         let buttonOpen = getOpenText(vc)
         
-        if doorState.open == true {
+        if dsm.isOpen {
             buttonClosed.title = buttonClosed.title! /*+ doorState.lastchange*/ + " h"
             vc.navigationItem.leftBarButtonItem = buttonOpen
         } else {
@@ -35,7 +34,7 @@ class DoorNavigationButtonController: NSObject {
         let buttonClosed = getClosedButton(vc)
         let buttonOpen = getOpenButton(vc)
         
-        if doorState.open == true {
+        if dsm.isOpen {
             vc.navigationItem.leftBarButtonItem = buttonOpen
         } else {
             vc.navigationItem.leftBarButtonItem = buttonClosed
