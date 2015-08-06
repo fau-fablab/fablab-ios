@@ -54,14 +54,14 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
             self.presentViewController(nav, animated: true, completion: nil)
         }else{
             cartModel.cancelChecoutProcess({ (err) -> Void in
-                println(self.cartModel.getStatus())
+                Debug.instance.log(self.cartModel.getStatus())
             })
         }
 
     }
     
     private func checkoutCodeScanned(notification:NSNotification) {
-        println("Got Notification from Scanner, code: \(notification.object)")
+        Debug.instance.log("Got Notification from Scanner, code: \(notification.object)")
         self.checkout(notification.object as! String)
     }
     
@@ -72,8 +72,8 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
             //Disable Bezahlen Button
             //Add button with cancel
             //Show pop up -> Bezahlen gehen 
-            
-            println("TODO UPDATE GUI")
+
+            Debug.instance.log("TODO UPDATE GUI")
         
             self.updateCheckoutButton()
 
@@ -110,7 +110,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         cartModel.checkStatus({
             error in
             //TODO Upate GUI / Message ...
-            println("TODO UPDATE GUI")
+            Debug.instance.log("TODO UPDATE GUI")
             
         })
     }

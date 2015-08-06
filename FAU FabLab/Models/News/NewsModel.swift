@@ -29,13 +29,14 @@ public class NewsModel: NSObject {
             RestManager.sharedInstance.makeJsonGetRequest(resource, params: nil, onCompletion: {
                 json, err in
                 if (err != nil) {
-                    println("ERROR! ", err);
+                    Debug.instance.log("Error while fetching news!")
                     onCompletion(err)
                 }
                 
                 if let news = self.mapper.mapArray(json) {
                     for tmp in news {
                         self.addNews(tmp)
+                        Debug.instance.log("Added news ! ")
                     }
                 }
                 

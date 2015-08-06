@@ -52,11 +52,11 @@ class CartToServerModel : NSObject{
             RestManager.sharedInstance.makeJsonPostRequest(resource, params: nil, onCompletion:  {
                 json, err in
                 if (err != nil) {
-                    println("ERROR! ", err);
+                    Debug.instane.log("ERROR! ", err);
                     onCompletion(err)
                 }
-                
-                println(json)
+
+                Debug.instane.log(json)
             
                 onCompletion(nil);
                 self.isLoading = false;
@@ -71,10 +71,10 @@ class CartToServerModel : NSObject{
             isLoading = true;
             RestManager.sharedInstance.makeJsonGetRequest(endpoint, params: nil, onCompletion: {
                 json, err in
-                println("GOT: \(json)")
+                Debug.instane.log("GOT: \(json)")
                 
                 if (err != nil) {
-                    println("ERROR! ", err);
+                    Debug.instane.log("ERROR! ", err);
                     onCompletion(err)
                 }
                 

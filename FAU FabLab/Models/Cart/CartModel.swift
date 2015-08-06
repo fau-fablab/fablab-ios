@@ -46,7 +46,7 @@ class CartModel : NSObject{
             RestManager.sharedInstance.makeJsonGetRequest(checkoutResource + "/cancelled/\(code)" , params: nil, onCompletion:  {
                 json, err in
                 if (err != nil) {
-                    println("ERROR! ", err)
+                    Debug.instance.log(err)
                     onCompletion(err)
                 }else{
                     self.cart.setStatus(Cart.CartStatus.CANCELLED)
@@ -67,7 +67,7 @@ class CartModel : NSObject{
             RestManager.sharedInstance.makeJsonGetRequest(cartResource + "/status/\(code)" , params: nil, onCompletion:  {
                 json, err in
                 if (err != nil) {
-                    println("ERROR! ", err)
+                    Debug.instance.log(err)
                     onCompletion(err)
                 }
                 //TODO Update Status
@@ -102,7 +102,7 @@ class CartModel : NSObject{
         let code = cart.cartCode as String!
         RestManager.sharedInstance.makeGetRequest("/checkout/paid/\(code)", params: nil, onCompletion: {
             json, err in
-            println("PAID! \(json)")
+            Debug.instance.log("PAID! \(json)")
         })
     }
     
@@ -110,7 +110,7 @@ class CartModel : NSObject{
         let code = cart.cartCode as String!
         RestManager.sharedInstance.makeGetRequest("/checkout/cancelled/\(code)", params: nil, onCompletion: {
             json, err in
-            println("CANCELLED! \(json)")
+            Debug.instance.log("CANCELLED! \(json)")
         })
     }
 }

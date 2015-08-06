@@ -58,7 +58,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func searchByBarcodeScanner(notification:NSNotification) {
-            println("Got Notification from Barcodescanner, productId: \(notification.object)")
+        Debug.instance.log("Got Notification from Barcodescanner, productId: \(notification.object)")
             model.searchProductById(notification.object as! String, onCompletion: { err in
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.tableView.reloadData()
