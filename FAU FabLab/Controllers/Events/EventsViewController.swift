@@ -70,7 +70,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         var time = ""
         if event.isOneDay {
-            time = event.startDateString + " - " + event.endDateString + " Uhr"
+            time = event.startTimeString + " - " + event.endTimeString + " Uhr"
         } else {
             time = event.startTimeString + " - "
                 + event.endDayString + ". " + event.endMonthString + ", "
