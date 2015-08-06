@@ -3,6 +3,9 @@ import Foundation
 import ObjectMapper
 import SwiftyJSON
 
+// INFO TO ALL: Check Cart Status before doing anything. 
+//              --> ONLY IF STATUS == Shopping -> ADD/CHANGE.... -> OTHERWISE there is a checkout process running!
+
 class Cart : NSObject{
     
     enum CartStatus : String{
@@ -37,7 +40,9 @@ class Cart : NSObject{
         return entries[position];
     }
     
-    //Methods for checkout process
+    /*                      Checkout process            */
+    
+    
     func setCode(code :String){
         self.cartCode = code
     }
@@ -45,6 +50,8 @@ class Cart : NSObject{
     func setStatus(status: CartStatus){
         self.status = status
     }
+    
+    
     
     
     func serialize() -> NSDictionary{

@@ -388,7 +388,7 @@
         <!--CheckoutCodeScanner-->
         <scene sceneID="1lz-eZ-5yh">
             <objects>
-                <viewController title="CheckoutCodeScanner" id="dAF-j1-LQU" customClass="CheckoutCodeScannerViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CheckoutCodeScanner" title="CheckoutCodeScanner" id="dAF-j1-LQU" customClass="CheckoutCodeScannerViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vL9-a9-Fdq"/>
                         <viewControllerLayoutGuide type="bottom" id="pOa-CB-OnX"/>
@@ -547,29 +547,14 @@
                                 <items>
                                     <navigationItem title="Warenkorb" id="9NT-gQ-6cG">
                                         <barButtonItem key="leftBarButtonItem" title="+ Produkt" id="cLP-YG-OvT"/>
-                                        <barButtonItem key="rightBarButtonItem" title="Bezahlen" id="mKw-50-bi8">
+                                        <barButtonItem key="rightBarButtonItem" title="Bezahlen / Abbrechen" id="mKw-50-bi8">
                                             <connections>
-                                                <action selector="stupidDummyTestMethod:" destination="ooQ-nD-6sq" id="IzQ-mw-w4I"/>
-                                                <segue destination="dAF-j1-LQU" kind="popoverPresentation" popoverAnchorBarButtonItem="mKw-50-bi8" id="nAX-7n-unC">
-                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                                </segue>
+                                                <action selector="checkoutCancelButtonTouched:" destination="ooQ-nD-6sq" id="hCK-HT-UZy"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="Cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Cw4-Ky-LeW">
-                                <rect key="frame" x="0.0" y="109" width="600" height="434"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="uIh-DG-Ipf">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uIh-DG-Ipf" id="15d-Lz-t4P">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Q8-vz-PAr">
                                 <rect key="frame" x="147" y="71" width="61" height="30"/>
                                 <state key="normal" title="Status">
@@ -607,6 +592,18 @@
                                     <action selector="SCAN:" destination="ooQ-nD-6sq" eventType="touchUpInside" id="ZZp-Ak-NTn"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="Cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Cw4-Ky-LeW">
+                                <rect key="frame" x="0.0" y="109" width="600" height="434"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="uIh-DG-Ipf">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uIh-DG-Ipf" id="15d-Lz-t4P">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -617,6 +614,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Warenkorb" image="first" id="kBk-Ta-hCe"/>
                     <connections>
+                        <outlet property="checkoutButton" destination="mKw-50-bi8" id="PGj-Nl-Ual"/>
                         <outlet property="tableView" destination="Cw4-Ky-LeW" id="pDX-ON-wsu"/>
                     </connections>
                 </viewController>

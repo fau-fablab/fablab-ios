@@ -2,11 +2,14 @@ import UIKit
 import Foundation
 
 
+
 class CartViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
     
+    
+    @IBOutlet weak var checkoutButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     private var cartModel = CartModel()
-    
+    private var defaultFontColor: UIColor?
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -18,6 +21,9 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
+        defaultFontColor = checkoutButton.tintColor
+        self.updateCheckoutButton()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -37,6 +43,23 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     
     /*                      Checkout process            */
     
+    
+    @IBAction func checkoutCancelButtonTouched(sender: AnyObject) {
+        if(cartModel.isShopping()){
+            var popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("CheckoutCodeScanner") as! UIViewController
+            var nav = UINavigationController(rootViewController: popoverContent)
+            nav.modalPresentationStyle = UIModalPresentationStyle.Popover
+            var popover = nav.popoverPresentationController
+        
+            self.presentViewController(nav, animated: true, completion: nil)
+        }else{
+            cartModel.cancelChecoutProcess({ (err) -> Void in
+                println(self.cartModel.getStatus())
+            })
+        }
+
+    }
+    
     private func checkoutCodeScanned(notification:NSNotification) {
         println("Got Notification from Scanner, code: \(notification.object)")
         self.checkout(notification.object as! String)
@@ -46,11 +69,28 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     private func checkout(code: String){
         cartModel.sendCartToServer(code, onCompletion: { error in
             //TODO Upate GUI / Message ...
+            //Disable Bezahlen Button
+            //Add button with cancel
+            //Show pop up -> Bezahlen gehen 
+            
             println("TODO UPDATE GUI")
+        
+            self.updateCheckoutButton()
+
         })
         
     }
     
+    
+    func updateCheckoutButton(){
+        if(self.cartModel.isShopping()){
+            self.checkoutButton.title = "Bezahlen"
+            self.checkoutButton.tintColor = defaultFontColor
+        }else{
+            self.checkoutButton.title = "Abbrechen"
+            self.checkoutButton.tintColor = UIColor.redColor()
+        }
+    }
     
     /*                      DEV BUTTONS                 */
     

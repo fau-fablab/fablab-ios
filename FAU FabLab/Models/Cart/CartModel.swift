@@ -5,12 +5,23 @@ typealias updateCartCheckoutStatus = (NSError?) -> Void;
 
 class CartModel : NSObject{
     
-    private let resource = "/carts"
+    private let cartResource = "/carts"
+    private let checkoutResource = "/checkout"
     private var isLoading = false;
     private var cart = Cart()
 
     
     /*                      Checkout process              */
+    func getStatus()-> Cart.CartStatus{
+        return cart.status
+    }
+    
+    func isShopping() -> Bool{
+        if(cart.status == Cart.CartStatus.SHOPPING){
+            return true
+        }
+        return false
+    }
     
     func sendCartToServer(code: String, onCompletion: updateCartCheckoutStatus){
         cart.setCode(code)
@@ -19,25 +30,41 @@ class CartModel : NSObject{
         let cartAsDict = cart.serialize()
         if(!isLoading){
             isLoading = true
-            RestManager.sharedInstance.makeJsonPostRequest(resource, params: cartAsDict, onCompletion:  {
+            RestManager.sharedInstance.makeJsonPostRequest(cartResource, params: cartAsDict, onCompletion:  {
                 json, err in
-                if (err != nil) {
-                    println("ERROR! ", err)
-                    onCompletion(err)
-                }
-                println(json)
-                
                 onCompletion(nil)
             })
             isLoading = false
         }
     }
     
+    
+    func cancelChecoutProcess(onCompletion: updateCartCheckoutStatus){
+        let code = cart.cartCode as String!
+        if(!isLoading){
+            isLoading = true
+            RestManager.sharedInstance.makeJsonGetRequest(checkoutResource + "/cancelled/\(code)" , params: nil, onCompletion:  {
+                json, err in
+                if (err != nil) {
+                    println("ERROR! ", err)
+                    onCompletion(err)
+                }else{
+                    self.cart.setStatus(Cart.CartStatus.CANCELLED)
+                }
+                
+                onCompletion(nil)
+            })
+            isLoading = false
+        }
+
+    }
+    
+    
     func checkStatus(onCompletion: updateCartCheckoutStatus){
         let code = cart.cartCode as String!
         if(!isLoading){
             isLoading = true
-            RestManager.sharedInstance.makeJsonGetRequest(resource + "/status/\(code)" , params: nil, onCompletion:  {
+            RestManager.sharedInstance.makeJsonGetRequest(cartResource + "/status/\(code)" , params: nil, onCompletion:  {
                 json, err in
                 if (err != nil) {
                     println("ERROR! ", err)
