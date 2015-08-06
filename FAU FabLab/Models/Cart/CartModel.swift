@@ -19,14 +19,16 @@ class CartModel : NSObject{
     
     func sendCartToServer(code: String){
         cart.setCode(code)
+        self.cart.setStatus(Cart.CartStatus.PENDING)
         let cartAsDict = cart.serialize()
         if(!isLoading){
             isLoading = true
             RestManager.sharedInstance.makeJsonPostRequest(cartResource, params: cartAsDict, onCompletion:  {
                 json, err, statusCode in
                 if (err == nil) {
-                    self.cart.setStatus(Cart.CartStatus.PENDING)
+                    
                     self.notifyControllerAboutStatusChange()
+                    var timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("checkCheckoutStatus:"), userInfo: nil, repeats: true)
                 }
             })
             isLoading = false
@@ -50,10 +52,35 @@ class CartModel : NSObject{
         }
     }
     
-    private func checkCheckoutStatus(){
-        //TODO Pull status from server
-        
-        //Got update --> self.notifyControllerAboutStatusChange() 
+    func checkCheckoutStatus(timer: NSTimer!){
+        let code = cart.cartCode as String!
+        RestManager.sharedInstance.makeJsonGetRequest(cartResource + "/status/\(code)", params: nil, onCompletion: {
+            json, err, statusCode in
+            
+            if let newStatus = Cart.CartStatus(rawValue: json as! String) {
+                
+                if (newStatus == Cart.CartStatus.PENDING){
+                    return
+                }
+                
+                timer.invalidate()
+                self.cart.setStatus(newStatus)
+
+                switch(newStatus){
+                    case Cart.CartStatus.PAID:
+                        self.checkoutSuccessfulyPaid()
+                    case Cart.CartStatus.CANCELLED:
+                        self.checkoutCancelledOrFailed()
+                    case Cart.CartStatus.FAILED:
+                        self.checkoutCancelledOrFailed()
+                    default: break
+                }
+
+            }
+            
+            println(json)
+        })
+        //Got update --> self.notifyControllerAboutStatusChange()
         
         //Paid: self.cartWasSuccessfulyPaid()
         //Cancelled: self.checkoutCancelledOrFailed()
@@ -61,6 +88,8 @@ class CartModel : NSObject{
     }
     
     func checkoutSuccessfulyPaid(){
+        self.notifyControllerAboutStatusChange()
+        
         //TODO
         //Put to archive or just delete all items/ stati?
     }
