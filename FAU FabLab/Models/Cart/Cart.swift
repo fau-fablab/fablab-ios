@@ -40,8 +40,8 @@ class Cart : NSObject{
         return entries[position];
     }
     
-    /*                      Checkout process            */
     
+    /*                      Checkout process            */
     
     func setCode(code :String){
         self.cartCode = code
@@ -50,9 +50,6 @@ class Cart : NSObject{
     func setStatus(status: CartStatus){
         self.status = status
     }
-    
-    
-    
     
     func serialize() -> NSDictionary{
         var items = [NSDictionary]()
@@ -67,6 +64,5 @@ class Cart : NSObject{
         ]
         return cart
     }
-    
     
 }

@@ -54,8 +54,9 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         if let newStatus = Cart.CartStatus(rawValue: notification.object as! String) {
             switch(newStatus){
                 case Cart.CartStatus.SHOPPING:
-                    //Maybe not needed?
-                    print("SHOPPING")
+                    //cart is still @shopping -> error happend -> Code was wrong
+                    let alertView = UIAlertView(title: "Fehler", message: "Der gescannte Code wurde nicht akzeptiert. Bitte den Code vom Kassenterminal scannen.", delegate: nil, cancelButtonTitle: "OK")
+                    alertView.show()
                 
                 case Cart.CartStatus.PENDING:
                     var popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("PayOrCancelView") as! PayOrCancelViewController

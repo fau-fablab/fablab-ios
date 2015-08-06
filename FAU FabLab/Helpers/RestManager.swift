@@ -37,7 +37,6 @@ class RestManager {
                     Debug.instance.log(error)
                 }
                 onCompletion(json, error);
-                
         }
     }
     

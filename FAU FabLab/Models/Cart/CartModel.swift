@@ -16,7 +16,6 @@ class CartModel : NSObject{
     
     /*                      Checkout process              */
 
-    
     func sendCartToServer(code: String){
         cart.setCode(code)
         self.cart.setStatus(Cart.CartStatus.PENDING)
@@ -24,11 +23,13 @@ class CartModel : NSObject{
         if(!isLoading){
             isLoading = true
             RestManager.sharedInstance.makePostRequest(cartResource, params: cartAsDict, onCompletion:  {
-                json, err in
-                if (err == nil) {
-                    
+                json, error in
+                if (error == nil) {
                     self.notifyControllerAboutStatusChange()
                     var timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("checkCheckoutStatus:"), userInfo: nil, repeats: true)
+                }else{
+                    self.cart.setStatus(Cart.CartStatus.SHOPPING)
+                    self.notifyControllerAboutStatusChange()
                 }
             })
             isLoading = false
@@ -70,10 +71,7 @@ class CartModel : NSObject{
                         self.checkoutCancelledOrFailed()
                     default: break
                 }
-
             }
-            
-            println(json)
         })
     }
     
@@ -82,12 +80,12 @@ class CartModel : NSObject{
         
         //TODO
         //Put to archive or just delete all items/ stati?
+        cart = Cart()
     }
     
     func checkoutCancelledOrFailed(){
         self.notifyControllerAboutStatusChange()
         cart.setStatus(Cart.CartStatus.SHOPPING)
-        
     }
     
     
