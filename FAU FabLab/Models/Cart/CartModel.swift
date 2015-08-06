@@ -9,7 +9,7 @@ class CartModel : NSObject{
     private let checkoutResource = "/checkout"
     private var isLoading = false;
     private var cart = Cart()
-
+    
     
     /*                      Checkout process              */
     func getStatus()-> Cart.CartStatus{
@@ -23,7 +23,7 @@ class CartModel : NSObject{
         return false
     }
     
-    func sendCartToServer(code: String, onCompletion: updateCartCheckoutStatus){
+    func sendCartToServer(code: String){
         cart.setCode(code)
         cart.setStatus(Cart.CartStatus.PENDING)
         
@@ -32,7 +32,8 @@ class CartModel : NSObject{
             isLoading = true
             RestManager.sharedInstance.makeJsonPostRequest(cartResource, params: cartAsDict, onCompletion:  {
                 json, err in
-                onCompletion(nil)
+                NSNotificationCenter.defaultCenter().postNotificationName("CheckoutStatusChangedNotification", object: json)
+                
             })
             isLoading = false
         }
@@ -43,12 +44,9 @@ class CartModel : NSObject{
         let code = cart.cartCode as String!
         if(!isLoading){
             isLoading = true
-            RestManager.sharedInstance.makeJsonGetRequest(checkoutResource + "/cancelled/\(code)" , params: nil, onCompletion:  {
+            RestManager.sharedInstance.makeJsonPostRequest(checkoutResource + "/cancelled/\(code)" , params: nil, onCompletion:  {
                 json, err in
-                if (err != nil) {
-                    println("ERROR! ", err)
-                    onCompletion(err)
-                }else{
+                if (err == nil) {
                     self.cart.setStatus(Cart.CartStatus.CANCELLED)
                 }
                 
@@ -56,7 +54,7 @@ class CartModel : NSObject{
             })
             isLoading = false
         }
-
+        
     }
     
     
@@ -66,16 +64,10 @@ class CartModel : NSObject{
             isLoading = true
             RestManager.sharedInstance.makeJsonGetRequest(cartResource + "/status/\(code)" , params: nil, onCompletion:  {
                 json, err in
-                if (err != nil) {
-                    println("ERROR! ", err)
-                    onCompletion(err)
-                }
                 //TODO Update Status
                 //cart.setStatus() -> Cart.CartStatus.PENDING .... println(json)
                 
-                
-                
-                onCompletion(nil)
+                onCompletion(err)
             })
             isLoading = false
         }
@@ -98,19 +90,16 @@ class CartModel : NSObject{
         cart.addEntry(e2)
     }
     
-    func triggerCartWasPaid(){
+    func triggerCartWasPaid(onCompletion: updateCartCheckoutStatus){
         let code = cart.cartCode as String!
-        RestManager.sharedInstance.makeGetRequest("/checkout/paid/\(code)", params: nil, onCompletion: {
+        RestManager.sharedInstance.makeJsonPostRequest("/checkout/paid/\(code)", params: nil, onCompletion: {
             json, err in
-            println("PAID! \(json)")
+            if (err == nil) {
+                self.cart.setStatus(Cart.CartStatus.PAID)
+            }
+            
+            onCompletion(nil)
         })
     }
     
-    func triggerCartWasCancelled(){
-        let code = cart.cartCode as String!
-        RestManager.sharedInstance.makeGetRequest("/checkout/cancelled/\(code)", params: nil, onCompletion: {
-            json, err in
-            println("CANCELLED! \(json)")
-        })
-    }
 }

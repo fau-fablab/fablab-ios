@@ -551,15 +551,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Q8-vz-PAr">
-                                <rect key="frame" x="147" y="71" width="61" height="30"/>
-                                <state key="normal" title="Status">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="STATUS:" destination="ooQ-nD-6sq" eventType="touchUpInside" id="doU-vB-MFL"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfr-h5-Cl6">
                                 <rect key="frame" x="216" y="50" width="46" height="30"/>
                                 <state key="normal" title="Pay">
@@ -567,6 +558,7 @@
                                 </state>
                                 <connections>
                                     <action selector="PAID:" destination="ooQ-nD-6sq" eventType="touchUpInside" id="pCh-Z3-zN2"/>
+                                    <action selector="dummyPayButtonTouched:" destination="ooQ-nD-6sq" eventType="touchUpInside" id="zQR-qi-bU3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abo-eL-dWn">
@@ -577,6 +569,7 @@
                                 <connections>
                                     <action selector="CANCELLED:" destination="ooQ-nD-6sq" eventType="touchUpInside" id="Nuc-uT-P21"/>
                                     <action selector="PAID:" destination="ooQ-nD-6sq" eventType="touchUpInside" id="dd6-CO-4Rt"/>
+                                    <action selector="dummyCancelButtonTouched:" destination="ooQ-nD-6sq" eventType="touchUpInside" id="wC5-Dl-Yad"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkU-C6-8nA">
@@ -585,7 +578,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="SCAN:" destination="ooQ-nD-6sq" eventType="touchUpInside" id="ZZp-Ak-NTn"/>
+                                    <action selector="DummyScanButtonTouched:" destination="ooQ-nD-6sq" eventType="touchUpInside" id="5YY-Qn-oUr"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="Cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Cw4-Ky-LeW">
@@ -600,16 +593,23 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="4jY-z6-WtJ">
+                                <rect key="frame" x="161" y="71" width="20" height="20"/>
+                                <color key="color" red="1" green="0.29711492610000001" blue="0.22068837029999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Agt-YQ-7T9" firstAttribute="leading" secondItem="hqQ-J3-3kM" secondAttribute="leading" id="1k4-zq-TQV"/>
+                            <constraint firstAttribute="centerY" secondItem="4jY-z6-WtJ" secondAttribute="centerY" id="FlI-Uz-dRM"/>
+                            <constraint firstAttribute="centerX" secondItem="4jY-z6-WtJ" secondAttribute="centerX" id="QyC-iq-7ea"/>
                             <constraint firstAttribute="trailing" secondItem="Agt-YQ-7T9" secondAttribute="trailing" id="S0n-j2-6sx"/>
                             <constraint firstItem="Agt-YQ-7T9" firstAttribute="top" secondItem="f20-An-xKa" secondAttribute="bottom" id="zhs-gn-6ae"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Warenkorb" image="first" id="kBk-Ta-hCe"/>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="4jY-z6-WtJ" id="mUc-eS-Ml1"/>
                         <outlet property="checkoutButton" destination="mKw-50-bi8" id="PGj-Nl-Ual"/>
                         <outlet property="tableView" destination="Cw4-Ky-LeW" id="pDX-ON-wsu"/>
                     </connections>

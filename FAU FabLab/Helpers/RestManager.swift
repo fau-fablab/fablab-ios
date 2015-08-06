@@ -30,7 +30,7 @@ class RestManager {
             .responseJSON { (req, res, json, error) in
                 println("GET: \(self.devApiUrl+resource) JSONAnswer: \(json) StatusCode: \(res!.statusCode)");
                 onCompletion(json, error);
-            
+                
         }
     }
     
@@ -43,7 +43,7 @@ class RestManager {
         }
     }
     
-    func makeJsonPostRequest(resource: String, params: NSDictionary, onCompletion : JsonServiceResponse) {
+    func makeJsonPostRequest(resource: String, params: NSDictionary?, onCompletion : JsonServiceResponse) {
         manager.request(.POST, devApiUrl+resource, parameters: params as? [String : AnyObject], encoding: .JSON)
             .responseJSON { (req, res, json, error) in
                 println("POST: \(self.devApiUrl+resource) JSONAnswer: \(json) StatusCode: \(res!.statusCode)");
@@ -56,7 +56,5 @@ class RestManager {
         //                println(JSON)
         //        }
     }
-    
-    
     
 }
