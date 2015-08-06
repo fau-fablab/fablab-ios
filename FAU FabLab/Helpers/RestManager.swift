@@ -2,6 +2,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
+typealias ServiceResponse = (String?, NSError?) -> Void
 typealias JsonServiceResponse = (AnyObject?, NSError?) -> Void
 
 class RestManager {
@@ -40,9 +41,10 @@ class RestManager {
         }
     }
     
-    func makeGetRequest(resource: String, params: [String : String]?, onCompletion : JsonServiceResponse) {
+    func makeGetRequest(resource: String, params: [String : String]?, onCompletion : ServiceResponse) {
         manager.request(.GET, devApiUrl+resource, parameters: params)
             .validate(statusCode: 200..<300)
+            .validate(contentType: ["text/plain"])
             .responseString { (req, res, answer, error) in
                 Debug.instance.log("GET: \(self.devApiUrl+resource) Answer: \(answer) StatusCode: \(res!.statusCode)");
                 if(error != nil){
@@ -69,6 +71,20 @@ class RestManager {
         //            .responseJSON {(request, response, JSON, error) in
         //                println(JSON)
         //        }
+    }
+
+    func makePostRequest(resource: String, params: NSDictionary?, onCompletion : ServiceResponse) {
+        manager.request(.POST, devApiUrl + resource, parameters: params as? [String:AnyObject], encoding: .JSON)
+        .validate(statusCode: 200 ..< 300)
+        .validate(contentType: ["text/plain"])
+        .responseString {
+            (req, res, answer, error) in
+            Debug.instance.log("POST: \(self.devApiUrl + resource) Answer: \(answer) StatusCode: \(res!.statusCode)");
+            if (error != nil) {
+                Debug.instance.log(error)
+            }
+            onCompletion(answer, error)
+        }
     }
     
 }
