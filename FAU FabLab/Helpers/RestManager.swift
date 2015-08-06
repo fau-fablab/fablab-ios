@@ -28,7 +28,7 @@ class RestManager {
     func makeJsonGetRequest(resource: String, params: [String : String]?, onCompletion : JsonServiceResponse) {
         manager.request(.GET, devApiUrl+resource, parameters: params)
             .responseJSON { (req, res, json, error) in
-                println("GET: \(self.devApiUrl+resource) JSONAnswer: \(json) StatusCode: \(res!.statusCode)");
+                Debug.instance.log("GET: \(self.devApiUrl+resource) JSONAnswer: \(json) StatusCode: \(res!.statusCode)");
                 onCompletion(json, error);
                 
         }
@@ -37,7 +37,7 @@ class RestManager {
     func makeGetRequest(resource: String, params: [String : String]?, onCompletion : JsonServiceResponse) {
         manager.request(.GET, devApiUrl+resource, parameters: params)
             .responseString { (req, res, answer, error) in
-                println("GET: \(self.devApiUrl+resource) Answer: \(answer) StatusCode: \(res!.statusCode)");
+                Debug.instance.log("GET: \(self.devApiUrl+resource) Answer: \(answer) StatusCode: \(res!.statusCode)");
                 onCompletion(answer, error);
                 
         }
@@ -46,7 +46,7 @@ class RestManager {
     func makeJsonPostRequest(resource: String, params: NSDictionary?, onCompletion : JsonServiceResponse) {
         manager.request(.POST, devApiUrl+resource, parameters: params as? [String : AnyObject], encoding: .JSON)
             .responseJSON { (req, res, json, error) in
-                println("POST: \(self.devApiUrl+resource) JSONAnswer: \(json) StatusCode: \(res!.statusCode)");
+                Debug.instance.log("POST: \(self.devApiUrl+resource) JSONAnswer: \(json) StatusCode: \(res!.statusCode)");
                 onCompletion(json, error)
         }
         

@@ -40,14 +40,14 @@ class ProductsearchModel : NSObject{
             RestManager.sharedInstance.makeJsonGetRequest(endpoint, params: params, onCompletion: {
                 json, err in
                 if (err != nil) {
-                        println("ERROR! ", err);
+                    Debug.instance.log(err);
                         onCompletion(err)
                 }
         
                 if let productList = self.mapper.mapArray(json) {
                     for tmp in productList {
                         self.addProduct(tmp)
-                        println(tmp.name)
+                        Debug.instance.log(tmp.name!)
                     }
                 }
         
@@ -64,14 +64,14 @@ class ProductsearchModel : NSObject{
         if(!isLoading){
             RestManager.sharedInstance.makeJsonGetRequest(endpoint, params: params, onCompletion: {
                 json, err in
-                println("GOT: \(json)")
+                Debug.instance.log("GOT: \(json)")
                 
                 if (err != nil) {
-                    println("ERROR! ", err);
+                    Debug.instance.log(err);
                     onCompletion(err)
                 }
                 if let product = self.mapper.map(json) {
-                    println(product)
+                    Debug.instance.log(product)
                 }
                 
                 

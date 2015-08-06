@@ -33,7 +33,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         model.fetchEvents(
             onCompletion:{ error in
                 if(error != nil){
-                    println("Error!");
+                    Debug.instance.log("Error!");
                 }
                 dispatch_async(dispatch_get_main_queue(), {
                     self.tableView.reloadData()
@@ -49,7 +49,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        println(segue.identifier)
+        Debug.instance.log(segue.identifier)
         if segue.identifier == "EventsDetailSegue" {
             let destination = segue.destinationViewController as? EventsDetailsViewController
             

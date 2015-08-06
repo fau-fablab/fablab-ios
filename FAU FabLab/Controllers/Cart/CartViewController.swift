@@ -71,7 +71,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
             self.presentViewController(nav, animated: true, completion: nil)
         }else{
             cartModel.cancelChecoutProcess({ (err) -> Void in
-                println(self.cartModel.getStatus())
+                Debug.instance.log(self.cartModel.getStatus())
             })
         }
     }
