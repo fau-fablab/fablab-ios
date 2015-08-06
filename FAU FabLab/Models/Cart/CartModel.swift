@@ -23,7 +23,7 @@ class CartModel : NSObject{
         if(!isLoading){
             isLoading = true
             RestManager.sharedInstance.makeJsonPostRequest(cartResource, params: cartAsDict, onCompletion:  {
-                json, err in
+                json, err, statusCode in
                 if (err == nil) {
                     self.cart.setStatus(Cart.CartStatus.PENDING)
                     self.notifyControllerAboutStatusChange()
@@ -34,12 +34,12 @@ class CartModel : NSObject{
     }
     
     
-    func cancelCheckoutProcess(onCompletion: updatePayOrCancelView){
+    func cancelCheckoutProcessByUser(onCompletion: updatePayOrCancelView){
         let code = cart.cartCode as String!
         if(!isLoading){
             isLoading = true
             RestManager.sharedInstance.makeJsonPostRequest(checkoutResource + "/cancelled/\(code)" , params: nil, onCompletion:  {
-                json, err in
+                json, err, statusCode in
                 if (err == nil) {
                     self.cart.setStatus(Cart.CartStatus.CANCELLED)
                     self.notifyControllerAboutStatusChange()
@@ -48,7 +48,6 @@ class CartModel : NSObject{
             })
             isLoading = false
         }
-        
     }
     
     private func checkCheckoutStatus(){
@@ -67,8 +66,9 @@ class CartModel : NSObject{
     }
     
     func checkoutCancelledOrFailed(){
-        //TODO
-        //Put to archive or just delete all items/ stati?
+        self.notifyControllerAboutStatusChange()
+        cart.setStatus(Cart.CartStatus.SHOPPING)
+        
     }
     
     
@@ -99,7 +99,7 @@ class CartModel : NSObject{
         if(!isLoading){
             isLoading = true
             RestManager.sharedInstance.makeJsonPostRequest(checkoutResource + "/paid/\(code)" , params: nil, onCompletion:  {
-                json, err in
+                json, err, statusCode in
                 if (err == nil) {
                     self.cart.setStatus(Cart.CartStatus.PAID)
                     self.notifyControllerAboutStatusChange()

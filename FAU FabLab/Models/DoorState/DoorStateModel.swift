@@ -13,7 +13,7 @@ class DoorStateModel : NSObject {
         let endpoint = resource + "/spaces/" + space
 
         RestManager.sharedInstance.makeJsonGetRequest(endpoint, params: nil, onCompletion: {
-            json, err in
+            json, err, statusCode in
 
             if(err == nil){
                 self.doorState = self.mapper.map(json);

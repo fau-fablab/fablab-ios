@@ -9,7 +9,7 @@ class PayOrCancelViewController : UIViewController{
         
     }
     @IBAction func cancelButtonTouched(sender: AnyObject) {
-        CartModel.sharedInstance.cancelCheckoutProcess({
+        CartModel.sharedInstance.cancelCheckoutProcessByUser({
             self.dismissViewControllerAnimated(true, completion:nil)
         })
     }

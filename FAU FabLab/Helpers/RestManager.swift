@@ -1,7 +1,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
-typealias JsonServiceResponse = (AnyObject?, NSError?) -> Void
+typealias JsonServiceResponse = (AnyObject?, NSError?, Int) -> Void
 
 class RestManager {
     
@@ -29,7 +29,7 @@ class RestManager {
         manager.request(.GET, devApiUrl+resource, parameters: params)
             .responseJSON { (req, res, json, error) in
                 Debug.instance.log("GET: \(self.devApiUrl+resource) JSONAnswer: \(json) StatusCode: \(res!.statusCode)");
-                onCompletion(json, error);
+                onCompletion(json, error,res!.statusCode);
                 
         }
     }
@@ -38,7 +38,7 @@ class RestManager {
         manager.request(.GET, devApiUrl+resource, parameters: params)
             .responseString { (req, res, answer, error) in
                 Debug.instance.log("GET: \(self.devApiUrl+resource) Answer: \(answer) StatusCode: \(res!.statusCode)");
-                onCompletion(answer, error);
+                onCompletion(answer, error,res!.statusCode);
                 
         }
     }
@@ -47,7 +47,7 @@ class RestManager {
         manager.request(.POST, devApiUrl+resource, parameters: params as? [String : AnyObject], encoding: .JSON)
             .responseJSON { (req, res, json, error) in
                 Debug.instance.log("POST: \(self.devApiUrl+resource) JSONAnswer: \(json) StatusCode: \(res!.statusCode)");
-                onCompletion(json, error)
+                onCompletion(json, error, res!.statusCode)
         }
         
         //Can be used to debug the request...
