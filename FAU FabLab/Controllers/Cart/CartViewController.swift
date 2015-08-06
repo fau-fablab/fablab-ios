@@ -10,9 +10,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var tableView: UITableView!
    
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
-    private var cartModel = CartModel()
-    private var defaultFontColor: UIColor?
-    
+    private var cartModel = CartModel.sharedInstance
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -26,9 +24,6 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
-        defaultFontColor = checkoutButton.tintColor
-        self.updateCheckoutButton()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -49,43 +44,46 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     
     
 
-    //Observeable from Scanner
+    //Observer -> Scanner
     func checkoutCodeScanned(notification:NSNotification) {
         println("Got Notification from Scanner, code: \(notification.object)")
         cartModel.sendCartToServer(notification.object as! String)
     }
     
-    //Observeable from Scanner
+    //Observer -> Status changed
     func checkoutStatusChanged(notification:NSNotification) {
         println("Got Notification from checkoutModel \(notification.object)")
+        if let newStatus = Cart.CartStatus(rawValue: notification.object as! String) {
+            switch(newStatus){
+                case Cart.CartStatus.SHOPPING:
+                    //Maybe not needed?
+                    print("SHOPPING")
+                
+                case Cart.CartStatus.PENDING:
+                    var popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("PayOrCancelView") as! PayOrCancelViewController
+                    var nav = UINavigationController(rootViewController: popoverContent)
+                    nav.modalPresentationStyle = UIModalPresentationStyle.Popover
+                    var popover = nav.popoverPresentationController
+                    self.presentViewController(nav, animated: true, completion: nil)
+              
+                case Cart.CartStatus.PAID:
+                    let alertView = UIAlertView(title: "Bezahlt", message: "Ihr Warenkorb wurde erfolgreich bezahlt", delegate: nil, cancelButtonTitle: "OK")
+                    alertView.show()
+                
+                case Cart.CartStatus.CANCELLED:
+                    let alertView = UIAlertView(title: "Abgebrochen", message: "Bezahlvorgang wurde abgebrochen", delegate: nil, cancelButtonTitle: "OK")
+                    alertView.show()
+                
+                case Cart.CartStatus.FAILED:
+                    let alertView = UIAlertView(title: "Fehlgeschlagen", message: "Bezahlvorgang ist Fehlgeschlagen", delegate: nil, cancelButtonTitle: "OK")
+                    alertView.show()
+                
+            }
+        }
         disableSpinner()
     }
     
-    @IBAction func checkoutCancelButtonTouched(sender: AnyObject) {
-        if(cartModel.isShopping()){
-            var popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("CheckoutCodeScanner") as! UIViewController
-            var nav = UINavigationController(rootViewController: popoverContent)
-            nav.modalPresentationStyle = UIModalPresentationStyle.Popover
-            var popover = nav.popoverPresentationController
-            
-            self.presentViewController(nav, animated: true, completion: nil)
-        }else{
-            cartModel.cancelChecoutProcess({ (err) -> Void in
-                Debug.instance.log(self.cartModel.getStatus())
-            })
-        }
-    }
 
-    func updateCheckoutButton(){
-        if(self.cartModel.isShopping()){
-            self.checkoutButton.title = "Bezahlen"
-            self.checkoutButton.tintColor = defaultFontColor
-        }else{
-            self.checkoutButton.title = "Abbrechen"
-            self.checkoutButton.tintColor = UIColor.redColor()
-        }
-    }
-    
     func enableSpinner(){
         activityIndicatorView.startAnimating();
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()
@@ -111,9 +109,6 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
 
     }
 
-    @IBAction func dummyPayButtonTouched(sender: AnyObject) {
-    }
-    @IBAction func dummyCancelButtonTouched(sender: AnyObject) {
-    }
+    
 
 }

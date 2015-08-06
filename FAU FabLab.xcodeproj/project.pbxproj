@@ -22,6 +22,7 @@
 		8419B6101B6F6050000275A8 /* CheckoutCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8419B60F1B6F6050000275A8 /* CheckoutCodeScannerViewController.swift */; };
 		8429B79A1B739C6D004C7DA0 /* RSBarcodes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DC93121B669E0100981977 /* RSBarcodes.framework */; };
 		8429B79B1B739C6D004C7DA0 /* RSBarcodes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84DC93121B669E0100981977 /* RSBarcodes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		84F53FEE1B73DD24008FB605 /* PayOrCancelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F53FED1B73DD24008FB605 /* PayOrCancelViewController.swift */; };
 		92078EB71B6E270E00A21AD9 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92078EB61B6E270E00A21AD9 /* Product.swift */; };
 		92078EB91B6E293400A21AD9 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92078EB81B6E293400A21AD9 /* Location.swift */; };
 		92078EBB1B6E29B200A21AD9 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92078EBA1B6E29B200A21AD9 /* Category.swift */; };
@@ -93,6 +94,7 @@
 		50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCustomCell.swift; sourceTree = "<group>"; };
 		8419B60F1B6F6050000275A8 /* CheckoutCodeScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutCodeScannerViewController.swift; sourceTree = "<group>"; };
 		84DC93121B669E0100981977 /* RSBarcodes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RSBarcodes.framework; path = Carthage/Build/iOS/RSBarcodes.framework; sourceTree = "<group>"; };
+		84F53FED1B73DD24008FB605 /* PayOrCancelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayOrCancelViewController.swift; sourceTree = "<group>"; };
 		92078EB61B6E270E00A21AD9 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		92078EB81B6E293400A21AD9 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		92078EBA1B6E29B200A21AD9 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				92C2F3141B7399AC0086481B /* CartViewController.swift */,
+				84F53FED1B73DD24008FB605 /* PayOrCancelViewController.swift */,
 			);
 			path = Cart;
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				927901E21B6D3F6300F95B09 /* NewsViewController.swift in Sources */,
 				92078EBB1B6E29B200A21AD9 /* Category.swift in Sources */,
 				35CE1B736F661DCF4D7020F6 /* Uom.swift in Sources */,
+				84F53FEE1B73DD24008FB605 /* PayOrCancelViewController.swift in Sources */,
 				35CE1DB996BC6DE917A5E446 /* DoorState.swift in Sources */,
 				35CE1E13F0E8E25DBCE8E9C9 /* DoorStateModel.swift in Sources */,
 				35CE1DD759134EC89DBD0D29 /* Debug.swift in Sources */,

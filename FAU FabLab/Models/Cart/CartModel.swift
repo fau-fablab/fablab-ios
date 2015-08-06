@@ -1,7 +1,7 @@
 import Foundation
 
 
-typealias updateCartCheckoutStatus = (NSError?) -> Void;
+typealias updatePayOrCancelView = (Void) -> Void;
 
 class CartModel : NSObject{
     
@@ -9,38 +9,32 @@ class CartModel : NSObject{
     private let checkoutResource = "/checkout"
     private var isLoading = false;
     private var cart = Cart()
+    static let sharedInstance = CartModel()
+    
+    
     
     
     /*                      Checkout process              */
-    func getStatus()-> Cart.CartStatus{
-        return cart.status
-    }
-    
-    func isShopping() -> Bool{
-        if(cart.status == Cart.CartStatus.SHOPPING){
-            return true
-        }
-        return false
-    }
+
     
     func sendCartToServer(code: String){
         cart.setCode(code)
-        cart.setStatus(Cart.CartStatus.PENDING)
-        
         let cartAsDict = cart.serialize()
         if(!isLoading){
             isLoading = true
             RestManager.sharedInstance.makeJsonPostRequest(cartResource, params: cartAsDict, onCompletion:  {
                 json, err in
-                NSNotificationCenter.defaultCenter().postNotificationName("CheckoutStatusChangedNotification", object: json)
-                
+                if (err == nil) {
+                    self.cart.setStatus(Cart.CartStatus.PENDING)
+                    self.notifyControllerAboutStatusChange()
+                }
             })
             isLoading = false
         }
     }
     
     
-    func cancelChecoutProcess(onCompletion: updateCartCheckoutStatus){
+    func cancelCheckoutProcess(onCompletion: updatePayOrCancelView){
         let code = cart.cartCode as String!
         if(!isLoading){
             isLoading = true
@@ -48,31 +42,41 @@ class CartModel : NSObject{
                 json, err in
                 if (err == nil) {
                     self.cart.setStatus(Cart.CartStatus.CANCELLED)
+                    self.notifyControllerAboutStatusChange()
+                    onCompletion()
                 }
-                
-                onCompletion(nil)
             })
             isLoading = false
         }
         
     }
     
-    
-    func checkStatus(onCompletion: updateCartCheckoutStatus){
-        let code = cart.cartCode as String!
-        if(!isLoading){
-            isLoading = true
-            RestManager.sharedInstance.makeJsonGetRequest(cartResource + "/status/\(code)" , params: nil, onCompletion:  {
-                json, err in
-                //TODO Update Status
-                //cart.setStatus() -> Cart.CartStatus.PENDING .... println(json)
-                
-                onCompletion(err)
-            })
-            isLoading = false
-        }
+    private func checkCheckoutStatus(){
+        //TODO Pull status from server
+        
+        //Got update --> self.notifyControllerAboutStatusChange() 
+        
+        //Paid: self.cartWasSuccessfulyPaid()
+        //Cancelled: self.checkoutCancelledOrFailed()
+        
     }
     
+    func checkoutSuccessfulyPaid(){
+        //TODO
+        //Put to archive or just delete all items/ stati?
+    }
+    
+    func checkoutCancelledOrFailed(){
+        //TODO
+        //Put to archive or just delete all items/ stati?
+    }
+    
+    
+    
+    private func notifyControllerAboutStatusChange(){
+        NSNotificationCenter.defaultCenter().postNotificationName("CheckoutStatusChangedNotification", object: self.cart.status.rawValue)
+    }
+   
     
     /*                      Methods for DEV            */
     
@@ -90,16 +94,19 @@ class CartModel : NSObject{
         cart.addEntry(e2)
     }
     
-    func triggerCartWasPaid(onCompletion: updateCartCheckoutStatus){
+    func simulatePayChecoutProcess(onCompletion: updatePayOrCancelView){
         let code = cart.cartCode as String!
-        RestManager.sharedInstance.makeJsonPostRequest("/checkout/paid/\(code)", params: nil, onCompletion: {
-            json, err in
-            if (err == nil) {
-                self.cart.setStatus(Cart.CartStatus.PAID)
-            }
-            
-            onCompletion(nil)
-        })
+        if(!isLoading){
+            isLoading = true
+            RestManager.sharedInstance.makeJsonPostRequest(checkoutResource + "/paid/\(code)" , params: nil, onCompletion:  {
+                json, err in
+                if (err == nil) {
+                    self.cart.setStatus(Cart.CartStatus.PAID)
+                    self.notifyControllerAboutStatusChange()
+                    onCompletion()
+                }
+            })
+            isLoading = false
+        }
     }
-    
 }

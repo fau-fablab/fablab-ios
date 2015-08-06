@@ -424,6 +424,66 @@
             </objects>
             <point key="canvasLocation" x="735" y="-1002"/>
         </scene>
+        <!--Pay Or Cancel View Controller-->
+        <scene sceneID="T28-i7-9iN">
+            <objects>
+                <viewController storyboardIdentifier="PayOrCancelView" id="xHV-4v-R4N" customClass="PayOrCancelViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zuB-I0-PWh"/>
+                        <viewControllerLayoutGuide type="bottom" id="u7K-Xm-sCe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LF1-53-fNB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vWA-4f-gso">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Bitte Bezahlen" id="zcX-WW-u48"/>
+                                </items>
+                            </navigationBar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="21y-66-3jd">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                                <color key="tintColor" red="1" green="0.20929139450000001" blue="0.20756372419999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="color" red="1" green="0.20929139450000001" blue="0.20756372419999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhg-v3-FHy">
+                                <rect key="frame" x="182" y="91" width="237" height="83"/>
+                                <state key="normal" title="Bezahlvorgang Abbrechen">
+                                    <color key="titleColor" red="1" green="0.20929139445862543" blue="0.20756372416755553" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonTouched:" destination="xHV-4v-R4N" eventType="touchUpInside" id="qMQ-BH-00c"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfr-h5-Cl6">
+                                <rect key="frame" x="16" y="117" width="92" height="30"/>
+                                <state key="normal" title="Simulate PAY">
+                                    <color key="titleColor" red="0.10273505627618447" green="0.72243923611111116" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dummyPayButtonTouched:" destination="xHV-4v-R4N" eventType="touchUpInside" id="5HO-HX-pFV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="21y-66-3jd" secondAttribute="centerY" id="3DH-qd-fCT"/>
+                            <constraint firstAttribute="centerX" secondItem="21y-66-3jd" secondAttribute="centerX" id="4T2-aO-zW1"/>
+                            <constraint firstItem="yhg-v3-FHy" firstAttribute="top" secondItem="vWA-4f-gso" secondAttribute="bottom" constant="55" id="OXZ-cu-5y4"/>
+                            <constraint firstAttribute="centerX" secondItem="yhg-v3-FHy" secondAttribute="centerX" id="XfO-Cy-lYp"/>
+                            <constraint firstItem="vWA-4f-gso" firstAttribute="leading" secondItem="LF1-53-fNB" secondAttribute="leadingMargin" constant="-16" id="ZJY-UZ-wYc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vWA-4f-gso" secondAttribute="trailing" constant="-16" id="rIB-z9-Ce9"/>
+                            <constraint firstItem="vWA-4f-gso" firstAttribute="top" secondItem="zuB-I0-PWh" secondAttribute="bottom" id="wwx-Lj-r6q"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BgR-fc-JMh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1404" y="-1002"/>
+        </scene>
         <!--Produkt suchen-->
         <scene sceneID="tda-UB-Mvw">
             <objects>
@@ -543,35 +603,16 @@
                                 <items>
                                     <navigationItem title="Warenkorb" id="9NT-gQ-6cG">
                                         <barButtonItem key="leftBarButtonItem" title="+ Produkt" id="cLP-YG-OvT"/>
-                                        <barButtonItem key="rightBarButtonItem" title="Bezahlen / Abbrechen" id="mKw-50-bi8">
+                                        <barButtonItem key="rightBarButtonItem" title="Bezahlen" id="mKw-50-bi8">
                                             <connections>
-                                                <action selector="checkoutCancelButtonTouched:" destination="ooQ-nD-6sq" id="hCK-HT-UZy"/>
+                                                <segue destination="dAF-j1-LQU" kind="popoverPresentation" popoverAnchorBarButtonItem="mKw-50-bi8" id="UMc-te-YVs">
+                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                </segue>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfr-h5-Cl6">
-                                <rect key="frame" x="216" y="50" width="46" height="30"/>
-                                <state key="normal" title="Pay">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="PAID:" destination="ooQ-nD-6sq" eventType="touchUpInside" id="pCh-Z3-zN2"/>
-                                    <action selector="dummyPayButtonTouched:" destination="ooQ-nD-6sq" eventType="touchUpInside" id="zQR-qi-bU3"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abo-eL-dWn">
-                                <rect key="frame" x="216" y="76" width="48" height="30"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="CANCELLED:" destination="ooQ-nD-6sq" eventType="touchUpInside" id="Nuc-uT-P21"/>
-                                    <action selector="PAID:" destination="ooQ-nD-6sq" eventType="touchUpInside" id="dd6-CO-4Rt"/>
-                                    <action selector="dummyCancelButtonTouched:" destination="ooQ-nD-6sq" eventType="touchUpInside" id="wC5-Dl-Yad"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkU-C6-8nA">
                                 <rect key="frame" x="16" y="71" width="112" height="30"/>
                                 <state key="normal" title="Scan&amp;Checkout">
@@ -601,7 +642,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Agt-YQ-7T9" firstAttribute="leading" secondItem="hqQ-J3-3kM" secondAttribute="leading" id="1k4-zq-TQV"/>
+                            <constraint firstAttribute="centerX" secondItem="4jY-z6-WtJ" secondAttribute="centerX" id="7I4-C0-zYa"/>
                             <constraint firstAttribute="centerY" secondItem="4jY-z6-WtJ" secondAttribute="centerY" id="FlI-Uz-dRM"/>
+                            <constraint firstAttribute="centerY" secondItem="4jY-z6-WtJ" secondAttribute="centerY" id="M59-Qn-NHZ"/>
                             <constraint firstAttribute="centerX" secondItem="4jY-z6-WtJ" secondAttribute="centerX" id="QyC-iq-7ea"/>
                             <constraint firstAttribute="trailing" secondItem="Agt-YQ-7T9" secondAttribute="trailing" id="S0n-j2-6sx"/>
                             <constraint firstItem="Agt-YQ-7T9" firstAttribute="top" secondItem="f20-An-xKa" secondAttribute="bottom" id="zhs-gn-6ae"/>
@@ -610,7 +653,6 @@
                     <tabBarItem key="tabBarItem" title="Warenkorb" image="first" id="kBk-Ta-hCe"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="4jY-z6-WtJ" id="mUc-eS-Ml1"/>
-                        <outlet property="checkoutButton" destination="mKw-50-bi8" id="PGj-Nl-Ual"/>
                         <outlet property="tableView" destination="Cw4-Ky-LeW" id="pDX-ON-wsu"/>
                     </connections>
                 </viewController>
