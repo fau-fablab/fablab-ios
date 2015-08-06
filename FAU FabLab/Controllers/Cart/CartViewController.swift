@@ -103,7 +103,8 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     @IBAction func DummyScanButtonTouched(sender: AnyObject) {
         self.enableSpinner()
         
-        RestManager.sharedInstance.makeJsonGetRequest("/checkout/createCode", params: ["password": "dummyPassword"]) { (code, error, statusCode) -> Void in
+        RestManager.sharedInstance.makeJsonGetRequest("/checkout/createCode", params: ["password": "dummyPassword"])
+        { (code, error) -> Void in
             self.cartModel.sendCartToServer(String(code as! Int))
         }
 

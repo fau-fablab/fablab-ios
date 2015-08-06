@@ -1,7 +1,8 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
-typealias JsonServiceResponse = (AnyObject?, NSError?, Int) -> Void
+
+typealias JsonServiceResponse = (AnyObject?, NSError?) -> Void
 
 class RestManager {
     
@@ -27,27 +28,40 @@ class RestManager {
     
     func makeJsonGetRequest(resource: String, params: [String : String]?, onCompletion : JsonServiceResponse) {
         manager.request(.GET, devApiUrl+resource, parameters: params)
+            .validate(statusCode: 200..<300)
+            .validate(contentType: ["application/json"])
             .responseJSON { (req, res, json, error) in
                 Debug.instance.log("GET: \(self.devApiUrl+resource) JSONAnswer: \(json) StatusCode: \(res!.statusCode)");
-                onCompletion(json, error,res!.statusCode);
+                if(error != nil) {
+                    Debug.instance.log(error)
+                }
+                onCompletion(json, error);
                 
         }
     }
     
     func makeGetRequest(resource: String, params: [String : String]?, onCompletion : JsonServiceResponse) {
         manager.request(.GET, devApiUrl+resource, parameters: params)
+            .validate(statusCode: 200..<300)
             .responseString { (req, res, answer, error) in
                 Debug.instance.log("GET: \(self.devApiUrl+resource) Answer: \(answer) StatusCode: \(res!.statusCode)");
-                onCompletion(answer, error,res!.statusCode);
-                
+                if(error != nil){
+                    Debug.instance.log(error)
+                }
+                onCompletion(answer, error);
         }
     }
     
     func makeJsonPostRequest(resource: String, params: NSDictionary?, onCompletion : JsonServiceResponse) {
         manager.request(.POST, devApiUrl+resource, parameters: params as? [String : AnyObject], encoding: .JSON)
+            .validate(statusCode: 200..<300)
+            .validate(contentType: ["application/json"])
             .responseJSON { (req, res, json, error) in
                 Debug.instance.log("POST: \(self.devApiUrl+resource) JSONAnswer: \(json) StatusCode: \(res!.statusCode)");
-                onCompletion(json, error, res!.statusCode)
+                if(error != nil){
+                    Debug.instance.log(error)
+                }
+                onCompletion(json, error)
         }
         
         //Can be used to debug the request...

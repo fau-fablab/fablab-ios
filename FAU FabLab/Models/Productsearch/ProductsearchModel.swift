@@ -38,7 +38,7 @@ class ProductsearchModel : NSObject{
         if(!isLoading){
             self.clearProducts()
             RestManager.sharedInstance.makeJsonGetRequest(endpoint, params: params, onCompletion: {
-                json, err, statusCode in
+                json, err in
                 if (err != nil) {
                     Debug.instance.log(err);
                         onCompletion(err)
@@ -63,7 +63,7 @@ class ProductsearchModel : NSObject{
         let params = ["search": id]
         if(!isLoading){
             RestManager.sharedInstance.makeJsonGetRequest(endpoint, params: params, onCompletion: {
-                json, err, statusCode in
+                json, err in
                 Debug.instance.log("GOT: \(json)")
                 
                 if (err != nil) {
