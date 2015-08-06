@@ -7,7 +7,19 @@ class DoorStateModel : NSObject {
     private let space = "FAU+FabLab";
     private let mapper = Mapper<DoorState>()
 
-    private var doorState: DoorState?;
+    private var doorState: DoorState?
+
+    var isOpen : Bool{
+        if let state = doorState{
+            return state.open!
+        }
+        return false;
+    }
+
+    override init(){
+        super.init()
+        getDoorState()
+    }
 
     func getDoorState() {
         let endpoint = resource + "/spaces/" + space
