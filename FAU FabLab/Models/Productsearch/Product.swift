@@ -15,6 +15,8 @@ class Product : Mappable{
     private(set) var category: Category?
     private(set) var categoryId: Int64?
     private(set) var categoryString: String?
+    private(set) var uom: Uom?
+    private(set) var uom_id: Int64?
     
     class func newInstance() -> Mappable {
         return Product()
@@ -28,18 +30,20 @@ class Product : Mappable{
     
     // Mappable
     func mapping(map: Map) {
-        productId <- map["product_id"]
+        productId <- map["productId"]
         name <- map["name"]
         description <- map["description"]
         unit <- map["unit"]
-        category <- map["category_object"]
-        categoryId <- map["category_id"]
-        categoryString <- map["category_string"]
+        category <- map["category"]
+        categoryId <- map["categoryId"]
+        categoryString <- map["categoryString"]
         price <- map["price"]
-        location <- map["location_object"]
+        location <- map["locationObject"]
         locationId <- map["location_id"]
         locationString <- map["location"]
-        itemsAvailable <- map["available"]
+        itemsAvailable <- map["itemsAvailable"]
+        uom <- map["uom"]
+        uom_id <- map["uom_id"]
     }
 
 }
