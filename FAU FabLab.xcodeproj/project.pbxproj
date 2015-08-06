@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		35CE1B736F661DCF4D7020F6 /* Uom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE1CE6C8A1BE4967D0633F /* Uom.swift */; };
+		35CE1DB996BC6DE917A5E446 /* DoorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE11756F88B8009C549B94 /* DoorState.swift */; };
+		35CE1E13F0E8E25DBCE8E9C9 /* DoorStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE1698E311B04F89744CDB /* DoorStateModel.swift */; };
 		502DB1521B7150370036EF6B /* EventsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502DB1511B7150370036EF6B /* EventsDetailViewController.swift */; };
 		5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1D51B4EFE2A008B41FD /* AppDelegate.swift */; };
 		5060B1DD1B4EFE2A008B41FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5060B1DB1B4EFE2A008B41FD /* Main.storyboard */; };
@@ -72,6 +74,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		35CE11756F88B8009C549B94 /* DoorState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoorState.swift; sourceTree = "<group>"; };
+		35CE1698E311B04F89744CDB /* DoorStateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoorStateModel.swift; sourceTree = "<group>"; };
 		35CE1CE6C8A1BE4967D0633F /* Uom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uom.swift; sourceTree = "<group>"; };
 		502DB1511B7150370036EF6B /* EventsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsDetailViewController.swift; sourceTree = "<group>"; };
 		5060B1D01B4EFE2A008B41FD /* FAU FabLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FAU FabLab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +150,15 @@
 			path = FabTool;
 			sourceTree = "<group>";
 		};
+		35CE198640C4FC7530DB60A1 /* DoorState */ = {
+			isa = PBXGroup;
+			children = (
+				35CE11756F88B8009C549B94 /* DoorState.swift */,
+				35CE1698E311B04F89744CDB /* DoorStateModel.swift */,
+			);
+			path = DoorState;
+			sourceTree = "<group>";
+		};
 		500A2CA11B63DCF4005CC8CF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +179,7 @@
 				928054F71B6DA0BA00D0D4FB /* Events */,
 				927901E31B6D4ABB00F95B09 /* News */,
 				35CE1516AA0A8AB2D912D8F4 /* FabTool */,
+				35CE198640C4FC7530DB60A1 /* DoorState */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -528,6 +542,8 @@
 				927901E21B6D3F6300F95B09 /* NewsViewController.swift in Sources */,
 				92078EBB1B6E29B200A21AD9 /* Category.swift in Sources */,
 				35CE1B736F661DCF4D7020F6 /* Uom.swift in Sources */,
+				35CE1DB996BC6DE917A5E446 /* DoorState.swift in Sources */,
+				35CE1E13F0E8E25DBCE8E9C9 /* DoorStateModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
