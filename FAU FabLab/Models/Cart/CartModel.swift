@@ -55,7 +55,7 @@ class CartModel : NSObject{
     func checkCheckoutStatus(timer: NSTimer!){
         let code = cart.cartCode as String!
         RestManager.sharedInstance.makeJsonGetRequest(cartResource + "/status/\(code)", params: nil, onCompletion: {
-            json, err, statusCode in
+            json, err in
             
             if let newStatus = Cart.CartStatus(rawValue: json as! String) {
                 
