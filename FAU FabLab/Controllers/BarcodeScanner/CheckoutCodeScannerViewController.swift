@@ -44,4 +44,7 @@ class CheckoutCodeScannerViewController: RSCodeReaderViewController {
         self.navigationController?.navigationBarHidden = false
     }
     
+    @IBAction func backButtonTouched(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion:nil )
+    }
 }

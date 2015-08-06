@@ -17,8 +17,6 @@
 		50DBE9041B6FA93000685B07 /* EventsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */; };
 		8419B6101B6F6050000275A8 /* CheckoutCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8419B60F1B6F6050000275A8 /* CheckoutCodeScannerViewController.swift */; };
 		8419B6131B6F7089000275A8 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8419B6121B6F7089000275A8 /* CartViewController.swift */; };
-		84E7C82F1B66A07200A24193 /* RSBarcodes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DC93121B669E0100981977 /* RSBarcodes.framework */; };
-		84E7C8301B66A07200A24193 /* RSBarcodes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84DC93121B669E0100981977 /* RSBarcodes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		92078EB71B6E270E00A21AD9 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92078EB61B6E270E00A21AD9 /* Product.swift */; };
 		92078EB91B6E293400A21AD9 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92078EB81B6E293400A21AD9 /* Location.swift */; };
 		92078EBB1B6E29B200A21AD9 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92078EBA1B6E29B200A21AD9 /* Category.swift */; };
@@ -54,20 +52,6 @@
 			remoteInfo = "FAU FabLab";
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		84E7C8311B66A07200A24193 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				84E7C8301B66A07200A24193 /* RSBarcodes.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		502DB1511B7150370036EF6B /* EventsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsDetailViewController.swift; sourceTree = "<group>"; };
@@ -116,7 +100,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84E7C82F1B66A07200A24193 /* RSBarcodes.framework in Frameworks */,
 				924352461B654CF200CBFA0C /* Kingfisher.framework in Frameworks */,
 				928054F41B6D893300D0D4FB /* ObjectMapper.framework in Frameworks */,
 				507493681B5BFE6F0035BEB4 /* SwiftyJSON.framework in Frameworks */,
@@ -374,7 +357,6 @@
 				5060B1CD1B4EFE2A008B41FD /* Frameworks */,
 				5060B1CE1B4EFE2A008B41FD /* Resources */,
 				507493691B5BFE860035BEB4 /* ShellScript */,
-				84E7C8311B66A07200A24193 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
