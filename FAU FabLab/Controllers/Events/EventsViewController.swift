@@ -82,11 +82,19 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         var time = ""
         if event.isOneDay {
-            time = event.startTimeString + " - " + event.endTimeString + " Uhr"
+            if event.allday == true {
+                time = "ganztägig"
+            } else {
+                time = event.startTimeString + " - " + event.endTimeString + " Uhr"
+            }
         } else {
-            time = event.startTimeString + " - "
-                + event.endDayString + ". " + event.endMonthString + ", "
-                + event.endTimeString + " Uhr"
+            if event.allday == true {
+                time = "ganztägig bis " + event.endDayString + ". " + event.endMonthString
+            } else {
+                time = event.startTimeString + " - "
+                    + event.endDayString + ". " + event.endMonthString + ", "
+                    + event.endTimeString + " Uhr"
+            }
         }
         
         // configure cell
