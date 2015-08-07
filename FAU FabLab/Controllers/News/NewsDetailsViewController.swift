@@ -45,7 +45,7 @@ class NewsDetailsViewController : UIViewController{
     }
     
     @IBAction func showActionSheet(sender: AnyObject) {
-        let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .ActionSheet)
+        let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         
         let shareAction = UIAlertAction(title: "Teilen", style: .Default, handler: {
             (alert: UIAlertAction!) -> Void in
