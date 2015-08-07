@@ -70,7 +70,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
             let destination = segue.destinationViewController as? NewsDetailsViewController
 
             let news = model.getNews(tableView.indexPathForSelectedRow()!.row);
-            destination!.configure(title: news.title!, desc:news.description!, imageLink: news.linkToPreviewImage)
+            destination!.configure(title: news.title!, desc:news.description!, imageLink: news.linkToPreviewImage, link: news.link!)
         }
     }
     

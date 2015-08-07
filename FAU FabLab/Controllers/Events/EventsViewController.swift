@@ -67,7 +67,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             let event = model.getEvent(tableView.indexPathForSelectedRow()!.row);
             
-            destination!.configure(title: event.summery!, start: event.startDateString, end: event.endDateString, location: event.location, description: event.description)
+            destination!.configure(title: event.summery!, start: event.startDateString, end: event.endDateString, location: event.location, description: event.description, link: event.url!)
         }
     }
     

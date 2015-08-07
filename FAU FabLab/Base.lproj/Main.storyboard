@@ -148,7 +148,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="News" id="Lal-CP-IHX">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="Cwf-Po-DMt"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="Cwf-Po-DMt">
+                            <connections>
+                                <action selector="showActionSheet:" destination="qcq-Tu-HC1" id="dDv-1r-EGk"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="descriptionText" destination="jO6-XV-PqA" id="7pR-Tx-t75"/>
@@ -275,7 +279,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2Ne-hf-ahC">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="CoK-c8-J7h"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="CoK-c8-J7h">
+                            <connections>
+                                <action selector="showActionSheet:" destination="oer-QD-BY8" id="5GR-ro-uAH"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="descText" destination="Fie-Dj-17f" id="HdC-Lq-ref"/>
@@ -523,7 +531,9 @@
                             <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yAb-sD-y5J">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
-                                    <navigationItem title="Produkt suchen" id="fNv-0N-D4X"/>
+                                    <navigationItem title="Produkt suchen" id="fNv-0N-D4X">
+                                        <barButtonItem key="rightBarButtonItem" image="icon_cart" id="FO7-eQ-zR1"/>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="Cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yE4-2y-yzv">

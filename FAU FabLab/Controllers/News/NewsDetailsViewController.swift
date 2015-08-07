@@ -6,14 +6,16 @@ class NewsDetailsViewController : UIViewController{
     @IBOutlet var descriptionText: UITextView!
     @IBOutlet var previewImage: UIImageView!
 
-    var newsTitle: String?;
-    var newsAttrDescription: NSAttributedString?;
-    var newsImageLink: String?;
-    var imageUrl: NSURL?;
+    var newsTitle: String?
+    var newsAttrDescription: NSAttributedString?
+    var newsImageLink: String?
+    var imageUrl: NSURL?
+    var linkToNews: String?
     
-    func configure(#title: String, desc: String, imageLink: String?){
+    func configure(#title: String, desc: String, imageLink: String?, link: String){
         newsTitle = title
         newsImageLink = imageLink;
+        linkToNews = link
         
         let htmlText = desc.dataUsingEncoding(NSUTF8StringEncoding)!
         let attributedOptions: [String:AnyObject] = [
@@ -40,6 +42,40 @@ class NewsDetailsViewController : UIViewController{
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func showActionSheet(sender: AnyObject) {
+        let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .ActionSheet)
+        
+        let shareAction = UIAlertAction(title: "Teilen", style: .Default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            
+            let text = self.title
+            
+            if let url = NSURL(string: self.linkToNews!) {
+                let objectsToShare = [text!, url]
+                let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                
+                self.presentViewController(activityVC, animated: true, completion: nil)
+            }
+        })
+        
+        let browserAction = UIAlertAction(title: "Im Browser ansehen", style: .Default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            if let url = NSURL(string: self.linkToNews!) {
+                UIApplication.sharedApplication().openURL(url)
+            }
+        })
+        
+        let cancelAction = UIAlertAction(title: "Abbrechen", style: .Cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+        })
+        
+        optionMenu.addAction(shareAction)
+        optionMenu.addAction(browserAction)
+        optionMenu.addAction(cancelAction)
+
+        self.presentViewController(optionMenu, animated: true, completion: nil)
     }
 
 }
