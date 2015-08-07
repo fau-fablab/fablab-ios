@@ -11,6 +11,9 @@ class DoorNavigationButtonController: NSObject {
     private let red = UIColor(red: 0.81, green: 0.12, blue: 0.18, alpha: 1.0)
     private let green = UIColor(red: 0.00, green: 0.59, blue: 0.42, alpha: 1.0)
     
+    private override init() {        
+    }
+    
     func updateButtons(vc: UIViewController) {
         showButton(vc)
     }
