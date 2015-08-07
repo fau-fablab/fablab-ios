@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import EventKit
 
 class EventsDetailsViewController : UIViewController {
     
@@ -15,14 +16,18 @@ class EventsDetailsViewController : UIViewController {
     var eventLocation: String?
     var eventDesc: String?
     var eventLink: String?
+    var eventDateStart: NSDate?
+    var eventDateEnd: NSDate?
     
-    func configure(#title: String, start: String, end: String, location: String?, description: String?, link: String){
+    func configure(#title: String, start: String, end: String, location: String?, description: String?, link: String, startDate: NSDate, endDate: NSDate){
         eventTitle = title
         eventStart = start
         eventEnd = end
         eventLocation = location
         eventDesc = description
         eventLink = link
+        eventDateStart = startDate
+        eventDateEnd = endDate
     }
     
     override func viewDidLoad() {
@@ -51,11 +56,37 @@ class EventsDetailsViewController : UIViewController {
     }
     
     @IBAction func showActionSheet(sender: AnyObject) {
-        let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .ActionSheet)
+        let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         
         let calendarAction = UIAlertAction(title: "In Kalender eintragen", style: .Default, handler: {
             (alert: UIAlertAction!) -> Void in
-            // todo
+            
+            let eventStore = EKEventStore()
+            
+            eventStore.requestAccessToEntityType(EKEntityTypeEvent, completion: {
+                (granted, error) in
+                if (granted) && (error == nil) {
+                    
+                    var event = EKEvent(eventStore: eventStore)
+                    event.calendar = eventStore.defaultCalendarForNewEvents
+                    
+                    event.startDate = self.eventDateStart
+                    event.endDate = self.eventDateEnd
+                    event.title = self.eventTitle
+                    event.notes = self.eventDesc
+                    
+                    let result = eventStore.saveEvent(event, span: EKSpanThisEvent, error: nil)
+                    
+                    if result == true {
+                        self.alertOK()
+                    } else {
+                        self.alertError()
+                    }
+                
+                } else {
+                    self.alertError()
+                }
+            })
         })
         
         let shareAction = UIAlertAction(title: "Teilen", style: .Default, handler: {
@@ -88,6 +119,18 @@ class EventsDetailsViewController : UIViewController {
         optionMenu.addAction(cancelAction)
         
         self.presentViewController(optionMenu, animated: true, completion: nil)
+    }
+    
+    func alertOK() {
+        var alert = UIAlertController(title: "Termin erfolgreich dem Kalender hinzugefügt", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func alertError() {
+        var alert = UIAlertController(title: "Fehler", message: "Termin konnte nicht dem Kalender hinzugefügt werden", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
 }
