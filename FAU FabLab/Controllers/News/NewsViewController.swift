@@ -8,7 +8,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
     private let textCellIdentifier = "NewsEntryCustomCell"
     private let model = NewsModel()
     
-    private let doorButtonController = DoorNavigationButtonController()
+    private let doorButtonController = DoorNavigationButtonController.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()

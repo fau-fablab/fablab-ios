@@ -9,7 +9,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     private let textCellIdentifier = "EventsEntryCustomCell"
     
-    private let doorButtonController = DoorNavigationButtonController()
+    private let doorButtonController = DoorNavigationButtonController.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()

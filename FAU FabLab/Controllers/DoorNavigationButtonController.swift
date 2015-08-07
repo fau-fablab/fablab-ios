@@ -3,6 +3,8 @@ import Foundation
 import UIKit
 
 class DoorNavigationButtonController: NSObject {
+    
+    static let sharedInstance = DoorNavigationButtonController()
 
     private let dsm = DoorStateModel()
     
