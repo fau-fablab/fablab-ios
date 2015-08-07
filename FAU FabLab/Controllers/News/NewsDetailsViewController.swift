@@ -7,26 +7,32 @@ class NewsDetailsViewController : UIViewController{
     @IBOutlet var previewImage: UIImageView!
 
     var newsTitle: String?;
-    var newsDescription: String?;
+    var newsAttrDescription: NSAttributedString?;
     var newsImageLink: String?;
     var imageUrl: NSURL?;
     
     func configure(#title: String, desc: String, imageLink: String?){
         newsTitle = title
-        newsDescription = desc
         newsImageLink = imageLink;
+        
+        let htmlText = desc.dataUsingEncoding(NSUTF8StringEncoding)!
+        let attributedOptions: [String:AnyObject] = [
+            NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+            NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding
+        ]
+        newsAttrDescription = NSAttributedString(data: htmlText, options: attributedOptions, documentAttributes: nil, error: nil)!
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = newsTitle; // sets the title in the navigation-bar
-        descriptionText.text = newsDescription;
+        descriptionText.attributedText = newsAttrDescription
+        descriptionText.font = UIFont(name: "Helvetica Neue", size: 14.0)
         
-        if(newsImageLink != nil){
+        if (newsImageLink != nil){
             previewImage.kf_setImageWithURL(NSURL(string: newsImageLink!)!, placeholderImage: nil)
-        }
-        else{
+        } else {
             previewImage.image = UIImage(named:"news_nopicture.png")
         }
     }

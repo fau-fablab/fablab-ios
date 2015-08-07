@@ -83,7 +83,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier) as? NewsCustomCell
         let news = model.getNews(indexPath.row);
 
-        cell!.configure(title: news.title!, description: news.description!, image: news.linkToPreviewImage)
+        cell!.configure(title: news.title!, description: news.descriptionShort!, image: news.linkToPreviewImage)
 
         return cell!;
     }
