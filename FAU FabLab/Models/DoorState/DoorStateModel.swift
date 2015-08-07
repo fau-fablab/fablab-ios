@@ -15,6 +15,10 @@ class DoorStateModel : NSObject {
         }
         return false;
     }
+    
+    var lastChange : Double {
+        return doorState!.lastchange!
+    }
 
     override init(){
         super.init()

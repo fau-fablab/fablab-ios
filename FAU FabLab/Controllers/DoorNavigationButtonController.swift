@@ -21,14 +21,17 @@ class DoorNavigationButtonController: NSObject {
     func showText(vc: UIViewController) {
         dsm.getDoorState()
         
+        let lastChange = NSDate(timeIntervalSince1970: dsm.lastChange)
+        let components = NSCalendar.currentCalendar().components(NSCalendarUnit.CalendarUnitHour, fromDate: lastChange, toDate: NSDate(), options: nil)
+        
         let buttonClosed = getClosedText(vc)
         let buttonOpen = getOpenText(vc)
         
         if dsm.isOpen {
-            buttonClosed.title = buttonClosed.title! /*+ doorState.lastchange*/ + " h"
+            buttonOpen.title = buttonOpen.title! + " \(components.hour) h"
             vc.navigationItem.leftBarButtonItem = buttonOpen
         } else {
-            buttonClosed.title = buttonClosed.title! /*+ doorState.lastchange*/ + " h"
+            buttonClosed.title = buttonClosed.title! + " \(components.hour) h"
             vc.navigationItem.leftBarButtonItem = buttonClosed
         }
     }
@@ -59,13 +62,13 @@ class DoorNavigationButtonController: NSObject {
     }
     
     func getOpenText(vc: UIViewController) -> UIBarButtonItem {
-        let textOpen = UIBarButtonItem(title: "open ", style: UIBarButtonItemStyle.Plain, target: vc, action: "showButton")
+        let textOpen = UIBarButtonItem(title: "open", style: UIBarButtonItemStyle.Plain, target: vc, action: "showButton")
         textOpen.tintColor = green
         return textOpen
     }
     
     func getClosedText(vc: UIViewController) -> UIBarButtonItem {
-        let textClosed = UIBarButtonItem(title: "closed ", style: UIBarButtonItemStyle.Plain, target: vc, action: "showButton")
+        let textClosed = UIBarButtonItem(title: "closed", style: UIBarButtonItemStyle.Plain, target: vc, action: "showButton")
         textClosed.tintColor = red
         return textClosed
     }
