@@ -79,7 +79,11 @@
                         <barButtonItem key="leftBarButtonItem" image="icon_door_closed" id="zBH-Xm-N5i">
                             <color key="tintColor" red="0.80392156862745101" green="0.0078431372549019607" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="icon_cart" id="4Cd-Ok-Ucg"/>
+                        <barButtonItem key="rightBarButtonItem" image="icon_cart" id="4Cd-Ok-Ucg">
+                            <connections>
+                                <segue destination="ooQ-nD-6sq" kind="show" id="TgA-1a-DJ2"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="8p4-iO-VO2" id="L9f-zA-DQG"/>
@@ -87,7 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2102" y="-344"/>
+            <point key="canvasLocation" x="2218" y="-344"/>
         </scene>
         <!--NewsDetail-->
         <scene sceneID="shy-KU-sCI">
@@ -295,7 +299,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jUB-4S-Qe6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3898" y="352"/>
+            <point key="canvasLocation" x="3514" y="404"/>
         </scene>
         <!--Termine-->
         <scene sceneID="wg7-f3-ORb">
@@ -392,7 +396,11 @@
                         <barButtonItem key="leftBarButtonItem" image="icon_door_closed" id="ZqW-q1-iNd">
                             <color key="tintColor" red="0.80437184340000001" green="0.0" blue="0.10446213679999999" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="icon_cart" id="btL-Oh-ws3"/>
+                        <barButtonItem key="rightBarButtonItem" image="icon_cart" id="btL-Oh-ws3">
+                            <connections>
+                                <segue destination="ooQ-nD-6sq" kind="show" id="3N2-EF-COO"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="AZ1-iU-YxM" id="tET-yq-7Yv"/>
@@ -400,7 +408,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2914" y="352"/>
+            <point key="canvasLocation" x="2590" y="404"/>
         </scene>
         <!--CheckoutCodeScanner-->
         <scene sceneID="1lz-eZ-5yh">
@@ -413,37 +421,13 @@
                     <view key="view" contentMode="scaleToFill" id="G0w-o2-RYb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4j4-G6-jY4">
-                                <rect key="frame" x="0.0" y="-6" width="600" height="44"/>
-                            </navigationBar>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kqa-mH-sdX">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <items>
-                                    <navigationItem title="Kassenterminal scannen" id="8ed-rc-Efk">
-                                        <barButtonItem key="leftBarButtonItem" title="Zurück" id="v1d-2N-3ho">
-                                            <connections>
-                                                <action selector="backButtonTouched:" destination="dAF-j1-LQU" id="w39-kr-evZ"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="4j4-G6-jY4" firstAttribute="leading" secondItem="G0w-o2-RYb" secondAttribute="leadingMargin" constant="-16" id="1XJ-og-ndv"/>
-                            <constraint firstItem="kqa-mH-sdX" firstAttribute="top" secondItem="vL9-a9-Fdq" secondAttribute="bottom" id="DOj-M8-Fdv"/>
-                            <constraint firstItem="4j4-G6-jY4" firstAttribute="top" secondItem="G0w-o2-RYb" secondAttribute="topMargin" constant="-6" id="MfM-qa-a7O"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="kqa-mH-sdX" secondAttribute="trailing" constant="-16" id="Vk7-Tj-Xs5"/>
-                            <constraint firstItem="kqa-mH-sdX" firstAttribute="leading" secondItem="G0w-o2-RYb" secondAttribute="leadingMargin" constant="-16" id="fyE-gX-CBV"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="4j4-G6-jY4" secondAttribute="trailing" constant="-16" id="jor-77-xiF"/>
-                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Barcode scannen" id="VxW-zZ-xmh"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qC3-BQ-TU2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="735" y="-1002"/>
+            <point key="canvasLocation" x="2590" y="1222"/>
         </scene>
         <!--Pay Or Cancel View Controller-->
         <scene sceneID="T28-i7-9iN">
@@ -514,7 +498,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BgR-fc-JMh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1404" y="-1002"/>
+            <point key="canvasLocation" x="3514" y="1222"/>
         </scene>
         <!--Produkt suchen-->
         <scene sceneID="tda-UB-Mvw">
@@ -564,8 +548,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Produkt suchen" id="3G3-bQ-XHf">
-                        <barButtonItem key="leftBarButtonItem" image="icon_door_closed" id="zDc-al-KgO"/>
-                        <barButtonItem key="rightBarButtonItem" image="icon_cart" id="N8d-Xk-Moq"/>
+                        <barButtonItem key="leftBarButtonItem" image="icon_door_closed" id="zDc-al-KgO">
+                            <color key="tintColor" red="0.80392156859999997" green="0.0078431372550000003" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="icon_cart" id="N8d-Xk-Moq">
+                            <connections>
+                                <segue destination="ooQ-nD-6sq" kind="show" id="jeL-sJ-mps"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="0kA-u0-HSB" id="Iwc-EW-El8"/>
@@ -612,7 +602,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hlf-Cv-uGC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="425" y="768"/>
+            <point key="canvasLocation" x="357" y="768"/>
         </scene>
         <!--Warenkorb-->
         <scene sceneID="xuf-rf-THF">
@@ -626,22 +616,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Agt-YQ-7T9">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <items>
-                                    <navigationItem title="Warenkorb" id="9NT-gQ-6cG">
-                                        <barButtonItem key="leftBarButtonItem" title="+ Produkt" id="cLP-YG-OvT"/>
-                                        <barButtonItem key="rightBarButtonItem" title="Bezahlen" id="mKw-50-bi8">
-                                            <connections>
-                                                <segue destination="dAF-j1-LQU" kind="popoverPresentation" popoverAnchorBarButtonItem="mKw-50-bi8" id="UMc-te-YVs">
-                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                                </segue>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkU-C6-8nA">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkU-C6-8nA">
                                 <rect key="frame" x="16" y="71" width="183" height="30"/>
                                 <state key="normal" title="Simulate Scan &amp; Checkout">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -650,8 +625,8 @@
                                     <action selector="DummyScanButtonTouched:" destination="ooQ-nD-6sq" eventType="touchUpInside" id="5YY-Qn-oUr"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="Cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Cw4-Ky-LeW">
-                                <rect key="frame" x="0.0" y="109" width="600" height="434"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Cw4-Ky-LeW">
+                                <rect key="frame" x="0.0" y="109" width="600" height="398"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="uIh-DG-Ipf">
@@ -662,22 +637,72 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ydh-Do-RI8">
+                                <rect key="frame" x="0.0" y="507" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Gesamtpreis: 0,00€" id="v1N-DU-MUb"/>
+                                    <barButtonItem id="ROh-ig-AGl"/>
+                                    <barButtonItem id="DBn-Qp-z8c"/>
+                                    <barButtonItem id="O1x-Zq-9g4"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Agt-YQ-7T9" firstAttribute="leading" secondItem="hqQ-J3-3kM" secondAttribute="leading" id="1k4-zq-TQV"/>
-                            <constraint firstAttribute="trailing" secondItem="Agt-YQ-7T9" secondAttribute="trailing" id="S0n-j2-6sx"/>
-                            <constraint firstItem="Agt-YQ-7T9" firstAttribute="top" secondItem="f20-An-xKa" secondAttribute="bottom" id="zhs-gn-6ae"/>
+                            <constraint firstItem="249-cg-0zG" firstAttribute="top" secondItem="Cw4-Ky-LeW" secondAttribute="bottom" constant="44" id="EbC-P9-aQu"/>
+                            <constraint firstItem="Cw4-Ky-LeW" firstAttribute="leading" secondItem="hqQ-J3-3kM" secondAttribute="leading" id="Fwr-aj-rYh"/>
+                            <constraint firstItem="Ydh-Do-RI8" firstAttribute="trailing" secondItem="Cw4-Ky-LeW" secondAttribute="trailing" id="POg-pw-h2U"/>
+                            <constraint firstItem="Ydh-Do-RI8" firstAttribute="top" secondItem="Cw4-Ky-LeW" secondAttribute="bottom" id="cBN-ad-jwy"/>
+                            <constraint firstItem="Ydh-Do-RI8" firstAttribute="leading" secondItem="Cw4-Ky-LeW" secondAttribute="leading" id="d87-IC-nKm"/>
+                            <constraint firstItem="AkU-C6-8nA" firstAttribute="top" secondItem="f20-An-xKa" secondAttribute="bottom" constant="7" id="lR0-fc-VUb"/>
+                            <constraint firstAttribute="trailing" secondItem="Cw4-Ky-LeW" secondAttribute="trailing" id="n4P-BC-hVL"/>
+                            <constraint firstItem="AkU-C6-8nA" firstAttribute="leading" secondItem="hqQ-J3-3kM" secondAttribute="leadingMargin" id="pDo-Cv-N9w"/>
+                            <constraint firstItem="Cw4-Ky-LeW" firstAttribute="top" secondItem="AkU-C6-8nA" secondAttribute="bottom" constant="8" symbolic="YES" id="xzr-5N-sOU"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Warenkorb" image="first" id="kBk-Ta-hCe"/>
+                    <navigationItem key="navigationItem" title="Warenkorb" id="50e-f8-Ahz">
+                        <barButtonItem key="rightBarButtonItem" title="Zur Kasse" id="Hbn-BV-kwy">
+                            <connections>
+                                <segue destination="dAF-j1-LQU" kind="show" id="Aci-JU-BLM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Cw4-Ky-LeW" id="pDX-ON-wsu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yPP-es-UzN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="26" y="-1002"/>
+            <point key="canvasLocation" x="1706" y="1222"/>
+        </scene>
+        <!--Störmeldung-->
+        <scene sceneID="pWX-gq-3Yj">
+            <objects>
+                <viewController title="Störmeldung" id="1Ut-5H-ies" customClass="StoermeldungController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="726-ZX-s8Q"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ae9-VM-01X"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BBR-Cw-L7q">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Störmeldung" id="I1W-OB-LoK">
+                        <barButtonItem key="leftBarButtonItem" image="icon_door_closed" id="SWe-ol-Jdh">
+                            <color key="tintColor" red="0.80437184340000001" green="0.0" blue="0.10446213679999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="icon_cart" id="TEz-v1-FYo">
+                            <connections>
+                                <segue destination="ooQ-nD-6sq" kind="show" id="wh3-Eq-ov2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NBD-c7-3vN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1858" y="-1102"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -694,7 +719,7 @@
                         <segue destination="Vq6-YY-mEa" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="wKE-G6-kbN" kind="relationship" relationship="viewControllers" id="383-tC-QT0"/>
                         <segue destination="4Rd-fW-vJI" kind="relationship" relationship="viewControllers" id="Gl7-4z-Zij"/>
-                        <segue destination="ooQ-nD-6sq" kind="relationship" relationship="viewControllers" id="uUG-zj-FI2"/>
+                        <segue destination="AgM-Bm-SWQ" kind="relationship" relationship="viewControllers" id="xuI-O4-Vb9"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -724,7 +749,7 @@
         <scene sceneID="qfj-MK-Brk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vq6-YY-mEa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Termine" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Termine" image="first" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="re7-OQ-BFT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -737,25 +762,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dW8-fN-14d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1922" y="352"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="SjB-sA-164">
-            <objects>
-                <viewController id="1iW-bc-1az" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="2su-1I-6RP"/>
-                        <viewControllerLayoutGuide type="bottom" id="x4Z-Uz-b9V"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="lfa-c2-4XM">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Cgz-Hw-hRF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1192" y="227"/>
+            <point key="canvasLocation" x="1110" y="404"/>
         </scene>
         <!--Produkt suchen-->
         <scene sceneID="lo4-bo-lxz">
@@ -776,6 +783,25 @@
             </objects>
             <point key="canvasLocation" x="-494" y="768"/>
         </scene>
+        <!--Störmeldung-->
+        <scene sceneID="EG7-Jv-DTa">
+            <objects>
+                <navigationController title="Störmeldung" automaticallyAdjustsScrollViewInsets="NO" id="AgM-Bm-SWQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Störmeldung" image="first" id="F1L-8Z-eGi"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bp0-3G-Pif">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1Ut-5H-ies" kind="relationship" relationship="rootViewController" id="Cjk-nm-Tju"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JkG-Mp-ljB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1110" y="-1102"/>
+        </scene>
     </scenes>
     <resources>
         <image name="BarcodeScannerIcon" width="25" height="25"/>
@@ -784,6 +810,8 @@
         <image name="icon_cart" width="25" height="25"/>
         <image name="icon_door_closed" width="25" height="25"/>
         <image name="news_nopicture.png" width="500" height="500"/>
-        <image name="second" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="wh3-Eq-ov2"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -20,6 +20,7 @@
 		507BA38E1B5A7C0300E5DCF3 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 507BA38D1B5A7C0300E5DCF3 /* Cartfile */; };
 		50CB912B1B73D246000F4FB8 /* DoorNavigationButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB912A1B73D246000F4FB8 /* DoorNavigationButtonController.swift */; };
 		50DBE9041B6FA93000685B07 /* EventsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */; };
+		50E309F01B76302D004C4928 /* StoermeldungController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E309EF1B76302D004C4928 /* StoermeldungController.swift */; };
 		8419B6101B6F6050000275A8 /* CheckoutCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8419B60F1B6F6050000275A8 /* CheckoutCodeScannerViewController.swift */; };
 		8429B79A1B739C6D004C7DA0 /* RSBarcodes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DC93121B669E0100981977 /* RSBarcodes.framework */; };
 		8429B79B1B739C6D004C7DA0 /* RSBarcodes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84DC93121B669E0100981977 /* RSBarcodes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -95,6 +96,7 @@
 		507BA38D1B5A7C0300E5DCF3 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		50CB912A1B73D246000F4FB8 /* DoorNavigationButtonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoorNavigationButtonController.swift; sourceTree = "<group>"; };
 		50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCustomCell.swift; sourceTree = "<group>"; };
+		50E309EF1B76302D004C4928 /* StoermeldungController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoermeldungController.swift; sourceTree = "<group>"; };
 		8419B60F1B6F6050000275A8 /* CheckoutCodeScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutCodeScannerViewController.swift; sourceTree = "<group>"; };
 		84DC93121B669E0100981977 /* RSBarcodes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RSBarcodes.framework; path = Carthage/Build/iOS/RSBarcodes.framework; sourceTree = "<group>"; };
 		84F53FED1B73DD24008FB605 /* PayOrCancelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayOrCancelViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 		500A2CA11B63DCF4005CC8CF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				50E309EE1B763015004C4928 /* Stoermeldung */,
 				8419B6111B6F7071000275A8 /* Cart */,
 				92078EBE1B6E46EC00A21AD9 /* Productsearch */,
 				927901DA1B6D3F3D00F95B09 /* BarcodeScanner */,
@@ -258,6 +261,14 @@
 				50CB912A1B73D246000F4FB8 /* DoorNavigationButtonController.swift */,
 			);
 			name = DoorState;
+			sourceTree = "<group>";
+		};
+		50E309EE1B763015004C4928 /* Stoermeldung */ = {
+			isa = PBXGroup;
+			children = (
+				50E309EF1B76302D004C4928 /* StoermeldungController.swift */,
+			);
+			name = Stoermeldung;
 			sourceTree = "<group>";
 		};
 		8419B6111B6F7071000275A8 /* Cart */ = {
@@ -542,6 +553,7 @@
 				927901E51B6D4AE300F95B09 /* NewsModel.swift in Sources */,
 				8419B6101B6F6050000275A8 /* CheckoutCodeScannerViewController.swift in Sources */,
 				927901E11B6D3F6300F95B09 /* NewsDetailsViewController.swift in Sources */,
+				50E309F01B76302D004C4928 /* StoermeldungController.swift in Sources */,
 				5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */,
 				928054F61B6D8A0C00D0D4FB /* News.swift in Sources */,
 				928054F91B6DA0D900D0D4FB /* Event.swift in Sources */,
