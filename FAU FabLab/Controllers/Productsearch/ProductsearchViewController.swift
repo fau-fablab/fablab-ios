@@ -8,6 +8,8 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     
     private var searchActive = false;
     private var model = ProductsearchModel()
+    
+    private let doorButtonController = DoorNavigationButtonController.sharedInstance
 
     //collation for sectioning the table
     let collation = UILocalizedIndexedCollation.currentCollation() as! UILocalizedIndexedCollation
@@ -27,11 +29,20 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         tableView.dataSource = self
         searchBar.delegate = self
         searchBar.showsCancelButton = true
-    
+        
+        doorButtonController.updateButtons(self)    
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func showText() {
+        doorButtonController.showText(self)
+    }
+    
+    func showButton() {
+        doorButtonController.showButton(self)
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {

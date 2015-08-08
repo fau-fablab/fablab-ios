@@ -295,7 +295,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jUB-4S-Qe6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3086" y="352"/>
+            <point key="canvasLocation" x="3898" y="352"/>
         </scene>
         <!--Termine-->
         <scene sceneID="wg7-f3-ORb">
@@ -400,7 +400,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2102" y="352"/>
+            <point key="canvasLocation" x="2914" y="352"/>
         </scene>
         <!--CheckoutCodeScanner-->
         <scene sceneID="1lz-eZ-5yh">
@@ -528,16 +528,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yAb-sD-y5J">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <items>
-                                    <navigationItem title="Produkt suchen" id="fNv-0N-D4X">
-                                        <barButtonItem key="rightBarButtonItem" image="icon_cart" id="FO7-eQ-zR1"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="Cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yE4-2y-yzv">
-                                <rect key="frame" x="0.0" y="108" width="600" height="443"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yE4-2y-yzv">
+                                <rect key="frame" x="0.0" y="44" width="600" height="507"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="TZJ-J3-Kid">
@@ -552,7 +544,7 @@
                                     <outlet property="delegate" destination="YOP-IL-BaU" id="H40-lq-jTF"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0kA-u0-HSB">
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="0kA-u0-HSB">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -562,17 +554,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="yE4-2y-yzv" firstAttribute="leading" secondItem="z3B-Nd-IJq" secondAttribute="leadingMargin" constant="-16" id="CNx-4x-wOR"/>
-                            <constraint firstItem="u7Y-Nt-pji" firstAttribute="top" secondItem="yE4-2y-yzv" secondAttribute="bottom" id="E9J-eu-BbD"/>
-                            <constraint firstItem="yAb-sD-y5J" firstAttribute="top" secondItem="I9Y-Ab-fth" secondAttribute="bottom" id="P7F-kP-ox8"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="0kA-u0-HSB" secondAttribute="trailing" constant="-16" id="Slk-zM-WVz"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="yE4-2y-yzv" secondAttribute="trailing" constant="-16" id="VtT-6C-ASe"/>
-                            <constraint firstItem="yE4-2y-yzv" firstAttribute="top" secondItem="0kA-u0-HSB" secondAttribute="bottom" id="Zgd-wF-edV"/>
-                            <constraint firstItem="0kA-u0-HSB" firstAttribute="leading" secondItem="z3B-Nd-IJq" secondAttribute="leadingMargin" constant="-16" id="d5P-cU-f9J"/>
-                            <constraint firstAttribute="trailing" secondItem="yAb-sD-y5J" secondAttribute="trailing" id="wOc-Ox-Lun"/>
+                            <constraint firstItem="yE4-2y-yzv" firstAttribute="leading" secondItem="0kA-u0-HSB" secondAttribute="leading" id="6iK-nA-9Em"/>
+                            <constraint firstAttribute="trailing" secondItem="yE4-2y-yzv" secondAttribute="trailing" id="C8r-vA-d6B"/>
+                            <constraint firstItem="yE4-2y-yzv" firstAttribute="leading" secondItem="z3B-Nd-IJq" secondAttribute="leading" id="LNN-xy-RSU"/>
+                            <constraint firstItem="yE4-2y-yzv" firstAttribute="top" secondItem="z3B-Nd-IJq" secondAttribute="topMargin" constant="44" id="bZH-97-q0G"/>
+                            <constraint firstItem="yE4-2y-yzv" firstAttribute="bottom" secondItem="u7Y-Nt-pji" secondAttribute="top" id="eNE-BC-hDV"/>
+                            <constraint firstItem="yE4-2y-yzv" firstAttribute="trailing" secondItem="0kA-u0-HSB" secondAttribute="trailing" id="evn-ji-aHx"/>
+                            <constraint firstItem="0kA-u0-HSB" firstAttribute="top" secondItem="I9Y-Ab-fth" secondAttribute="bottom" id="tGF-gy-iXi"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Produkt suchen" image="first" id="Ckf-F4-b20"/>
+                    <navigationItem key="navigationItem" title="Produkt suchen" id="3G3-bQ-XHf">
+                        <barButtonItem key="leftBarButtonItem" image="icon_door_closed" id="zDc-al-KgO"/>
+                        <barButtonItem key="rightBarButtonItem" image="icon_cart" id="N8d-Xk-Moq"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="0kA-u0-HSB" id="Iwc-EW-El8"/>
                         <outlet property="tableView" destination="yE4-2y-yzv" id="Rar-sy-NWs"/>
@@ -580,7 +574,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XdC-vR-fPp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-494" y="768"/>
+            <point key="canvasLocation" x="-494" y="1568"/>
         </scene>
         <!--Produkt scannen-->
         <scene sceneID="AfJ-J4-0g5">
@@ -618,7 +612,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hlf-Cv-uGC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="217" y="768"/>
+            <point key="canvasLocation" x="425" y="768"/>
         </scene>
         <!--Warenkorb-->
         <scene sceneID="xuf-rf-THF">
@@ -698,7 +692,7 @@
                     <connections>
                         <segue destination="l0O-yt-wAF" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="Vq6-YY-mEa" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="YOP-IL-BaU" kind="relationship" relationship="viewControllers" id="383-tC-QT0"/>
+                        <segue destination="wKE-G6-kbN" kind="relationship" relationship="viewControllers" id="383-tC-QT0"/>
                         <segue destination="4Rd-fW-vJI" kind="relationship" relationship="viewControllers" id="Gl7-4z-Zij"/>
                         <segue destination="ooQ-nD-6sq" kind="relationship" relationship="viewControllers" id="uUG-zj-FI2"/>
                     </connections>
@@ -743,7 +737,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dW8-fN-14d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1110" y="352"/>
+            <point key="canvasLocation" x="1922" y="352"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="SjB-sA-164">
@@ -761,6 +755,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cgz-Hw-hRF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1192" y="227"/>
+        </scene>
+        <!--Produkt suchen-->
+        <scene sceneID="lo4-bo-lxz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wKE-G6-kbN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Produkt suchen" image="first" id="Ckf-F4-b20"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cmz-pF-vqn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="YOP-IL-BaU" kind="relationship" relationship="rootViewController" id="uz8-PR-4Jb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pmy-xw-jDH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-494" y="768"/>
         </scene>
     </scenes>
     <resources>
