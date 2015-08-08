@@ -31,6 +31,10 @@ class ProductsearchModel : NSObject{
         return products[position];
     }
     
+    func getAllProducts() -> [Product] {
+        return products;
+    }
+    
     func searchProductByName(name:String, onCompletion: ProductSearchFinished){
         let endpoint = resource + "/find/name"
         let params = ["search": name]

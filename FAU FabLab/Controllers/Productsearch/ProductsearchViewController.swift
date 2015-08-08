@@ -6,8 +6,10 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     
-    private var searchActive = false;
     private var model = ProductsearchModel()
+    
+    private var searchActive = false;
+    private var sortedByName = true;
     
     private let doorButtonController = DoorNavigationButtonController.sharedInstance
 
@@ -28,7 +30,6 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
-        searchBar.showsCancelButton = true
         
         doorButtonController.updateButtons(self)    
     }
@@ -58,12 +59,23 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         searchBar.resignFirstResponder();
     }
     
+    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        if(selectedScope == 0) {
+            sortProductsByName()
+        } else {
+            sortProductsByPrice()
+        }
+    }
+    
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         self.searchBar.resignFirstResponder()
         model.searchProductByName(searchBar.text, onCompletion: { err in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.sectionProducts()
-                self.tableView.reloadData()
+                if(self.sortedByName) {
+                    self.sortProductsByName()
+                } else {
+                    self.sortProductsByPrice()
+                }
             })
         })
     }
@@ -72,7 +84,11 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         Debug.instance.log("Got Notification from Barcodescanner, productId: \(notification.object)")
             model.searchProductById(notification.object as! String, onCompletion: { err in
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.tableView.reloadData()
+                    if(self.sortedByName) {
+                        self.sortProductsByName()
+                    } else {
+                        self.sortProductsByPrice()
+                    }
                 })
             })
     }
@@ -94,36 +110,59 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if !self.sections[section].isEmpty {
+        if sortedByName && !self.sections[section].isEmpty {
             return self.collation.sectionTitles[section] as? String
         }
         return ""
     }
     
     func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject] {
-        return self.collation.sectionIndexTitles
+        if(sortedByName) {
+            return self.collation.sectionIndexTitles
+        }
+        return []
     }
     
     func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
-        return self.collation.sectionForSectionIndexTitleAtIndex(index)
+        if(sortedByName) {
+            return self.collation.sectionForSectionIndexTitleAtIndex(index)
+        }
+        return 0
     }
     
-    private func sectionProducts(){
+    private func sortProductsByName(){
+        
+        sortedByName = true
         
         let selector: Selector = "name"
-        self.sections = [[Product]](count: self.collation.sectionTitles.count, repeatedValue: []);
         
         //add products to sections
+        self.sections.removeAll(keepCapacity: false)
+        self.sections = [[Product]](count: self.collation.sectionTitles.count, repeatedValue: []);
         for index in 0..<model.getCount() {
             var sectionIndex = self.collation.sectionForObject(model.getProduct(index), collationStringSelector: selector)
             self.sections[sectionIndex].append(model.getProduct(index))
         }
         
-        //sort each section
+        //sort sections by name
         for index in 0..<sections.count {
             sections[index] = collation.sortedArrayFromArray(sections[index], collationStringSelector: selector) as! [Product]
         }
         
+        self.tableView.reloadData();
+        
+    }
+    
+    private func sortProductsByPrice() {
+        
+        sortedByName = false;
+        
+        sections.removeAll(keepCapacity: false);
+        var products = model.getAllProducts();
+        products.sort({$0.price < $1.price});
+        sections.append(products)
+        
+        self.tableView.reloadData();
     }
     
     

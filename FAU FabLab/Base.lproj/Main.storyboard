@@ -512,39 +512,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yE4-2y-yzv">
-                                <rect key="frame" x="0.0" y="44" width="600" height="507"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="TZJ-J3-Kid">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TZJ-J3-Kid" id="6pd-L0-B0i">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="YOP-IL-BaU" id="wbe-cZ-gIa"/>
-                                    <outlet property="delegate" destination="YOP-IL-BaU" id="H40-lq-jTF"/>
-                                </connections>
-                            </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="0kA-u0-HSB">
-                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                            <searchBar contentMode="redraw" misplaced="YES" showsCancelButton="YES" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0kA-u0-HSB">
+                                <rect key="frame" x="0.0" y="64" width="600" height="88"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Name</string>
+                                    <string>Preis</string>
+                                </scopeButtonTitles>
                                 <connections>
-                                    <outlet property="delegate" destination="YOP-IL-BaU" id="N3N-jY-8On"/>
+                                    <outlet property="delegate" destination="3G3-bQ-XHf" id="WKp-d9-8YR"/>
                                 </connections>
                             </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="pRC-ok-NZ2">
+                                <rect key="frame" x="0.0" y="152" width="600" height="399"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="YOP-IL-BaU" id="H0L-49-CiC"/>
+                                    <outlet property="delegate" destination="YOP-IL-BaU" id="sA2-lw-88g"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="yE4-2y-yzv" firstAttribute="leading" secondItem="0kA-u0-HSB" secondAttribute="leading" id="6iK-nA-9Em"/>
-                            <constraint firstAttribute="trailing" secondItem="yE4-2y-yzv" secondAttribute="trailing" id="C8r-vA-d6B"/>
-                            <constraint firstItem="yE4-2y-yzv" firstAttribute="leading" secondItem="z3B-Nd-IJq" secondAttribute="leading" id="LNN-xy-RSU"/>
-                            <constraint firstItem="yE4-2y-yzv" firstAttribute="top" secondItem="z3B-Nd-IJq" secondAttribute="topMargin" constant="44" id="bZH-97-q0G"/>
-                            <constraint firstItem="yE4-2y-yzv" firstAttribute="bottom" secondItem="u7Y-Nt-pji" secondAttribute="top" id="eNE-BC-hDV"/>
-                            <constraint firstItem="yE4-2y-yzv" firstAttribute="trailing" secondItem="0kA-u0-HSB" secondAttribute="trailing" id="evn-ji-aHx"/>
+                            <constraint firstItem="0kA-u0-HSB" firstAttribute="top" secondItem="I9Y-Ab-fth" secondAttribute="bottom" id="NwF-wU-PGj"/>
+                            <constraint firstItem="pRC-ok-NZ2" firstAttribute="leading" secondItem="z3B-Nd-IJq" secondAttribute="leadingMargin" constant="-16" id="UWO-as-QWc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pRC-ok-NZ2" secondAttribute="trailing" constant="-16" id="Y1Z-ar-5I6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0kA-u0-HSB" secondAttribute="trailing" constant="-16" id="jQo-vJ-PxH"/>
+                            <constraint firstItem="pRC-ok-NZ2" firstAttribute="top" secondItem="0kA-u0-HSB" secondAttribute="bottom" id="sfM-7x-ear"/>
                             <constraint firstItem="0kA-u0-HSB" firstAttribute="top" secondItem="I9Y-Ab-fth" secondAttribute="bottom" id="tGF-gy-iXi"/>
+                            <constraint firstItem="0kA-u0-HSB" firstAttribute="top" secondItem="I9Y-Ab-fth" secondAttribute="bottom" id="tlv-RH-a9A"/>
+                            <constraint firstItem="u7Y-Nt-pji" firstAttribute="top" secondItem="pRC-ok-NZ2" secondAttribute="bottom" id="uJB-XL-hz7"/>
+                            <constraint firstItem="0kA-u0-HSB" firstAttribute="leading" secondItem="z3B-Nd-IJq" secondAttribute="leadingMargin" constant="-16" id="uRq-7s-yrb"/>
+                            <constraint firstItem="u7Y-Nt-pji" firstAttribute="top" secondItem="pRC-ok-NZ2" secondAttribute="bottom" id="uyc-vi-8NP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Produkt suchen" id="3G3-bQ-XHf">
@@ -559,7 +558,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="0kA-u0-HSB" id="Iwc-EW-El8"/>
-                        <outlet property="tableView" destination="yE4-2y-yzv" id="Rar-sy-NWs"/>
+                        <outlet property="tableView" destination="pRC-ok-NZ2" id="OtX-qk-cWd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XdC-vR-fPp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -812,6 +811,6 @@
         <image name="news_nopicture.png" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wh3-Eq-ov2"/>
+        <segue reference="jeL-sJ-mps"/>
     </inferredMetricsTieBreakers>
 </document>
