@@ -620,6 +620,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="headline" destination="eZ0-zM-GOX" id="JMQ-yE-QM2"/>
                         <outlet property="webView" destination="9hh-xI-Num" id="tzP-kR-jZa"/>
                     </connections>
                 </viewController>
