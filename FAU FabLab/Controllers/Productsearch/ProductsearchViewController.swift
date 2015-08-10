@@ -166,4 +166,16 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     
+    @IBAction func showLocationMap(sender: AnyObject) {
+        //TODO PASS locationId
+        let locationId = "text4268"
+        var locationView = self.storyboard?.instantiateViewControllerWithIdentifier("ProductLocationView") as! ProductLocationViewController
+        locationView.locationId = locationId
+        var nav = UINavigationController(rootViewController: locationView)
+        nav.modalPresentationStyle = UIModalPresentationStyle.Popover
+        var popover = nav.popoverPresentationController
+        self.presentViewController(nav, animated: true, completion: nil)
+    }
+    
+    
 }

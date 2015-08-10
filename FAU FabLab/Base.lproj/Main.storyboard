@@ -546,10 +546,21 @@
                             <constraint firstItem="u7Y-Nt-pji" firstAttribute="top" secondItem="pRC-ok-NZ2" secondAttribute="bottom" id="uyc-vi-8NP"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Produkt suchen" id="3G3-bQ-XHf">
+                    <navigationItem key="navigationItem" id="3G3-bQ-XHf">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" image="icon_door_closed" id="zDc-al-KgO">
                             <color key="tintColor" red="0.80392156859999997" green="0.0078431372550000003" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hcp-KE-3OF">
+                            <rect key="frame" x="180" y="7" width="240" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="&quot;Ort anzeigen&quot;">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="showLocationMap:" destination="YOP-IL-BaU" eventType="touchUpInside" id="fej-Di-Dae"/>
+                            </connections>
+                        </button>
                         <barButtonItem key="rightBarButtonItem" image="icon_cart" id="N8d-Xk-Moq">
                             <connections>
                                 <segue destination="ooQ-nD-6sq" kind="show" id="jeL-sJ-mps"/>
@@ -564,6 +575,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XdC-vR-fPp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-494" y="1568"/>
+        </scene>
+        <!--Product Location View Controller-->
+        <scene sceneID="bo2-Ki-dW7">
+            <objects>
+                <viewController storyboardIdentifier="ProductLocationView" id="8JR-YT-c9g" customClass="ProductLocationViewController" customModule="FAU_FabLab" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Px9-3w-fi8"/>
+                        <viewControllerLayoutGuide type="bottom" id="sZO-XQ-0u5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ngg-bA-kmo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Zy-h2-9TK">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Lage des Artikels" id="eZ0-zM-GOX"/>
+                                </items>
+                            </navigationBar>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DcR-1s-UKX">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <navigationItem id="Gwh-H3-iGH">
+                                        <barButtonItem key="leftBarButtonItem" title="Zurück" id="ur4-Vb-f1K">
+                                            <connections>
+                                                <action selector="backButton:" destination="8JR-YT-c9g" id="ias-lZ-nEi"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <webView contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="9hh-xI-Num">
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9hh-xI-Num" firstAttribute="top" secondItem="Px9-3w-fi8" secondAttribute="bottom" constant="44" id="2NT-yz-X56"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9hh-xI-Num" secondAttribute="trailing" constant="-16" id="HSY-Go-pDi"/>
+                            <constraint firstItem="9hh-xI-Num" firstAttribute="leading" secondItem="Ngg-bA-kmo" secondAttribute="leadingMargin" constant="-16" id="L1A-NX-2yL"/>
+                            <constraint firstItem="sZO-XQ-0u5" firstAttribute="top" secondItem="9hh-xI-Num" secondAttribute="bottom" constant="44" id="ywm-l2-Yuw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="9hh-xI-Num" id="tzP-kR-jZa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UPU-r3-BWR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1149" y="1568"/>
         </scene>
         <!--Produkt scannen-->
         <scene sceneID="AfJ-J4-0g5">
