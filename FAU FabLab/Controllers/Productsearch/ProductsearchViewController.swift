@@ -25,6 +25,23 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         Debug.instance.log("add to cart index is \(selectedIndexPath!.row) \(cell.product.name)")
         CartModel.sharedInstance.addProductToCart(cell.product, amount: 1.0)
     }
+    
+    @IBAction func buttonShowLocationPressed(sender: AnyObject) {
+        //TODO PASS locationId and productName
+        let cell = tableView.cellForRowAtIndexPath(selectedIndexPath!) as! ProductCustomCell;
+        
+        let locationId = cell.product.locationId
+        let productName = cell.product.name
+        
+        var locationView = self.storyboard?.instantiateViewControllerWithIdentifier("ProductLocationView") as! ProductLocationViewController
+        locationView.locationId = "\(locationId)"
+        locationView.productName = productName
+        var nav = UINavigationController(rootViewController: locationView)
+        nav.modalPresentationStyle = UIModalPresentationStyle.Popover
+        var popover = nav.popoverPresentationController
+        self.presentViewController(nav, animated: true, completion: nil)
+    }
+    
 
     //collation for sectioning the table
     let collation = UILocalizedIndexedCollation.currentCollation() as! UILocalizedIndexedCollation
@@ -231,21 +248,4 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         
         self.tableView.reloadData();
     }
-    
-    
-    @IBAction func showLocationMap(sender: AnyObject) {
-        //TODO PASS locationId and productName
-        let locationId = "text4268"
-        let productName = "TestProdukt"
-        
-        var locationView = self.storyboard?.instantiateViewControllerWithIdentifier("ProductLocationView") as! ProductLocationViewController
-        locationView.locationId = locationId
-        locationView.productName = productName
-        var nav = UINavigationController(rootViewController: locationView)
-        nav.modalPresentationStyle = UIModalPresentationStyle.Popover
-        var popover = nav.popoverPresentationController
-        self.presentViewController(nav, animated: true, completion: nil)
-    }
-    
-    
 }

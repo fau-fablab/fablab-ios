@@ -580,6 +580,9 @@
                                                             <state key="normal" title="Lagerort anzeigen">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="buttonShowLocationPressed:" destination="YOP-IL-BaU" eventType="touchUpInside" id="dwA-P3-3DB"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -662,16 +665,6 @@
                         <barButtonItem key="leftBarButtonItem" image="icon_door_closed" id="zDc-al-KgO">
                             <color key="tintColor" red="0.80392156859999997" green="0.0078431372550000003" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hcp-KE-3OF">
-                            <rect key="frame" x="180" y="7" width="240" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="&quot;Ort anzeigen&quot;">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="showLocationMap:" destination="YOP-IL-BaU" eventType="touchUpInside" id="fej-Di-Dae"/>
-                            </connections>
-                        </button>
                         <barButtonItem key="rightBarButtonItem" image="icon_cart" id="N8d-Xk-Moq">
                             <connections>
                                 <segue destination="ooQ-nD-6sq" kind="show" id="jeL-sJ-mps"/>
