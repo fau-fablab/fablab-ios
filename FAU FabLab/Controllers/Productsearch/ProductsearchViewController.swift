@@ -12,6 +12,8 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     private var searchActive = false;
     private var sortedByName = true;
     
+    private var productCellIdentifier = "ProductCustomCell"
+    
     private let doorButtonController = DoorNavigationButtonController.sharedInstance
 
     //collation for sectioning the table
@@ -109,10 +111,10 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell! = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
+        let cell = tableView.dequeueReusableCellWithIdentifier(productCellIdentifier) as? ProductCustomCell
         let product = sections[indexPath.section][indexPath.row]
-        cell.textLabel?.text = product.name
-        return cell;
+        cell!.configure(product.name!, price: product.price!, unit: product.unit!)
+        return cell!;
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

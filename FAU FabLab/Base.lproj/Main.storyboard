@@ -523,9 +523,62 @@
                                     <outlet property="delegate" destination="3G3-bQ-XHf" id="WKp-d9-8YR"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="pRC-ok-NZ2">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="pRC-ok-NZ2">
                                 <rect key="frame" x="0.0" y="152" width="600" height="399"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProductCustomCell" rowHeight="60" id="Z5I-GW-5uM" customClass="ProductCustomCell" customModule="FAU_FabLab" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z5I-GW-5uM" id="PNx-Bg-o66">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="45" translatesAutoresizingMaskIntoConstraints="NO" id="ypM-6h-Mfe">
+                                                    <rect key="frame" x="550" y="9" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fP9-I3-rVt">
+                                                    <rect key="frame" x="8" y="30" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Unit" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="45" translatesAutoresizingMaskIntoConstraints="NO" id="g7L-ud-Phc">
+                                                    <rect key="frame" x="550" y="30" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVH-6g-1Gy">
+                                                    <rect key="frame" x="8" y="8" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ypM-6h-Mfe" firstAttribute="trailing" secondItem="PNx-Bg-o66" secondAttribute="trailingMargin" id="9YG-Dp-Naa"/>
+                                                <constraint firstItem="fP9-I3-rVt" firstAttribute="top" secondItem="XVH-6g-1Gy" secondAttribute="bottom" constant="1" id="AZi-fF-QE0"/>
+                                                <constraint firstItem="g7L-ud-Phc" firstAttribute="top" secondItem="ypM-6h-Mfe" secondAttribute="bottom" constant="1" id="GN3-kv-wfG"/>
+                                                <constraint firstItem="XVH-6g-1Gy" firstAttribute="leading" secondItem="PNx-Bg-o66" secondAttribute="leadingMargin" id="IAJ-cB-aV5"/>
+                                                <constraint firstItem="ypM-6h-Mfe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XVH-6g-1Gy" secondAttribute="trailing" id="ReM-Zx-dxt"/>
+                                                <constraint firstItem="g7L-ud-Phc" firstAttribute="trailing" secondItem="PNx-Bg-o66" secondAttribute="trailingMargin" id="T5n-wX-kRZ"/>
+                                                <constraint firstItem="g7L-ud-Phc" firstAttribute="trailing" secondItem="PNx-Bg-o66" secondAttribute="trailingMargin" id="VXX-Ur-VH5"/>
+                                                <constraint firstItem="ypM-6h-Mfe" firstAttribute="trailing" secondItem="PNx-Bg-o66" secondAttribute="trailingMargin" id="k8F-CW-cjx"/>
+                                                <constraint firstItem="g7L-ud-Phc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fP9-I3-rVt" secondAttribute="trailing" id="mXX-dw-dmv"/>
+                                                <constraint firstItem="fP9-I3-rVt" firstAttribute="leading" secondItem="PNx-Bg-o66" secondAttribute="leadingMargin" id="qzm-sx-4fK"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="price" destination="ypM-6h-Mfe" id="DB1-iO-k1A"/>
+                                            <outlet property="subtitle" destination="fP9-I3-rVt" id="IeZ-IW-tvJ"/>
+                                            <outlet property="title" destination="XVH-6g-1Gy" id="8gp-xB-aFh"/>
+                                            <outlet property="unit" destination="g7L-ud-Phc" id="Dtm-xL-tsa"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="YOP-IL-BaU" id="H0L-49-CiC"/>
                                     <outlet property="delegate" destination="YOP-IL-BaU" id="sA2-lw-88g"/>
