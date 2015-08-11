@@ -7,6 +7,8 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var actInd : UIActivityIndicatorView!
     
+    private var selectedIndexPath: NSIndexPath?
+    
     private var model = ProductsearchModel()
     
     private var searchActive = false;
@@ -147,6 +149,46 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         return 0
     }
     
+
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        (cell as! ProductCustomCell).watchFrameChanges()
+    }
+    
+    func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        (cell as! ProductCustomCell).ignoreFrameChanges()
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let previousIndexPath = selectedIndexPath
+        if indexPath == selectedIndexPath {
+            selectedIndexPath = nil
+        } else {
+            selectedIndexPath = indexPath
+        }
+        
+        var indexPaths : Array<NSIndexPath> = []
+        if let previous = previousIndexPath {
+            indexPaths += [previous]
+        }
+        if let current = selectedIndexPath {
+            indexPaths += [current]
+        }
+        if indexPaths.count > 0 {
+            tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
+        tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if(indexPath == selectedIndexPath){
+            return ProductCustomCell.expandedHeight
+        }else{
+            return ProductCustomCell.defaultHeight
+        }
+    }
+    
+
     private func sortProductsByName(){
         
         sortedByName = true

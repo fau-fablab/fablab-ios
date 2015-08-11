@@ -527,7 +527,7 @@
                                 <rect key="frame" x="0.0" y="152" width="600" height="399"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProductCustomCell" rowHeight="60" id="Z5I-GW-5uM" customClass="ProductCustomCell" customModule="FAU_FabLab" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProductCustomCell" rowHeight="200" id="Z5I-GW-5uM" customClass="ProductCustomCell" customModule="FAU_FabLab" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z5I-GW-5uM" id="PNx-Bg-o66">
@@ -557,10 +557,61 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ryY-Xq-ypP">
+                                                    <rect key="frame" x="8" y="59" width="584" height="132"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djP-p0-Dlu">
+                                                            <rect key="frame" x="0.0" y="8" width="576" height="30"/>
+                                                            <state key="normal" title="Zum Warenkorb hinzufügen">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ng-04-xvl">
+                                                            <rect key="frame" x="0.0" y="94" width="576" height="30"/>
+                                                            <state key="normal" title="Ausgegangenes Produkt melden">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvd-Ek-GWb">
+                                                            <rect key="frame" x="0.0" y="51" width="576" height="30"/>
+                                                            <state key="normal" title="Lagerort anzeigen">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="2ng-04-xvl" secondAttribute="bottom" constant="8" id="1la-X0-IKr"/>
+                                                        <constraint firstItem="djP-p0-Dlu" firstAttribute="top" secondItem="ryY-Xq-ypP" secondAttribute="topMargin" id="6HJ-so-VcE"/>
+                                                        <constraint firstItem="djP-p0-Dlu" firstAttribute="top" secondItem="ryY-Xq-ypP" secondAttribute="top" constant="8" id="6yw-bP-0fG"/>
+                                                        <constraint firstItem="Tvd-Ek-GWb" firstAttribute="top" secondItem="djP-p0-Dlu" secondAttribute="bottom" constant="13" id="7WM-Kz-k1D"/>
+                                                        <constraint firstItem="djP-p0-Dlu" firstAttribute="trailing" secondItem="Tvd-Ek-GWb" secondAttribute="trailing" id="8K1-ZG-ikU"/>
+                                                        <constraint firstItem="2ng-04-xvl" firstAttribute="top" secondItem="Tvd-Ek-GWb" secondAttribute="bottom" constant="13" id="ENA-gD-hgb"/>
+                                                        <constraint firstItem="djP-p0-Dlu" firstAttribute="trailing" secondItem="ryY-Xq-ypP" secondAttribute="trailingMargin" id="ERv-vA-3AA"/>
+                                                        <constraint firstItem="djP-p0-Dlu" firstAttribute="top" secondItem="ryY-Xq-ypP" secondAttribute="top" constant="8" id="G4k-dY-b5F"/>
+                                                        <constraint firstItem="djP-p0-Dlu" firstAttribute="leading" secondItem="ryY-Xq-ypP" secondAttribute="leading" id="Gzi-gd-sJ5"/>
+                                                        <constraint firstItem="2ng-04-xvl" firstAttribute="top" secondItem="Tvd-Ek-GWb" secondAttribute="bottom" constant="13" id="P1u-Oy-EOB"/>
+                                                        <constraint firstItem="2ng-04-xvl" firstAttribute="top" secondItem="ryY-Xq-ypP" secondAttribute="top" constant="94" id="QnF-6d-Rni"/>
+                                                        <constraint firstItem="Tvd-Ek-GWb" firstAttribute="top" secondItem="ryY-Xq-ypP" secondAttribute="top" constant="51" id="YNr-cG-dM0"/>
+                                                        <constraint firstItem="djP-p0-Dlu" firstAttribute="top" secondItem="ryY-Xq-ypP" secondAttribute="top" constant="8" id="YiH-Pn-UEd"/>
+                                                        <constraint firstAttribute="bottom" secondItem="2ng-04-xvl" secondAttribute="bottom" constant="8" id="caN-Mr-2W8"/>
+                                                        <constraint firstItem="Tvd-Ek-GWb" firstAttribute="top" secondItem="ryY-Xq-ypP" secondAttribute="top" constant="51" id="fkc-Yi-9TS"/>
+                                                        <constraint firstItem="Tvd-Ek-GWb" firstAttribute="centerY" secondItem="ryY-Xq-ypP" secondAttribute="centerY" id="l2b-Km-oZN"/>
+                                                        <constraint firstItem="djP-p0-Dlu" firstAttribute="leading" secondItem="2ng-04-xvl" secondAttribute="leading" id="mt8-sX-rkJ"/>
+                                                        <constraint firstItem="djP-p0-Dlu" firstAttribute="trailing" secondItem="2ng-04-xvl" secondAttribute="trailing" id="pMf-Vs-Goh"/>
+                                                        <constraint firstItem="djP-p0-Dlu" firstAttribute="leading" secondItem="Tvd-Ek-GWb" secondAttribute="leading" id="uyT-IO-jyF"/>
+                                                        <constraint firstItem="Tvd-Ek-GWb" firstAttribute="top" secondItem="djP-p0-Dlu" secondAttribute="bottom" constant="13" id="wOJ-G4-uEW"/>
+                                                        <constraint firstItem="2ng-04-xvl" firstAttribute="bottom" secondItem="ryY-Xq-ypP" secondAttribute="bottomMargin" id="wrH-i7-EZF"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="ryY-Xq-ypP" firstAttribute="trailing" secondItem="PNx-Bg-o66" secondAttribute="trailingMargin" id="1U8-dX-5JR"/>
+                                                <constraint firstItem="ryY-Xq-ypP" firstAttribute="leading" secondItem="PNx-Bg-o66" secondAttribute="leadingMargin" id="7i0-IK-3uu"/>
                                                 <constraint firstItem="ypM-6h-Mfe" firstAttribute="trailing" secondItem="PNx-Bg-o66" secondAttribute="trailingMargin" id="9YG-Dp-Naa"/>
                                                 <constraint firstItem="fP9-I3-rVt" firstAttribute="top" secondItem="XVH-6g-1Gy" secondAttribute="bottom" constant="1" id="AZi-fF-QE0"/>
+                                                <constraint firstItem="ryY-Xq-ypP" firstAttribute="leading" secondItem="PNx-Bg-o66" secondAttribute="leadingMargin" id="Ab9-0Q-7g8"/>
+                                                <constraint firstItem="ryY-Xq-ypP" firstAttribute="leading" secondItem="PNx-Bg-o66" secondAttribute="leadingMargin" id="F9j-zN-VAY"/>
                                                 <constraint firstItem="g7L-ud-Phc" firstAttribute="top" secondItem="ypM-6h-Mfe" secondAttribute="bottom" constant="1" id="GN3-kv-wfG"/>
                                                 <constraint firstItem="XVH-6g-1Gy" firstAttribute="leading" secondItem="PNx-Bg-o66" secondAttribute="leadingMargin" id="IAJ-cB-aV5"/>
                                                 <constraint firstItem="ypM-6h-Mfe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XVH-6g-1Gy" secondAttribute="trailing" id="ReM-Zx-dxt"/>
@@ -572,6 +623,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="buttonAddToCart" destination="ryY-Xq-ypP" id="QJL-TX-7RL"/>
+                                            <outlet property="buttonReportOutOfStock" destination="ryY-Xq-ypP" id="CeV-Sr-7Pr"/>
+                                            <outlet property="buttonShowLocation" destination="ryY-Xq-ypP" id="VIU-7l-nnK"/>
+                                            <outlet property="expandedView" destination="ryY-Xq-ypP" id="Jye-so-eBp"/>
                                             <outlet property="price" destination="ypM-6h-Mfe" id="DB1-iO-k1A"/>
                                             <outlet property="subtitle" destination="fP9-I3-rVt" id="IeZ-IW-tvJ"/>
                                             <outlet property="title" destination="XVH-6g-1Gy" id="8gp-xB-aFh"/>
