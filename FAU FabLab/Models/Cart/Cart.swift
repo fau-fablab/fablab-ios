@@ -48,6 +48,10 @@ class Cart : NSObject{
         return entries[position];
     }
     
+    func removeEntry(position:Int){
+        entries.removeAtIndex(position)
+    }
+    
     /*                      Checkout process            */
     func setCode(code :String){
         self.cartCode = code

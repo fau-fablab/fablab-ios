@@ -15,8 +15,8 @@ class CartModel : NSObject{
         cart.addEntry(CartEntry(product: product, amount: amount))
     }
     
-    func removeProductFromCart(product: Product){
-        //TODO
+    func removeProductFromCart(index: Int){
+        cart.removeEntry(index)
     }
     
     /*                      Checkout process              */

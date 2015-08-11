@@ -19,11 +19,15 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkoutStatusChanged:", name: "CheckoutStatusChangedNotification", object: nil)
     }
     
+    private func showTotalPrice(){
+        labelTotalPrice.title = "Gesamtpreis : \(cartModel.cart.getPrice()) €"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        labelTotalPrice.title = "Gesamtpreis : \(cartModel.cart.getPrice())"
+        showTotalPrice()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -38,6 +42,18 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         let cell: UITableViewCell! = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         cell.textLabel?.text = cartModel.cart.getEntry(indexPath.row).product.name
         return cell;
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            CartModel.sharedInstance.removeProductFromCart(indexPath.row)
+            tableView.reloadData()
+            showTotalPrice()
+        }
     }
     
     /*                      Checkout process            */
