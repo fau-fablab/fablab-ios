@@ -19,9 +19,7 @@
 		5060B1EE1B4EFE2A008B41FD /* FAU_FabLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1ED1B4EFE2A008B41FD /* FAU_FabLabTests.swift */; };
 		507493681B5BFE6F0035BEB4 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */; };
 		507BA38E1B5A7C0300E5DCF3 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 507BA38D1B5A7C0300E5DCF3 /* Cartfile */; };
-		50CB912B1B73D246000F4FB8 /* DoorNavigationButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB912A1B73D246000F4FB8 /* DoorNavigationButtonController.swift */; };
 		50DBE9041B6FA93000685B07 /* EventsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */; };
-		50E309F01B76302D004C4928 /* StoermeldungController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E309EF1B76302D004C4928 /* StoermeldungController.swift */; };
 		8419B6101B6F6050000275A8 /* CheckoutCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8419B60F1B6F6050000275A8 /* CheckoutCodeScannerViewController.swift */; };
 		8429B79A1B739C6D004C7DA0 /* RSBarcodes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DC93121B669E0100981977 /* RSBarcodes.framework */; };
 		8429B79B1B739C6D004C7DA0 /* RSBarcodes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84DC93121B669E0100981977 /* RSBarcodes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -33,6 +31,8 @@
 		92078EBB1B6E29B200A21AD9 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92078EBA1B6E29B200A21AD9 /* Category.swift */; };
 		92078EBD1B6E2D9D00A21AD9 /* ProductsearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92078EBC1B6E2D9D00A21AD9 /* ProductsearchModel.swift */; };
 		92078EC01B6E471200A21AD9 /* ProductsearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92078EBF1B6E471200A21AD9 /* ProductsearchViewController.swift */; };
+		923E1F231B7A728C009CC545 /* DoorNavigationButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E1F221B7A728C009CC545 /* DoorNavigationButtonController.swift */; };
+		923E1F251B7A735F009CC545 /* MalfunctionInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E1F241B7A735F009CC545 /* MalfunctionInfoController.swift */; };
 		924352461B654CF200CBFA0C /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924352451B654CF200CBFA0C /* Kingfisher.framework */; };
 		92500ED21B72CD7C0093CC45 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92500ECF1B72CD7C0093CC45 /* Cart.swift */; };
 		92500ED31B72CD7C0093CC45 /* CartEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92500ED01B72CD7C0093CC45 /* CartEntry.swift */; };
@@ -97,9 +97,7 @@
 		5060B1ED1B4EFE2A008B41FD /* FAU_FabLabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAU_FabLabTests.swift; sourceTree = "<group>"; };
 		507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		507BA38D1B5A7C0300E5DCF3 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
-		50CB912A1B73D246000F4FB8 /* DoorNavigationButtonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoorNavigationButtonController.swift; sourceTree = "<group>"; };
 		50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCustomCell.swift; sourceTree = "<group>"; };
-		50E309EF1B76302D004C4928 /* StoermeldungController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoermeldungController.swift; sourceTree = "<group>"; };
 		8419B60F1B6F6050000275A8 /* CheckoutCodeScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutCodeScannerViewController.swift; sourceTree = "<group>"; };
 		846100BD1B78696000393E63 /* ProductLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductLocationViewController.swift; sourceTree = "<group>"; };
 		84DC93121B669E0100981977 /* RSBarcodes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RSBarcodes.framework; path = Carthage/Build/iOS/RSBarcodes.framework; sourceTree = "<group>"; };
@@ -110,6 +108,8 @@
 		92078EBA1B6E29B200A21AD9 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		92078EBC1B6E2D9D00A21AD9 /* ProductsearchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsearchModel.swift; sourceTree = "<group>"; };
 		92078EBF1B6E471200A21AD9 /* ProductsearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsearchViewController.swift; sourceTree = "<group>"; };
+		923E1F221B7A728C009CC545 /* DoorNavigationButtonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoorNavigationButtonController.swift; sourceTree = "<group>"; };
+		923E1F241B7A735F009CC545 /* MalfunctionInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MalfunctionInfoController.swift; sourceTree = "<group>"; };
 		924352451B654CF200CBFA0C /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		92500ECF1B72CD7C0093CC45 /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		92500ED01B72CD7C0093CC45 /* CartEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartEntry.swift; sourceTree = "<group>"; };
@@ -176,7 +176,7 @@
 		500A2CA11B63DCF4005CC8CF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				50E309EE1B763015004C4928 /* Stoermeldung */,
+				50E309EE1B763015004C4928 /* MalfunctionInfo */,
 				8419B6111B6F7071000275A8 /* Cart */,
 				92078EBE1B6E46EC00A21AD9 /* Productsearch */,
 				927901DA1B6D3F3D00F95B09 /* BarcodeScanner */,
@@ -262,17 +262,17 @@
 		50AD1B231B73F5440014E065 /* DoorState */ = {
 			isa = PBXGroup;
 			children = (
-				50CB912A1B73D246000F4FB8 /* DoorNavigationButtonController.swift */,
+				923E1F221B7A728C009CC545 /* DoorNavigationButtonController.swift */,
 			);
-			name = DoorState;
+			path = DoorState;
 			sourceTree = "<group>";
 		};
-		50E309EE1B763015004C4928 /* Stoermeldung */ = {
+		50E309EE1B763015004C4928 /* MalfunctionInfo */ = {
 			isa = PBXGroup;
 			children = (
-				50E309EF1B76302D004C4928 /* StoermeldungController.swift */,
+				923E1F241B7A735F009CC545 /* MalfunctionInfoController.swift */,
 			);
-			name = Stoermeldung;
+			path = MalfunctionInfo;
 			sourceTree = "<group>";
 		};
 		8419B6111B6F7071000275A8 /* Cart */ = {
@@ -559,7 +559,6 @@
 				927901E51B6D4AE300F95B09 /* NewsModel.swift in Sources */,
 				8419B6101B6F6050000275A8 /* CheckoutCodeScannerViewController.swift in Sources */,
 				927901E11B6D3F6300F95B09 /* NewsDetailsViewController.swift in Sources */,
-				50E309F01B76302D004C4928 /* StoermeldungController.swift in Sources */,
 				5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */,
 				928054F61B6D8A0C00D0D4FB /* News.swift in Sources */,
 				928054F91B6DA0D900D0D4FB /* Event.swift in Sources */,
@@ -568,15 +567,16 @@
 				92078EBD1B6E2D9D00A21AD9 /* ProductsearchModel.swift in Sources */,
 				92F5E5D01B73B34F00E95490 /* FabTool.swift in Sources */,
 				92078EB91B6E293400A21AD9 /* Location.swift in Sources */,
+				923E1F251B7A735F009CC545 /* MalfunctionInfoController.swift in Sources */,
 				92500ED21B72CD7C0093CC45 /* Cart.swift in Sources */,
 				927901CA1B6D3B9300F95B09 /* RestManager.swift in Sources */,
 				846100BE1B78696000393E63 /* ProductLocationViewController.swift in Sources */,
 				502DB1521B7150370036EF6B /* EventsDetailViewController.swift in Sources */,
 				92C2F3151B7399AC0086481B /* CartViewController.swift in Sources */,
 				927901D71B6D3EED00F95B09 /* NewsCustomCell.swift in Sources */,
-				50CB912B1B73D246000F4FB8 /* DoorNavigationButtonController.swift in Sources */,
 				928054FB1B6DA22000D0D4FB /* EventModel.swift in Sources */,
 				50DBE9041B6FA93000685B07 /* EventsCustomCell.swift in Sources */,
+				923E1F231B7A728C009CC545 /* DoorNavigationButtonController.swift in Sources */,
 				927901DC1B6D3F5700F95B09 /* ProductsearchCodeScannerViewController.swift in Sources */,
 				92500ED41B72CD7C0093CC45 /* CartModel.swift in Sources */,
 				927901DE1B6D3F5C00F95B09 /* EventsViewController.swift in Sources */,

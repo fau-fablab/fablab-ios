@@ -1,6 +1,6 @@
 import UIKit
 
-class StoermeldungController: UIViewController {
+class MalfunctionInfoController: UIViewController {
 
     private let doorButtonController = DoorNavigationButtonController.sharedInstance
     

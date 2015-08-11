@@ -856,7 +856,7 @@
         <!--Störmeldung-->
         <scene sceneID="pWX-gq-3Yj">
             <objects>
-                <viewController title="Störmeldung" id="1Ut-5H-ies" customClass="StoermeldungController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Störmeldung" id="1Ut-5H-ies" customClass="MalfunctionInfoController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="726-ZX-s8Q"/>
                         <viewControllerLayoutGuide type="bottom" id="Ae9-VM-01X"/>
@@ -989,6 +989,6 @@
         <image name="news_nopicture.png" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jeL-sJ-mps"/>
+        <segue reference="wh3-Eq-ov2"/>
     </inferredMetricsTieBreakers>
 </document>
