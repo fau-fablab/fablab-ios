@@ -9,7 +9,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var checkoutButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
    
-    @IBOutlet var labelTotalPrice: UIBarButtonItem!
+    @IBOutlet var labelTotalPrice: UILabel!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     private var cartModel = CartModel.sharedInstance
     
@@ -20,7 +20,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
     private func showTotalPrice(){
-        labelTotalPrice.title = "Gesamtpreis : \(cartModel.cart.getPrice()) €"
+        labelTotalPrice.text = String(format: "%.2f€", cartModel.cart.getPrice());
     }
     
     override func viewDidLoad() {
