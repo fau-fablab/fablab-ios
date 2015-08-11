@@ -30,10 +30,10 @@ class Cart : NSObject{
         }
     }
     
-    func save() {
+    func saveCoreData() {
         var error : NSError?
         if !self.managedObjectContext.save(&error) {
-            NSLog("Error saving: %@", error!)
+            Debug.instance.log("Error saving: \(error!)")
         }
     }
     
@@ -59,6 +59,12 @@ class Cart : NSObject{
     }
     
     func addEntry(product:Product, amount:Double) {
+        
+        if(self.status != CartStatus.SHOPPING){
+            //TODO notify user?
+            return
+        }
+        
         let cartEntry = NSEntityDescription.insertNewObjectForEntityForName(CartEntry.EntityName,
             inManagedObjectContext: self.managedObjectContext) as! CartEntry
         
@@ -72,7 +78,7 @@ class Cart : NSObject{
         cartEntry.product = cartProduct
         cartEntry.amount = amount
         
-        save()
+        saveCoreData()
     }
     
     func getEntry(position:Int) -> CartEntry{
@@ -80,8 +86,14 @@ class Cart : NSObject{
     }
     
     func removeEntry(position:Int){
+        
+        if(self.status != CartStatus.SHOPPING){
+            //TODO notify user?
+            return
+        }
+        
         managedObjectContext.deleteObject(entries[position])
-        save()
+        saveCoreData()
     }
     
     /*                      Checkout process            */
@@ -96,7 +108,7 @@ class Cart : NSObject{
     func serialize() -> NSDictionary{
         var items = [NSDictionary]()
         for item in entries{
-            //items.append(item.serialize())
+            items.append(item.serialize())
         }
         
         let cart = [
@@ -104,6 +116,7 @@ class Cart : NSObject{
             "items": items,
             "status": status.rawValue
         ]
+        Debug.instance.log("Serialized cart is \n \(cart)")
         return cart
     }
     

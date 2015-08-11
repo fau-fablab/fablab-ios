@@ -8,9 +8,7 @@ class CartEntry : NSManagedObject{
     @NSManaged var product: CartProduct
     @NSManaged var amount: Double
     
-    /*
     func serialize() -> NSDictionary{
-     //   return ["productId" : product.productId as String!, "amount" : amount]
-        //TODO
-    }*/
+        return ["productId" : product.id as String!, "amount" : amount]
+    }
 }
