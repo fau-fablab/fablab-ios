@@ -9,6 +9,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var checkoutButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
    
+    @IBOutlet var labelTotalPrice: UIBarButtonItem!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     private var cartModel = CartModel.sharedInstance
     
@@ -18,12 +19,11 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkoutStatusChanged:", name: "CheckoutStatusChangedNotification", object: nil)
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        labelTotalPrice.title = "Gesamtpreis : \(cartModel.cart.getPrice())"
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -31,19 +31,16 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return cartModel.cart.getCount()
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell! = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
+        cell.textLabel?.text = cartModel.cart.getEntry(indexPath.row).product.name
         return cell;
     }
     
-    
     /*                      Checkout process            */
-    
-    
-
     //Observer -> Scanner
     func checkoutCodeScanned(notification:NSNotification) {
         cartModel.sendCartToServer(notification.object as! String)

@@ -565,6 +565,9 @@
                                                             <state key="normal" title="Zum Warenkorb hinzufügen">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="buttonAddToCartPressed:" destination="YOP-IL-BaU" eventType="touchUpInside" id="UhM-e5-DoU"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ng-04-xvl">
                                                             <rect key="frame" x="0.0" y="94" width="576" height="30"/>
@@ -818,9 +821,6 @@
                                 <rect key="frame" x="0.0" y="507" width="600" height="44"/>
                                 <items>
                                     <barButtonItem title="Gesamtpreis: 0,00€" id="v1N-DU-MUb"/>
-                                    <barButtonItem id="ROh-ig-AGl"/>
-                                    <barButtonItem id="DBn-Qp-z8c"/>
-                                    <barButtonItem id="O1x-Zq-9g4"/>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -846,6 +846,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="labelTotalPrice" destination="v1N-DU-MUb" id="utW-1x-MdB"/>
                         <outlet property="tableView" destination="Cw4-Ky-LeW" id="pDX-ON-wsu"/>
                     </connections>
                 </viewController>
@@ -989,6 +990,6 @@
         <image name="news_nopicture.png" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wh3-Eq-ov2"/>
+        <segue reference="jeL-sJ-mps"/>
     </inferredMetricsTieBreakers>
 </document>

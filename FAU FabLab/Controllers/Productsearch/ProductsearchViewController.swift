@@ -17,6 +17,14 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     private var productCellIdentifier = "ProductCustomCell"
     
     private let doorButtonController = DoorNavigationButtonController.sharedInstance
+    
+    
+    @IBAction func buttonAddToCartPressed(sender: AnyObject) {
+        let cell = tableView.cellForRowAtIndexPath(selectedIndexPath!) as! ProductCustomCell;
+        
+        Debug.instance.log("add to cart index is \(selectedIndexPath!.row) \(cell.product.name)")
+        CartModel.sharedInstance.addProductToCart(cell.product, amount: 1.0)
+    }
 
     //collation for sectioning the table
     let collation = UILocalizedIndexedCollation.currentCollation() as! UILocalizedIndexedCollation
@@ -115,7 +123,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(productCellIdentifier) as? ProductCustomCell
         let product = sections[indexPath.section][indexPath.row]
-        cell!.configure(product.name!, price: product.price!, unit: product.unit!)
+        cell!.configure(product)
         return cell!;
     }
     

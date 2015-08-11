@@ -2,7 +2,7 @@
 import UIKit
 
 public class ProductCustomCell: UITableViewCell {
-
+    
     @IBOutlet var title: UILabel!
     @IBOutlet var subtitle: UILabel!
     @IBOutlet var price: UILabel!
@@ -14,7 +14,8 @@ public class ProductCustomCell: UITableViewCell {
     @IBOutlet var buttonReportOutOfStock: UIView!
     
     private var isObserving:Bool = false;
-    
+    private(set) var product:Product!
+
     class var defaultHeight: CGFloat {
         get { return 60 }
     }
@@ -48,15 +49,15 @@ public class ProductCustomCell: UITableViewCell {
         }
     }
 
-    public func configure(name: String, price: Double, unit: String) {
-        
-        let separatedName = split(name, maxSplit: 1, allowEmptySlices: false, isSeparator: {$0 == " " || $0 == "," })
+    func configure(product:Product!) {
+        self.product = product
+        let separatedName = split(product.name!, maxSplit: 1, allowEmptySlices: false, isSeparator: {$0 == " " || $0 == "," })
         self.title.text = separatedName[0];
         if(separatedName.count > 1) {
             self.subtitle.text = separatedName[1];
         }
-        self.price.text = String(format: "%.2f€", price);
-        self.unit.text = unit;
+        self.price.text = String(format: "%.2f€", product.price!);
+        self.unit.text = product.unit;
         
     }
     
