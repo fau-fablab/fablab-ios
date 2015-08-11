@@ -33,9 +33,12 @@
 		92078EC01B6E471200A21AD9 /* ProductsearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92078EBF1B6E471200A21AD9 /* ProductsearchViewController.swift */; };
 		923E1F231B7A728C009CC545 /* DoorNavigationButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E1F221B7A728C009CC545 /* DoorNavigationButtonController.swift */; };
 		923E1F251B7A735F009CC545 /* MalfunctionInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E1F241B7A735F009CC545 /* MalfunctionInfoController.swift */; };
+		923E1F2A1B7AA25A009CC545 /* CartProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E1F291B7AA25A009CC545 /* CartProduct.swift */; };
+		923E1F2C1B7AA360009CC545 /* CartEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E1F2B1B7AA360009CC545 /* CartEntry.swift */; };
+		923E1F2F1B7AA3F7009CC545 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 923E1F2D1B7AA3F7009CC545 /* CoreDataModel.xcdatamodeld */; };
+		923E1F311B7AA49A009CC545 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E1F301B7AA49A009CC545 /* CoreDataHelper.swift */; };
 		924352461B654CF200CBFA0C /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924352451B654CF200CBFA0C /* Kingfisher.framework */; };
 		92500ED21B72CD7C0093CC45 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92500ECF1B72CD7C0093CC45 /* Cart.swift */; };
-		92500ED31B72CD7C0093CC45 /* CartEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92500ED01B72CD7C0093CC45 /* CartEntry.swift */; };
 		92500ED41B72CD7C0093CC45 /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92500ED11B72CD7C0093CC45 /* CartModel.swift */; };
 		925AC32F1B6C245700057C7F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925AC32E1B6C245700057C7F /* Alamofire.framework */; };
 		927901BD1B6D3A7F00F95B09 /* ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 927901BC1B6D3A7F00F95B09 /* ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer */; };
@@ -110,9 +113,12 @@
 		92078EBF1B6E471200A21AD9 /* ProductsearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsearchViewController.swift; sourceTree = "<group>"; };
 		923E1F221B7A728C009CC545 /* DoorNavigationButtonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoorNavigationButtonController.swift; sourceTree = "<group>"; };
 		923E1F241B7A735F009CC545 /* MalfunctionInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MalfunctionInfoController.swift; sourceTree = "<group>"; };
+		923E1F291B7AA25A009CC545 /* CartProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartProduct.swift; sourceTree = "<group>"; };
+		923E1F2B1B7AA360009CC545 /* CartEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartEntry.swift; sourceTree = "<group>"; };
+		923E1F2E1B7AA3F7009CC545 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		923E1F301B7AA49A009CC545 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		924352451B654CF200CBFA0C /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		92500ECF1B72CD7C0093CC45 /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
-		92500ED01B72CD7C0093CC45 /* CartEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartEntry.swift; sourceTree = "<group>"; };
 		92500ED11B72CD7C0093CC45 /* CartModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
 		925AC32E1B6C245700057C7F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		927901BC1B6D3A7F00F95B09 /* ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer"; sourceTree = "<group>"; };
@@ -203,6 +209,7 @@
 		5060B1C71B4EFE29008B41FD = {
 			isa = PBXGroup;
 			children = (
+				923E1F2D1B7AA3F7009CC545 /* CoreDataModel.xcdatamodeld */,
 				927901B91B6D39FF00F95B09 /* Libraries */,
 				507BA38D1B5A7C0300E5DCF3 /* Cartfile */,
 				5060B1D21B4EFE2A008B41FD /* FAU FabLab */,
@@ -287,8 +294,8 @@
 		842314691B70BC1D0074B670 /* Cart */ = {
 			isa = PBXGroup;
 			children = (
+				923E1F281B7AA1EC009CC545 /* Managed */,
 				92500ECF1B72CD7C0093CC45 /* Cart.swift */,
-				92500ED01B72CD7C0093CC45 /* CartEntry.swift */,
 				92500ED11B72CD7C0093CC45 /* CartModel.swift */,
 			);
 			path = Cart;
@@ -313,6 +320,15 @@
 				846100BD1B78696000393E63 /* ProductLocationViewController.swift */,
 			);
 			path = Productsearch;
+			sourceTree = "<group>";
+		};
+		923E1F281B7AA1EC009CC545 /* Managed */ = {
+			isa = PBXGroup;
+			children = (
+				923E1F2B1B7AA360009CC545 /* CartEntry.swift */,
+				923E1F291B7AA25A009CC545 /* CartProduct.swift */,
+			);
+			path = Managed;
 			sourceTree = "<group>";
 		};
 		927901B91B6D39FF00F95B09 /* Libraries */ = {
@@ -369,6 +385,7 @@
 			children = (
 				927901C91B6D3B9300F95B09 /* RestManager.swift */,
 				35CE11C7BEE60991B0702A2A /* Debug.swift */,
+				923E1F301B7AA49A009CC545 /* CoreDataHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -555,13 +572,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92500ED31B72CD7C0093CC45 /* CartEntry.swift in Sources */,
 				927901E51B6D4AE300F95B09 /* NewsModel.swift in Sources */,
 				8419B6101B6F6050000275A8 /* CheckoutCodeScannerViewController.swift in Sources */,
 				927901E11B6D3F6300F95B09 /* NewsDetailsViewController.swift in Sources */,
 				5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */,
 				928054F61B6D8A0C00D0D4FB /* News.swift in Sources */,
 				928054F91B6DA0D900D0D4FB /* Event.swift in Sources */,
+				923E1F311B7AA49A009CC545 /* CoreDataHelper.swift in Sources */,
+				923E1F2C1B7AA360009CC545 /* CartEntry.swift in Sources */,
 				92078EB71B6E270E00A21AD9 /* Product.swift in Sources */,
 				92078EC01B6E471200A21AD9 /* ProductsearchViewController.swift in Sources */,
 				92078EBD1B6E2D9D00A21AD9 /* ProductsearchModel.swift in Sources */,
@@ -570,9 +588,11 @@
 				923E1F251B7A735F009CC545 /* MalfunctionInfoController.swift in Sources */,
 				92500ED21B72CD7C0093CC45 /* Cart.swift in Sources */,
 				927901CA1B6D3B9300F95B09 /* RestManager.swift in Sources */,
+				923E1F2A1B7AA25A009CC545 /* CartProduct.swift in Sources */,
 				846100BE1B78696000393E63 /* ProductLocationViewController.swift in Sources */,
 				502DB1521B7150370036EF6B /* EventsDetailViewController.swift in Sources */,
 				92C2F3151B7399AC0086481B /* CartViewController.swift in Sources */,
+				923E1F2F1B7AA3F7009CC545 /* CoreDataModel.xcdatamodeld in Sources */,
 				927901D71B6D3EED00F95B09 /* NewsCustomCell.swift in Sources */,
 				928054FB1B6DA22000D0D4FB /* EventModel.swift in Sources */,
 				50DBE9041B6FA93000685B07 /* EventsCustomCell.swift in Sources */,
@@ -819,6 +839,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		923E1F2D1B7AA3F7009CC545 /* CoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				923E1F2E1B7AA3F7009CC545 /* CoreDataModel.xcdatamodel */,
+			);
+			currentVersion = 923E1F2E1B7AA3F7009CC545 /* CoreDataModel.xcdatamodel */;
+			path = CoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5060B1C81B4EFE29008B41FD /* Project object */;
 }

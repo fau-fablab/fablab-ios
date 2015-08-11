@@ -12,7 +12,7 @@ class CartModel : NSObject{
     static let sharedInstance = CartModel()
     
     func addProductToCart(product:Product, amount:Double){
-        cart.addEntry(CartEntry(product: product, amount: amount))
+        cart.addEntry(product, amount: amount)
     }
     
     func removeProductFromCart(index: Int){
@@ -106,14 +106,14 @@ class CartModel : NSObject{
         
         let p1 = Product()
         p1.setId("123")
-        let e1 = CartEntry(product: p1, amount: 1.0)
+        //let e1 = CartEntry(product: p1, amount: 1.0)
         
         let p2 = Product()
         p2.setId("123")
-        let e2 = CartEntry(product: p2, amount: 5.0)
+        //let e2 = CartEntry(product: p2, amount: 5.0)
         
-        cart.addEntry(e1)
-        cart.addEntry(e2)
+        //cart.addEntry(e1)
+        //cart.addEntry(e2)
     }
     
     func simulatePayChecoutProcess(){

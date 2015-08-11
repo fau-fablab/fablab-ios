@@ -2,6 +2,7 @@
 import Foundation
 import ObjectMapper
 import SwiftyJSON
+import CoreData
 
 // INFO TO ALL: Check Cart Status before doing anything. 
 //              --> ONLY IF STATUS == Shopping -> ADD/CHANGE.... -> OTHERWISE there is a checkout process running!
@@ -15,12 +16,29 @@ class Cart : NSObject{
         case CANCELLED = "CANCELLED"
         case FAILED = "FAILED"
     }
+    
+    private let managedObjectContext : NSManagedObjectContext
+    private let coreData = CoreDataHelper(sqliteDocumentName: "CoreDataModel.db", schemaName:"")
 
     private(set) var cartCode: String?
     private(set) var status = CartStatus.SHOPPING
-    private(set) var entries = [CartEntry]()
+    
+    private var entries : [CartEntry] {
+        get {
+            let request = NSFetchRequest(entityName: CartEntry.EntityName)
+            return managedObjectContext.executeFetchRequest(request, error: nil) as! [CartEntry]
+        }
+    }
+    
+    func save() {
+        var error : NSError?
+        if !self.managedObjectContext.save(&error) {
+            NSLog("Error saving: %@", error!)
+        }
+    }
     
     override init(){
+        self.managedObjectContext = coreData.createManagedObjectContext()
         CartStatus.SHOPPING
         super.init()
     }
@@ -30,7 +48,7 @@ class Cart : NSObject{
         var price:Double = 0.0
         
         for item in entries{
-            price += item.product.price! * item.amount
+            price += item.product.price * item.amount
         }
         
         return price
@@ -40,8 +58,21 @@ class Cart : NSObject{
         return entries.count;
     }
     
-    func addEntry(entry:CartEntry) {
-        entries.append(entry)
+    func addEntry(product:Product, amount:Double) {
+        let cartEntry = NSEntityDescription.insertNewObjectForEntityForName(CartEntry.EntityName,
+            inManagedObjectContext: self.managedObjectContext) as! CartEntry
+        
+        let cartProduct = NSEntityDescription.insertNewObjectForEntityForName(CartProduct.EntityName,
+            inManagedObjectContext: self.managedObjectContext) as! CartProduct
+        
+        cartProduct.name = product.name!
+        cartProduct.price = product.price!
+        cartProduct.id = product.productId!
+
+        cartEntry.product = cartProduct
+        cartEntry.amount = amount
+        
+        save()
     }
     
     func getEntry(position:Int) -> CartEntry{
@@ -49,7 +80,8 @@ class Cart : NSObject{
     }
     
     func removeEntry(position:Int){
-        entries.removeAtIndex(position)
+        managedObjectContext.deleteObject(entries[position])
+        save()
     }
     
     /*                      Checkout process            */
@@ -64,7 +96,7 @@ class Cart : NSObject{
     func serialize() -> NSDictionary{
         var items = [NSDictionary]()
         for item in entries{
-            items.append(item.serialize())
+            //items.append(item.serialize())
         }
         
         let cart = [

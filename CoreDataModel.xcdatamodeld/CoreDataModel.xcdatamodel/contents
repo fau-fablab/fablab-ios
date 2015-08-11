@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="CartEntry" representedClassName="FAU_FabLab.CartEntry" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CartProduct" inverseName="cartentry" inverseEntity="CartProduct" syncable="YES"/>
+    </entity>
+    <entity name="CartProduct" representedClassName="FAU_FabLab.CartProduct" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="cartentry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CartEntry" inverseName="product" inverseEntity="CartEntry" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CartEntry" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="CartProduct" positionX="-54" positionY="-9" width="128" height="105"/>
+    </elements>
+</model>
