@@ -5,6 +5,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var actInd : UIActivityIndicatorView!
     
     private var model = ProductsearchModel()
     
@@ -30,6 +31,12 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
+        
+        actInd = UIActivityIndicatorView(frame: CGRectMake(0,0, 50, 50)) as UIActivityIndicatorView
+        actInd.center = self.view.center
+        actInd.hidesWhenStopped = true
+        actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        view.addSubview(actInd)
         
         doorButtonController.updateButtons(self)    
     }
@@ -69,8 +76,14 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         self.searchBar.resignFirstResponder()
+        self.searchBar.userInteractionEnabled = false;
+        self.sections.removeAll(keepCapacity: false);
+        self.tableView.reloadData();
+        self.actInd.startAnimating()
         model.searchProductByName(searchBar.text, onCompletion: { err in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.searchBar.userInteractionEnabled = true;
+                self.actInd.stopAnimating();
                 if(self.sortedByName) {
                     self.sortProductsByName()
                 } else {
