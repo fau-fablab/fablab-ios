@@ -25,8 +25,16 @@ class Cart : NSObject{
         super.init()
     }
     
-
-
+    func getPrice() -> Double{
+        
+        var price:Double = 0.0
+        
+        for item in entries{
+            price += item.product.price! * item.amount
+        }
+        
+        return price
+    }
     
     func getCount() -> Int{
         return entries.count;
@@ -40,9 +48,7 @@ class Cart : NSObject{
         return entries[position];
     }
     
-    
     /*                      Checkout process            */
-    
     func setCode(code :String){
         self.cartCode = code
     }

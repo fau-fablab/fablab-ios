@@ -8,11 +8,16 @@ class CartModel : NSObject{
     private let cartResource = "/carts"
     private let checkoutResource = "/checkout"
     private var isLoading = false;
-    private var cart = Cart()
+    private(set) var cart = Cart()
     static let sharedInstance = CartModel()
     
+    func addProductToCart(product:Product, amount:Double){
+        cart.addEntry(CartEntry(product: product, amount: amount))
+    }
     
-    
+    func removeProductFromCart(product: Product){
+        //TODO
+    }
     
     /*                      Checkout process              */
 
