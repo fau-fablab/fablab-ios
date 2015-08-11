@@ -32,6 +32,8 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         tableView.dataSource = self
         searchBar.delegate = self
         
+        searchBar.enablesReturnKeyAutomatically = false
+        
         actInd = UIActivityIndicatorView(frame: CGRectMake(0,0, 50, 50)) as UIActivityIndicatorView
         actInd.center = self.view.center
         actInd.hidesWhenStopped = true

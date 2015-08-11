@@ -512,7 +512,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" misplaced="YES" showsCancelButton="YES" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0kA-u0-HSB">
+                            <searchBar contentMode="redraw" misplaced="YES" placeholder="Alle Produkte suchen" showsCancelButton="YES" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0kA-u0-HSB">
                                 <rect key="frame" x="0.0" y="64" width="600" height="88"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
