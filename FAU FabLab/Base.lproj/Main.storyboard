@@ -314,7 +314,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="AZ1-iU-YxM">
-                                <rect key="frame" x="10" y="0.0" width="574" height="551"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventsEntryCustomCell" rowHeight="65" id="jqm-gt-0R6" customClass="EventsCustomCell" customModule="FAU_FabLab" customModuleProvider="target">
@@ -386,10 +386,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="AZ1-iU-YxM" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="1W5-HY-XvY"/>
-                            <constraint firstItem="AZ1-iU-YxM" firstAttribute="bottom" secondItem="Djb-ko-YwX" secondAttribute="top" id="SqX-3a-79H"/>
-                            <constraint firstItem="AZ1-iU-YxM" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="a6L-1U-ngk"/>
-                            <constraint firstItem="AZ1-iU-YxM" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="-6" id="ad1-hW-f0k"/>
+                            <constraint firstItem="AZ1-iU-YxM" firstAttribute="bottom" secondItem="QS5-Rx-YEW" secondAttribute="bottomMargin" id="KMh-0M-VFX"/>
+                            <constraint firstItem="AZ1-iU-YxM" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="topMargin" id="RAZ-ao-0Ul"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AZ1-iU-YxM" secondAttribute="trailing" constant="-16" id="l97-Ll-jwo"/>
+                            <constraint firstItem="AZ1-iU-YxM" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="-16" id="qNd-7e-bN7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Termine" id="J5E-cZ-saa">
@@ -1000,6 +1000,6 @@
         <image name="news_nopicture.png" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TgA-1a-DJ2"/>
+        <segue reference="3N2-EF-COO"/>
     </inferredMetricsTieBreakers>
 </document>
