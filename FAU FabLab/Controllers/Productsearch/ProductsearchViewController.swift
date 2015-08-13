@@ -279,8 +279,10 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        amount = amounts[row]
-        pickerView.reloadComponent(1)
+        if(component == 0) {
+            amount = amounts[row]
+            pickerView.reloadComponent(1)
+        }
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
