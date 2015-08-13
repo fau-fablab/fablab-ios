@@ -1,7 +1,8 @@
 import UIKit
 import Foundation
+import CoreActionSheetPicker
 
-class ProductsearchViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
+class ProductsearchViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, ActionSheetCustomPickerDelegate{
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
@@ -9,11 +10,13 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     
     private var selectedIndexPath: NSIndexPath?
     
+    private var amounts: [Int]!
+    private var amount: Int!
+    
     private var model = ProductsearchModel()
     
     private var searchActive = false;
     private var sortedByName = true;
-    
     private var productCellIdentifier = "ProductCustomCell"
     
     private let doorButtonController = DoorNavigationButtonController.sharedInstance
@@ -21,9 +24,23 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     
     @IBAction func buttonAddToCartPressed(sender: AnyObject) {
         let cell = tableView.cellForRowAtIndexPath(selectedIndexPath!) as! ProductCustomCell;
-        
-        Debug.instance.log("add to cart index is \(selectedIndexPath!.row) \(cell.product.name)")
-        CartModel.sharedInstance.addProductToCart(cell.product, amount: 1.0)
+        //set possible amounts
+        amounts = [Int]();
+        for number in 1...100 {
+            amounts.append(number);
+        }
+        //set current amount
+        amount = 1;
+        //show custom action sheet picker
+        var picker: ActionSheetCustomPicker = ActionSheetCustomPicker()
+        var doneButton: UIBarButtonItem = UIBarButtonItem()
+        doneButton.title = "Hinzufügen"
+        picker.setDoneButton(doneButton)
+        picker.title = cell.product.name
+        picker.tapDismissAction = TapAction.Cancel
+        picker.hideCancel = true
+        picker.delegate = self;
+        picker.showActionSheetPicker()
     }
     
     @IBAction func buttonShowLocationPressed(sender: AnyObject) {
@@ -248,4 +265,37 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         
         self.tableView.reloadData();
     }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 2
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if(component == 0) {
+            return amounts.count
+        } else {
+            return 1
+        }
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        amount = amounts[row]
+        pickerView.reloadComponent(1)
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        let cell = tableView.cellForRowAtIndexPath(selectedIndexPath!) as! ProductCustomCell
+        if(component == 0) {
+            return "\(amounts[row]) \(cell.product.unit!)"
+        } else {
+            return "\(Double (amount) * cell.product.price!) €"
+        }
+    }
+    
+    func actionSheetPickerDidSucceed(actionSheetPicker: AbstractActionSheetPicker!, origin: AnyObject!) {
+        let cell = tableView.cellForRowAtIndexPath(selectedIndexPath!) as! ProductCustomCell;
+        Debug.instance.log("add to cart index is \(selectedIndexPath!.row) \(cell.product.name)")
+        CartModel.sharedInstance.addProductToCart(cell.product, amount: Double(self.amount))
+    }
+    
 }
