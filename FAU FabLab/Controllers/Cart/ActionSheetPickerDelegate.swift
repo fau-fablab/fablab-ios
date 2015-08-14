@@ -5,15 +5,18 @@ class ActionSheetPickerDelegate: NSObject, ActionSheetCustomPickerDelegate {
     
     private var unit: String!
     private var price: Double!
-    private var successAction: (Int) -> Void
+    
+    private var didSucceedAction: (Int) -> Void
+    private var didCancelAction: (Void) -> Void
     
     private var amounts: [Int]!
     private var amount: Int!
     
-    init(unit: String, price: Double, successAction: (Int) -> Void) {
+    init(unit: String, price: Double, didSucceedAction: (Int) -> Void, didCancelAction: (Void) -> Void) {
         self.unit = unit
         self.price = price
-        self.successAction = successAction
+        self.didSucceedAction = didSucceedAction
+        self.didCancelAction = didCancelAction
         self.amounts = [Int]();
         for number in 1...100 {
             self.amounts.append(number);
@@ -49,7 +52,11 @@ class ActionSheetPickerDelegate: NSObject, ActionSheetCustomPickerDelegate {
     }
     
     func actionSheetPickerDidSucceed(actionSheetPicker: AbstractActionSheetPicker!, origin: AnyObject!) {
-        successAction(amount)
+        didSucceedAction(amount)
+    }
+    
+    func actionSheetPickerDidCancel(actionSheetPicker: AbstractActionSheetPicker!, origin: AnyObject!) {
+        didCancelAction()
     }
     
 }

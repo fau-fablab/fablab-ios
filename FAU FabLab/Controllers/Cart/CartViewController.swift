@@ -106,11 +106,11 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
             picker.tapDismissAction = TapAction.Cancel
             picker.hideCancel = true
             //TODO pass product unit
-            picker.delegate = ActionSheetPickerDelegate(unit: "", price: self.cartModel.cart.getEntry(indexPath.row).product.price, successAction: { (amount: Int) -> Void in
+            picker.delegate = ActionSheetPickerDelegate(unit: "", price: self.cartModel.cart.getEntry(indexPath.row).product.price, didSucceedAction: { (amount: Int) -> Void in
                 //TODO edit product in cart
                 Debug.instance.log("\(self.cartModel.cart.getEntry(indexPath.row).product.name) edited.")
                 tableView.setEditing(false, animated: true)
-            })
+                }, didCancelAction:{ (Void) -> Void in tableView.setEditing(false, animated: true)} )
             picker.showActionSheetPicker()
         }
         var deleteAction = UITableViewRowAction(style: .Default, title: "Löschen") { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in

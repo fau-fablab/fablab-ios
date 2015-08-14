@@ -28,7 +28,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         picker.title = "Menge auswählen"
         picker.tapDismissAction = TapAction.Cancel
         picker.hideCancel = true
-        picker.delegate = ActionSheetPickerDelegate(unit: cell.product.unit!, price: cell.product.price!, successAction: { (amount: Int) -> Void in CartModel.sharedInstance.addProductToCart(cell.product, amount: Double(amount))})
+        picker.delegate = ActionSheetPickerDelegate(unit: cell.product.unit!, price: cell.product.price!, didSucceedAction: { (amount: Int) -> Void in CartModel.sharedInstance.addProductToCart(cell.product, amount: Double(amount)) }, didCancelAction: {(Void) -> Void in })
         picker.showActionSheetPicker()
     }
     
