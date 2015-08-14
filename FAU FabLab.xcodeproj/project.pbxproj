@@ -11,6 +11,7 @@
 		35CE1DB996BC6DE917A5E446 /* DoorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE11756F88B8009C549B94 /* DoorState.swift */; };
 		35CE1DD759134EC89DBD0D29 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE11C7BEE60991B0702A2A /* Debug.swift */; };
 		35CE1E13F0E8E25DBCE8E9C9 /* DoorStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE1698E311B04F89744CDB /* DoorStateModel.swift */; };
+		4804CA5C1B7E4FB200F75BF5 /* ActionSheetPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4804CA5B1B7E4FB200F75BF5 /* ActionSheetPickerDelegate.swift */; };
 		4880CD321B7CC4470025C38A /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4880CD311B7CC4470025C38A /* CoreActionSheetPicker.framework */; };
 		489E4C751B79E093004A60FA /* ProductCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E4C741B79E093004A60FA /* ProductCustomCell.swift */; };
 		502DB1521B7150370036EF6B /* EventsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502DB1511B7150370036EF6B /* EventsDetailViewController.swift */; };
@@ -89,6 +90,7 @@
 		35CE11C7BEE60991B0702A2A /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		35CE1698E311B04F89744CDB /* DoorStateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoorStateModel.swift; sourceTree = "<group>"; };
 		35CE1CE6C8A1BE4967D0633F /* Uom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uom.swift; sourceTree = "<group>"; };
+		4804CA5B1B7E4FB200F75BF5 /* ActionSheetPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetPickerDelegate.swift; sourceTree = "<group>"; };
 		4880CD311B7CC4470025C38A /* CoreActionSheetPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreActionSheetPicker.framework; path = Carthage/Build/iOS/CoreActionSheetPicker.framework; sourceTree = "<group>"; };
 		489E4C741B79E093004A60FA /* ProductCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCustomCell.swift; sourceTree = "<group>"; };
 		502DB1511B7150370036EF6B /* EventsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsDetailViewController.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 			children = (
 				92C2F3141B7399AC0086481B /* CartViewController.swift */,
 				84F53FED1B73DD24008FB605 /* PayOrCancelViewController.swift */,
+				4804CA5B1B7E4FB200F75BF5 /* ActionSheetPickerDelegate.swift */,
 			);
 			path = Cart;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				928054F91B6DA0D900D0D4FB /* Event.swift in Sources */,
 				923E1F311B7AA49A009CC545 /* CoreDataHelper.swift in Sources */,
 				923E1F2C1B7AA360009CC545 /* CartEntry.swift in Sources */,
+				4804CA5C1B7E4FB200F75BF5 /* ActionSheetPickerDelegate.swift in Sources */,
 				92078EB71B6E270E00A21AD9 /* Product.swift in Sources */,
 				92078EC01B6E471200A21AD9 /* ProductsearchViewController.swift in Sources */,
 				92078EBD1B6E2D9D00A21AD9 /* ProductsearchModel.swift in Sources */,
