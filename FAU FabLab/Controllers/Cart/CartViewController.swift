@@ -1,6 +1,6 @@
 import UIKit
 import Foundation
-
+import CoreActionSheetPicker
 
 
 class CartViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
@@ -49,11 +49,13 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        /*
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             CartModel.sharedInstance.removeProductFromCart(indexPath.row)
             tableView.reloadData()
             showTotalPrice()
         }
+        */
     }
     
     /*                      Checkout process            */
@@ -92,6 +94,31 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
                 
             }
         }
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+        var editAction = UITableViewRowAction(style: .Normal, title: "Ändern") { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
+            var picker: ActionSheetCustomPicker = ActionSheetCustomPicker()
+            var doneButton: UIBarButtonItem = UIBarButtonItem()
+            doneButton.title = "Übernehmen"
+            picker.setDoneButton(doneButton)
+            picker.title = "Menge auswählen"
+            picker.tapDismissAction = TapAction.Cancel
+            picker.hideCancel = true
+            //TODO pass product unit
+            picker.delegate = ActionSheetPickerDelegate(unit: "", price: self.cartModel.cart.getEntry(indexPath.row).product.price, successAction: { (amount: Int) -> Void in
+                //TODO edit product in cart
+                Debug.instance.log("\(self.cartModel.cart.getEntry(indexPath.row).product.name) edited.")
+                tableView.setEditing(false, animated: true)
+            })
+            picker.showActionSheetPicker()
+        }
+        var deleteAction = UITableViewRowAction(style: .Default, title: "Löschen") { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
+            CartModel.sharedInstance.removeProductFromCart(indexPath.row)
+            tableView.reloadData()
+            self.showTotalPrice()
+        }
+        return [editAction, deleteAction]
     }
     
 

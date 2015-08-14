@@ -3,14 +3,16 @@ import CoreActionSheetPicker
 
 class ActionSheetPickerDelegate: NSObject, ActionSheetCustomPickerDelegate {
     
-    private var product: Product!
-    private var successAction: (Product,Int) -> Void
+    private var unit: String!
+    private var price: Double!
+    private var successAction: (Int) -> Void
     
     private var amounts: [Int]!
     private var amount: Int!
     
-    init(product: Product, successAction: (Product,Int) -> Void) {
-        self.product = product
+    init(unit: String, price: Double, successAction: (Int) -> Void) {
+        self.unit = unit
+        self.price = price
         self.successAction = successAction
         self.amounts = [Int]();
         for number in 1...100 {
@@ -40,14 +42,14 @@ class ActionSheetPickerDelegate: NSObject, ActionSheetCustomPickerDelegate {
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if(component == 0) {
-            return "\(amounts[row]) \(product.unit!)"
+            return "\(amounts[row]) \(unit!)"
         } else {
-            return "\(Double (amount) * product.price!) €"
+            return "\(Double (amount) * price!) €"
         }
     }
     
     func actionSheetPickerDidSucceed(actionSheetPicker: AbstractActionSheetPicker!, origin: AnyObject!) {
-        successAction(product, amount)
+        successAction(amount)
     }
     
 }
