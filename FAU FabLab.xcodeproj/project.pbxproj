@@ -13,6 +13,7 @@
 		35CE1E13F0E8E25DBCE8E9C9 /* DoorStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE1698E311B04F89744CDB /* DoorStateModel.swift */; };
 		4804CA5C1B7E4FB200F75BF5 /* ActionSheetPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4804CA5B1B7E4FB200F75BF5 /* ActionSheetPickerDelegate.swift */; };
 		4880CD321B7CC4470025C38A /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4880CD311B7CC4470025C38A /* CoreActionSheetPicker.framework */; };
+		489316451B831E3900DCB6BB /* AutocompleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489316441B831E3900DCB6BB /* AutocompleteModel.swift */; };
 		489E4C751B79E093004A60FA /* ProductCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E4C741B79E093004A60FA /* ProductCustomCell.swift */; };
 		502DB1521B7150370036EF6B /* EventsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502DB1511B7150370036EF6B /* EventsDetailViewController.swift */; };
 		5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1D51B4EFE2A008B41FD /* AppDelegate.swift */; };
@@ -92,6 +93,7 @@
 		35CE1CE6C8A1BE4967D0633F /* Uom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uom.swift; sourceTree = "<group>"; };
 		4804CA5B1B7E4FB200F75BF5 /* ActionSheetPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetPickerDelegate.swift; sourceTree = "<group>"; };
 		4880CD311B7CC4470025C38A /* CoreActionSheetPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreActionSheetPicker.framework; path = Carthage/Build/iOS/CoreActionSheetPicker.framework; sourceTree = "<group>"; };
+		489316441B831E3900DCB6BB /* AutocompleteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteModel.swift; sourceTree = "<group>"; };
 		489E4C741B79E093004A60FA /* ProductCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCustomCell.swift; sourceTree = "<group>"; };
 		502DB1511B7150370036EF6B /* EventsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsDetailViewController.swift; sourceTree = "<group>"; };
 		5060B1D01B4EFE2A008B41FD /* FAU FabLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FAU FabLab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -315,6 +317,7 @@
 				92078EBA1B6E29B200A21AD9 /* Category.swift */,
 				92078EBC1B6E2D9D00A21AD9 /* ProductsearchModel.swift */,
 				35CE1CE6C8A1BE4967D0633F /* Uom.swift */,
+				489316441B831E3900DCB6BB /* AutocompleteModel.swift */,
 			);
 			path = Productsearch;
 			sourceTree = "<group>";
@@ -613,6 +616,7 @@
 				92078EBB1B6E29B200A21AD9 /* Category.swift in Sources */,
 				35CE1B736F661DCF4D7020F6 /* Uom.swift in Sources */,
 				84F53FEE1B73DD24008FB605 /* PayOrCancelViewController.swift in Sources */,
+				489316451B831E3900DCB6BB /* AutocompleteModel.swift in Sources */,
 				489E4C751B79E093004A60FA /* ProductCustomCell.swift in Sources */,
 				35CE1DB996BC6DE917A5E446 /* DoorState.swift in Sources */,
 				35CE1E13F0E8E25DBCE8E9C9 /* DoorStateModel.swift in Sources */,

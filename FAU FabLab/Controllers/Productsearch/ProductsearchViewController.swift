@@ -9,14 +9,18 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     @IBOutlet var actInd : UIActivityIndicatorView!
     
     private var selectedIndexPath: NSIndexPath?
-    
     private var model = ProductsearchModel()
-    
     private var searchActive = false;
     private var sortedByName = true;
     private var productCellIdentifier = "ProductCustomCell"
-    
     private let doorButtonController = DoorNavigationButtonController.sharedInstance
+    private let collation = UILocalizedIndexedCollation.currentCollation() as! UILocalizedIndexedCollation
+    private var sections: [[Product]] = []
+    //autocomplete
+    private var autocompleteModel = AutocompleteModel()
+    private var autocompleteSuggestions = [String]()
+    private var autocompleteTableView: UITableView!
+
     
     
     @IBAction func buttonAddToCartPressed(sender: AnyObject) {
@@ -48,13 +52,6 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         self.presentViewController(nav, animated: true, completion: nil)
     }
     
-
-    //collation for sectioning the table
-    let collation = UILocalizedIndexedCollation.currentCollation() as! UILocalizedIndexedCollation
-    
-    //table sections
-    var sections: [[Product]] = []
-    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "searchByBarcodeScanner:", name: "ProductScannerNotification", object: nil)
@@ -63,17 +60,29 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        //search bar
         searchBar.delegate = self
-        
         searchBar.enablesReturnKeyAutomatically = false
         
+        //table view
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        //activity indicator
         actInd = UIActivityIndicatorView(frame: CGRectMake(0,0, 50, 50)) as UIActivityIndicatorView
         actInd.center = self.view.center
         actInd.hidesWhenStopped = true
         actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
         view.addSubview(actInd)
+        
+        //autocomplete
+        autocompleteModel.loadAutocompleteSuggestion()
+        autocompleteTableView = UITableView(frame: CGRectMake(0, 152, 600, 448), style: UITableViewStyle.Plain)
+        autocompleteTableView.delegate = self
+        autocompleteTableView.dataSource = self
+        autocompleteTableView.scrollEnabled = true
+        autocompleteTableView.hidden = true
+        view.addSubview(autocompleteTableView)
         
         doorButtonController.updateButtons(self)    
     }
@@ -91,6 +100,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        autocompleteTableView.hidden = false
         searchActive = true;
     }
     
@@ -98,9 +108,38 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         searchActive = false;
     }
     
+    func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        var newString = (searchBar.text as NSString).stringByReplacingCharactersInRange(range, withString: text)
+        autocompleteTableView.hidden = false
+        filterAutocompleteSuggestions(newString)
+        return true
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        if (count(searchText) == 0) {
+            autocompleteSuggestions.removeAll(keepCapacity: false)
+            autocompleteTableView.reloadData()
+        }
+    }
+    
+    func filterAutocompleteSuggestions(newString: String) {
+        autocompleteSuggestions.removeAll(keepCapacity: false)
+        if (count(newString) > 0) {
+            for suggestion in autocompleteModel.getAutocompleteSuggestions() {
+                var string: NSString! = suggestion as NSString
+                var substringRange: NSRange! = string.rangeOfString(newString)
+                if (substringRange.location != NSNotFound) {
+                    autocompleteSuggestions.append(suggestion)
+                }
+            }
+        }
+        autocompleteTableView.reloadData()
+    }
+    
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchActive = false;
         searchBar.resignFirstResponder();
+        autocompleteTableView.hidden = true
     }
     
     func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
@@ -112,6 +151,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        self.autocompleteTableView.hidden = true
         self.searchBar.resignFirstResponder()
         self.searchBar.userInteractionEnabled = false;
         self.sections.removeAll(keepCapacity: false);
@@ -144,6 +184,11 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if(tableView == autocompleteTableView) {
+            let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "autocomplete")
+            cell.textLabel?.text = autocompleteSuggestions[indexPath.row]
+            return cell
+        }
         let cell = tableView.dequeueReusableCellWithIdentifier(productCellIdentifier) as? ProductCustomCell
         let product = sections[indexPath.section][indexPath.row]
         cell!.configure(product)
@@ -151,30 +196,36 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        if(tableView == autocompleteTableView) {
+            return 1
+        }
         return self.sections.count
     }
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(tableView == autocompleteTableView) {
+            return autocompleteSuggestions.count
+        }
         return self.sections[section].count
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if sortedByName && !self.sections[section].isEmpty {
+        if (tableView == self.tableView && sortedByName && !self.sections[section].isEmpty) {
             return self.collation.sectionTitles[section] as? String
         }
         return ""
     }
     
     func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject] {
-        if(sortedByName) {
+        if(tableView == self.tableView && sortedByName) {
             return self.collation.sectionIndexTitles
         }
         return []
     }
     
     func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
-        if(sortedByName) {
+        if(tableView == self.tableView && sortedByName) {
             return self.collation.sectionForSectionIndexTitleAtIndex(index)
         }
         return 0
@@ -182,21 +233,29 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     
 
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        (cell as! ProductCustomCell).watchFrameChanges()
+        if (tableView == self.tableView) {
+            (cell as! ProductCustomCell).watchFrameChanges()
+        }
     }
     
     func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        (cell as! ProductCustomCell).ignoreFrameChanges()
+        if (tableView == self.tableView) {
+           (cell as! ProductCustomCell).ignoreFrameChanges()
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if(tableView == autocompleteTableView) {
+            searchBar.text = autocompleteTableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text
+            searchBarSearchButtonClicked(searchBar)
+            return
+        }
         let previousIndexPath = selectedIndexPath
         if indexPath == selectedIndexPath {
             selectedIndexPath = nil
         } else {
             selectedIndexPath = indexPath
         }
-        
         var indexPaths : Array<NSIndexPath> = []
         if let previous = previousIndexPath {
             indexPaths += [previous]
@@ -208,13 +267,14 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
             tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Automatic)
         }
         tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
-
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if(indexPath == selectedIndexPath){
+        if(tableView == autocompleteTableView) {
+            return UITableViewAutomaticDimension
+        } else if (indexPath == selectedIndexPath){
             return ProductCustomCell.expandedHeight
-        }else{
+        } else{
             return ProductCustomCell.defaultHeight
         }
     }
