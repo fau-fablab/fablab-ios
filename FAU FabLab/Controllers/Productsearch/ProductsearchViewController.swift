@@ -77,14 +77,33 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         
         //autocomplete
         autocompleteModel.loadAutocompleteSuggestion()
-        autocompleteTableView = UITableView(frame: CGRectMake(0, 152, 600, 448), style: UITableViewStyle.Plain)
+        autocompleteTableView = UITableView()
         autocompleteTableView.delegate = self
         autocompleteTableView.dataSource = self
         autocompleteTableView.scrollEnabled = true
         autocompleteTableView.hidden = true
+        autocompleteTableView.setTranslatesAutoresizingMaskIntoConstraints(false)
         view.addSubview(autocompleteTableView)
         
-        doorButtonController.updateButtons(self)    
+        let c1 = NSLayoutConstraint(item: autocompleteTableView, attribute: NSLayoutAttribute.LeftMargin,
+            relatedBy: NSLayoutRelation.Equal, toItem: self.tableView, attribute: NSLayoutAttribute.LeftMargin,
+            multiplier: 1, constant: 0)
+        let c2 = NSLayoutConstraint(item: autocompleteTableView, attribute: NSLayoutAttribute.RightMargin,
+            relatedBy: NSLayoutRelation.Equal, toItem: self.tableView, attribute: NSLayoutAttribute.RightMargin,
+            multiplier: 1, constant: 0)
+        let c3 = NSLayoutConstraint(item: autocompleteTableView, attribute: NSLayoutAttribute.TopMargin,
+            relatedBy: NSLayoutRelation.Equal, toItem: self.tableView, attribute: NSLayoutAttribute.TopMargin,
+            multiplier: 1, constant: 0)
+        let c4 = NSLayoutConstraint(item: autocompleteTableView, attribute: NSLayoutAttribute.BottomMargin,
+            relatedBy: NSLayoutRelation.Equal, toItem: self.tableView, attribute: NSLayoutAttribute.BottomMargin,
+            multiplier: 1, constant: 0)
+        
+        view.addConstraint(c1)
+        view.addConstraint(c2)
+        view.addConstraint(c3)
+        view.addConstraint(c4)
+        
+        doorButtonController.updateButtons(self)
     }
     
     override func didReceiveMemoryWarning() {
