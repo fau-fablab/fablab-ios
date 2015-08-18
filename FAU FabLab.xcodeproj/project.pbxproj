@@ -14,6 +14,7 @@
 		4804CA5C1B7E4FB200F75BF5 /* ActionSheetPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4804CA5B1B7E4FB200F75BF5 /* ActionSheetPickerDelegate.swift */; };
 		4880CD321B7CC4470025C38A /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4880CD311B7CC4470025C38A /* CoreActionSheetPicker.framework */; };
 		489316451B831E3900DCB6BB /* AutocompleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489316441B831E3900DCB6BB /* AutocompleteModel.swift */; };
+		4893164D1B8367EF00DCB6BB /* CartEntryCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4893164C1B8367EF00DCB6BB /* CartEntryCustomCell.swift */; };
 		489E4C751B79E093004A60FA /* ProductCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E4C741B79E093004A60FA /* ProductCustomCell.swift */; };
 		502DB1521B7150370036EF6B /* EventsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502DB1511B7150370036EF6B /* EventsDetailViewController.swift */; };
 		5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1D51B4EFE2A008B41FD /* AppDelegate.swift */; };
@@ -94,6 +95,7 @@
 		4804CA5B1B7E4FB200F75BF5 /* ActionSheetPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetPickerDelegate.swift; sourceTree = "<group>"; };
 		4880CD311B7CC4470025C38A /* CoreActionSheetPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreActionSheetPicker.framework; path = Carthage/Build/iOS/CoreActionSheetPicker.framework; sourceTree = "<group>"; };
 		489316441B831E3900DCB6BB /* AutocompleteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteModel.swift; sourceTree = "<group>"; };
+		4893164C1B8367EF00DCB6BB /* CartEntryCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartEntryCustomCell.swift; sourceTree = "<group>"; };
 		489E4C741B79E093004A60FA /* ProductCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCustomCell.swift; sourceTree = "<group>"; };
 		502DB1511B7150370036EF6B /* EventsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsDetailViewController.swift; sourceTree = "<group>"; };
 		5060B1D01B4EFE2A008B41FD /* FAU FabLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FAU FabLab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -406,6 +408,7 @@
 				927901D61B6D3EED00F95B09 /* NewsCustomCell.swift */,
 				50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */,
 				489E4C741B79E093004A60FA /* ProductCustomCell.swift */,
+				4893164C1B8367EF00DCB6BB /* CartEntryCustomCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -613,6 +616,7 @@
 				92500ED41B72CD7C0093CC45 /* CartModel.swift in Sources */,
 				927901DE1B6D3F5C00F95B09 /* EventsViewController.swift in Sources */,
 				927901E21B6D3F6300F95B09 /* NewsViewController.swift in Sources */,
+				4893164D1B8367EF00DCB6BB /* CartEntryCustomCell.swift in Sources */,
 				92078EBB1B6E29B200A21AD9 /* Category.swift in Sources */,
 				35CE1B736F661DCF4D7020F6 /* Uom.swift in Sources */,
 				84F53FEE1B73DD24008FB605 /* PayOrCancelViewController.swift in Sources */,

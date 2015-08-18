@@ -12,6 +12,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet var labelTotalPrice: UILabel!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     private var cartModel = CartModel.sharedInstance
+    private var cartEntryCellIdentifier = "CartEntryCustomCell"
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -39,9 +40,13 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell! = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        cell.textLabel?.text = cartModel.cart.getEntry(indexPath.row).product.name
-        return cell;
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(cartEntryCellIdentifier) as? CartEntryCustomCell
+        let cartEntry = cartModel.cart.getEntry(indexPath.row)
+        //TODO pass product unit
+        cell!.configure(cartEntry.product.name, unit: "\(Int(cartEntry.amount)) Stück", price: cartEntry.product.price * cartEntry.amount)
+        cell!.selectionStyle = UITableViewCellSelectionStyle.None
+        return cell!;
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

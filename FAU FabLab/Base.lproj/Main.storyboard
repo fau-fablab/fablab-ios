@@ -798,18 +798,6 @@
                                     <action selector="DummyScanButtonTouched:" destination="ooQ-nD-6sq" eventType="touchUpInside" id="5YY-Qn-oUr"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Cw4-Ky-LeW">
-                                <rect key="frame" x="0.0" y="109" width="600" height="398"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="uIh-DG-Ipf">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uIh-DG-Ipf" id="15d-Lz-t4P">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ydh-Do-RI8">
                                 <rect key="frame" x="0.0" y="507" width="600" height="44"/>
                                 <items/>
@@ -829,6 +817,65 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Cw4-Ky-LeW">
+                                <rect key="frame" x="0.0" y="109" width="600" height="398"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CartEntryCustomCell" rowHeight="60" id="uIh-DG-Ipf" customClass="CartEntryCustomCell" customModule="FAU_FabLab" customModuleProvider="target">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uIh-DG-Ipf" id="15d-Lz-t4P">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4UV-G0-LxN">
+                                                    <rect key="frame" x="8" y="8" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzP-ue-Vbb">
+                                                    <rect key="frame" x="8" y="30" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="45" translatesAutoresizingMaskIntoConstraints="NO" id="4d9-dL-LoX">
+                                                    <rect key="frame" x="550" y="8" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Unit" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="45" translatesAutoresizingMaskIntoConstraints="NO" id="2t6-mU-he0">
+                                                    <rect key="frame" x="550" y="30" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4UV-G0-LxN" firstAttribute="top" secondItem="15d-Lz-t4P" secondAttribute="topMargin" id="11O-9N-jEQ"/>
+                                                <constraint firstItem="mzP-ue-Vbb" firstAttribute="leading" secondItem="15d-Lz-t4P" secondAttribute="leadingMargin" id="FII-OM-71L"/>
+                                                <constraint firstItem="2t6-mU-he0" firstAttribute="top" secondItem="4d9-dL-LoX" secondAttribute="bottom" constant="1" id="Pa9-xn-Tth"/>
+                                                <constraint firstItem="4d9-dL-LoX" firstAttribute="trailing" secondItem="15d-Lz-t4P" secondAttribute="trailingMargin" id="T8L-3a-JT8"/>
+                                                <constraint firstItem="4d9-dL-LoX" firstAttribute="top" secondItem="15d-Lz-t4P" secondAttribute="topMargin" id="YxS-ZJ-2g4"/>
+                                                <constraint firstItem="4d9-dL-LoX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4UV-G0-LxN" secondAttribute="trailing" id="cPk-HO-fJn"/>
+                                                <constraint firstItem="2t6-mU-he0" firstAttribute="top" secondItem="4d9-dL-LoX" secondAttribute="bottom" constant="1" id="dIL-9y-PUO"/>
+                                                <constraint firstItem="mzP-ue-Vbb" firstAttribute="top" secondItem="4UV-G0-LxN" secondAttribute="bottom" constant="1" id="gBJ-tn-LSm"/>
+                                                <constraint firstItem="2t6-mU-he0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mzP-ue-Vbb" secondAttribute="trailing" id="ire-sq-Bs6"/>
+                                                <constraint firstItem="4UV-G0-LxN" firstAttribute="leading" secondItem="15d-Lz-t4P" secondAttribute="leadingMargin" id="msG-XL-jfU"/>
+                                                <constraint firstItem="mzP-ue-Vbb" firstAttribute="bottom" secondItem="15d-Lz-t4P" secondAttribute="bottomMargin" id="qJK-xa-EIO"/>
+                                                <constraint firstItem="2t6-mU-he0" firstAttribute="bottom" secondItem="15d-Lz-t4P" secondAttribute="bottomMargin" id="sds-pg-Qdq"/>
+                                                <constraint firstItem="2t6-mU-he0" firstAttribute="trailing" secondItem="15d-Lz-t4P" secondAttribute="trailingMargin" id="yd5-2c-v2y"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="amount" destination="2t6-mU-he0" id="ksf-ba-7qe"/>
+                                            <outlet property="price" destination="4d9-dL-LoX" id="MEg-9x-o8z"/>
+                                            <outlet property="subtitle" destination="mzP-ue-Vbb" id="2Un-hd-SQX"/>
+                                            <outlet property="title" destination="4UV-G0-LxN" id="F4u-zb-ExR"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1000,6 +1047,6 @@
         <image name="news_nopicture.png" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3N2-EF-COO"/>
+        <segue reference="TgA-1a-DJ2"/>
     </inferredMetricsTieBreakers>
 </document>
