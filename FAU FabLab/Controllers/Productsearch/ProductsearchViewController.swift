@@ -206,6 +206,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         if(tableView == autocompleteTableView) {
             let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "autocomplete")
             cell.textLabel?.text = autocompleteSuggestions[indexPath.row]
+            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             return cell
         }
         let cell = tableView.dequeueReusableCellWithIdentifier(productCellIdentifier) as? ProductCustomCell
