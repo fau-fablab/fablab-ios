@@ -112,8 +112,8 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
             picker.hideCancel = true
             //TODO pass product unit
             picker.delegate = ActionSheetPickerDelegate(unit: "", price: self.cartModel.cart.getEntry(indexPath.row).product.price, didSucceedAction: { (amount: Int) -> Void in
-                //TODO edit product in cart
-                Debug.instance.log("\(self.cartModel.cart.getEntry(indexPath.row).product.name) edited.")
+                CartModel.sharedInstance.updateProductInCart(indexPath.row, amount: Double(amount))
+                tableView.reloadData();
                 tableView.setEditing(false, animated: true)
                 }, didCancelAction:{ (Void) -> Void in tableView.setEditing(false, animated: true)} )
             picker.showActionSheetPicker()
