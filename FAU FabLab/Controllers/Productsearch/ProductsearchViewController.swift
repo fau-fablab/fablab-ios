@@ -117,8 +117,8 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        autocompleteTableView.hidden = false
         searchActive = true;
+        autocompleteTableView.hidden = false
     }
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
@@ -265,6 +265,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if(tableView == autocompleteTableView) {
             searchBar.text = autocompleteTableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text
+            filterAutocompleteSuggestions(searchBar.text)
             searchBarSearchButtonClicked(searchBar)
             return
         }
