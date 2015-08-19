@@ -19,6 +19,10 @@ class CartModel : NSObject{
         cart.removeEntry(index)
     }
     
+    func updateProductInCart(index : Int, amount: Double) {
+        cart.updateEntry(index, amount: amount)
+    }
+    
     /*                      Checkout process              */
 
     func sendCartToServer(code: String){

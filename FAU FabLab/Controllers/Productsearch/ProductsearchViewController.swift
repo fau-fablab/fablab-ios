@@ -17,7 +17,6 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     private let collation = UILocalizedIndexedCollation.currentCollation() as! UILocalizedIndexedCollation
     private var sections: [[Product]] = []
     //autocomplete
-    private var autocompleteModel = AutocompleteModel()
     private var autocompleteSuggestions = [String]()
     private var autocompleteTableView: UITableView!
 
@@ -76,7 +75,6 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         view.addSubview(actInd)
         
         //autocomplete
-        autocompleteModel.loadAutocompleteSuggestion()
         autocompleteTableView = UITableView()
         autocompleteTableView.delegate = self
         autocompleteTableView.dataSource = self
@@ -119,8 +117,8 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        autocompleteTableView.hidden = false
         searchActive = true;
+        autocompleteTableView.hidden = false
     }
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
@@ -143,8 +141,8 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     
     func filterAutocompleteSuggestions(newString: String) {
         autocompleteSuggestions.removeAll(keepCapacity: false)
-        if (count(newString) > 0) {
-            for suggestion in autocompleteModel.getAutocompleteSuggestions() {
+        if (count(newString) > 1) {
+            for suggestion in AutocompleteModel.sharedInstance.getAutocompleteSuggestions() {
                 var string: NSString! = suggestion as NSString
                 var substringRange: NSRange! = string.rangeOfString(newString)
                 if (substringRange.location != NSNotFound) {
@@ -267,6 +265,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if(tableView == autocompleteTableView) {
             searchBar.text = autocompleteTableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text
+            filterAutocompleteSuggestions(searchBar.text)
             searchBarSearchButtonClicked(searchBar)
             return
         }

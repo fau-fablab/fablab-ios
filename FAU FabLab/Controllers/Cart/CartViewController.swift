@@ -43,8 +43,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cartEntryCellIdentifier) as? CartEntryCustomCell
         let cartEntry = cartModel.cart.getEntry(indexPath.row)
-        //TODO pass product unit
-        cell!.configure(cartEntry.product.name, unit: "\(Int(cartEntry.amount)) Stück", price: cartEntry.product.price * cartEntry.amount)
+        cell!.configure(cartEntry.product.name, unit: "\(Int(cartEntry.amount)) \(cartEntry.product.unit)", price: cartEntry.product.price * cartEntry.amount)
         cell!.selectionStyle = UITableViewCellSelectionStyle.None
         return cell!;
     }
@@ -110,11 +109,12 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
             picker.title = "Menge auswählen"
             picker.tapDismissAction = TapAction.Cancel
             picker.hideCancel = true
-            //TODO pass product unit
-            picker.delegate = ActionSheetPickerDelegate(unit: "", price: self.cartModel.cart.getEntry(indexPath.row).product.price, didSucceedAction: { (amount: Int) -> Void in
-                //TODO edit product in cart
-                Debug.instance.log("\(self.cartModel.cart.getEntry(indexPath.row).product.name) edited.")
+            let cartEntry = self.cartModel.cart.getEntry(indexPath.row)
+            picker.delegate = ActionSheetPickerDelegate(unit: cartEntry.product.unit, price: cartEntry.product.price, didSucceedAction: { (amount: Int) -> Void in
+                CartModel.sharedInstance.updateProductInCart(indexPath.row, amount: Double(amount))
+                tableView.reloadData();
                 tableView.setEditing(false, animated: true)
+                self.showTotalPrice()
                 }, didCancelAction:{ (Void) -> Void in tableView.setEditing(false, animated: true)} )
             picker.showActionSheetPicker()
         }

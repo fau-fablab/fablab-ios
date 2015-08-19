@@ -65,6 +65,16 @@ class Cart : NSObject{
             return
         }
         
+        //if product is already in cart, update amount
+        if (!entries.isEmpty) {
+            for index in 0...(entries.count - 1) {
+                if (entries[index].product.id == product.productId) {
+                    updateEntry(index, amount: entries[index].amount + amount)
+                    return
+                }
+            }
+        }
+        
         let cartEntry = NSEntityDescription.insertNewObjectForEntityForName(CartEntry.EntityName,
             inManagedObjectContext: self.managedObjectContext) as! CartEntry
         
@@ -74,10 +84,16 @@ class Cart : NSObject{
         cartProduct.name = product.name!
         cartProduct.price = product.price!
         cartProduct.id = product.productId!
+        cartProduct.unit = product.unit!
 
         cartEntry.product = cartProduct
         cartEntry.amount = amount
         
+        saveCoreData()
+    }
+    
+    func updateEntry(position: Int, amount: Double) {
+        entries[position].amount = amount
         saveCoreData()
     }
     

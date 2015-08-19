@@ -16,6 +16,7 @@
 		489316451B831E3900DCB6BB /* AutocompleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489316441B831E3900DCB6BB /* AutocompleteModel.swift */; };
 		4893164D1B8367EF00DCB6BB /* CartEntryCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4893164C1B8367EF00DCB6BB /* CartEntryCustomCell.swift */; };
 		489E4C751B79E093004A60FA /* ProductCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E4C741B79E093004A60FA /* ProductCustomCell.swift */; };
+		48B7C0DA1B846CDA00DC9B2D /* AutocompleteSuggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B7C0D91B846CDA00DC9B2D /* AutocompleteSuggestion.swift */; };
 		502DB1521B7150370036EF6B /* EventsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502DB1511B7150370036EF6B /* EventsDetailViewController.swift */; };
 		5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1D51B4EFE2A008B41FD /* AppDelegate.swift */; };
 		5060B1DD1B4EFE2A008B41FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5060B1DB1B4EFE2A008B41FD /* Main.storyboard */; };
@@ -97,6 +98,8 @@
 		489316441B831E3900DCB6BB /* AutocompleteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteModel.swift; sourceTree = "<group>"; };
 		4893164C1B8367EF00DCB6BB /* CartEntryCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartEntryCustomCell.swift; sourceTree = "<group>"; };
 		489E4C741B79E093004A60FA /* ProductCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCustomCell.swift; sourceTree = "<group>"; };
+		48B7C0D91B846CDA00DC9B2D /* AutocompleteSuggestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteSuggestion.swift; sourceTree = "<group>"; };
+		48B7C0DD1B84833400DC9B2D /* CoreDataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		502DB1511B7150370036EF6B /* EventsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsDetailViewController.swift; sourceTree = "<group>"; };
 		5060B1D01B4EFE2A008B41FD /* FAU FabLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FAU FabLab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5060B1D41B4EFE2A008B41FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -186,6 +189,14 @@
 				35CE1698E311B04F89744CDB /* DoorStateModel.swift */,
 			);
 			path = DoorState;
+			sourceTree = "<group>";
+		};
+		48B7C0D81B8460FF00DC9B2D /* Managed */ = {
+			isa = PBXGroup;
+			children = (
+				48B7C0D91B846CDA00DC9B2D /* AutocompleteSuggestion.swift */,
+			);
+			path = Managed;
 			sourceTree = "<group>";
 		};
 		500A2CA11B63DCF4005CC8CF /* Controllers */ = {
@@ -314,6 +325,7 @@
 		92078EB51B6E26F100A21AD9 /* Productsearch */ = {
 			isa = PBXGroup;
 			children = (
+				48B7C0D81B8460FF00DC9B2D /* Managed */,
 				92078EB61B6E270E00A21AD9 /* Product.swift */,
 				92078EB81B6E293400A21AD9 /* Location.swift */,
 				92078EBA1B6E29B200A21AD9 /* Category.swift */,
@@ -586,6 +598,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48B7C0DA1B846CDA00DC9B2D /* AutocompleteSuggestion.swift in Sources */,
 				927901E51B6D4AE300F95B09 /* NewsModel.swift in Sources */,
 				8419B6101B6F6050000275A8 /* CheckoutCodeScannerViewController.swift in Sources */,
 				927901E11B6D3F6300F95B09 /* NewsDetailsViewController.swift in Sources */,
@@ -861,9 +874,10 @@
 		923E1F2D1B7AA3F7009CC545 /* CoreDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				48B7C0DD1B84833400DC9B2D /* CoreDataModel 2.xcdatamodel */,
 				923E1F2E1B7AA3F7009CC545 /* CoreDataModel.xcdatamodel */,
 			);
-			currentVersion = 923E1F2E1B7AA3F7009CC545 /* CoreDataModel.xcdatamodel */;
+			currentVersion = 48B7C0DD1B84833400DC9B2D /* CoreDataModel 2.xcdatamodel */;
 			path = CoreDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -12,11 +12,12 @@
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="cartentry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CartEntry" inverseName="product" inverseEntity="CartEntry" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CartEntry" positionX="-63" positionY="-18" width="128" height="75"/>
-        <element name="CartProduct" positionX="-54" positionY="-9" width="128" height="105"/>
         <element name="AutocompleteSuggestion" positionX="-54" positionY="36" width="128" height="73"/>
+        <element name="CartEntry" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="CartProduct" positionX="-54" positionY="-9" width="128" height="120"/>
     </elements>
 </model>

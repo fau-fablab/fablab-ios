@@ -45,6 +45,9 @@ class ActionSheetPickerDelegate: NSObject, ActionSheetCustomPickerDelegate {
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if(component == 0) {
+            if (unit.hasPrefix("Platte")) {
+                unit = "Platten"
+            }
             return "\(amounts[row]) \(unit!)"
         } else {
             return "\(Double (amount) * price!) €"
