@@ -66,10 +66,12 @@ class Cart : NSObject{
         }
         
         //if product is already in cart, update amount
-        for index in 0...(entries.count - 1) {
-            if (entries[index].product.id == product.productId) {
-                updateEntry(index, amount: entries[index].amount + amount)
-                return
+        if (!entries.isEmpty) {
+            for index in 0...(entries.count - 1) {
+                if (entries[index].product.id == product.productId) {
+                    updateEntry(index, amount: entries[index].amount + amount)
+                    return
+                }
             }
         }
         
@@ -82,6 +84,7 @@ class Cart : NSObject{
         cartProduct.name = product.name!
         cartProduct.price = product.price!
         cartProduct.id = product.productId!
+        cartProduct.unit = product.unit!
 
         cartEntry.product = cartProduct
         cartEntry.amount = amount

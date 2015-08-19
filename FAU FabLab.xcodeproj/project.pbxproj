@@ -99,6 +99,7 @@
 		4893164C1B8367EF00DCB6BB /* CartEntryCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartEntryCustomCell.swift; sourceTree = "<group>"; };
 		489E4C741B79E093004A60FA /* ProductCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCustomCell.swift; sourceTree = "<group>"; };
 		48B7C0D91B846CDA00DC9B2D /* AutocompleteSuggestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteSuggestion.swift; sourceTree = "<group>"; };
+		48B7C0DD1B84833400DC9B2D /* CoreDataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		502DB1511B7150370036EF6B /* EventsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsDetailViewController.swift; sourceTree = "<group>"; };
 		5060B1D01B4EFE2A008B41FD /* FAU FabLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FAU FabLab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5060B1D41B4EFE2A008B41FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -873,9 +874,10 @@
 		923E1F2D1B7AA3F7009CC545 /* CoreDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				48B7C0DD1B84833400DC9B2D /* CoreDataModel 2.xcdatamodel */,
 				923E1F2E1B7AA3F7009CC545 /* CoreDataModel.xcdatamodel */,
 			);
-			currentVersion = 923E1F2E1B7AA3F7009CC545 /* CoreDataModel.xcdatamodel */;
+			currentVersion = 48B7C0DD1B84833400DC9B2D /* CoreDataModel 2.xcdatamodel */;
 			path = CoreDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

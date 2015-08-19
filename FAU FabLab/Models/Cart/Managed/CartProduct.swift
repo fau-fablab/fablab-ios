@@ -8,4 +8,6 @@ class CartProduct : NSManagedObject{
     @NSManaged var name     : String
     @NSManaged var id       : String
     @NSManaged var price    : Double
+    @NSManaged var unit     : String
+    
 }
