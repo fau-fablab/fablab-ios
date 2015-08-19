@@ -41,10 +41,7 @@ class AutocompleteModel : NSObject {
                 if (err != nil) {
                     Debug.instance.log(err)
                 } else {
-                    Debug.instance.log(json)
-                    for productName in (json as! [String]) {
-                        self.addProductName(productName)
-                    }
+                    self.productNames = json as! [String]
                     self.productNamesLoaded = true
                 }
                 onCompletion(err)
