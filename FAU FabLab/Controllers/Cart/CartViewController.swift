@@ -114,6 +114,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
                 CartModel.sharedInstance.updateProductInCart(indexPath.row, amount: Double(amount))
                 tableView.reloadData();
                 tableView.setEditing(false, animated: true)
+                self.showTotalPrice()
                 }, didCancelAction:{ (Void) -> Void in tableView.setEditing(false, animated: true)} )
             picker.showActionSheetPicker()
         }
