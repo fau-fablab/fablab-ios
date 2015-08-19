@@ -12,7 +12,7 @@ class ProductLocationViewController : UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         headline.title = productName
-        let url = NSURL (string: RestManager.sharedInstance.devApiUrl + "/productMap?id=" + locationId);
+        let url = NSURL (string: RestManager.sharedInstance.devApiUrl + "/productMap/productMap.html?id=" + locationId);
         let requestObj = NSURLRequest(URL: url!);
         webView.loadRequest(requestObj);
     }
