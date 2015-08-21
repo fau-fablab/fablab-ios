@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -789,20 +789,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkU-C6-8nA">
-                                <rect key="frame" x="16" y="71" width="183" height="30"/>
-                                <state key="normal" title="Simulate Scan &amp; Checkout">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="DummyScanButtonTouched:" destination="ooQ-nD-6sq" eventType="touchUpInside" id="5YY-Qn-oUr"/>
-                                </connections>
-                            </button>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ydh-Do-RI8">
                                 <rect key="frame" x="0.0" y="507" width="600" height="44"/>
                                 <items/>
                             </toolbar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gesamtpreis" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTq-8X-d41">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Gesamtpreis" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTq-8X-d41">
                                 <rect key="frame" x="16" y="518" width="98" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -817,8 +808,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Cw4-Ky-LeW">
-                                <rect key="frame" x="0.0" y="109" width="600" height="398"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="Cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Cw4-Ky-LeW">
+                                <rect key="frame" x="0.0" y="64" width="600" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CartEntryCustomCell" rowHeight="60" id="uIh-DG-Ipf" customClass="CartEntryCustomCell" customModule="FAU_FabLab" customModuleProvider="target">
@@ -887,18 +878,14 @@
                             <constraint firstItem="eGp-Ok-z96" firstAttribute="trailing" secondItem="hqQ-J3-3kM" secondAttribute="trailingMargin" id="QcF-Rl-ejj"/>
                             <constraint firstItem="Ydh-Do-RI8" firstAttribute="top" secondItem="Cw4-Ky-LeW" secondAttribute="bottom" id="cBN-ad-jwy"/>
                             <constraint firstItem="Ydh-Do-RI8" firstAttribute="leading" secondItem="Cw4-Ky-LeW" secondAttribute="leading" id="d87-IC-nKm"/>
-                            <constraint firstItem="AkU-C6-8nA" firstAttribute="top" secondItem="f20-An-xKa" secondAttribute="bottom" constant="7" id="lR0-fc-VUb"/>
                             <constraint firstAttribute="trailing" secondItem="Cw4-Ky-LeW" secondAttribute="trailing" id="n4P-BC-hVL"/>
-                            <constraint firstItem="dTq-8X-d41" firstAttribute="leading" secondItem="AkU-C6-8nA" secondAttribute="leading" id="ox5-vy-H6c"/>
-                            <constraint firstItem="AkU-C6-8nA" firstAttribute="leading" secondItem="hqQ-J3-3kM" secondAttribute="leadingMargin" id="pDo-Cv-N9w"/>
-                            <constraint firstItem="Cw4-Ky-LeW" firstAttribute="top" secondItem="AkU-C6-8nA" secondAttribute="bottom" constant="8" symbolic="YES" id="xzr-5N-sOU"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Warenkorb" image="first" id="kBk-Ta-hCe"/>
                     <navigationItem key="navigationItem" title="Warenkorb" id="50e-f8-Ahz">
                         <barButtonItem key="rightBarButtonItem" title="Zur Kasse" id="Hbn-BV-kwy">
                             <connections>
-                                <segue destination="dAF-j1-LQU" kind="show" id="Aci-JU-BLM"/>
+                                <action selector="startCheckout:" destination="ooQ-nD-6sq" id="76t-v1-9Uv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

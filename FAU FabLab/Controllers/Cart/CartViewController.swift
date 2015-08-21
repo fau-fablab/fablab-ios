@@ -1,7 +1,7 @@
 import UIKit
-import Foundation
+import AVFoundation
+import RSBarcodes
 import CoreActionSheetPicker
-
 
 class CartViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
     
@@ -127,17 +127,56 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
 
+    @IBAction func startCheckout(sender: AnyObject) {
+        self.cameraAction()
+    }
     
-    /*                      DEV BUTTONS                 */
-    
-    //Just to avoid using camera... get code from Server and start checkout process :)
-
-
-    @IBAction func DummyScanButtonTouched(sender: AnyObject) {
-        RestManager.sharedInstance.makeJsonGetRequest("/checkout/createCode", params: ["password": "dummyPassword"])
-        { (code, error) -> Void in
-            self.cartModel.sendCartToServer(String(code as! Int))
+    func cameraAction() {
+        let authStatus = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
+        switch authStatus {
+            case AVAuthorizationStatus.Authorized:
+                var popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("CheckoutCodeScanner") as! UIViewController
+                var nav = UINavigationController(rootViewController: popoverContent)
+                nav.modalPresentationStyle = UIModalPresentationStyle.Popover
+                var popover = nav.popoverPresentationController
+                
+                self.presentViewController(nav, animated: true, completion: nil)
+            
+            case AVAuthorizationStatus.Denied: alertToEncourageCameraAccessInitially()
+            case AVAuthorizationStatus.NotDetermined: alertPromptToAllowCameraAccessViaSetting()
+            default: alertToEncourageCameraAccessInitially()
         }
+        
+    }
+    
+    func alertToEncourageCameraAccessInitially(){
+        var alert = UIAlertController(title: "Achtung", message: "Es wird ein Zugriff auf die Kamera benötigt", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addAction(UIAlertAction(title: "Abbrechen", style: .Default, handler: { (alert) -> Void in
+            dispatch_async(dispatch_get_main_queue()) {
+                self.dismissViewControllerAnimated(true, completion:nil)
+            }
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Erlauben", style: .Cancel, handler: { (alert) -> Void in
+            UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func alertPromptToAllowCameraAccessViaSetting() {
+        var alert = UIAlertController(title: "Achtung", message: "Es wird ein Zugriff auf die Kamera benötigt", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addAction(UIAlertAction(title: "Abbrechen", style: .Cancel) { alert in
+            if AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo).count > 0 {
+                AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo) { granted in
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.cameraAction()
+                    }
+                }
+            }
+        })
     }
     
 }
