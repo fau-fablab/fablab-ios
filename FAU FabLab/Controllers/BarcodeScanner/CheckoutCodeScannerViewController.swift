@@ -20,8 +20,6 @@ class CheckoutCodeScannerViewController: RSCodeReaderViewController {
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 
                 let checkoutCode = barcodes[0].stringValue
-                
-                
                 self.dismissViewControllerAnimated(true, completion:nil )
                 
                 NSNotificationCenter.defaultCenter().postNotificationName("CheckoutScannerNotification", object: checkoutCode)

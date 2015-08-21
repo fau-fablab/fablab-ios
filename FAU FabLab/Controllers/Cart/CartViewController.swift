@@ -127,6 +127,8 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
 
+    //Gets sure that app has permissions to access the camera.
+    
     @IBAction func startCheckout(sender: AnyObject) {
         self.cameraAction()
     }
@@ -146,7 +148,6 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
             case AVAuthorizationStatus.NotDetermined: alertPromptToAllowCameraAccessViaSetting()
             default: alertToEncourageCameraAccessInitially()
         }
-        
     }
     
     func alertToEncourageCameraAccessInitially(){
