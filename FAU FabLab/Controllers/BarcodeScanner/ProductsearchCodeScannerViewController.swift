@@ -19,11 +19,10 @@ class ProductsearchCodeScannerViewController: RSCodeReaderViewController {
     }
     
     private func getProductIdFromBarcode(barcode: AVMetadataMachineReadableCodeObject) -> String{
+        let productId = barcode.stringValue as NSString
         if (barcode.type == AVMetadataObjectTypeEAN13Code) {
-            let productId = barcode.stringValue as NSString
             return productId.substringWithRange(NSRange(location: 8, length: 4))
         } else {
-            let productId = barcode.stringValue as NSString
             return productId.substringWithRange(NSRange(location: 3, length: 4))
         }
     }
@@ -36,11 +35,8 @@ class ProductsearchCodeScannerViewController: RSCodeReaderViewController {
             self.session.stopRunning()
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                
-                
-                //TODO: CHANGE FOR REAL BARCODES
-                //let productId = self.getProductIdFromBarcode(barcodes[0])
-                let productId = "0009"
+                let productId = self.getProductIdFromBarcode(barcodes[0])
+                Debug.instance.log("code:  \(barcodes[0]) id: \(productId)")
                 self.tabBarController?.selectedIndex = 2
                 NSNotificationCenter.defaultCenter().postNotificationName("ProductScannerNotification", object: productId)
             })
