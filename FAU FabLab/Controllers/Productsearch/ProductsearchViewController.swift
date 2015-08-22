@@ -153,6 +153,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
                 }
             }
         }
+        autocompleteSuggestions.sort({$0 < $1})
         autocompleteTableView.reloadData()
     }
     

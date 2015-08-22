@@ -69,16 +69,36 @@ class AutocompleteModel : NSObject {
     
     private func createAutocompleteSuggestions() {
         var suggestions = [String]()
+        let digits = NSCharacterSet.decimalDigitCharacterSet()
         for name in productNames {
             var tmpName = name.stringByReplacingOccurrencesOfString(",", withString: " ")
                 .stringByReplacingOccurrencesOfString("(", withString: " ")
                 .stringByReplacingOccurrencesOfString(")", withString: " ")
                 .stringByReplacingOccurrencesOfString("_", withString: " ")
                 .stringByReplacingOccurrencesOfString("-", withString: " ")
-            var separatedName = split(tmpName, isSeparator: {$0 == " "})
+                .stringByReplacingOccurrencesOfString("\"", withString: " ")
+                .stringByReplacingOccurrencesOfString("/", withString: " ")
+                .stringByReplacingOccurrencesOfString("=", withString: " ")
+                .stringByReplacingOccurrencesOfString("+", withString: " ")
+                .stringByReplacingOccurrencesOfString("?", withString: " ")
+                .stringByReplacingOccurrencesOfString(":", withString: " ")
+                .stringByReplacingOccurrencesOfString("&", withString: " ")
+                .stringByReplacingOccurrencesOfString("≥", withString: " ")
+                .stringByReplacingOccurrencesOfString("Ø", withString: " ")
+            var separatedName = split(tmpName, isSeparator: {$0 == " " || $0 == " "})
             for string in separatedName {
                 if (count(string) > 2) {
                     var found = false
+                    var digitPrefix = false
+                    for char in string.unicodeScalars {
+                        if digits.longCharacterIsMember(char.value) {
+                            digitPrefix = true
+                            break;
+                        }
+                    }
+                    if (digitPrefix) {
+                        continue
+                    }
                     for suggestion in suggestions {
                         if (suggestion.lowercaseString == string.lowercaseString) {
                             found = true
