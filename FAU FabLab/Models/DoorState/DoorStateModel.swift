@@ -30,19 +30,21 @@ class DoorStateModel : NSObject {
 
     override init(){
         super.init()
-        getDoorState()
     }
 
-    func getDoorState() {
+    func getDoorState(onStateChanged: () -> Void) {
         let endpoint = resource + "/spaces/" + space
 
         RestManager.sharedInstance.makeJsonGetRequest(endpoint, params: nil, onCompletion: {
             json, err in
 
             if(err == nil){
-                self.doorState = self.mapper.map(json);
+                let newState = self.mapper.map(json);
+                if(self.doorState == nil || self.doorState! != newState!){
+                    self.doorState = newState
+                    onStateChanged()
+                }
             }
-
             //TODO error handling
         })
     }

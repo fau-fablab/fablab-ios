@@ -53,7 +53,9 @@ class DoorNavigationButtonController: NSObject {
     }
 
     @objc func fetchDoorStateTask(timer: NSTimer) {
-        model.getDoorState()
+        model.getDoorState({
+            self.restoreButtonState()
+        })
     }
 
     @objc private func showText() {
