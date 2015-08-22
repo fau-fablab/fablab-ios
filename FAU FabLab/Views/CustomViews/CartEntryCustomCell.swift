@@ -8,13 +8,21 @@ public class CartEntryCustomCell: UITableViewCell {
     @IBOutlet var amount: UILabel!
     
     func configure(name: String, unit: String, price: Double) {
-        let separatedName = split(name, maxSplit: 1, allowEmptySlices: false, isSeparator: {$0 == " " || $0 == "," })
+        let separatedName = split(name, maxSplit: 1, allowEmptySlices: false, isSeparator: isSeparator)
         self.title.text = separatedName[0];
         if(separatedName.count > 1) {
             self.subtitle.text = separatedName[1];
         }
         self.price.text = String(format: "%.2f€", price);
         self.amount.text = unit;
+    }
+    
+    
+    func isSeparator(c: Character) -> Bool {
+        if (c == " " || c == " " || c == ",") {
+            return true
+        }
+        return false
     }
     
 }
