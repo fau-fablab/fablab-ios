@@ -22,7 +22,8 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     private var autocompleteTableView: UITableView!
     private var autocompleteTableViewConstraint : NSLayoutConstraint!
 
-    
+
+
     
     @IBAction func buttonAddToCartPressed(sender: AnyObject) {
         let cell = tableView.cellForRowAtIndexPath(selectedIndexPath!) as! ProductCustomCell;
@@ -41,7 +42,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         //TODO PASS locationId and productName
         let cell = tableView.cellForRowAtIndexPath(selectedIndexPath!) as! ProductCustomCell;
         
-        let locationId = cell.product.locationId
+        let locationId = cell.product.getLocation
         let productName = cell.product.name
         
         var locationView = self.storyboard?.instantiateViewControllerWithIdentifier("ProductLocationView") as! ProductLocationViewController

@@ -8,21 +8,26 @@ class Product : NSObject, Mappable{
     private(set) var desc: String?
     private(set) var unit: String?
     private(set) var price: Double?
-    private(set) var itemsAvailable: Int?
-    private(set) var location: Location?
-    private(set) var locationId: Int64?
     private(set) var locationString: String?
     private(set) var category: Category?
-    private(set) var categoryId: Int64?
     private(set) var categoryString: String?
     private(set) var uom: Uom?
-    private(set) var uom_id: Int64?
-    
+
     class func newInstance() -> Mappable {
         return Product()
     }
     
     override init(){}
+
+    var hasLocation: Bool{
+        return locationString != "unknown location"
+    }
+
+    var getLocation: String{
+        return locationString!.stringByReplacingOccurrencesOfString(" / ", withString: "/")
+            .stringByReplacingOccurrencesOfString(" ", withString: "_")
+
+    }
     
     func setId(id: String){
         productId = id
@@ -30,20 +35,15 @@ class Product : NSObject, Mappable{
     
     // Mappable
     func mapping(map: Map) {
+        category <- map["category"]
         productId <- map["productId"]
         name <- map["name"]
         desc <- map["description"]
         unit <- map["unit"]
-        category <- map["category"]
-        categoryId <- map["categoryId"]
-        categoryString <- map["categoryString"]
         price <- map["price"]
-        location <- map["locationObject"]
-        locationId <- map["location_id"]
+        categoryString <- map["categoryString"]
         locationString <- map["location"]
-        itemsAvailable <- map["itemsAvailable"]
         uom <- map["uom"]
-        uom_id <- map["uom_id"]
     }
 
 }

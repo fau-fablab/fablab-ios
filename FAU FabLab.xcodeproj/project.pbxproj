@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35CE16075934035C53558DAB /* InventoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE19B06D1C4EFD5685953C /* InventoryItem.swift */; };
 		35CE1B736F661DCF4D7020F6 /* Uom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE1CE6C8A1BE4967D0633F /* Uom.swift */; };
 		35CE1DB996BC6DE917A5E446 /* DoorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE11756F88B8009C549B94 /* DoorState.swift */; };
 		35CE1DD759134EC89DBD0D29 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE11C7BEE60991B0702A2A /* Debug.swift */; };
@@ -91,6 +92,7 @@
 		35CE11756F88B8009C549B94 /* DoorState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoorState.swift; sourceTree = "<group>"; };
 		35CE11C7BEE60991B0702A2A /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		35CE1698E311B04F89744CDB /* DoorStateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoorStateModel.swift; sourceTree = "<group>"; };
+		35CE19B06D1C4EFD5685953C /* InventoryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryItem.swift; sourceTree = "<group>"; };
 		35CE1CE6C8A1BE4967D0633F /* Uom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uom.swift; sourceTree = "<group>"; };
 		4804CA5B1B7E4FB200F75BF5 /* ActionSheetPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetPickerDelegate.swift; sourceTree = "<group>"; };
 		4880CD311B7CC4470025C38A /* CoreActionSheetPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreActionSheetPicker.framework; path = Carthage/Build/iOS/CoreActionSheetPicker.framework; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 		500A2CA21B63FB6E005CC8CF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				921095321B88D78500396181 /* Inventory */,
 				842314691B70BC1D0074B670 /* Cart */,
 				92078EB51B6E26F100A21AD9 /* Productsearch */,
 				928054F71B6DA0BA00D0D4FB /* Events */,
@@ -342,6 +345,14 @@
 				846100BD1B78696000393E63 /* ProductLocationViewController.swift */,
 			);
 			path = Productsearch;
+			sourceTree = "<group>";
+		};
+		921095321B88D78500396181 /* Inventory */ = {
+			isa = PBXGroup;
+			children = (
+				35CE19B06D1C4EFD5685953C /* InventoryItem.swift */,
+			);
+			path = Inventory;
 			sourceTree = "<group>";
 		};
 		923E1F281B7AA1EC009CC545 /* Managed */ = {
@@ -636,6 +647,7 @@
 				35CE1DB996BC6DE917A5E446 /* DoorState.swift in Sources */,
 				35CE1E13F0E8E25DBCE8E9C9 /* DoorStateModel.swift in Sources */,
 				35CE1DD759134EC89DBD0D29 /* Debug.swift in Sources */,
+				35CE16075934035C53558DAB /* InventoryItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
