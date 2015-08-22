@@ -15,3 +15,11 @@ class DoorState : Mappable{
         lastchange <- map["state.lastchange"]
     }
 }
+
+func == (left: DoorState, right: DoorState) -> Bool{
+    return (left.open == right.open) && (left.lastchange == right.lastchange)
+}
+
+func != (left: DoorState, right: DoorState) -> Bool{
+    return (left.open != right.open) || (left.lastchange != right.lastchange)
+}
