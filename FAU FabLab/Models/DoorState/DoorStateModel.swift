@@ -15,9 +15,17 @@ class DoorStateModel : NSObject {
         }
         return false;
     }
-    
-    var lastChange : Double {
-        return doorState!.lastchange!
+
+    var lastChangeAsString : String {
+        let lastChangeAsDate = NSDate(timeIntervalSince1970: doorState!.lastchange!)
+        let flags = NSCalendarUnit.CalendarUnitMinute | NSCalendarUnit.CalendarUnitHour
+        let components = NSCalendar.currentCalendar().components(flags, fromDate: lastChangeAsDate, toDate: NSDate(), options: nil)
+        
+        if(components.hour >= 1){
+            return "\(components.hour) h"
+        }else{
+            return "\(components.minute) m"
+        }
     }
 
     override init(){
