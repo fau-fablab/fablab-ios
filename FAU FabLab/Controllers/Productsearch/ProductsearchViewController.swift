@@ -56,6 +56,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "searchByBarcodeScanner:", name: "ProductScannerNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
     }
     
     override func viewDidLoad() {
@@ -79,7 +80,6 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         view.addSubview(actInd)
         
         //autocomplete
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         autocompleteTableView = UITableView()
         autocompleteTableView.delegate = self
         autocompleteTableView.dataSource = self
@@ -107,10 +107,6 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         view.addConstraint(autocompleteTableViewConstraint)
         
         doorButtonController.updateButtons(self)
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     override func didReceiveMemoryWarning() {
