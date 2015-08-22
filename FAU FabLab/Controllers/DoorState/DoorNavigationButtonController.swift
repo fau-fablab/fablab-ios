@@ -9,8 +9,8 @@ class DoorNavigationButtonController: NSObject {
     private let model = DoorStateModel()
     private var viewController: UIViewController?
     
-    private let red = UIColor(red: 0.81, green: 0.12, blue: 0.18, alpha: 1.0)
-    private let green = UIColor(red: 0.00, green: 0.59, blue: 0.42, alpha: 1.0)
+    private let red     = UIColor(red: 0.81, green: 0.12, blue: 0.18, alpha: 1.0)
+    private let green   = UIColor(red: 0.00, green: 0.59, blue: 0.42, alpha: 1.0)
 
     private var buttonIcon: UIBarButtonItem{
         let img = model.isOpen ? UIImage(named: "icon_door_open") : UIImage(named: "icon_door_closed")
@@ -37,14 +37,13 @@ class DoorNavigationButtonController: NSObject {
         self.viewController = vc
         showButton()
     }
-    
-    func showText() {
-        model.getDoorState()
 
+    @objc private func showText() {
+        model.getDoorState()
         viewController!.navigationItem.leftBarButtonItem = buttonText
     }
-    
-    func showButton() {
+
+    @objc private func showButton() {
         model.getDoorState()
         viewController!.navigationItem.leftBarButtonItem = buttonIcon
     }
