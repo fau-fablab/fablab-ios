@@ -20,6 +20,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     //autocomplete
     private var autocompleteSuggestions = [String]()
     private var autocompleteTableView: UITableView!
+    private var autocompleteTableViewConstraint : NSLayoutConstraint!
 
     
     
@@ -78,6 +79,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         view.addSubview(actInd)
         
         //autocomplete
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         autocompleteTableView = UITableView()
         autocompleteTableView.delegate = self
         autocompleteTableView.dataSource = self
@@ -95,20 +97,33 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         let c3 = NSLayoutConstraint(item: autocompleteTableView, attribute: NSLayoutAttribute.TopMargin,
             relatedBy: NSLayoutRelation.Equal, toItem: self.tableView, attribute: NSLayoutAttribute.TopMargin,
             multiplier: 1, constant: 0)
-        let c4 = NSLayoutConstraint(item: autocompleteTableView, attribute: NSLayoutAttribute.BottomMargin,
-            relatedBy: NSLayoutRelation.Equal, toItem: self.tableView, attribute: NSLayoutAttribute.BottomMargin,
+        autocompleteTableViewConstraint = NSLayoutConstraint(item: autocompleteTableView, attribute: NSLayoutAttribute.Height,
+            relatedBy: NSLayoutRelation.Equal, toItem: self.tableView, attribute: NSLayoutAttribute.Height,
             multiplier: 1, constant: 0)
         
         view.addConstraint(c1)
         view.addConstraint(c2)
         view.addConstraint(c3)
-        view.addConstraint(c4)
+        view.addConstraint(autocompleteTableViewConstraint)
         
         doorButtonController.updateButtons(self)
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            if let tabBarSize = self.tabBarController?.tabBar.frame.size {
+                autocompleteTableViewConstraint.constant = tabBarSize.height - keyboardSize.height
+                autocompleteTableView.setNeedsUpdateConstraints()
+            }
+        }
     }
     
     func showText() {
