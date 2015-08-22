@@ -16,6 +16,7 @@ class DoorNavigationButtonController: NSObject {
     private let red     = UIColor(red: 0.81, green: 0.12, blue: 0.18, alpha: 1.0)
     private let green   = UIColor(red: 0.00, green: 0.59, blue: 0.42, alpha: 1.0)
 
+    private var timer = NSTimer();
     private var state = ButtonState.Icon
     private var viewController: UIViewController?
 
@@ -38,6 +39,8 @@ class DoorNavigationButtonController: NSObject {
 
     private override init() {
         super.init()
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: "fetchDoorStateTask:", userInfo: nil, repeats: true)
+        self.timer.fire()
     }
     
     func setViewController(vc: UIViewController) {
@@ -47,6 +50,10 @@ class DoorNavigationButtonController: NSObject {
 
     private func restoreButtonState(){
         state == ButtonState.Icon ? showButton() : showText()
+    }
+
+    @objc func fetchDoorStateTask(timer: NSTimer) {
+        model.getDoorState()
     }
 
     @objc private func showText() {
