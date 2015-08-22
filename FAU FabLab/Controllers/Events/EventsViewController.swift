@@ -25,13 +25,11 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleBottomMargin
         actInd.startAnimating()
         view.addSubview(actInd)
-        
-        
-        doorButtonController.setViewController(self)
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        doorButtonController.setViewController(self)
     }
     
     override func viewDidAppear(animated: Bool) {

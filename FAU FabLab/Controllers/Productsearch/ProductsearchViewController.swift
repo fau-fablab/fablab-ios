@@ -105,14 +105,17 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         view.addConstraint(c2)
         view.addConstraint(c3)
         view.addConstraint(autocompleteTableViewConstraint)
-        
-        doorButtonController.setViewController(self)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        doorButtonController.setViewController(self)
+    }
+
     func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
             if let tabBarSize = self.tabBarController?.tabBar.frame.size {

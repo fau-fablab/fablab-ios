@@ -3,14 +3,21 @@ import Foundation
 import UIKit
 
 class DoorNavigationButtonController: NSObject {
+
+    private enum ButtonState {
+        case Icon
+        case Text
+    }
     
     static let sharedInstance = DoorNavigationButtonController()
 
     private let model = DoorStateModel()
-    private var viewController: UIViewController?
-    
+
     private let red     = UIColor(red: 0.81, green: 0.12, blue: 0.18, alpha: 1.0)
     private let green   = UIColor(red: 0.00, green: 0.59, blue: 0.42, alpha: 1.0)
+
+    private var state = ButtonState.Icon
+    private var viewController: UIViewController?
 
     private var buttonIcon: UIBarButtonItem{
         let img = model.isOpen ? UIImage(named: "icon_door_open") : UIImage(named: "icon_door_closed")
@@ -35,16 +42,20 @@ class DoorNavigationButtonController: NSObject {
     
     func setViewController(vc: UIViewController) {
         self.viewController = vc
-        showButton()
+        restoreButtonState()
+    }
+
+    private func restoreButtonState(){
+        state == ButtonState.Icon ? showButton() : showText()
     }
 
     @objc private func showText() {
-        model.getDoorState()
         viewController!.navigationItem.leftBarButtonItem = buttonText
+        state = ButtonState.Text
     }
 
     @objc private func showButton() {
-        model.getDoorState()
         viewController!.navigationItem.leftBarButtonItem = buttonIcon
+        state = ButtonState.Icon
     }
 }

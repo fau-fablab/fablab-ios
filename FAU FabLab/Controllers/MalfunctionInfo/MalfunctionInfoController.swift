@@ -6,12 +6,11 @@ class MalfunctionInfoController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        doorButtonController.setViewController(self)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        doorButtonController.setViewController(self)
     }
     
     override func viewDidAppear(animated: Bool) {
