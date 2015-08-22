@@ -69,10 +69,12 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         tableView.dataSource = self
         
         //activity indicator
-        actInd = UIActivityIndicatorView(frame: CGRectMake(0,0, 50, 50)) as UIActivityIndicatorView
+        actInd = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
         actInd.center = self.view.center
         actInd.hidesWhenStopped = true
-        actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        actInd.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleWidth |
+            UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleTopMargin |
+            UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleBottomMargin
         view.addSubview(actInd)
         
         //autocomplete
