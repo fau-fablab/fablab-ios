@@ -66,6 +66,7 @@ class ProductsearchModel : NSObject{
         let endpoint = resource + "/find/id"
         let params = ["search": id]
         if(!isLoading){
+            self.clearProducts();
             RestManager.sharedInstance.makeJsonGetRequest(endpoint, params: params, onCompletion: {
                 json, err in
                 Debug.instance.log("GOT: \(json)")
@@ -75,6 +76,7 @@ class ProductsearchModel : NSObject{
                     onCompletion(err)
                 }
                 if let product = self.mapper.map(json) {
+                    self.addProduct(product)
                     Debug.instance.log(product)
                 }
                 
