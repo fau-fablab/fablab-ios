@@ -122,14 +122,6 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         }
     }
     
-    func showText() {
-        doorButtonController.showText(self)
-    }
-    
-    func showButton() {
-        doorButtonController.showButton(self)
-    }
-    
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         searchActive = true;
         autocompleteTableView.hidden = false

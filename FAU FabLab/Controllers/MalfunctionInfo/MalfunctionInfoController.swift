@@ -10,14 +10,6 @@ class MalfunctionInfoController: UIViewController {
         doorButtonController.updateButtons(self)
     }
     
-    func showText() {
-        doorButtonController.showText(self)
-    }
-    
-    func showButton() {
-        doorButtonController.showButton(self)
-    }
-    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
     }
