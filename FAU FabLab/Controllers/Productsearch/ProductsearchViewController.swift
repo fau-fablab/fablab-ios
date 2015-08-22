@@ -12,6 +12,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     private var model = ProductsearchModel()
     private var searchActive = false;
     private var sortedByName = true;
+    private var sortingDidChange = false
     private var productCellIdentifier = "ProductCustomCell"
     private let doorButtonController = DoorNavigationButtonController.sharedInstance
     private let collation = UILocalizedIndexedCollation.currentCollation() as! UILocalizedIndexedCollation
@@ -160,6 +161,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        sortingDidChange = true
         if(selectedScope == 0) {
             sortProductsByName()
         } else {
@@ -279,9 +281,12 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
             selectedIndexPath = indexPath
         }
         var indexPaths : Array<NSIndexPath> = []
-        if let previous = previousIndexPath {
-            indexPaths += [previous]
+        if !sortingDidChange {
+            if let previous = previousIndexPath{
+                indexPaths += [previous]
+            }
         }
+        sortingDidChange = false
         if let current = selectedIndexPath {
             indexPaths += [current]
         }
