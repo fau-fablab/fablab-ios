@@ -25,7 +25,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         actInd.startAnimating()
         view.addSubview(actInd)
         
-        doorButtonController.updateButtons(self)
+        doorButtonController.setViewController(self)
     }
 
     override func viewWillAppear(animated: Bool) {

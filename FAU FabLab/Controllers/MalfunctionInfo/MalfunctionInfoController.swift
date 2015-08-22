@@ -7,7 +7,7 @@ class MalfunctionInfoController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        doorButtonController.updateButtons(self)
+        doorButtonController.setViewController(self)
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -27,7 +27,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         view.addSubview(actInd)
         
         
-        doorButtonController.updateButtons(self)
+        doorButtonController.setViewController(self)
     }
 
     override func viewWillAppear(animated: Bool) {

@@ -106,7 +106,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         view.addConstraint(c3)
         view.addConstraint(autocompleteTableViewConstraint)
         
-        doorButtonController.updateButtons(self)
+        doorButtonController.setViewController(self)
     }
     
     override func didReceiveMemoryWarning() {

@@ -6,7 +6,7 @@ class DoorNavigationButtonController: NSObject {
     
     static let sharedInstance = DoorNavigationButtonController()
 
-    private let dsm = DoorStateModel()
+    private let model = DoorStateModel()
     private var viewController: UIViewController?
     
     private let red = UIColor(red: 0.81, green: 0.12, blue: 0.18, alpha: 1.0)
@@ -16,21 +16,21 @@ class DoorNavigationButtonController: NSObject {
         super.init()
     }
     
-    func updateButtons(vc: UIViewController) {
+    func setViewController(vc: UIViewController) {
         self.viewController = vc
         showButton()
     }
     
     func showText() {
-        dsm.getDoorState()
+        model.getDoorState()
         
-        let lastChange = NSDate(timeIntervalSince1970: dsm.lastChange)
+        let lastChange = NSDate(timeIntervalSince1970: model.lastChange)
         let components = NSCalendar.currentCalendar().components(NSCalendarUnit.CalendarUnitHour, fromDate: lastChange, toDate: NSDate(), options: nil)
         
         let buttonClosed = getClosedText(viewController!)
         let buttonOpen = getOpenText(viewController!)
         
-        if dsm.isOpen {
+        if model.isOpen {
             buttonOpen.title = buttonOpen.title! + " \(components.hour) h"
             viewController!.navigationItem.leftBarButtonItem = buttonOpen
         } else {
@@ -40,12 +40,12 @@ class DoorNavigationButtonController: NSObject {
     }
     
     func showButton() {
-        dsm.getDoorState()
+        model.getDoorState()
         
         let buttonClosed = getClosedButton(viewController!)
         let buttonOpen = getOpenButton(viewController!)
         
-        if dsm.isOpen {
+        if model.isOpen {
             viewController!.navigationItem.leftBarButtonItem = buttonOpen
         } else {
             viewController!.navigationItem.leftBarButtonItem = buttonClosed
