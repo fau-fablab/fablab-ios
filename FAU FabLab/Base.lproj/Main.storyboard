@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -952,7 +952,7 @@
         <scene sceneID="PjO-4O-WFa">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="l0O-yt-wAF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="News" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="News" image="icon_news" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hFE-yc-3JB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -971,7 +971,7 @@
         <scene sceneID="qfj-MK-Brk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vq6-YY-mEa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Termine" image="first" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Termine" image="icon_events" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="re7-OQ-BFT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -990,7 +990,7 @@
         <scene sceneID="lo4-bo-lxz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wKE-G6-kbN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Produkt suchen" image="first" id="Ckf-F4-b20"/>
+                    <tabBarItem key="tabBarItem" title="Produkt suchen" image="icon_search" id="Ckf-F4-b20"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cmz-pF-vqn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1009,7 +1009,7 @@
         <scene sceneID="EG7-Jv-DTa">
             <objects>
                 <navigationController title="Störmeldung" automaticallyAdjustsScrollViewInsets="NO" id="AgM-Bm-SWQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Störmeldung" image="first" id="F1L-8Z-eGi"/>
+                    <tabBarItem key="tabBarItem" title="Störmeldung" image="icon_warning" id="F1L-8Z-eGi"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bp0-3G-Pif">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1031,6 +1031,10 @@
         <image name="first" width="30" height="30"/>
         <image name="icon_cart" width="25" height="25"/>
         <image name="icon_door_closed" width="25" height="25"/>
+        <image name="icon_events" width="25" height="25"/>
+        <image name="icon_news" width="25" height="25"/>
+        <image name="icon_search" width="25" height="25"/>
+        <image name="icon_warning" width="25" height="25"/>
         <image name="news_nopicture.png" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
