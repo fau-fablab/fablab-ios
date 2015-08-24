@@ -773,7 +773,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="Cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Cw4-Ky-LeW">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Cw4-Ky-LeW">
                                 <rect key="frame" x="0.0" y="64" width="600" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -839,10 +839,14 @@
                             <constraint firstItem="eGp-Ok-z96" firstAttribute="baseline" secondItem="dTq-8X-d41" secondAttribute="baseline" id="B7i-K1-PSD"/>
                             <constraint firstItem="249-cg-0zG" firstAttribute="top" secondItem="Cw4-Ky-LeW" secondAttribute="bottom" constant="44" id="EbC-P9-aQu"/>
                             <constraint firstItem="Cw4-Ky-LeW" firstAttribute="leading" secondItem="hqQ-J3-3kM" secondAttribute="leading" id="Fwr-aj-rYh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Cw4-Ky-LeW" secondAttribute="trailing" constant="-16" id="ICi-om-Rbs"/>
+                            <constraint firstItem="Cw4-Ky-LeW" firstAttribute="leading" secondItem="hqQ-J3-3kM" secondAttribute="leadingMargin" constant="-16" id="LHI-5G-0kV"/>
                             <constraint firstItem="Ydh-Do-RI8" firstAttribute="trailing" secondItem="Cw4-Ky-LeW" secondAttribute="trailing" id="POg-pw-h2U"/>
                             <constraint firstItem="eGp-Ok-z96" firstAttribute="trailing" secondItem="hqQ-J3-3kM" secondAttribute="trailingMargin" id="QcF-Rl-ejj"/>
+                            <constraint firstItem="Ydh-Do-RI8" firstAttribute="top" secondItem="Cw4-Ky-LeW" secondAttribute="bottom" id="QeG-Te-sND"/>
                             <constraint firstItem="Ydh-Do-RI8" firstAttribute="top" secondItem="Cw4-Ky-LeW" secondAttribute="bottom" id="cBN-ad-jwy"/>
                             <constraint firstItem="Ydh-Do-RI8" firstAttribute="leading" secondItem="Cw4-Ky-LeW" secondAttribute="leading" id="d87-IC-nKm"/>
+                            <constraint firstItem="Cw4-Ky-LeW" firstAttribute="top" secondItem="f20-An-xKa" secondAttribute="bottom" id="emH-6l-vmF"/>
                             <constraint firstAttribute="trailing" secondItem="Cw4-Ky-LeW" secondAttribute="trailing" id="n4P-BC-hVL"/>
                         </constraints>
                     </view>
@@ -1003,6 +1007,6 @@
         <image name="news_nopicture.png" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jeL-sJ-mps"/>
+        <segue reference="wh3-Eq-ov2"/>
     </inferredMetricsTieBreakers>
 </document>
