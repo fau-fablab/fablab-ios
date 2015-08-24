@@ -865,13 +865,23 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hier bitte eine kurze Fehlerbeschreibung eintragen" translatesAutoresizingMaskIntoConstraints="NO" id="6DW-k6-yzp">
+                                <rect key="frame" x="16" y="139" width="568" height="404"/>
+                                <color key="backgroundColor" red="0.29125236742424243" green="0.2672187621847662" blue="0.29028180279126731" alpha="0.070000000000000007" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="6DW-k6-yzp" firstAttribute="top" secondItem="gNN-lN-rbG" secondAttribute="bottom" constant="8" symbolic="YES" id="AHi-xY-gXQ"/>
                             <constraint firstItem="nVy-pC-J8y" firstAttribute="top" secondItem="726-ZX-s8Q" secondAttribute="bottom" constant="8" symbolic="YES" id="DfV-fr-9q5"/>
                             <constraint firstItem="gNN-lN-rbG" firstAttribute="trailing" secondItem="nVy-pC-J8y" secondAttribute="trailing" id="Rfl-MW-pPE"/>
+                            <constraint firstAttribute="centerX" secondItem="6DW-k6-yzp" secondAttribute="centerX" id="StW-yN-MNc"/>
                             <constraint firstItem="gNN-lN-rbG" firstAttribute="top" secondItem="nVy-pC-J8y" secondAttribute="bottom" constant="8" symbolic="YES" id="amP-Sj-1xU"/>
                             <constraint firstItem="gNN-lN-rbG" firstAttribute="leading" secondItem="nVy-pC-J8y" secondAttribute="leading" id="dFv-vu-TQk"/>
+                            <constraint firstItem="6DW-k6-yzp" firstAttribute="leading" secondItem="gNN-lN-rbG" secondAttribute="leading" id="iFA-8B-f9r"/>
+                            <constraint firstItem="Ae9-VM-01X" firstAttribute="top" secondItem="6DW-k6-yzp" secondAttribute="bottom" constant="8" symbolic="YES" id="qZy-lx-mxx"/>
                             <constraint firstItem="nVy-pC-J8y" firstAttribute="trailing" secondItem="BBR-Cw-L7q" secondAttribute="trailingMargin" id="rjo-Ig-4WS"/>
                             <constraint firstItem="nVy-pC-J8y" firstAttribute="leading" secondItem="BBR-Cw-L7q" secondAttribute="leadingMargin" id="teI-g7-IIW"/>
                             <constraint firstItem="Ae9-VM-01X" firstAttribute="top" secondItem="gNN-lN-rbG" secondAttribute="bottom" constant="420" id="xY3-GG-LPW"/>
@@ -886,6 +896,7 @@
                     <connections>
                         <outlet property="affectedMachineLabel" destination="gNN-lN-rbG" id="OyR-Yb-NMy"/>
                         <outlet property="buttonSelectMachine" destination="nVy-pC-J8y" id="o8s-DK-ErQ"/>
+                        <outlet property="textfield" destination="6DW-k6-yzp" id="uMS-F5-AQk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NBD-c7-3vN" userLabel="First Responder" sceneMemberID="firstResponder"/>
