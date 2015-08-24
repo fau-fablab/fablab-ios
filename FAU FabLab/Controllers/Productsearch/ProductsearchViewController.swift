@@ -45,7 +45,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
             
             let cell = tableView.cellForRowAtIndexPath(selectedIndexPath!) as! ProductCustomCell;
             
-            let locationId = cell.product.getLocation
+            let locationId = cell.product.locationStringForMap!
             let productName = cell.product.name
             
             destination!.configure(id: locationId, name: productName!)

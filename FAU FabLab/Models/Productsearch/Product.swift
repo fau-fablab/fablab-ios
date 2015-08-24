@@ -8,7 +8,7 @@ class Product : NSObject, Mappable{
     private(set) var desc: String?
     private(set) var unit: String?
     private(set) var price: Double?
-    private(set) var locationString: String?
+    private(set) var locationStringForMap: String?
     private(set) var category: Category?
     private(set) var categoryString: String?
     private(set) var uom: Uom?
@@ -20,13 +20,7 @@ class Product : NSObject, Mappable{
     override init(){}
 
     var hasLocation: Bool{
-        return locationString != "unknown location"
-    }
-
-    var getLocation: String{
-        return locationString!.stringByReplacingOccurrencesOfString(" / ", withString: "/")
-            .stringByReplacingOccurrencesOfString(" ", withString: "_")
-
+        return locationStringForMap != "unknown location"
     }
     
     func setId(id: String){
@@ -42,7 +36,7 @@ class Product : NSObject, Mappable{
         unit <- map["unit"]
         price <- map["price"]
         categoryString <- map["categoryString"]
-        locationString <- map["location"]
+        locationStringForMap <- map["locationForProductMap"]
         uom <- map["uom"]
     }
 
