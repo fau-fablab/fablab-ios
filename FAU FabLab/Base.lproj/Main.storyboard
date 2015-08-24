@@ -79,11 +79,7 @@
                         <barButtonItem key="leftBarButtonItem" image="icon_door_closed" id="zBH-Xm-N5i">
                             <color key="tintColor" red="0.80392156862745101" green="0.0078431372549019607" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="icon_cart" id="4Cd-Ok-Ucg">
-                            <connections>
-                                <segue destination="ooQ-nD-6sq" kind="show" id="TgA-1a-DJ2"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="icon_cart" id="4Cd-Ok-Ucg"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="8p4-iO-VO2" id="L9f-zA-DQG"/>
@@ -386,11 +382,7 @@
                         <barButtonItem key="leftBarButtonItem" image="icon_door_closed" id="ZqW-q1-iNd">
                             <color key="tintColor" red="0.80437184340000001" green="0.0" blue="0.10446213679999999" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="icon_cart" id="btL-Oh-ws3">
-                            <connections>
-                                <segue destination="ooQ-nD-6sq" kind="show" id="3N2-EF-COO"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="icon_cart" id="btL-Oh-ws3"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="AZ1-iU-YxM" id="tET-yq-7Yv"/>
@@ -654,11 +646,7 @@
                         <barButtonItem key="leftBarButtonItem" image="icon_door_closed" id="zDc-al-KgO">
                             <color key="tintColor" red="0.80392156859999997" green="0.0078431372550000003" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="icon_cart" id="N8d-Xk-Moq">
-                            <connections>
-                                <segue destination="ooQ-nD-6sq" kind="show" id="jeL-sJ-mps"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="icon_cart" id="N8d-Xk-Moq"/>
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="0kA-u0-HSB" id="Iwc-EW-El8"/>
@@ -884,11 +872,7 @@
                         <barButtonItem key="leftBarButtonItem" image="icon_door_closed" id="SWe-ol-Jdh">
                             <color key="tintColor" red="0.80437184340000001" green="0.0" blue="0.10446213679999999" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="icon_cart" id="TEz-v1-FYo">
-                            <connections>
-                                <segue destination="ooQ-nD-6sq" kind="show" id="wh3-Eq-ov2"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="icon_cart" id="TEz-v1-FYo"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NBD-c7-3vN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1006,7 +990,4 @@
         <image name="icon_warning" width="25" height="25"/>
         <image name="news_nopicture.png" width="500" height="500"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="wh3-Eq-ov2"/>
-    </inferredMetricsTieBreakers>
 </document>
