@@ -5,7 +5,10 @@ class MalfunctionInfoModel : NSObject{
     
     private let resource = "/drupal";
     private var tools = [FabTool]()
-    private var mapper:Mapper<FabTool>;
+    private var mapper: Mapper<FabTool>;
+    
+    private var isFetching = false
+    private var fetchingDone = false
 
     override init() {
         mapper = Mapper<FabTool>()
@@ -20,24 +23,37 @@ class MalfunctionInfoModel : NSObject{
         return tools[position]
     }
     
-    func fetchAllTools(onCompletion: () -> Void){
-        let endpoint = resource + "/tools"
-        RestManager.sharedInstance.makeJsonGetRequest(endpoint, params: nil, onCompletion:{
-            json, err in
-            
-            if (err != nil) {
-                Debug.instance.log("Error while fetching news!")
-            }
-            
-            if let tools = self.mapper.mapArray(json){
-                for tmp in tools{
-                    Debug.instance.log(tmp.title)
-                    self.tools.append(tmp)
-                }
-                onCompletion()
-            }
-
-        })
+    func getAllNames() -> [String]{
+        var names = [String]()
+        for tool in tools{
+            names.append(tool.title!)
+        }
+        return names
     }
-
+    
+    func fetchAllTools(onCompletion: () -> Void){
+        if(!isFetching){
+            isFetching = true
+            let endpoint = resource + "/tools"
+            RestManager.sharedInstance.makeJsonGetRequest(endpoint, params: nil, onCompletion:{
+                json, err in
+                
+                if (err != nil) {
+                    //TODO error handling
+                    Debug.instance.log("Error while fetching news!")
+                }
+                
+                if let tools = self.mapper.mapArray(json){
+                    for tmp in tools{
+                        Debug.instance.log(tmp.title)
+                        self.tools.append(tmp)
+                    }
+                    self.fetchingDone = true
+                    onCompletion()
+                }
+            })
+            return
+        }
+        onCompletion()
+    }
 }

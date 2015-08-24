@@ -844,7 +844,38 @@
                     <view key="view" contentMode="scaleToFill" id="BBR-Cw-L7q">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="top" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVy-pC-J8y">
+                                <rect key="frame" x="16" y="72" width="568" height="27"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.34999999999999964"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Betroffenes Gerät auswählen">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonSelectMachineClicked:" destination="1Ut-5H-ies" eventType="touchUpInside" id="k84-yK-xyv"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNN-lN-rbG">
+                                <rect key="frame" x="16" y="107" width="568" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="6qr-DG-3QA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nVy-pC-J8y" firstAttribute="top" secondItem="726-ZX-s8Q" secondAttribute="bottom" constant="8" symbolic="YES" id="DfV-fr-9q5"/>
+                            <constraint firstItem="gNN-lN-rbG" firstAttribute="trailing" secondItem="nVy-pC-J8y" secondAttribute="trailing" id="Rfl-MW-pPE"/>
+                            <constraint firstItem="gNN-lN-rbG" firstAttribute="top" secondItem="nVy-pC-J8y" secondAttribute="bottom" constant="8" symbolic="YES" id="amP-Sj-1xU"/>
+                            <constraint firstItem="gNN-lN-rbG" firstAttribute="leading" secondItem="nVy-pC-J8y" secondAttribute="leading" id="dFv-vu-TQk"/>
+                            <constraint firstItem="nVy-pC-J8y" firstAttribute="trailing" secondItem="BBR-Cw-L7q" secondAttribute="trailingMargin" id="rjo-Ig-4WS"/>
+                            <constraint firstItem="nVy-pC-J8y" firstAttribute="leading" secondItem="BBR-Cw-L7q" secondAttribute="leadingMargin" id="teI-g7-IIW"/>
+                            <constraint firstItem="Ae9-VM-01X" firstAttribute="top" secondItem="gNN-lN-rbG" secondAttribute="bottom" constant="420" id="xY3-GG-LPW"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Störmeldung" id="I1W-OB-LoK">
                         <barButtonItem key="leftBarButtonItem" image="icon_door_closed" id="SWe-ol-Jdh">
@@ -852,6 +883,10 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="icon_cart" id="TEz-v1-FYo"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="affectedMachineLabel" destination="gNN-lN-rbG" id="OyR-Yb-NMy"/>
+                        <outlet property="buttonSelectMachine" destination="nVy-pC-J8y" id="o8s-DK-ErQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NBD-c7-3vN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

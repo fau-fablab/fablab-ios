@@ -60,6 +60,7 @@
 		928054F61B6D8A0C00D0D4FB /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928054F51B6D8A0C00D0D4FB /* News.swift */; };
 		928054F91B6DA0D900D0D4FB /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928054F81B6DA0D900D0D4FB /* Event.swift */; };
 		928054FB1B6DA22000D0D4FB /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928054FA1B6DA22000D0D4FB /* EventModel.swift */; };
+		92DB85A81B8B72FC0070FAD8 /* MalfunctionInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DB85A71B8B72FC0070FAD8 /* MalfunctionInfoModel.swift */; };
 		92E1AF8C1B89E791007B242B /* FabTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E1AF8B1B89E791007B242B /* FabTool.swift */; };
 		92F04A2F1B87D87C00C2ED81 /* ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 92F04A2E1B87D5A300C2ED81 /* ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer */; };
 		92F04A321B87D92100C2ED81 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5060B1E01B4EFE2A008B41FD /* LaunchScreen.xib */; };
@@ -153,6 +154,7 @@
 		928054F51B6D8A0C00D0D4FB /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		928054F81B6DA0D900D0D4FB /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		928054FA1B6DA22000D0D4FB /* EventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
+		92DB85A71B8B72FC0070FAD8 /* MalfunctionInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MalfunctionInfoModel.swift; sourceTree = "<group>"; };
 		92E1AF8B1B89E791007B242B /* FabTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FabTool.swift; sourceTree = "<group>"; };
 		92F04A2E1B87D5A300C2ED81 /* ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -184,6 +186,7 @@
 		35CE1516AA0A8AB2D912D8F4 /* MalfunctionInfo */ = {
 			isa = PBXGroup;
 			children = (
+				92DB85A71B8B72FC0070FAD8 /* MalfunctionInfoModel.swift */,
 				92E1AF8B1B89E791007B242B /* FabTool.swift */,
 			);
 			path = MalfunctionInfo;
@@ -652,6 +655,7 @@
 				927901E21B6D3F6300F95B09 /* NewsViewController.swift in Sources */,
 				4893164D1B8367EF00DCB6BB /* CartEntryCustomCell.swift in Sources */,
 				92078EBB1B6E29B200A21AD9 /* Category.swift in Sources */,
+				92DB85A81B8B72FC0070FAD8 /* MalfunctionInfoModel.swift in Sources */,
 				35CE1B736F661DCF4D7020F6 /* Uom.swift in Sources */,
 				84F53FEE1B73DD24008FB605 /* PayOrCancelViewController.swift in Sources */,
 				489316451B831E3900DCB6BB /* AutocompleteModel.swift in Sources */,
