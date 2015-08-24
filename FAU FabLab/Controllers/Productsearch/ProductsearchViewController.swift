@@ -38,20 +38,18 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         picker.showActionSheetPicker()
     }
     
-    @IBAction func buttonShowLocationPressed(sender: AnyObject) {
-        //TODO PASS locationId and productName
-        let cell = tableView.cellForRowAtIndexPath(selectedIndexPath!) as! ProductCustomCell;
-        
-        let locationId = cell.product.getLocation
-        let productName = cell.product.name
-        
-        var locationView = self.storyboard?.instantiateViewControllerWithIdentifier("ProductLocationView") as! ProductLocationViewController
-        locationView.locationId = "\(locationId)"
-        locationView.productName = productName
-        var nav = UINavigationController(rootViewController: locationView)
-        nav.modalPresentationStyle = UIModalPresentationStyle.Popover
-        var popover = nav.popoverPresentationController
-        self.presentViewController(nav, animated: true, completion: nil)
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        Debug.instance.log(segue.identifier)
+        if segue.identifier == "ProductLocationSegue" {
+            let destination = segue.destinationViewController as? ProductLocationViewController
+            
+            let cell = tableView.cellForRowAtIndexPath(selectedIndexPath!) as! ProductCustomCell;
+            
+            let locationId = cell.product.getLocation
+            let productName = cell.product.name
+            
+            destination!.configure(id: locationId, name: productName!)
+        }
     }
     
     required init(coder aDecoder: NSCoder) {

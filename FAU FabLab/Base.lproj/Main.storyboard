@@ -581,7 +581,7 @@
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="buttonShowLocationPressed:" destination="YOP-IL-BaU" eventType="touchUpInside" id="dwA-P3-3DB"/>
+                                                                <segue destination="8JR-YT-c9g" kind="show" identifier="ProductLocationSegue" id="Rvh-64-Faw"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -660,8 +660,7 @@
                             <constraint firstItem="u7Y-Nt-pji" firstAttribute="top" secondItem="pRC-ok-NZ2" secondAttribute="bottom" id="uyc-vi-8NP"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="3G3-bQ-XHf">
-                        <nil key="title"/>
+                    <navigationItem key="navigationItem" title="Produktsuche" id="3G3-bQ-XHf">
                         <barButtonItem key="leftBarButtonItem" image="icon_door_closed" id="zDc-al-KgO">
                             <color key="tintColor" red="0.80392156859999997" green="0.0078431372550000003" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
@@ -680,7 +679,7 @@
             </objects>
             <point key="canvasLocation" x="-494" y="1568"/>
         </scene>
-        <!--Product Location View Controller-->
+        <!--Standort-->
         <scene sceneID="bo2-Ki-dW7">
             <objects>
                 <viewController storyboardIdentifier="ProductLocationView" id="8JR-YT-c9g" customClass="ProductLocationViewController" customModule="FAU_FabLab" sceneMemberID="viewController">
@@ -693,45 +692,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView userInteractionEnabled="NO" contentMode="scaleAspectFill" scalesPageToFit="YES" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" keyboardDisplayRequiresUserAction="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hh-xI-Num">
-                                <rect key="frame" x="0.0" y="64" width="523" height="492"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <dataDetectorType key="dataDetectorTypes"/>
                             </webView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DcR-1s-UKX">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                                <items>
-                                    <navigationItem id="Gwh-H3-iGH">
-                                        <barButtonItem key="leftBarButtonItem" title="Zurück" id="ur4-Vb-f1K">
-                                            <connections>
-                                                <action selector="backButton:" destination="8JR-YT-c9g" id="ias-lZ-nEi"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Zy-h2-9TK">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <items>
-                                    <navigationItem title="Lage des Artikels" id="eZ0-zM-GOX"/>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9hh-xI-Num" firstAttribute="leading" secondItem="Ngg-bA-kmo" secondAttribute="leadingMargin" constant="-16" id="3gU-WG-cz1"/>
-                            <constraint firstItem="3Zy-h2-9TK" firstAttribute="top" secondItem="Px9-3w-fi8" secondAttribute="bottom" id="JDM-Wy-BHS"/>
-                            <constraint firstItem="DcR-1s-UKX" firstAttribute="top" secondItem="9hh-xI-Num" secondAttribute="bottom" id="Qd9-N8-fFg"/>
-                            <constraint firstItem="9hh-xI-Num" firstAttribute="top" secondItem="3Zy-h2-9TK" secondAttribute="bottom" id="S2O-2k-oD8"/>
-                            <constraint firstItem="3Zy-h2-9TK" firstAttribute="leading" secondItem="Ngg-bA-kmo" secondAttribute="leadingMargin" constant="-16" id="Say-pu-JhD"/>
-                            <constraint firstItem="sZO-XQ-0u5" firstAttribute="top" secondItem="DcR-1s-UKX" secondAttribute="bottom" id="ae4-WS-7RK"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="3Zy-h2-9TK" secondAttribute="trailing" constant="-16" id="i8Z-9d-Mbo"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="9hh-xI-Num" secondAttribute="trailing" constant="61" id="mss-jB-D7i"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="DcR-1s-UKX" secondAttribute="trailing" constant="-16" id="rad-zu-hmB"/>
-                            <constraint firstItem="DcR-1s-UKX" firstAttribute="leading" secondItem="Ngg-bA-kmo" secondAttribute="leadingMargin" constant="-16" id="xmm-qR-qk0"/>
+                            <constraint firstItem="9hh-xI-Num" firstAttribute="bottom" secondItem="sZO-XQ-0u5" secondAttribute="top" id="GAh-Xk-HFd"/>
+                            <constraint firstItem="9hh-xI-Num" firstAttribute="top" secondItem="Ngg-bA-kmo" secondAttribute="top" id="UHA-cr-KQO"/>
+                            <constraint firstAttribute="trailing" secondItem="9hh-xI-Num" secondAttribute="trailing" id="kBk-D7-NTq"/>
+                            <constraint firstItem="9hh-xI-Num" firstAttribute="leading" secondItem="Ngg-bA-kmo" secondAttribute="leading" id="sW3-ES-j2P"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Standort" id="3kI-51-wcw"/>
                     <connections>
-                        <outlet property="headline" destination="eZ0-zM-GOX" id="JMQ-yE-QM2"/>
                         <outlet property="webView" destination="9hh-xI-Num" id="tzP-kR-jZa"/>
                     </connections>
                 </viewController>
@@ -1038,6 +1013,6 @@
         <image name="news_nopicture.png" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TgA-1a-DJ2"/>
+        <segue reference="jeL-sJ-mps"/>
     </inferredMetricsTieBreakers>
 </document>
