@@ -9,6 +9,10 @@ class DoorStateModel : NSObject {
 
     private var doorState: DoorState?
 
+    var hasState: Bool{
+        return doorState != nil
+    }
+    
     var isOpen : Bool{
         if let state = doorState{
             return state.open!
@@ -17,15 +21,18 @@ class DoorStateModel : NSObject {
     }
 
     var lastChangeAsString : String {
-        let lastChangeAsDate = NSDate(timeIntervalSince1970: doorState!.lastchange!)
-        let flags = NSCalendarUnit.CalendarUnitMinute | NSCalendarUnit.CalendarUnitHour
-        let components = NSCalendar.currentCalendar().components(flags, fromDate: lastChangeAsDate, toDate: NSDate(), options: nil)
-        
-        if(components.hour >= 1){
-            return "\(components.hour) h"
-        }else{
-            return "\(components.minute) m"
+        if let state = doorState{
+            let lastChangeAsDate = NSDate(timeIntervalSince1970: doorState!.lastchange!)
+            let flags = NSCalendarUnit.CalendarUnitMinute | NSCalendarUnit.CalendarUnitHour
+            let components = NSCalendar.currentCalendar().components(flags, fromDate: lastChangeAsDate, toDate: NSDate(), options: nil)
+            
+            if(components.hour >= 1){
+                return "\(components.hour) h"
+            }else{
+                return "\(components.minute) m"
+            }
         }
+        return "NA"
     }
 
     override init(){

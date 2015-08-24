@@ -3,11 +3,6 @@ import Foundation
 import UIKit
 
 class DoorNavigationButtonController: NSObject {
-
-    private enum ButtonState {
-        case Icon
-        case Text
-    }
     
     static let sharedInstance = DoorNavigationButtonController()
 
@@ -17,23 +12,19 @@ class DoorNavigationButtonController: NSObject {
     private let green   = UIColor(red: 0.00, green: 0.59, blue: 0.42, alpha: 1.0)
 
     private var timer = NSTimer();
-    private var state = ButtonState.Icon
     private var viewController: UIViewController?
 
-    private var buttonIcon: UIBarButtonItem{
-        let img = model.isOpen ? UIImage(named: "icon_door_open") : UIImage(named: "icon_door_closed")
-        let button = UIBarButtonItem(image: img!, style: UIBarButtonItemStyle.Plain, target: self, action: "showText")
-        button.tintColor = model.isOpen ? green : red
-
-        return button
-    }
-
     private var buttonText: UIBarButtonItem{
-
-        let title = (model.isOpen ? "open " : "closed ") + model.lastChangeAsString
-        let button = UIBarButtonItem(title: title, style: UIBarButtonItemStyle.Plain, target: self, action: "showButton")
+        var title: String
+        if(model.hasState){
+            title = (model.isOpen ? "open " : "closed ") + model.lastChangeAsString
+        }
+        else{
+            title = ""
+        }
+        let button = UIBarButtonItem(title: title, style: UIBarButtonItemStyle.Plain, target: self, action: nil)
         button.tintColor = model.isOpen ? green : red
-
+        
         return button
     }
 
@@ -44,27 +35,18 @@ class DoorNavigationButtonController: NSObject {
     }
     
     func setViewController(vc: UIViewController) {
-        self.viewController = vc
-        restoreButtonState()
-    }
-
-    private func restoreButtonState(){
-        state == ButtonState.Icon ? showButton() : showText()
+        viewController = vc
+        showText()
     }
 
     @objc func fetchDoorStateTask(timer: NSTimer) {
         model.getDoorState({
-            self.restoreButtonState()
+            self.showText()
         })
     }
+    
 
     @objc private func showText() {
         viewController!.navigationItem.leftBarButtonItem = buttonText
-        state = ButtonState.Text
-    }
-
-    @objc private func showButton() {
-        viewController!.navigationItem.leftBarButtonItem = buttonIcon
-        state = ButtonState.Icon
     }
 }
