@@ -86,7 +86,7 @@
 - (void)updateBadgeValueAnimated:(BOOL)animated
 {
     // Bounce animation on badge if value changed and if animation authorized
-    if (animated && self.shouldAnimateBadge && ![self.badge.text isEqualToString:self.badgeValue]) {
+    if (animated && self.shouldAnimateBadge) {
         CABasicAnimation * animation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
         [animation setFromValue:[NSNumber numberWithFloat:1.5]];
         [animation setToValue:[NSNumber numberWithFloat:1]];
