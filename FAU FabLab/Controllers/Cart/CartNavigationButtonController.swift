@@ -30,8 +30,19 @@ class CartNavigationButtonController: NSObject {
         barButtonItem.target = self
         barButtonItem.action = "showCart"
         updateBadge()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "orientationDidChange", name: UIDeviceOrientationDidChangeNotification, object: nil)
 
     }
+    
+    func orientationDidChange() {
+        if(UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation)) {
+            barButtonItem.badgeOriginY = -2
+        } else if (UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation)) {
+            barButtonItem.badgeOriginY = -9
+        }
+    }
+
     
     @objc func showCart() {
         let cartViewController = viewController?.storyboard!.instantiateViewControllerWithIdentifier("CartViewController") as! CartViewController
