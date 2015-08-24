@@ -43,10 +43,14 @@ class CartNavigationButtonController: NSObject {
         barButtonItem.badgeValue = String(model.getNumberOfProductsInCart())
     }
     
+    func refreshBadge() {
+        barButtonItem.refreshBadge()
+    }
+    
     func setViewController(viewController: UIViewController) {
         self.viewController = viewController
-        updateBadge()
         viewController.navigationItem.rightBarButtonItem = barButtonItem
+        refreshBadge()
     }
     
     

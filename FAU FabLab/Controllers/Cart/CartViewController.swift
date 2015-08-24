@@ -120,6 +120,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         }
         var deleteAction = UITableViewRowAction(style: .Default, title: "Löschen") { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
             CartModel.sharedInstance.removeProductFromCart(indexPath.row)
+            CartNavigationButtonController.sharedInstance.updateBadge()
             tableView.reloadData()
             self.showTotalPrice()
         }

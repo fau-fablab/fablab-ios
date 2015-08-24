@@ -32,5 +32,6 @@
 @property BOOL shouldAnimateBadge;
 
 - (BBBadgeBarButtonItem *)initWithCustomUIButton:(UIButton *)customButton;
+- (void)refreshBadge;
 
 @end
