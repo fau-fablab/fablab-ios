@@ -78,7 +78,11 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if event.allday == true {
                 time = "ganztägig"
             } else {
-                time = event.startTimeString + " - " + event.endTimeString + " Uhr"
+                if event.startTimeString == event.endTimeString {
+                    time = "ab " + event.startTimeString + " Uhr"
+                } else {
+                    time = event.startTimeString + " - " + event.endTimeString + " Uhr"
+                }
             }
         } else {
             if event.allday == true {

@@ -4,7 +4,6 @@ import Kingfisher
     
 public class EventsCustomCell : UITableViewCell{
     
-    @IBOutlet var heuteLabel: UILabel!
     @IBOutlet var dayLabel: UILabel!
     @IBOutlet var monthLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
@@ -15,11 +14,10 @@ public class EventsCustomCell : UITableViewCell{
         
         // if today, then show text "Heute"
         if today {
-            heuteLabel.text = "Heute";
-            dayLabel.text = "";
+            dayLabel.font = dayLabel.font.fontWithSize(20)
+            dayLabel.text = "Heute"
             monthLabel.text = "";
         } else {
-            heuteLabel.text = "";
             dayLabel.text = day;
             monthLabel.text = month;
         }

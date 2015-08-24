@@ -347,30 +347,20 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Heute" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRe-ly-AHj">
-                                                    <rect key="frame" x="4" y="21" width="63" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="pax-3Y-FFE" firstAttribute="top" secondItem="EZf-eR-Yx6" secondAttribute="topMargin" constant="-8" id="28W-Er-dNU"/>
                                                 <constraint firstItem="JeU-Pa-qDs" firstAttribute="leading" secondItem="pax-3Y-FFE" secondAttribute="trailing" constant="8" id="C0A-D3-5qf"/>
-                                                <constraint firstAttribute="centerX" secondItem="JRe-ly-AHj" secondAttribute="centerX" constant="251.5" id="T3a-eE-VNN"/>
                                                 <constraint firstItem="qMM-yA-7gn" firstAttribute="leading" secondItem="EZf-eR-Yx6" secondAttribute="leadingMargin" id="TMX-fs-dVD"/>
                                                 <constraint firstItem="pax-3Y-FFE" firstAttribute="leading" secondItem="EZf-eR-Yx6" secondAttribute="leadingMargin" id="Ua3-q3-2F4"/>
                                                 <constraint firstItem="JeU-Pa-qDs" firstAttribute="top" secondItem="EZf-eR-Yx6" secondAttribute="topMargin" constant="3" id="ZsG-Dx-Mev"/>
                                                 <constraint firstItem="qMM-yA-7gn" firstAttribute="top" secondItem="EZf-eR-Yx6" secondAttribute="topMargin" constant="29" id="acz-C4-UKt"/>
                                                 <constraint firstItem="0w8-71-UYt" firstAttribute="top" secondItem="EZf-eR-Yx6" secondAttribute="topMargin" constant="32" id="dtw-ob-FmZ"/>
                                                 <constraint firstItem="0w8-71-UYt" firstAttribute="leading" secondItem="pax-3Y-FFE" secondAttribute="trailing" constant="8" id="efc-K5-8Kz"/>
-                                                <constraint firstItem="JRe-ly-AHj" firstAttribute="top" secondItem="EZf-eR-Yx6" secondAttribute="topMargin" constant="13" id="hvp-G9-9Zk"/>
-                                                <constraint firstItem="JRe-ly-AHj" firstAttribute="leading" secondItem="EZf-eR-Yx6" secondAttribute="leadingMargin" constant="-4" id="k8T-Vj-hrx"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dayLabel" destination="pax-3Y-FFE" id="Cih-vN-phk"/>
-                                            <outlet property="heuteLabel" destination="JRe-ly-AHj" id="ruH-YT-SdC"/>
                                             <outlet property="monthLabel" destination="qMM-yA-7gn" id="Q1J-Vy-jYB"/>
                                             <outlet property="timeLabel" destination="0w8-71-UYt" id="MFY-BH-1r7"/>
                                             <outlet property="titleLabel" destination="JeU-Pa-qDs" id="QAf-Kr-jKI"/>
@@ -1013,6 +1003,6 @@
         <image name="news_nopicture.png" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jeL-sJ-mps"/>
+        <segue reference="3N2-EF-COO"/>
     </inferredMetricsTieBreakers>
 </document>
