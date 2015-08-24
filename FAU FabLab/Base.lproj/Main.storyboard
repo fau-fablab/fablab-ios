@@ -349,7 +349,6 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="pax-3Y-FFE" firstAttribute="top" secondItem="EZf-eR-Yx6" secondAttribute="topMargin" constant="-8" id="28W-Er-dNU"/>
                                                 <constraint firstItem="JeU-Pa-qDs" firstAttribute="leading" secondItem="pax-3Y-FFE" secondAttribute="trailing" constant="8" id="C0A-D3-5qf"/>
                                                 <constraint firstItem="qMM-yA-7gn" firstAttribute="leading" secondItem="EZf-eR-Yx6" secondAttribute="leadingMargin" id="TMX-fs-dVD"/>
                                                 <constraint firstItem="pax-3Y-FFE" firstAttribute="leading" secondItem="EZf-eR-Yx6" secondAttribute="leadingMargin" id="Ua3-q3-2F4"/>
@@ -357,6 +356,7 @@
                                                 <constraint firstItem="qMM-yA-7gn" firstAttribute="top" secondItem="EZf-eR-Yx6" secondAttribute="topMargin" constant="29" id="acz-C4-UKt"/>
                                                 <constraint firstItem="0w8-71-UYt" firstAttribute="top" secondItem="EZf-eR-Yx6" secondAttribute="topMargin" constant="32" id="dtw-ob-FmZ"/>
                                                 <constraint firstItem="0w8-71-UYt" firstAttribute="leading" secondItem="pax-3Y-FFE" secondAttribute="trailing" constant="8" id="efc-K5-8Kz"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="pax-3Y-FFE" secondAttribute="bottom" constant="13" id="hEr-iJ-DGg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

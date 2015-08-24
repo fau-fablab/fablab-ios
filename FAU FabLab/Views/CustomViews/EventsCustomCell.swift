@@ -18,6 +18,7 @@ public class EventsCustomCell : UITableViewCell{
             dayLabel.text = "Heute"
             monthLabel.text = "";
         } else {
+            dayLabel.font = dayLabel.font.fontWithSize(33)
             dayLabel.text = day;
             monthLabel.text = month;
         }
