@@ -745,7 +745,7 @@
         <!--Warenkorb-->
         <scene sceneID="xuf-rf-THF">
             <objects>
-                <viewController title="Warenkorb" id="ooQ-nD-6sq" customClass="CartViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CartViewController" title="Warenkorb" id="ooQ-nD-6sq" customClass="CartViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="f20-An-xKa"/>
                         <viewControllerLayoutGuide type="bottom" id="249-cg-0zG"/>

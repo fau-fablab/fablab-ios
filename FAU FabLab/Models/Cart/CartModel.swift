@@ -23,6 +23,10 @@ class CartModel : NSObject{
         cart.updateEntry(index, amount: amount)
     }
     
+    func getNumberOfProductsInCart() -> Int {
+        return cart.getCount()
+    }
+    
     /*                      Checkout process              */
 
     func sendCartToServer(code: String){

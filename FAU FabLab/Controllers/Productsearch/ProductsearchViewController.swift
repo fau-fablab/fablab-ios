@@ -15,6 +15,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     private var sortingDidChange = false
     private var productCellIdentifier = "ProductCustomCell"
     private let doorButtonController = DoorNavigationButtonController.sharedInstance
+    private let cartButtonController = CartNavigationButtonController.sharedInstance
     private let collation = UILocalizedIndexedCollation.currentCollation() as! UILocalizedIndexedCollation
     private var sections: [[Product]] = []
     //autocomplete
@@ -34,7 +35,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         picker.title = "Menge auswählen"
         picker.tapDismissAction = TapAction.Cancel
         picker.hideCancel = true
-        picker.delegate = ActionSheetPickerDelegate(unit: cell.product.unit!, price: cell.product.price!, didSucceedAction: { (amount: Int) -> Void in CartModel.sharedInstance.addProductToCart(cell.product, amount: Double(amount)) }, didCancelAction: {(Void) -> Void in })
+        picker.delegate = ActionSheetPickerDelegate(unit: cell.product.unit!, price: cell.product.price!, didSucceedAction: { (amount: Int) -> Void in CartModel.sharedInstance.addProductToCart(cell.product, amount: Double(amount)); self.cartButtonController.updateBadge() }, didCancelAction: {(Void) -> Void in })
         picker.showActionSheetPicker()
     }
     
@@ -111,6 +112,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         doorButtonController.setViewController(self)
+        cartButtonController.setViewController(self)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "searchByBarcodeScanner:", name: "ProductScannerNotification", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
     }

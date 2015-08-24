@@ -9,6 +9,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
     private let model = NewsModel()
     
     private let doorButtonController = DoorNavigationButtonController.sharedInstance
+    private let cartButtonController = CartNavigationButtonController.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         doorButtonController.setViewController(self)
+        cartButtonController.setViewController(self)
     }
 
     override func viewDidAppear(animated: Bool) {

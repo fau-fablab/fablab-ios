@@ -10,6 +10,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     private let textCellIdentifier = "EventsEntryCustomCell"
     
     private let doorButtonController = DoorNavigationButtonController.sharedInstance
+    private let cartButtonController = CartNavigationButtonController.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         doorButtonController.setViewController(self)
+        cartButtonController.setViewController(self)
     }
     
     override func viewDidAppear(animated: Bool) {
