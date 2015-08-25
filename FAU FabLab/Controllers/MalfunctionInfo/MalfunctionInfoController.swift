@@ -7,14 +7,17 @@ class MalfunctionInfoController: UIViewController, UITextViewDelegate {
     @IBOutlet var affectedMachineLabel: UILabel!
     @IBOutlet var textfield: UITextView!
     @IBOutlet var buttonSendMail: UIButton!
+    @IBOutlet var textViewBottomConstraint: NSLayoutConstraint!
+    private var textViewBottomConstraintValue: CGFloat?
     
     private let model = MalfunctionInfoModel()
     private let placeholderText = "Bitte hier eine kurze Fehlerbeschreibung eintragen"
     private let doorButtonController = DoorNavigationButtonController.sharedInstance
     private let cartButtonController = CartNavigationButtonController.sharedInstance
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        textViewBottomConstraintValue = self.textViewBottomConstraint.constant
         textfield.delegate = self
         textfield.text = placeholderText
         textfield.textColor = UIColor.lightGrayColor()
@@ -24,6 +27,13 @@ class MalfunctionInfoController: UIViewController, UITextViewDelegate {
         super.viewWillAppear(animated)
         doorButtonController.setViewController(self)
         cartButtonController.setViewController(self)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeTextFieldOnKeyboardChange:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeTextFieldOnKeyboardChange:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self);
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -33,6 +43,23 @@ class MalfunctionInfoController: UIViewController, UITextViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func changeTextFieldOnKeyboardChange(notification: NSNotification) {
+        var info = notification.userInfo!
+        var keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        let duration = info[UIKeyboardAnimationDurationUserInfoKey] as! Double
+        
+        view.setNeedsUpdateConstraints()
+        
+        UIView.animateWithDuration(duration, animations: { () -> Void in
+            if notification.name == UIKeyboardWillShowNotification {
+                self.textViewBottomConstraint.constant = keyboardFrame.height + 10
+            }
+            else {
+                self.textViewBottomConstraint.constant = self.textViewBottomConstraintValue!
+            }
+        })
     }
     
     func textViewDidBeginEditing(textView: UITextView) {

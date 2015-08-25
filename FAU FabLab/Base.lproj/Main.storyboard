@@ -882,7 +882,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="nVy-pC-J8y" firstAttribute="top" secondItem="726-ZX-s8Q" secondAttribute="bottom" constant="8" id="0i8-6y-xIv"/>
-                            <constraint firstAttribute="bottom" secondItem="YUU-6h-ysP" secondAttribute="bottom" constant="57" id="1Bl-uc-hO1"/>
+                            <constraint firstAttribute="bottom" secondItem="YUU-6h-ysP" secondAttribute="bottom" constant="57" id="1Bl-uc-hO1" userLabel="textViewBottomConstraint"/>
                             <constraint firstAttribute="centerX" secondItem="gNN-lN-rbG" secondAttribute="centerX" id="5AE-Q9-7z1"/>
                             <constraint firstAttribute="trailing" secondItem="veN-Kx-A1q" secondAttribute="trailing" constant="16" id="6yZ-Wb-N2z"/>
                             <constraint firstItem="nVy-pC-J8y" firstAttribute="baseline" secondItem="veN-Kx-A1q" secondAttribute="baseline" id="8qN-WO-SEe"/>
@@ -908,6 +908,7 @@
                         <outlet property="affectedMachineLabel" destination="gNN-lN-rbG" id="OyR-Yb-NMy"/>
                         <outlet property="buttonSelectMachine" destination="nVy-pC-J8y" id="o8s-DK-ErQ"/>
                         <outlet property="buttonSendMail" destination="veN-Kx-A1q" id="9sr-j3-gxj"/>
+                        <outlet property="textViewBottomConstraint" destination="1Bl-uc-hO1" id="Xg5-35-0kB"/>
                         <outlet property="textfield" destination="YUU-6h-ysP" id="jKL-me-Inh"/>
                     </connections>
                 </viewController>
