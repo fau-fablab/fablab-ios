@@ -50,7 +50,7 @@ class ActionSheetPickerDelegate: NSObject, ActionSheetCustomPickerDelegate {
             }
             return "\(amounts[row]) \(unit!)"
         } else {
-            return "\(Double (amount) * price!) €"
+            return String(format: "%.2f€", Double (amount) * price!)
         }
     }
     
