@@ -672,15 +672,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView userInteractionEnabled="NO" contentMode="scaleAspectFill" scalesPageToFit="YES" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" keyboardDisplayRequiresUserAction="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hh-xI-Num">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                            <webView contentMode="scaleAspectFill" scalesPageToFit="YES" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" keyboardDisplayRequiresUserAction="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hh-xI-Num">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <dataDetectorType key="dataDetectorTypes"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9hh-xI-Num" firstAttribute="bottom" secondItem="sZO-XQ-0u5" secondAttribute="top" id="GAh-Xk-HFd"/>
+                            <constraint firstItem="9hh-xI-Num" firstAttribute="bottom" secondItem="sZO-XQ-0u5" secondAttribute="top" constant="49" id="GAh-Xk-HFd"/>
                             <constraint firstItem="9hh-xI-Num" firstAttribute="top" secondItem="Ngg-bA-kmo" secondAttribute="top" id="UHA-cr-KQO"/>
                             <constraint firstAttribute="trailing" secondItem="9hh-xI-Num" secondAttribute="trailing" id="kBk-D7-NTq"/>
                             <constraint firstItem="9hh-xI-Num" firstAttribute="leading" secondItem="Ngg-bA-kmo" secondAttribute="leading" id="sW3-ES-j2P"/>
