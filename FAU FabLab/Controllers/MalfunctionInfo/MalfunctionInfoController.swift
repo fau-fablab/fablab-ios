@@ -14,6 +14,27 @@ class MalfunctionInfoController: UIViewController, UITextViewDelegate {
     private let placeholderText = "Bitte hier eine kurze Fehlerbeschreibung eintragen"
     private let doorButtonController = DoorNavigationButtonController.sharedInstance
     private let cartButtonController = CartNavigationButtonController.sharedInstance
+    
+    var selectedMachine: String = ""{
+        didSet{
+            self.affectedMachineLabel!.text = selectedMachine
+            if(errorMessage != placeholderText){
+                buttonSendMail.enabled = true
+            }else{
+                buttonSendMail.enabled = false
+            }
+        }
+    }
+    
+    var errorMessage: String = "Bitte hier eine kurze Fehlerbeschreibung eintragen" {
+        willSet(newText){
+            if(newText != placeholderText && selectedMachine != ""){
+                buttonSendMail.enabled = true
+            }else{
+                buttonSendMail.enabled = false
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +95,7 @@ class MalfunctionInfoController: UIViewController, UITextViewDelegate {
             textfield.textColor = UIColor.lightGrayColor()
             textfield.text = placeholderText
         }
+        errorMessage = textfield.text
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
@@ -89,7 +111,7 @@ class MalfunctionInfoController: UIViewController, UITextViewDelegate {
             ActionSheetStringPicker.showPickerWithTitle("Betroffenes Gerät", rows: model.getAllNames(), initialSelection: 0,
                 doneBlock: {
                     picker, value, index in
-                        self.affectedMachineLabel!.text = "\(index)"
+                        self.selectedMachine = "\(index)"
                         return
                 }
                 , cancelBlock: { ActionStringCancelBlock in return }, origin: sender)
