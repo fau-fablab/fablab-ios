@@ -845,15 +845,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="top" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVy-pC-J8y">
-                                <rect key="frame" x="16" y="72" width="568" height="36"/>
+                            <button opaque="NO" contentMode="top" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVy-pC-J8y">
+                                <rect key="frame" x="16" y="72" width="274" height="36"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.34999999999999964"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Betroffenes Gerät auswählen">
+                                <state key="normal" title="Gerät auswählen">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="buttonSelectMachineClicked:" destination="1Ut-5H-ies" eventType="touchUpInside" id="k84-yK-xyv"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YUU-6h-ysP">
+                                <rect key="frame" x="16" y="146" width="568" height="397"/>
+                                <color key="backgroundColor" red="0.59345407196969702" green="0.59345407196969702" blue="0.59345407196969702" alpha="0.12" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="veN-Kx-A1q">
+                                <rect key="frame" x="311" y="72" width="273" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Senden">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonSendMailClicked:" destination="1Ut-5H-ies" eventType="touchUpInside" id="K48-pk-RdZ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNN-lN-rbG">
@@ -862,27 +878,24 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YUU-6h-ysP">
-                                <rect key="frame" x="16" y="146" width="568" height="397"/>
-                                <color key="backgroundColor" red="0.59345407196969702" green="0.59345407196969702" blue="0.59345407196969702" alpha="0.12" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="gNN-lN-rbG" secondAttribute="centerX" id="26B-Ch-bY2"/>
-                            <constraint firstItem="nVy-pC-J8y" firstAttribute="leading" secondItem="BBR-Cw-L7q" secondAttribute="leading" constant="16" id="6O0-jb-hgM"/>
-                            <constraint firstItem="gNN-lN-rbG" firstAttribute="top" secondItem="nVy-pC-J8y" secondAttribute="bottom" constant="-1" id="JMe-j2-nZM"/>
-                            <constraint firstItem="gNN-lN-rbG" firstAttribute="leading" secondItem="BBR-Cw-L7q" secondAttribute="leading" constant="16" id="UOQ-3D-xfO"/>
-                            <constraint firstAttribute="trailing" secondItem="YUU-6h-ysP" secondAttribute="trailing" constant="16" id="Ybb-Je-Gk9"/>
-                            <constraint firstItem="nVy-pC-J8y" firstAttribute="top" secondItem="726-ZX-s8Q" secondAttribute="bottom" constant="8" id="dcH-29-RQg"/>
-                            <constraint firstAttribute="bottom" secondItem="YUU-6h-ysP" secondAttribute="bottom" constant="57" id="fFi-a7-beR"/>
-                            <constraint firstAttribute="trailing" secondItem="gNN-lN-rbG" secondAttribute="trailing" constant="16" id="gTr-7H-1Zb"/>
-                            <constraint firstItem="YUU-6h-ysP" firstAttribute="top" secondItem="gNN-lN-rbG" secondAttribute="bottom" constant="15" id="gji-xB-yO1"/>
-                            <constraint firstAttribute="centerX" secondItem="YUU-6h-ysP" secondAttribute="centerX" id="k34-BX-bm5"/>
-                            <constraint firstItem="YUU-6h-ysP" firstAttribute="leading" secondItem="BBR-Cw-L7q" secondAttribute="leading" constant="16" id="oAp-En-Hb4"/>
-                            <constraint firstAttribute="trailing" secondItem="nVy-pC-J8y" secondAttribute="trailing" constant="16" id="q6S-EH-m9U"/>
+                            <constraint firstItem="nVy-pC-J8y" firstAttribute="top" secondItem="726-ZX-s8Q" secondAttribute="bottom" constant="8" id="0i8-6y-xIv"/>
+                            <constraint firstAttribute="bottom" secondItem="YUU-6h-ysP" secondAttribute="bottom" constant="57" id="1Bl-uc-hO1"/>
+                            <constraint firstAttribute="centerX" secondItem="gNN-lN-rbG" secondAttribute="centerX" id="5AE-Q9-7z1"/>
+                            <constraint firstAttribute="trailing" secondItem="veN-Kx-A1q" secondAttribute="trailing" constant="16" id="6yZ-Wb-N2z"/>
+                            <constraint firstItem="nVy-pC-J8y" firstAttribute="baseline" secondItem="veN-Kx-A1q" secondAttribute="baseline" id="8qN-WO-SEe"/>
+                            <constraint firstItem="nVy-pC-J8y" firstAttribute="width" secondItem="veN-Kx-A1q" secondAttribute="width" id="CEs-S7-7oc"/>
+                            <constraint firstAttribute="trailing" secondItem="gNN-lN-rbG" secondAttribute="trailing" constant="16" id="EXf-ZW-z1p"/>
+                            <constraint firstItem="YUU-6h-ysP" firstAttribute="leading" secondItem="BBR-Cw-L7q" secondAttribute="leading" constant="16" id="Fwv-zQ-vut"/>
+                            <constraint firstItem="gNN-lN-rbG" firstAttribute="leading" secondItem="BBR-Cw-L7q" secondAttribute="leading" constant="16" id="aVY-ND-gJy"/>
+                            <constraint firstItem="gNN-lN-rbG" firstAttribute="top" secondItem="726-ZX-s8Q" secondAttribute="bottom" constant="43" id="d5X-tl-VxL"/>
+                            <constraint firstItem="veN-Kx-A1q" firstAttribute="top" secondItem="726-ZX-s8Q" secondAttribute="bottom" constant="8" id="gVq-j8-eEu"/>
+                            <constraint firstItem="veN-Kx-A1q" firstAttribute="leading" secondItem="nVy-pC-J8y" secondAttribute="trailing" constant="21" id="hR0-MM-ddr"/>
+                            <constraint firstItem="nVy-pC-J8y" firstAttribute="leading" secondItem="BBR-Cw-L7q" secondAttribute="leading" constant="16" id="lqC-qU-VUk"/>
+                            <constraint firstItem="YUU-6h-ysP" firstAttribute="top" secondItem="gNN-lN-rbG" secondAttribute="bottom" constant="15" id="tfj-tA-PB7"/>
+                            <constraint firstAttribute="trailing" secondItem="YUU-6h-ysP" secondAttribute="trailing" constant="16" id="u3p-Pa-QUa"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Störmeldung" id="I1W-OB-LoK">
@@ -894,6 +907,7 @@
                     <connections>
                         <outlet property="affectedMachineLabel" destination="gNN-lN-rbG" id="OyR-Yb-NMy"/>
                         <outlet property="buttonSelectMachine" destination="nVy-pC-J8y" id="o8s-DK-ErQ"/>
+                        <outlet property="buttonSendMail" destination="veN-Kx-A1q" id="9sr-j3-gxj"/>
                         <outlet property="textfield" destination="YUU-6h-ysP" id="jKL-me-Inh"/>
                     </connections>
                 </viewController>

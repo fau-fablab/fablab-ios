@@ -6,6 +6,7 @@ class MalfunctionInfoController: UIViewController, UITextViewDelegate {
     @IBOutlet var buttonSelectMachine: UIButton!
     @IBOutlet var affectedMachineLabel: UILabel!
     @IBOutlet var textfield: UITextView!
+    @IBOutlet var buttonSendMail: UIButton!
     
     private let model = MalfunctionInfoModel()
     private let placeholderText = "Bitte hier eine kurze Fehlerbeschreibung eintragen"
@@ -67,4 +68,9 @@ class MalfunctionInfoController: UIViewController, UITextViewDelegate {
                 , cancelBlock: { ActionStringCancelBlock in return }, origin: sender)
         }
     }
+    
+    @IBAction func buttonSendMailClicked(sender: AnyObject) {
+        //TODO
+    }
+    
 }
