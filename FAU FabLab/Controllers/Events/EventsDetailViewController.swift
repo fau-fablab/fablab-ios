@@ -10,43 +10,67 @@ class EventsDetailsViewController : UIViewController {
     @IBOutlet var locationText: UILabel!
     @IBOutlet var descText: UITextView!
     
-    var eventTitle: String?
-    var eventStart: String?
-    var eventEnd: String?
-    var eventLocation: String?
-    var eventDesc: String?
-    var eventLink: String?
-    var eventDateStart: NSDate?
-    var eventDateEnd: NSDate?
+    @IBOutlet var endDesc: UILabel!
+    @IBOutlet var locationDesc: UILabel!
+    @IBOutlet var descDesc: UILabel!
     
-    func configure(#title: String, start: String, end: String, location: String?, description: String?, link: String, startDate: NSDate, endDate: NSDate){
-        eventTitle = title
-        eventStart = start
-        eventEnd = end
-        eventLocation = location
-        eventDesc = description
-        eventLink = link
-        eventDateStart = startDate
-        eventDateEnd = endDate
+    var event: Event?
+    
+    func configure(event: Event) {
+        self.event = event
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleText.text = eventTitle
-        startText.text = eventStart
-        endText.text = eventEnd
+        titleText.text = event!.summery
         
-        if (locationText != nil) {
-            locationText.text = eventLocation
+        var start = ""
+        var ende = ""
+
+        if event!.startTimeString == event!.endTimeString && event!.isOneDay {
+            if event!.isToday {
+                start = "Heute"
+            } else {
+                start = event!.startOnlyDateString
+            }
+            
+            start += " ab " + event!.startTimeString
+            
+            endText.hidden = true
+            endDesc.hidden = true
         } else {
-            locationText.text = "n/a"
+            if event!.isToday {
+                start = "Heute - " + event!.startTimeString
+            } else {
+                start = event!.startDateString
+            }
+            
+            if event!.isToday {
+                ende = "Heute - " + event!.endTimeString
+            } else {
+                ende = event!.endDateString
+            }
         }
         
-        if (descText != nil) {
-            descText.text = eventDesc
+        start += " Uhr"
+        ende += " Uhr"
+        
+        startText.text = start
+        endText.text = ende
+        
+        if (event!.location != nil) {
+            locationText.text = event!.location
         } else {
-            descText.text = ""
+            locationDesc.hidden = true
+            locationText.hidden = true
+        }
+        
+        if (event!.description != nil) {
+            descText.text = event!.description
+        } else {
+            descDesc.hidden = true
+            descText.hidden = true
         }
     }
     
@@ -70,10 +94,10 @@ class EventsDetailsViewController : UIViewController {
                     var event = EKEvent(eventStore: eventStore)
                     event.calendar = eventStore.defaultCalendarForNewEvents
                     
-                    event.startDate = self.eventDateStart
-                    event.endDate = self.eventDateEnd
-                    event.title = self.eventTitle
-                    event.notes = self.eventDesc
+                    event.startDate = self.event!.start
+                    event.endDate = self.event!.end
+                    event.title = self.event!.summery
+                    event.notes = self.event!.description
                     
                     let result = eventStore.saveEvent(event, span: EKSpanThisEvent, error: nil)
                     
@@ -92,9 +116,9 @@ class EventsDetailsViewController : UIViewController {
         let shareAction = UIAlertAction(title: "Teilen", style: .Default, handler: {
             (alert: UIAlertAction!) -> Void in
             
-            let text = self.eventTitle
+            let text = self.event!.summery
             
-            if let url = NSURL(string: self.eventLink!) {
+            if let url = NSURL(string: self.event!.url!) {
                 let objectsToShare = [text!, url]
                 let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
                 
@@ -104,7 +128,7 @@ class EventsDetailsViewController : UIViewController {
         
         let browserAction = UIAlertAction(title: "Im Browser ansehen", style: .Default, handler: {
             (alert: UIAlertAction!) -> Void in
-            if let url = NSURL(string: self.eventLink!) {
+            if let url = NSURL(string: self.event!.url!) {
                 UIApplication.sharedApplication().openURL(url)
             }
         })

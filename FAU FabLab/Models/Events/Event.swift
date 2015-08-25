@@ -53,6 +53,11 @@ class Event: Mappable {
         dateFormatter.dateFormat = "HH:mm"
         return dateFormatter.stringFromDate(end!)
     }
+    
+    var startOnlyDateString : String {
+        dateFormatter.dateFormat = "dd.MM.yyy"
+        return dateFormatter.stringFromDate(start!)
+    }
 
     var startDateString : String {
         dateFormatter.dateFormat = "dd.MM.yyy - HH:mm"
