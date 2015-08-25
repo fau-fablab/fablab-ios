@@ -849,7 +849,7 @@
                                 <rect key="frame" x="16" y="72" width="274" height="36"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.34999999999999964"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Gerät auswählen">
+                                <state key="normal" title="Gerät wählen">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
