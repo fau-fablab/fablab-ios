@@ -28,8 +28,12 @@ class EventModel : NSObject{
                 }
                 
                 if let eventList = self.mapper.mapArray(json) {
+                    let now = NSDate()
                     for tmp in eventList {
-                        self.addEvent(tmp)
+                        // if end-date is after now, add it to the list
+                        if now.compare(tmp.end!) == NSComparisonResult.OrderedAscending {
+                            self.addEvent(tmp)
+                        }
                     }
                 }
                 
