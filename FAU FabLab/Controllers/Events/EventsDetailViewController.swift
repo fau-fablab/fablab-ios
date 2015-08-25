@@ -11,8 +11,6 @@ class EventsDetailsViewController : UIViewController {
     @IBOutlet var descText: UITextView!
     
     @IBOutlet var endDesc: UILabel!
-    @IBOutlet var locationDesc: UILabel!
-    @IBOutlet var descDesc: UILabel!
     
     var event: Event?
     
@@ -62,15 +60,13 @@ class EventsDetailsViewController : UIViewController {
         if (event!.location != nil) {
             locationText.text = event!.location
         } else {
-            locationDesc.hidden = true
             locationText.hidden = true
         }
         
         if (event!.description != nil) {
             descText.text = event!.description
         } else {
-            descDesc.hidden = true
-            descText.hidden = true
+            descText.text = "n/a"
         }
     }
     
