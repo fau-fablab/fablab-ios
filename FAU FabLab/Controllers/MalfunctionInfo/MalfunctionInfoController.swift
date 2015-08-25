@@ -1,7 +1,8 @@
 import UIKit
+import MessageUI
 import CoreActionSheetPicker
 
-class MalfunctionInfoController: UIViewController, UITextViewDelegate {
+class MalfunctionInfoController: UIViewController, UITextViewDelegate, MFMailComposeViewControllerDelegate {
     
     @IBOutlet var buttonSelectMachine: UIButton!
     @IBOutlet var affectedMachineLabel: UILabel!
@@ -34,6 +35,10 @@ class MalfunctionInfoController: UIViewController, UITextViewDelegate {
                 buttonSendMail.enabled = false
             }
         }
+    }
+    
+    var emailBody: String{
+        return "<b>Tool:</b> </br> \(selectedMachine) </br></br> <b>Error Message:</b> </br> \(errorMessage) </br></br> Gesendet mit der Fablab-iOS App"
     }
 
     override func viewDidLoad() {
@@ -99,10 +104,41 @@ class MalfunctionInfoController: UIViewController, UITextViewDelegate {
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        if(text == "\n") {
+        if text == "\n" {
             textView.resignFirstResponder()
             return false
         }
+        return true
+    }
+    
+    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+        dismissViewControllerAnimated(true, completion: nil)
+        switch result.value{
+            case MFMailComposeResultCancelled.value:
+                Debug.instance.log("Cancelled")
+                var alert = UIAlertController(title: "Abgebrochen!", message: "Störungsmeldung wurde NICHT versendet!", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+
+            case MFMailComposeResultSent.value:
+                Debug.instance.log("Sent!")
+                errorMessage = placeholderText
+                textfield.text = placeholderText
+                selectedMachine = " "
+                self.affectedMachineLabel!.text = selectedMachine
+                var alert = UIAlertController(title: "Versendet!", message: "Störungsmeldung wurde erfolgreich versendet!", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+
+            default:
+                //TODO
+                Debug.instance.log("Default")
+        }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
         return true
     }
     
@@ -119,7 +155,13 @@ class MalfunctionInfoController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func buttonSendMailClicked(sender: AnyObject) {
-        //TODO
+        var picker = MFMailComposeViewController()
+        picker.mailComposeDelegate = self
+        picker.setToRecipients([model.fablabMail!])
+        picker.setSubject("Störungsmeldung")
+        picker.setMessageBody(emailBody, isHTML: true)
+        
+        presentViewController(picker, animated: true, completion: nil)
     }
     
 }
