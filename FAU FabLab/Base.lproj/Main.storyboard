@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -845,8 +845,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="top" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVy-pC-J8y">
-                                <rect key="frame" x="16" y="72" width="568" height="27"/>
+                            <button opaque="NO" contentMode="top" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVy-pC-J8y">
+                                <rect key="frame" x="16" y="72" width="568" height="36"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.34999999999999964"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Betroffenes Gerät auswählen">
@@ -856,35 +856,33 @@
                                     <action selector="buttonSelectMachineClicked:" destination="1Ut-5H-ies" eventType="touchUpInside" id="k84-yK-xyv"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNN-lN-rbG">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNN-lN-rbG">
                                 <rect key="frame" x="16" y="107" width="568" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="6qr-DG-3QA"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hier bitte eine kurze Fehlerbeschreibung eintragen" translatesAutoresizingMaskIntoConstraints="NO" id="6DW-k6-yzp">
-                                <rect key="frame" x="16" y="139" width="568" height="404"/>
-                                <color key="backgroundColor" red="0.29125236742424243" green="0.2672187621847662" blue="0.29028180279126731" alpha="0.070000000000000007" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YUU-6h-ysP">
+                                <rect key="frame" x="16" y="146" width="568" height="397"/>
+                                <color key="backgroundColor" red="0.59345407196969702" green="0.59345407196969702" blue="0.59345407196969702" alpha="0.12" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6DW-k6-yzp" firstAttribute="top" secondItem="gNN-lN-rbG" secondAttribute="bottom" constant="8" symbolic="YES" id="AHi-xY-gXQ"/>
-                            <constraint firstItem="nVy-pC-J8y" firstAttribute="top" secondItem="726-ZX-s8Q" secondAttribute="bottom" constant="8" symbolic="YES" id="DfV-fr-9q5"/>
-                            <constraint firstItem="gNN-lN-rbG" firstAttribute="trailing" secondItem="nVy-pC-J8y" secondAttribute="trailing" id="Rfl-MW-pPE"/>
-                            <constraint firstAttribute="centerX" secondItem="6DW-k6-yzp" secondAttribute="centerX" id="StW-yN-MNc"/>
-                            <constraint firstItem="gNN-lN-rbG" firstAttribute="top" secondItem="nVy-pC-J8y" secondAttribute="bottom" constant="8" symbolic="YES" id="amP-Sj-1xU"/>
-                            <constraint firstItem="gNN-lN-rbG" firstAttribute="leading" secondItem="nVy-pC-J8y" secondAttribute="leading" id="dFv-vu-TQk"/>
-                            <constraint firstItem="6DW-k6-yzp" firstAttribute="leading" secondItem="gNN-lN-rbG" secondAttribute="leading" id="iFA-8B-f9r"/>
-                            <constraint firstItem="Ae9-VM-01X" firstAttribute="top" secondItem="6DW-k6-yzp" secondAttribute="bottom" constant="8" symbolic="YES" id="qZy-lx-mxx"/>
-                            <constraint firstItem="nVy-pC-J8y" firstAttribute="trailing" secondItem="BBR-Cw-L7q" secondAttribute="trailingMargin" id="rjo-Ig-4WS"/>
-                            <constraint firstItem="nVy-pC-J8y" firstAttribute="leading" secondItem="BBR-Cw-L7q" secondAttribute="leadingMargin" id="teI-g7-IIW"/>
-                            <constraint firstItem="Ae9-VM-01X" firstAttribute="top" secondItem="gNN-lN-rbG" secondAttribute="bottom" constant="420" id="xY3-GG-LPW"/>
+                            <constraint firstAttribute="centerX" secondItem="gNN-lN-rbG" secondAttribute="centerX" id="26B-Ch-bY2"/>
+                            <constraint firstItem="nVy-pC-J8y" firstAttribute="leading" secondItem="BBR-Cw-L7q" secondAttribute="leading" constant="16" id="6O0-jb-hgM"/>
+                            <constraint firstItem="gNN-lN-rbG" firstAttribute="top" secondItem="nVy-pC-J8y" secondAttribute="bottom" constant="-1" id="JMe-j2-nZM"/>
+                            <constraint firstItem="gNN-lN-rbG" firstAttribute="leading" secondItem="BBR-Cw-L7q" secondAttribute="leading" constant="16" id="UOQ-3D-xfO"/>
+                            <constraint firstAttribute="trailing" secondItem="YUU-6h-ysP" secondAttribute="trailing" constant="16" id="Ybb-Je-Gk9"/>
+                            <constraint firstItem="nVy-pC-J8y" firstAttribute="top" secondItem="726-ZX-s8Q" secondAttribute="bottom" constant="8" id="dcH-29-RQg"/>
+                            <constraint firstAttribute="bottom" secondItem="YUU-6h-ysP" secondAttribute="bottom" constant="57" id="fFi-a7-beR"/>
+                            <constraint firstAttribute="trailing" secondItem="gNN-lN-rbG" secondAttribute="trailing" constant="16" id="gTr-7H-1Zb"/>
+                            <constraint firstItem="YUU-6h-ysP" firstAttribute="top" secondItem="gNN-lN-rbG" secondAttribute="bottom" constant="15" id="gji-xB-yO1"/>
+                            <constraint firstAttribute="centerX" secondItem="YUU-6h-ysP" secondAttribute="centerX" id="k34-BX-bm5"/>
+                            <constraint firstItem="YUU-6h-ysP" firstAttribute="leading" secondItem="BBR-Cw-L7q" secondAttribute="leading" constant="16" id="oAp-En-Hb4"/>
+                            <constraint firstAttribute="trailing" secondItem="nVy-pC-J8y" secondAttribute="trailing" constant="16" id="q6S-EH-m9U"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Störmeldung" id="I1W-OB-LoK">
@@ -896,7 +894,7 @@
                     <connections>
                         <outlet property="affectedMachineLabel" destination="gNN-lN-rbG" id="OyR-Yb-NMy"/>
                         <outlet property="buttonSelectMachine" destination="nVy-pC-J8y" id="o8s-DK-ErQ"/>
-                        <outlet property="textfield" destination="6DW-k6-yzp" id="uMS-F5-AQk"/>
+                        <outlet property="textfield" destination="YUU-6h-ysP" id="jKL-me-Inh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NBD-c7-3vN" userLabel="First Responder" sceneMemberID="firstResponder"/>
