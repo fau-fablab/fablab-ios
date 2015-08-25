@@ -325,6 +325,8 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         
         sortedByName = true
         
+        selectedIndexPath = nil
+        
         let selector: Selector = "name"
         
         //add products to sections
@@ -347,6 +349,8 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     private func sortProductsByPrice() {
         
         sortedByName = false;
+        
+        selectedIndexPath = nil
         
         sections.removeAll(keepCapacity: false);
         var products = model.getAllProducts();
