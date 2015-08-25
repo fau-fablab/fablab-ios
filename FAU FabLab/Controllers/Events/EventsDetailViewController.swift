@@ -97,6 +97,7 @@ class EventsDetailsViewController : UIViewController {
                     event.startDate = self.event!.start
                     event.endDate = self.event!.end
                     event.title = self.event!.summery
+                    event.location = self.event!.location
                     event.notes = self.event!.description
                     
                     let result = eventStore.saveEvent(event, span: EKSpanThisEvent, error: nil)
