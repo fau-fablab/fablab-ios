@@ -9,10 +9,12 @@ class MalfunctionInfoModel : NSObject{
     
     private var isFetching = false
     private var fetchingDone = false
+    private(set) var fablabMail: String?
 
     override init() {
         mapper = Mapper<FabTool>()
         super.init()
+        fetchFablabMailAddress({})
     }
     
     func getCount() -> Int{
@@ -29,6 +31,22 @@ class MalfunctionInfoModel : NSObject{
             names.append(tool.title!)
         }
         return names
+    }
+    
+    private func fetchFablabMailAddress(onCompletion: () -> Void){
+        let endpoint = "/data" + "/fablab-mail"
+        RestManager.sharedInstance.makeGetRequest(endpoint, params: nil, onCompletion: {
+            json, err in
+            
+            if (err != nil) {
+                //TODO error handling is not working here, endpoint seems to be corrupt
+                Debug.instance.log("Error while fetching email!")
+            }
+            self.fablabMail = json
+            Debug.instance.log(json)
+            onCompletion()
+        })
+        return
     }
     
     func fetchAllTools(onCompletion: () -> Void){
