@@ -70,29 +70,29 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     
     //Observer -> Status changed
     func checkoutStatusChanged(notification:NSNotification) {
-        if let newStatus = Cart.CartStatus(rawValue: notification.object as! String) {
+        if let newStatus = CartStatus(rawValue: notification.object as! String) {
             switch(newStatus){
-                case Cart.CartStatus.SHOPPING:
+                case CartStatus.SHOPPING:
                     //cart is still @shopping -> error happend -> Code was wrong
                     let alertView = UIAlertView(title: "Fehler", message: "Der gescannte Code wurde nicht akzeptiert. Bitte den Code vom Kassenterminal scannen.", delegate: nil, cancelButtonTitle: "OK")
                     alertView.show()
                 
-                case Cart.CartStatus.PENDING:
+                case CartStatus.PENDING:
                     var popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("PayOrCancelView") as! PayOrCancelViewController
                     var nav = UINavigationController(rootViewController: popoverContent)
                     nav.modalPresentationStyle = UIModalPresentationStyle.Popover
                     var popover = nav.popoverPresentationController
                     self.presentViewController(nav, animated: true, completion: nil)
               
-                case Cart.CartStatus.PAID:
+                case CartStatus.PAID:
                     let alertView = UIAlertView(title: "Bezahlt", message: "Ihr Warenkorb wurde erfolgreich bezahlt", delegate: nil, cancelButtonTitle: "OK")
                     alertView.show()
                 
-                case Cart.CartStatus.CANCELLED:
+                case CartStatus.CANCELLED:
                     let alertView = UIAlertView(title: "Abgebrochen", message: "Bezahlvorgang wurde abgebrochen", delegate: nil, cancelButtonTitle: "OK")
                     alertView.show()
                 
-                case Cart.CartStatus.FAILED:
+                case CartStatus.FAILED:
                     let alertView = UIAlertView(title: "Fehlgeschlagen", message: "Bezahlvorgang ist Fehlgeschlagen", delegate: nil, cancelButtonTitle: "OK")
                     alertView.show()
                 

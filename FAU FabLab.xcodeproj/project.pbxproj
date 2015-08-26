@@ -47,6 +47,7 @@
 		924DBF711B8DEBB1000CAFB2 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924DBF681B8DEBB1000CAFB2 /* Product.swift */; };
 		924DBF721B8DEBB1000CAFB2 /* Uom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924DBF691B8DEBB1000CAFB2 /* Uom.swift */; };
 		924DBF731B8DEBB1000CAFB2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924DBF6A1B8DEBB1000CAFB2 /* Event.swift */; };
+		924DBF751B8DEBF3000CAFB2 /* CartStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924DBF741B8DEBF3000CAFB2 /* CartStatus.swift */; };
 		92500ED21B72CD7C0093CC45 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92500ECF1B72CD7C0093CC45 /* Cart.swift */; };
 		92500ED41B72CD7C0093CC45 /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92500ED11B72CD7C0093CC45 /* CartModel.swift */; };
 		925AC32F1B6C245700057C7F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925AC32E1B6C245700057C7F /* Alamofire.framework */; };
@@ -141,6 +142,7 @@
 		924DBF681B8DEBB1000CAFB2 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		924DBF691B8DEBB1000CAFB2 /* Uom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uom.swift; sourceTree = "<group>"; };
 		924DBF6A1B8DEBB1000CAFB2 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		924DBF741B8DEBF3000CAFB2 /* CartStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartStatus.swift; sourceTree = "<group>"; };
 		92500ECF1B72CD7C0093CC45 /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		92500ED11B72CD7C0093CC45 /* CartModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
 		925AC32E1B6C245700057C7F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				924DBF681B8DEBB1000CAFB2 /* Product.swift */,
 				924DBF691B8DEBB1000CAFB2 /* Uom.swift */,
 				924DBF6A1B8DEBB1000CAFB2 /* Event.swift */,
+				924DBF741B8DEBF3000CAFB2 /* CartStatus.swift */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 			files = (
 				48B7C0DA1B846CDA00DC9B2D /* AutocompleteSuggestion.swift in Sources */,
 				924DBF701B8DEBB1000CAFB2 /* News.swift in Sources */,
+				924DBF751B8DEBF3000CAFB2 /* CartStatus.swift in Sources */,
 				927901E51B6D4AE300F95B09 /* NewsModel.swift in Sources */,
 				924DBF6F1B8DEBB1000CAFB2 /* Location.swift in Sources */,
 				48CC3FF91B8B6E0900FB9C8E /* BBBadgeBarButtonItem.m in Sources */,

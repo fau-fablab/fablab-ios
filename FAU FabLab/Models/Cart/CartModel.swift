@@ -31,7 +31,7 @@ class CartModel : NSObject{
 
     func sendCartToServer(code: String){
         cart.setCode(code)
-        self.cart.setStatus(Cart.CartStatus.PENDING)
+        self.cart.setStatus(CartStatus.PENDING)
         let cartAsDict = cart.serialize()
         if(!isLoading){
             isLoading = true
@@ -41,7 +41,7 @@ class CartModel : NSObject{
                     self.notifyControllerAboutStatusChange()
                     var timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("checkCheckoutStatus:"), userInfo: nil, repeats: true)
                 }else{
-                    self.cart.setStatus(Cart.CartStatus.SHOPPING)
+                    self.cart.setStatus(CartStatus.SHOPPING)
                     self.notifyControllerAboutStatusChange()
                 }
             })
@@ -66,9 +66,9 @@ class CartModel : NSObject{
         RestManager.sharedInstance.makeJsonGetRequest(cartResource + "/status/\(code)", params: nil, onCompletion: {
             json, err in
             
-            if let newStatus = Cart.CartStatus(rawValue: json as! String) {
+            if let newStatus = CartStatus(rawValue: json as! String) {
                 
-                if (newStatus == Cart.CartStatus.PENDING){
+                if (newStatus == CartStatus.PENDING){
                     return
                 }
                 
@@ -76,11 +76,11 @@ class CartModel : NSObject{
                 self.cart.setStatus(newStatus)
 
                 switch(newStatus){
-                    case Cart.CartStatus.PAID:
+                    case CartStatus.PAID:
                         self.checkoutSuccessfulyPaid()
-                    case Cart.CartStatus.CANCELLED:
+                    case CartStatus.CANCELLED:
                         self.checkoutCancelledOrFailed()
-                    case Cart.CartStatus.FAILED:
+                    case CartStatus.FAILED:
                         self.checkoutCancelledOrFailed()
                     default: break
                 }
@@ -98,7 +98,7 @@ class CartModel : NSObject{
     
     func checkoutCancelledOrFailed(){
         self.notifyControllerAboutStatusChange()
-        cart.setStatus(Cart.CartStatus.SHOPPING)
+        cart.setStatus(CartStatus.SHOPPING)
     }
     
     

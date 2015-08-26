@@ -9,14 +9,6 @@ import CoreData
 
 class Cart : NSObject{
     
-    enum CartStatus : String{
-        case SHOPPING = "SHOPPING"
-        case PENDING = "PENDING"
-        case PAID = "PAID"
-        case CANCELLED = "CANCELLED"
-        case FAILED = "FAILED"
-    }
-    
     private let managedObjectContext : NSManagedObjectContext
     private let coreData = CoreDataHelper(sqliteDocumentName: "CoreDataModel.db", schemaName:"")
 
