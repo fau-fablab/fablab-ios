@@ -18,7 +18,7 @@ class Uom : Mappable{
     }
 
     func mapping(map: Map) {
-        uomId <- map["uom_id"]
+        uomId <- map["uomId"]
         uomType <- map["uomType"]
         rounding <- map["rounding"]
         name <- map["name"]

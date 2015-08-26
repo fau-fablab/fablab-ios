@@ -37,6 +37,11 @@
 		923E1F2C1B7AA360009CC545 /* CartEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E1F2B1B7AA360009CC545 /* CartEntry.swift */; };
 		923E1F2F1B7AA3F7009CC545 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 923E1F2D1B7AA3F7009CC545 /* CoreDataModel.xcdatamodeld */; };
 		923E1F311B7AA49A009CC545 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E1F301B7AA49A009CC545 /* CoreDataHelper.swift */; };
+		923FFD9A1B8E4916001ACAB1 /* MailAddresses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923FFD991B8E4916001ACAB1 /* MailAddresses.swift */; };
+		923FFD9C1B8E49CE001ACAB1 /* RegistrationId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923FFD9B1B8E49CE001ACAB1 /* RegistrationId.swift */; };
+		923FFD9E1B8E4BE3001ACAB1 /* Roles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923FFD9D1B8E4BE3001ACAB1 /* Roles.swift */; };
+		923FFDA01B8E4C2D001ACAB1 /* UpdateStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923FFD9F1B8E4C2D001ACAB1 /* UpdateStatus.swift */; };
+		923FFDA21B8E4DA5001ACAB1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923FFDA11B8E4DA5001ACAB1 /* User.swift */; };
 		924352461B654CF200CBFA0C /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924352451B654CF200CBFA0C /* Kingfisher.framework */; };
 		924DBF6B1B8DEBB1000CAFB2 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924DBF621B8DEBB1000CAFB2 /* Category.swift */; };
 		924DBF6C1B8DEBB1000CAFB2 /* DoorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924DBF631B8DEBB1000CAFB2 /* DoorState.swift */; };
@@ -132,6 +137,11 @@
 		923E1F2B1B7AA360009CC545 /* CartEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartEntry.swift; sourceTree = "<group>"; };
 		923E1F2E1B7AA3F7009CC545 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		923E1F301B7AA49A009CC545 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		923FFD991B8E4916001ACAB1 /* MailAddresses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailAddresses.swift; sourceTree = "<group>"; };
+		923FFD9B1B8E49CE001ACAB1 /* RegistrationId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationId.swift; sourceTree = "<group>"; };
+		923FFD9D1B8E4BE3001ACAB1 /* Roles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Roles.swift; sourceTree = "<group>"; };
+		923FFD9F1B8E4C2D001ACAB1 /* UpdateStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateStatus.swift; sourceTree = "<group>"; };
+		923FFDA11B8E4DA5001ACAB1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		924352451B654CF200CBFA0C /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		924DBF621B8DEBB1000CAFB2 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		924DBF631B8DEBB1000CAFB2 /* DoorState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoorState.swift; sourceTree = "<group>"; };
@@ -391,6 +401,11 @@
 				924DBF691B8DEBB1000CAFB2 /* Uom.swift */,
 				924DBF6A1B8DEBB1000CAFB2 /* ICal.swift */,
 				924DBF741B8DEBF3000CAFB2 /* CartStatus.swift */,
+				923FFD991B8E4916001ACAB1 /* MailAddresses.swift */,
+				923FFD9B1B8E49CE001ACAB1 /* RegistrationId.swift */,
+				923FFD9D1B8E4BE3001ACAB1 /* Roles.swift */,
+				923FFD9F1B8E4C2D001ACAB1 /* UpdateStatus.swift */,
+				923FFDA11B8E4DA5001ACAB1 /* User.swift */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -650,7 +665,10 @@
 				927901E11B6D3F6300F95B09 /* NewsDetailsViewController.swift in Sources */,
 				5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */,
 				923E1F311B7AA49A009CC545 /* CoreDataHelper.swift in Sources */,
+				923FFDA01B8E4C2D001ACAB1 /* UpdateStatus.swift in Sources */,
+				923FFD9E1B8E4BE3001ACAB1 /* Roles.swift in Sources */,
 				923E1F2C1B7AA360009CC545 /* CartEntry.swift in Sources */,
+				923FFD9C1B8E49CE001ACAB1 /* RegistrationId.swift in Sources */,
 				4804CA5C1B7E4FB200F75BF5 /* ActionSheetPickerDelegate.swift in Sources */,
 				924DBF731B8DEBB1000CAFB2 /* ICal.swift in Sources */,
 				924DBF6E1B8DEBB1000CAFB2 /* InventoryItem.swift in Sources */,
@@ -664,6 +682,7 @@
 				927901CA1B6D3B9300F95B09 /* RestManager.swift in Sources */,
 				923E1F2A1B7AA25A009CC545 /* CartProduct.swift in Sources */,
 				846100BE1B78696000393E63 /* ProductLocationViewController.swift in Sources */,
+				923FFDA21B8E4DA5001ACAB1 /* User.swift in Sources */,
 				502DB1521B7150370036EF6B /* EventsDetailViewController.swift in Sources */,
 				923E1F2F1B7AA3F7009CC545 /* CoreDataModel.xcdatamodeld in Sources */,
 				927901D71B6D3EED00F95B09 /* NewsCustomCell.swift in Sources */,
@@ -678,6 +697,7 @@
 				4893164D1B8367EF00DCB6BB /* CartEntryCustomCell.swift in Sources */,
 				92DB85A81B8B72FC0070FAD8 /* MalfunctionInfoModel.swift in Sources */,
 				84F53FEE1B73DD24008FB605 /* PayOrCancelViewController.swift in Sources */,
+				923FFD9A1B8E4916001ACAB1 /* MailAddresses.swift in Sources */,
 				489316451B831E3900DCB6BB /* AutocompleteModel.swift in Sources */,
 				489E4C751B79E093004A60FA /* ProductCustomCell.swift in Sources */,
 				924DBF6D1B8DEBB1000CAFB2 /* FabTool.swift in Sources */,
