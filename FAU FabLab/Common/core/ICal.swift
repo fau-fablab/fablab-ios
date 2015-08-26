@@ -1,7 +1,7 @@
 import Foundation
 import ObjectMapper
 
-class Event: Mappable {
+class ICal: Mappable {
 
     private(set) var uid: String?
     private(set) var summery: String?
@@ -78,10 +78,10 @@ class Event: Mappable {
     }
 
     class func newInstance() -> Mappable {
-        let event = Event();
-        event.dateFormatter.timeZone = NSTimeZone(name: "UTC+2")
+        let iCal = ICal();
+        iCal.dateFormatter.timeZone = NSTimeZone(name: "UTC+2")
 
-        return event
+        return iCal
     }
 
     // Mappable

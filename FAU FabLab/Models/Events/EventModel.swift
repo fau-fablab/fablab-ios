@@ -6,13 +6,13 @@ typealias EventLoadFinished = (NSError?) -> Void;
 class EventModel : NSObject{
     
     private let resource = "/ical";
-    private var events = [Event]()
+    private var events = [ICal]()
     private var isLoading = false;
     private var loaded = false;
-    private var mapper:Mapper<Event>;
+    private var mapper:Mapper<ICal>;
     
     override init() {
-        mapper = Mapper<Event>()
+        mapper = Mapper<ICal>()
         super.init()
     }
     
@@ -48,11 +48,11 @@ class EventModel : NSObject{
         return events.count;
     }
     
-    func addEvent(entry:Event) {
+    func addEvent(entry:ICal) {
         events.append(entry)
     }
     
-    func getEvent(position:Int) -> Event{
+    func getEvent(position:Int) -> ICal{
         return events[position];
     }
 }

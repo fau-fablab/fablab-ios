@@ -12,9 +12,9 @@ class EventsDetailsViewController : UIViewController {
     
     @IBOutlet var endDesc: UILabel!
     
-    var event: Event?
+    var event: ICal?
     
-    func configure(event: Event) {
+    func configure(event: ICal) {
         self.event = event
     }
     
