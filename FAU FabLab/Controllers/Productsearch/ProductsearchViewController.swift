@@ -113,20 +113,26 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         doorButtonController.setViewController(self)
         cartButtonController.setViewController(self)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "searchByBarcodeScanner:", name: "ProductScannerNotification", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
     }
     
     override func viewWillDisappear(animated: Bool) {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
-    func keyboardWillShow(notification: NSNotification) {
+    func keyboardDidShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
             if let tabBarSize = self.tabBarController?.tabBar.frame.size {
                 autocompleteTableViewConstraint.constant = tabBarSize.height - keyboardSize.height
                 autocompleteTableView.setNeedsUpdateConstraints()
             }
         }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        autocompleteTableViewConstraint.constant = 0
+        autocompleteTableView.setNeedsUpdateConstraints()
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
