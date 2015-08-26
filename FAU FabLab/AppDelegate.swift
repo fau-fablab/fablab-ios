@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application( application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData ) {
+        AutocompleteModel.sharedInstance.loadAutocompleteSuggestion();
         var characterSet: NSCharacterSet = NSCharacterSet( charactersInString: "<>" )
         
         var deviceTokenString: String = ( deviceToken.description as NSString )
