@@ -4,6 +4,7 @@ import RSBarcodes
 
 class CheckoutCodeScannerViewController: RSCodeReaderViewController {
     
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,7 +46,7 @@ class CheckoutCodeScannerViewController: RSCodeReaderViewController {
         self.navigationController?.navigationBarHidden = false
     }
     
-    @IBAction func backButtonTouched(sender: AnyObject) {
+    @IBAction func cancelButtonTouched(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion:nil )
     }
 }
