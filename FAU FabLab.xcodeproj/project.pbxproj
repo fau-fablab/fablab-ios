@@ -23,6 +23,8 @@
 		5060B1EE1B4EFE2A008B41FD /* FAU_FabLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1ED1B4EFE2A008B41FD /* FAU_FabLabTests.swift */; };
 		507493681B5BFE6F0035BEB4 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */; };
 		50DBE9041B6FA93000685B07 /* EventsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */; };
+		50FCFED31B8F872B00B8C487 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50FCFED21B8F872B00B8C487 /* Localizable.strings */; };
+		50FCFED51B8F8B5200B8C487 /* FabColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCFED41B8F8B5200B8C487 /* FabColors.swift */; };
 		8419B6101B6F6050000275A8 /* CheckoutCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8419B60F1B6F6050000275A8 /* CheckoutCodeScannerViewController.swift */; };
 		8429B79A1B739C6D004C7DA0 /* RSBarcodes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DC93121B669E0100981977 /* RSBarcodes.framework */; };
 		8429B79B1B739C6D004C7DA0 /* RSBarcodes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84DC93121B669E0100981977 /* RSBarcodes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -124,6 +126,8 @@
 		507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		507BA38D1B5A7C0300E5DCF3 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCustomCell.swift; sourceTree = "<group>"; };
+		50FCFED21B8F872B00B8C487 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		50FCFED41B8F8B5200B8C487 /* FabColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FabColors.swift; sourceTree = "<group>"; };
 		8419B60F1B6F6050000275A8 /* CheckoutCodeScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutCodeScannerViewController.swift; sourceTree = "<group>"; };
 		846100BD1B78696000393E63 /* ProductLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductLocationViewController.swift; sourceTree = "<group>"; };
 		84DC93121B669E0100981977 /* RSBarcodes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RSBarcodes.framework; path = Carthage/Build/iOS/RSBarcodes.framework; sourceTree = "<group>"; };
@@ -287,6 +291,8 @@
 			isa = PBXGroup;
 			children = (
 				5060B1D41B4EFE2A008B41FD /* Info.plist */,
+				50FCFED21B8F872B00B8C487 /* Localizable.strings */,
+				50FCFED41B8F8B5200B8C487 /* FabColors.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -613,6 +619,7 @@
 				92F04A331B87D92F00C2ED81 /* Main.storyboard in Resources */,
 				92F04A321B87D92100C2ED81 /* LaunchScreen.xib in Resources */,
 				92F04A2F1B87D87C00C2ED81 /* ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer in Resources */,
+				50FCFED31B8F872B00B8C487 /* Localizable.strings in Resources */,
 				927901C21B6D3AF300F95B09 /* news_nopicture.png in Resources */,
 				84F53FF21B7419E7008FB605 /* checkout.png in Resources */,
 				927901C41B6D3B2B00F95B09 /* Images.xcassets in Resources */,
@@ -658,6 +665,7 @@
 				924DBF701B8DEBB1000CAFB2 /* News.swift in Sources */,
 				924DBF751B8DEBF3000CAFB2 /* CartStatus.swift in Sources */,
 				927901E51B6D4AE300F95B09 /* NewsModel.swift in Sources */,
+				50FCFED51B8F8B5200B8C487 /* FabColors.swift in Sources */,
 				924DBF6F1B8DEBB1000CAFB2 /* Location.swift in Sources */,
 				48CC3FF91B8B6E0900FB9C8E /* BBBadgeBarButtonItem.m in Sources */,
 				924DBF721B8DEBB1000CAFB2 /* Uom.swift in Sources */,

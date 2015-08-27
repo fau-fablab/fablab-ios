@@ -8,9 +8,6 @@ class DoorNavigationButtonController: NSObject {
 
     private let model = DoorStateModel()
 
-    private let red     = UIColor(red: 0.81, green: 0.12, blue: 0.18, alpha: 1.0)
-    private let green   = UIColor(red: 0.00, green: 0.59, blue: 0.42, alpha: 1.0)
-
     private var timer = NSTimer();
     private var viewController: UIViewController?
 
@@ -23,7 +20,7 @@ class DoorNavigationButtonController: NSObject {
             title = ""
         }
         let button = UIBarButtonItem(title: title, style: UIBarButtonItemStyle.Plain, target: self, action: nil)
-        button.tintColor = model.isOpen ? green : red
+        button.tintColor = model.isOpen ? UIColor.fabLabGreen() : UIColor.fabLabRed()
         
         return button
     }

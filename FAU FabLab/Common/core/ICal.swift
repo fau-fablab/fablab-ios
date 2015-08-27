@@ -78,17 +78,12 @@ class ICal: Mappable {
     }
     
     var getCustomColor : UIColor {
-        
-        let blue    = UIColor(red: 0.05, green: 0.23, blue: 0.38, alpha: 1.0)
-        let red     = UIColor(red: 0.81, green: 0.12, blue: 0.18, alpha: 1.0)
-        let green   = UIColor(red: 0.00, green: 0.59, blue: 0.42, alpha: 1.0)
-        
         if containsOpenLab(self.summery!) {
-            return blue
+            return UIColor.fabLabBlue()
         } else if containsSelfLab(self.summery!) {
-            return green
+            return UIColor.fabLabGreen()
         } else {
-            return red
+            return UIColor.fabLabRed()
         }
     }
 
