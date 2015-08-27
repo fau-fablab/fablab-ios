@@ -6,6 +6,7 @@
 //
 
 #import "BBBadgeBarButtonItem.h"
+#import "FAU_FabLab-Swift.h"
 
 @interface BBBadgeBarButtonItem()
 
@@ -32,7 +33,7 @@
 - (void)initializer
 {
     // Default design initialization
-    self.badgeBGColor   = [UIColor redColor];
+    self.badgeBGColor   = [UIColor fabLabRed];
     self.badgeTextColor = [UIColor whiteColor];
     self.badgeFont      = [UIFont systemFontOfSize:12.0];
     self.badgePadding   = 6;
