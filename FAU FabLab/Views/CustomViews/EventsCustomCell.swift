@@ -10,7 +10,10 @@ public class EventsCustomCell : UITableViewCell{
     @IBOutlet var timeLabel: UILabel!
     //@IBOutlet var placeLabel: UILabel!
         
-    public func configure(#today: Bool, day: String, month: String, title: String, time: String?, place: String?) {
+    public func configure(#today: Bool, day: String, month: String, title: String, time: String?, place: String?, dateColor: UIColor) {
+        
+        dayLabel.textColor = dateColor
+        monthLabel.textColor = dateColor
         
         // if today, then show text "Heute"
         if today {

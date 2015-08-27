@@ -22,6 +22,7 @@ class EventsDetailsViewController : UIViewController {
         super.viewDidLoad()
         
         titleText.text = event!.summery
+        titleText.textColor = event!.getCustomColor
         
         var start = ""
         var ende = ""

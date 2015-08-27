@@ -76,6 +76,21 @@ class ICal: Mappable {
     var isOneDay : Bool {
         return NSCalendar.currentCalendar().isDate(start!, inSameDayAsDate: end!)
     }
+    
+    var getCustomColor : UIColor {
+        
+        let blue    = UIColor(red: 0.05, green: 0.23, blue: 0.38, alpha: 1.0)
+        let red     = UIColor(red: 0.81, green: 0.12, blue: 0.18, alpha: 1.0)
+        let green   = UIColor(red: 0.00, green: 0.59, blue: 0.42, alpha: 1.0)
+        
+        if containsOpenLab(self.summery!) {
+            return blue
+        } else if containsSelfLab(self.summery!) {
+            return green
+        } else {
+            return red
+        }
+    }
 
     class func newInstance() -> Mappable {
         let iCal = ICal();
@@ -105,6 +120,16 @@ class ICal: Mappable {
 
             super.init(dateFormatter: formatter)
         }
+    }
+    
+    private func containsOpenLab(string: String) -> Bool {
+        return  (string.rangeOfString("Open") != nil || string.rangeOfString("open") != nil) &&
+            (string.rangeOfString("Lab") != nil || string.rangeOfString("lab") != nil)
+    }
+    
+    private func containsSelfLab(string: String) -> Bool {
+        return  (string.rangeOfString("Self") != nil || string.rangeOfString("self") != nil) &&
+            (string.rangeOfString("Lab") != nil || string.rangeOfString("lab") != nil)
     }
 }
 
