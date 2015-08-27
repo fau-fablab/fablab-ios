@@ -12,7 +12,7 @@ class MalfunctionInfoController: UIViewController, UITextViewDelegate, MFMailCom
     private var textViewBottomConstraintValue: CGFloat?
     
     private let model = MalfunctionInfoModel()
-    private let placeholderText = "Bitte hier eine kurze Fehlerbeschreibung eintragen"
+    private let placeholderText = "Bitte hier eine kurze Fehlerbeschreibung eintragen".localized
     private let doorButtonController = DoorNavigationButtonController.sharedInstance
     private let cartButtonController = CartNavigationButtonController.sharedInstance
     
@@ -27,7 +27,7 @@ class MalfunctionInfoController: UIViewController, UITextViewDelegate, MFMailCom
         }
     }
     
-    var errorMessage: String = "Bitte hier eine kurze Fehlerbeschreibung eintragen" {
+    var errorMessage: String = "Bitte hier eine kurze Fehlerbeschreibung eintragen".localized {
         willSet(newText){
             if(newText != placeholderText && selectedMachine != ""){
                 buttonSendMail.enabled = true
@@ -38,7 +38,7 @@ class MalfunctionInfoController: UIViewController, UITextViewDelegate, MFMailCom
     }
     
     var emailBody: String{
-        return "<b>Tool:</b> </br> \(selectedMachine) </br></br> <b>Error Message:</b> </br> \(errorMessage) </br></br> Gesendet mit der Fablab-iOS App"
+        return "<b>Tool:</b> </br> \(selectedMachine) </br></br> <b>Error Message:</b> </br> \(errorMessage) </br></br> " + "Gesendet mit der Fablab-iOS App".localized
     }
 
     override func viewDidLoad() {
@@ -116,8 +116,8 @@ class MalfunctionInfoController: UIViewController, UITextViewDelegate, MFMailCom
         switch result.value{
             case MFMailComposeResultCancelled.value:
                 Debug.instance.log("Cancelled")
-                var alert = UIAlertController(title: "Abgebrochen!", message: "Störungsmeldung wurde NICHT versendet!", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+                var alert = UIAlertController(title: "Abgebrochen".localized, message: "Störungsmeldung wurde nicht versendet!".localized, preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
 
             case MFMailComposeResultSent.value:
@@ -126,8 +126,8 @@ class MalfunctionInfoController: UIViewController, UITextViewDelegate, MFMailCom
                 textfield.text = placeholderText
                 selectedMachine = " "
                 self.affectedMachineLabel!.text = selectedMachine
-                var alert = UIAlertController(title: "Versendet!", message: "Störungsmeldung wurde erfolgreich versendet!", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+                var alert = UIAlertController(title: "Versendet".localized, message: "Störungsmeldung wurde erfolgreich versendet!".localized, preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
 
             default:
@@ -144,7 +144,7 @@ class MalfunctionInfoController: UIViewController, UITextViewDelegate, MFMailCom
     
     @IBAction func buttonSelectMachineClicked(sender: AnyObject) {
         model.fetchAllTools { () -> Void in
-            ActionSheetStringPicker.showPickerWithTitle("Betroffenes Gerät", rows: model.getAllNames(), initialSelection: 0,
+            ActionSheetStringPicker.showPickerWithTitle("Betroffenes Gerät".localized, rows: model.getAllNames(), initialSelection: 0,
                 doneBlock: {
                     picker, value, index in
                         self.selectedMachine = "\(index)"
@@ -158,7 +158,7 @@ class MalfunctionInfoController: UIViewController, UITextViewDelegate, MFMailCom
         var picker = MFMailComposeViewController()
         picker.mailComposeDelegate = self
         picker.setToRecipients([model.fablabMail!])
-        picker.setSubject("Störungsmeldung")
+        picker.setSubject("Störungsmeldung".localized)
         picker.setMessageBody(emailBody, isHTML: true)
         
         presentViewController(picker, animated: true, completion: nil)

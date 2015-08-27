@@ -74,7 +74,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
             switch(newStatus){
                 case CartStatus.SHOPPING:
                     //cart is still @shopping -> error happend -> Code was wrong
-                    let alertView = UIAlertView(title: "Fehler", message: "Der gescannte Code wurde nicht akzeptiert. Bitte den Code vom Kassenterminal scannen.", delegate: nil, cancelButtonTitle: "OK")
+                    let alertView = UIAlertView(title: "Fehler".localized, message: "Der gescannte Code wurde nicht akzeptiert. Bitte den Code vom Kassenterminal scannen.".localized, delegate: nil, cancelButtonTitle: "OK".localized)
                     alertView.show()
                 
                 case CartStatus.PENDING:
@@ -85,15 +85,15 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
                     self.presentViewController(nav, animated: true, completion: nil)
               
                 case CartStatus.PAID:
-                    let alertView = UIAlertView(title: "Bezahlt", message: "Ihr Warenkorb wurde erfolgreich bezahlt", delegate: nil, cancelButtonTitle: "OK")
+                    let alertView = UIAlertView(title: "Bezahlt".localized, message: "Ihr Warenkorb wurde erfolgreich bezahlt".localized, delegate: nil, cancelButtonTitle: "OK".localized)
                     alertView.show()
                 
                 case CartStatus.CANCELLED:
-                    let alertView = UIAlertView(title: "Abgebrochen", message: "Bezahlvorgang wurde abgebrochen", delegate: nil, cancelButtonTitle: "OK")
+                    let alertView = UIAlertView(title: "Abgebrochen".localized, message: "Bezahlvorgang wurde abgebrochen".localized, delegate: nil, cancelButtonTitle: "OK".localized)
                     alertView.show()
                 
                 case CartStatus.FAILED:
-                    let alertView = UIAlertView(title: "Fehlgeschlagen", message: "Bezahlvorgang ist Fehlgeschlagen", delegate: nil, cancelButtonTitle: "OK")
+                    let alertView = UIAlertView(title: "Fehlgeschlagen".localized, message: "Bezahlvorgang ist Fehlgeschlagen".localized, delegate: nil, cancelButtonTitle: "OK".localized)
                     alertView.show()
                 
             }
@@ -101,12 +101,12 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
-        var editAction = UITableViewRowAction(style: .Normal, title: "Ändern") { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
+        var editAction = UITableViewRowAction(style: .Normal, title: "Ändern".localized) { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
             var picker: ActionSheetCustomPicker = ActionSheetCustomPicker()
             var doneButton: UIBarButtonItem = UIBarButtonItem()
-            doneButton.title = "Übernehmen"
+            doneButton.title = "Übernehmen".localized
             picker.setDoneButton(doneButton)
-            picker.title = "Menge auswählen"
+            picker.title = "Menge auswählen".localized
             picker.tapDismissAction = TapAction.Cancel
             picker.hideCancel = true
             let cartEntry = self.cartModel.cart.getEntry(indexPath.row)
@@ -118,7 +118,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
                 }, didCancelAction:{ (Void) -> Void in tableView.setEditing(false, animated: true)} )
             picker.showActionSheetPicker()
         }
-        var deleteAction = UITableViewRowAction(style: .Default, title: "Löschen") { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
+        var deleteAction = UITableViewRowAction(style: .Default, title: "Löschen".localized) { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
             CartModel.sharedInstance.removeProductFromCart(indexPath.row)
             CartNavigationButtonController.sharedInstance.updateBadge()
             tableView.reloadData()
@@ -152,15 +152,15 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func alertToEncourageCameraAccessInitially(){
-        var alert = UIAlertController(title: "Achtung", message: "Es wird ein Zugriff auf die Kamera benötigt", preferredStyle: UIAlertControllerStyle.Alert)
+        var alert = UIAlertController(title: "Achtung".localized, message: "Es wird ein Zugriff auf die Kamera benötigt".localized, preferredStyle: UIAlertControllerStyle.Alert)
         
-        alert.addAction(UIAlertAction(title: "Abbrechen", style: .Default, handler: { (alert) -> Void in
+        alert.addAction(UIAlertAction(title: "Abbrechen".localized, style: .Default, handler: { (alert) -> Void in
             dispatch_async(dispatch_get_main_queue()) {
                 self.dismissViewControllerAnimated(true, completion:nil)
             }
         }))
         
-        alert.addAction(UIAlertAction(title: "Erlauben", style: .Cancel, handler: { (alert) -> Void in
+        alert.addAction(UIAlertAction(title: "Erlauben".localized, style: .Cancel, handler: { (alert) -> Void in
             UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
         }))
         
@@ -168,9 +168,9 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func alertPromptToAllowCameraAccessViaSetting() {
-        var alert = UIAlertController(title: "Achtung", message: "Es wird ein Zugriff auf die Kamera benötigt", preferredStyle: UIAlertControllerStyle.Alert)
+        var alert = UIAlertController(title: "Achtung".localized, message: "Es wird ein Zugriff auf die Kamera benötigt".localized, preferredStyle: UIAlertControllerStyle.Alert)
         
-        alert.addAction(UIAlertAction(title: "Abbrechen", style: .Cancel) { alert in
+        alert.addAction(UIAlertAction(title: "Abbrechen".localized, style: .Cancel) { alert in
             if AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo).count > 0 {
                 AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo) { granted in
                     dispatch_async(dispatch_get_main_queue()) {

@@ -18,7 +18,7 @@ public class EventsCustomCell : UITableViewCell{
         // if today, then show text "Heute"
         if today {
             dayLabel.font = dayLabel.font.fontWithSize(20)
-            dayLabel.text = "Heute"
+            dayLabel.text = "Heute".localized
             monthLabel.text = "";
         } else {
             dayLabel.font = dayLabel.font.fontWithSize(33)

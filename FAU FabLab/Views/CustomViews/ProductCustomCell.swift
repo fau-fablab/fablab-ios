@@ -56,7 +56,7 @@ public class ProductCustomCell: UITableViewCell {
         if(separatedName.count > 1) {
             self.subtitle.text = separatedName[1];
         }
-        self.price.text = String(format: "%.2f€", product.price!);
+        self.price.text = String(format: "%.2f€".localized, product.price!);
         self.unit.text = product.unit;
         
     }

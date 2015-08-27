@@ -1,0 +1,39 @@
+
+// Allgemein
+"OK" = "OK";
+"Fehler" = "Fehler";
+"Abgebrochen" = "Abgebrochen";
+"Fehlgeschlagen" = "Fehlgeschlagen";
+"Ändern" = "Ändern";
+"Übernehmen" = "Übernehmen";
+"Löschen" = "Löschen";
+"Achtung" = "Achtung";
+"Abbrechen" = "Abbrechen";
+"Erlauben" = "Erlauben";
+
+// StringFormats
+"%.2f€" = "%.2f€";
+
+// EventsCustomCell
+"Heute" = "Heute";
+
+// MafunctionInfoController
+"Bitte hier eine kurze Fehlerbeschreibung eintragen" = "Bitte hier eine kurze Fehlerbeschreibung eintragen";
+"Gesendet mit der Fablab-iOS App" = "Gesendet mit der Fablab-iOS App";
+"Störungsmeldung wurde nicht versendet!" = "Störungsmeldung wurde nicht versendet!";
+"Versendet" = "Versendet";
+"Störungsmeldung wurde erfolgreich versendet!" = "Störungsmeldung wurde erfolgreich versendet!";
+"Betroffenes Gerät" = "Betroffenes Gerät";
+"Störungsmeldung" = "Störungsmeldung";
+
+// CartViewController
+"Der gescannte Code wurde nicht akzeptiert. Bitte den Code vom Kassenterminal scannen." = "Der gescannte Code wurde nicht akzeptiert. Bitte den Code vom Kassenterminal scannen.";
+"Bezahlt" = "Bezahlt";
+"Ihr Warenkorb wurde erfolgreich bezahlt" = "Ihr Warenkorb wurde erfolgreich bezahlt";
+"Bezahlvorgang wurde abgebrochen" = "Bezahlvorgang wurde abgebrochen";
+"Bezahlvorgang ist Fehlgeschlagen" = "Bezahlvorgang ist Fehlgeschlagen";
+"Menge auswählen" = "Menge auswählen";
+"Es wird ein Zugriff auf die Kamera benötigt" = "Es wird ein Zugriff auf die Kamera benötigt";
+
+// ActionSheetPickerDelegate
+"Platten" = "Platten";

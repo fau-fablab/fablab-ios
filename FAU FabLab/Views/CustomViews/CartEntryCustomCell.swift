@@ -13,7 +13,7 @@ public class CartEntryCustomCell: UITableViewCell {
         if(separatedName.count > 1) {
             self.subtitle.text = separatedName[1];
         }
-        self.price.text = String(format: "%.2f€", price);
+        self.price.text = String(format: "%.2f€".localized, price);
         self.amount.text = unit;
     }
     
