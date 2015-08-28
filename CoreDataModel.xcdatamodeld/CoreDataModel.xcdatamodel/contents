@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14F27" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="AutocompleteSuggestion" representedClassName="FAU_FabLab.AutocompleteSuggestion" syncable="YES">
         <attribute name="lastRefresh" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -14,9 +14,14 @@
         <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <relationship name="cartentry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CartEntry" inverseName="product" inverseEntity="CartEntry" syncable="YES"/>
     </entity>
+    <entity name="Settings" syncable="YES">
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Boolean" syncable="YES"/>
+    </entity>
     <elements>
+        <element name="AutocompleteSuggestion" positionX="-54" positionY="36" width="128" height="73"/>
         <element name="CartEntry" positionX="-63" positionY="-18" width="128" height="75"/>
         <element name="CartProduct" positionX="-54" positionY="-9" width="128" height="105"/>
-        <element name="AutocompleteSuggestion" positionX="-54" positionY="36" width="128" height="73"/>
+        <element name="Settings" positionX="-63" positionY="27" width="128" height="75"/>
     </elements>
 </model>
