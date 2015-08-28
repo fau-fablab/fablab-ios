@@ -19,8 +19,4 @@ class PayOrCancelViewController : UIViewController{
         CartModel.sharedInstance.cancelCheckoutProcessByUser()
     }
     
-    
-    @IBAction func dummyPayButtonTouched(sender: AnyObject) {
-        CartModel.sharedInstance.simulatePayChecoutProcess()
-    }
 }

@@ -107,18 +107,5 @@ class CartModel : NSObject{
         NSNotificationCenter.defaultCenter().postNotificationName("CheckoutStatusChangedNotification", object: self.cart.status.rawValue)
     }
    
-    
-    /*                      Methods for DEV            */
-    
-    func simulatePayChecoutProcess(){
-        let code = cart.cartCode as String!
-        if(!isLoading){
-            isLoading = true
-            RestManager.sharedInstance.makePostRequest(checkoutResource + "/paid/\(code)" , params: nil, onCompletion:  {
-                json, err in
-                
-            })
-            isLoading = false
-        }
-    }
+
 }
