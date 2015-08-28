@@ -7,7 +7,6 @@ import CoreData
 // INFO TO ALL: Check Cart Status before doing anything. 
 //              --> ONLY IF STATUS == Shopping -> ADD/CHANGE.... -> OTHERWISE there is a checkout process running!
 
-var pushToken = ""
 
 class Cart : NSObject{
     
@@ -127,8 +126,8 @@ class Cart : NSObject{
             "cartCode": cartCode as String!,
             "items": items,
             "status": status.rawValue,
-            "pushToken" : pushToken,
-            "platformType" : platformType
+            "pushToken" : PushToken.token,
+            "platformType" : PushToken.platformType
         ]
         Debug.instance.log("Serialized cart is \n \(cart)")
         return cart
