@@ -1073,9 +1073,37 @@
                     <view key="view" contentMode="scaleToFill" id="4SC-Nd-iKj">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C0l-Th-dcQ">
+                                <rect key="frame" x="244" y="106" width="51" height="31"/>
+                                <connections>
+                                    <action selector="pushDoorSwitchChanged:" destination="4gd-6i-P19" eventType="valueChanged" id="Efa-x6-NNb"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benachrichte mich sobald das Fablab das nächste mal geöffnet wird" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byv-mh-0Vm">
+                                <rect key="frame" x="16" y="164" width="235" height="76"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Benachrichte mich sobald das Fablab das nächste mal geöffnet wird" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEB-2c-aSF">
+                                <rect key="frame" x="16" y="69" width="235" height="76"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="byv-mh-0Vm"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Einstellungen" id="Jvy-hp-vXu"/>
+                    <connections>
+                        <outlet property="pushDoorSwitch" destination="C0l-Th-dcQ" id="kT6-Sg-toW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uqO-1M-YXP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
