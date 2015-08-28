@@ -46,9 +46,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .stringByTrimmingCharactersInSet( characterSet )
             .stringByReplacingOccurrencesOfString( " ", withString: "" ) as String
         
-        pushToken = deviceTokenString
+        PushToken.token = deviceTokenString
         println("DEVICE TOKEN: "  + deviceTokenString )
         
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        println(userInfo);
     }
     
     func applicationWillResignActive(application: UIApplication) {
