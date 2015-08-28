@@ -20,7 +20,7 @@ class DoorNavigationButtonController: NSObject {
             title = ""
         }
         let button = UIBarButtonItem(title: title, style: UIBarButtonItemStyle.Plain, target: self, action: nil)
-        button.tintColor = model.isOpen ? UIColor.fabLabGreen() : UIColor.fabLabRed()
+        button.tintColor = model.isOpen ? UIColor.fabLabGreen() : UIColor.whiteColor()//UIColor.fabLabRed()
         
         return button
     }

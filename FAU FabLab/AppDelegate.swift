@@ -22,8 +22,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.sharedApplication().registerUserNotificationSettings(setting);
         UIApplication.sharedApplication().registerForRemoteNotifications();
         
+        // UI Customization
         // set Global TintColor
         self.window?.tintColor = UIColor.fabLabGreen()
+        
+        // NavBar
+        var navBarAppearance = UINavigationBar.appearance()
+        navBarAppearance.tintColor = UIColor.fabLabGreen()
+        navBarAppearance.barTintColor = UIColor.fabLabBlue()
+        navBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+        
+        // White Icons in StatusBar
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        
         return true
     }
 
