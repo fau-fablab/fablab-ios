@@ -27,10 +27,16 @@ class SettingsViewController : UIViewController{
         settings.updateOrCreate(pushDoorOpensKey, value: pushDoorSwitch.on)
         
         if(pushDoorSwitch.on){
-           
+            RestManager.sharedInstance.makeJsonPostRequest("/push/doorOpensNextTime", params: PushToken.serialize(), onCompletion: {
+                json, err in
+                println("ON")
+            })
            
         }else{
-           
+            RestManager.sharedInstance.makeJsonPutRequest("/push/doorOpensNextTime", params: PushToken.serialize(), onCompletion: {
+                json, err in
+                println("OFF")
+            })
         }
     }
 }

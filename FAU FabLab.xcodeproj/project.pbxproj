@@ -46,7 +46,7 @@
 		923E1F2F1B7AA3F7009CC545 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 923E1F2D1B7AA3F7009CC545 /* CoreDataModel.xcdatamodeld */; };
 		923E1F311B7AA49A009CC545 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E1F301B7AA49A009CC545 /* CoreDataHelper.swift */; };
 		923FFD9A1B8E4916001ACAB1 /* MailAddresses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923FFD991B8E4916001ACAB1 /* MailAddresses.swift */; };
-		923FFD9C1B8E49CE001ACAB1 /* RegistrationId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923FFD9B1B8E49CE001ACAB1 /* RegistrationId.swift */; };
+		923FFD9C1B8E49CE001ACAB1 /* PushToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923FFD9B1B8E49CE001ACAB1 /* PushToken.swift */; };
 		923FFD9E1B8E4BE3001ACAB1 /* Roles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923FFD9D1B8E4BE3001ACAB1 /* Roles.swift */; };
 		923FFDA01B8E4C2D001ACAB1 /* UpdateStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923FFD9F1B8E4C2D001ACAB1 /* UpdateStatus.swift */; };
 		923FFDA21B8E4DA5001ACAB1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923FFDA11B8E4DA5001ACAB1 /* User.swift */; };
@@ -154,7 +154,7 @@
 		923E1F2E1B7AA3F7009CC545 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		923E1F301B7AA49A009CC545 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		923FFD991B8E4916001ACAB1 /* MailAddresses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailAddresses.swift; sourceTree = "<group>"; };
-		923FFD9B1B8E49CE001ACAB1 /* RegistrationId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationId.swift; sourceTree = "<group>"; };
+		923FFD9B1B8E49CE001ACAB1 /* PushToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushToken.swift; sourceTree = "<group>"; };
 		923FFD9D1B8E4BE3001ACAB1 /* Roles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Roles.swift; sourceTree = "<group>"; };
 		923FFD9F1B8E4C2D001ACAB1 /* UpdateStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateStatus.swift; sourceTree = "<group>"; };
 		923FFDA11B8E4DA5001ACAB1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -466,7 +466,7 @@
 				924DBF6A1B8DEBB1000CAFB2 /* ICal.swift */,
 				924DBF741B8DEBF3000CAFB2 /* CartStatus.swift */,
 				923FFD991B8E4916001ACAB1 /* MailAddresses.swift */,
-				923FFD9B1B8E49CE001ACAB1 /* RegistrationId.swift */,
+				923FFD9B1B8E49CE001ACAB1 /* PushToken.swift */,
 				923FFD9D1B8E4BE3001ACAB1 /* Roles.swift */,
 				923FFD9F1B8E4C2D001ACAB1 /* UpdateStatus.swift */,
 				923FFDA11B8E4DA5001ACAB1 /* User.swift */,
@@ -736,7 +736,7 @@
 				923FFDA01B8E4C2D001ACAB1 /* UpdateStatus.swift in Sources */,
 				923FFD9E1B8E4BE3001ACAB1 /* Roles.swift in Sources */,
 				923E1F2C1B7AA360009CC545 /* CartEntry.swift in Sources */,
-				923FFD9C1B8E49CE001ACAB1 /* RegistrationId.swift in Sources */,
+				923FFD9C1B8E49CE001ACAB1 /* PushToken.swift in Sources */,
 				84CDCD3A1B90950C0084D8F3 /* Settings.swift in Sources */,
 				84CDCD381B9094360084D8F3 /* SettingsEntry.swift in Sources */,
 				4804CA5C1B7E4FB200F75BF5 /* ActionSheetPickerDelegate.swift in Sources */,
