@@ -17,6 +17,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorColor = UIColor.fabLabBlueSeperator()
         
         actInd = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
         actInd.center = self.view.center

@@ -67,6 +67,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         //table view
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorColor = UIColor.fabLabBlueSeperator()
         
         //activity indicator
         actInd = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)

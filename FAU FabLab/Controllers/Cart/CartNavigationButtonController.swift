@@ -20,7 +20,7 @@ class CartNavigationButtonController: NSObject {
         var image = UIImage(named: "icon_cart", inBundle: nil, compatibleWithTraitCollection: nil)?
             .imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         button.setImage(image, forState: .Normal)
-        button.tintColor = UIColor.fabLabGreen()
+        button.tintColor = UIColor.fabLabGreenNavBar()
         button.addTarget(self, action: "showCart", forControlEvents: UIControlEvents.TouchUpInside)
         barButtonItem = BBBadgeBarButtonItem(customUIButton: button)
         barButtonItem.badgeOriginX = 13

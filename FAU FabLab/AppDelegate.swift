@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // NavBar
         var navBarAppearance = UINavigationBar.appearance()
-        navBarAppearance.tintColor = UIColor.fabLabGreen()
+        navBarAppearance.tintColor = UIColor.fabLabGreenNavBar()
         navBarAppearance.barTintColor = UIColor.fabLabBlue()
         navBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         

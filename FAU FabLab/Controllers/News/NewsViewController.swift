@@ -16,6 +16,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorColor = UIColor.fabLabBlueSeperator()
 
         actInd = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
         actInd.center = self.view.center
