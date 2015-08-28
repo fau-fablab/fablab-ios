@@ -71,6 +71,20 @@ class RestManager {
         //                println(JSON)
         //        }
     }
+    
+    func makeJsonPutRequest(resource: String, params: NSDictionary?, onCompletion : JsonServiceResponse) {
+        manager.request(.PUT, devApiUrl+resource, parameters: params as? [String : AnyObject], encoding: .JSON)
+            .validate(statusCode: 200..<300)
+            .validate(contentType: ["application/json"])
+            .responseJSON { (req, res, json, error) in
+                Debug.instance.log("PUT: \(self.devApiUrl+resource) JSONAnswer: \(json) StatusCode: \(res!.statusCode)");
+                if(error != nil){
+                    Debug.instance.log(error)
+                }
+                onCompletion(json, error)
+        }
+    }
+    
 
     func makePostRequest(resource: String, params: NSDictionary?, onCompletion : ServiceResponse) {
         manager.request(.POST, devApiUrl + resource, parameters: params as? [String:AnyObject], encoding: .JSON)
