@@ -63,9 +63,9 @@ class ProductsearchCodeScannerViewController: RSCodeReaderViewController {
     }
     
     func alertToEncourageCameraAccessInitially(){
-        var alert = UIAlertController(title: "Achtung", message: "Es wird ein Zugriff auf die Kamera benötigt", preferredStyle: UIAlertControllerStyle.Alert)
+        var alert = UIAlertController(title: "Achtung".localized, message: "Es wird ein Zugriff auf die Kamera benötigt".localized, preferredStyle: UIAlertControllerStyle.Alert)
         
-        alert.addAction(UIAlertAction(title: "Abbrechen", style: .Default){
+        alert.addAction(UIAlertAction(title: "Abbrechen".localized, style: .Default){
             UIAlertAction in
             dispatch_async(dispatch_get_main_queue()) {
                 self.dismissViewControllerAnimated(true, completion:nil)
@@ -73,7 +73,7 @@ class ProductsearchCodeScannerViewController: RSCodeReaderViewController {
         })
 
         
-        alert.addAction(UIAlertAction(title: "Erlauben", style: .Cancel, handler: { (alert) -> Void in
+        alert.addAction(UIAlertAction(title: "Erlauben".localized, style: .Cancel, handler: { (alert) -> Void in
             UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
         }))
         self.presentViewController(alert, animated: true, completion: nil)
@@ -82,9 +82,9 @@ class ProductsearchCodeScannerViewController: RSCodeReaderViewController {
     }
     
     func alertPromptToAllowCameraAccessViaSetting() {
-        var alert = UIAlertController(title: "Achtung", message: "Es wird ein Zugriff auf die Kamera benötigt", preferredStyle: UIAlertControllerStyle.Alert)
+        var alert = UIAlertController(title: "Achtung".localized, message: "Es wird ein Zugriff auf die Kamera benötigt".localized, preferredStyle: UIAlertControllerStyle.Alert)
         
-        alert.addAction(UIAlertAction(title: "Abbrechen", style: .Cancel) { alert in
+        alert.addAction(UIAlertAction(title: "Abbrechen".localized, style: .Cancel) { alert in
            
             if AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo).count > 0 {
                 AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo) { granted in

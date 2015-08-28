@@ -21,7 +21,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
     private func showTotalPrice(){
-        labelTotalPrice.text = String(format: "%.2f€", cartModel.cart.getPrice());
+        labelTotalPrice.text = String(format: "%.2f€".localized, cartModel.cart.getPrice());
     }
     
     override func viewDidLoad() {

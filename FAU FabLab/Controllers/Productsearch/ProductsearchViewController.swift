@@ -29,9 +29,9 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         let cell = tableView.cellForRowAtIndexPath(selectedIndexPath!) as! ProductCustomCell;
         var picker: ActionSheetCustomPicker = ActionSheetCustomPicker()
         var doneButton: UIBarButtonItem = UIBarButtonItem()
-        doneButton.title = "Hinzufügen"
+        doneButton.title = "Hinzufügen".localized
         picker.setDoneButton(doneButton)
-        picker.title = "Menge auswählen"
+        picker.title = "Menge auswählen".localized
         picker.tapDismissAction = TapAction.Cancel
         picker.hideCancel = true
         picker.delegate = ActionSheetPickerDelegate(unit: cell.product.unit!, price: cell.product.price!, didSucceedAction: { (amount: Int) -> Void in CartModel.sharedInstance.addProductToCart(cell.product, amount: Double(amount)); self.cartButtonController.updateBadge() }, didCancelAction: {(Void) -> Void in })

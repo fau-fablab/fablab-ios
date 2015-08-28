@@ -29,31 +29,31 @@ class EventsDetailsViewController : UIViewController {
 
         if event!.startTimeString == event!.endTimeString && event!.isOneDay {
             if event!.isToday {
-                start = "Heute"
+                start = "Heute".localized
             } else {
                 start = event!.startOnlyDateString
             }
             
-            start += " ab " + event!.startTimeString
+            start += " " + "ab".localized + " " + event!.startTimeString
             
             endText.hidden = true
             endDesc.hidden = true
         } else {
             if event!.isToday {
-                start = "Heute - " + event!.startTimeString
+                start = "Heute".localized + " - " + event!.startTimeString
             } else {
                 start = event!.startDateString
             }
             
             if event!.isToday {
-                ende = "Heute - " + event!.endTimeString
+                ende = "Heute".localized + " - " + event!.endTimeString
             } else {
                 ende = event!.endDateString
             }
         }
         
-        start += " Uhr"
-        ende += " Uhr"
+        start += " " + "Uhr".localized
+        ende += " " + "Uhr".localized
         
         startText.text = start
         endText.text = ende
@@ -79,7 +79,7 @@ class EventsDetailsViewController : UIViewController {
     @IBAction func showActionSheet(sender: AnyObject) {
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         
-        let calendarAction = UIAlertAction(title: "In Kalender eintragen", style: .Default, handler: {
+        let calendarAction = UIAlertAction(title: "In Kalender eintragen".localized, style: .Default, handler: {
             (alert: UIAlertAction!) -> Void in
             
             let eventStore = EKEventStore()
@@ -111,7 +111,7 @@ class EventsDetailsViewController : UIViewController {
             })
         })
         
-        let shareAction = UIAlertAction(title: "Teilen", style: .Default, handler: {
+        let shareAction = UIAlertAction(title: "Teilen".localized, style: .Default, handler: {
             (alert: UIAlertAction!) -> Void in
             
             let text = self.event!.summery
@@ -124,14 +124,14 @@ class EventsDetailsViewController : UIViewController {
             }
         })
         
-        let browserAction = UIAlertAction(title: "Im Browser ansehen", style: .Default, handler: {
+        let browserAction = UIAlertAction(title: "Im Browser ansehen".localized, style: .Default, handler: {
             (alert: UIAlertAction!) -> Void in
             if let url = NSURL(string: self.event!.url!) {
                 UIApplication.sharedApplication().openURL(url)
             }
         })
         
-        let cancelAction = UIAlertAction(title: "Abbrechen", style: .Cancel, handler: {
+        let cancelAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: {
             (alert: UIAlertAction!) -> Void in
         })
         
@@ -144,14 +144,14 @@ class EventsDetailsViewController : UIViewController {
     }
     
     func alertOK() {
-        var alert = UIAlertController(title: "Termin erfolgreich dem Kalender hinzugefügt", message: "", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        var alert = UIAlertController(title: "Termin erfolgreich dem Kalender hinzugefügt".localized, message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func alertError() {
-        var alert = UIAlertController(title: "Fehler", message: "Termin konnte nicht dem Kalender hinzugefügt werden", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        var alert = UIAlertController(title: "Fehler".localized, message: "Termin konnte nicht dem Kalender hinzugefügt werden".localized, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
     

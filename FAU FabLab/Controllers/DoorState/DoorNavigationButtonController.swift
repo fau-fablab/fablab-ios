@@ -14,7 +14,7 @@ class DoorNavigationButtonController: NSObject {
     private var buttonText: UIBarButtonItem{
         var title: String
         if(model.hasState){
-            title = (model.isOpen ? "open " : "closed ") + model.lastChangeAsString
+            title = (model.isOpen ? "open".localized+" " : "closed".localized+" ") + model.lastChangeAsString
         }
         else{
             title = ""

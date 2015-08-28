@@ -47,7 +47,7 @@ class NewsDetailsViewController : UIViewController{
     @IBAction func showActionSheet(sender: AnyObject) {
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         
-        let shareAction = UIAlertAction(title: "Teilen", style: .Default, handler: {
+        let shareAction = UIAlertAction(title: "Teilen".localized, style: .Default, handler: {
             (alert: UIAlertAction!) -> Void in
             
             let text = self.title
@@ -60,14 +60,14 @@ class NewsDetailsViewController : UIViewController{
             }
         })
         
-        let browserAction = UIAlertAction(title: "Im Browser ansehen", style: .Default, handler: {
+        let browserAction = UIAlertAction(title: "Im Browser ansehen".localized, style: .Default, handler: {
             (alert: UIAlertAction!) -> Void in
             if let url = NSURL(string: self.linkToNews!) {
                 UIApplication.sharedApplication().openURL(url)
             }
         })
         
-        let cancelAction = UIAlertAction(title: "Abbrechen", style: .Cancel, handler: {
+        let cancelAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: {
             (alert: UIAlertAction!) -> Void in
         })
         

@@ -37,3 +37,24 @@
 
 // ActionSheetPickerDelegate
 "Platten" = "Platten";
+
+// ProductsearchViewController
+"Hinzufügen" = "Hinzufügen";
+
+// EventsViewController
+"ganztägig" = "ganztägig";
+"ab" = "ab";
+"Uhr" = "Uhr";
+"ganztägig bis" = "ganztägig bis";
+
+// EventsDetailsViewController & NewsDetailsViewController
+"In Kalender eintragen" = "In Kalender eintragen";
+"Teilen" = "Teilen";
+"Im Browser ansehen" = "Im Browser ansehen";
+"Termin erfolgreich dem Kalender hinzugefügt" = "Termin erfolgreich dem Kalender hinzugefügt";
+"Termin konnte nicht dem Kalender hinzugefügt werden" = "Termin konnte nicht dem Kalender hinzugefügt werden";
+
+// DoorState
+"open" = "open";
+"closed" = "closed";
+
