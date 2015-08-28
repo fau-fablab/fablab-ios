@@ -51,10 +51,6 @@ class NewsDetailsViewController : UIViewController{
             destination!.configure(title: newsTitle!, image: previewImage.image!)
         }
     }
-    
-    @IBAction func imageTapped(sender: UITapGestureRecognizer) {
-        println("Tapped!!!!")
-    }
 
     @IBAction func showActionSheet(sender: AnyObject) {
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
