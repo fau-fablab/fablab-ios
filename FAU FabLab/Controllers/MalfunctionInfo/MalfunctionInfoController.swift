@@ -144,13 +144,22 @@ class MalfunctionInfoController: UIViewController, UITextViewDelegate, MFMailCom
     
     @IBAction func buttonSelectMachineClicked(sender: AnyObject) {
         model.fetchAllTools { () -> Void in
-            ActionSheetStringPicker.showPickerWithTitle("Betroffenes Gerät".localized, rows: model.getAllNames(), initialSelection: 0,
-                doneBlock: {
-                    picker, value, index in
-                        self.selectedMachine = "\(index)"
-                        return
-                }
-                , cancelBlock: { ActionStringCancelBlock in return }, origin: sender)
+            var picker: ActionSheetStringPicker = ActionSheetStringPicker(title: "Betroffenes Gerät".localized, rows: self.model.getAllNames(), initialSelection: 0, doneBlock: {
+                picker, value, index in
+                self.selectedMachine = "\(index)"
+                return
+                }, cancelBlock: { ActionStringCancelBlock in return }, origin: sender)
+            var doneButton: UIBarButtonItem = UIBarButtonItem()
+            doneButton.title = "Auswählen".localized
+            doneButton.tintColor = UIColor.fabLabGreen()            
+            var cancelButton: UIBarButtonItem = UIBarButtonItem()
+            cancelButton.title = "Abbrechen".localized
+            cancelButton.tintColor = UIColor.fabLabGreen()
+            
+            picker.setDoneButton(doneButton)
+            picker.setCancelButton(cancelButton)
+            picker.tapDismissAction = TapAction.Cancel
+            picker.showActionSheetPicker()
         }
     }
     

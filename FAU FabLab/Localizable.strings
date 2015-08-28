@@ -1,15 +1,16 @@
 
 // Allgemein
-"OK" = "OK";
-"Fehler" = "Fehler";
-"Abgebrochen" = "Abgebrochen";
-"Fehlgeschlagen" = "Fehlgeschlagen";
-"Ändern" = "Ändern";
-"Übernehmen" = "Übernehmen";
-"Löschen" = "Löschen";
-"Achtung" = "Achtung";
 "Abbrechen" = "Abbrechen";
+"Abgebrochen" = "Abgebrochen";
+"Achtung" = "Achtung";
+"Ändern" = "Ändern";
+"Auswählen" = "Auswählen";
 "Erlauben" = "Erlauben";
+"Fehler" = "Fehler";
+"Fehlgeschlagen" = "Fehlgeschlagen";
+"Löschen" = "Löschen";
+"OK" = "OK";
+"Übernehmen" = "Übernehmen";
 
 // StringFormats
 "%.2f€" = "%.2f€";
