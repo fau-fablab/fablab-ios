@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var setting = UIUserNotificationSettings(forTypes: type, categories: nil);
         UIApplication.sharedApplication().registerUserNotificationSettings(setting);
         UIApplication.sharedApplication().registerForRemoteNotifications();
+        
+        // set Global TintColor
+        self.window?.tintColor = UIColor.fabLabGreen()
         return true
     }
 
