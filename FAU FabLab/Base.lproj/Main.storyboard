@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -117,11 +117,15 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                     </textView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="news_nopicture.png" translatesAutoresizingMaskIntoConstraints="NO" id="QSW-LP-qh5">
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="news_nopicture.png" translatesAutoresizingMaskIntoConstraints="NO" id="QSW-LP-qh5">
                                         <rect key="frame" x="0.0" y="20" width="600" height="128"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="rdh-IB-O1N"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="09X-fp-0V6" appends="YES" id="xyv-T7-zg4"/>
+                                        </connections>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -158,8 +162,62 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6TU-I7-Bdc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="09X-fp-0V6">
+                    <connections>
+                        <action selector="imageTapped:" destination="qcq-Tu-HC1" id="Gb6-GC-j7P"/>
+                        <segue destination="VR1-Cn-h2E" kind="show" identifier="NewsImageDetailSegue" id="SPu-Cf-P6z"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3086" y="-344"/>
+        </scene>
+        <!--Image Detail View Controller-->
+        <scene sceneID="AEO-Yf-ty2">
+            <objects>
+                <viewController id="VR1-Cn-h2E" customClass="ImageDetailViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9gP-1T-rl9"/>
+                        <viewControllerLayoutGuide type="bottom" id="N1s-LZ-Mwl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BSc-v5-3OZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" maximumZoomScale="100" translatesAutoresizingMaskIntoConstraints="NO" id="5SZ-cU-0HQ">
+                                <rect key="frame" x="0.0" y="-31" width="600" height="631"/>
+                                <subviews>
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="news_nopicture.png" translatesAutoresizingMaskIntoConstraints="NO" id="N7u-er-6jf">
+                                        <rect key="frame" x="0.0" y="77" width="600" height="464"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="464" id="vge-fQ-omM"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="N7u-er-6jf" firstAttribute="top" secondItem="5SZ-cU-0HQ" secondAttribute="top" constant="77" id="6ol-t5-87A"/>
+                                    <constraint firstItem="N7u-er-6jf" firstAttribute="leading" secondItem="5SZ-cU-0HQ" secondAttribute="leading" id="8GU-16-NPa"/>
+                                    <constraint firstItem="N7u-er-6jf" firstAttribute="centerX" secondItem="5SZ-cU-0HQ" secondAttribute="centerX" id="Bwg-s2-YyN"/>
+                                    <constraint firstAttribute="trailing" secondItem="N7u-er-6jf" secondAttribute="trailing" id="L0R-FS-uJW"/>
+                                    <constraint firstAttribute="bottom" secondItem="N7u-er-6jf" secondAttribute="bottom" constant="90" id="otP-TD-pz2"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5SZ-cU-0HQ" firstAttribute="top" secondItem="BSc-v5-3OZ" secondAttribute="top" constant="-31" id="5BC-qU-Ffg"/>
+                            <constraint firstItem="5SZ-cU-0HQ" firstAttribute="leading" secondItem="BSc-v5-3OZ" secondAttribute="leading" id="8o3-BM-3Tj"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="5SZ-cU-0HQ" secondAttribute="bottom" id="JZv-N3-U2Y"/>
+                            <constraint firstAttribute="trailing" secondItem="5SZ-cU-0HQ" secondAttribute="trailing" id="TCL-Lb-OrM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="N7u-er-6jf" id="hJ6-oa-aNX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BVZ-rd-bIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3953" y="-344"/>
         </scene>
         <!--EventDetail-->
         <scene sceneID="cfy-oJ-ALh">
@@ -753,7 +811,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Gesamtpreis" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTq-8X-d41">
                                 <rect key="frame" x="16" y="518" width="98" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10€" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGp-Ok-z96">
@@ -762,7 +820,7 @@
                                     <constraint firstAttribute="width" constant="285" id="TUP-hp-6XD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="Cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Cw4-Ky-LeW">
@@ -901,7 +959,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNN-lN-rbG">
                                 <rect key="frame" x="16" y="107" width="568" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -1083,13 +1141,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benachrichte mich sobald das Fablab das nächste mal geöffnet wird" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byv-mh-0Vm">
                                 <rect key="frame" x="16" y="164" width="235" height="76"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Benachrichte mich sobald das Fablab das nächste mal geöffnet wird" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEB-2c-aSF">
                                 <rect key="frame" x="16" y="69" width="235" height="76"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

@@ -44,6 +44,18 @@ class NewsDetailsViewController : UIViewController{
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        Debug.instance.log(segue.identifier)
+        if segue.identifier == "NewsImageDetailSegue" {
+            let destination = segue.destinationViewController as? ImageDetailViewController
+            destination!.configure(title: newsTitle!, image: previewImage.image!)
+        }
+    }
+    
+    @IBAction func imageTapped(sender: UITapGestureRecognizer) {
+        println("Tapped!!!!")
+    }
+
     @IBAction func showActionSheet(sender: AnyObject) {
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         

@@ -21,6 +21,7 @@
 		502DB1521B7150370036EF6B /* EventsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502DB1511B7150370036EF6B /* EventsDetailViewController.swift */; };
 		5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1D51B4EFE2A008B41FD /* AppDelegate.swift */; };
 		5060B1EE1B4EFE2A008B41FD /* FAU_FabLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1ED1B4EFE2A008B41FD /* FAU_FabLabTests.swift */; };
+		5067CECB1B90C50300DE8E86 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067CECA1B90C50300DE8E86 /* ImageDetailViewController.swift */; };
 		507493681B5BFE6F0035BEB4 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */; };
 		50DBE9041B6FA93000685B07 /* EventsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */; };
 		50FCFED31B8F872B00B8C487 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50FCFED21B8F872B00B8C487 /* Localizable.strings */; };
@@ -129,6 +130,7 @@
 		5060B1E71B4EFE2A008B41FD /* FAU FabLabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FAU FabLabTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5060B1EC1B4EFE2A008B41FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5060B1ED1B4EFE2A008B41FD /* FAU_FabLabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAU_FabLabTests.swift; sourceTree = "<group>"; };
+		5067CECA1B90C50300DE8E86 /* ImageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
 		507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		507BA38D1B5A7C0300E5DCF3 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCustomCell.swift; sourceTree = "<group>"; };
@@ -553,6 +555,7 @@
 			children = (
 				927901DF1B6D3F6300F95B09 /* NewsDetailsViewController.swift */,
 				927901E01B6D3F6300F95B09 /* NewsViewController.swift */,
+				5067CECA1B90C50300DE8E86 /* ImageDetailViewController.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -744,6 +747,7 @@
 				924DBF6E1B8DEBB1000CAFB2 /* InventoryItem.swift in Sources */,
 				48CC3FFD1B8B6F0600FB9C8E /* CartNavigationButtonController.swift in Sources */,
 				924DBF6C1B8DEBB1000CAFB2 /* DoorState.swift in Sources */,
+				5067CECB1B90C50300DE8E86 /* ImageDetailViewController.swift in Sources */,
 				92078EC01B6E471200A21AD9 /* ProductsearchViewController.swift in Sources */,
 				92078EBD1B6E2D9D00A21AD9 /* ProductsearchModel.swift in Sources */,
 				48CC3FFB1B8B6E2500FB9C8E /* CartViewController.swift in Sources */,
