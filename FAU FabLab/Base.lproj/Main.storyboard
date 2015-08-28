@@ -499,7 +499,7 @@
                         <subviews>
                             <searchBar contentMode="redraw" misplaced="YES" placeholder="Alle Produkte suchen" showsCancelButton="YES" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0kA-u0-HSB">
                                 <rect key="frame" x="0.0" y="64" width="600" height="88"/>
-                                <color key="barTintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="barTintColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>Name</string>

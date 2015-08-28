@@ -105,6 +105,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
             var picker: ActionSheetCustomPicker = ActionSheetCustomPicker()
             var doneButton: UIBarButtonItem = UIBarButtonItem()
             doneButton.title = "Übernehmen".localized
+            doneButton.tintColor = UIColor.fabLabGreen()
             picker.setDoneButton(doneButton)
             picker.title = "Menge auswählen".localized
             picker.tapDismissAction = TapAction.Cancel

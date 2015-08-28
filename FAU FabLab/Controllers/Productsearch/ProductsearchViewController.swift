@@ -30,6 +30,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         var picker: ActionSheetCustomPicker = ActionSheetCustomPicker()
         var doneButton: UIBarButtonItem = UIBarButtonItem()
         doneButton.title = "Hinzufügen".localized
+        doneButton.tintColor = UIColor.fabLabGreen()
         picker.setDoneButton(doneButton)
         picker.title = "Menge auswählen".localized
         picker.tapDismissAction = TapAction.Cancel
