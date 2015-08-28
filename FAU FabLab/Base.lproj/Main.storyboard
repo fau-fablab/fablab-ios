@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -958,11 +958,33 @@
                         <segue destination="wKE-G6-kbN" kind="relationship" relationship="viewControllers" id="383-tC-QT0"/>
                         <segue destination="4Rd-fW-vJI" kind="relationship" relationship="viewControllers" id="Gl7-4z-Zij"/>
                         <segue destination="AgM-Bm-SWQ" kind="relationship" relationship="viewControllers" id="xuI-O4-Vb9"/>
+                        <segue destination="4gd-6i-P19" kind="relationship" relationship="viewControllers" id="BTQ-EO-VLL"/>
+                        <segue destination="Ovu-64-Y3w" kind="relationship" relationship="viewControllers" id="5qP-gi-oTe"/>
+                        <segue destination="RIZ-mv-nfx" kind="relationship" relationship="viewControllers" id="uVm-jr-cF0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--Über-->
+        <scene sceneID="CTB-ko-KIa">
+            <objects>
+                <viewController id="RIZ-mv-nfx" customClass="AboutViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Npf-og-RBM"/>
+                        <viewControllerLayoutGuide type="bottom" id="hWm-kI-ETY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="da3-Q4-jO1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Über" id="Hae-zG-sN4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W5l-zo-8Ja" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1098" y="-3117"/>
         </scene>
         <!--News-->
         <scene sceneID="PjO-4O-WFa">
@@ -1020,6 +1042,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pmy-xw-jDH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-494" y="768"/>
+        </scene>
+        <!--Inventur-->
+        <scene sceneID="iN3-E4-FrV">
+            <objects>
+                <viewController id="Ovu-64-Y3w" customClass="InventoryViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9tI-nj-tDq"/>
+                        <viewControllerLayoutGuide type="bottom" id="5Sd-0M-Iuz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aFf-MH-tLV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Inventur" id="mCe-bc-pqt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NSq-Yc-KZR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1105" y="-2450"/>
+        </scene>
+        <!--Einstellungen-->
+        <scene sceneID="iRi-M9-lvb">
+            <objects>
+                <viewController id="4gd-6i-P19" customClass="SettingsViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XTm-GY-UVg"/>
+                        <viewControllerLayoutGuide type="bottom" id="KFL-p9-DL4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4SC-Nd-iKj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Einstellungen" id="Jvy-hp-vXu"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uqO-1M-YXP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1110" y="-1771"/>
         </scene>
         <!--Störmeldung-->
         <scene sceneID="EG7-Jv-DTa">
