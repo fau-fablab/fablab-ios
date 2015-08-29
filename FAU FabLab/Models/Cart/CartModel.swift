@@ -19,6 +19,10 @@ class CartModel : NSObject{
         cart.removeEntry(index)
     }
     
+    func removeAllProductsFromCart() {
+        cart.removeAllEntries()
+    }
+    
     func updateProductInCart(index : Int, amount: Double) {
         cart.updateEntry(index, amount: amount)
     }
@@ -101,9 +105,8 @@ class CartModel : NSObject{
     
     func checkoutSuccessfulyPaid(){
         self.notifyControllerAboutStatusChange()
-        
-        //TODO
-        //Put to archive or just delete all items/ stati?
+        self.removeAllProductsFromCart()
+        CartNavigationButtonController.sharedInstance.updateBadge()
         cart = Cart()
     }
     

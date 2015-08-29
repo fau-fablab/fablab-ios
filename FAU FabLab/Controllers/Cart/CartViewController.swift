@@ -31,6 +31,11 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         showTotalPrice()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
+        showTotalPrice()
+    }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }

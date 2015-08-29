@@ -107,6 +107,15 @@ class Cart : NSObject{
         saveCoreData()
     }
     
+    func removeAllEntries() {
+        for entry in entries {
+            managedObjectContext.deleteObject(entry)
+        }
+        saveCoreData()
+        Debug.instance.log(getCount())
+        Debug.instance.log(entries)
+    }
+    
     /*                      Checkout process            */
     func setCode(code :String){
         self.cartCode = code
