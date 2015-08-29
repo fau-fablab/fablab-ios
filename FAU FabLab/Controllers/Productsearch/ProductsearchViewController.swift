@@ -221,8 +221,15 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     
     func searchByBarcodeScanner(notification:NSNotification) {
         Debug.instance.log("Got Notification from Barcodescanner, productId: \(notification.object)")
+        self.searchBar.resignFirstResponder()
+        self.searchBar.userInteractionEnabled = false;
+        self.sections.removeAll(keepCapacity: false);
+        self.tableView.reloadData();
+        self.actInd.startAnimating()
         model.searchProductById(notification.object as! String, onCompletion: { err in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.searchBar.userInteractionEnabled = true;
+                self.actInd.stopAnimating();
                 self.setTableViewBackground()
                 if(self.sortedByName) {
                     self.sortProductsByName()
