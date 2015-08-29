@@ -11,14 +11,14 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Copyright (c) 2015 FAU MAD FabLab-Team Licensed under the Apache License, Version 2.0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
-                    <rect key="frame" x="79" y="420" width="323" height="37"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright (c) 2015 FAU MAD FabLab-Team" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
+                    <rect key="frame" x="0.0" y="420" width="480" height="22"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fablab_logo_white.png" translatesAutoresizingMaskIntoConstraints="NO" id="fhB-A6-UfW">
-                    <rect key="frame" x="15" y="8" width="450" height="90"/>
+                    <rect key="frame" x="15" y="15" width="450" height="90"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="fhB-A6-UfW" secondAttribute="height" multiplier="5:1" id="oy5-L9-REf"/>
                     </constraints>
@@ -29,18 +29,29 @@
                         <constraint firstAttribute="width" secondItem="all-53-5iM" secondAttribute="height" multiplier="1:1" id="sOS-l9-AiV"/>
                     </constraints>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Licensed under the Apache License, Version 2.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eqw-18-LHn">
+                    <rect key="frame" x="0.0" y="439" width="480" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.047058823529411764" green="0.23137254901960785" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="fhB-A6-UfW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="7gN-7N-7Au"/>
-                <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="79" id="DPX-uJ-a0m"/>
+                <constraint firstItem="fhB-A6-UfW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="2do-rL-FAg"/>
+                <constraint firstItem="Eqw-18-LHn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="LmJ-Ha-3t0"/>
                 <constraint firstAttribute="trailing" secondItem="fhB-A6-UfW" secondAttribute="trailing" constant="15" id="ZDL-bd-lem"/>
                 <constraint firstItem="fhB-A6-UfW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="b03-jm-tTq"/>
                 <constraint firstAttribute="centerX" secondItem="all-53-5iM" secondAttribute="centerX" id="bla-WD-dDa"/>
-                <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="23" id="dNn-Ga-ou2"/>
+                <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="38" id="cVe-Ar-LVr"/>
+                <constraint firstItem="Eqw-18-LHn" firstAttribute="top" secondItem="all-53-5iM" secondAttribute="bottom" constant="99" id="dd9-0K-OUn"/>
+                <constraint firstItem="8ie-xW-0ye" firstAttribute="top" secondItem="all-53-5iM" secondAttribute="bottom" constant="80" id="eC3-3d-hKO"/>
+                <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="Eqw-18-LHn" secondAttribute="leading" id="iQT-v8-OSo"/>
+                <constraint firstItem="Eqw-18-LHn" firstAttribute="centerX" secondItem="all-53-5iM" secondAttribute="centerX" id="p9h-J9-qnR"/>
+                <constraint firstAttribute="bottom" secondItem="Eqw-18-LHn" secondAttribute="bottom" constant="20" id="s3o-qa-lXJ"/>
+                <constraint firstItem="8ie-xW-0ye" firstAttribute="trailing" secondItem="Eqw-18-LHn" secondAttribute="trailing" id="xfZ-6C-syq"/>
                 <constraint firstItem="all-53-5iM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="140" id="y57-Go-J0h"/>
                 <constraint firstAttribute="centerY" secondItem="all-53-5iM" secondAttribute="centerY" id="yIA-bu-Ff6"/>
-                <constraint firstItem="fhB-A6-UfW" firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="yWj-k4-GYm"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
