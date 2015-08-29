@@ -23,6 +23,8 @@
 		5060B1EE1B4EFE2A008B41FD /* FAU_FabLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1ED1B4EFE2A008B41FD /* FAU_FabLabTests.swift */; };
 		5067CECB1B90C50300DE8E86 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067CECA1B90C50300DE8E86 /* ImageDetailViewController.swift */; };
 		507493681B5BFE6F0035BEB4 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */; };
+		50D9F3C41B91C52F00FB0234 /* fab_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 50D9F3C31B91C52F00FB0234 /* fab_icon.png */; };
+		50D9F3C61B91C6C400FB0234 /* fablab_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 50D9F3C51B91C6C400FB0234 /* fablab_logo_white.png */; };
 		50DBE9041B6FA93000685B07 /* EventsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */; };
 		50FCFED31B8F872B00B8C487 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50FCFED21B8F872B00B8C487 /* Localizable.strings */; };
 		50FCFED51B8F8B5200B8C487 /* FabColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FCFED41B8F8B5200B8C487 /* FabColors.swift */; };
@@ -133,6 +135,8 @@
 		5067CECA1B90C50300DE8E86 /* ImageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
 		507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		507BA38D1B5A7C0300E5DCF3 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		50D9F3C31B91C52F00FB0234 /* fab_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fab_icon.png; sourceTree = "<group>"; };
+		50D9F3C51B91C6C400FB0234 /* fablab_logo_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fablab_logo_white.png; sourceTree = "<group>"; };
 		50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCustomCell.swift; sourceTree = "<group>"; };
 		50FCFED21B8F872B00B8C487 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		50FCFED41B8F8B5200B8C487 /* FabColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FabColors.swift; sourceTree = "<group>"; };
@@ -510,6 +514,8 @@
 		927901C01B6D3AE400F95B09 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				50D9F3C31B91C52F00FB0234 /* fab_icon.png */,
+				50D9F3C51B91C6C400FB0234 /* fablab_logo_white.png */,
 				84F53FF11B7419E7008FB605 /* checkout.png */,
 				927901C11B6D3AF300F95B09 /* news_nopicture.png */,
 			);
@@ -677,6 +683,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50D9F3C61B91C6C400FB0234 /* fablab_logo_white.png in Resources */,
+				50D9F3C41B91C52F00FB0234 /* fab_icon.png in Resources */,
 				92F04A331B87D92F00C2ED81 /* Main.storyboard in Resources */,
 				92F04A321B87D92100C2ED81 /* LaunchScreen.xib in Resources */,
 				92F04A2F1B87D87C00C2ED81 /* ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer in Resources */,

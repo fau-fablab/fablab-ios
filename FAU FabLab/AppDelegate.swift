@@ -32,9 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navBarAppearance.barTintColor = UIColor.fabLabBlue()
         navBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         
-        // White Icons in StatusBar
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
-        
         return true
     }
 
