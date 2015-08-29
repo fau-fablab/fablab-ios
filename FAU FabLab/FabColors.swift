@@ -11,8 +11,8 @@ extension UIColor {
     }
     
     @objc class func fabLabGreen() -> UIColor {
-        //return UIColor(red: 0.00, green: 0.59, blue: 0.42, alpha: 1.0)
-        return UIColor(red: 0.00, green: 0.48, blue: 0.34, alpha: 1.0)
+        //return UIColor(red: 0.00, green: 0.59, blue: 0.42, alpha: 1.0) //original
+        return fabLabGreenNavBar()
     }
     
     @objc class func fabLabGreenNavBar() -> UIColor {
