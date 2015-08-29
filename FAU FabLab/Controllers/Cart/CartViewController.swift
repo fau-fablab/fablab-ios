@@ -5,12 +5,12 @@ import CoreActionSheetPicker
 
 class CartViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
     
-    
-    @IBOutlet weak var checkoutButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
-   
     @IBOutlet var labelTotalPrice: UILabel!
-    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
+    private var checkoutButton : UIBarButtonItem {
+        return self.navigationItem.rightBarButtonItem!
+    }
     private var cartModel = CartModel.sharedInstance
     private var cartEntryCellIdentifier = "CartEntryCustomCell"
     
@@ -33,7 +33,16 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewWillAppear(animated: Bool) {
         tableView.reloadData()
+        refreshCheckoutButton()
         showTotalPrice()
+    }
+    
+    func refreshCheckoutButton() {
+        if (cartModel.getNumberOfProductsInCart() > 0) {
+            checkoutButton.enabled = true
+        } else {
+            checkoutButton.enabled = false
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -128,6 +137,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
             CartModel.sharedInstance.removeProductFromCart(indexPath.row)
             CartNavigationButtonController.sharedInstance.updateBadge()
             tableView.reloadData()
+            self.refreshCheckoutButton()
             self.showTotalPrice()
         }
         return [editAction, deleteAction]
