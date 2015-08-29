@@ -135,7 +135,7 @@ class Cart : NSObject{
             "items": items,
             "status": status.rawValue,
             "pushToken" : PushToken.token,
-            "platformType" : PushToken.platformType
+            "platformType" : PlatformType.APPLE.rawValue
         ]
         Debug.instance.log("Serialized cart is \n \(cart)")
         return cart
