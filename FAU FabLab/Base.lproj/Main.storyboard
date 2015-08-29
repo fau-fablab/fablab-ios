@@ -619,6 +619,9 @@
                                                             <state key="normal" title="Ausgegangenes Produkt melden">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="buttonReportOutOfStockPressed:" destination="YOP-IL-BaU" eventType="touchUpInside" id="rJV-cF-0zX"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvd-Ek-GWb">
                                                             <rect key="frame" x="0.0" y="51" width="576" height="30"/>

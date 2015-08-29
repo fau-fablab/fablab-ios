@@ -1,6 +1,7 @@
 import UIKit
 import Foundation
 import CoreActionSheetPicker
+import MessageUI
 
 class ProductsearchViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
@@ -10,6 +11,10 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     
     private var selectedIndexPath: NSIndexPath?
     private var model = ProductsearchModel()
+    private let modelOutOfStock = MalfunctionInfoModel()
+    
+    private var selectedProduct: Product?
+
     private var searchActive = false;
     private var sortedByName = true;
     private var productCellIdentifier = "ProductCustomCell"
@@ -30,10 +35,24 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         label.alpha = 0.5
         return label
     }
-
-
-
     
+    private var emailBody: String{
+        return "<b>Produkt ID :</b> </br>"
+                        + "\(selectedProduct?.productId!)</br> </br> <b>Produkt Name :</b> </br> \(selectedProduct?.name!)"
+                        + "</br></br> Gesendet mit der Fablab-iOS App"
+    }
+    
+    @IBAction func buttonReportOutOfStockPressed(sender: AnyObject) {
+        
+        var picker = MFMailComposeViewController()
+        picker.mailComposeDelegate = self
+        picker.setToRecipients([modelOutOfStock.fablabMail!])
+        picker.setSubject("Meldung über ausgegangenes Produkt".localized)
+        picker.setMessageBody(emailBody, isHTML: true)
+        
+        presentViewController(picker, animated: true, completion: nil)
+    }
+
     @IBAction func buttonAddToCartPressed(sender: AnyObject) {
         let cell = tableView.cellForRowAtIndexPath(selectedIndexPath!) as! ProductCustomCell;
         var picker: ActionSheetCustomPicker = ActionSheetCustomPicker()
@@ -47,6 +66,8 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         picker.delegate = ActionSheetPickerDelegate(unit: cell.product.unit!, price: cell.product.price!, didSucceedAction: { (amount: Int) -> Void in CartModel.sharedInstance.addProductToCart(cell.product, amount: Double(amount)); self.cartButtonController.updateBadge() }, didCancelAction: {(Void) -> Void in })
         picker.showActionSheetPicker()
     }
+    
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         Debug.instance.log(segue.identifier)
@@ -326,6 +347,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
             tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Automatic)
         }
         tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+        selectedProduct = model.getProduct(indexPath.row)
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -387,6 +409,28 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         sections.append(products)
         
         self.tableView.reloadData();
+    }
+}
+
+extension ProductsearchViewController : MFMailComposeViewControllerDelegate{
+    
+    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+        dismissViewControllerAnimated(true, completion: nil)
+        switch result.value{
+        case MFMailComposeResultCancelled.value:
+            var alert = UIAlertController(title: "Abgebrochen".localized, message: "Meldung wurde nicht versendet!".localized, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        case MFMailComposeResultSent.value:
+            var alert = UIAlertController(title: "Versendet".localized, message: "Ausgegangenes Produkt wurde gemeldet!".localized, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        default:
+            //TODO
+            Debug.instance.log("Default")
+        }
     }
     
 }
