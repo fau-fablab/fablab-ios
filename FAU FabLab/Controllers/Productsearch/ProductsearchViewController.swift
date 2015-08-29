@@ -21,6 +21,15 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     private var autocompleteSuggestions = [String]()
     private var autocompleteTableView: UITableView!
     private var autocompleteTableViewConstraint : NSLayoutConstraint!
+    //table view background
+    private var backgroundView: UILabel {
+        var label = UILabel()
+        label.center = view.center
+        label.textAlignment = NSTextAlignment.Center
+        label.text = "Keine Produkte gefunden".localized
+        label.alpha = 0.5
+        return label
+    }
 
 
 
@@ -200,6 +209,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.searchBar.userInteractionEnabled = true;
                 self.actInd.stopAnimating();
+                self.setTableViewBackground()
                 if(self.sortedByName) {
                     self.sortProductsByName()
                 } else {
@@ -211,18 +221,16 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     
     func searchByBarcodeScanner(notification:NSNotification) {
         Debug.instance.log("Got Notification from Barcodescanner, productId: \(notification.object)")
-        
-        
-            model.searchProductById(notification.object as! String, onCompletion: { err in
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                   
-                    if(self.sortedByName) {
-                        self.sortProductsByName()
-                    } else {
-                        self.sortProductsByPrice()
-                    }
-                })
+        model.searchProductById(notification.object as! String, onCompletion: { err in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.setTableViewBackground()
+                if(self.sortedByName) {
+                    self.sortProductsByName()
+                } else {
+                    self.sortProductsByPrice()
+                }
             })
+        })
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -323,6 +331,17 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         }
     }
     
+    private func setTableViewBackground() {
+        if (model.getCount() > 0) {
+            //prodcuts available
+            tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+            tableView.backgroundView = nil
+        } else {
+            //no products available
+            tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+            tableView.backgroundView = backgroundView
+        }
+    }
 
     private func sortProductsByName(){
         
