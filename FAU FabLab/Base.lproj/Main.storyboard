@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -497,7 +497,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="dummyPayButtonTouched:" destination="xHV-4v-R4N" eventType="touchUpInside" id="5HO-HX-pFV"/>
+                                                    <action selector="payButtonTouched:" destination="xHV-4v-R4N" eventType="touchUpInside" id="reG-e6-c9s"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -537,6 +537,7 @@
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="yhg-v3-FHy" id="0vj-j4-Zje"/>
+                        <outlet property="payButton" destination="jfr-h5-Cl6" id="lb4-wd-H3I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BgR-fc-JMh" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -3,6 +3,7 @@ import UIKit
 
 class PayOrCancelViewController : UIViewController{
     
+    @IBOutlet weak var payButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
      override func viewDidLoad() {
@@ -17,6 +18,11 @@ class PayOrCancelViewController : UIViewController{
     @IBAction func cancelButtonTouched(sender: AnyObject) {
         cancelButton.enabled = false
         CartModel.sharedInstance.cancelCheckoutProcessByUser()
+    }
+    
+    @IBAction func payButtonTouched(sender: AnyObject) {
+        payButton.enabled = false
+        CartModel.sharedInstance.payCheckoutProcessByUser()
     }
     
 }

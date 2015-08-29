@@ -61,6 +61,17 @@ class CartModel : NSObject{
         }
     }
     
+    func payCheckoutProcessByUser()  {
+        let code = cart.cartCode as String!
+        if(!isLoading){
+            isLoading = true
+            RestManager.sharedInstance.makePostRequest(checkoutResource + "/paid/\(code)" , params: nil, onCompletion:  {
+                json, err in
+            })
+            isLoading = false
+        }
+    }
+    
     func checkCheckoutStatus(timer: NSTimer!){
         let code = cart.cartCode as String!
         RestManager.sharedInstance.makeJsonGetRequest(cartResource + "/status/\(code)", params: nil, onCompletion: {
