@@ -32,6 +32,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navBarAppearance.barTintColor = UIColor.fabLabBlue()
         navBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         
+        // TableViewCell
+        var selectedBackground = UIView()
+        selectedBackground.backgroundColor = UIColor.fabLabGreen().colorWithAlphaComponent(0.1)
+        UITableViewCell.appearance().selectedBackgroundView = selectedBackground
+        
         return true
     }
 
