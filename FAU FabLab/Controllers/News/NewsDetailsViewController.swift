@@ -35,7 +35,7 @@ class NewsDetailsViewController : UIViewController{
         if (newsImageLink != nil){
             previewImage.kf_setImageWithURL(NSURL(string: newsImageLink!)!, placeholderImage: nil)
         } else {
-            previewImage.image = UIImage(named:"news_nopicture.png")
+            previewImage.image = UIImage(named:"fab_icon.png")
         }
     }
 
