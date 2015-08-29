@@ -164,6 +164,7 @@ class MalfunctionInfoController: UIViewController, UITextViewDelegate, MFMailCom
     @IBAction func buttonSendMailClicked(sender: AnyObject) {
         var picker = MFMailComposeViewController()
         picker.mailComposeDelegate = self
+        picker.navigationBar.tintColor = UIColor.fabLabGreen()
         picker.setToRecipients([model.fablabMail!])
         picker.setSubject("Störungsmeldung".localized)
         picker.setMessageBody(emailBody, isHTML: true)

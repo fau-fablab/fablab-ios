@@ -46,6 +46,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         
         var picker = MFMailComposeViewController()
         picker.mailComposeDelegate = self
+        picker.navigationBar.tintColor = UIColor.fabLabGreen()
         picker.setToRecipients([modelOutOfStock.fablabMail!])
         picker.setSubject("Bestandsmeldung".localized)
         picker.setMessageBody(emailBody, isHTML: true)
