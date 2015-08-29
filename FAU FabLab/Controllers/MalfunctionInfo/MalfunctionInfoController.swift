@@ -13,7 +13,6 @@ class MalfunctionInfoController: UIViewController, UITextViewDelegate, MFMailCom
     
     private let model = MalfunctionInfoModel()
     private let placeholderText = "Bitte hier eine kurze Fehlerbeschreibung eintragen".localized
-    private let doorButtonController = DoorNavigationButtonController.sharedInstance
     private let cartButtonController = CartNavigationButtonController.sharedInstance
     
     var selectedMachine: String = ""{
@@ -51,7 +50,6 @@ class MalfunctionInfoController: UIViewController, UITextViewDelegate, MFMailCom
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        doorButtonController.setViewController(self)
         cartButtonController.setViewController(self)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeTextFieldOnKeyboardChange:", name: UIKeyboardWillShowNotification, object: nil)

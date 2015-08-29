@@ -984,9 +984,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Störmeldung" id="I1W-OB-LoK">
-                        <barButtonItem key="leftBarButtonItem" image="icon_door_closed" id="SWe-ol-Jdh">
-                            <color key="tintColor" red="0.80437184340000001" green="0.0" blue="0.10446213679999999" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="icon_cart" id="TEz-v1-FYo"/>
                     </navigationItem>
                     <connections>
