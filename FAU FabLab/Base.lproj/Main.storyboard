@@ -1039,7 +1039,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Über" id="Hae-zG-sN4"/>
+                    <tabBarItem key="tabBarItem" title="Über" image="icon_about" id="Hae-zG-sN4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5l-zo-8Ja" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1115,7 +1115,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Inventur" id="mCe-bc-pqt"/>
+                    <tabBarItem key="tabBarItem" title="Inventur" image="icon_inventory" id="mCe-bc-pqt"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NSq-Yc-KZR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1159,7 +1159,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Einstellungen" id="Jvy-hp-vXu"/>
+                    <tabBarItem key="tabBarItem" title="Einstellungen" image="icon_settings" id="Jvy-hp-vXu"/>
                     <connections>
                         <outlet property="pushDoorSwitch" destination="C0l-Th-dcQ" id="kT6-Sg-toW"/>
                     </connections>
@@ -1192,11 +1192,14 @@
         <image name="BarcodeScannerIcon" width="25" height="25"/>
         <image name="checkout.png" width="447" height="690"/>
         <image name="first" width="30" height="30"/>
+        <image name="icon_about" width="25" height="25"/>
         <image name="icon_cart" width="25" height="25"/>
         <image name="icon_door_closed" width="25" height="25"/>
         <image name="icon_events" width="25" height="25"/>
+        <image name="icon_inventory" width="25" height="25"/>
         <image name="icon_news" width="25" height="25"/>
         <image name="icon_search" width="25" height="25"/>
+        <image name="icon_settings" width="25" height="25"/>
         <image name="icon_warning" width="25" height="25"/>
         <image name="news_nopicture.png" width="500" height="500"/>
     </resources>
