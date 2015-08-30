@@ -126,7 +126,8 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cartEntryCellIdentifier) as? CartEntryCustomCell
         let cartEntry = cartModel.cart.getEntry(indexPath.row)
-        cell!.configure(cartEntry.product.name, unit: "\(Int(cartEntry.amount)) \(cartEntry.product.unit)", price: cartEntry.product.price * cartEntry.amount)
+        var amountValue = (cartEntry.product.rounding % 1 == 0) ? "\(Int(cartEntry.amount))" : "\(cartEntry.amount)"
+        cell!.configure(cartEntry.product.name, unit: "\(amountValue) \(cartEntry.product.unit)", price: cartEntry.product.price * cartEntry.amount)
         cell!.selectionStyle = UITableViewCellSelectionStyle.None
         
         if(cartEntry.product.locationStringForMap == noLocationSetIdentifier){
