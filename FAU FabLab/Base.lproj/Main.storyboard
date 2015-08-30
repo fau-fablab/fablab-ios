@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -1029,19 +1029,79 @@
         <!--Über-->
         <scene sceneID="CTB-ko-KIa">
             <objects>
-                <viewController id="RIZ-mv-nfx" customClass="AboutViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Npf-og-RBM"/>
-                        <viewControllerLayoutGuide type="bottom" id="hWm-kI-ETY"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="da3-Q4-jO1">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Über" image="icon_about" id="Hae-zG-sN4"/>
-                </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5l-zo-8Ja" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController title="Über" id="RIZ-mv-nfx" customClass="AboutViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="79" sectionHeaderHeight="22" sectionFooterHeight="22" id="yGg-Gy-gsw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AboutCustomCell" rowHeight="79" id="eR8-aK-w8b" customClass="AboutCustomCell" customModule="FAU_FabLab" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eR8-aK-w8b" id="Fkh-C2-i3G">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOG-za-BqH">
+                                            <rect key="frame" x="8" y="11" width="584" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Text" translatesAutoresizingMaskIntoConstraints="NO" id="AAC-2f-4Z4">
+                                            <rect key="frame" x="8" y="35" width="584" height="35"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                        </textView>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="expand_more" translatesAutoresizingMaskIntoConstraints="NO" id="a88-NO-MFN">
+                                            <rect key="frame" x="568" y="9" width="24" height="24"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="AAC-2f-4Z4" firstAttribute="top" secondItem="gOG-za-BqH" secondAttribute="bottom" constant="3" id="398-iV-Qe0"/>
+                                        <constraint firstItem="gOG-za-BqH" firstAttribute="trailing" secondItem="Fkh-C2-i3G" secondAttribute="trailingMargin" id="3Yt-Co-DGB"/>
+                                        <constraint firstItem="gOG-za-BqH" firstAttribute="leading" secondItem="Fkh-C2-i3G" secondAttribute="leadingMargin" id="7gB-4l-ezf"/>
+                                        <constraint firstItem="gOG-za-BqH" firstAttribute="trailing" secondItem="Fkh-C2-i3G" secondAttribute="trailingMargin" id="8f4-Be-d70"/>
+                                        <constraint firstItem="a88-NO-MFN" firstAttribute="trailing" secondItem="Fkh-C2-i3G" secondAttribute="trailingMargin" id="9uk-Pl-A1G"/>
+                                        <constraint firstItem="AAC-2f-4Z4" firstAttribute="top" secondItem="gOG-za-BqH" secondAttribute="bottom" id="Gze-Ff-Tq4"/>
+                                        <constraint firstItem="gOG-za-BqH" firstAttribute="leading" secondItem="Fkh-C2-i3G" secondAttribute="leadingMargin" id="KoF-T8-lRe"/>
+                                        <constraint firstItem="AAC-2f-4Z4" firstAttribute="trailing" secondItem="Fkh-C2-i3G" secondAttribute="trailingMargin" id="Ndf-en-ZgP"/>
+                                        <constraint firstItem="gOG-za-BqH" firstAttribute="top" secondItem="Fkh-C2-i3G" secondAttribute="topMargin" constant="3" id="QYL-XX-enV"/>
+                                        <constraint firstItem="AAC-2f-4Z4" firstAttribute="bottom" secondItem="Fkh-C2-i3G" secondAttribute="bottomMargin" id="QqR-rg-XKe"/>
+                                        <constraint firstItem="AAC-2f-4Z4" firstAttribute="leading" secondItem="Fkh-C2-i3G" secondAttribute="leadingMargin" id="SQn-Xx-KfS"/>
+                                        <constraint firstItem="gOG-za-BqH" firstAttribute="top" secondItem="Fkh-C2-i3G" secondAttribute="topMargin" id="UDU-jN-dkp"/>
+                                        <constraint firstItem="AAC-2f-4Z4" firstAttribute="top" relation="greaterThanOrEqual" secondItem="a88-NO-MFN" secondAttribute="bottom" id="V7p-sX-fyr"/>
+                                        <constraint firstItem="a88-NO-MFN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Fkh-C2-i3G" secondAttribute="leadingMargin" id="ePR-38-1sk"/>
+                                        <constraint firstItem="a88-NO-MFN" firstAttribute="top" secondItem="Fkh-C2-i3G" secondAttribute="topMargin" constant="1" id="kfH-nA-RIh"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="8f4-Be-d70"/>
+                                            <exclude reference="KoF-T8-lRe"/>
+                                            <exclude reference="UDU-jN-dkp"/>
+                                            <exclude reference="Gze-Ff-Tq4"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="expandView" destination="a88-NO-MFN" id="Wow-ND-2hN"/>
+                                    <outlet property="textView" destination="AAC-2f-4Z4" id="XFg-Sf-vv7"/>
+                                    <outlet property="titleView" destination="gOG-za-BqH" id="XN6-en-gFd"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="RIZ-mv-nfx" id="Y4U-gs-7wo"/>
+                            <outlet property="delegate" destination="RIZ-mv-nfx" id="Aqw-Db-UYg"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Über" image="icon_about" id="Hae-zG-sN4"/>
+                    <connections>
+                        <outlet property="tableView" destination="yGg-Gy-gsw" id="Y1r-sk-Q9F"/>
+                    </connections>
+                </viewController>
             </objects>
             <point key="canvasLocation" x="1098" y="-3117"/>
         </scene>
@@ -1191,6 +1251,7 @@
     <resources>
         <image name="BarcodeScannerIcon" width="25" height="25"/>
         <image name="checkout.png" width="447" height="690"/>
+        <image name="expand_more" width="24" height="24"/>
         <image name="first" width="30" height="30"/>
         <image name="icon_about" width="25" height="25"/>
         <image name="icon_cart" width="25" height="25"/>

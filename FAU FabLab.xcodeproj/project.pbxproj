@@ -10,6 +10,7 @@
 		35CE1DD759134EC89DBD0D29 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE11C7BEE60991B0702A2A /* Debug.swift */; };
 		35CE1E13F0E8E25DBCE8E9C9 /* DoorStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE1698E311B04F89744CDB /* DoorStateModel.swift */; };
 		4804CA5C1B7E4FB200F75BF5 /* ActionSheetPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4804CA5B1B7E4FB200F75BF5 /* ActionSheetPickerDelegate.swift */; };
+		48545B2D1B92F6D0006F690F /* AboutCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48545B2C1B92F6D0006F690F /* AboutCustomCell.swift */; };
 		4880CD321B7CC4470025C38A /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4880CD311B7CC4470025C38A /* CoreActionSheetPicker.framework */; };
 		489316451B831E3900DCB6BB /* AutocompleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489316441B831E3900DCB6BB /* AutocompleteModel.swift */; };
 		4893164D1B8367EF00DCB6BB /* CartEntryCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4893164C1B8367EF00DCB6BB /* CartEntryCustomCell.swift */; };
@@ -112,6 +113,7 @@
 		35CE11C7BEE60991B0702A2A /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		35CE1698E311B04F89744CDB /* DoorStateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoorStateModel.swift; sourceTree = "<group>"; };
 		4804CA5B1B7E4FB200F75BF5 /* ActionSheetPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetPickerDelegate.swift; sourceTree = "<group>"; };
+		48545B2C1B92F6D0006F690F /* AboutCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCustomCell.swift; sourceTree = "<group>"; };
 		4880CD311B7CC4470025C38A /* CoreActionSheetPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreActionSheetPicker.framework; path = Carthage/Build/iOS/CoreActionSheetPicker.framework; sourceTree = "<group>"; };
 		489316441B831E3900DCB6BB /* AutocompleteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteModel.swift; sourceTree = "<group>"; };
 		4893164C1B8367EF00DCB6BB /* CartEntryCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartEntryCustomCell.swift; sourceTree = "<group>"; };
@@ -552,6 +554,7 @@
 				50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */,
 				489E4C741B79E093004A60FA /* ProductCustomCell.swift */,
 				4893164C1B8367EF00DCB6BB /* CartEntryCustomCell.swift */,
+				48545B2C1B92F6D0006F690F /* AboutCustomCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -740,6 +743,7 @@
 				48CC3FF91B8B6E0900FB9C8E /* BBBadgeBarButtonItem.m in Sources */,
 				924DBF721B8DEBB1000CAFB2 /* Uom.swift in Sources */,
 				8419B6101B6F6050000275A8 /* CheckoutCodeScannerViewController.swift in Sources */,
+				48545B2D1B92F6D0006F690F /* AboutCustomCell.swift in Sources */,
 				927901E11B6D3F6300F95B09 /* NewsDetailsViewController.swift in Sources */,
 				5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */,
 				923E1F311B7AA49A009CC545 /* CoreDataHelper.swift in Sources */,
