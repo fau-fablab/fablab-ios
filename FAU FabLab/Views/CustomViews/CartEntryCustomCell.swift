@@ -7,6 +7,7 @@ public class CartEntryCustomCell: UITableViewCell {
     @IBOutlet var price: UILabel!
     @IBOutlet var unit: UILabel!
     
+    @IBOutlet weak var showProdctLocationButton: UIButton!
     @IBOutlet var expandedView: UIView!
     @IBOutlet var buttonAddToCart: UIView!
     @IBOutlet var buttonShowLocation: UIView!
@@ -57,6 +58,13 @@ public class CartEntryCustomCell: UITableViewCell {
         self.unit.text = unit;
     }
     
+    func disableProdctLocationButton(){
+        showProdctLocationButton.enabled = false
+    }
+    
+    func enableProdctLocationButton(){
+        showProdctLocationButton.enabled = true
+    }
     
     func isSeparator(c: Character) -> Bool {
         if (c == " " || c == " " || c == ",") {

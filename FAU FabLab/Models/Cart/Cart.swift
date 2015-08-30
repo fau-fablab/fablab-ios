@@ -54,7 +54,6 @@ class Cart : NSObject{
     }
     
     func addEntry(product:Product, amount:Double) {
-        
         if(self.status != CartStatus.SHOPPING){
             //TODO notify user?
             return
@@ -80,7 +79,7 @@ class Cart : NSObject{
         cartProduct.price = product.price!
         cartProduct.id = product.productId!
         cartProduct.unit = product.unit!
-
+        cartProduct.locationStringForMap = product.locationStringForMap!
         cartEntry.product = cartProduct
         cartEntry.amount = amount
         

@@ -823,6 +823,12 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gesamtpreis" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTq-8X-d41">
+                                <rect key="frame" x="16" y="567" width="98" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Cw4-Ky-LeW">
                                 <rect key="frame" x="0.0" y="24" width="600" height="532"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -937,6 +943,7 @@
                                             <outlet property="buttonShowLocation" destination="OG3-FK-CFm" id="rd7-8s-tXB"/>
                                             <outlet property="expandedView" destination="702-h7-6ST" id="wzc-9u-fqf"/>
                                             <outlet property="price" destination="XN6-Ka-UxU" id="Pww-rl-Hzy"/>
+                                            <outlet property="showProdctLocationButton" destination="bTz-pW-qc1" id="IwE-mZ-kY5"/>
                                             <outlet property="subtitle" destination="Qz6-qy-aoD" id="M58-XP-hph"/>
                                             <outlet property="title" destination="h33-gN-uGu" id="Wdi-wv-UCI"/>
                                             <outlet property="unit" destination="BJ6-JV-dD0" id="gBT-Gn-B2c"/>
@@ -944,12 +951,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gesamtpreis" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTq-8X-d41">
-                                <rect key="frame" x="16" y="567" width="98" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1339,6 +1340,6 @@
         <image name="news_nopicture.png" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Rvh-64-Faw"/>
+        <segue reference="XLI-0u-qjW"/>
     </inferredMetricsTieBreakers>
 </document>

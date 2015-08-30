@@ -13,7 +13,6 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     private var model = ProductsearchModel()
     private let modelOutOfStock = MalfunctionInfoModel()
     
-    private let noLocationSetIdentifier = "unknown location"
     private var selectedProduct: Product?
 
     private var searchActive = false;
@@ -57,6 +56,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
 
     @IBAction func buttonAddToCartPressed(sender: AnyObject) {
         let cell = tableView.cellForRowAtIndexPath(selectedIndexPath!) as! ProductCustomCell;
+        
         var picker: ActionSheetCustomPicker = ActionSheetCustomPicker()
         var doneButton: UIBarButtonItem = UIBarButtonItem()
         doneButton.title = "Hinzufügen".localized
@@ -65,7 +65,13 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         picker.title = "Menge auswählen".localized
         picker.tapDismissAction = TapAction.Cancel
         picker.hideCancel = true
-        picker.delegate = ActionSheetPickerDelegate(unit: cell.product.unit!, price: cell.product.price!, didSucceedAction: { (amount: Int) -> Void in CartModel.sharedInstance.addProductToCart(cell.product, amount: Double(amount)); self.cartButtonController.updateBadge() }, didCancelAction: {(Void) -> Void in })
+        
+       
+        picker.delegate = ActionSheetPickerDelegate(unit: cell.product.unit!, price: cell.product.price!, didSucceedAction: {
+             //INFO Changed cell.product to self.selectedProduct -> Works now with locationString but dunno if this affects other things!
+            (amount: Int) -> Void in CartModel.sharedInstance.addProductToCart(self.selectedProduct!, amount: Double(amount));
+            
+            self.cartButtonController.updateBadge() }, didCancelAction: {(Void) -> Void in })
         picker.showActionSheetPicker()
     }
     
@@ -351,12 +357,10 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
         selectedProduct = model.getProduct(indexPath.row)
         
-        
-        println(selectedProduct!.locationStringForMap)
-        
+    
         
         if let cell = tableView.cellForRowAtIndexPath(indexPath) as? ProductCustomCell{
-            if(selectedProduct?.locationStringForMap  == noLocationSetIdentifier){
+            if(!selectedProduct!.hasLocation){
                 cell.disableProductLocationButton()
             }else{
                 cell.enableProductLocationButton()
