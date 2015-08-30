@@ -66,18 +66,18 @@ class AboutViewController : UIViewController, UITableViewDataSource, UITableView
     }
     
     private func createTitleStrings() {
-        titleStrings = ["license_title".localized, "project_title".localized, "libraries_title".localized]
+        titleStrings = ["license_title".localized, "code_title".localized, "libraries_title".localized]
     }
     
     private func createTextAttributedStrings() {
         var licenseAttributedString = NSMutableAttributedString(string: "license_text".localized)
-        var projectAttributedString = NSMutableAttributedString(string: "project_text".localized)
+        var codeAttributedString = NSMutableAttributedString(string: "code_text".localized)
         var librariesAttributedString = NSMutableAttributedString(string: "libraries_text".localized)
         //add hyperlinks
-        projectAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "mad_url".localized)!,
-            range: getNSRangeOfSubstring(projectAttributedString.string, substring: "MAD-Projekts"))
-        projectAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "github_url".localized)!,
-            range: getNSRangeOfSubstring(projectAttributedString.string, substring: "GitHub"))
+        codeAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "mad_url".localized)!,
+            range: getNSRangeOfSubstring(codeAttributedString.string, substring: "MAD-Projekts"))
+        codeAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "github_url".localized)!,
+            range: getNSRangeOfSubstring(codeAttributedString.string, substring: "GitHub"))
         librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "actionsheetpicker_url".localized)!,
             range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "ActionSheetPicker"))
         librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "alamofire_url".localized)!,
@@ -92,7 +92,7 @@ class AboutViewController : UIViewController, UITableViewDataSource, UITableView
             range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "RSBarcodes"))
         librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "swiftyjson_url".localized)!,
             range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "SwiftyJson"))
-        textAttributedStrings = [licenseAttributedString, projectAttributedString, librariesAttributedString];
+        textAttributedStrings = [licenseAttributedString, codeAttributedString, librariesAttributedString];
     }
     
     private func getNSRangeOfSubstring(string: String, substring: String) -> NSRange{
