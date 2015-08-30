@@ -58,8 +58,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let cat = apn["category"] as? String{
                 if(cat == TriggerPushType.DOOR_OPENS_NEXT_TIME.rawValue){
                     if let alertMsg = apn["alert"] as? String{
-                        var alert = UIAlertController(title: "Fablab wurde geöffnet", message: alertMsg, preferredStyle: UIAlertControllerStyle.Alert)
-                        alert.addAction(UIAlertAction(title: "Coole Sache", style: UIAlertActionStyle.Default, handler: nil))
+                        var alert = UIAlertController(title: "Fablab wurde geöffnet".localized, message: alertMsg, preferredStyle: UIAlertControllerStyle.Alert)
+                        alert.addAction(UIAlertAction(title: "Coole Sache".localized, style: UIAlertActionStyle.Default, handler: nil))
                         self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
                     }
                 }
