@@ -20,8 +20,8 @@ class ActionSheetPickerDelegate: NSObject, ActionSheetCustomPickerDelegate {
         self.didSucceedAction = didSucceedAction
         self.didCancelAction = didCancelAction
         self.amounts = [Double]();
-        for number in 1...100 {
-            self.amounts.append(Double(number));
+        for number in 1...Int((Double(500)/rounding)) {
+            self.amounts.append(Double(Double(number)*rounding));
         }
         self.amount = amounts[0];
     }
@@ -50,7 +50,8 @@ class ActionSheetPickerDelegate: NSObject, ActionSheetCustomPickerDelegate {
             if (unit.hasPrefix("Platte")) {
                 unit = "Platten".localized
             }
-            return "\(amounts[row]) \(unit!)"
+            var value = (rounding % 1 == 0) ? "\(Int(amounts[row]))" : "\(amounts[row])"
+            return "\(value) \(unit!)"
         } else {
             return String(format: "%.2f€".localized, Double (amount) * price!)
         }
