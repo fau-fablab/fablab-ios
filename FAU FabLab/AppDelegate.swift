@@ -49,12 +49,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .stringByReplacingOccurrencesOfString( " ", withString: "" ) as String
         
         PushToken.token = deviceTokenString
-        println("DEVICE TOKEN: "  + deviceTokenString )
         
     }
     
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        println(userInfo);
+    func application(application: UIApplication, didReceiveRemoteNotification messge: [NSObject : AnyObject]) {
+        println(messge);
+        if let apn = messge["aps"] as? Dictionary<String, AnyObject>{
+            if let cat = apn["category"] as? String{
+                if(cat == TriggerPushType.DOOR_OPENS_NEXT_TIME.rawValue){
+                    if let alertMsg = apn["alert"] as? String{
+                        var alert = UIAlertController(title: "Fablab wurde geöffnet".localized, message: alertMsg, preferredStyle: UIAlertControllerStyle.Alert)
+                        alert.addAction(UIAlertAction(title: "Coole Sache".localized, style: UIAlertActionStyle.Default, handler: nil))
+                        self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+                    }
+                }
+            }
+        }
+        
     }
     
     func applicationWillResignActive(application: UIApplication) {
