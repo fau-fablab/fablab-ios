@@ -73,12 +73,10 @@ public class ProductCustomCell: UITableViewCell {
     
     func disableProductLocationButton(){
         showProductLocationButton.enabled = false
-        showProductLocationButton.userInteractionEnabled = false
     }
     
     func enableProductLocationButton(){
         showProductLocationButton.enabled = true
-        showProductLocationButton.userInteractionEnabled = true
     }
     
 }
