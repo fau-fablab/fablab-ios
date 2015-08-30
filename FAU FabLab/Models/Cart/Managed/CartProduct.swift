@@ -10,4 +10,5 @@ class CartProduct : NSManagedObject{
     @NSManaged var price                : Double
     @NSManaged var unit                 : String
     @NSManaged var locationStringForMap : String
+    @NSManaged var rounding             : Double
 }

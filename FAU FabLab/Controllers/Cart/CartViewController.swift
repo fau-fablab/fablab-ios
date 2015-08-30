@@ -42,7 +42,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         picker.title = "Menge auswählen".localized
         picker.tapDismissAction = TapAction.Cancel
         let cartEntry = self.cartModel.cart.getEntry(selectedIndexPath!.row)
-        picker.delegate = ActionSheetPickerDelegate(unit: cartEntry.product.unit, price: cartEntry.product.price, rounding: 1.0, didSucceedAction: { (amount: Double) -> Void in
+        picker.delegate = ActionSheetPickerDelegate(unit: cartEntry.product.unit, price: cartEntry.product.price, rounding: cartEntry.product.rounding, didSucceedAction: { (amount: Double) -> Void in
             CartModel.sharedInstance.updateProductInCart(self.selectedIndexPath!.row, amount: Double(amount))
             self.tableView.reloadData();
             self.tableView.setEditing(false, animated: true)

@@ -196,6 +196,7 @@
 		927901E41B6D4AE300F95B09 /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		928054F31B6D893300D0D4FB /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		928054FA1B6DA22000D0D4FB /* EventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
+		928841B51B93B3DC00E1BC5B /* CoreDataModel 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataModel 4.xcdatamodel"; sourceTree = "<group>"; };
 		92DB85A71B8B72FC0070FAD8 /* MalfunctionInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MalfunctionInfoModel.swift; sourceTree = "<group>"; };
 		92F04A2E1B87D5A300C2ED81 /* ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1039,11 +1040,12 @@
 		923E1F2D1B7AA3F7009CC545 /* CoreDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				928841B51B93B3DC00E1BC5B /* CoreDataModel 4.xcdatamodel */,
 				846BD1991B9392A000BDEEFA /* CoreDataModel 3.xcdatamodel */,
 				48B7C0DD1B84833400DC9B2D /* CoreDataModel 2.xcdatamodel */,
 				923E1F2E1B7AA3F7009CC545 /* CoreDataModel.xcdatamodel */,
 			);
-			currentVersion = 846BD1991B9392A000BDEEFA /* CoreDataModel 3.xcdatamodel */;
+			currentVersion = 928841B51B93B3DC00E1BC5B /* CoreDataModel 4.xcdatamodel */;
 			path = CoreDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -80,6 +80,7 @@ class Cart : NSObject{
         cartProduct.id = product.productId!
         cartProduct.unit = product.unit!
         cartProduct.locationStringForMap = product.locationStringForMap!
+        cartProduct.rounding = product.uom!.rounding!
         cartEntry.product = cartProduct
         cartEntry.amount = amount
         
