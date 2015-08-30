@@ -14,6 +14,9 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     private var cartModel = CartModel.sharedInstance
     private var cartEntryCellIdentifier = "CartEntryCustomCell"
     
+    private var selectedIndexPath: NSIndexPath?
+    private var selectedProduct: CartProduct?
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkoutCodeScanned:", name: "CheckoutScannerNotification", object: nil)
@@ -35,6 +38,13 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         tableView.reloadData()
         refreshCheckoutButton()
         showTotalPrice()
+    }
+   
+    // we have to unregister all observers!
+    override func viewWillDisappear(animated: Bool) {
+        for cell in tableView.visibleCells() {
+            (cell as! CartEntryCustomCell).ignoreFrameChanges()
+        }
     }
     
     func refreshCheckoutButton() {
@@ -75,6 +85,50 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         }
         */
     }
+///
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (tableView == self.tableView) {
+            (cell as! CartEntryCustomCell).watchFrameChanges()
+        }
+    }
+    
+    func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (tableView == self.tableView) {
+            (cell as! CartEntryCustomCell).ignoreFrameChanges()
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let previousIndexPath = selectedIndexPath
+        if indexPath == selectedIndexPath {
+            selectedIndexPath = nil
+        } else {
+            selectedIndexPath = indexPath
+        }
+        var indexPaths : Array<NSIndexPath> = []
+        if let previous = previousIndexPath{
+            indexPaths += [previous]
+        }
+        if let current = selectedIndexPath {
+            indexPaths += [current]
+        }
+        if indexPaths.count > 0 {
+            tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
+        tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+        selectedProduct = cartModel.cart.getEntry(indexPath.row).product
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if (indexPath == selectedIndexPath){
+            return CartEntryCustomCell.expandedHeight
+        } else{
+            return CartEntryCustomCell.defaultHeight
+        }
+    }
+
+//////
     
     /*                      Checkout process            */
     //Observer -> Scanner
