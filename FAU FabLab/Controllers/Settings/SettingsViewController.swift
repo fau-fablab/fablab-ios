@@ -6,6 +6,7 @@ class SettingsViewController : UIViewController{
     @IBOutlet weak var pushDoorSwitch: UISwitch!
     
     
+    @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
     private var settings = Settings()
     
     
@@ -17,16 +18,15 @@ class SettingsViewController : UIViewController{
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        activitySpinner.startAnimating()
         // This is kind of a workround
         //-> There is no garantie that push will be sent
         //-> so the only save way is to ask the server about the status...
         
         RestManager.sharedInstance.makeJsonGetRequest("/push/doorOpensNextTime", params: ["token": PushToken.token], onCompletion: {
             json, err in
-            println(json)
-            println(json as! Bool)
             self.pushDoorSwitch.on = json as! Bool
-            println(self.pushDoorSwitch.on)
+            self.activitySpinner.stopAnimating()
         })
     }
     

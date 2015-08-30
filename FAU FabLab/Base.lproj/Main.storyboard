@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -1151,8 +1151,16 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jpg-h3-q88">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="jpg-h3-q88" secondAttribute="centerX" id="1R4-gv-M61"/>
+                            <constraint firstAttribute="centerX" secondItem="jpg-h3-q88" secondAttribute="centerX" id="Apv-Gs-WMV"/>
+                            <constraint firstAttribute="centerY" secondItem="jpg-h3-q88" secondAttribute="centerY" id="NVg-AV-6dN"/>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="byv-mh-0Vm"/>
@@ -1161,6 +1169,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Einstellungen" image="icon_settings" id="Jvy-hp-vXu"/>
                     <connections>
+                        <outlet property="activitySpinner" destination="jpg-h3-q88" id="igc-UZ-6Vs"/>
                         <outlet property="pushDoorSwitch" destination="C0l-Th-dcQ" id="kT6-Sg-toW"/>
                     </connections>
                 </viewController>
