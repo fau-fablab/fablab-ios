@@ -13,6 +13,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     private var model = ProductsearchModel()
     private let modelOutOfStock = MalfunctionInfoModel()
     
+    private let noLocationSetIdentifier = "unknown location"
     private var selectedProduct: Product?
 
     private var searchActive = false;
@@ -349,6 +350,18 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         }
         tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
         selectedProduct = model.getProduct(indexPath.row)
+        
+        
+        println(selectedProduct!.locationStringForMap)
+        
+        
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) as? ProductCustomCell{
+            if(selectedProduct?.locationStringForMap  == noLocationSetIdentifier){
+                cell.disableProductLocationButton()
+            }else{
+                cell.enableProductLocationButton()
+            }
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

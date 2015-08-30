@@ -8,6 +8,9 @@ public class ProductCustomCell: UITableViewCell {
     @IBOutlet var price: UILabel!
     @IBOutlet var unit: UILabel!
     
+    
+    @IBOutlet weak var showProductLocationButton: UIButton!
+    
     @IBOutlet var expandedView: UIView!
     @IBOutlet var buttonAddToCart: UIView!
     @IBOutlet var buttonShowLocation: UIView!
@@ -66,6 +69,16 @@ public class ProductCustomCell: UITableViewCell {
             return true
         }
         return false
+    }
+    
+    func disableProductLocationButton(){
+        showProductLocationButton.enabled = false
+        showProductLocationButton.userInteractionEnabled = false
+    }
+    
+    func enableProductLocationButton(){
+        showProductLocationButton.enabled = true
+        showProductLocationButton.userInteractionEnabled = true
     }
     
 }

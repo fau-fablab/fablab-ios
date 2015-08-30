@@ -682,6 +682,7 @@
                                             <outlet property="buttonShowLocation" destination="ryY-Xq-ypP" id="VIU-7l-nnK"/>
                                             <outlet property="expandedView" destination="ryY-Xq-ypP" id="Jye-so-eBp"/>
                                             <outlet property="price" destination="ypM-6h-Mfe" id="DB1-iO-k1A"/>
+                                            <outlet property="showProductLocationButton" destination="Tvd-Ek-GWb" id="RJ4-zq-oLh"/>
                                             <outlet property="subtitle" destination="fP9-I3-rVt" id="IeZ-IW-tvJ"/>
                                             <outlet property="title" destination="XVH-6g-1Gy" id="8gp-xB-aFh"/>
                                             <outlet property="unit" destination="g7L-ud-Phc" id="Dtm-xL-tsa"/>
@@ -1338,6 +1339,6 @@
         <image name="news_nopicture.png" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XLI-0u-qjW"/>
+        <segue reference="Rvh-64-Faw"/>
     </inferredMetricsTieBreakers>
 </document>
