@@ -66,10 +66,10 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         picker.tapDismissAction = TapAction.Cancel
         picker.hideCancel = true
         
-       
-        picker.delegate = ActionSheetPickerDelegate(unit: cell.product.unit!, price: cell.product.price!, didSucceedAction: {
+        var rounding = cell.product.uom?.rounding!
+        picker.delegate = ActionSheetPickerDelegate(unit: cell.product.unit!, price: cell.product.price!, rounding: rounding!, didSucceedAction: {
              //INFO Changed cell.product to self.selectedProduct -> Works now with locationString but dunno if this affects other things!
-            (amount: Int) -> Void in CartModel.sharedInstance.addProductToCart(self.selectedProduct!, amount: Double(amount));
+            (amount: Double) -> Void in CartModel.sharedInstance.addProductToCart(self.selectedProduct!, amount: Double(amount));
             
             self.cartButtonController.updateBadge() }, didCancelAction: {(Void) -> Void in })
         picker.showActionSheetPicker()

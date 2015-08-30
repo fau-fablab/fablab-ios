@@ -5,21 +5,23 @@ class ActionSheetPickerDelegate: NSObject, ActionSheetCustomPickerDelegate {
     
     private var unit: String!
     private var price: Double!
+    private var rounding: Double!
     
-    private var didSucceedAction: (Int) -> Void
+    private var didSucceedAction: (Double) -> Void
     private var didCancelAction: (Void) -> Void
     
-    private var amounts: [Int]!
-    private var amount: Int!
+    private var amounts: [Double]!
+    private var amount: Double!
     
-    init(unit: String, price: Double, didSucceedAction: (Int) -> Void, didCancelAction: (Void) -> Void) {
+    init(unit: String, price: Double, rounding: Double, didSucceedAction: (Double) -> Void, didCancelAction: (Void) -> Void) {
         self.unit = unit
         self.price = price
+        self.rounding = rounding
         self.didSucceedAction = didSucceedAction
         self.didCancelAction = didCancelAction
-        self.amounts = [Int]();
+        self.amounts = [Double]();
         for number in 1...100 {
-            self.amounts.append(number);
+            self.amounts.append(Double(number));
         }
         self.amount = amounts[0];
     }
