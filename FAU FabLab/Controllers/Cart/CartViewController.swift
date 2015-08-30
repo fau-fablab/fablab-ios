@@ -128,10 +128,6 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         let cartEntry = cartModel.cart.getEntry(indexPath.row)
         cell!.configure(cartEntry.product.name, unit: "\(Int(cartEntry.amount)) \(cartEntry.product.unit)", price: cartEntry.product.price * cartEntry.amount)
         cell!.selectionStyle = UITableViewCellSelectionStyle.None
-       
-        println(cartEntry.product.locationStringForMap)
-        println(cartEntry.product.locationStringForMap )
-        println(cartEntry.product.locationStringForMap )
         
         if(cartEntry.product.locationStringForMap == noLocationSetIdentifier){
             cell?.disableProdctLocationButton()
