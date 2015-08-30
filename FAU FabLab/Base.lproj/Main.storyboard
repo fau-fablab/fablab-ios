@@ -866,6 +866,7 @@
                                                             </state>
                                                             <connections>
                                                                 <action selector="buttonAddToCartPressed:" destination="YOP-IL-BaU" eventType="touchUpInside" id="AgO-Wx-OpL"/>
+                                                                <action selector="buttonChangeAmountPressed:" destination="ooQ-nD-6sq" eventType="touchUpInside" id="NwE-ON-Lys"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvl-hH-DTy">
@@ -875,6 +876,7 @@
                                                             </state>
                                                             <connections>
                                                                 <action selector="buttonReportOutOfStockPressed:" destination="YOP-IL-BaU" eventType="touchUpInside" id="wyf-sF-PGb"/>
+                                                                <action selector="buttonReportOutOfStockPressed:" destination="ooQ-nD-6sq" eventType="touchUpInside" id="y4U-Ja-YTU"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTz-pW-qc1">
@@ -882,6 +884,9 @@
                                                             <state key="normal" title="Lagerort anzeigen">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <connections>
+                                                                <segue destination="8JR-YT-c9g" kind="show" identifier="ProductLocationSegueCart" id="XLI-0u-qjW"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -928,9 +933,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="buttonAddToCart" destination="702-h7-6ST" id="Y1n-vn-6SR"/>
-                                            <outlet property="buttonReportOutOfStock" destination="702-h7-6ST" id="jjo-Mn-a4I"/>
-                                            <outlet property="buttonShowLocation" destination="702-h7-6ST" id="aWe-t7-iDp"/>
+                                            <outlet property="buttonShowLocation" destination="OG3-FK-CFm" id="rd7-8s-tXB"/>
                                             <outlet property="expandedView" destination="702-h7-6ST" id="wzc-9u-fqf"/>
                                             <outlet property="price" destination="XN6-Ka-UxU" id="Pww-rl-Hzy"/>
                                             <outlet property="subtitle" destination="Qz6-qy-aoD" id="M58-XP-hph"/>
@@ -1273,4 +1276,7 @@
         <image name="icon_warning" width="25" height="25"/>
         <image name="news_nopicture.png" width="500" height="500"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="XLI-0u-qjW"/>
+    </inferredMetricsTieBreakers>
 </document>

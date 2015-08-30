@@ -2,6 +2,7 @@ import UIKit
 import AVFoundation
 import RSBarcodes
 import CoreActionSheetPicker
+import MessageUI
 
 class CartViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
     
@@ -13,6 +14,8 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     private var cartModel = CartModel.sharedInstance
     private var cartEntryCellIdentifier = "CartEntryCustomCell"
+    private let modelOutOfStock = MalfunctionInfoModel()
+    private var productSearchModel = ProductsearchModel()
     
     private var selectedIndexPath: NSIndexPath?
     private var selectedProduct: CartProduct?
@@ -21,6 +24,61 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         super.init(coder: aDecoder)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkoutCodeScanned:", name: "CheckoutScannerNotification", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkoutStatusChanged:", name: "CheckoutStatusChangedNotification", object: nil)
+    }
+    
+    @IBAction func buttonChangeAmountPressed(sender: AnyObject) {
+        var picker: ActionSheetCustomPicker = ActionSheetCustomPicker()
+        var doneButton: UIBarButtonItem = UIBarButtonItem()
+        doneButton.title = "Übernehmen".localized
+        doneButton.tintColor = UIColor.fabLabGreen()
+        
+        var cancelButton: UIBarButtonItem = UIBarButtonItem()
+        cancelButton.title = "Abbrechen".localized
+        cancelButton.tintColor = UIColor.fabLabGreen()
+        
+        picker.setDoneButton(doneButton)
+        picker.setCancelButton(cancelButton)
+        picker.title = "Menge auswählen".localized
+        picker.tapDismissAction = TapAction.Cancel
+        let cartEntry = self.cartModel.cart.getEntry(selectedIndexPath!.row)
+        picker.delegate = ActionSheetPickerDelegate(unit: cartEntry.product.unit, price: cartEntry.product.price, didSucceedAction: { (amount: Int) -> Void in
+            CartModel.sharedInstance.updateProductInCart(self.selectedIndexPath!.row, amount: Double(amount))
+            self.tableView.reloadData();
+            self.tableView.setEditing(false, animated: true)
+            self.showTotalPrice()
+            }, didCancelAction:{ (Void) -> Void in self.tableView.setEditing(false, animated: true)} )
+        picker.showActionSheetPicker()
+    }
+    
+    private var emailBody: String{
+        return "Produkt ist nicht mehr auf Lager.</br></br><b>Produkt ID :</b> </br>"
+            + "\(selectedProduct!.id)</br> </br> <b>Produkt Name :</b> </br> \(selectedProduct!.name)"
+            + "</br></br> Gesendet mit der Fablab-iOS App"
+    }
+    
+    @IBAction func buttonReportOutOfStockPressed(sender: AnyObject) {
+        var picker = MFMailComposeViewController()
+        picker.mailComposeDelegate = self
+        picker.navigationBar.tintColor = UIColor.fabLabGreen()
+        picker.setToRecipients([modelOutOfStock.fablabMail!])
+        picker.setSubject("Bestandsmeldung".localized)
+        picker.setMessageBody(emailBody, isHTML: true)
+        
+        presentViewController(picker, animated: true, completion: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        Debug.instance.log(segue.identifier)
+        if segue.identifier == "ProductLocationSegueCart" {
+            let destination = segue.destinationViewController as? ProductLocationViewController
+            
+            let cell = tableView.cellForRowAtIndexPath(selectedIndexPath!) as! CartEntryCustomCell;
+            
+            let locationId = selectedProduct!.id // TODO
+            let productName = selectedProduct!.name
+            
+            destination!.configure(id: locationId, name: productName)
+        }
     }
     
     private func showTotalPrice(){
@@ -85,7 +143,6 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         }
         */
     }
-///
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if (tableView == self.tableView) {
@@ -127,8 +184,6 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
             return CartEntryCustomCell.defaultHeight
         }
     }
-
-//////
     
     /*                      Checkout process            */
     //Observer -> Scanner
@@ -169,24 +224,6 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
-        var editAction = UITableViewRowAction(style: .Normal, title: "Ändern".localized) { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
-            var picker: ActionSheetCustomPicker = ActionSheetCustomPicker()
-            var doneButton: UIBarButtonItem = UIBarButtonItem()
-            doneButton.title = "Übernehmen".localized
-            doneButton.tintColor = UIColor.fabLabGreen()
-            picker.setDoneButton(doneButton)
-            picker.title = "Menge auswählen".localized
-            picker.tapDismissAction = TapAction.Cancel
-            picker.hideCancel = true
-            let cartEntry = self.cartModel.cart.getEntry(indexPath.row)
-            picker.delegate = ActionSheetPickerDelegate(unit: cartEntry.product.unit, price: cartEntry.product.price, didSucceedAction: { (amount: Int) -> Void in
-                CartModel.sharedInstance.updateProductInCart(indexPath.row, amount: Double(amount))
-                tableView.reloadData();
-                tableView.setEditing(false, animated: true)
-                self.showTotalPrice()
-                }, didCancelAction:{ (Void) -> Void in tableView.setEditing(false, animated: true)} )
-            picker.showActionSheetPicker()
-        }
         var deleteAction = UITableViewRowAction(style: .Default, title: "Löschen".localized) { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
             CartModel.sharedInstance.removeProductFromCart(indexPath.row)
             CartNavigationButtonController.sharedInstance.updateBadge()
@@ -194,7 +231,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
             self.refreshCheckoutButton()
             self.showTotalPrice()
         }
-        return [editAction, deleteAction]
+        return [deleteAction]
     }
     
 
@@ -249,6 +286,29 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
                 }
             }
         })
+    }
+    
+}
+
+extension CartViewController : MFMailComposeViewControllerDelegate{
+    
+    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+        dismissViewControllerAnimated(true, completion: nil)
+        switch result.value{
+        case MFMailComposeResultCancelled.value:
+            var alert = UIAlertController(title: "Abgebrochen".localized, message: "Meldung wurde nicht versendet!".localized, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        case MFMailComposeResultSent.value:
+            var alert = UIAlertController(title: "Versendet".localized, message: "Ausgegangenes Produkt wurde gemeldet!".localized, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        default:
+            //TODO
+            Debug.instance.log("Default")
+        }
     }
     
 }
