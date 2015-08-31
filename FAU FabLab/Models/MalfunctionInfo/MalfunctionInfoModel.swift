@@ -39,8 +39,8 @@ class MalfunctionInfoModel : NSObject{
             json, err in
             
             if (err != nil) {
-                //TODO error handling is not working here, endpoint seems to be corrupt
-                Debug.instance.log("Error while fetching email!")
+                ErrorAlertView.showErrorView("Fehler beim Abrufen der Fablab Email")
+                onCompletion()
             }
             self.fablabMail = json
             Debug.instance.log(json)
@@ -57,8 +57,8 @@ class MalfunctionInfoModel : NSObject{
                 json, err in
                 
                 if (err != nil) {
-                    //TODO error handling
-                    Debug.instance.log("Error while fetching news!")
+                    ErrorAlertView.showErrorView("Fehler beim Abrufen der Fablab Tools")
+                    onCompletion()
                 }
                 
                 if let tools = self.mapper.mapArray(json){

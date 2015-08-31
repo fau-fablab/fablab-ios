@@ -44,8 +44,8 @@ class ProductsearchModel : NSObject{
             RestManager.sharedInstance.makeJsonGetRequest(endpoint, params: params, onCompletion: {
                 json, err in
                 if (err != nil) {
-                    Debug.instance.log(err);
-                        onCompletion(err)
+                    ErrorAlertView.showErrorView("Fehler bei der Produktsuche")
+                    onCompletion(err)
                 }
         
                 if let productList = self.mapper.mapArray(json) {
@@ -72,7 +72,7 @@ class ProductsearchModel : NSObject{
                 Debug.instance.log("GOT: \(json)")
                 
                 if (err != nil) {
-                    Debug.instance.log(err);
+                    ErrorAlertView.showErrorView("Fehler bei der Produktsuche")
                     onCompletion(err)
                 }
                 if let product = self.mapper.map(json) {
