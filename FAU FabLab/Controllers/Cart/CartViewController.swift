@@ -41,18 +41,53 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         pickerDelegate.setAmount(cartEntry.amount)
         
         // initial selection is also needed, to correctly set current amount
-        var picker: ActionSheetCustomPicker = ActionSheetCustomPicker(title: "Menge auswählen".localized, delegate: pickerDelegate, showCancelButton: true, origin: self, initialSelections: [(cartEntry.amount/cartEntry.product.rounding)-1])
+        var picker: ActionSheetCustomPicker = ActionSheetCustomPicker(title: "Menge auswählen".localized, delegate: pickerDelegate, showCancelButton: false, origin: self, initialSelections: [(cartEntry.amount/cartEntry.product.rounding)-1])
         
         var doneButton: UIBarButtonItem = UIBarButtonItem()
         doneButton.title = "Übernehmen".localized
-        doneButton.tintColor = UIColor.fabLabGreen()
-        var cancelButton: UIBarButtonItem = UIBarButtonItem()
-        cancelButton.title = "Abbrechen".localized
-        cancelButton.tintColor = UIColor.fabLabGreen()
         picker.setDoneButton(doneButton)
-        picker.setCancelButton(cancelButton)
-
+        picker.addCustomButtonWithTitle("Freitext", actionBlock: { self.alertChangeAmount() })
+        picker.tapDismissAction = TapAction.Cancel
+        
         picker.showActionSheetPicker()
+    }
+    
+    func handler(amount: Double) {
+        CartModel.sharedInstance.updateProductInCart(self.selectedIndexPath!.row, amount: Double(amount))
+        self.tableView.reloadData();
+        self.tableView.setEditing(false, animated: true)
+        self.showTotalPrice()
+    }
+    
+    func alertChangeAmount() {
+        let cartEntry = self.cartModel.cart.getEntry(selectedIndexPath!.row)
+        let message = cartEntry.product.name + "\n" + "Einheit".localized + ": " + cartEntry.product.unit
+        
+        var inputTextField: UITextField?
+        
+        let alertController: UIAlertController = UIAlertController(title: "Menge eingeben".localized, message: message, preferredStyle: .Alert)
+
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in self.tableView.setEditing(false, animated: true)})
+        let doneAction: UIAlertAction = UIAlertAction(title: "Übernehmen".localized, style: .Default, handler: { (Void) -> Void in
+            var amount = NSString(string: inputTextField!.text)
+            // TODO input checken!
+            CartModel.sharedInstance.updateProductInCart(self.selectedIndexPath!.row, amount: amount.doubleValue)
+            self.tableView.reloadData();
+            self.tableView.setEditing(false, animated: true)
+            self.showTotalPrice()
+        })
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(doneAction)
+        
+        alertController.addTextFieldWithConfigurationHandler({ textField -> Void in inputTextField = textField
+            if Int(cartEntry.product.rounding) == 1 {
+                inputTextField!.text = String(format: "%.0f", cartEntry.amount)
+            } else {
+                inputTextField!.text = String(format: "%.2f", cartEntry.amount)
+            }})
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     private var emailBody: String{

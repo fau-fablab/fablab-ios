@@ -34,7 +34,9 @@
 "Bezahlvorgang wurde abgebrochen" = "Bezahlvorgang wurde abgebrochen";
 "Bezahlvorgang ist Fehlgeschlagen" = "Bezahlvorgang ist Fehlgeschlagen";
 "Menge auswählen" = "Menge auswählen";
+"Menge eingeben" = "Menge eingeben";
 "Es wird ein Zugriff auf die Kamera benötigt" = "Es wird ein Zugriff auf die Kamera benötigt";
+"Einheit" = "Einheit";
 
 // ActionSheetPickerDelegate
 "Platten" = "Platten";
