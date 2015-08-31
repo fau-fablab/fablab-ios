@@ -13,7 +13,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         return self.navigationItem.rightBarButtonItem!
     }
     private var cartModel = CartModel.sharedInstance
-    private var cartEntryCellIdentifier = "CartEntryCustomCell"
+    private var cartEntryCellIdentifier = "ProductCustomCell"
     private let noLocationSetIdentifier = "unknown location"
     private let modelOutOfStock = MalfunctionInfoModel()
     private var productSearchModel = ProductsearchModel()
@@ -71,9 +71,9 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         if segue.identifier == "ProductLocationSegueCart" {
             let destination = segue.destinationViewController as? ProductLocationViewController
             
-            let cell = tableView.cellForRowAtIndexPath(selectedIndexPath!) as! CartEntryCustomCell;
+            let cell = tableView.cellForRowAtIndexPath(selectedIndexPath!) as! ProductCustomCell;
             
-            let locationId = selectedProduct!.id // TODO
+            let locationId = selectedProduct!.locationStringForMap
             let productName = selectedProduct!.name
             
             destination!.configure(id: locationId, name: productName)
@@ -100,7 +100,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     // we have to unregister all observers!
     override func viewWillDisappear(animated: Bool) {
         for cell in tableView.visibleCells() {
-            (cell as! CartEntryCustomCell).ignoreFrameChanges()
+            (cell as! ProductCustomCell).ignoreFrameChanges()
         }
     }
     
@@ -122,16 +122,16 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cartEntryCellIdentifier) as? CartEntryCustomCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cartEntryCellIdentifier) as? ProductCustomCell
         let cartEntry = cartModel.cart.getEntry(indexPath.row)
         var amountValue = (cartEntry.product.rounding % 1 == 0) ? "\(Int(cartEntry.amount))" : "\(cartEntry.amount)"
         cell!.configure(cartEntry.product.name, unit: "\(amountValue) \(cartEntry.product.unit)", price: cartEntry.product.price * cartEntry.amount)
         cell!.selectionStyle = UITableViewCellSelectionStyle.None
         
         if(cartEntry.product.locationStringForMap == noLocationSetIdentifier){
-            cell?.disableProdctLocationButton()
+            cell?.disableProductLocationButton()
         }else{
-            cell?.enableProdctLocationButton()
+            cell?.enableProductLocationButton()
         }
         
         return cell!;
@@ -153,13 +153,13 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if (tableView == self.tableView) {
-            (cell as! CartEntryCustomCell).watchFrameChanges()
+            (cell as! ProductCustomCell).watchFrameChanges()
         }
     }
     
     func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if (tableView == self.tableView) {
-            (cell as! CartEntryCustomCell).ignoreFrameChanges()
+            (cell as! ProductCustomCell).ignoreFrameChanges()
         }
     }
     
@@ -186,9 +186,9 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if (indexPath == selectedIndexPath){
-            return CartEntryCustomCell.expandedHeight
+            return ProductCustomCell.expandedHeight
         } else{
-            return CartEntryCustomCell.defaultHeight
+            return ProductCustomCell.defaultHeight
         }
     }
     

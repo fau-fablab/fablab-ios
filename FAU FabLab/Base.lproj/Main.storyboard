@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -833,7 +833,7 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CartEntryCustomCell" rowHeight="200" id="Anc-HZ-L6f" customClass="CartEntryCustomCell" customModule="FAU_FabLab" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProductCustomCell" rowHeight="200" id="Anc-HZ-L6f" customClass="ProductCustomCell" customModule="FAU_FabLab" customModuleProvider="target">
                                         <rect key="frame" x="10" y="74" width="600" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Anc-HZ-L6f" id="OG3-FK-CFm">
@@ -943,7 +943,7 @@
                                             <outlet property="buttonShowLocation" destination="OG3-FK-CFm" id="rd7-8s-tXB"/>
                                             <outlet property="expandedView" destination="702-h7-6ST" id="wzc-9u-fqf"/>
                                             <outlet property="price" destination="XN6-Ka-UxU" id="Pww-rl-Hzy"/>
-                                            <outlet property="showProdctLocationButton" destination="bTz-pW-qc1" id="IwE-mZ-kY5"/>
+                                            <outlet property="showProductLocationButton" destination="bTz-pW-qc1" id="u1d-PS-1UK"/>
                                             <outlet property="subtitle" destination="Qz6-qy-aoD" id="M58-XP-hph"/>
                                             <outlet property="title" destination="h33-gN-uGu" id="Wdi-wv-UCI"/>
                                             <outlet property="unit" destination="BJ6-JV-dD0" id="gBT-Gn-B2c"/>
