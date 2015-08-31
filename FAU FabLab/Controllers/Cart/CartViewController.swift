@@ -32,15 +32,13 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         var doneButton: UIBarButtonItem = UIBarButtonItem()
         doneButton.title = "Übernehmen".localized
         doneButton.tintColor = UIColor.fabLabGreen()
-        
         var cancelButton: UIBarButtonItem = UIBarButtonItem()
         cancelButton.title = "Abbrechen".localized
         cancelButton.tintColor = UIColor.fabLabGreen()
-        
         picker.setDoneButton(doneButton)
         picker.setCancelButton(cancelButton)
         picker.title = "Menge auswählen".localized
-        picker.tapDismissAction = TapAction.Cancel
+        
         let cartEntry = self.cartModel.cart.getEntry(selectedIndexPath!.row)
         picker.delegate = ActionSheetPickerDelegate(unit: cartEntry.product.unit, price: cartEntry.product.price, rounding: cartEntry.product.rounding, didSucceedAction: { (amount: Double) -> Void in
             CartModel.sharedInstance.updateProductInCart(self.selectedIndexPath!.row, amount: Double(amount))

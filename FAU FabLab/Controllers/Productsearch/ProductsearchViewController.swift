@@ -62,9 +62,11 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         doneButton.title = "Hinzufügen".localized
         doneButton.tintColor = UIColor.fabLabGreen()
         picker.setDoneButton(doneButton)
+        var cancelButton: UIBarButtonItem = UIBarButtonItem()
+        cancelButton.title = "Abbrechen".localized
+        cancelButton.tintColor = UIColor.fabLabGreen()
+        picker.setCancelButton(cancelButton)
         picker.title = "Menge auswählen".localized
-        picker.tapDismissAction = TapAction.Cancel
-        picker.hideCancel = true
         
         var rounding = cell.product.uom?.rounding!
         picker.delegate = ActionSheetPickerDelegate(unit: cell.product.unit!, price: cell.product.price!, rounding: rounding!, didSucceedAction: {
