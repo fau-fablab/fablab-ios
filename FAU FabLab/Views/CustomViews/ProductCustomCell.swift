@@ -8,7 +8,6 @@ public class ProductCustomCell: UITableViewCell {
     @IBOutlet var price: UILabel!
     @IBOutlet var unit: UILabel!
     
-    
     @IBOutlet weak var showProductLocationButton: UIButton!
     
     @IBOutlet var expandedView: UIView!
@@ -52,16 +51,26 @@ public class ProductCustomCell: UITableViewCell {
         }
     }
 
-    func configure(product:Product!) {
+    func configure(product: Product!) {
         self.product = product
-        let separatedName = split(product.name!, maxSplit: 1, allowEmptySlices: false, isSeparator: isSeparator)
+        /*let separatedName = split(product.name!, maxSplit: 1, allowEmptySlices: false, isSeparator: isSeparator)
         self.title.text = separatedName[0];
         if(separatedName.count > 1) {
             self.subtitle.text = separatedName[1];
         }
         self.price.text = String(format: "%.2f€".localized, product.price!);
-        self.unit.text = product.unit;
-        
+        self.unit.text = product.unit;*/
+        configure(product.name!, unit: product.unit!, price: product.price!)
+    }
+    
+    func configure(name: String, unit: String, price: Double) {
+        let separatedName = split(name, maxSplit: 1, allowEmptySlices: false, isSeparator: isSeparator)
+        self.title.text = separatedName[0];
+        if(separatedName.count > 1) {
+            self.subtitle.text = separatedName[1];
+        }
+        self.price.text = String(format: "%.2f€".localized, price);
+        self.unit.text = unit;
     }
     
     func isSeparator(c: Character) -> Bool {
