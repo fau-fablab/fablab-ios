@@ -1,7 +1,8 @@
 
 import Foundation
+import MessageUI
 
-class AboutViewController : UIViewController, UITableViewDataSource, UITableViewDelegate {
+class AboutViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
     
     @IBOutlet var tableView: UITableView!
 
@@ -10,6 +11,7 @@ class AboutViewController : UIViewController, UITableViewDataSource, UITableView
     private var textAttributedStrings: [NSAttributedString]!
     private var expandedTableViewCells = [Int]()
     private var unexpandedRowHeight : CGFloat = 44.0
+    private var model = MalfunctionInfoModel()
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -34,7 +36,8 @@ class AboutViewController : UIViewController, UITableViewDataSource, UITableView
         cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCellWithIdentifier(tableViewCellIdentifier, forIndexPath: indexPath) as? AboutCustomCell
             if let index = find(expandedTableViewCells, indexPath.row) {
-                cell!.configureWithText(titleStrings[indexPath.row], text: textAttributedStrings[indexPath.row])
+                var textView = cell!.configureWithText(titleStrings[indexPath.row], text: textAttributedStrings[indexPath.row])
+                textView.delegate = self
             } else {
                 cell!.configure(titleStrings[indexPath.row])
             }
@@ -65,6 +68,18 @@ class AboutViewController : UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
+        if (URL.absoluteString == "mail_action".localized) {
+            var mailViewController = MFMailComposeViewController()
+            mailViewController.mailComposeDelegate = self
+            mailViewController.navigationBar.tintColor = UIColor.fabLabGreen()
+            mailViewController.setToRecipients([model.fablabMail!])
+            presentViewController(mailViewController, animated: true, completion: nil)
+            return false
+        }
+        return true
+    }
+    
     private func createTitleStrings() {
         titleStrings = ["license_title".localized, "code_title".localized, "libraries_title".localized]
     }
@@ -75,7 +90,7 @@ class AboutViewController : UIViewController, UITableViewDataSource, UITableView
         var librariesAttributedString = NSMutableAttributedString(string: "libraries_text".localized)
         //add hyperlinks
         codeAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "mad_url".localized)!,
-            range: getNSRangeOfSubstring(codeAttributedString.string, substring: "MAD-Projekts"))
+            range: getNSRangeOfSubstring(codeAttributedString.string, substring: "MAD-Projektes"))
         codeAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "github_url".localized)!,
             range: getNSRangeOfSubstring(codeAttributedString.string, substring: "GitHub"))
         librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "actionsheetpicker_url".localized)!,
@@ -92,6 +107,9 @@ class AboutViewController : UIViewController, UITableViewDataSource, UITableView
             range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "RSBarcodes"))
         librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "swiftyjson_url".localized)!,
             range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "SwiftyJson"))
+        //add mail action
+        codeAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "mail_action".localized)!,
+            range: getNSRangeOfSubstring(codeAttributedString.string, substring: "E-Mail"))
         textAttributedStrings = [licenseAttributedString, codeAttributedString, librariesAttributedString];
     }
     
@@ -105,4 +123,27 @@ class AboutViewController : UIViewController, UITableViewDataSource, UITableView
         return nsrange
     }
 
+}
+
+extension AboutViewController: MFMailComposeViewControllerDelegate {
+    
+    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+        dismissViewControllerAnimated(true, completion: nil)
+        switch result.value{
+            
+        case MFMailComposeResultCancelled.value:
+            var alert = UIAlertController(title: "Abgebrochen".localized, message: "Nachricht wurde abgebrochen".localized, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        case MFMailComposeResultSent.value:
+            var alert = UIAlertController(title: "Versendet".localized, message: "Nachricht wurde versendet".localized, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        default:
+            Debug.instance.log("Default")
+        }
+    }
+    
 }

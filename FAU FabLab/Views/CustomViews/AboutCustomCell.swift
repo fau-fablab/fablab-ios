@@ -1,6 +1,6 @@
 import UIKit
 
-class AboutCustomCell: UITableViewCell {
+class AboutCustomCell: UITableViewCell, UITextViewDelegate {
     
     @IBOutlet var titleView: UILabel!
     @IBOutlet var textView: UITextView!
@@ -14,12 +14,13 @@ class AboutCustomCell: UITableViewCell {
         expandView.alpha = 0.2
     }
     
-    func configureWithText(title: String, text: NSAttributedString) {
+    func configureWithText(title: String, text: NSAttributedString) -> UITextView {
         titleView.text = title
         textView.hidden = false
         textView.attributedText = text
         expandView.image = UIImage(named: "expand_less", inBundle: nil, compatibleWithTraitCollection: nil)
         expandView.alpha = 0.2
+        return textView
     }
 
 }
