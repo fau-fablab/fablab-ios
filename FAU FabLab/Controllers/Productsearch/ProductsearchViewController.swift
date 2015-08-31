@@ -58,15 +58,15 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         let cell = tableView.cellForRowAtIndexPath(selectedIndexPath!) as! ProductCustomCell;
         
         var picker: ActionSheetCustomPicker = ActionSheetCustomPicker()
+        picker.title = "Menge auswählen".localized
+        
         var doneButton: UIBarButtonItem = UIBarButtonItem()
         doneButton.title = "Hinzufügen".localized
         doneButton.tintColor = UIColor.fabLabGreen()
         picker.setDoneButton(doneButton)
-        var cancelButton: UIBarButtonItem = UIBarButtonItem()
-        cancelButton.title = "Abbrechen".localized
-        cancelButton.tintColor = UIColor.fabLabGreen()
-        picker.setCancelButton(cancelButton)
-        picker.title = "Menge auswählen".localized
+        
+        picker.addCustomButtonWithTitle("Freitext".localized, actionBlock: { self.alertChangeAmount() })
+        picker.tapDismissAction = TapAction.Cancel
         
         var rounding = cell.product.uom?.rounding!
         picker.delegate = ActionSheetPickerDelegate(unit: cell.product.unit!, price: cell.product.price!, rounding: rounding!, didSucceedAction: {
@@ -77,7 +77,46 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         picker.showActionSheetPicker()
     }
     
-    
+    func alertChangeAmount() {
+
+        let lowestUnit : String
+        if Int(self.selectedProduct!.uom!.rounding!) == 1 {
+            lowestUnit = String(format: "%.0f", self.selectedProduct!.uom!.rounding!)
+        } else {
+            lowestUnit = String(format: "%.2f", self.selectedProduct!.uom!.rounding!)
+        }
+        
+        let message1 = self.selectedProduct!.name! + "\n" + "Kleinste Einheit".localized + ": "
+        let message2 = lowestUnit + " " + self.selectedProduct!.unit!
+        
+        var inputTextField: UITextField?
+        
+        let alertController: UIAlertController = UIAlertController(title: "Menge eingeben".localized, message: message1 + message2, preferredStyle: .Alert)
+        
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in self.tableView.setEditing(false, animated: true)})
+        let doneAction: UIAlertAction = UIAlertAction(title: "Übernehmen".localized, style: .Default, handler: { (Void) -> Void in
+            var amount: Double = NSString(string: inputTextField!.text).doubleValue
+            if amount <= 0 {
+                return
+            }
+            
+            // this can be improved, only 2 or 0 digits after '.' are working correctly
+            if Int(self.selectedProduct!.uom!.rounding!) == 1 {
+                amount = Double(round(amount))
+            } else {
+                amount = Double(round(100*amount)/100)
+            }
+            
+            CartModel.sharedInstance.addProductToCart(self.selectedProduct!, amount: Double(amount))
+        })
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(doneAction)
+        
+        alertController.addTextFieldWithConfigurationHandler({ textField -> Void in inputTextField = textField})
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         Debug.instance.log(segue.identifier)
