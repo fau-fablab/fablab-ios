@@ -28,40 +28,34 @@ class RestManager {
     }
     
     func makeJsonGetRequest(resource: String, params: [String : String]?, onCompletion : JsonServiceResponse) {
-        manager.request(.GET, devApiUrl+resource, parameters: params)
+        let endpoint = devApiUrl+resource
+        manager.request(.GET, endpoint, parameters: params)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { (req, res, json, error) in
-                Debug.instance.log("GET: \(self.devApiUrl+resource) JSONAnswer: \(json) StatusCode: \(res!.statusCode)");
-                if(error != nil) {
-                    Debug.instance.log(error)
-                }
+                self.printDebug(endpoint, res: res, responseJson: json, error: error)
                 onCompletion(json, error);
         }
     }
     
     func makeGetRequest(resource: String, params: [String : String]?, onCompletion : ServiceResponse) {
-        manager.request(.GET, devApiUrl+resource, parameters: params)
+        let endpoint = devApiUrl+resource
+        manager.request(.GET, endpoint, parameters: params)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["text/plain"])
             .responseString { (req, res, answer, error) in
-                Debug.instance.log("GET: \(self.devApiUrl+resource) Answer: \(answer) StatusCode: \(res!.statusCode)");
-                if(error != nil){
-                    Debug.instance.log(error)
-                }
+                self.printDebug(endpoint, res: res, responseString: answer, error: error);
                 onCompletion(answer, error);
         }
     }
     
     func makeJsonPostRequest(resource: String, params: NSDictionary?, onCompletion : JsonServiceResponse) {
-        manager.request(.POST, devApiUrl+resource, parameters: params as? [String : AnyObject], encoding: .JSON)
+        let endpoint = devApiUrl+resource
+        manager.request(.POST, endpoint, parameters: params as? [String : AnyObject], encoding: .JSON)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { (req, res, json, error) in
-                Debug.instance.log("POST: \(self.devApiUrl+resource) JSONAnswer: \(json) StatusCode: \(res!.statusCode)");
-                if(error != nil){
-                    Debug.instance.log(error)
-                }
+                self.printDebug(endpoint, res: res, responseJson: json, error: error)
                 onCompletion(json, error)
         }
         
@@ -73,30 +67,44 @@ class RestManager {
     }
     
     func makeJsonPutRequest(resource: String, params: NSDictionary?, onCompletion : JsonServiceResponse) {
+        let endpoint = devApiUrl+resource
         manager.request(.PUT, devApiUrl+resource, parameters: params as? [String : AnyObject], encoding: .JSON)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { (req, res, json, error) in
-                Debug.instance.log("PUT: \(self.devApiUrl+resource) JSONAnswer: \(json) StatusCode: \(res!.statusCode)");
-                if(error != nil){
-                    Debug.instance.log(error)
-                }
+                self.printDebug(endpoint, res: res, responseJson: json, error: error)
                 onCompletion(json, error)
         }
     }
     
 
     func makePostRequest(resource: String, params: NSDictionary?, onCompletion : ServiceResponse) {
-        manager.request(.POST, devApiUrl + resource, parameters: params as? [String:AnyObject], encoding: .JSON)
+        let endpoint = devApiUrl + resource
+        manager.request(.POST, endpoint, parameters: params as? [String:AnyObject], encoding: .JSON)
         .validate(statusCode: 200 ..< 300)
         .validate(contentType: ["text/plain"])
         .responseString {
             (req, res, answer, error) in
-            Debug.instance.log("POST: \(self.devApiUrl + resource) Answer: \(answer) StatusCode: \(res!.statusCode)");
-            if (error != nil) {
-                Debug.instance.log(error)
-            }
-            onCompletion(answer, error)
+                self.printDebug(endpoint, res: res, responseString: answer, error: error);
+                onCompletion(answer, error)
+        }
+    }
+    
+    private func printDebug(resource: String, res: NSHTTPURLResponse?, responseJson: AnyObject?, error: NSError?){
+        if let res = res{
+            Debug.instance.log("GET: \(self.devApiUrl+resource) JSONAnswer: \(responseJson) StatusCode: \(res.statusCode)");
+        }
+        if let error = error{
+            Debug.instance.log(error)
+        }
+    }
+    
+    private func printDebug(resource: String, res: NSHTTPURLResponse?, responseString: String?, error: NSError?){
+        if let res = res{
+            Debug.instance.log("GET: \(self.devApiUrl+resource) Answer: \(responseString) StatusCode: \(res.statusCode)");
+        }
+        if let error = error{
+            Debug.instance.log(error)
         }
     }
     
