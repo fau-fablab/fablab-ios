@@ -355,9 +355,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
             tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Automatic)
         }
         tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
-        selectedProduct = model.getProduct(indexPath.row)
-        
-    
+        selectedProduct = sections[indexPath.section][indexPath.row]
         
         if let cell = tableView.cellForRowAtIndexPath(indexPath) as? ProductCustomCell{
             if(!selectedProduct!.hasLocation){
