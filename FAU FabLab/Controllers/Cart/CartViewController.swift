@@ -73,7 +73,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
             
             let cell = tableView.cellForRowAtIndexPath(selectedIndexPath!) as! CartEntryCustomCell;
             
-            let locationId = selectedProduct!.id // TODO
+            let locationId = selectedProduct!.locationStringForMap
             let productName = selectedProduct!.name
             
             destination!.configure(id: locationId, name: productName)
