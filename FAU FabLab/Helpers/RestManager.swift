@@ -33,7 +33,7 @@ class RestManager {
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { (req, res, json, error) in
-                self.printDebug(endpoint, res: res, responseJson: json, error: error)
+                self.printDebug("GET", resource: endpoint, res: res, responseJson: json, error: error)
                 onCompletion(json, error);
         }
     }
@@ -44,7 +44,7 @@ class RestManager {
             .validate(statusCode: 200..<300)
             .validate(contentType: ["text/plain"])
             .responseString { (req, res, answer, error) in
-                self.printDebug(endpoint, res: res, responseString: answer, error: error);
+                self.printDebug("GET", resource: endpoint, res: res, responseString: answer, error: error);
                 onCompletion(answer, error);
         }
     }
@@ -55,7 +55,7 @@ class RestManager {
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { (req, res, json, error) in
-                self.printDebug(endpoint, res: res, responseJson: json, error: error)
+                self.printDebug("POST", resource: endpoint, res: res, responseJson: json, error: error)
                 onCompletion(json, error)
         }
         
@@ -72,7 +72,7 @@ class RestManager {
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { (req, res, json, error) in
-                self.printDebug(endpoint, res: res, responseJson: json, error: error)
+                self.printDebug("PUT", resource: endpoint, res: res, responseJson: json, error: error)
                 onCompletion(json, error)
         }
     }
@@ -85,23 +85,23 @@ class RestManager {
         .validate(contentType: ["text/plain"])
         .responseString {
             (req, res, answer, error) in
-                self.printDebug(endpoint, res: res, responseString: answer, error: error);
+                self.printDebug("POST", resource: endpoint, res: res, responseString: answer, error: error);
                 onCompletion(answer, error)
         }
     }
     
-    private func printDebug(resource: String, res: NSHTTPURLResponse?, responseJson: AnyObject?, error: NSError?){
+    private func printDebug(method: String, resource: String, res: NSHTTPURLResponse?, responseJson: AnyObject?, error: NSError?){
         if let res = res{
-            Debug.instance.log("GET: \(self.devApiUrl+resource) JSONAnswer: \(responseJson) StatusCode: \(res.statusCode)");
+            Debug.instance.log("\(method): \(self.devApiUrl+resource) JSONAnswer: \(responseJson) StatusCode: \(res.statusCode)");
         }
         if let error = error{
             Debug.instance.log(error)
         }
     }
     
-    private func printDebug(resource: String, res: NSHTTPURLResponse?, responseString: String?, error: NSError?){
+    private func printDebug(method: String, resource: String, res: NSHTTPURLResponse?, responseString: String?, error: NSError?){
         if let res = res{
-            Debug.instance.log("GET: \(self.devApiUrl+resource) Answer: \(responseString) StatusCode: \(res.statusCode)");
+            Debug.instance.log("\(method): \(self.devApiUrl+resource) Answer: \(responseString) StatusCode: \(res.statusCode)");
         }
         if let error = error{
             Debug.instance.log(error)
