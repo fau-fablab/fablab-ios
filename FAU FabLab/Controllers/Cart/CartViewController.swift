@@ -52,13 +52,6 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         picker.showActionSheetPicker()
     }
     
-    func handler(amount: Double) {
-        CartModel.sharedInstance.updateProductInCart(self.selectedIndexPath!.row, amount: Double(amount))
-        self.tableView.reloadData();
-        self.tableView.setEditing(false, animated: true)
-        self.showTotalPrice()
-    }
-    
     func alertChangeAmount() {
         let cartEntry = self.cartModel.cart.getEntry(selectedIndexPath!.row)
         
