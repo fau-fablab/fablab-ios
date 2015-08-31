@@ -28,7 +28,21 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @IBAction func buttonChangeAmountPressed(sender: AnyObject) {
-        var picker: ActionSheetCustomPicker = ActionSheetCustomPicker()
+        let cartEntry = self.cartModel.cart.getEntry(selectedIndexPath!.row)
+        
+        var pickerDelegate = ActionSheetPickerDelegate(unit: cartEntry.product.unit, price: cartEntry.product.price, rounding: cartEntry.product.rounding, didSucceedAction: { (amount: Double) -> Void in
+            CartModel.sharedInstance.updateProductInCart(self.selectedIndexPath!.row, amount: Double(amount))
+            self.tableView.reloadData();
+            self.tableView.setEditing(false, animated: true)
+            self.showTotalPrice()
+            }, didCancelAction:{ (Void) -> Void in self.tableView.setEditing(false, animated: true)} )
+        
+        // set current amount
+        pickerDelegate.setAmount(cartEntry.amount)
+        
+        // initial selection is also needed, to correctly set current amount
+        var picker: ActionSheetCustomPicker = ActionSheetCustomPicker(title: "Menge auswählen".localized, delegate: pickerDelegate, showCancelButton: true, origin: self, initialSelections: [cartEntry.amount-1])
+        
         var doneButton: UIBarButtonItem = UIBarButtonItem()
         doneButton.title = "Übernehmen".localized
         doneButton.tintColor = UIColor.fabLabGreen()
@@ -37,15 +51,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         cancelButton.tintColor = UIColor.fabLabGreen()
         picker.setDoneButton(doneButton)
         picker.setCancelButton(cancelButton)
-        picker.title = "Menge auswählen".localized
-        
-        let cartEntry = self.cartModel.cart.getEntry(selectedIndexPath!.row)
-        picker.delegate = ActionSheetPickerDelegate(unit: cartEntry.product.unit, price: cartEntry.product.price, rounding: cartEntry.product.rounding, didSucceedAction: { (amount: Double) -> Void in
-            CartModel.sharedInstance.updateProductInCart(self.selectedIndexPath!.row, amount: Double(amount))
-            self.tableView.reloadData();
-            self.tableView.setEditing(false, animated: true)
-            self.showTotalPrice()
-            }, didCancelAction:{ (Void) -> Void in self.tableView.setEditing(false, animated: true)} )
+
         picker.showActionSheetPicker()
     }
     

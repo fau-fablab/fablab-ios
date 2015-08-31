@@ -26,6 +26,10 @@ class ActionSheetPickerDelegate: NSObject, ActionSheetCustomPickerDelegate {
         self.amount = amounts[0];
     }
     
+    func setAmount(amount: Double) {
+        self.amount = amount;
+    }
+    
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 2
     }
