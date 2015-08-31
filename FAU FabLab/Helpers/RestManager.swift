@@ -10,11 +10,12 @@ class RestManager {
     static let sharedInstance = RestManager()
     
     private var manager:Manager;
-    let devApiUrl = "https://ec2-52-28-16-59.eu-central-1.compute.amazonaws.com:4433" //ec2-52-28-16-59.eu-central-1.compute.amazonaws.com/
+    
+    let devApiUrl = "https://ec2-52-28-163-255.eu-central-1.compute.amazonaws.com:4433"
     
     init(){
         let serverTrustPolicies: [String: ServerTrustPolicy] = [
-            "ec2-52-28-16-59.eu-central-1.compute.amazonaws.com": .PinCertificates(
+            "ec2-52-28-163-255.eu-central-1.compute.amazonaws.com": .PinCertificates(
                 certificates: ServerTrustPolicy.certificatesInBundle(),
                 validateCertificateChain: true,
                 validateHost: true

@@ -79,10 +79,10 @@
 		927901E21B6D3F6300F95B09 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927901E01B6D3F6300F95B09 /* NewsViewController.swift */; };
 		927901E51B6D4AE300F95B09 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927901E41B6D4AE300F95B09 /* NewsModel.swift */; };
 		927F55D11B94D9DE003A98DF /* ErrorAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927F55D01B94D9DE003A98DF /* ErrorAlertView.swift */; };
+		927F55D41B950D36003A98DF /* ec2-52-28-163-255.eu-central-1.compute.amazonaws.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 927F55D31B950D36003A98DF /* ec2-52-28-163-255.eu-central-1.compute.amazonaws.com.cer */; };
 		928054F41B6D893300D0D4FB /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 928054F31B6D893300D0D4FB /* ObjectMapper.framework */; };
 		928054FB1B6DA22000D0D4FB /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928054FA1B6DA22000D0D4FB /* EventModel.swift */; };
 		92DB85A81B8B72FC0070FAD8 /* MalfunctionInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DB85A71B8B72FC0070FAD8 /* MalfunctionInfoModel.swift */; };
-		92F04A2F1B87D87C00C2ED81 /* ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 92F04A2E1B87D5A300C2ED81 /* ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer */; };
 		92F04A321B87D92100C2ED81 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5060B1E01B4EFE2A008B41FD /* LaunchScreen.xib */; };
 		92F04A331B87D92F00C2ED81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5060B1DB1B4EFE2A008B41FD /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -194,11 +194,11 @@
 		927901E01B6D3F6300F95B09 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		927901E41B6D4AE300F95B09 /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		927F55D01B94D9DE003A98DF /* ErrorAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorAlertView.swift; sourceTree = "<group>"; };
+		927F55D31B950D36003A98DF /* ec2-52-28-163-255.eu-central-1.compute.amazonaws.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ec2-52-28-163-255.eu-central-1.compute.amazonaws.com.cer"; sourceTree = "<group>"; };
 		928054F31B6D893300D0D4FB /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		928054FA1B6DA22000D0D4FB /* EventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		928841B51B93B3DC00E1BC5B /* CoreDataModel 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataModel 4.xcdatamodel"; sourceTree = "<group>"; };
 		92DB85A71B8B72FC0070FAD8 /* MalfunctionInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MalfunctionInfoModel.swift; sourceTree = "<group>"; };
-		92F04A2E1B87D5A300C2ED81 /* ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -516,7 +516,7 @@
 		927901BB1B6D3A6800F95B09 /* certs */ = {
 			isa = PBXGroup;
 			children = (
-				92F04A2E1B87D5A300C2ED81 /* ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer */,
+				927F55D31B950D36003A98DF /* ec2-52-28-163-255.eu-central-1.compute.amazonaws.com.cer */,
 			);
 			path = certs;
 			sourceTree = "<group>";
@@ -694,11 +694,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				927F55D41B950D36003A98DF /* ec2-52-28-163-255.eu-central-1.compute.amazonaws.com.cer in Resources */,
 				50D9F3C61B91C6C400FB0234 /* fablab_logo_white.png in Resources */,
 				50D9F3C41B91C52F00FB0234 /* fab_icon.png in Resources */,
 				92F04A331B87D92F00C2ED81 /* Main.storyboard in Resources */,
 				92F04A321B87D92100C2ED81 /* LaunchScreen.xib in Resources */,
-				92F04A2F1B87D87C00C2ED81 /* ec2-52-28-16-59.eu-central-1.compute.amazonaws.com.cer in Resources */,
 				50FCFED31B8F872B00B8C487 /* Localizable.strings in Resources */,
 				927901C21B6D3AF300F95B09 /* news_nopicture.png in Resources */,
 				84F53FF21B7419E7008FB605 /* checkout.png in Resources */,
