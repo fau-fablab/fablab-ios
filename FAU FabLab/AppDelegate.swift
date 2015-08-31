@@ -37,6 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         selectedBackground.backgroundColor = UIColor.fabLabGreen().colorWithAlphaComponent(0.1)
         UITableViewCell.appearance().selectedBackgroundView = selectedBackground
         
+        // TintColor for all Buttons
+        UIBarButtonItem.appearance().tintColor = UIColor.fabLabGreen()
+        
         return true
     }
 
