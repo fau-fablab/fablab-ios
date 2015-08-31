@@ -16,6 +16,10 @@ class SettingsViewController : UIViewController{
 
     }
     
+    override func viewWillAppear(animated: Bool) {
+        CartNavigationButtonController.sharedInstance.setViewController(self)
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         activitySpinner.startAnimating()
