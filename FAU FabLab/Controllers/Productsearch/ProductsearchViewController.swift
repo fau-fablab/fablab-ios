@@ -153,7 +153,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
 
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer,
         shouldReceiveTouch touch: UITouch) -> Bool {
-            if (autocompleteSuggestions.isEmpty) {
+            if (autocompleteSuggestions.isEmpty && searchActive) {
                 return true
             }
             return false
@@ -255,6 +255,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         self.actInd.startAnimating()
         model.searchProductByName(searchBar.text, onCompletion: { err in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.searchActive = false
                 self.searchBar.userInteractionEnabled = true;
                 self.actInd.stopAnimating();
                 self.setTableViewBackground()
@@ -276,6 +277,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         self.actInd.startAnimating()
         model.searchProductById(notification.object as! String, onCompletion: { err in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.searchActive = false
                 self.searchBar.userInteractionEnabled = true;
                 self.actInd.stopAnimating();
                 self.setTableViewBackground()
