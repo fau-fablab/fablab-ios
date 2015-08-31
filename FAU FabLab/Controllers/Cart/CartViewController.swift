@@ -41,7 +41,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         pickerDelegate.setAmount(cartEntry.amount)
         
         // initial selection is also needed, to correctly set current amount
-        var picker: ActionSheetCustomPicker = ActionSheetCustomPicker(title: "Menge auswählen".localized, delegate: pickerDelegate, showCancelButton: true, origin: self, initialSelections: [cartEntry.amount-1])
+        var picker: ActionSheetCustomPicker = ActionSheetCustomPicker(title: "Menge auswählen".localized, delegate: pickerDelegate, showCancelButton: true, origin: self, initialSelections: [(cartEntry.amount/cartEntry.product.rounding)-1])
         
         var doneButton: UIBarButtonItem = UIBarButtonItem()
         doneButton.title = "Übernehmen".localized
