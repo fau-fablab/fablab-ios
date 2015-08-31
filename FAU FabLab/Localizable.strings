@@ -8,6 +8,7 @@
 "Erlauben" = "Erlauben";
 "Fehler" = "Fehler";
 "Fehlgeschlagen" = "Fehlgeschlagen";
+"Freitext" = "Freitext";
 "Löschen" = "Löschen";
 "OK" = "OK";
 "Übernehmen" = "Übernehmen";
@@ -36,7 +37,7 @@
 "Menge auswählen" = "Menge auswählen";
 "Menge eingeben" = "Menge eingeben";
 "Es wird ein Zugriff auf die Kamera benötigt" = "Es wird ein Zugriff auf die Kamera benötigt";
-"Einheit" = "Einheit";
+"Kleinste Einheit" = "Kleinste Einheit";
 
 // ActionSheetPickerDelegate
 "Platten" = "Platten";

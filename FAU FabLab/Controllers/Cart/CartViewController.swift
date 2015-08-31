@@ -46,7 +46,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         var doneButton: UIBarButtonItem = UIBarButtonItem()
         doneButton.title = "Übernehmen".localized
         picker.setDoneButton(doneButton)
-        picker.addCustomButtonWithTitle("Freitext", actionBlock: { self.alertChangeAmount() })
+        picker.addCustomButtonWithTitle("Freitext".localized, actionBlock: { self.alertChangeAmount() })
         picker.tapDismissAction = TapAction.Cancel
         
         picker.showActionSheetPicker()
@@ -61,17 +61,35 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     
     func alertChangeAmount() {
         let cartEntry = self.cartModel.cart.getEntry(selectedIndexPath!.row)
-        let message = cartEntry.product.name + "\n" + "Einheit".localized + ": " + cartEntry.product.unit
         
+        let lowestUnit : String
+        if Int(cartEntry.product.rounding) == 1 {
+            lowestUnit = String(format: "%.0f", cartEntry.product.rounding)
+        } else {
+            lowestUnit = String(format: "%.2f", cartEntry.product.rounding)
+        }
+        
+        let message = cartEntry.product.name + "\n" + "Kleinste Einheit".localized + ": " + lowestUnit + " " + cartEntry.product.unit
+    
         var inputTextField: UITextField?
         
         let alertController: UIAlertController = UIAlertController(title: "Menge eingeben".localized, message: message, preferredStyle: .Alert)
 
         let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in self.tableView.setEditing(false, animated: true)})
         let doneAction: UIAlertAction = UIAlertAction(title: "Übernehmen".localized, style: .Default, handler: { (Void) -> Void in
-            var amount = NSString(string: inputTextField!.text)
-            // TODO input checken!
-            CartModel.sharedInstance.updateProductInCart(self.selectedIndexPath!.row, amount: amount.doubleValue)
+            var amount: Double = NSString(string: inputTextField!.text).doubleValue
+            if amount <= 0 {
+                amount = cartEntry.amount
+            }
+            
+            // this can be improved, only 2 or 0 digits after '.' are working correctly
+            if Int(cartEntry.product.rounding) == 1 {
+                amount = Double(round(amount))
+            } else {
+                amount = Double(round(100*amount)/100)
+            }
+
+            CartModel.sharedInstance.updateProductInCart(self.selectedIndexPath!.row, amount: amount)
             self.tableView.reloadData();
             self.tableView.setEditing(false, animated: true)
             self.showTotalPrice()
