@@ -57,8 +57,14 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     @IBAction func buttonAddToCartPressed(sender: AnyObject) {
         let cell = tableView.cellForRowAtIndexPath(selectedIndexPath!) as! ProductCustomCell;
         
-        var picker: ActionSheetCustomPicker = ActionSheetCustomPicker()
-        picker.title = "Menge auswählen".localized
+        var rounding = cell.product.uom?.rounding!
+        var pickerDelegate = ActionSheetPickerDelegate(unit: cell.product.unit!, price: cell.product.price!, rounding: rounding!, didSucceedAction: {
+            //INFO Changed cell.product to self.selectedProduct -> Works now with locationString but dunno if this affects other things!
+            (amount: Double) -> Void in CartModel.sharedInstance.addProductToCart(self.selectedProduct!, amount: Double(amount));
+            
+            self.cartButtonController.updateBadge() }, didCancelAction: {(Void) -> Void in })
+        
+        var picker: ActionSheetCustomPicker = ActionSheetCustomPicker(title: "Menge auswählen".localized, delegate: pickerDelegate, showCancelButton: false, origin: self)
         
         var doneButton: UIBarButtonItem = UIBarButtonItem()
         doneButton.title = "Hinzufügen".localized
@@ -68,12 +74,6 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         picker.addCustomButtonWithTitle("Freitext".localized, actionBlock: { self.alertChangeAmount() })
         picker.tapDismissAction = TapAction.Cancel
         
-        var rounding = cell.product.uom?.rounding!
-        picker.delegate = ActionSheetPickerDelegate(unit: cell.product.unit!, price: cell.product.price!, rounding: rounding!, didSucceedAction: {
-             //INFO Changed cell.product to self.selectedProduct -> Works now with locationString but dunno if this affects other things!
-            (amount: Double) -> Void in CartModel.sharedInstance.addProductToCart(self.selectedProduct!, amount: Double(amount));
-            
-            self.cartButtonController.updateBadge() }, didCancelAction: {(Void) -> Void in })
         picker.showActionSheetPicker()
     }
     
@@ -108,6 +108,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
             }
             
             CartModel.sharedInstance.addProductToCart(self.selectedProduct!, amount: Double(amount))
+            self.cartButtonController.updateBadge()
         })
         
         alertController.addAction(cancelAction)
