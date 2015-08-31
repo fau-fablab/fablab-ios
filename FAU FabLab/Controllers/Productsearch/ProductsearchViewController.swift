@@ -3,7 +3,7 @@ import Foundation
 import CoreActionSheetPicker
 import MessageUI
 
-class ProductsearchViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class ProductsearchViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
@@ -101,6 +101,10 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         //search bar
         searchBar.delegate = self
         searchBar.enablesReturnKeyAutomatically = false
+        searchBar.showsCancelButton = false
+        var gestureRecognizer = UITapGestureRecognizer(target: self, action: "searchBarCancelled")
+        gestureRecognizer.delegate = self
+        self.view.addGestureRecognizer(gestureRecognizer)
         
         //table view
         tableView.delegate = self
@@ -142,6 +146,19 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         view.addConstraint(c2)
         view.addConstraint(c3)
         view.addConstraint(autocompleteTableViewConstraint)
+        
+    }
+
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer,
+        shouldReceiveTouch touch: UITouch) -> Bool {
+            if (autocompleteSuggestions.isEmpty) {
+                return true
+            }
+            return false
+    }
+    
+    func searchBarCancelled() {
+        searchBarCancelButtonClicked(self.searchBar)
     }
     
     override func didReceiveMemoryWarning() {
@@ -215,7 +232,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchActive = false;
-        searchBar.resignFirstResponder();
+        searchBar.resignFirstResponder()
         autocompleteTableView.hidden = true
     }
     
