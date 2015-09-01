@@ -55,12 +55,8 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     func alertChangeAmount() {
         let cartEntry = self.cartModel.cart.getEntry(selectedIndexPath!.row)
         
-        let lowestUnit : String
-        if Int(cartEntry.product.rounding) == 1 {
-            lowestUnit = String(format: "%.0f", cartEntry.product.rounding)
-        } else {
-            lowestUnit = String(format: "%.2f", cartEntry.product.rounding)
-        }
+        let formatString : String = "%." + String(cartEntry.product.rounding.digitsAfterComma) + "f"
+        let lowestUnit : String = String(format: formatString, cartEntry.product.rounding)
         
         let message = cartEntry.product.name + "\n" + "Kleinste Einheit".localized + ": " + lowestUnit + " " + cartEntry.product.unit
     
@@ -75,12 +71,8 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
                 amount = cartEntry.amount
             }
             
-            // this can be improved, only 2 or 0 digits after '.' are working correctly
-            if Int(cartEntry.product.rounding) == 1 {
-                amount = Double(round(amount))
-            } else {
-                amount = Double(round(100*amount)/100)
-            }
+            // round the user input down to rounding.digitsAfterComma
+            amount = amount.roundDown(cartEntry.product.rounding.digitsAfterComma)
 
             CartModel.sharedInstance.updateProductInCart(self.selectedIndexPath!.row, amount: amount)
             self.tableView.reloadData();
@@ -91,12 +83,10 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         alertController.addAction(cancelAction)
         alertController.addAction(doneAction)
         
-        alertController.addTextFieldWithConfigurationHandler({ textField -> Void in inputTextField = textField
-            if Int(cartEntry.product.rounding) == 1 {
-                inputTextField!.text = String(format: "%.0f", cartEntry.amount)
-            } else {
-                inputTextField!.text = String(format: "%.2f", cartEntry.amount)
-            }})
+        alertController.addTextFieldWithConfigurationHandler({ textField -> Void in
+            inputTextField = textField
+            inputTextField!.text = String(format: formatString, cartEntry.amount)
+        })
         
         self.presentViewController(alertController, animated: true, completion: nil)
     }
