@@ -66,13 +66,33 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
 
         let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in self.tableView.setEditing(false, animated: true)})
         let doneAction: UIAlertAction = UIAlertAction(title: "Übernehmen".localized, style: .Default, handler: { (Void) -> Void in
-            var amount: Double = NSString(string: inputTextField!.text).doubleValue
+            var amount: Double = NSString(string: inputTextField!.text.stringByReplacingOccurrencesOfString(",", withString: ".")).doubleValue
+            
+            var lessThanZero = false
             if amount <= 0 {
                 amount = cartEntry.amount
+                lessThanZero = true
             }
             
-            // round the user input down to rounding.digitsAfterComma
-            amount = amount.roundDown(cartEntry.product.rounding.digitsAfterComma)
+            var wrongInput = false
+            if amount.digitsAfterComma != cartEntry.product.rounding.digitsAfterComma {
+                // round the user input down to rounding.digitsAfterComma
+                amount = amount.roundDown(cartEntry.product.rounding.digitsAfterComma)
+                wrongInput = true
+            }
+            
+            if wrongInput == true || lessThanZero == true {
+                let amountString = String(format: formatString, amount)
+                
+                var errorMsg : String = "Fehlerhafte Eingabe".localized + "\n"
+                if wrongInput == true {
+                    errorMsg += "Wert wurde abgerundet auf".localized + ": " + amountString + " " + cartEntry.product.unit
+                } else if lessThanZero == true {
+                    errorMsg += "Wert wurde nicht verändert".localized
+                }
+
+                ErrorAlertView.showErrorView(errorMsg)
+            }
 
             CartModel.sharedInstance.updateProductInCart(self.selectedIndexPath!.row, amount: amount)
             self.tableView.reloadData();

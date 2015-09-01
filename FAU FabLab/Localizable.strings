@@ -48,6 +48,9 @@
 "Produkt ist nicht mehr auf Lager." = "Produkt ist nicht mehr auf Lager.";
 "Produkt ID" = "Produkt ID";
 "Produkt Name" = "Produkt Name";
+"Fehlerhafte Eingabe" = "Fehlerhafte Eingabe";
+"Wert wurde abgerundet auf" = "Wert wurde abgerundet auf";
+"Wert wurde nicht verändert" = "Wert wurde nicht verändert";
 
 // ActionSheetPickerDelegate
 "Platten" = "Platten";
