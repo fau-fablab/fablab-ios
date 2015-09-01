@@ -53,13 +53,6 @@ public class ProductCustomCell: UITableViewCell {
 
     func configure(product: Product!) {
         self.product = product
-        /*let separatedName = split(product.name!, maxSplit: 1, allowEmptySlices: false, isSeparator: isSeparator)
-        self.title.text = separatedName[0];
-        if(separatedName.count > 1) {
-            self.subtitle.text = separatedName[1];
-        }
-        self.price.text = String(format: "%.2f€".localized, product.price!);
-        self.unit.text = product.unit;*/
         configure(product.name!, unit: product.unit!, price: product.price!)
     }
     
