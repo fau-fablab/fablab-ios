@@ -12,4 +12,8 @@ extension Double {
         let p : Double = pow(10, Double(digitsAfterComma))
         return Double(floor(p*self)/p)
     }
+    
+    func roundToRounding(rounding: Double) -> Double {
+        return Double(Int(self/rounding)) * rounding
+    }
 }

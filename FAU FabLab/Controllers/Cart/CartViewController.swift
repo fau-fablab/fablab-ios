@@ -75,9 +75,10 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
             }
             
             var wrongRounding = false
-            if amount.digitsAfterComma != cartEntry.product.rounding.digitsAfterComma {
-                // round the user input down to rounding.digitsAfterComma
-                amount = amount.roundDown(cartEntry.product.rounding.digitsAfterComma)
+            let divRes = amount / cartEntry.product.rounding
+            if divRes.digitsAfterComma != 0 {
+                // round the user input down to match rounding.digitsAfterComma
+                amount = amount.roundToRounding(cartEntry.product.rounding)
                 wrongRounding = true
             }
             

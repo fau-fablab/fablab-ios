@@ -101,9 +101,10 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
             }
             
             var wrongRounding = false
-            if amount.digitsAfterComma != self.selectedProduct!.uom!.rounding!.digitsAfterComma {
-                // round the user input down to rounding.digitsAfterComma
-                amount = amount.roundDown(self.selectedProduct!.uom!.rounding!.digitsAfterComma)
+            let divRes = amount / self.selectedProduct!.uom!.rounding!
+            if divRes.digitsAfterComma != 0 {
+                // round the user input down to match rounding.digitsAfterComma
+                amount = amount.roundToRounding(self.selectedProduct!.uom!.rounding!)
                 wrongRounding = true
             }
             
