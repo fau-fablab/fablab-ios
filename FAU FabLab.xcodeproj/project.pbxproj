@@ -42,6 +42,7 @@
 		84CDCD3A1B90950C0084D8F3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDCD391B90950C0084D8F3 /* Settings.swift */; };
 		84F53FEE1B73DD24008FB605 /* PayOrCancelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F53FED1B73DD24008FB605 /* PayOrCancelViewController.swift */; };
 		84F53FF21B7419E7008FB605 /* checkout.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F53FF11B7419E7008FB605 /* checkout.png */; };
+		92002B1A1B965DFB00E7E467 /* production.crt in Resources */ = {isa = PBXBuildFile; fileRef = 92002B191B965DFB00E7E467 /* production.crt */; };
 		92078EBD1B6E2D9D00A21AD9 /* ProductsearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92078EBC1B6E2D9D00A21AD9 /* ProductsearchModel.swift */; };
 		92078EC01B6E471200A21AD9 /* ProductsearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92078EBF1B6E471200A21AD9 /* ProductsearchViewController.swift */; };
 		9232D7461B9219C600BF77E9 /* PlatformType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9232D7451B9219C600BF77E9 /* PlatformType.swift */; };
@@ -158,6 +159,7 @@
 		84DC93121B669E0100981977 /* RSBarcodes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RSBarcodes.framework; path = Carthage/Build/iOS/RSBarcodes.framework; sourceTree = "<group>"; };
 		84F53FED1B73DD24008FB605 /* PayOrCancelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayOrCancelViewController.swift; sourceTree = "<group>"; };
 		84F53FF11B7419E7008FB605 /* checkout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkout.png; sourceTree = "<group>"; };
+		92002B191B965DFB00E7E467 /* production.crt */ = {isa = PBXFileReference; lastKnownFileType = file; path = production.crt; sourceTree = "<group>"; };
 		92078EBC1B6E2D9D00A21AD9 /* ProductsearchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsearchModel.swift; sourceTree = "<group>"; };
 		92078EBF1B6E471200A21AD9 /* ProductsearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsearchViewController.swift; sourceTree = "<group>"; };
 		9232D7451B9219C600BF77E9 /* PlatformType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformType.swift; sourceTree = "<group>"; };
@@ -519,6 +521,7 @@
 		927901BB1B6D3A6800F95B09 /* certs */ = {
 			isa = PBXGroup;
 			children = (
+				92002B191B965DFB00E7E467 /* production.crt */,
 				927F55D31B950D36003A98DF /* ec2-52-28-163-255.eu-central-1.compute.amazonaws.com.cer */,
 			);
 			path = certs;
@@ -703,6 +706,7 @@
 				92F04A331B87D92F00C2ED81 /* Main.storyboard in Resources */,
 				92F04A321B87D92100C2ED81 /* LaunchScreen.xib in Resources */,
 				50FCFED31B8F872B00B8C487 /* Localizable.strings in Resources */,
+				92002B1A1B965DFB00E7E467 /* production.crt in Resources */,
 				927901C21B6D3AF300F95B09 /* news_nopicture.png in Resources */,
 				84F53FF21B7419E7008FB605 /* checkout.png in Resources */,
 				927901C41B6D3B2B00F95B09 /* Images.xcassets in Resources */,
