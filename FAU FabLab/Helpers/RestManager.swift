@@ -11,7 +11,11 @@ class RestManager {
     
     private var manager:Manager;
     
-    let apiUrl = "https://ec2-52-28-163-255.eu-central-1.compute.amazonaws.com:4433"
+    #if PRODUCTION
+        let apiUrl = "https://ec2-52-28-126-35.eu-central-1.compute.amazonaws.com:4433"
+    #else
+        let apiUrl = "https://ec2-52-28-163-255.eu-central-1.compute.amazonaws.com:4433"
+    #endif
     
     init(){
         let serverTrustPolicies: [String: ServerTrustPolicy] = [
