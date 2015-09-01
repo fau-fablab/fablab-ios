@@ -11,7 +11,7 @@ class RestManager {
     
     private var manager:Manager;
     
-    let devApiUrl = "https://ec2-52-28-163-255.eu-central-1.compute.amazonaws.com:4433"
+    let apiUrl = "https://ec2-52-28-163-255.eu-central-1.compute.amazonaws.com:4433"
     
     init(){
         let serverTrustPolicies: [String: ServerTrustPolicy] = [
@@ -29,7 +29,7 @@ class RestManager {
     }
     
     func makeJsonGetRequest(resource: String, params: [String : String]?, onCompletion : JsonServiceResponse) {
-        let endpoint = devApiUrl+resource
+        let endpoint = apiUrl+resource
         manager.request(.GET, endpoint, parameters: params)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
@@ -40,7 +40,7 @@ class RestManager {
     }
     
     func makeGetRequest(resource: String, params: [String : String]?, onCompletion : ServiceResponse) {
-        let endpoint = devApiUrl+resource
+        let endpoint = apiUrl+resource
         manager.request(.GET, endpoint, parameters: params)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["text/plain"])
@@ -51,7 +51,7 @@ class RestManager {
     }
     
     func makeJsonPostRequest(resource: String, params: NSDictionary?, onCompletion : JsonServiceResponse) {
-        let endpoint = devApiUrl+resource
+        let endpoint = apiUrl+resource
         manager.request(.POST, endpoint, parameters: params as? [String : AnyObject], encoding: .JSON)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
@@ -68,8 +68,8 @@ class RestManager {
     }
     
     func makeJsonPutRequest(resource: String, params: NSDictionary?, onCompletion : JsonServiceResponse) {
-        let endpoint = devApiUrl+resource
-        manager.request(.PUT, devApiUrl+resource, parameters: params as? [String : AnyObject], encoding: .JSON)
+        let endpoint = apiUrl+resource
+        manager.request(.PUT, endpoint, parameters: params as? [String : AnyObject], encoding: .JSON)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { (req, res, json, error) in
@@ -80,7 +80,7 @@ class RestManager {
     
 
     func makePostRequest(resource: String, params: NSDictionary?, onCompletion : ServiceResponse) {
-        let endpoint = devApiUrl + resource
+        let endpoint = apiUrl + resource
         manager.request(.POST, endpoint, parameters: params as? [String:AnyObject], encoding: .JSON)
         .validate(statusCode: 200 ..< 300)
         .validate(contentType: ["text/plain"])
@@ -93,7 +93,7 @@ class RestManager {
     
     private func printDebug(method: String, resource: String, res: NSHTTPURLResponse?, responseJson: AnyObject?, error: NSError?){
         if let res = res{
-            Debug.instance.log("\(method): \(self.devApiUrl+resource) JSONAnswer: \(responseJson) StatusCode: \(res.statusCode)");
+            Debug.instance.log("\(method): \(resource) JSONAnswer: \(responseJson) StatusCode: \(res.statusCode)");
         }
         if let error = error{
             Debug.instance.log(error)
@@ -102,7 +102,7 @@ class RestManager {
     
     private func printDebug(method: String, resource: String, res: NSHTTPURLResponse?, responseString: String?, error: NSError?){
         if let res = res{
-            Debug.instance.log("\(method): \(self.devApiUrl+resource) Answer: \(responseString) StatusCode: \(res.statusCode)");
+            Debug.instance.log("\(method): \(resource) Answer: \(responseString) StatusCode: \(res.statusCode)");
         }
         if let error = error{
             Debug.instance.log(error)

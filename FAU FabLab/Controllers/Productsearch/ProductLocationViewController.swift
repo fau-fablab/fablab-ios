@@ -18,7 +18,7 @@ class ProductLocationViewController : UIViewController {
         super.viewDidLoad()
         self.title = productName
         
-        let url = NSURL (string: RestManager.sharedInstance.devApiUrl + "/productMap/productMap.html?id=" + locationId!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!);
+        let url = NSURL (string: RestManager.sharedInstance.apiUrl + "/productMap/productMap.html?id=" + locationId!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!);
         let requestObj = NSURLRequest(URL: url!);
         webView.loadRequest(requestObj);
     }
