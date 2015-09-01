@@ -102,9 +102,9 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
     private var emailBody: String{
-        return "Produkt ist nicht mehr auf Lager.</br></br><b>Produkt ID :</b> </br>"
-            + "\(selectedProduct!.id)</br> </br> <b>Produkt Name :</b> </br> \(selectedProduct!.name)"
-            + "</br></br> Gesendet mit der Fablab-iOS App"
+        return "Produkt ist nicht mehr auf Lager.".localized + "</br></br><b>" + "Produkt ID".localized + ":</b> </br>"
+            + "\(selectedProduct!.id)</br> </br> <b>" + "Produkt Name".localized + ": </b> </br> \(selectedProduct!.name)"
+            + "</br></br>" + "Gesendet mit der Fablab-iOS App".localized
     }
     
     @IBAction func buttonReportOutOfStockPressed(sender: AnyObject) {
@@ -133,7 +133,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
     private func showTotalPrice(){
-        labelTotalPrice.text = String(format: "%.2f€".localized, cartModel.cart.getPrice());
+        labelTotalPrice.text = String(format: "%.2f€", cartModel.cart.getPrice());
     }
     
     override func viewDidLoad() {

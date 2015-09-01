@@ -39,7 +39,7 @@ class MalfunctionInfoModel : NSObject{
             json, err in
             
             if (err != nil) {
-                ErrorAlertView.showErrorView("Fehler beim Abrufen der Fablab Email")
+                ErrorAlertView.showErrorView("Fehler beim Abrufen der Fablab Email".localized)
                 onCompletion()
             }
             self.fablabMail = json
@@ -57,7 +57,7 @@ class MalfunctionInfoModel : NSObject{
                 json, err in
                 
                 if (err != nil) {
-                    ErrorAlertView.showErrorView("Fehler beim Abrufen der Fablab Tools")
+                    ErrorAlertView.showErrorView("Fehler beim Abrufen der Fablab Tools".localized)
                     onCompletion()
                 }
                 

@@ -19,6 +19,13 @@
 // EventsCustomCell
 "Heute" = "Heute";
 
+// Models
+"Fehler bei der Produktsuche" = "Fehler bei der Produktsuche";
+"Fehler beim Abrufen der Events" = "Fehler beim Abrufen der Events";
+"Fehler beim Abrufen der News" = "Fehler beim Abrufen der News";
+"Fehler beim Abrufen der Fablab Email" = "Fehler beim Abrufen der Fablab Email";
+"Fehler beim Abrufen der Fablab Tools" = "Fehler beim Abrufen der Fablab Tools";
+
 // MafunctionInfoController
 "Bitte hier eine kurze Fehlerbeschreibung eintragen" = "Bitte hier eine kurze Fehlerbeschreibung eintragen";
 "Gesendet mit der Fablab-iOS App" = "Gesendet mit der Fablab-iOS App";
@@ -38,6 +45,9 @@
 "Menge eingeben" = "Menge eingeben";
 "Es wird ein Zugriff auf die Kamera benötigt" = "Es wird ein Zugriff auf die Kamera benötigt";
 "Kleinste Einheit" = "Kleinste Einheit";
+"Produkt ist nicht mehr auf Lager." = "Produkt ist nicht mehr auf Lager.";
+"Produkt ID" = "Produkt ID";
+"Produkt Name" = "Produkt Name";
 
 // ActionSheetPickerDelegate
 "Platten" = "Platten";
