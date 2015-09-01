@@ -68,30 +68,38 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         let doneAction: UIAlertAction = UIAlertAction(title: "Übernehmen".localized, style: .Default, handler: { (Void) -> Void in
             var amount: Double = NSString(string: inputTextField!.text.stringByReplacingOccurrencesOfString(",", withString: ".")).doubleValue
             
-            var lessThanZero = false
-            if amount <= 0 {
+            var invalidInput = false
+            if amount < cartEntry.product.rounding || amount > Double(Int.max) {
                 amount = cartEntry.amount
-                lessThanZero = true
+                invalidInput = true
             }
             
-            var wrongInput = false
+            var wrongRounding = false
             if amount.digitsAfterComma != cartEntry.product.rounding.digitsAfterComma {
                 // round the user input down to rounding.digitsAfterComma
                 amount = amount.roundDown(cartEntry.product.rounding.digitsAfterComma)
-                wrongInput = true
+                wrongRounding = true
             }
             
-            if wrongInput == true || lessThanZero == true {
+            if wrongRounding == true || invalidInput == true {
                 let amountString = String(format: formatString, amount)
                 
-                var errorMsg : String = "Fehlerhafte Eingabe".localized + "\n"
-                if wrongInput == true {
-                    errorMsg += "Wert wurde abgerundet auf".localized + ": " + amountString + " " + cartEntry.product.unit
-                } else if lessThanZero == true {
-                    errorMsg += "Wert wurde nicht verändert".localized
+                var errorMsg : String = ""
+                var errorTitle : String = ""
+                if invalidInput == true {
+                    errorTitle = "Fehlerhafte Eingabe".localized
+                    errorMsg = "Wert wurde nicht verändert".localized
+                } else if wrongRounding == true {
+                    errorTitle = "Anzahl wurde geändert".localized
+                    errorMsg = "Fehlerhafte Eingabe".localized
+                    errorMsg += "\n" + "Wert wurde abgerundet auf".localized + ": " + amountString + " " + cartEntry.product.unit
                 }
 
-                ErrorAlertView.showErrorView(errorMsg)
+                var alert = UIAlertView()
+                alert.title = errorTitle
+                alert.message = errorMsg
+                alert.addButtonWithTitle("OK".localized)
+                alert.show()
             }
 
             CartModel.sharedInstance.updateProductInCart(self.selectedIndexPath!.row, amount: amount)

@@ -51,6 +51,7 @@
 "Fehlerhafte Eingabe" = "Fehlerhafte Eingabe";
 "Wert wurde abgerundet auf" = "Wert wurde abgerundet auf";
 "Wert wurde nicht verändert" = "Wert wurde nicht verändert";
+"Anzahl wurde geändert" = "Anzahl wurde geändert";
 
 // ActionSheetPickerDelegate
 "Platten" = "Platten";
@@ -58,6 +59,9 @@
 // ProductsearchViewController
 "Hinzufügen" = "Hinzufügen";
 "Keine Produkte gefunden" = "Keine Produkte gefunden";
+"Wert ist ungültig" = "Wert ist ungültig";
+"Produkt wurde dem Warenkorb hinzugefügt" = "Produkt wurde dem Warenkorb hinzugefügt";
+"Produkt wurde nicht dem Warenkorb hinzugefügt" = "Produkt wurde nicht dem Warenkorb hinzugefügt";
 
 // EventsViewController
 "ganztägig" = "ganztägig";

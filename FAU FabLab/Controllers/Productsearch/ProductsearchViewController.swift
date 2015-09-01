@@ -78,13 +78,9 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func alertChangeAmount() {
-
-        let lowestUnit : String
-        if Int(self.selectedProduct!.uom!.rounding!) == 1 {
-            lowestUnit = String(format: "%.0f", self.selectedProduct!.uom!.rounding!)
-        } else {
-            lowestUnit = String(format: "%.2f", self.selectedProduct!.uom!.rounding!)
-        }
+        
+        let formatString : String = "%." + String(self.selectedProduct!.uom!.rounding!.digitsAfterComma) + "f"
+        let lowestUnit : String = String(format: formatString, self.selectedProduct!.uom!.rounding!)
         
         let message1 = self.selectedProduct!.name! + "\n" + "Kleinste Einheit".localized + ": "
         let message2 = lowestUnit + " " + self.selectedProduct!.unit!
@@ -94,21 +90,48 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         let alertController: UIAlertController = UIAlertController(title: "Menge eingeben".localized, message: message1 + message2, preferredStyle: .Alert)
         
         let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in self.tableView.setEditing(false, animated: true)})
-        let doneAction: UIAlertAction = UIAlertAction(title: "Übernehmen".localized, style: .Default, handler: { (Void) -> Void in
-            var amount: Double = NSString(string: inputTextField!.text).doubleValue
-            if amount <= 0 {
-                return
+        let doneAction: UIAlertAction = UIAlertAction(title: "Hinzufügen".localized, style: .Default, handler: { (Void) -> Void in
+            
+            var amount: Double = NSString(string: inputTextField!.text.stringByReplacingOccurrencesOfString(",", withString: ".")).doubleValue
+            
+            var invalidInput = false
+            if amount < self.selectedProduct!.uom!.rounding! || amount > Double(Int.max)  {
+                amount = 0
+                invalidInput = true
             }
             
-            // this can be improved, only 2 or 0 digits after '.' are working correctly
-            if Int(self.selectedProduct!.uom!.rounding!) == 1 {
-                amount = Double(round(amount))
-            } else {
-                amount = Double(round(100*amount)/100)
+            var wrongRounding = false
+            if amount.digitsAfterComma != self.selectedProduct!.uom!.rounding!.digitsAfterComma {
+                // round the user input down to rounding.digitsAfterComma
+                amount = amount.roundDown(self.selectedProduct!.uom!.rounding!.digitsAfterComma)
+                wrongRounding = true
             }
             
-            CartModel.sharedInstance.addProductToCart(self.selectedProduct!, amount: Double(amount))
-            self.cartButtonController.updateBadge()
+            if wrongRounding == true || invalidInput == true {
+                let amountString = String(format: formatString, amount)
+                
+                var errorMsg : String = ""
+                var errorTitle : String = ""
+                if invalidInput == true {
+                    errorTitle = "Fehlerhafte Eingabe".localized
+                    errorMsg = "Wert ist ungültig".localized
+                    errorMsg += "\n" + "Produkt wurde nicht dem Warenkorb hinzugefügt".localized
+                } else if wrongRounding == true {
+                    errorTitle = "Produkt wurde dem Warenkorb hinzugefügt".localized
+                    errorMsg = "Wert wurde abgerundet auf".localized + ": " + amountString + " " + self.selectedProduct!.unit!
+                }
+                
+                var alert = UIAlertView()
+                alert.title = errorTitle
+                alert.message = errorMsg
+                alert.addButtonWithTitle("OK".localized)
+                alert.show()
+            }
+            
+            if invalidInput == false {
+                CartModel.sharedInstance.addProductToCart(self.selectedProduct!, amount: Double(amount))
+                self.cartButtonController.updateBadge()
+            }
         })
         
         alertController.addAction(cancelAction)
