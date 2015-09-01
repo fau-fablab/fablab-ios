@@ -19,6 +19,11 @@ class RestManager {
     
     init(){
         let serverTrustPolicies: [String: ServerTrustPolicy] = [
+            "ec2-52-28-126-35.eu-central-1.compute.amazonaws.com": .PinCertificates(
+                certificates: ServerTrustPolicy.certificatesInBundle(),
+                validateCertificateChain: true,
+                validateHost: true
+            ),
             "ec2-52-28-163-255.eu-central-1.compute.amazonaws.com": .PinCertificates(
                 certificates: ServerTrustPolicy.certificatesInBundle(),
                 validateCertificateChain: true,
