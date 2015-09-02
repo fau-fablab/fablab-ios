@@ -3,9 +3,8 @@ import UIKit
 
 class PayOrCancelViewController : UIViewController{
     
-    @IBOutlet weak var payButton: UIButton!
-    @IBOutlet weak var cancelButton: UIButton!
     
+    @IBOutlet weak var cancelButton: UIButton!
      override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkoutStatusChanged:", name: "CheckoutStatusChangedNotification", object: nil)
@@ -19,10 +18,6 @@ class PayOrCancelViewController : UIViewController{
         cancelButton.enabled = false
         CartModel.sharedInstance.cancelCheckoutProcessByUser()
     }
-    
-    @IBAction func payButtonTouched(sender: AnyObject) {
-        payButton.enabled = false
-        CartModel.sharedInstance.payCheckoutProcessByUser()
-    }
+
     
 }

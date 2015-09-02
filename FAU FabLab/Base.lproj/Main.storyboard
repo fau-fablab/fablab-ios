@@ -502,60 +502,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vWA-4f-gso">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <items>
-                                    <navigationItem id="zcX-WW-u48">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="DWc-xT-zoO">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jfr-h5-Cl6">
-                                                <rect key="frame" x="16" y="7" width="44" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="&quot;Paid&quot;">
-                                                    <color key="titleColor" red="0.10273505627618447" green="0.72243923611111116" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="payButtonTouched:" destination="xHV-4v-R4N" eventType="touchUpInside" id="reG-e6-c9s"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="t4z-bf-uDj">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yhg-v3-FHy">
-                                                <rect key="frame" x="363" y="7" width="237" height="83"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Abbrechen">
-                                                    <color key="titleColor" red="1" green="0.20929139445862543" blue="0.20756372416755553" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="cancelButtonTouched:" destination="xHV-4v-R4N" eventType="touchUpInside" id="qMQ-BH-00c"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="21y-66-3jd">
                                 <rect key="frame" x="290" y="84" width="20" height="20"/>
                                 <color key="tintColor" red="1" green="0.20929139450000001" blue="0.20756372419999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="color" red="1" green="0.20929139450000001" blue="0.20756372419999999" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="checkout.png" translatesAutoresizingMaskIntoConstraints="NO" id="8DL-f9-V74">
-                                <rect key="frame" x="48" y="186" width="206" height="240"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fww-xJ-Ubm">
+                                <rect key="frame" x="263" y="28" width="75" height="30"/>
+                                <state key="normal" title="Abbrechen">
+                                    <color key="titleColor" red="1" green="0.20929139450000001" blue="0.20756372419999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonTouched:" destination="xHV-4v-R4N" eventType="touchUpInside" id="9fd-eW-75D"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkout.png" translatesAutoresizingMaskIntoConstraints="NO" id="8DL-f9-V74">
+                                <rect key="frame" x="197" y="180" width="206" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="eh3-X2-KKv"/>
+                                    <constraint firstAttribute="width" constant="206" id="lWf-Tp-TFC"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="21y-66-3jd" secondAttribute="centerX" id="PmZ-ne-Tdw"/>
-                            <constraint firstItem="21y-66-3jd" firstAttribute="top" secondItem="vWA-4f-gso" secondAttribute="bottom" constant="20" id="Wl1-uM-J3k"/>
-                            <constraint firstItem="vWA-4f-gso" firstAttribute="leading" secondItem="LF1-53-fNB" secondAttribute="leadingMargin" constant="-16" id="ZJY-UZ-wYc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="vWA-4f-gso" secondAttribute="trailing" constant="-16" id="rIB-z9-Ce9"/>
-                            <constraint firstItem="vWA-4f-gso" firstAttribute="top" secondItem="zuB-I0-PWh" secondAttribute="bottom" id="wwx-Lj-r6q"/>
+                            <constraint firstAttribute="centerY" secondItem="8DL-f9-V74" secondAttribute="centerY" id="JVk-ec-s99"/>
+                            <constraint firstAttribute="centerX" secondItem="21y-66-3jd" secondAttribute="centerX" id="f2j-qh-5bU"/>
+                            <constraint firstItem="fww-xJ-Ubm" firstAttribute="top" secondItem="zuB-I0-PWh" secondAttribute="bottom" constant="8" id="hvs-Xd-dDa"/>
+                            <constraint firstItem="21y-66-3jd" firstAttribute="top" secondItem="zuB-I0-PWh" secondAttribute="bottom" constant="64" id="u7G-eY-SFg"/>
+                            <constraint firstAttribute="centerX" secondItem="8DL-f9-V74" secondAttribute="centerX" id="wZT-4u-cfC"/>
+                            <constraint firstAttribute="centerX" secondItem="fww-xJ-Ubm" secondAttribute="centerX" id="wx7-mw-izX"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="cancelButton" destination="yhg-v3-FHy" id="0vj-j4-Zje"/>
-                        <outlet property="payButton" destination="jfr-h5-Cl6" id="lb4-wd-H3I"/>
+                        <outlet property="cancelButton" destination="fww-xJ-Ubm" id="ZZO-Vx-0Py"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BgR-fc-JMh" userLabel="First Responder" sceneMemberID="firstResponder"/>
