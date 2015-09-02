@@ -38,7 +38,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     
     private var emailBody: String{
         return "Produkt ist nicht mehr auf Lager.".localized + "</br></br><b>" + "Produkt ID".localized + ":</b> </br>"
-            + "\(selectedProduct!.productId)</br> </br> <b>" + "Produkt Name".localized + ": </b> </br> \(selectedProduct!.name)"
+            + "\(selectedProduct!.productId!)</br> </br> <b>" + "Produkt Name".localized + ": </b> </br> \(selectedProduct!.name!)"
             + "</br></br>" + "Gesendet mit der Fablab-iOS App".localized
     }
     
