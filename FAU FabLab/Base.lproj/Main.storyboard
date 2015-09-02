@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -998,69 +998,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="top" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVy-pC-J8y">
-                                <rect key="frame" x="16" y="72" width="274" height="36"/>
-                                <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.34999999999999964"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Gerät wählen">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonSelectMachineClicked:" destination="1Ut-5H-ies" eventType="touchUpInside" id="k84-yK-xyv"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YUU-6h-ysP">
-                                <rect key="frame" x="16" y="146" width="568" height="397"/>
-                                <color key="backgroundColor" red="0.59345407196969702" green="0.59345407196969702" blue="0.59345407196969702" alpha="0.12" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="veN-Kx-A1q">
-                                <rect key="frame" x="311" y="72" width="273" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Senden">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonSendMailClicked:" destination="1Ut-5H-ies" eventType="touchUpInside" id="K48-pk-RdZ"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNN-lN-rbG">
-                                <rect key="frame" x="16" y="107" width="568" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Bitte das betroffene Gerät auswählen" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Tm-GK-mMO">
+                                <rect key="frame" x="16" y="72" width="568" height="100"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nVy-pC-J8y" firstAttribute="top" secondItem="726-ZX-s8Q" secondAttribute="bottom" constant="8" id="0i8-6y-xIv"/>
-                            <constraint firstAttribute="bottom" secondItem="YUU-6h-ysP" secondAttribute="bottom" constant="57" id="1Bl-uc-hO1" userLabel="textViewBottomConstraint"/>
-                            <constraint firstAttribute="centerX" secondItem="gNN-lN-rbG" secondAttribute="centerX" id="5AE-Q9-7z1"/>
-                            <constraint firstAttribute="trailing" secondItem="veN-Kx-A1q" secondAttribute="trailing" constant="16" id="6yZ-Wb-N2z"/>
-                            <constraint firstItem="nVy-pC-J8y" firstAttribute="baseline" secondItem="veN-Kx-A1q" secondAttribute="baseline" id="8qN-WO-SEe"/>
-                            <constraint firstItem="nVy-pC-J8y" firstAttribute="width" secondItem="veN-Kx-A1q" secondAttribute="width" id="CEs-S7-7oc"/>
-                            <constraint firstAttribute="trailing" secondItem="gNN-lN-rbG" secondAttribute="trailing" constant="16" id="EXf-ZW-z1p"/>
-                            <constraint firstItem="YUU-6h-ysP" firstAttribute="leading" secondItem="BBR-Cw-L7q" secondAttribute="leading" constant="16" id="Fwv-zQ-vut"/>
-                            <constraint firstItem="gNN-lN-rbG" firstAttribute="leading" secondItem="BBR-Cw-L7q" secondAttribute="leading" constant="16" id="aVY-ND-gJy"/>
-                            <constraint firstItem="gNN-lN-rbG" firstAttribute="top" secondItem="726-ZX-s8Q" secondAttribute="bottom" constant="43" id="d5X-tl-VxL"/>
-                            <constraint firstItem="veN-Kx-A1q" firstAttribute="top" secondItem="726-ZX-s8Q" secondAttribute="bottom" constant="8" id="gVq-j8-eEu"/>
-                            <constraint firstItem="veN-Kx-A1q" firstAttribute="leading" secondItem="nVy-pC-J8y" secondAttribute="trailing" constant="21" id="hR0-MM-ddr"/>
-                            <constraint firstItem="nVy-pC-J8y" firstAttribute="leading" secondItem="BBR-Cw-L7q" secondAttribute="leading" constant="16" id="lqC-qU-VUk"/>
-                            <constraint firstItem="YUU-6h-ysP" firstAttribute="top" secondItem="gNN-lN-rbG" secondAttribute="bottom" constant="15" id="tfj-tA-PB7"/>
-                            <constraint firstAttribute="trailing" secondItem="YUU-6h-ysP" secondAttribute="trailing" constant="16" id="u3p-Pa-QUa"/>
+                            <constraint firstAttribute="trailing" secondItem="8Tm-GK-mMO" secondAttribute="trailing" constant="16" id="2xZ-th-l0I"/>
+                            <constraint firstItem="8Tm-GK-mMO" firstAttribute="top" secondItem="726-ZX-s8Q" secondAttribute="bottom" constant="8" id="MG5-TC-IaI"/>
+                            <constraint firstItem="8Tm-GK-mMO" firstAttribute="leading" secondItem="BBR-Cw-L7q" secondAttribute="leadingMargin" id="a9d-Gg-nRU"/>
+                            <constraint firstItem="8Tm-GK-mMO" firstAttribute="trailing" secondItem="BBR-Cw-L7q" secondAttribute="trailingMargin" id="ey1-C6-n5l"/>
+                            <constraint firstAttribute="centerX" secondItem="8Tm-GK-mMO" secondAttribute="centerX" id="sxB-TU-BVc"/>
+                            <constraint firstItem="8Tm-GK-mMO" firstAttribute="leading" secondItem="BBR-Cw-L7q" secondAttribute="leading" constant="16" id="t3X-zz-ny7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Störmeldung" id="I1W-OB-LoK">
                         <barButtonItem key="rightBarButtonItem" image="icon_cart" id="TEz-v1-FYo"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="affectedMachineLabel" destination="gNN-lN-rbG" id="OyR-Yb-NMy"/>
-                        <outlet property="buttonSelectMachine" destination="nVy-pC-J8y" id="o8s-DK-ErQ"/>
-                        <outlet property="buttonSendMail" destination="veN-Kx-A1q" id="9sr-j3-gxj"/>
-                        <outlet property="textViewBottomConstraint" destination="1Bl-uc-hO1" id="Xg5-35-0kB"/>
-                        <outlet property="textfield" destination="YUU-6h-ysP" id="jKL-me-Inh"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NBD-c7-3vN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
