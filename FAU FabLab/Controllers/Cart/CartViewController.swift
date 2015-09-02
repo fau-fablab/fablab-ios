@@ -15,7 +15,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     private var cartModel = CartModel.sharedInstance
     private var cartEntryCellIdentifier = "ProductCustomCell"
     private let noLocationSetIdentifier = "unknown location"
-    private let modelOutOfStock = MalfunctionInfoModel()
+    private let modelOutOfStock = MalfunctionInfoModel.sharedInstance
     private var productSearchModel = ProductsearchModel()
     
     private var selectedIndexPath: NSIndexPath?
@@ -127,14 +127,16 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @IBAction func buttonReportOutOfStockPressed(sender: AnyObject) {
-        var picker = MFMailComposeViewController()
-        picker.mailComposeDelegate = self
-        picker.navigationBar.tintColor = UIColor.fabLabGreen()
-        picker.setToRecipients([modelOutOfStock.fablabMail!])
-        picker.setSubject("Bestandsmeldung".localized)
-        picker.setMessageBody(emailBody, isHTML: true)
-        
-        presentViewController(picker, animated: true, completion: nil)
+        modelOutOfStock.fetchFablabMailAddress({
+            var picker = MFMailComposeViewController()
+            picker.mailComposeDelegate = self
+            picker.navigationBar.tintColor = UIColor.fabLabGreen()
+            picker.setToRecipients([self.modelOutOfStock.fablabMail!])
+            picker.setSubject("Bestandsmeldung".localized)
+            picker.setMessageBody(self.emailBody, isHTML: true)
+            
+            self.presentViewController(picker, animated: true, completion: nil)
+        })
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

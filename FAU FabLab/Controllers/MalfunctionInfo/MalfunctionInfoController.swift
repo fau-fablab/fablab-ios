@@ -4,7 +4,7 @@ import CoreActionSheetPicker
 
 class MalfunctionInfoController: UIViewController, MFMailComposeViewControllerDelegate {
     
-    private let model = MalfunctionInfoModel()
+    private let model = MalfunctionInfoModel.sharedInstance
     private let cartButtonController = CartNavigationButtonController.sharedInstance
     private let pickerIsVisible = false
     private var mailViewWasVisible = false
@@ -22,7 +22,7 @@ class MalfunctionInfoController: UIViewController, MFMailComposeViewControllerDe
     }
     
     var emailBody: String{
-        return "<b>Tool:</b> </br> \(selectedMachine) </br></br> <b>Error Message:</b> </br>  </br></br> " + "Gesendet mit der Fablab-iOS App".localized
+        return "<b>Tool:</b> </br> \(selectedMachine) </br></br> <b>Error Message:</b> </br>  </br></br>" + "Gesendet mit der Fablab-iOS App".localized
     }
 
     override func viewDidLoad() {

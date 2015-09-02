@@ -3,6 +3,8 @@ import ObjectMapper
 
 class MalfunctionInfoModel : NSObject{
     
+    static let sharedInstance = MalfunctionInfoModel()
+    
     private let resource = "/drupal";
     private var tools = [FabTool]()
     private var mapper: Mapper<FabTool>;

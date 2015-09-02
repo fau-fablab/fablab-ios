@@ -11,7 +11,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     
     private var selectedIndexPath: NSIndexPath?
     private var model = ProductsearchModel()
-    private let modelOutOfStock = MalfunctionInfoModel()
+    private let modelOutOfStock = MalfunctionInfoModel.sharedInstance
     
     private var selectedProduct: Product?
 
@@ -43,15 +43,16 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     @IBAction func buttonReportOutOfStockPressed(sender: AnyObject) {
-        
-        var picker = MFMailComposeViewController()
-        picker.mailComposeDelegate = self
-        picker.navigationBar.tintColor = UIColor.fabLabGreen()
-        picker.setToRecipients([modelOutOfStock.fablabMail!])
-        picker.setSubject("Bestandsmeldung".localized)
-        picker.setMessageBody(emailBody, isHTML: true)
-        
-        presentViewController(picker, animated: true, completion: nil)
+        modelOutOfStock.fetchFablabMailAddress({
+            var picker = MFMailComposeViewController()
+            picker.mailComposeDelegate = self
+            picker.navigationBar.tintColor = UIColor.fabLabGreen()
+            picker.setToRecipients([self.modelOutOfStock.fablabMail!])
+            picker.setSubject("Bestandsmeldung".localized)
+            picker.setMessageBody(self.emailBody, isHTML: true)
+            
+            self.presentViewController(picker, animated: true, completion: nil)
+        })
     }
 
     @IBAction func buttonAddToCartPressed(sender: AnyObject) {
