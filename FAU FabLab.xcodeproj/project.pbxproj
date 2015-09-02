@@ -18,12 +18,12 @@
 		48CC3FF91B8B6E0900FB9C8E /* BBBadgeBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 48CC3FF81B8B6E0900FB9C8E /* BBBadgeBarButtonItem.m */; };
 		48CC3FFB1B8B6E2500FB9C8E /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC3FFA1B8B6E2500FB9C8E /* CartViewController.swift */; };
 		48CC3FFD1B8B6F0600FB9C8E /* CartNavigationButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC3FFC1B8B6F0600FB9C8E /* CartNavigationButtonController.swift */; };
-		500360501B9797110037114C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 500360521B9797110037114C /* Localizable.strings */; };
 		502DB1521B7150370036EF6B /* EventsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502DB1511B7150370036EF6B /* EventsDetailViewController.swift */; };
 		5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1D51B4EFE2A008B41FD /* AppDelegate.swift */; };
 		5060B1EE1B4EFE2A008B41FD /* FAU_FabLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1ED1B4EFE2A008B41FD /* FAU_FabLabTests.swift */; };
 		5067CECB1B90C50300DE8E86 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067CECA1B90C50300DE8E86 /* ImageDetailViewController.swift */; };
 		507493681B5BFE6F0035BEB4 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */; };
+		5087F41B1B97B48B0007C109 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5087F4191B97B48B0007C109 /* Localizable.strings */; };
 		50D9F3C41B91C52F00FB0234 /* fab_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 50D9F3C31B91C52F00FB0234 /* fab_icon.png */; };
 		50D9F3C61B91C6C400FB0234 /* fablab_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 50D9F3C51B91C6C400FB0234 /* fablab_logo_white.png */; };
 		50DBE9041B6FA93000685B07 /* EventsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */; };
@@ -133,8 +133,6 @@
 		48CC3FFC1B8B6F0600FB9C8E /* CartNavigationButtonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartNavigationButtonController.swift; sourceTree = "<group>"; };
 		5003604E1B97911B0037114C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		5003604F1B97911C0037114C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		500360511B9797110037114C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		500360531B9797150037114C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		502DB1511B7150370036EF6B /* EventsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsDetailViewController.swift; sourceTree = "<group>"; };
 		5060B1D01B4EFE2A008B41FD /* FAU FabLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FAU FabLab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5060B1D41B4EFE2A008B41FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -147,6 +145,8 @@
 		5067CECA1B90C50300DE8E86 /* ImageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
 		507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		507BA38D1B5A7C0300E5DCF3 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		5087F41A1B97B48B0007C109 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = "FAU FabLab/de.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		5087F41C1B97B4A20007C109 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "FAU FabLab/en.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		50D9F3C31B91C52F00FB0234 /* fab_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fab_icon.png; sourceTree = "<group>"; };
 		50D9F3C51B91C6C400FB0234 /* fablab_logo_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fablab_logo_white.png; sourceTree = "<group>"; };
 		50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCustomCell.swift; sourceTree = "<group>"; };
@@ -298,6 +298,7 @@
 		5060B1C71B4EFE29008B41FD = {
 			isa = PBXGroup;
 			children = (
+				5087F4191B97B48B0007C109 /* Localizable.strings */,
 				923E1F2D1B7AA3F7009CC545 /* CoreDataModel.xcdatamodeld */,
 				927901B91B6D39FF00F95B09 /* Libraries */,
 				507BA38D1B5A7C0300E5DCF3 /* Cartfile */,
@@ -335,7 +336,6 @@
 			isa = PBXGroup;
 			children = (
 				5060B1D41B4EFE2A008B41FD /* Info.plist */,
-				500360521B9797110037114C /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -737,13 +737,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5087F41B1B97B48B0007C109 /* Localizable.strings in Resources */,
 				920AECF31B97208000523C1B /* ec2-52-28-126-35.eu-central-1.compute.amazonaws.com.cer in Resources */,
 				927F55D41B950D36003A98DF /* ec2-52-28-163-255.eu-central-1.compute.amazonaws.com.cer in Resources */,
 				50D9F3C61B91C6C400FB0234 /* fablab_logo_white.png in Resources */,
 				50D9F3C41B91C52F00FB0234 /* fab_icon.png in Resources */,
 				92F04A331B87D92F00C2ED81 /* Main.storyboard in Resources */,
 				92F04A321B87D92100C2ED81 /* LaunchScreen.xib in Resources */,
-				500360501B9797110037114C /* Localizable.strings in Resources */,
 				927901C21B6D3AF300F95B09 /* news_nopicture.png in Resources */,
 				84F53FF21B7419E7008FB605 /* checkout.png in Resources */,
 				927901C41B6D3B2B00F95B09 /* Images.xcassets in Resources */,
@@ -872,15 +872,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		500360521B9797110037114C /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				500360511B9797110037114C /* Base */,
-				500360531B9797150037114C /* en */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
 		5060B1DB1B4EFE2A008B41FD /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -899,6 +890,15 @@
 			);
 			name = LaunchScreen.xib;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		5087F4191B97B48B0007C109 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5087F41A1B97B48B0007C109 /* de */,
+				5087F41C1B97B4A20007C109 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
