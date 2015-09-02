@@ -17,6 +17,10 @@ class MalfunctionInfoController: UIViewController, MFMailComposeViewControllerDe
         }
     }
     
+    var alertViewAction: UIAlertAction {
+        return UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Default, handler: { action in self.navigateBack() })
+    }
+    
     var emailBody: String{
         return "<b>Tool:</b> </br> \(selectedMachine) </br></br> <b>Error Message:</b> </br>  </br></br> " + "Gesendet mit der Fablab-iOS App".localized
     }
@@ -59,23 +63,29 @@ class MalfunctionInfoController: UIViewController, MFMailComposeViewControllerDe
     
     func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
         dismissViewControllerAnimated(true, completion: nil)
+        
+        var alert: UIAlertController?
+
         switch result.value{
             case MFMailComposeResultCancelled.value:
                 Debug.instance.log("Cancelled")
-                var alert = UIAlertController(title: "Abgebrochen".localized, message: "Störungsmeldung wurde nicht versendet!".localized, preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
+                alert = UIAlertController(title: "Abgebrochen".localized, message: "Störungsmeldung wurde nicht versendet!".localized, preferredStyle: UIAlertControllerStyle.Alert)
 
             case MFMailComposeResultSent.value:
                 Debug.instance.log("Sent!")
                 var alert = UIAlertController(title: "Versendet".localized, message: "Störungsmeldung wurde erfolgreich versendet!".localized, preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
 
             default:
-                //TODO
                 Debug.instance.log("Default")
         }
+        if let alert = alert {
+            alert.addAction(alertViewAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+    private func navigateBack(){
+        navigationController?.popViewControllerAnimated(true)
     }
     
     private func showPicker(){
@@ -87,7 +97,7 @@ class MalfunctionInfoController: UIViewController, MFMailComposeViewControllerDe
             },
             cancelBlock: {
                 ActionStringCancelBlock in
-                self.navigationController?.popViewControllerAnimated(true)
+                self.navigateBack()
             },
             origin: nil)
         
