@@ -823,7 +823,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gesamtpreis" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTq-8X-d41">
-                                <rect key="frame" x="16" y="567" width="98" height="21"/>
+                                <rect key="frame" x="16" y="567" width="124" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -961,12 +961,12 @@
                             <constraint firstItem="eGp-Ok-z96" firstAttribute="trailing" secondItem="Cw4-Ky-LeW" secondAttribute="trailing" constant="-16" id="P7X-eg-POV"/>
                             <constraint firstItem="Ydh-Do-RI8" firstAttribute="top" secondItem="dTq-8X-d41" secondAttribute="top" constant="-11" id="QQD-90-oZu"/>
                             <constraint firstItem="Ydh-Do-RI8" firstAttribute="top" secondItem="Cw4-Ky-LeW" secondAttribute="bottom" id="frC-mu-qM3"/>
-                            <constraint firstItem="Cw4-Ky-LeW" firstAttribute="leading" secondItem="dTq-8X-d41" secondAttribute="trailing" constant="-114" id="ihT-5T-Qko"/>
+                            <constraint firstItem="Cw4-Ky-LeW" firstAttribute="leading" secondItem="dTq-8X-d41" secondAttribute="trailing" constant="-140" id="ihT-5T-Qko"/>
                             <constraint firstItem="eGp-Ok-z96" firstAttribute="top" secondItem="Cw4-Ky-LeW" secondAttribute="bottom" constant="11" id="msd-iA-0Td"/>
                             <constraint firstAttribute="trailing" secondItem="Cw4-Ky-LeW" secondAttribute="trailing" id="n4P-BC-hVL"/>
                             <constraint firstItem="Ydh-Do-RI8" firstAttribute="top" secondItem="eGp-Ok-z96" secondAttribute="bottom" constant="-32" id="nxb-Cg-ZU8"/>
                             <constraint firstItem="Ydh-Do-RI8" firstAttribute="leading" secondItem="dTq-8X-d41" secondAttribute="leading" constant="-16" id="sLa-qY-KBV"/>
-                            <constraint firstItem="Ydh-Do-RI8" firstAttribute="leading" secondItem="dTq-8X-d41" secondAttribute="trailing" constant="-114" id="tOV-lm-zSv"/>
+                            <constraint firstItem="Ydh-Do-RI8" firstAttribute="leading" secondItem="dTq-8X-d41" secondAttribute="trailing" constant="-140" id="tOV-lm-zSv"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Warenkorb" image="first" id="kBk-Ta-hCe"/>

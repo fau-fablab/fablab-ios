@@ -1,0 +1,213 @@
+
+/* Class = "UISearchBar"; placeholder = "Alle Produkte suchen"; ObjectID = "0kA-u0-HSB"; */
+"0kA-u0-HSB.placeholder" = "Search all products";
+
+/* Class = "UISearchBar"; 0kA-u0-HSB.scopeButtonTitles[0] = "Name"; ObjectID = "0kA-u0-HSB"; */
+"0kA-u0-HSB.scopeButtonTitles[0]" = "Name";
+
+/* Class = "UISearchBar"; 0kA-u0-HSB.scopeButtonTitles[1] = "Preis"; ObjectID = "0kA-u0-HSB"; */
+"0kA-u0-HSB.scopeButtonTitles[1]" = "Price";
+
+/* Class = "UINavigationItem"; title = "Produkt scannen"; ObjectID = "0rM-lF-ofP"; */
+"0rM-lF-ofP.title" = "Scan product";
+
+/* Class = "UILabel"; text = "10:00 - 12:00 Uhr"; ObjectID = "0w8-71-UYt"; */
+"0w8-71-UYt.text" = "10:00 - 12:00 o'clock";
+
+/* Class = "UIViewController"; title = "Störmeldung"; ObjectID = "1Ut-5H-ies"; */
+"1Ut-5H-ies.title" = "Malfunction message";
+
+/* Class = "UIButton"; normalTitle = "Ausgegangenes Produkt melden"; ObjectID = "2ng-04-xvl"; */
+"2ng-04-xvl.normalTitle" = "Report out of stock";
+
+/* Class = "UINavigationItem"; title = "Produktsuche"; ObjectID = "3G3-bQ-XHf"; */
+"3G3-bQ-XHf.title" = "Search product";
+
+/* Class = "UINavigationItem"; title = "Standort"; ObjectID = "3kI-51-wcw"; */
+"3kI-51-wcw.title" = "Product location";
+
+/* Class = "UIViewController"; title = "Produkt scannen"; ObjectID = "4Rd-fW-vJI"; */
+"4Rd-fW-vJI.title" = "Scan product";
+
+/* Class = "UINavigationItem"; title = "Warenkorb"; ObjectID = "50e-f8-Ahz"; */
+"50e-f8-Ahz.title" = "Cart";
+
+/* Class = "UIViewController"; title = "Termine"; ObjectID = "8rJ-Kc-sve"; */
+"8rJ-Kc-sve.title" = "Events";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "9CC-3z-Mto"; */
+"9CC-3z-Mto.text" = "Description";
+
+/* Class = "UILabel"; text = "04.08.2015 - 20:00 Uhr"; ObjectID = "9M8-PM-TZt"; */
+"9M8-PM-TZt.text" = "04.08.2015 - 20:00 Uhr";
+
+/* Class = "UITextView"; text = "Text"; ObjectID = "AAC-2f-4Z4"; */
+"AAC-2f-4Z4.text" = "Text";
+
+/* Class = "UINavigationController"; title = "Störmeldung"; ObjectID = "AgM-Bm-SWQ"; */
+"AgM-Bm-SWQ.title" = "Malfunction message";
+
+/* Class = "UILabel"; text = "Unit"; ObjectID = "BJ6-JV-dD0"; */
+"BJ6-JV-dD0.text" = "Unit";
+
+/* Class = "UITabBarItem"; title = "Produkt suchen"; ObjectID = "Ckf-F4-b20"; */
+"Ckf-F4-b20.title" = "Search product";
+
+/* Class = "UITabBarItem"; title = "Störmeldung"; ObjectID = "F1L-8Z-eGi"; */
+"F1L-8Z-eGi.title" = "Malfunction message";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "Fie-Dj-17f"; */
+"Fie-Dj-17f.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UITabBarItem"; title = "Über FAU FabLab für iOS"; ObjectID = "Hae-zG-sN4"; */
+"Hae-zG-sN4.title" = "About FAU FabLab for iOS";
+
+/* Class = "UIBarButtonItem"; title = "Zur Kasse"; ObjectID = "Hbn-BV-kwy"; */
+"Hbn-BV-kwy.title" = "Check-out";
+
+/* Class = "UINavigationItem"; title = "Störmeldung"; ObjectID = "I1W-OB-LoK"; */
+"I1W-OB-LoK.title" = "Malfunction message";
+
+/* Class = "UINavigationItem"; title = "Termine"; ObjectID = "J5E-cZ-saa"; */
+"J5E-cZ-saa.title" = "Events";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "JeU-Pa-qDs"; */
+"JeU-Pa-qDs.text" = "Title";
+
+/* Class = "UITabBarItem"; title = "Einstellungen"; ObjectID = "Jvy-hp-vXu"; */
+"Jvy-hp-vXu.title" = "Settings";
+
+/* Class = "UINavigationItem"; title = "News"; ObjectID = "Lal-CP-IHX"; */
+"Lal-CP-IHX.title" = "News";
+
+/* Class = "UITabBarItem"; title = "Barcode scannen"; ObjectID = "LvB-5i-Erh"; */
+"LvB-5i-Erh.title" = "Scan barcode";
+
+/* Class = "UILabel"; text = "Beschreibung:"; ObjectID = "MgD-a6-G5E"; */
+"MgD-a6-G5E.text" = "Description:";
+
+/* Class = "UILabel"; text = "Titel"; ObjectID = "O08-dp-NBi"; */
+"O08-dp-NBi.text" = "Title";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "Qz6-qy-aoD"; */
+"Qz6-qy-aoD.text" = "Subtitle";
+
+/* Class = "UIViewController"; title = "Über"; ObjectID = "RIZ-mv-nfx"; */
+"RIZ-mv-nfx.title" = "About";
+
+/* Class = "UILabel"; text = "Start:"; ObjectID = "Sri-VJ-Ygc"; */
+"Sri-VJ-Ygc.text" = "Start:";
+
+/* Class = "UIButton"; normalTitle = "Menge ändern"; ObjectID = "TMZ-eu-WTw"; */
+"TMZ-eu-WTw.normalTitle" = "Change amount";
+
+/* Class = "UIButton"; normalTitle = "Lagerort anzeigen"; ObjectID = "Tvd-Ek-GWb"; */
+"Tvd-Ek-GWb.normalTitle" = "Show product location";
+
+/* Class = "UINavigationItem"; title = "Barcode scannen"; ObjectID = "VxW-zZ-xmh"; */
+"VxW-zZ-xmh.title" = "Scan barcode";
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "XN6-Ka-UxU"; */
+"XN6-Ka-UxU.text" = "Price";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "XVH-6g-1Gy"; */
+"XVH-6g-1Gy.text" = "Title";
+
+/* Class = "UIViewController"; title = "Produkt suchen"; ObjectID = "YOP-IL-BaU"; */
+"YOP-IL-BaU.title" = "Search product";
+
+/* Class = "UITabBarItem"; title = "News"; ObjectID = "acW-dT-cKf"; */
+"acW-dT-cKf.title" = "News";
+
+/* Class = "UIButton"; normalTitle = "Lagerort anzeigen"; ObjectID = "bTz-pW-qc1"; */
+"bTz-pW-qc1.normalTitle" = "Show product location";
+
+/* Class = "UILabel"; text = "Benachrichte mich sobald das Fablab das nächste mal geöffnet wird"; ObjectID = "byv-mh-0Vm"; */
+"byv-mh-0Vm.text" = "Send me a notification, when the FabLab opens the next time";
+
+/* Class = "UITabBarItem"; title = "Termine"; ObjectID = "cPa-gy-q4n"; */
+"cPa-gy-q4n.title" = "Events";
+
+/* Class = "UIViewController"; title = "CheckoutCodeScanner"; ObjectID = "dAF-j1-LQU"; */
+"dAF-j1-LQU.title" = "CheckoutCodeScanner";
+
+/* Class = "UILabel"; text = "Gesamtpreis"; ObjectID = "dTq-8X-d41"; */
+"dTq-8X-d41.text" = "Total amount";
+
+/* Class = "UIButton"; normalTitle = "Zum Warenkorb hinzufügen"; ObjectID = "djP-p0-Dlu"; */
+"djP-p0-Dlu.normalTitle" = "Add to cart";
+
+/* Class = "UILabel"; text = "10€"; ObjectID = "eGp-Ok-z96"; */
+"eGp-Ok-z96.text" = "10€";
+
+/* Class = "UILabel"; text = "04.08.2015 - 18:00 Uhr"; ObjectID = "enB-pC-jnX"; */
+"enB-pC-jnX.text" = "04.08.2015 - 18:00 Uhr";
+
+/* Class = "UINavigationItem"; title = "News"; ObjectID = "fNv-5k-vXK"; */
+"fNv-5k-vXK.title" = "News";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "fP9-I3-rVt"; */
+"fP9-I3-rVt.text" = "Subtitle";
+
+/* Class = "UIButton"; normalTitle = "Abbrechen"; ObjectID = "fww-xJ-Ubm"; */
+"fww-xJ-Ubm.normalTitle" = "Cancel";
+
+/* Class = "UILabel"; text = "Unit"; ObjectID = "g7L-ud-Phc"; */
+"g7L-ud-Phc.text" = "Unit";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "gNN-lN-rbG"; */
+"gNN-lN-rbG.text" = "-";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "gOG-za-BqH"; */
+"gOG-za-BqH.text" = "Title";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "h33-gN-uGu"; */
+"h33-gN-uGu.text" = "Title";
+
+/* Class = "UILabel"; text = "Ende:"; ObjectID = "iRi-FO-xgh"; */
+"iRi-FO-xgh.text" = "End:";
+
+/* Class = "UITabBarItem"; title = "Warenkorb"; ObjectID = "kBk-Ta-hCe"; */
+"kBk-Ta-hCe.title" = "Cart";
+
+/* Class = "UILabel"; text = "FabLab"; ObjectID = "lYf-UJ-031"; */
+"lYf-UJ-031.text" = "FabLab";
+
+/* Class = "UITabBarItem"; title = "Inventur"; ObjectID = "mCe-bc-pqt"; */
+"mCe-bc-pqt.title" = "Inventory";
+
+/* Class = "UIButton"; normalTitle = "Gerät wählen"; ObjectID = "nVy-pC-J8y"; */
+"nVy-pC-J8y.normalTitle" = "Choose tool";
+
+/* Class = "UIViewController"; title = "EventDetail"; ObjectID = "oer-QD-BY8"; */
+"oer-QD-BY8.title" = "EventDetail";
+
+/* Class = "UIViewController"; title = "Warenkorb"; ObjectID = "ooQ-nD-6sq"; */
+"ooQ-nD-6sq.title" = "Cart";
+
+/* Class = "UILabel"; text = "03"; ObjectID = "pax-3Y-FFE"; */
+"pax-3Y-FFE.text" = "03";
+
+/* Class = "UILabel"; text = "Aug"; ObjectID = "qMM-yA-7gn"; */
+"qMM-yA-7gn.text" = "Aug";
+
+/* Class = "UIViewController"; title = "NewsDetail"; ObjectID = "qcq-Tu-HC1"; */
+"qcq-Tu-HC1.title" = "NewsDetail";
+
+/* Class = "UINavigationItem"; title = "Kasse Scannen"; ObjectID = "s7j-iS-WDi"; */
+"s7j-iS-WDi.title" = "Scan POS";
+
+/* Class = "UIBarButtonItem"; title = "Abbrechen"; ObjectID = "t2O-yL-LaM"; */
+"t2O-yL-LaM.title" = "Cancel";
+
+/* Class = "UIButton"; normalTitle = "Ausgegangenes Produkt melden"; ObjectID = "uvl-hH-DTy"; */
+"uvl-hH-DTy.normalTitle" = "Report out of stock";
+
+/* Class = "UIButton"; normalTitle = "Senden"; ObjectID = "veN-Kx-A1q"; */
+"veN-Kx-A1q.normalTitle" = "Send";
+
+/* Class = "UILabel"; text = "Benachrichte mich sobald das Fablab das nächste mal geöffnet wird"; ObjectID = "xEB-2c-aSF"; */
+"xEB-2c-aSF.text" = "Send me a notification, when the FabLab opens the next time";
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "ypM-6h-Mfe"; */
+"ypM-6h-Mfe.text" = "Price";

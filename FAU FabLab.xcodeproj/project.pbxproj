@@ -131,6 +131,8 @@
 		48CC3FF81B8B6E0900FB9C8E /* BBBadgeBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBadgeBarButtonItem.m; sourceTree = "<group>"; };
 		48CC3FFA1B8B6E2500FB9C8E /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		48CC3FFC1B8B6F0600FB9C8E /* CartNavigationButtonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartNavigationButtonController.swift; sourceTree = "<group>"; };
+		5003604E1B97911B0037114C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		5003604F1B97911C0037114C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		502DB1511B7150370036EF6B /* EventsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsDetailViewController.swift; sourceTree = "<group>"; };
 		5060B1D01B4EFE2A008B41FD /* FAU FabLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FAU FabLab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5060B1D41B4EFE2A008B41FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -711,10 +713,10 @@
 			};
 			buildConfigurationList = 5060B1CB1B4EFE29008B41FD /* Build configuration list for PBXProject "FAU FabLab" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = German;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
+				de,
 				Base,
 			);
 			mainGroup = 5060B1C71B4EFE29008B41FD;
@@ -872,6 +874,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5060B1DC1B4EFE2A008B41FD /* Base */,
+				5003604E1B97911B0037114C /* en */,
 			);
 			name = Main.storyboard;
 			path = ..;
@@ -881,6 +884,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5060B1E11B4EFE2A008B41FD /* Base */,
+				5003604F1B97911C0037114C /* en */,
 			);
 			name = LaunchScreen.xib;
 			path = ..;
