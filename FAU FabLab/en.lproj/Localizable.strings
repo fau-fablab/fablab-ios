@@ -1,0 +1,114 @@
+//MARK: AppDelegate
+"Update verfügbar" = "Update available";
+"Neue Version" = "New version";
+"Hinweis" = "Hint";
+"Notwendiges Update" = "Mandatory update";
+"Optionales Update" = "Optional update";
+
+//MARK: Allgemein
+"FAU FabLab" = "FAU FabLab";
+"Abbrechen" = "Cancel";
+"Abgebrochen" = "Aborted";
+"Achtung" = "Attention";
+"Ändern" = "Change";
+"Auswählen" = "Select";
+"Erlauben" = "Permit";
+"Fehler" = "Error";
+"Fehlgeschlagen" = "Failed";
+"Freitext" = "Free text";
+"Löschen" = "Delete";
+"OK" = "OK";
+"Übernehmen" = "Approve";
+
+//MARK: StringFormats
+"%.2f€" = "%.2f€";
+
+//MARK: EventsCustomCell
+"Heute" = "Today";
+
+//MARK: Models
+"Fehler bei der Produktsuche" = "Error during the product search";
+"Fehler beim Abrufen der Events" = "Error while collecting the events";
+"Fehler beim Abrufen der News" = "Error while collecting the News";
+"Fehler beim Abrufen der Fablab Email" = "Error while collecting the Fablab Mail-Address";
+"Fehler beim Abrufen der Fablab Tools" = "Error while collecting the Fablab Tools";
+
+//MARK: MafunctionInfoController
+"Bitte hier eine kurze Fehlerbeschreibung eintragen" = "Enter a short description of failure";
+"Gesendet mit der Fablab-iOS App" = "Sent with the Fablab-iOS App";
+"Störungsmeldung wurde nicht versendet!" = "Malfunction message was not sent!";
+"Versendet" = "Sent";
+"Störungsmeldung wurde erfolgreich versendet!" = "Malfunction message was sent successfully!";
+"Betroffenes Gerät" = "Affected tool";
+"Störungsmeldung" = "Malfunction message";
+
+//MARK: CartViewController
+"Der gescannte Code wurde nicht akzeptiert. Bitte den Code vom Kassenterminal scannen." = "The scanned code was not accepted. Please scan the code from the POS.";
+"Bezahlt" = "Paid";
+"Ihr Warenkorb wurde erfolgreich bezahlt" = "Your cart was paid successfully";
+"Bezahlvorgang wurde abgebrochen" = "Check-out was aborted";
+"Bezahlvorgang ist Fehlgeschlagen" = "Check-out failed";
+"Menge auswählen" = "Choose amount";
+"Menge eingeben" = "Enter amount";
+"Es wird ein Zugriff auf die Kamera benötigt" = "Permission to use the camera is required";
+"Kleinste Einheit" = "Lowest amount";
+"Produkt ist nicht mehr auf Lager." = "Product is out of stock.";
+"Produkt ID" = "Product ID";
+"Produkt Name" = "Product name";
+"Fehlerhafte Eingabe" = "Incorrect input";
+"Wert wurde abgerundet auf" = "Amount got rounded down to";
+"Wert wurde nicht verändert" = "Amount was not changed";
+"Anzahl wurde geändert" = "Amount was changed";
+
+//MARK: ActionSheetPickerDelegate
+"Platten" = "Sheets";
+
+//MARK: ProductsearchViewController
+"Hinzufügen" = "Add";
+"Keine Produkte gefunden" = "No products were found";
+"Wert ist ungültig" = "Value is not valid";
+"Produkt wurde dem Warenkorb hinzugefügt" = "Product was added to the cart";
+"Produkt wurde nicht dem Warenkorb hinzugefügt" = "Product was not added to the cart";
+
+//MARK: EventsViewController
+"ganztägig" = "all-day";
+"ab" = "starting at";
+"Uhr" = "";
+"ganztägig bis" = "all-day until";
+
+//MARK: EventsDetailsViewController & NewsDetailsViewController
+"In Kalender eintragen" = "Add to calendar";
+"Teilen" = "Share";
+"Im Browser ansehen" = "View in browser";
+"Termin erfolgreich dem Kalender hinzugefügt" = "Event was added to the calendar";
+"Termin konnte nicht dem Kalender hinzugefügt werden" = "Event was not added to the calendar";
+
+//MARK: DoorState
+"open" = "open";
+"closed" = "closed";
+
+//MARK: AboutViewController
+"license_title" = "License";
+"license_text" = "The MIT License (MIT)\n\nCopyright (c) 2015 MAD FabLab Team\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
+"code_title" = "Source Code & Contact";
+"code_text" = "This app was devaloped during the MAD-Project at the FAU Erlangen-Nuremberg. The source code can be found at GitHub. Send us your feedback via Mail! \n\nThe developers are:\n\nEmanuel Eimer\nStefan Herpich\nMichael Sander\nJulia Schottenhamml\nJohannes Pfann\nMax Jalowski\nSebastian Haubner\nKatharina Full\nPhilip Kranhäußer\nJulian Lorz\nDaniel Rosenmüller";
+"libraries_title" = "Open Source Libraries";
+"libraries_text" = "ActionSheetPicker\n(BSD License)\n\nAlamofire\n(MIT License)\n\nBBBadgeBarButtonItem\n(MIT License)\n\nKingfisher\n(MIT License)\n\nObjectMapper\n(MIT License)\n\nRSBarcodes\n(MIT License)\n\nSwiftyJson\n(MIT License)";
+"mad_url" = "https://www2.informatik.uni-erlangen.de/teaching/SS2015/MAD/index.html";
+"github_url" = "https://github.com/FAU-Inf2/fablab-ios";
+"mail_action" = "mail_action";
+"actionsheetpicker_url" = "https://github.com/skywinder/ActionSheetPicker-3.0";
+"alamofire_url" = "https://github.com/Alamofire/Alamofire";
+"bbbadgebarbuttonitem_url" = "https://github.com/TanguyAladenise/BBBadgeBarButtonItem";
+"kingfisher_url" = "https://github.com/onevcat/Kingfisher";
+"objectmapper_url" = "https://github.com/Hearst-DD/ObjectMapper";
+"rsbarcodes_url" = "https://github.com/yeahdongcn/RSBarcodes";
+"swiftyjson_url" = "https://github.com/SwiftyJSON/SwiftyJSON";
+"Nachricht wurde versendet" = "Messages was sent";
+"Nachricht wurde abgebrochen" = "Messages was not sent";
+
+
+//MARK: DoorState @ PUSH
+"Fablab wurde geöffnet" = "Fablab just opened!";
+"Coole Sache" = "Cool stuff.";
+
