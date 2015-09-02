@@ -20,9 +20,4 @@ class PayOrCancelViewController : UIViewController{
         CartModel.sharedInstance.cancelCheckoutProcessByUser()
     }
     
-    @IBAction func payButtonTouched(sender: AnyObject) {
-        payButton.enabled = false
-        CartModel.sharedInstance.payCheckoutProcessByUser()
-    }
-    
 }
