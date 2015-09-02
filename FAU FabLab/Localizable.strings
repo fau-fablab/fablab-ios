@@ -1,3 +1,9 @@
+//MARK: AppDelegate
+"Update verfügbar" = "Update verfügbar";
+"Neue Version" = "Neue Version";
+"Hinweis" = "Hinweis";
+"Notwendiges Update" = "Notwendiges Update";
+"Optionales Update" = "Optionales Update";
 
 //MARK: Allgemein
 "Abbrechen" = "Abbrechen";

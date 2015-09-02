@@ -20,14 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         versionCheckModel.checkVersion(PlatformType.APPLE, version: NSBundle.mainBundle().buildNumberAsInt!, onCompletion: {
             updateStatus in
             
-            let title = "Update verfügbar"
-            let message = "Neue Version : \(updateStatus.latestVersion!) \n Hinweis : \n \(updateStatus.updateMessage!)"
+            let title = "Update verfügbar".localized
+            let message = "Neue Version".localized + ":" + "\(updateStatus.latestVersion!) \n" + "Hinweis".localized + ": \n \(updateStatus.updateMessage!)"
             
             switch (updateStatus.updateAvailable!){
                 case .Required :
-                    AlertView.showInfoView(title, message: "Update notwendig! \n\(message)")
+                    AlertView.showInfoView(title, message: "Notwendiges Update".localized + "!\n\(message)")
                 case .Optional :
-                    AlertView.showInfoView(title, message: "Optionales Update \n\(message)")
+                    AlertView.showInfoView(title, message: "Optionales Update".localized + "!\n\(message)")
                 default:
                     return
             }
