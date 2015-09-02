@@ -10,9 +10,7 @@ class AutocompleteModel : NSObject {
     
     private let managedObjectContext : NSManagedObjectContext
     private let coreData = CoreDataHelper(sqliteDocumentName: "CoreDataModel.db", schemaName:"")
-    private let resource = "/products/names"
-    private var productNames = [String]()
-    private var productNamesLoaded = false
+    private let resource = "/products/autocompletions"
     private var isLoading = false
     
     //24 hours, in seconds
@@ -32,11 +30,7 @@ class AutocompleteModel : NSObject {
     
     func loadAutocompleteSuggestion() {
         if(autocompleteSuggestions.isEmpty || Double(NSDate().timeIntervalSinceDate(autocompleteSuggestions[0].lastRefresh)) >= refreshInterval) {
-            fetchProductNames({err in
-                if(err == nil) {
-                    self.createAutocompleteSuggestions()
-                }
-            })
+            fetchAutocompleteSuggestions({err in })
         }
     }
     
@@ -48,69 +42,21 @@ class AutocompleteModel : NSObject {
         return suggestions
     }
     
-    private func fetchProductNames(onCompletion: ProductNamesLoadFinished) {
+    private func fetchAutocompleteSuggestions(onCompletion: ProductNamesLoadFinished) {
         let params = ["search": ""]
-        if (!isLoading && !productNamesLoaded) {
+        if (!isLoading) {
             isLoading = true
-            productNames.removeAll(keepCapacity: false)
             RestManager.sharedInstance.makeJsonGetRequest(resource, params: params, onCompletion: {
                 json, err in
                 if (err != nil) {
                     Debug.instance.log(err)
                 } else {
-                    self.productNames = json as! [String]
-                    self.productNamesLoaded = true
+                    self.addAutocompleteSuggestions(json as! [String])
                 }
                 onCompletion(err)
                 self.isLoading = false
             })
         }
-    }
-    
-    private func createAutocompleteSuggestions() {
-        var suggestions = [String]()
-        let digits = NSCharacterSet.decimalDigitCharacterSet()
-        for name in productNames {
-            var tmpName = name.stringByReplacingOccurrencesOfString(",", withString: " ")
-                .stringByReplacingOccurrencesOfString("(", withString: " ")
-                .stringByReplacingOccurrencesOfString(")", withString: " ")
-                .stringByReplacingOccurrencesOfString("_", withString: " ")
-                .stringByReplacingOccurrencesOfString("-", withString: " ")
-                .stringByReplacingOccurrencesOfString("\"", withString: " ")
-                .stringByReplacingOccurrencesOfString("/", withString: " ")
-                .stringByReplacingOccurrencesOfString("=", withString: " ")
-                .stringByReplacingOccurrencesOfString("+", withString: " ")
-                .stringByReplacingOccurrencesOfString("?", withString: " ")
-                .stringByReplacingOccurrencesOfString(":", withString: " ")
-                .stringByReplacingOccurrencesOfString("&", withString: " ")
-                .stringByReplacingOccurrencesOfString("≥", withString: " ")
-                .stringByReplacingOccurrencesOfString("Ø", withString: " ")
-            var separatedName = split(tmpName, isSeparator: {$0 == " " || $0 == " "})
-            for string in separatedName {
-                if (count(string) > 2) {
-                    var found = false
-                    var digitPrefix = false
-                    for char in string.unicodeScalars {
-                        if digits.longCharacterIsMember(char.value) {
-                            digitPrefix = true
-                            break;
-                        }
-                    }
-                    if (digitPrefix) {
-                        continue
-                    }
-                    for suggestion in suggestions {
-                        if (suggestion.lowercaseString == string.lowercaseString) {
-                            found = true
-                        }
-                    }
-                    if (!found) {
-                        suggestions.append(string)
-                    }
-                }
-            }
-        }
-        addAutocompleteSuggestions(suggestions)
     }
     
     private func addAutocompleteSuggestions(strings: [String]) {
