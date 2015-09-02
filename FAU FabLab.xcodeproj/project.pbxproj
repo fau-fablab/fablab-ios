@@ -45,6 +45,7 @@
 		920AECE71B96E43E00523C1B /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920AECE41B96E43E00523C1B /* DoubleExtension.swift */; };
 		920AECE81B96E43E00523C1B /* FabColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920AECE51B96E43E00523C1B /* FabColors.swift */; };
 		920AECE91B96E43E00523C1B /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920AECE61B96E43E00523C1B /* StringExtension.swift */; };
+		920AECEB1B96E5B300523C1B /* NSBundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920AECEA1B96E5B300523C1B /* NSBundleExtension.swift */; };
 		9232D7461B9219C600BF77E9 /* PlatformType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9232D7451B9219C600BF77E9 /* PlatformType.swift */; };
 		923E1F231B7A728C009CC545 /* DoorNavigationButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E1F221B7A728C009CC545 /* DoorNavigationButtonController.swift */; };
 		923E1F251B7A735F009CC545 /* MalfunctionInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E1F241B7A735F009CC545 /* MalfunctionInfoController.swift */; };
@@ -162,6 +163,7 @@
 		920AECE41B96E43E00523C1B /* DoubleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		920AECE51B96E43E00523C1B /* FabColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FabColors.swift; sourceTree = "<group>"; };
 		920AECE61B96E43E00523C1B /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		920AECEA1B96E5B300523C1B /* NSBundleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSBundleExtension.swift; sourceTree = "<group>"; };
 		9232D7451B9219C600BF77E9 /* PlatformType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformType.swift; sourceTree = "<group>"; };
 		923E1F221B7A728C009CC545 /* DoorNavigationButtonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoorNavigationButtonController.swift; sourceTree = "<group>"; };
 		923E1F241B7A735F009CC545 /* MalfunctionInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MalfunctionInfoController.swift; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 				920AECE41B96E43E00523C1B /* DoubleExtension.swift */,
 				920AECE51B96E43E00523C1B /* FabColors.swift */,
 				920AECE61B96E43E00523C1B /* StringExtension.swift */,
+				920AECEA1B96E5B300523C1B /* NSBundleExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -789,6 +792,7 @@
 				92078EBD1B6E2D9D00A21AD9 /* ProductsearchModel.swift in Sources */,
 				48CC3FFB1B8B6E2500FB9C8E /* CartViewController.swift in Sources */,
 				920AECE91B96E43E00523C1B /* StringExtension.swift in Sources */,
+				920AECEB1B96E5B300523C1B /* NSBundleExtension.swift in Sources */,
 				844793561B93576D0057CF88 /* TriggerPushType.swift in Sources */,
 				923E1F251B7A735F009CC545 /* MalfunctionInfoController.swift in Sources */,
 				92500ED21B72CD7C0093CC45 /* Cart.swift in Sources */,
