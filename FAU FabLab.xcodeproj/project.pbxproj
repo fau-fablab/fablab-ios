@@ -83,7 +83,7 @@
 		927901E11B6D3F6300F95B09 /* NewsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927901DF1B6D3F6300F95B09 /* NewsDetailsViewController.swift */; };
 		927901E21B6D3F6300F95B09 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927901E01B6D3F6300F95B09 /* NewsViewController.swift */; };
 		927901E51B6D4AE300F95B09 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927901E41B6D4AE300F95B09 /* NewsModel.swift */; };
-		927F55D11B94D9DE003A98DF /* ErrorAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927F55D01B94D9DE003A98DF /* ErrorAlertView.swift */; };
+		927F55D11B94D9DE003A98DF /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927F55D01B94D9DE003A98DF /* AlertView.swift */; };
 		927F55D41B950D36003A98DF /* ec2-52-28-163-255.eu-central-1.compute.amazonaws.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 927F55D31B950D36003A98DF /* ec2-52-28-163-255.eu-central-1.compute.amazonaws.com.cer */; };
 		928054F41B6D893300D0D4FB /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 928054F31B6D893300D0D4FB /* ObjectMapper.framework */; };
 		928054FB1B6DA22000D0D4FB /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928054FA1B6DA22000D0D4FB /* EventModel.swift */; };
@@ -203,7 +203,7 @@
 		927901DF1B6D3F6300F95B09 /* NewsDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetailsViewController.swift; sourceTree = "<group>"; };
 		927901E01B6D3F6300F95B09 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		927901E41B6D4AE300F95B09 /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
-		927F55D01B94D9DE003A98DF /* ErrorAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorAlertView.swift; sourceTree = "<group>"; };
+		927F55D01B94D9DE003A98DF /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		927F55D31B950D36003A98DF /* ec2-52-28-163-255.eu-central-1.compute.amazonaws.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ec2-52-28-163-255.eu-central-1.compute.amazonaws.com.cer"; sourceTree = "<group>"; };
 		928054F31B6D893300D0D4FB /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		928054FA1B6DA22000D0D4FB /* EventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
@@ -588,7 +588,7 @@
 				927901C91B6D3B9300F95B09 /* RestManager.swift */,
 				35CE11C7BEE60991B0702A2A /* Debug.swift */,
 				923E1F301B7AA49A009CC545 /* CoreDataHelper.swift */,
-				927F55D01B94D9DE003A98DF /* ErrorAlertView.swift */,
+				927F55D01B94D9DE003A98DF /* AlertView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -824,7 +824,7 @@
 				846100BE1B78696000393E63 /* ProductLocationViewController.swift in Sources */,
 				923FFDA21B8E4DA5001ACAB1 /* User.swift in Sources */,
 				502DB1521B7150370036EF6B /* EventsDetailViewController.swift in Sources */,
-				927F55D11B94D9DE003A98DF /* ErrorAlertView.swift in Sources */,
+				927F55D11B94D9DE003A98DF /* AlertView.swift in Sources */,
 				923E1F2F1B7AA3F7009CC545 /* CoreDataModel.xcdatamodeld in Sources */,
 				927901D71B6D3EED00F95B09 /* NewsCustomCell.swift in Sources */,
 				928054FB1B6DA22000D0D4FB /* EventModel.swift in Sources */,

@@ -23,7 +23,7 @@ class EventModel : NSObject{
             RestManager.sharedInstance.makeJsonGetRequest(resource, params: nil, onCompletion: {
                 json, err in
                 if (err != nil) {
-                    ErrorAlertView.showErrorView("Fehler beim Abrufen der Events".localized)
+                    AlertView.showErrorView("Fehler beim Abrufen der Events".localized)
                     onCompletion(err)
                 }
                 

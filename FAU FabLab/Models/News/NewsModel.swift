@@ -29,7 +29,7 @@ public class NewsModel: NSObject {
             RestManager.sharedInstance.makeJsonGetRequest(resource, params: nil, onCompletion: {
                 json, err in
                 if (err != nil) {
-                    ErrorAlertView.showErrorView("Fehler beim Abrufen der News".localized)
+                    AlertView.showErrorView("Fehler beim Abrufen der News".localized)
                     onCompletion(err)
                 }
                 
