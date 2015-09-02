@@ -50,7 +50,7 @@ class AboutViewController : UIViewController, UITableViewDataSource, UITableView
     
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "FAU Fablab".localized + " " + NSBundle.mainBundle().releaseVersionString!
+        return "FAU FabLab".localized + " " + NSBundle.mainBundle().releaseVersionString!
     }
 
     func tableView(tableView: UITableView,
