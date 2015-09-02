@@ -44,6 +44,15 @@ class AboutViewController : UIViewController, UITableViewDataSource, UITableView
             return cell!
     }
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "FAU Fablab".localized + " " + NSBundle.mainBundle().releaseVersionString!
+    }
+
     func tableView(tableView: UITableView,
         numberOfRowsInSection section: Int) -> Int {
             return titleStrings.count
