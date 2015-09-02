@@ -47,6 +47,7 @@
 		920AECE91B96E43E00523C1B /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920AECE61B96E43E00523C1B /* StringExtension.swift */; };
 		920AECEB1B96E5B300523C1B /* NSBundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920AECEA1B96E5B300523C1B /* NSBundleExtension.swift */; };
 		920AECEE1B96ED3400523C1B /* VersionCheckApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920AECED1B96ED3400523C1B /* VersionCheckApi.swift */; };
+		920AECF11B96EDBD00523C1B /* VersionCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920AECF01B96EDBD00523C1B /* VersionCheckModel.swift */; };
 		9232D7461B9219C600BF77E9 /* PlatformType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9232D7451B9219C600BF77E9 /* PlatformType.swift */; };
 		923E1F231B7A728C009CC545 /* DoorNavigationButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E1F221B7A728C009CC545 /* DoorNavigationButtonController.swift */; };
 		923E1F251B7A735F009CC545 /* MalfunctionInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E1F241B7A735F009CC545 /* MalfunctionInfoController.swift */; };
@@ -166,6 +167,7 @@
 		920AECE61B96E43E00523C1B /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		920AECEA1B96E5B300523C1B /* NSBundleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSBundleExtension.swift; sourceTree = "<group>"; };
 		920AECED1B96ED3400523C1B /* VersionCheckApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionCheckApi.swift; sourceTree = "<group>"; };
+		920AECF01B96EDBD00523C1B /* VersionCheckModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionCheckModel.swift; sourceTree = "<group>"; };
 		9232D7451B9219C600BF77E9 /* PlatformType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformType.swift; sourceTree = "<group>"; };
 		923E1F221B7A728C009CC545 /* DoorNavigationButtonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoorNavigationButtonController.swift; sourceTree = "<group>"; };
 		923E1F241B7A735F009CC545 /* MalfunctionInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MalfunctionInfoController.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 		500A2CA21B63FB6E005CC8CF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				920AECEF1B96EDA000523C1B /* VersionCheck */,
 				84CDCD351B9094360084D8F3 /* Settings */,
 				921095321B88D78500396181 /* Inventory */,
 				842314691B70BC1D0074B670 /* Cart */,
@@ -465,6 +468,14 @@
 				920AECED1B96ED3400523C1B /* VersionCheckApi.swift */,
 			);
 			path = api;
+			sourceTree = "<group>";
+		};
+		920AECEF1B96EDA000523C1B /* VersionCheck */ = {
+			isa = PBXGroup;
+			children = (
+				920AECF01B96EDBD00523C1B /* VersionCheckModel.swift */,
+			);
+			path = VersionCheck;
 			sourceTree = "<group>";
 		};
 		921095321B88D78500396181 /* Inventory */ = {
@@ -832,6 +843,7 @@
 				489E4C751B79E093004A60FA /* ProductCustomCell.swift in Sources */,
 				924DBF6D1B8DEBB1000CAFB2 /* FabTool.swift in Sources */,
 				35CE1E13F0E8E25DBCE8E9C9 /* DoorStateModel.swift in Sources */,
+				920AECF11B96EDBD00523C1B /* VersionCheckModel.swift in Sources */,
 				35CE1DD759134EC89DBD0D29 /* Debug.swift in Sources */,
 				924DBF711B8DEBB1000CAFB2 /* Product.swift in Sources */,
 			);
