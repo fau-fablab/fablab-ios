@@ -1,5 +1,5 @@
 
-// Allgemein
+//MARK: Allgemein
 "Abbrechen" = "Abbrechen";
 "Abgebrochen" = "Abgebrochen";
 "Achtung" = "Achtung";
@@ -13,20 +13,20 @@
 "OK" = "OK";
 "Übernehmen" = "Übernehmen";
 
-// StringFormats
+//MARK: StringFormats
 "%.2f€" = "%.2f€";
 
-// EventsCustomCell
+//MARK: EventsCustomCell
 "Heute" = "Heute";
 
-// Models
+//MARK: Models
 "Fehler bei der Produktsuche" = "Fehler bei der Produktsuche";
 "Fehler beim Abrufen der Events" = "Fehler beim Abrufen der Events";
 "Fehler beim Abrufen der News" = "Fehler beim Abrufen der News";
 "Fehler beim Abrufen der Fablab Email" = "Fehler beim Abrufen der Fablab Email";
 "Fehler beim Abrufen der Fablab Tools" = "Fehler beim Abrufen der Fablab Tools";
 
-// MafunctionInfoController
+//MARK: MafunctionInfoController
 "Bitte hier eine kurze Fehlerbeschreibung eintragen" = "Bitte hier eine kurze Fehlerbeschreibung eintragen";
 "Gesendet mit der Fablab-iOS App" = "Gesendet mit der Fablab-iOS App";
 "Störungsmeldung wurde nicht versendet!" = "Störungsmeldung wurde nicht versendet!";
@@ -35,7 +35,7 @@
 "Betroffenes Gerät" = "Betroffenes Gerät";
 "Störungsmeldung" = "Störungsmeldung";
 
-// CartViewController
+//MARK: CartViewController
 "Der gescannte Code wurde nicht akzeptiert. Bitte den Code vom Kassenterminal scannen." = "Der gescannte Code wurde nicht akzeptiert. Bitte den Code vom Kassenterminal scannen.";
 "Bezahlt" = "Bezahlt";
 "Ihr Warenkorb wurde erfolgreich bezahlt" = "Ihr Warenkorb wurde erfolgreich bezahlt";
@@ -53,34 +53,34 @@
 "Wert wurde nicht verändert" = "Wert wurde nicht verändert";
 "Anzahl wurde geändert" = "Anzahl wurde geändert";
 
-// ActionSheetPickerDelegate
+//MARK: ActionSheetPickerDelegate
 "Platten" = "Platten";
 
-// ProductsearchViewController
+//MARK: ProductsearchViewController
 "Hinzufügen" = "Hinzufügen";
 "Keine Produkte gefunden" = "Keine Produkte gefunden";
 "Wert ist ungültig" = "Wert ist ungültig";
 "Produkt wurde dem Warenkorb hinzugefügt" = "Produkt wurde dem Warenkorb hinzugefügt";
 "Produkt wurde nicht dem Warenkorb hinzugefügt" = "Produkt wurde nicht dem Warenkorb hinzugefügt";
 
-// EventsViewController
+//MARK: EventsViewController
 "ganztägig" = "ganztägig";
 "ab" = "ab";
 "Uhr" = "Uhr";
 "ganztägig bis" = "ganztägig bis";
 
-// EventsDetailsViewController & NewsDetailsViewController
+//MARK: EventsDetailsViewController & NewsDetailsViewController
 "In Kalender eintragen" = "In Kalender eintragen";
 "Teilen" = "Teilen";
 "Im Browser ansehen" = "Im Browser ansehen";
 "Termin erfolgreich dem Kalender hinzugefügt" = "Termin erfolgreich dem Kalender hinzugefügt";
 "Termin konnte nicht dem Kalender hinzugefügt werden" = "Termin konnte nicht dem Kalender hinzugefügt werden";
 
-// DoorState
+//MARK: DoorState
 "open" = "open";
 "closed" = "closed";
 
-// AboutViewController
+//MARK: AboutViewController
 "license_title" = "Lizenz";
 "license_text" = "The MIT License (MIT)\n\nCopyright (c) 2015 MAD FabLab Team\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
 "code_title" = "Quellcode & Kontakt";
@@ -101,7 +101,7 @@
 "Nachricht wurde abgebrochen" = "Nachricht wurde abgebrochen.";
 
 
-// DoorState @ PUSH
+//MARK: DoorState @ PUSH
 "Fablab wurde geöffnet" = "Fablab wurde geöffnet";
 "Coole Sache" = "Coole Sache";
 
