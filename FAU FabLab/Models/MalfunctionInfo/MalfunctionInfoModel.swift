@@ -8,13 +8,13 @@ class MalfunctionInfoModel : NSObject{
     private var mapper: Mapper<FabTool>;
     
     private var isFetching = false
-    private var fetchingDone = false
+    private var fetchingMailDone = false
+    private var fetchingToolsDone = false
     private(set) var fablabMail: String?
 
     override init() {
         mapper = Mapper<FabTool>()
         super.init()
-        fetchFablabMailAddress({})
     }
     
     func getCount() -> Int{
@@ -33,23 +33,32 @@ class MalfunctionInfoModel : NSObject{
         return names
     }
     
-    private func fetchFablabMailAddress(onCompletion: () -> Void){
+    func fetchFablabMailAddress(onCompletion: () -> Void){
+        if(fetchingMailDone){
+            onCompletion()
+            return
+        }
         let endpoint = "/data" + "/fablab-mail"
         RestManager.sharedInstance.makeGetRequest(endpoint, params: nil, onCompletion: {
             json, err in
-            
+                
             if (err != nil) {
                 AlertView.showErrorView("Fehler beim Abrufen der Fablab Email".localized)
                 onCompletion()
+                return
             }
             self.fablabMail = json
+            self.fetchingMailDone = true
             Debug.instance.log(json)
             onCompletion()
         })
-        return
     }
     
     func fetchAllTools(onCompletion: () -> Void){
+        if(fetchingToolsDone){
+            onCompletion()
+            return
+        }
         if(!isFetching){
             isFetching = true
             let endpoint = resource + "/tools"
@@ -66,12 +75,12 @@ class MalfunctionInfoModel : NSObject{
                         Debug.instance.log(tmp.title)
                         self.tools.append(tmp)
                     }
-                    self.fetchingDone = true
+                    self.fetchingToolsDone = true
                     onCompletion()
                 }
             })
+            isFetching = false
             return
         }
-        onCompletion()
     }
 }
