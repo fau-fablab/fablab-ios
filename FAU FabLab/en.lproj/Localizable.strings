@@ -56,7 +56,7 @@
 "Produkt ID" = "Product ID";
 "Produkt Name" = "Product name";
 "Fehlerhafte Eingabe" = "Incorrect input";
-"Wert wurde abgerundet auf" = "Amount got rounded down to";
+"Wert wurde aufgerundet auf" = "Amount got rounded up to";
 "Wert wurde nicht verändert" = "Amount was not changed";
 "Anzahl wurde geändert" = "Amount was changed";
 

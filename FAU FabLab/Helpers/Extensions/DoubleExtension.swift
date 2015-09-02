@@ -13,7 +13,7 @@ extension Double {
         return Double(floor(p*self)/p)
     }
     
-    func roundToRounding(rounding: Double) -> Double {
-        return Double(Int(self/rounding)) * rounding
+    func roundUpToRounding(rounding: Double) -> Double {
+        return (Double(Int(self/rounding) + 1) * rounding)
     }
 }

@@ -78,7 +78,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
             let divRes = amount / cartEntry.product.rounding
             if divRes.digitsAfterComma != 0 {
                 // round the user input down to match rounding.digitsAfterComma
-                amount = amount.roundToRounding(cartEntry.product.rounding)
+                amount = amount.roundUpToRounding(cartEntry.product.rounding)
                 wrongRounding = true
             }
             
@@ -93,7 +93,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
                 } else if wrongRounding == true {
                     errorTitle = "Anzahl wurde geändert".localized
                     errorMsg = "Fehlerhafte Eingabe".localized
-                    errorMsg += "\n" + "Wert wurde abgerundet auf".localized + ": " + amountString + " " + cartEntry.product.unit
+                    errorMsg += "\n" + "Wert wurde aufgerundet auf".localized + ": " + amountString + " " + cartEntry.product.unit
                 }
 
                 var alert = UIAlertView()

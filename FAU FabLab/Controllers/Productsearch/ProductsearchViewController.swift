@@ -105,7 +105,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
             let divRes = amount / self.selectedProduct!.uom!.rounding!
             if divRes.digitsAfterComma != 0 {
                 // round the user input down to match rounding.digitsAfterComma
-                amount = amount.roundToRounding(self.selectedProduct!.uom!.rounding!)
+                amount = amount.roundUpToRounding(self.selectedProduct!.uom!.rounding!)
                 wrongRounding = true
             }
             
@@ -120,7 +120,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
                     errorMsg += "\n" + "Produkt wurde nicht dem Warenkorb hinzugefügt".localized
                 } else if wrongRounding == true {
                     errorTitle = "Produkt wurde dem Warenkorb hinzugefügt".localized
-                    errorMsg = "Wert wurde abgerundet auf".localized + ": " + amountString + " " + self.selectedProduct!.unit!
+                    errorMsg = "Wert wurde aufgerundet auf".localized + ": " + amountString + " " + self.selectedProduct!.unit!
                 }
                 
                 var alert = UIAlertView()
