@@ -15,6 +15,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        let versionCheckModel = VersionCheckModel()
+        versionCheckModel.checkVersion(PlatformType.APPLE, version: NSBundle.mainBundle().buildNumberAsInt!, onCompletion: {
+            updateStatus in
+            
+            let title = "Update verfügbar"
+            let message = "Neue Version : \(updateStatus.latestVersion!) \n Hinweis : \n \(updateStatus.updateMessage!)"
+            
+            switch (updateStatus.updateAvailable!){
+                case .Required :
+                    AlertView.showInfoView(title, message: "Update notwendig! \n\(message)")
+                case .Optional :
+                    AlertView.showInfoView(title, message: "Optionales Update \n\(message)")
+                default:
+                    return
+            }
+        })
+        
         // Override point for customization after application launch.
         AutocompleteModel.sharedInstance.loadAutocompleteSuggestion();
         var type = UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound;
