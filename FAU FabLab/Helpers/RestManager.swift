@@ -37,7 +37,7 @@ class RestManager {
         )
     }
     
-    func makeJsonGetRequest(resource: String, params: [String : String]?, onCompletion : JsonServiceResponse) {
+    func makeJsonGetRequest(resource: String, params: [String : AnyObject]?, onCompletion : JsonServiceResponse) {
         let endpoint = apiUrl+resource
         manager.request(.GET, endpoint, parameters: params)
             .validate(statusCode: 200..<300)
@@ -48,7 +48,7 @@ class RestManager {
         }
     }
     
-    func makeGetRequest(resource: String, params: [String : String]?, onCompletion : ServiceResponse) {
+    func makeGetRequest(resource: String, params: [String : AnyObject]?, onCompletion : ServiceResponse) {
         let endpoint = apiUrl+resource
         manager.request(.GET, endpoint, parameters: params)
             .validate(statusCode: 200..<300)
