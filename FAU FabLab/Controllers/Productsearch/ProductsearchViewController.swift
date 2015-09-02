@@ -311,6 +311,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        self.resetTableViewBackground()
         self.autocompleteTableView.hidden = true
         self.searchBar.resignFirstResponder()
         self.searchBar.userInteractionEnabled = false;
@@ -334,6 +335,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     
     func searchByBarcodeScanner(notification:NSNotification) {
         Debug.instance.log("Got Notification from Barcodescanner, productId: \(notification.object)")
+        self.resetTableViewBackground()
         self.searchBar.resignFirstResponder()
         self.searchBar.userInteractionEnabled = false;
         self.sections.removeAll(keepCapacity: false);
@@ -462,15 +464,15 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     private func setTableViewBackground() {
-        if (model.getCount() > 0) {
-            //prodcuts available
-            tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
-            tableView.backgroundView = nil
-        } else {
-            //no products available
+        if (model.getCount() == 0) {
             tableView.separatorStyle = UITableViewCellSeparatorStyle.None
             tableView.backgroundView = backgroundView
         }
+    }
+    
+    private func resetTableViewBackground() {
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+        tableView.backgroundView = nil
     }
 
     private func sortProductsByName(){
