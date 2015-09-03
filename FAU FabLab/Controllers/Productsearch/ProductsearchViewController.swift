@@ -73,10 +73,17 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
             if addme == false {
                 currentAmount = amount
                 addme = true
+                println(amount)
+                println(currentAmount)
             } else {
-                CartModel.sharedInstance.addProductToCart(self.selectedProduct!, amount: Double(amount));
+                // if currentAmount has initial value, take the amount value
+                if currentAmount == rounding {
+                    currentAmount = amount
+                }
+                CartModel.sharedInstance.addProductToCart(self.selectedProduct!, amount: Double(currentAmount));
                 self.cartButtonController.updateBadge()
-            }}, didCancelAction: {(Void) -> Void in })
+            }
+            }, didCancelAction: {(Void) -> Void in })
         
         var picker: ActionSheetCustomPicker = ActionSheetCustomPicker(title: "Menge auswählen".localized, delegate: pickerDelegate, showCancelButton: false, origin: self, initialSelections: [(currentAmount/rounding)-1])
         
