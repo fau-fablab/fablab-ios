@@ -216,6 +216,4 @@
 "8Tm-GK-mMO.text" = "Please select the affected tool";
 
 /* Class = "UILabel"; text = "Benachrichte mich sobald das Fablab das nächste mal öffnet"; ObjectID = "yFF-ln-nsc"; */
-"yFF-ln-nsc.text" = "Send me a notification when the fablab opens the next time"
-
-
+"yFF-ln-nsc.text" = "Send me a notification when the fablab opens the next time";
