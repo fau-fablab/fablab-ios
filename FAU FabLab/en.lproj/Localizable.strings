@@ -121,3 +121,6 @@
 "Fablab wurde geöffnet" = "FabLab just opened!";
 "Coole Sache" = "Cool stuff.";
 
+
+//MARK: SettingsViewController
+"Push Einstellungen" = "Push Settings";
