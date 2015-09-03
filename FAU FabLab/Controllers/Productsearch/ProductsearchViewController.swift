@@ -63,18 +63,16 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     func showAddToCartPicker(cell: ProductCustomCell, initialValue: Double) {
         let rounding = cell.product.uom!.rounding!
         
-        var addme = true
+        var addToCart = true
         var currentAmount : Double = initialValue
         
         var pickerDelegate = ActionSheetPickerDelegate(unit: cell.product.unit!, price: cell.product.price!, rounding: rounding, didSucceedAction: {
             //INFO Changed cell.product to self.selectedProduct -> Works now with locationString but dunno if this affects other things!
             (amount: Double) -> Void in
             
-            if addme == false {
+            if addToCart == false {
                 currentAmount = amount
-                addme = true
-                println(amount)
-                println(currentAmount)
+                addToCart = true
             } else {
                 // if currentAmount has initial value, take the amount value
                 if currentAmount == rounding {
@@ -92,7 +90,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         picker.setDoneButton(doneButton)
         
         picker.addCustomButtonWithTitle("Freitext".localized, actionBlock: {
-            addme = false
+            addToCart = false
             picker.delegate.actionSheetPickerDidSucceed!(picker, origin: self)
             self.alertChangeAmount(currentAmount) })
         picker.tapDismissAction = TapAction.Cancel
