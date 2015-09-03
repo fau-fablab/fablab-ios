@@ -1224,7 +1224,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zim-hY-J2X" id="YDP-RY-IY0">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FJB-0a-OFj">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FJB-0a-OFj">
                                                     <rect key="frame" x="534" y="12" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="cellSwitchChanged:" destination="zim-hY-J2X" eventType="valueChanged" id="HF5-6X-p3q"/>
