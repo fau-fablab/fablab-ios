@@ -57,28 +57,43 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
 
     @IBAction func buttonAddToCartPressed(sender: AnyObject) {
         let cell = tableView.cellForRowAtIndexPath(selectedIndexPath!) as! ProductCustomCell;
+        showAddToCartPicker(cell, initialValue: cell.product.uom!.rounding!)
+    }
+    
+    func showAddToCartPicker(cell: ProductCustomCell, initialValue: Double) {
+        let rounding = cell.product.uom!.rounding!
         
-        var rounding = cell.product.uom?.rounding!
-        var pickerDelegate = ActionSheetPickerDelegate(unit: cell.product.unit!, price: cell.product.price!, rounding: rounding!, didSucceedAction: {
+        var addme = true
+        var currentAmount : Double = initialValue
+        
+        var pickerDelegate = ActionSheetPickerDelegate(unit: cell.product.unit!, price: cell.product.price!, rounding: rounding, didSucceedAction: {
             //INFO Changed cell.product to self.selectedProduct -> Works now with locationString but dunno if this affects other things!
-            (amount: Double) -> Void in CartModel.sharedInstance.addProductToCart(self.selectedProduct!, amount: Double(amount));
+            (amount: Double) -> Void in
             
-            self.cartButtonController.updateBadge() }, didCancelAction: {(Void) -> Void in })
+            if addme == false {
+                currentAmount = amount
+                addme = true
+            } else {
+                CartModel.sharedInstance.addProductToCart(self.selectedProduct!, amount: Double(amount));
+                self.cartButtonController.updateBadge()
+            }}, didCancelAction: {(Void) -> Void in })
         
-        var picker: ActionSheetCustomPicker = ActionSheetCustomPicker(title: "Menge auswählen".localized, delegate: pickerDelegate, showCancelButton: false, origin: self)
+        var picker: ActionSheetCustomPicker = ActionSheetCustomPicker(title: "Menge auswählen".localized, delegate: pickerDelegate, showCancelButton: false, origin: self, initialSelections: [(currentAmount/rounding)-1])
         
         var doneButton: UIBarButtonItem = UIBarButtonItem()
         doneButton.title = "Hinzufügen".localized
-        doneButton.tintColor = UIColor.fabLabGreen()
         picker.setDoneButton(doneButton)
         
-        picker.addCustomButtonWithTitle("Freitext".localized, actionBlock: { self.alertChangeAmount() })
+        picker.addCustomButtonWithTitle("Freitext".localized, actionBlock: {
+            addme = false
+            picker.delegate.actionSheetPickerDidSucceed!(picker, origin: self)
+            self.alertChangeAmount(currentAmount) })
         picker.tapDismissAction = TapAction.Cancel
         
         picker.showActionSheetPicker()
     }
     
-    func alertChangeAmount() {
+    func alertChangeAmount(currentAmount: Double) {
         
         let formatString : String = "%." + String(self.selectedProduct!.uom!.rounding!.digitsAfterComma) + "f"
         let lowestUnit : String = String(format: formatString, self.selectedProduct!.uom!.rounding!)
@@ -90,7 +105,8 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         
         let alertController: UIAlertController = UIAlertController(title: "Menge eingeben".localized, message: message1 + message2, preferredStyle: .Alert)
         
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in self.tableView.setEditing(false, animated: true)})
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in self.showAddToCartPicker(self.tableView.cellForRowAtIndexPath(self.selectedIndexPath!) as! ProductCustomCell, initialValue: currentAmount)})
+        
         let doneAction: UIAlertAction = UIAlertAction(title: "Hinzufügen".localized, style: .Default, handler: { (Void) -> Void in
             
             var amount: Double = NSString(string: inputTextField!.text.stringByReplacingOccurrencesOfString(",", withString: ".")).doubleValue
@@ -139,7 +155,10 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         alertController.addAction(cancelAction)
         alertController.addAction(doneAction)
         
-        alertController.addTextFieldWithConfigurationHandler({ textField -> Void in inputTextField = textField})
+        alertController.addTextFieldWithConfigurationHandler({ textField -> Void in
+            inputTextField = textField
+            inputTextField!.text = String(format: formatString, currentAmount)
+        })
         
         self.presentViewController(alertController, animated: true, completion: nil)
     }

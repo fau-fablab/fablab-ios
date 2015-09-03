@@ -46,7 +46,9 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         var doneButton: UIBarButtonItem = UIBarButtonItem()
         doneButton.title = "Übernehmen".localized
         picker.setDoneButton(doneButton)
-        picker.addCustomButtonWithTitle("Freitext".localized, actionBlock: { self.alertChangeAmount() })
+        picker.addCustomButtonWithTitle("Freitext".localized, actionBlock: {
+            picker.delegate.actionSheetPickerDidSucceed!(picker, origin: self)
+            self.alertChangeAmount() })
         picker.tapDismissAction = TapAction.Cancel
         
         picker.showActionSheetPicker()
@@ -64,7 +66,8 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         
         let alertController: UIAlertController = UIAlertController(title: "Menge eingeben".localized, message: message, preferredStyle: .Alert)
 
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in self.tableView.setEditing(false, animated: true)})
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in self.buttonChangeAmountPressed(self)})
+        
         let doneAction: UIAlertAction = UIAlertAction(title: "Übernehmen".localized, style: .Default, handler: { (Void) -> Void in
             var amount: Double = NSString(string: inputTextField!.text.stringByReplacingOccurrencesOfString(",", withString: ".")).doubleValue
             
