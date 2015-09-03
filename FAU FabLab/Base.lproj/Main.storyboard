@@ -1001,7 +1001,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Bitte das betroffene Gerät auswählen" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Tm-GK-mMO">
                                 <rect key="frame" x="16" y="72" width="568" height="100"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -1214,44 +1214,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C0l-Th-dcQ">
-                                <rect key="frame" x="244" y="106" width="51" height="31"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="59" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="BZc-aL-nkn">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="SettingsDoorOpensPushCell" rowHeight="59" id="zim-hY-J2X" customClass="SettingsDoorOpensPushCell" customModule="FAU_FabLab">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zim-hY-J2X" id="YDP-RY-IY0">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FJB-0a-OFj">
+                                                    <rect key="frame" x="534" y="12" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="cellSwitchChanged:" destination="zim-hY-J2X" eventType="valueChanged" id="HF5-6X-p3q"/>
+                                                    </connections>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benachrichte mich sobald das Fablab das nächste mal öffnet" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFF-ln-nsc">
+                                                    <rect key="frame" x="8" y="4" width="504" height="50.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="yFF-ln-nsc" firstAttribute="leading" secondItem="YDP-RY-IY0" secondAttribute="leadingMargin" id="4qk-oc-ZZJ"/>
+                                                <constraint firstItem="FJB-0a-OFj" firstAttribute="top" secondItem="YDP-RY-IY0" secondAttribute="topMargin" constant="6" id="9zv-aM-aUa"/>
+                                                <constraint firstItem="yFF-ln-nsc" firstAttribute="top" secondItem="YDP-RY-IY0" secondAttribute="topMargin" constant="-4" id="DtB-Zq-QrP"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="FJB-0a-OFj" secondAttribute="bottom" constant="5.5" id="Rt7-1c-ArV"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="yFF-ln-nsc" secondAttribute="trailing" constant="80" id="SvF-7S-e1i"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="yFF-ln-nsc" secondAttribute="bottom" constant="-4" id="V0e-bv-gE7"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="FJB-0a-OFj" secondAttribute="trailing" constant="10" id="cbb-dQ-6qf"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="cellSwitch" destination="FJB-0a-OFj" id="jaS-kY-dXQ"/>
+                                            <outlet property="textView" destination="yFF-ln-nsc" id="EhH-2H-8Iv"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
-                                    <action selector="pushDoorSwitchChanged:" destination="4gd-6i-P19" eventType="valueChanged" id="Efa-x6-NNb"/>
+                                    <outlet property="dataSource" destination="4gd-6i-P19" id="PJP-ar-xk9"/>
+                                    <outlet property="delegate" destination="4gd-6i-P19" id="z8R-SP-1kH"/>
                                 </connections>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benachrichte mich sobald das Fablab das nächste mal geöffnet wird" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byv-mh-0Vm">
-                                <rect key="frame" x="16" y="164" width="235" height="76"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Benachrichte mich sobald das Fablab das nächste mal geöffnet wird" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEB-2c-aSF">
-                                <rect key="frame" x="16" y="69" width="235" height="76"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jpg-h3-q88">
-                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="wyh-K8-cox">
+                                <rect key="frame" x="0.0" y="290" width="20" height="20"/>
+                                <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="jpg-h3-q88" secondAttribute="centerX" id="1R4-gv-M61"/>
-                            <constraint firstAttribute="centerX" secondItem="jpg-h3-q88" secondAttribute="centerX" id="Apv-Gs-WMV"/>
-                            <constraint firstAttribute="centerY" secondItem="jpg-h3-q88" secondAttribute="centerY" id="NVg-AV-6dN"/>
+                            <constraint firstItem="KFL-p9-DL4" firstAttribute="top" secondItem="BZc-aL-nkn" secondAttribute="bottom" id="5al-Yt-TG6"/>
+                            <constraint firstAttribute="centerX" secondItem="wyh-K8-cox" secondAttribute="centerX" id="DIg-in-GPT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BZc-aL-nkn" secondAttribute="trailing" constant="-16" id="SRi-a1-8eE"/>
+                            <constraint firstAttribute="centerY" secondItem="wyh-K8-cox" secondAttribute="centerY" id="adf-jV-TwF"/>
+                            <constraint firstItem="BZc-aL-nkn" firstAttribute="top" secondItem="4SC-Nd-iKj" secondAttribute="topMargin" id="e71-Nj-VfD"/>
+                            <constraint firstItem="BZc-aL-nkn" firstAttribute="leading" secondItem="4SC-Nd-iKj" secondAttribute="leadingMargin" constant="-16" id="tuV-cb-rFr"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="byv-mh-0Vm"/>
-                            </mask>
-                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Einstellungen" image="icon_settings" id="Jvy-hp-vXu"/>
                     <connections>
-                        <outlet property="activitySpinner" destination="jpg-h3-q88" id="igc-UZ-6Vs"/>
-                        <outlet property="pushDoorSwitch" destination="C0l-Th-dcQ" id="kT6-Sg-toW"/>
+                        <outlet property="activitySpinner" destination="wyh-K8-cox" id="ENR-hL-BL9"/>
+                        <outlet property="tableView" destination="BZc-aL-nkn" id="rzt-45-VK7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uqO-1M-YXP" userLabel="First Responder" sceneMemberID="firstResponder"/>
