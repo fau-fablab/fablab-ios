@@ -78,11 +78,11 @@ class AboutViewController : UIViewController, UITableViewDataSource, UITableView
     }
     
     func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
-        if (URL.absoluteString == "mail_action".localized) {
+        if (URL.absoluteString == "E-Mail".localized) {
             var mailViewController = MFMailComposeViewController()
             mailViewController.mailComposeDelegate = self
             mailViewController.navigationBar.tintColor = UIColor.fabLabGreen()
-            mailViewController.setToRecipients([model.fablabMail!])
+            mailViewController.setToRecipients([self.model.fablabMail!])
             presentViewController(mailViewController, animated: true, completion: nil)
             return false
         }
@@ -90,34 +90,34 @@ class AboutViewController : UIViewController, UITableViewDataSource, UITableView
     }
     
     private func createTitleStrings() {
-        titleStrings = ["license_title".localized, "code_title".localized, "libraries_title".localized]
+        titleStrings = ["Lizenz".localized, "Quellcode & Kontakt".localized, "Open Source Bibliotheken".localized]
     }
     
     private func createTextAttributedStrings() {
-        var licenseAttributedString = NSMutableAttributedString(string: "license_text".localized)
-        var codeAttributedString = NSMutableAttributedString(string: "code_text".localized)
-        var librariesAttributedString = NSMutableAttributedString(string: "libraries_text".localized)
+        var licenseAttributedString = NSMutableAttributedString(string: "The MIT License (MIT)\n\nCopyright (c) 2015 MAD FabLab Team\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.".localized)
+        var codeAttributedString = NSMutableAttributedString(string: "Die App wurde im Rahmen des MAD-Projektes an der FAU Erlangen-Nürnberg entwickelt. Der Quellcode kann unter GitHub gefunden werden. Feedback jederzeit gerne per E-Mail.\n\nDie Entwickler sind:\n\nEmanuel Eimer\nStefan Herpich\nMichael Sander\nJulia Schottenhamml\nJohannes Pfann\nMax Jalowski\nSebastian Haubner\nKatharina Full\nPhilip Kranhäußer\nJulian Lorz\nDaniel Rosenmüller".localized)
+        var librariesAttributedString = NSMutableAttributedString(string: "ActionSheetPicker\n(BSD License)\n\nAlamofire\n(MIT License)\n\nBBBadgeBarButtonItem\n(MIT License)\n\nKingfisher\n(MIT License)\n\nObjectMapper\n(MIT License)\n\nRSBarcodes\n(MIT License)\n\nSwiftyJson\n(MIT License)".localized)
         //add hyperlinks
-        codeAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "mad_url".localized)!,
+        codeAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://www2.informatik.uni-erlangen.de/teaching/SS2015/MAD/index.html".localized)!,
             range: getNSRangeOfSubstring(codeAttributedString.string, substring: "MAD-Projektes"))
-        codeAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "github_url".localized)!,
+        codeAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/FAU-Inf2/fablab-ios".localized)!,
             range: getNSRangeOfSubstring(codeAttributedString.string, substring: "GitHub"))
-        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "actionsheetpicker_url".localized)!,
+        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/skywinder/ActionSheetPicker-3.0".localized)!,
             range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "ActionSheetPicker"))
-        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "alamofire_url".localized)!,
+        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/Alamofire/Alamofire".localized)!,
             range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "Alamofire"))
-        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "bbbadgebarbuttonitem_url".localized)!,
+        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/TanguyAladenise/BBBadgeBarButtonItem".localized)!,
             range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "BBBadgeBarButtonItem"))
-        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "kingfisher_url".localized)!,
+        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/onevcat/Kingfisher".localized)!,
             range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "Kingfisher"))
-        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "objectmapper_url".localized)!,
+        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/Hearst-DD/ObjectMapper".localized)!,
             range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "ObjectMapper"))
-        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "rsbarcodes_url".localized)!,
+        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/yeahdongcn/RSBarcodes".localized)!,
             range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "RSBarcodes"))
-        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "swiftyjson_url".localized)!,
+        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/SwiftyJSON/SwiftyJSON".localized)!,
             range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "SwiftyJson"))
         //add mail action
-        codeAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "mail_action".localized)!,
+        codeAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "E-Mail".localized)!,
             range: getNSRangeOfSubstring(codeAttributedString.string, substring: "E-Mail"))
         textAttributedStrings = [licenseAttributedString, codeAttributedString, librariesAttributedString];
     }
@@ -141,12 +141,12 @@ extension AboutViewController: MFMailComposeViewControllerDelegate {
         switch result.value{
             
         case MFMailComposeResultCancelled.value:
-            var alert = UIAlertController(title: "Abgebrochen".localized, message: "Nachricht wurde abgebrochen".localized, preferredStyle: UIAlertControllerStyle.Alert)
+            var alert = UIAlertController(title: "Abgebrochen".localized, message: "Nachricht wurde abgebrochen.".localized, preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
             
         case MFMailComposeResultSent.value:
-            var alert = UIAlertController(title: "Versendet".localized, message: "Nachricht wurde versendet".localized, preferredStyle: UIAlertControllerStyle.Alert)
+            var alert = UIAlertController(title: "Versendet".localized, message: "Nachricht wurde versendet.".localized, preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
             

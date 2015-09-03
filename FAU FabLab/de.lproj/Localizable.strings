@@ -88,24 +88,24 @@
 "closed" = "closed";
 
 //MARK: AboutViewController
-"license_title" = "Lizenz";
-"license_text" = "The MIT License (MIT)\n\nCopyright (c) 2015 MAD FabLab Team\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
-"code_title" = "Quellcode & Kontakt";
-"code_text" = "Die App wurde im Rahmen des MAD-Projektes an der FAU Erlangen-Nürnberg entwickelt. Der Quellcode kann unter GitHub gefunden werden. Feedback jederzeit gerne per E-Mail.\n\nDie Entwickler sind:\n\nEmanuel Eimer\nStefan Herpich\nMichael Sander\nJulia Schottenhamml\nJohannes Pfann\nMax Jalowski\nSebastian Haubner\nKatharina Full\nPhilip Kranhäußer\nJulian Lorz\nDaniel Rosenmüller";
-"libraries_title" = "Open Source Bibliotheken";
-"libraries_text" = "ActionSheetPicker\n(BSD License)\n\nAlamofire\n(MIT License)\n\nBBBadgeBarButtonItem\n(MIT License)\n\nKingfisher\n(MIT License)\n\nObjectMapper\n(MIT License)\n\nRSBarcodes\n(MIT License)\n\nSwiftyJson\n(MIT License)";
-"mad_url" = "https://www2.informatik.uni-erlangen.de/teaching/SS2015/MAD/index.html";
-"github_url" = "https://github.com/FAU-Inf2/fablab-ios";
-"mail_action" = "mail_action";
-"actionsheetpicker_url" = "https://github.com/skywinder/ActionSheetPicker-3.0";
-"alamofire_url" = "https://github.com/Alamofire/Alamofire";
-"bbbadgebarbuttonitem_url" = "https://github.com/TanguyAladenise/BBBadgeBarButtonItem";
-"kingfisher_url" = "https://github.com/onevcat/Kingfisher";
-"objectmapper_url" = "https://github.com/Hearst-DD/ObjectMapper";
-"rsbarcodes_url" = "https://github.com/yeahdongcn/RSBarcodes";
-"swiftyjson_url" = "https://github.com/SwiftyJSON/SwiftyJSON";
-"Nachricht wurde versendet" = "Nachricht wurde versendet.";
-"Nachricht wurde abgebrochen" = "Nachricht wurde abgebrochen.";
+"Lizenz" = "Lizenz";
+"The MIT License (MIT)\n\nCopyright (c) 2015 MAD FabLab Team\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE." = "The MIT License (MIT)\n\nCopyright (c) 2015 MAD FabLab Team\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
+"Quellcode & Kontakt" = "Quellcode & Kontakt";
+"Die App wurde im Rahmen des MAD-Projektes an der FAU Erlangen-Nürnberg entwickelt. Der Quellcode kann unter GitHub gefunden werden. Feedback jederzeit gerne per E-Mail.\n\nDie Entwickler sind:\n\nEmanuel Eimer\nStefan Herpich\nMichael Sander\nJulia Schottenhamml\nJohannes Pfann\nMax Jalowski\nSebastian Haubner\nKatharina Full\nPhilip Kranhäußer\nJulian Lorz\nDaniel Rosenmüller" = "Die App wurde im Rahmen des MAD-Projektes an der FAU Erlangen-Nürnberg entwickelt. Der Quellcode kann unter GitHub gefunden werden. Feedback jederzeit gerne per E-Mail.\n\nDie Entwickler sind:\n\nEmanuel Eimer\nStefan Herpich\nMichael Sander\nJulia Schottenhamml\nJohannes Pfann\nMax Jalowski\nSebastian Haubner\nKatharina Full\nPhilip Kranhäußer\nJulian Lorz\nDaniel Rosenmüller";
+"Open Source Bibliotheken" = "Open Source Bibliotheken";
+"ActionSheetPicker\n(BSD License)\n\nAlamofire\n(MIT License)\n\nBBBadgeBarButtonItem\n(MIT License)\n\nKingfisher\n(MIT License)\n\nObjectMapper\n(MIT License)\n\nRSBarcodes\n(MIT License)\n\nSwiftyJson\n(MIT License)" = "ActionSheetPicker\n(BSD License)\n\nAlamofire\n(MIT License)\n\nBBBadgeBarButtonItem\n(MIT License)\n\nKingfisher\n(MIT License)\n\nObjectMapper\n(MIT License)\n\nRSBarcodes\n(MIT License)\n\nSwiftyJson\n(MIT License)";
+"https://www2.informatik.uni-erlangen.de/teaching/SS2015/MAD/index.html" = "https://www2.informatik.uni-erlangen.de/teaching/SS2015/MAD/index.html";
+"https://github.com/FAU-Inf2/fablab-ios" = "https://github.com/FAU-Inf2/fablab-ios";
+"E-Mail" = "E-Mail";
+"https://github.com/skywinder/ActionSheetPicker-3.0" = "https://github.com/skywinder/ActionSheetPicker-3.0";
+"https://github.com/Alamofire/Alamofire" = "https://github.com/Alamofire/Alamofire";
+"https://github.com/TanguyAladenise/BBBadgeBarButtonItem" = "https://github.com/TanguyAladenise/BBBadgeBarButtonItem";
+"https://github.com/onevcat/Kingfisher" = "https://github.com/onevcat/Kingfisher";
+"https://github.com/Hearst-DD/ObjectMapper" = "https://github.com/Hearst-DD/ObjectMapper";
+"https://github.com/yeahdongcn/RSBarcodes" = "https://github.com/yeahdongcn/RSBarcodes";
+"https://github.com/SwiftyJSON/SwiftyJSON" = "https://github.com/SwiftyJSON/SwiftyJSON";
+"Nachricht wurde versendet." = "Nachricht wurde versendet.";
+"Nachricht wurde abgebrochen." = "Nachricht wurde abgebrochen.";
 
 
 //MARK: DoorState @ PUSH
