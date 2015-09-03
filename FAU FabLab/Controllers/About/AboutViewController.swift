@@ -11,7 +11,7 @@ class AboutViewController : UIViewController, UITableViewDataSource, UITableView
     private var textAttributedStrings: [NSAttributedString]!
     private var expandedTableViewCells = [Int]()
     private var unexpandedRowHeight : CGFloat = 44.0
-    private var model = MalfunctionInfoModel()
+    private var model = MalfunctionInfoModel.sharedInstance
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -79,11 +79,13 @@ class AboutViewController : UIViewController, UITableViewDataSource, UITableView
     
     func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
         if (URL.absoluteString == "E-Mail".localized) {
-            var mailViewController = MFMailComposeViewController()
-            mailViewController.mailComposeDelegate = self
-            mailViewController.navigationBar.tintColor = UIColor.fabLabGreen()
-            mailViewController.setToRecipients([self.model.fablabMail!])
-            presentViewController(mailViewController, animated: true, completion: nil)
+            model.fetchFablabMailAddress({Void in
+                var mailViewController = MFMailComposeViewController()
+                mailViewController.mailComposeDelegate = self
+                mailViewController.navigationBar.tintColor = UIColor.fabLabGreen()
+                mailViewController.setToRecipients([self.model.fablabMail!])
+                self.presentViewController(mailViewController, animated: true, completion: nil)
+            })
             return false
         }
         return true
