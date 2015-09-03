@@ -30,12 +30,12 @@
 "Fehler bei der Produktsuche" = "Error during the product search";
 "Fehler beim Abrufen der Events" = "Error while collecting the events";
 "Fehler beim Abrufen der News" = "Error while collecting the News";
-"Fehler beim Abrufen der Fablab Email" = "Error while collecting the Fablab Mail-Address";
-"Fehler beim Abrufen der Fablab Tools" = "Error while collecting the Fablab Tools";
+"Fehler beim Abrufen der FabLab Email" = "Error while collecting the FabLab Mail-Address";
+"Fehler beim Abrufen der FabLab Tools" = "Error while collecting the FabLab Tools";
 
 //MARK: MafunctionInfoController
 "Bitte hier eine kurze Fehlerbeschreibung eintragen" = "Enter a short description of failure";
-"Gesendet mit der Fablab-iOS App" = "Sent with the Fablab-iOS App";
+"Gesendet mit der FAU FabLab-App für iOS" = "Sent with the FAU FabLab-App for iOS";
 "Störungsmeldung wurde nicht versendet!" = "Malfunction message was not sent!";
 "Versendet" = "Sent";
 "Störungsmeldung wurde erfolgreich versendet!" = "Malfunction message was sent successfully!";
@@ -109,6 +109,6 @@
 
 
 //MARK: DoorState @ PUSH
-"Fablab wurde geöffnet" = "Fablab just opened!";
+"Fablab wurde geöffnet" = "FabLab just opened!";
 "Coole Sache" = "Cool stuff.";
 

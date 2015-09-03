@@ -206,7 +206,7 @@
 /* Class = "UIButton"; normalTitle = "Senden"; ObjectID = "veN-Kx-A1q"; */
 "veN-Kx-A1q.normalTitle" = "Send";
 
-/* Class = "UILabel"; text = "Benachrichte mich sobald das Fablab das nächste mal geöffnet wird"; ObjectID = "xEB-2c-aSF"; */
+/* Class = "UILabel"; text = "Benachrichte mich sobald das FabLab das nächste mal geöffnet wird"; ObjectID = "xEB-2c-aSF"; */
 "xEB-2c-aSF.text" = "Send me a notification, when the FabLab opens the next time";
 
 /* Class = "UILabel"; text = "Price"; ObjectID = "ypM-6h-Mfe"; */

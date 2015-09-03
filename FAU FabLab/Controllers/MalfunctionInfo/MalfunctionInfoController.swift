@@ -22,7 +22,7 @@ class MalfunctionInfoController: UIViewController, MFMailComposeViewControllerDe
     }
     
     var emailBody: String{
-        return "<b>Tool:</b> </br> \(selectedMachine) </br></br> <b>Error Message:</b> </br>  </br></br>" + "Gesendet mit der Fablab-iOS App".localized
+        return "<b>Tool:</b> </br> \(selectedMachine) </br></br> <b>Error Message:</b> </br>  </br></br>" + "Gesendet mit der FAU FabLab-App für iOS".localized
     }
 
     override func viewDidLoad() {
