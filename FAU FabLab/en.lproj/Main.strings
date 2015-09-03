@@ -211,3 +211,6 @@
 
 /* Class = "UILabel"; text = "Price"; ObjectID = "ypM-6h-Mfe"; */
 "ypM-6h-Mfe.text" = "Price";
+
+/* Class = "UILabel"; text = "Bitte das betroffene Gerät auswählen"; ObjectID = "8Tm-GK-mMO"; */
+"8Tm-GK-mMO.text" = "Please select the affected tool";
