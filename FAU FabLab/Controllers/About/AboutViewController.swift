@@ -1,4 +1,4 @@
-
+import UIKit
 import Foundation
 import MessageUI
 
@@ -101,26 +101,26 @@ class AboutViewController : UIViewController, UITableViewDataSource, UITableView
         var librariesAttributedString = NSMutableAttributedString(string: "ActionSheetPicker\n(BSD License)\n\nAlamofire\n(MIT License)\n\nBBBadgeBarButtonItem\n(MIT License)\n\nKingfisher\n(MIT License)\n\nObjectMapper\n(MIT License)\n\nRSBarcodes\n(MIT License)\n\nSwiftyJson\n(MIT License)".localized)
         //add hyperlinks
         codeAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://www2.informatik.uni-erlangen.de/teaching/SS2015/MAD/index.html".localized)!,
-            range: getNSRangeOfSubstring(codeAttributedString.string, substring: "MAD-Projektes"))
+            range: getNSRangeOfSubstring(codeAttributedString.string, substring: "MAD-Projektes".localized))
         codeAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/FAU-Inf2/fablab-ios".localized)!,
-            range: getNSRangeOfSubstring(codeAttributedString.string, substring: "GitHub"))
+            range: getNSRangeOfSubstring(codeAttributedString.string, substring: "GitHub".localized))
         librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/skywinder/ActionSheetPicker-3.0".localized)!,
-            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "ActionSheetPicker"))
+            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "ActionSheetPicker".localized))
         librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/Alamofire/Alamofire".localized)!,
-            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "Alamofire"))
+            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "Alamofire".localized))
         librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/TanguyAladenise/BBBadgeBarButtonItem".localized)!,
-            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "BBBadgeBarButtonItem"))
+            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "BBBadgeBarButtonItem".localized))
         librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/onevcat/Kingfisher".localized)!,
-            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "Kingfisher"))
+            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "Kingfisher".localized))
         librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/Hearst-DD/ObjectMapper".localized)!,
-            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "ObjectMapper"))
+            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "ObjectMapper".localized))
         librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/yeahdongcn/RSBarcodes".localized)!,
-            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "RSBarcodes"))
+            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "RSBarcodes".localized))
         librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/SwiftyJSON/SwiftyJSON".localized)!,
-            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "SwiftyJson"))
+            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "SwiftyJson".localized))
         //add mail action
         codeAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "E-Mail".localized)!,
-            range: getNSRangeOfSubstring(codeAttributedString.string, substring: "E-Mail"))
+            range: getNSRangeOfSubstring(codeAttributedString.string, substring: "E-Mail".localized))
         textAttributedStrings = [licenseAttributedString, codeAttributedString, librariesAttributedString];
     }
     
