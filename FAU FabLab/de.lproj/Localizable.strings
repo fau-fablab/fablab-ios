@@ -52,9 +52,6 @@
 "Menge eingeben" = "Menge eingeben";
 "Es wird ein Zugriff auf die Kamera benötigt" = "Es wird ein Zugriff auf die Kamera benötigt";
 "Kleinste Einheit" = "Kleinste Einheit";
-"Produkt ist nicht mehr auf Lager." = "Produkt ist nicht mehr auf Lager.";
-"Produkt ID" = "Produkt ID";
-"Produkt Name" = "Produkt Name";
 "Fehlerhafte Eingabe" = "Fehlerhafte Eingabe";
 "Wert wurde aufgerundet auf" = "Wert wurde aufgerundet auf";
 "Wert wurde nicht verändert" = "Wert wurde nicht verändert";
@@ -116,7 +113,6 @@
 "Nachricht wurde versendet." = "Nachricht wurde versendet.";
 "Nachricht wurde abgebrochen." = "Nachricht wurde abgebrochen.";
 
-
 //MARK: DoorState @ PUSH
 "Fablab wurde geöffnet" = "FabLab wurde geöffnet";
 "Coole Sache" = "Coole Sache";
@@ -124,3 +120,10 @@
 //MARK: SettingsViewController
 "Push Einstellungen" = "Push Einstellungen";
 
+//MARK: MailComposeHelper
+"Bestandsmeldung" = "Bestandsmeldung";
+"Produkt ist nicht mehr auf Lager." = "Produkt ist nicht mehr auf Lager.";
+"Produkt ID" = "Produkt ID";
+"Produkt Name" = "Produkt Name";
+"Meldung wurde nicht versendet!" = "Meldung wurde nicht versendet!";
+"Ausgegangenes Produkt wurde gemeldet!" = "Ausgegangenes Produkt wurde gemeldet!";

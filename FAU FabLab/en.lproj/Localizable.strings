@@ -52,9 +52,6 @@
 "Menge eingeben" = "Enter amount";
 "Es wird ein Zugriff auf die Kamera benötigt" = "Permission to use the camera is required";
 "Kleinste Einheit" = "Lowest amount";
-"Produkt ist nicht mehr auf Lager." = "Product is out of stock.";
-"Produkt ID" = "Product ID";
-"Produkt Name" = "Product name";
 "Fehlerhafte Eingabe" = "Incorrect input";
 "Wert wurde aufgerundet auf" = "Amount got rounded up to";
 "Wert wurde nicht verändert" = "Amount was not changed";
@@ -116,11 +113,17 @@
 "Nachricht wurde versendet." = "Messages was sent";
 "Nachricht wurde abgebrochen." = "Messages was not sent";
 
-
 //MARK: DoorState @ PUSH
 "Fablab wurde geöffnet" = "FabLab just opened!";
 "Coole Sache" = "Cool stuff.";
 
-
 //MARK: SettingsViewController
 "Push Einstellungen" = "Push Settings";
+
+//MARK: MailComposeHelper
+"Bestandsmeldung" = "Report out of stock";
+"Produkt ist nicht mehr auf Lager." = "Product is out of stock.";
+"Produkt ID" = "Product ID";
+"Produkt Name" = "Product name";
+"Meldung wurde nicht versendet!" = "Message was not sent!";
+"Ausgegangenes Produkt wurde gemeldet!" = "Out of stock-message was sent!";

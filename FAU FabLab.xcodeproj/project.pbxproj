@@ -19,6 +19,7 @@
 		48CC3FFB1B8B6E2500FB9C8E /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC3FFA1B8B6E2500FB9C8E /* CartViewController.swift */; };
 		48CC3FFD1B8B6F0600FB9C8E /* CartNavigationButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC3FFC1B8B6F0600FB9C8E /* CartNavigationButtonController.swift */; };
 		502DB1521B7150370036EF6B /* EventsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502DB1511B7150370036EF6B /* EventsDetailViewController.swift */; };
+		5032249C1B99B55700C0583D /* MailComposeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032249B1B99B55700C0583D /* MailComposeHelper.swift */; };
 		5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1D51B4EFE2A008B41FD /* AppDelegate.swift */; };
 		5060B1EE1B4EFE2A008B41FD /* FAU_FabLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1ED1B4EFE2A008B41FD /* FAU_FabLabTests.swift */; };
 		5067CECB1B90C50300DE8E86 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067CECA1B90C50300DE8E86 /* ImageDetailViewController.swift */; };
@@ -135,6 +136,7 @@
 		5003604E1B97911B0037114C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		5003604F1B97911C0037114C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		502DB1511B7150370036EF6B /* EventsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsDetailViewController.swift; sourceTree = "<group>"; };
+		5032249B1B99B55700C0583D /* MailComposeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailComposeHelper.swift; sourceTree = "<group>"; };
 		5060B1D01B4EFE2A008B41FD /* FAU FabLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FAU FabLab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5060B1D41B4EFE2A008B41FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5060B1D51B4EFE2A008B41FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -594,6 +596,7 @@
 				35CE11C7BEE60991B0702A2A /* Debug.swift */,
 				923E1F301B7AA49A009CC545 /* CoreDataHelper.swift */,
 				927F55D01B94D9DE003A98DF /* AlertView.swift */,
+				5032249B1B99B55700C0583D /* MailComposeHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -801,6 +804,7 @@
 				48545B2D1B92F6D0006F690F /* AboutCustomCell.swift in Sources */,
 				9232D7461B9219C600BF77E9 /* PlatformType.swift in Sources */,
 				927901E11B6D3F6300F95B09 /* NewsDetailsViewController.swift in Sources */,
+				5032249C1B99B55700C0583D /* MailComposeHelper.swift in Sources */,
 				5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */,
 				920AECEE1B96ED3400523C1B /* VersionCheckApi.swift in Sources */,
 				923E1F311B7AA49A009CC545 /* CoreDataHelper.swift in Sources */,

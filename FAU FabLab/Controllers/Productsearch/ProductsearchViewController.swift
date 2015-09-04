@@ -31,23 +31,10 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         return label
     }
     
-    private var emailBody: String{
-        return "Produkt ist nicht mehr auf Lager.".localized + "</br></br><b>" + "Produkt ID".localized + ":</b> </br>"
-            + "\(selectedProduct!.productId!)</br> </br> <b>" + "Produkt Name".localized + ": </b> </br> \(selectedProduct!.name!)"
-            + "</br></br>" + "Gesendet mit der FAU FabLab-App für iOS".localized
-    }
-    
     @IBAction func buttonReportOutOfStockPressed(sender: AnyObject) {
-        modelOutOfStock.fetchFablabMailAddress({
-            var picker = MFMailComposeViewController()
-            picker.mailComposeDelegate = self
-            picker.navigationBar.tintColor = UIColor.fabLabGreen()
-            picker.setToRecipients([self.modelOutOfStock.fablabMail!])
-            picker.setSubject("Bestandsmeldung".localized)
-            picker.setMessageBody(self.emailBody, isHTML: true)
-            
-            self.presentViewController(picker, animated: true, completion: nil)
-        })
+        modelOutOfStock.fetchFablabMailAddress { () -> Void in
+            self.presentViewController(MailComposeHelper().showOutOfStockMailComposeView(delegate: self, recipients: [self.modelOutOfStock.fablabMail!], productId: self.selectedProduct!.productId!, productName: self.selectedProduct!.name!), animated: true, completion: nil)
+        }
     }
 
     @IBAction func buttonAddToCartPressed(sender: AnyObject) {
@@ -516,19 +503,14 @@ extension ProductsearchViewController : MFMailComposeViewControllerDelegate{
         dismissViewControllerAnimated(true, completion: nil)
         switch result.value{
         case MFMailComposeResultCancelled.value:
-            var alert = UIAlertController(title: "Abgebrochen".localized, message: "Meldung wurde nicht versendet!".localized, preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.presentViewController(MailComposeHelper().getCancelAlertController(), animated: true, completion: nil)
             
         case MFMailComposeResultSent.value:
-            var alert = UIAlertController(title: "Versendet".localized, message: "Ausgegangenes Produkt wurde gemeldet!".localized, preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.presentViewController(MailComposeHelper().getSentAlertController(), animated: true, completion: nil)
             
         default:
             //TODO
             Debug.instance.log("Default")
         }
     }
-    
 }
