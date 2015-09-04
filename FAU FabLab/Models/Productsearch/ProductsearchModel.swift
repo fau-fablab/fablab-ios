@@ -6,55 +6,113 @@ typealias ProductSearchFinished = (NSError?) -> Void;
 
 class ProductsearchModel : NSObject{
     
+    private enum Sorting {
+        case Unsorted
+        case SortedByName
+        case SortedByPrice
+    }
+    
+    private let collation = UILocalizedIndexedCollation.currentCollation() as! UILocalizedIndexedCollation
     private let resource = "/products"
+    private var mapper = Mapper<Product>()
     private var products = [Product]()
-    private var mapper = Mapper<Product>();
-    private var isLoading = false;
+    private var sectionedProducts = [[Product]]()
+    private var isLoading = false
+    private var sorting = Sorting.Unsorted
+    
 
     override init(){
         super.init()
     }
     
-    func getCount() -> Int{
-        return products.count;
+    func getNumberOfProducts() -> Int {
+        var count = 0
+        for section in sectionedProducts {
+            count += section.count
+        }
+        return count
     }
     
-    private func addProduct(entry:Product) {
-        products.append(entry)
+    func getNumberOfSections() -> Int {
+        return sectionedProducts.count
     }
     
-    private func clearProducts() {
+    func getNumberOfRowsInSection(section: Int) -> Int {
+        return sectionedProducts[section].count
+    }
+    
+    func getTitleOfSection(section: Int) -> AnyObject {
+        return collation.sectionTitles[section]
+    }
+    
+    func getSectionIndexTitles() -> [AnyObject] {
+        return collation.sectionIndexTitles
+    }
+    
+    func getSectionForSectionIndexTitleAtIndex(index: Int) -> Int {
+        return collation.sectionForSectionIndexTitleAtIndex(index)
+    }
+    
+    func getProduct(section: Int, row: Int) -> Product {
+        return sectionedProducts[section][row]
+    }
+    
+    func removeAllProducts() {
         products.removeAll(keepCapacity: false)
+        sectionedProducts.removeAll(keepCapacity: false)
     }
     
-    func getProduct(position:Int) -> Product{
-        return products[position];
+    func sortProductsByName() {
+        if (sorting == Sorting.SortedByName) {
+            return
+        }
+        //section products
+        let selector: Selector = "name"
+        sectionedProducts.removeAll(keepCapacity: false)
+        sectionedProducts = [[Product]](count: self.collation.sectionTitles.count, repeatedValue: []);
+        for index in 0..<products.count {
+            var sectionIndex = self.collation.sectionForObject(products[index], collationStringSelector: selector)
+            sectionedProducts[sectionIndex].append(products[index])
+        }
+        //sort products
+        for index in 0..<sectionedProducts.count {
+            sectionedProducts[index] = collation.sortedArrayFromArray(sectionedProducts[index], collationStringSelector: selector) as! [Product]
+        }
+        sorting = Sorting.SortedByName
     }
     
-    func getAllProducts() -> [Product] {
-        return products;
+    func sortProductsByPrice() {
+        if (sorting == Sorting.SortedByPrice) {
+            return
+        }
+        //section and sort products
+        sectionedProducts.removeAll(keepCapacity: false)
+        var sortedProducts = products
+        sortedProducts.sort({$0.price < $1.price})
+        sectionedProducts.append(sortedProducts)
+        sorting = Sorting.SortedByPrice
     }
     
     func searchProductByName(name:String, onCompletion: ProductSearchFinished){
         let endpoint = resource + "/find/name"
         let params = ["search": name]
-        
         if(!isLoading){
-            self.clearProducts()
+            removeAllProducts()
+            sorting = Sorting.Unsorted
             RestManager.sharedInstance.makeJsonGetRequest(endpoint, params: params, onCompletion: {
                 json, err in
                 if (err != nil) {
                     AlertView.showErrorView("Fehler bei der Produktsuche".localized)
                     onCompletion(err)
                 }
-        
                 if let productList = self.mapper.mapArray(json) {
                     for tmp in productList {
-                        self.addProduct(tmp)
                         Debug.instance.log(tmp.name!)
+                        self.products.append(tmp)
                     }
+                    self.sectionedProducts.removeAll(keepCapacity: false)
+                    self.sectionedProducts.append(self.products)
                 }
-        
                 onCompletion(nil);
                 self.isLoading = false;
             })
@@ -66,7 +124,8 @@ class ProductsearchModel : NSObject{
         let endpoint = resource + "/find/id"
         let params = ["search": id]
         if(!isLoading){
-            self.clearProducts();
+            removeAllProducts()
+            sorting = Sorting.Unsorted
             RestManager.sharedInstance.makeJsonGetRequest(endpoint, params: params, onCompletion: {
                 json, err in
                 Debug.instance.log("GOT: \(json)")
@@ -76,12 +135,10 @@ class ProductsearchModel : NSObject{
                     onCompletion(err)
                 }
                 if let product = self.mapper.map(json) {
-                    self.addProduct(product)
-                    Debug.instance.log(product)
+                    Debug.instance.log(product.name!)
+                    self.products.append(product)
+                    self.sectionedProducts.append(self.products)
                 }
-                
-                
-        
                 onCompletion(nil);
                 self.isLoading = false;
             })

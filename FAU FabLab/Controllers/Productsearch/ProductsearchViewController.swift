@@ -7,21 +7,16 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
-    @IBOutlet var actInd : UIActivityIndicatorView!
     
+    private var actInd : UIActivityIndicatorView!
     private var selectedIndexPath: NSIndexPath?
     private var model = ProductsearchModel()
     private let modelOutOfStock = MalfunctionInfoModel.sharedInstance
-    
     private var selectedProduct: Product?
-
     private var searchActive = false;
-    private var sortedByName = true;
     private var productCellIdentifier = "ProductCustomCell"
     private let doorButtonController = DoorNavigationButtonController.sharedInstance
     private let cartButtonController = CartNavigationButtonController.sharedInstance
-    private let collation = UILocalizedIndexedCollation.currentCollation() as! UILocalizedIndexedCollation
-    private var sections: [[Product]] = []
     //autocomplete
     private var autocompleteSuggestions = [String]()
     private var autocompleteTableView: UITableView!
@@ -335,13 +330,25 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         }
     }
     
+    private func sortProductsByName() {
+        selectedIndexPath = nil
+        model.sortProductsByName()
+        tableView.reloadData()
+    }
+    
+    private func sortProductsByPrice() {
+        selectedIndexPath = nil
+        model.sortProductsByPrice()
+        tableView.reloadData()
+    }
+    
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         self.resetTableViewBackground()
         self.autocompleteTableView.hidden = true
         self.searchBar.resignFirstResponder()
         self.searchBar.userInteractionEnabled = false;
-        self.sections.removeAll(keepCapacity: false);
-        self.tableView.reloadData();
+        model.removeAllProducts()
+        tableView.reloadData()
         self.actInd.startAnimating()
         model.searchProductByName(searchBar.text, onCompletion: { err in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -349,7 +356,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
                 self.searchBar.userInteractionEnabled = true;
                 self.actInd.stopAnimating();
                 self.setTableViewBackground()
-                if(self.sortedByName) {
+                if(self.searchBar.selectedScopeButtonIndex == 0) {
                     self.sortProductsByName()
                 } else {
                     self.sortProductsByPrice()
@@ -363,8 +370,8 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         self.resetTableViewBackground()
         self.searchBar.resignFirstResponder()
         self.searchBar.userInteractionEnabled = false;
-        self.sections.removeAll(keepCapacity: false);
-        self.tableView.reloadData();
+        model.removeAllProducts()
+        tableView.reloadData()
         self.actInd.startAnimating()
         model.searchProductById(notification.object as! String, onCompletion: { err in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -372,7 +379,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
                 self.searchBar.userInteractionEnabled = true;
                 self.actInd.stopAnimating();
                 self.setTableViewBackground()
-                if(self.sortedByName) {
+                if(self.searchBar.selectedScopeButtonIndex == 0) {
                     self.sortProductsByName()
                 } else {
                     self.sortProductsByPrice()
@@ -389,7 +396,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
             return cell
         }
         let cell = tableView.dequeueReusableCellWithIdentifier(productCellIdentifier) as? ProductCustomCell
-        let product = sections[indexPath.section][indexPath.row]
+        let product = model.getProduct(indexPath.section, row: indexPath.row)
         cell!.configure(product)
         return cell!;
     }
@@ -398,7 +405,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         if(tableView == autocompleteTableView) {
             return 1
         }
-        return self.sections.count
+        return model.getNumberOfSections()
     }
     
     
@@ -406,26 +413,26 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         if(tableView == autocompleteTableView) {
             return autocompleteSuggestions.count
         }
-        return self.sections[section].count
+        return model.getNumberOfRowsInSection(section)
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if (tableView == self.tableView && sortedByName && !self.sections[section].isEmpty) {
-            return self.collation.sectionTitles[section] as? String
+        if (tableView == self.tableView && searchBar.selectedScopeButtonIndex == 0 && model.getNumberOfRowsInSection(section) != 0) {
+            return model.getTitleOfSection(section) as? String
         }
         return ""
     }
     
     func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject] {
-        if(tableView == self.tableView && sortedByName) {
-            return self.collation.sectionIndexTitles
+        if(tableView == self.tableView && searchBar.selectedScopeButtonIndex == 0) {
+            return model.getSectionIndexTitles()
         }
         return []
     }
     
     func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
-        if(tableView == self.tableView && sortedByName) {
-            return self.collation.sectionForSectionIndexTitleAtIndex(index)
+        if(tableView == self.tableView && searchBar.selectedScopeButtonIndex == 0) {
+            return model.getSectionForSectionIndexTitleAtIndex(index)
         }
         return 0
     }
@@ -467,8 +474,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
             tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Automatic)
         }
         tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
-        selectedProduct = sections[indexPath.section][indexPath.row]
-        
+        selectedProduct = model.getProduct(indexPath.section, row: indexPath.row)
         if let cell = tableView.cellForRowAtIndexPath(indexPath) as? ProductCustomCell{
             if(!selectedProduct!.hasLocation){
                 cell.disableProductLocationButton()
@@ -489,7 +495,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     private func setTableViewBackground() {
-        if (model.getCount() == 0) {
+        if (model.getNumberOfProducts() == 0) {
             tableView.separatorStyle = UITableViewCellSeparatorStyle.None
             tableView.backgroundView = backgroundView
         }
@@ -498,45 +504,6 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     private func resetTableViewBackground() {
         tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
         tableView.backgroundView = nil
-    }
-
-    private func sortProductsByName(){
-        
-        sortedByName = true
-        
-        selectedIndexPath = nil
-        
-        let selector: Selector = "name"
-        
-        //add products to sections
-        self.sections.removeAll(keepCapacity: false)
-        self.sections = [[Product]](count: self.collation.sectionTitles.count, repeatedValue: []);
-        for index in 0..<model.getCount() {
-            var sectionIndex = self.collation.sectionForObject(model.getProduct(index), collationStringSelector: selector)
-            self.sections[sectionIndex].append(model.getProduct(index))
-        }
-        
-        //sort sections by name
-        for index in 0..<sections.count {
-            sections[index] = collation.sortedArrayFromArray(sections[index], collationStringSelector: selector) as! [Product]
-        }
-        
-        self.tableView.reloadData();
-        
-    }
-    
-    private func sortProductsByPrice() {
-        
-        sortedByName = false;
-        
-        selectedIndexPath = nil
-        
-        sections.removeAll(keepCapacity: false);
-        var products = model.getAllProducts();
-        products.sort({$0.price < $1.price});
-        sections.append(products)
-        
-        self.tableView.reloadData();
     }
 }
 
