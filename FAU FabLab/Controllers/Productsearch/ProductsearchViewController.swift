@@ -306,7 +306,10 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         if (count(newString) > 1) {
             for suggestion in AutocompleteModel.sharedInstance.getAutocompleteSuggestions() {
                 var string: NSString! = suggestion as NSString
-                var substringRange: NSRange! = string.rangeOfString(newString)
+                
+                var options = NSStringCompareOptions.CaseInsensitiveSearch
+                
+                var substringRange: NSRange! = string.rangeOfString(newString, options: options)
                 if (substringRange.location != NSNotFound) {
                     autocompleteSuggestions.append(suggestion)
                 }
