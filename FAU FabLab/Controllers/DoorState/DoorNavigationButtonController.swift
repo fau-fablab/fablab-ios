@@ -11,12 +11,11 @@ class DoorNavigationButtonController: NSObject {
     private var timer = NSTimer();
     private var viewController: UIViewController?
 
-    private var buttonText: UIBarButtonItem{
+    private var buttonText: UIBarButtonItem {
         var title: String
-        if(model.hasState){
+        if(model.hasState) {
             title = (model.isOpen ? "open".localized+" " : "closed".localized+" ") + model.lastChangeAsString
-        }
-        else{
+        } else {
             title = ""
         }
         let button = UIBarButtonItem(title: title, style: UIBarButtonItemStyle.Plain, target: self, action: nil)
@@ -42,7 +41,6 @@ class DoorNavigationButtonController: NSObject {
         })
     }
     
-
     @objc private func showText() {
         viewController!.navigationItem.leftBarButtonItem = buttonText
     }

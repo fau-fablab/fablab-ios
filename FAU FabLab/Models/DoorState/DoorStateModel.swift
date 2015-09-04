@@ -27,12 +27,12 @@ class DoorStateModel : NSObject {
             let components = NSCalendar.currentCalendar().components(flags, fromDate: lastChangeAsDate, toDate: NSDate(), options: nil)
             
             if(components.hour >= 1){
-                return "\(components.hour) h"
+                return "\(components.hour)h"
             }else{
-                return "\(components.minute) m"
+                return "\(components.minute)m"
             }
         }
-        return "NA"
+        return "N/A"
     }
 
     override init(){
