@@ -72,15 +72,8 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     
     func alertChangeAmount(currentAmount: Double) {
         let cartEntry = self.cartModel.cart.getEntry(selectedIndexPath!.row)
-        
-        let formatString : String = "%." + String(cartEntry.product.rounding.digitsAfterComma) + "f"
-        let lowestUnit : String = String(format: formatString, cartEntry.product.rounding)
-        
-        let message = cartEntry.product.name + "\n" + "Kleinste Einheit".localized + ": " + lowestUnit + " " + cartEntry.product.unit
     
         var inputTextField: UITextField?
-        
-        let alertController: UIAlertController = UIAlertController(title: "Menge eingeben".localized, message: message, preferredStyle: .Alert)
 
         let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in
                 self.showChangeAmountPicker(cartEntry, initialValue: currentAmount)})
@@ -88,35 +81,31 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         let doneAction: UIAlertAction = UIAlertAction(title: "Übernehmen".localized, style: .Default, handler: { (Void) -> Void in
             var amount: Double = NSString(string: inputTextField!.text.stringByReplacingOccurrencesOfString(",", withString: ".")).doubleValue
             
-            var invalidInput = false
-            if amount < cartEntry.product.rounding || amount > Double(Int.max) {
+            var invalidInput = ChangeAmountPickerHelper.invalidInput(amount: amount, rounding: cartEntry.product.rounding)
+            if invalidInput == true {
                 amount = currentAmount
-                invalidInput = true
             }
             
-            var wrongRounding = false
-            let divRes = amount / cartEntry.product.rounding
-            if divRes.digitsAfterComma != 0 {
-                // round the user input down to match rounding.digitsAfterComma
-                amount = amount.roundUpToRounding(cartEntry.product.rounding)
-                wrongRounding = true
+            var correctedRounding = ChangeAmountPickerHelper.correctWrongRounding(amount: amount, rounding: cartEntry.product.rounding)
+            if correctedRounding > 0 {
+                amount = correctedRounding
             }
-            
-            if wrongRounding == true || invalidInput == true {
-                let amountString = String(format: formatString, amount)
+
+            if correctedRounding > 0 || invalidInput == true {
+                let amountString = String(format: ChangeAmountPickerHelper.getFormatStringForRounding(cartEntry.product.rounding), amount)
                 
                 var errorMsg : String = ""
                 var errorTitle : String = ""
                 if invalidInput == true {
                     errorTitle = "Fehlerhafte Eingabe".localized
                     errorMsg = "Wert wurde nicht verändert".localized
-                } else if wrongRounding == true {
+                } else if correctedRounding > 0  {
                     errorTitle = "Anzahl wurde geändert".localized
                     errorMsg = "Fehlerhafte Eingabe".localized
                     errorMsg += "\n" + "Wert wurde aufgerundet auf".localized + ": " + amountString + " " + cartEntry.product.unit
                 }
 
-                 AlertView.showInfoView(errorTitle, message: errorMsg)
+                AlertView.showInfoView(errorTitle, message: errorMsg)
             }
 
             CartModel.sharedInstance.updateProductInCart(self.selectedIndexPath!.row, amount: amount)
@@ -125,12 +114,11 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
             self.showTotalPrice()
         })
         
-        alertController.addAction(cancelAction)
-        alertController.addAction(doneAction)
+        let alertController = ChangeAmountPickerHelper.getUIAlertController(productName: cartEntry.product.name, productRounding: cartEntry.product.rounding, productUnit: cartEntry.product.unit, cancelAction: cancelAction, doneAction: doneAction)
         
         alertController.addTextFieldWithConfigurationHandler({ textField -> Void in
             inputTextField = textField
-            inputTextField!.text = String(format: formatString, currentAmount)
+            inputTextField!.text = String(format: ChangeAmountPickerHelper.getFormatStringForRounding(cartEntry.product.rounding), currentAmount)
         })
         
         self.presentViewController(alertController, animated: true, completion: nil)

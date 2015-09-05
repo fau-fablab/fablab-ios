@@ -83,15 +83,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     
     func alertChangeAmount(currentAmount: Double) {
         
-        let formatString : String = "%." + String(self.selectedProduct!.uom!.rounding!.digitsAfterComma) + "f"
-        let lowestUnit : String = String(format: formatString, self.selectedProduct!.uom!.rounding!)
-        
-        let message1 = self.selectedProduct!.name! + "\n" + "Kleinste Einheit".localized + ": "
-        let message2 = lowestUnit + " " + self.selectedProduct!.unit!
-        
         var inputTextField: UITextField?
-        
-        let alertController: UIAlertController = UIAlertController(title: "Menge eingeben".localized, message: message1 + message2, preferredStyle: .Alert)
         
         let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in self.showAddToCartPicker(self.tableView.cellForRowAtIndexPath(self.selectedIndexPath!) as! ProductCustomCell, initialValue: currentAmount)})
         
@@ -99,22 +91,18 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
             
             var amount: Double = NSString(string: inputTextField!.text.stringByReplacingOccurrencesOfString(",", withString: ".")).doubleValue
             
-            var invalidInput = false
-            if amount < self.selectedProduct!.uom!.rounding! || amount > Double(Int.max)  {
-                amount = 0
-                invalidInput = true
+            var invalidInput = ChangeAmountPickerHelper.invalidInput(amount: amount, rounding: self.selectedProduct!.uom!.rounding!)
+            if invalidInput == true {
+                amount = currentAmount
             }
             
-            var wrongRounding = false
-            let divRes = amount / self.selectedProduct!.uom!.rounding!
-            if divRes.digitsAfterComma != 0 {
-                // round the user input down to match rounding.digitsAfterComma
-                amount = amount.roundUpToRounding(self.selectedProduct!.uom!.rounding!)
-                wrongRounding = true
+            var correctedRounding = ChangeAmountPickerHelper.correctWrongRounding(amount: amount, rounding: self.selectedProduct!.uom!.rounding!)
+            if correctedRounding > 0 {
+                amount = correctedRounding
             }
             
-            if wrongRounding == true || invalidInput == true {
-                let amountString = String(format: formatString, amount)
+            if correctedRounding > 0 || invalidInput == true {
+                let amountString = String(format: ChangeAmountPickerHelper.getFormatStringForRounding(self.selectedProduct!.uom!.rounding!), amount)
                 
                 var errorMsg : String = ""
                 var errorTitle : String = ""
@@ -122,7 +110,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
                     errorTitle = "Fehlerhafte Eingabe".localized
                     errorMsg = "Wert ist ungültig".localized
                     errorMsg += "\n" + "Produkt wurde nicht dem Warenkorb hinzugefügt".localized
-                } else if wrongRounding == true {
+                } else if correctedRounding > 0 {
                     errorTitle = "Produkt wurde dem Warenkorb hinzugefügt".localized
                     errorMsg = "Wert wurde aufgerundet auf".localized + ": " + amountString + " " + self.selectedProduct!.unit!
                 }
@@ -136,12 +124,11 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
             }
         })
         
-        alertController.addAction(cancelAction)
-        alertController.addAction(doneAction)
+        let alertController = ChangeAmountPickerHelper.getUIAlertController(productName: self.selectedProduct!.name!, productRounding: self.selectedProduct!.uom!.rounding!, productUnit: self.selectedProduct!.unit!, cancelAction: cancelAction, doneAction: doneAction)
         
         alertController.addTextFieldWithConfigurationHandler({ textField -> Void in
             inputTextField = textField
-            inputTextField!.text = String(format: formatString, currentAmount)
+            inputTextField!.text = String(format: ChangeAmountPickerHelper.getFormatStringForRounding(self.selectedProduct!.uom!.rounding!), currentAmount)
         })
         
         self.presentViewController(alertController, animated: true, completion: nil)
