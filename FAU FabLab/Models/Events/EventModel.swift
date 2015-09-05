@@ -1,8 +1,6 @@
 import Foundation
 import ObjectMapper
 
-typealias EventLoadFinished = (NSError?) -> Void;
-
 class EventModel : NSObject{
     
     private let resource = "/ical";
@@ -16,7 +14,7 @@ class EventModel : NSObject{
         super.init()
     }
     
-    func fetchEvents(#onCompletion: EventLoadFinished) {
+    func fetchEvents(#onCompletion: ApiResponse) {
         if (!isLoading && !loaded) {
             isLoading = true;
             

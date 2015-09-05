@@ -4,9 +4,6 @@ import ObjectMapper
 import SwiftyJSON
 import CoreData
 
-// INFO TO ALL: Check Cart Status before doing anything. 
-//              --> ONLY IF STATUS == Shopping -> ADD/CHANGE.... -> OTHERWISE there is a checkout process running!
-
 
 class Cart : NSObject{
     

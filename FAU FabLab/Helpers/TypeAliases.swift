@@ -1,0 +1,2 @@
+typealias ApiResponse = (NSError?) -> Void;
+

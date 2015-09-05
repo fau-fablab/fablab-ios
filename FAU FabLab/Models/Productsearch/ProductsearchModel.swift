@@ -2,8 +2,6 @@ import Foundation
 import ObjectMapper
 import SwiftyJSON
 
-typealias ProductSearchFinished = (NSError?) -> Void;
-
 class ProductsearchModel : NSObject{
     
     private enum Sorting {
@@ -93,7 +91,7 @@ class ProductsearchModel : NSObject{
         sorting = Sorting.SortedByPrice
     }
     
-    func searchProductByName(name:String, onCompletion: ProductSearchFinished){
+    func searchProductByName(name:String, onCompletion: ApiResponse){
         let endpoint = resource + "/find/name"
         let params = ["search": name]
         if(!isLoading){
@@ -120,7 +118,7 @@ class ProductsearchModel : NSObject{
         }
     }
     
-    func searchProductById(id:String, onCompletion: ProductSearchFinished){
+    func searchProductById(id:String, onCompletion: ApiResponse){
         let endpoint = resource + "/find/id"
         let params = ["search": id]
         if(!isLoading){

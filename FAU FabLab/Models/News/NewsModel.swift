@@ -3,8 +3,6 @@ import SwiftyJSON
 import Foundation.NSURL
 import ObjectMapper
 
-typealias NewsLoadFinished = (NSError?) -> Void;
-
 public class NewsModel: NSObject {
 
     private let resource = "/news";
@@ -22,7 +20,7 @@ public class NewsModel: NSObject {
         return news.count;
     }
 
-    func fetchNews(#onCompletion: NewsLoadFinished) {
+    func fetchNews(#onCompletion: ApiResponse) {
         if (!isLoading && !newsLoaded) {
             isLoading = true;
 

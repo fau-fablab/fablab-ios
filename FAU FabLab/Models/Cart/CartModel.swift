@@ -1,8 +1,6 @@
 import Foundation
 
 
-typealias updatePayOrCancelView = (Void) -> Void;
-
 class CartModel : NSObject{
     
     private let cartResource = "/carts"

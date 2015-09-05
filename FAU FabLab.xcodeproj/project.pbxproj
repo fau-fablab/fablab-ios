@@ -41,6 +41,7 @@
 		84CDCD3A1B90950C0084D8F3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDCD391B90950C0084D8F3 /* Settings.swift */; };
 		84F53FEE1B73DD24008FB605 /* PayOrCancelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F53FED1B73DD24008FB605 /* PayOrCancelViewController.swift */; };
 		84F53FF21B7419E7008FB605 /* checkout.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F53FF11B7419E7008FB605 /* checkout.png */; };
+		9207491B1B9B145D00F08792 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9207491A1B9B145D00F08792 /* TypeAliases.swift */; };
 		92078EBD1B6E2D9D00A21AD9 /* ProductsearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92078EBC1B6E2D9D00A21AD9 /* ProductsearchModel.swift */; };
 		92078EC01B6E471200A21AD9 /* ProductsearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92078EBF1B6E471200A21AD9 /* ProductsearchViewController.swift */; };
 		920AECE71B96E43E00523C1B /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920AECE41B96E43E00523C1B /* DoubleExtension.swift */; };
@@ -169,6 +170,7 @@
 		84DC93121B669E0100981977 /* RSBarcodes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RSBarcodes.framework; path = Carthage/Build/iOS/RSBarcodes.framework; sourceTree = "<group>"; };
 		84F53FED1B73DD24008FB605 /* PayOrCancelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayOrCancelViewController.swift; sourceTree = "<group>"; };
 		84F53FF11B7419E7008FB605 /* checkout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkout.png; sourceTree = "<group>"; };
+		9207491A1B9B145D00F08792 /* TypeAliases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		92078EBC1B6E2D9D00A21AD9 /* ProductsearchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsearchModel.swift; sourceTree = "<group>"; };
 		92078EBF1B6E471200A21AD9 /* ProductsearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsearchViewController.swift; sourceTree = "<group>"; };
 		920AECE41B96E43E00523C1B /* DoubleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
@@ -600,6 +602,7 @@
 				923E1F301B7AA49A009CC545 /* CoreDataHelper.swift */,
 				927F55D01B94D9DE003A98DF /* AlertView.swift */,
 				5032249B1B99B55700C0583D /* MailComposeHelper.swift */,
+				9207491A1B9B145D00F08792 /* TypeAliases.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -810,6 +813,7 @@
 				5032249C1B99B55700C0583D /* MailComposeHelper.swift in Sources */,
 				5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */,
 				920AECEE1B96ED3400523C1B /* VersionCheckApi.swift in Sources */,
+				9207491B1B9B145D00F08792 /* TypeAliases.swift in Sources */,
 				923E1F311B7AA49A009CC545 /* CoreDataHelper.swift in Sources */,
 				84CDCD311B9084130084D8F3 /* AboutViewController.swift in Sources */,
 				923FFDA01B8E4C2D001ACAB1 /* UpdateStatus.swift in Sources */,
