@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         
         // Override point for customization after application launch.
-        AutocompleteModel.sharedInstance.loadAutocompleteSuggestion();
+        AutocompleteModel.sharedInstance.fetchAutocompleteEntries();
         var type = UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound;
         var setting = UIUserNotificationSettings(forTypes: type, categories: nil);
         UIApplication.sharedApplication().registerUserNotificationSettings(setting);
@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application( application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData ) {
-        AutocompleteModel.sharedInstance.loadAutocompleteSuggestion();
+        AutocompleteModel.sharedInstance.fetchAutocompleteEntries();
         var characterSet: NSCharacterSet = NSCharacterSet( charactersInString: "<>" )
         
         var deviceTokenString: String = ( deviceToken.description as NSString )

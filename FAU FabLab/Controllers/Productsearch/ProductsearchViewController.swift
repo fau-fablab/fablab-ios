@@ -291,7 +291,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     func filterAutocompleteSuggestions(newString: String) {
         autocompleteSuggestions.removeAll(keepCapacity: false)
         if (count(newString) > 1) {
-            for suggestion in AutocompleteModel.sharedInstance.getAutocompleteSuggestions() {
+            for suggestion in AutocompleteModel.sharedInstance.getAutocompleteEntries() {
                 var string: NSString! = suggestion as NSString
                 
                 var options = NSStringCompareOptions.CaseInsensitiveSearch
