@@ -176,9 +176,6 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         searchBar.delegate = self
         searchBar.enablesReturnKeyAutomatically = false
         searchBar.showsCancelButton = false
-        var gestureRecognizer = UITapGestureRecognizer(target: self, action: "searchBarCancelled")
-        gestureRecognizer.delegate = self
-        self.view.addGestureRecognizer(gestureRecognizer)
         
         //table view
         tableView.delegate = self
@@ -222,18 +219,6 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         view.addConstraint(searchHelpTableViewHeight)
         
     }
-
-    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer,
-        shouldReceiveTouch touch: UITouch) -> Bool {
-            if (searchActive && searchHelpModel.getCount() == 0) {
-                return true
-            }
-            return false
-    }
-    
-    func searchBarCancelled() {
-        searchBarCancelButtonClicked(self.searchBar)
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -267,6 +252,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
         searchActive = true;
         if (searchBar.text.isEmpty) {
             searchHelpModel.fetchEntries()
@@ -297,6 +283,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
         searchActive = false;
         searchBar.resignFirstResponder()
         searchHelpTableView.hidden = true
