@@ -45,11 +45,6 @@ class SettingsViewController : UIViewController, UITableViewDataSource, UITableV
         return doorPushCell
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Push Einstellungen".localized
     }

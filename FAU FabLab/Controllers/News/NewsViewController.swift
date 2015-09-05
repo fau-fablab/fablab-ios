@@ -55,10 +55,6 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         Debug.instance.log(segue.identifier)
         if segue.identifier == "NewsDetailSegue" {
