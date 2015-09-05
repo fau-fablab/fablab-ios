@@ -127,11 +127,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
                     errorMsg = "Wert wurde aufgerundet auf".localized + ": " + amountString + " " + self.selectedProduct!.unit!
                 }
                 
-                var alert = UIAlertView()
-                alert.title = errorTitle
-                alert.message = errorMsg
-                alert.addButtonWithTitle("OK".localized)
-                alert.show()
+                AlertView.showInfoView(errorTitle, message: errorMsg)
             }
             
             if invalidInput == false {

@@ -116,11 +116,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
                     errorMsg += "\n" + "Wert wurde aufgerundet auf".localized + ": " + amountString + " " + cartEntry.product.unit
                 }
 
-                var alert = UIAlertView()
-                alert.title = errorTitle
-                alert.message = errorMsg
-                alert.addButtonWithTitle("OK".localized)
-                alert.show()
+                 AlertView.showInfoView(errorTitle, message: errorMsg)
             }
 
             CartModel.sharedInstance.updateProductInCart(self.selectedIndexPath!.row, amount: amount)
