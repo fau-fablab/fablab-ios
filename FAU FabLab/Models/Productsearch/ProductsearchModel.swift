@@ -39,16 +39,25 @@ class ProductsearchModel : NSObject{
         return sectionedProducts[section].count
     }
     
-    func getTitleOfSection(section: Int) -> AnyObject {
-        return collation.sectionTitles[section]
+    func getTitleOfSection(section: Int) -> String {
+        if (sorting == Sorting.SortedByName && !sectionedProducts[section].isEmpty) {
+            return (collation.sectionTitles[section] as? String)!
+        }
+        return ""
     }
     
     func getSectionIndexTitles() -> [AnyObject] {
-        return collation.sectionIndexTitles
+        if (sorting == Sorting.SortedByName) {
+            return collation.sectionIndexTitles
+        }
+        return []
     }
     
     func getSectionForSectionIndexTitleAtIndex(index: Int) -> Int {
-        return collation.sectionForSectionIndexTitleAtIndex(index)
+        if (sorting == Sorting.SortedByName) {
+            return collation.sectionForSectionIndexTitleAtIndex(index)
+        }
+        return 0
     }
     
     func getProduct(section: Int, row: Int) -> Product {

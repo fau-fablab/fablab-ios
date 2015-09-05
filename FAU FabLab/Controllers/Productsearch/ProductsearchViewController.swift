@@ -388,21 +388,18 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         if (tableView == searchHelpTableView) {
             return searchHelpModel.getTitleOfSection(section)
         }
-        if (tableView == self.tableView && searchBar.selectedScopeButtonIndex == 0 && model.getNumberOfRowsInSection(section) != 0) {
-            return model.getTitleOfSection(section) as? String
-        }
-        return ""
+        return model.getTitleOfSection(section)
     }
     
     func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject] {
-        if(tableView == self.tableView && searchBar.selectedScopeButtonIndex == 0) {
+        if(tableView == self.tableView) {
             return model.getSectionIndexTitles()
         }
         return []
     }
     
     func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
-        if(tableView == self.tableView && searchBar.selectedScopeButtonIndex == 0) {
+        if(tableView == self.tableView) {
             return model.getSectionForSectionIndexTitleAtIndex(index)
         }
         return 0
