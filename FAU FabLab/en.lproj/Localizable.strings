@@ -127,3 +127,7 @@
 "Produkt Name" = "Product name";
 "Meldung wurde nicht versendet!" = "Message was not sent!";
 "Ausgegangenes Produkt wurde gemeldet!" = "Out of stock-message was sent!";
+
+//MARK: SearchHelpModel
+"Verlauf" = "History";
+"Vorschläge" = "Suggestions";

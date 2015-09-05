@@ -17,10 +17,11 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     private var productCellIdentifier = "ProductCustomCell"
     private let doorButtonController = DoorNavigationButtonController.sharedInstance
     private let cartButtonController = CartNavigationButtonController.sharedInstance
-    //autocomplete
-    private var autocompleteSuggestions = [String]()
-    private var autocompleteTableView: UITableView!
-    private var autocompleteTableViewConstraint : NSLayoutConstraint!
+    //search help
+    private let searchHelpModel = SearchHelpModel.sharedInstance
+    private var searchHelpTableView: UITableView!
+    private var searchHelpTableViewHeight: NSLayoutConstraint!
+    
     //table view background
     private var backgroundView: UILabel {
         var label = UILabel()
@@ -193,38 +194,38 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
             UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleBottomMargin
         view.addSubview(actInd)
         
-        //autocomplete
-        autocompleteTableView = UITableView()
-        autocompleteTableView.delegate = self
-        autocompleteTableView.dataSource = self
-        autocompleteTableView.scrollEnabled = true
-        autocompleteTableView.hidden = true
-        autocompleteTableView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        view.addSubview(autocompleteTableView)
+        //search help
+        searchHelpTableView = UITableView()
+        searchHelpTableView.delegate = self
+        searchHelpTableView.dataSource = self
+        searchHelpTableView.scrollEnabled = true
+        searchHelpTableView.hidden = true
+        searchHelpTableView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.addSubview(searchHelpTableView)
         
-        let c1 = NSLayoutConstraint(item: autocompleteTableView, attribute: NSLayoutAttribute.LeftMargin,
+        let c1 = NSLayoutConstraint(item: searchHelpTableView, attribute: NSLayoutAttribute.LeftMargin,
             relatedBy: NSLayoutRelation.Equal, toItem: self.tableView, attribute: NSLayoutAttribute.LeftMargin,
             multiplier: 1, constant: 0)
-        let c2 = NSLayoutConstraint(item: autocompleteTableView, attribute: NSLayoutAttribute.RightMargin,
+        let c2 = NSLayoutConstraint(item: searchHelpTableView, attribute: NSLayoutAttribute.RightMargin,
             relatedBy: NSLayoutRelation.Equal, toItem: self.tableView, attribute: NSLayoutAttribute.RightMargin,
             multiplier: 1, constant: 0)
-        let c3 = NSLayoutConstraint(item: autocompleteTableView, attribute: NSLayoutAttribute.TopMargin,
+        let c3 = NSLayoutConstraint(item: searchHelpTableView, attribute: NSLayoutAttribute.TopMargin,
             relatedBy: NSLayoutRelation.Equal, toItem: self.tableView, attribute: NSLayoutAttribute.TopMargin,
             multiplier: 1, constant: 0)
-        autocompleteTableViewConstraint = NSLayoutConstraint(item: autocompleteTableView, attribute: NSLayoutAttribute.Height,
+        searchHelpTableViewHeight = NSLayoutConstraint(item: searchHelpTableView, attribute: NSLayoutAttribute.Height,
             relatedBy: NSLayoutRelation.Equal, toItem: self.tableView, attribute: NSLayoutAttribute.Height,
             multiplier: 1, constant: 0)
         
         view.addConstraint(c1)
         view.addConstraint(c2)
         view.addConstraint(c3)
-        view.addConstraint(autocompleteTableViewConstraint)
+        view.addConstraint(searchHelpTableViewHeight)
         
     }
 
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer,
         shouldReceiveTouch touch: UITouch) -> Bool {
-            if (autocompleteSuggestions.isEmpty && searchActive) {
+            if (searchActive && searchHelpModel.getCount() == 0) {
                 return true
             }
             return false
@@ -254,20 +255,26 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     func keyboardDidShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
             if let tabBarSize = self.tabBarController?.tabBar.frame.size {
-                autocompleteTableViewConstraint.constant = tabBarSize.height - keyboardSize.height
-                autocompleteTableView.setNeedsUpdateConstraints()
+                searchHelpTableViewHeight.constant = tabBarSize.height - keyboardSize.height
+                searchHelpTableView.setNeedsUpdateConstraints()
             }
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        autocompleteTableViewConstraint.constant = 0
-        autocompleteTableView.setNeedsUpdateConstraints()
+        searchHelpTableViewHeight.constant = 0
+        searchHelpTableView.setNeedsUpdateConstraints()
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         searchActive = true;
-        autocompleteTableView.hidden = false
+        if (searchBar.text.isEmpty) {
+            searchHelpModel.fetchEntries()
+        } else {
+            searchHelpModel.fetchEntriesWithSubstring(searchBar.text)
+        }
+        searchHelpTableView.reloadData()
+        searchHelpTableView.hidden = false
     }
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
@@ -276,40 +283,23 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     
     func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         var newString = (searchBar.text as NSString).stringByReplacingCharactersInRange(range, withString: text)
-        autocompleteTableView.hidden = false
-        filterAutocompleteSuggestions(newString)
+        searchHelpModel.fetchEntriesWithSubstring(newString)
+        searchHelpTableView.reloadData()
+        searchHelpTableView.hidden = false
         return true
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         if (count(searchText) == 0) {
-            autocompleteSuggestions.removeAll(keepCapacity: false)
-            autocompleteTableView.reloadData()
+            searchHelpModel.fetchEntries()
+            searchHelpTableView.reloadData()
         }
-    }
-    
-    func filterAutocompleteSuggestions(newString: String) {
-        autocompleteSuggestions.removeAll(keepCapacity: false)
-        if (count(newString) > 1) {
-            for suggestion in AutocompleteModel.sharedInstance.getAutocompleteEntries() {
-                var string: NSString! = suggestion as NSString
-                
-                var options = NSStringCompareOptions.CaseInsensitiveSearch
-                
-                var substringRange: NSRange! = string.rangeOfString(newString, options: options)
-                if (substringRange.location != NSNotFound) {
-                    autocompleteSuggestions.append(suggestion)
-                }
-            }
-        }
-        autocompleteSuggestions.sort({$0 < $1})
-        autocompleteTableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchActive = false;
         searchBar.resignFirstResponder()
-        autocompleteTableView.hidden = true
+        searchHelpTableView.hidden = true
     }
     
     func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
@@ -333,8 +323,9 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        self.searchHelpModel.addHistoryEntry(searchBar.text)
         self.resetTableViewBackground()
-        self.autocompleteTableView.hidden = true
+        self.searchHelpTableView.hidden = true
         self.searchBar.resignFirstResponder()
         self.searchBar.userInteractionEnabled = false;
         model.removeAllProducts()
@@ -379,9 +370,9 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if(tableView == autocompleteTableView) {
+        if(tableView == searchHelpTableView) {
             let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "autocomplete")
-            cell.textLabel?.text = autocompleteSuggestions[indexPath.row]
+            cell.textLabel?.text = searchHelpModel.getEntry(indexPath.section, row: indexPath.row)
             cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             return cell
         }
@@ -392,21 +383,24 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if(tableView == autocompleteTableView) {
-            return 1
+        if(tableView == searchHelpTableView) {
+            return searchHelpModel.getNumberOfSections()
         }
         return model.getNumberOfSections()
     }
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(tableView == autocompleteTableView) {
-            return autocompleteSuggestions.count
+        if(tableView == searchHelpTableView) {
+            return searchHelpModel.getNumberOfRowsInSection(section)
         }
         return model.getNumberOfRowsInSection(section)
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if (tableView == searchHelpTableView) {
+            return searchHelpModel.getTitleOfSection(section)
+        }
         if (tableView == self.tableView && searchBar.selectedScopeButtonIndex == 0 && model.getNumberOfRowsInSection(section) != 0) {
             return model.getTitleOfSection(section) as? String
         }
@@ -441,9 +435,8 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if(tableView == autocompleteTableView) {
-            searchBar.text = autocompleteTableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text
-            filterAutocompleteSuggestions(searchBar.text)
+        if(tableView == searchHelpTableView) {
+            searchBar.text = searchHelpTableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text
             searchBarSearchButtonClicked(searchBar)
             return
         }
@@ -475,7 +468,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if(tableView == autocompleteTableView) {
+        if(tableView == searchHelpTableView) {
             return UITableViewAutomaticDimension
         } else if (indexPath == selectedIndexPath){
             return ProductCustomCell.expandedHeight

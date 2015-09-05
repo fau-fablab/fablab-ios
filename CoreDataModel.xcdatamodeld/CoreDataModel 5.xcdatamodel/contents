@@ -17,14 +17,19 @@
         <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="cartentry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CartEntry" inverseName="product" inverseEntity="CartEntry" syncable="YES"/>
     </entity>
+    <entity name="HistoryEntry" representedClassName="FAU_FabLab.HistoryEntry" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="word" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Settings" representedClassName="FAU_FabLab.SettingsEntry" syncable="YES">
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
     <elements>
+        <element name="AutocompleteEntry" positionX="-63" positionY="45" width="128" height="75"/>
         <element name="CartEntry" positionX="-63" positionY="-18" width="128" height="75"/>
         <element name="CartProduct" positionX="-54" positionY="-9" width="128" height="150"/>
         <element name="Settings" positionX="-45" positionY="54" width="128" height="75"/>
-        <element name="AutocompleteEntry" positionX="-63" positionY="45" width="128" height="75"/>
+        <element name="HistoryEntry" positionX="-63" positionY="45" width="128" height="75"/>
     </elements>
 </model>

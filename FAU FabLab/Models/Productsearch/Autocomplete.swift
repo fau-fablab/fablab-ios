@@ -2,9 +2,7 @@ import Foundation
 import SwiftyJSON
 import CoreData
 
-class AutocompleteModel : NSObject {
-    
-    static let sharedInstance = AutocompleteModel()
+class Autocomplete: NSObject {
     
     private let resource = "/products/autocompletions"
     private let managedObjectContext : NSManagedObjectContext
@@ -33,7 +31,7 @@ class AutocompleteModel : NSObject {
         }
     }
     
-    func fetchAutocompleteEntries() {
+    func fetchEntries() {
         if(entries.isEmpty || Double(NSDate().timeIntervalSinceDate(entries[0].date)) >= refreshInterval) {
             let params = ["search": ""]
             if (!isLoading) {
@@ -43,7 +41,7 @@ class AutocompleteModel : NSObject {
                     if (err != nil) {
                         Debug.instance.log(err)
                     } else {
-                        self.addAutocompleteEntries(json as! [String])
+                        self.addEntries(json as! [String])
                     }
                     self.isLoading = false
                 })
@@ -51,8 +49,8 @@ class AutocompleteModel : NSObject {
         }
     }
     
-    private func addAutocompleteEntries(words: [String]) {
-        removeAutocompleteEntries()
+    private func addEntries(words: [String]) {
+        removeEntries()
         for word in words {
             let entry = NSEntityDescription.insertNewObjectForEntityForName(AutocompleteEntry.EntityName,
                 inManagedObjectContext: self.managedObjectContext) as! AutocompleteEntry
@@ -62,7 +60,7 @@ class AutocompleteModel : NSObject {
         saveCoreData()
     }
     
-    private func removeAutocompleteEntries() {
+    func removeEntries() {
         for entry in entries {
             managedObjectContext.deleteObject(entry)
         }
@@ -72,7 +70,7 @@ class AutocompleteModel : NSObject {
         return entries.count
     }
     
-    func getAutocompleteEntries() -> [String] {
+    func getEntries() -> [String] {
         var words = [String]()
         for entry in entries {
             words.append(entry.word)
@@ -82,7 +80,7 @@ class AutocompleteModel : NSObject {
         return words
     }
     
-    func getAutocompleteEntriesWithSubstring(substring: String) -> [String] {
+    func getEntriesWithSubstring(substring: String) -> [String] {
         var words = [String]()
         var options = NSStringCompareOptions.CaseInsensitiveSearch
         for entry in entries {

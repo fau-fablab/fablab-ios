@@ -127,3 +127,7 @@
 "Produkt Name" = "Produkt Name";
 "Meldung wurde nicht versendet!" = "Meldung wurde nicht versendet!";
 "Ausgegangenes Produkt wurde gemeldet!" = "Ausgegangenes Produkt wurde gemeldet!";
+
+//MARK: SearchHelpModel
+"Verlauf" = "Verlauf";
+"Vorschläge" = "Vorschläge";
