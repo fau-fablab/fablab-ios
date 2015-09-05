@@ -34,7 +34,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     
     @IBAction func buttonReportOutOfStockPressed(sender: AnyObject) {
         modelOutOfStock.fetchFablabMailAddress { () -> Void in
-            self.presentViewController(MailComposeHelper().showOutOfStockMailComposeView(delegate: self, recipients: [self.modelOutOfStock.fablabMail!], productId: self.selectedProduct!.productId!, productName: self.selectedProduct!.name!), animated: true, completion: nil)
+            self.presentViewController(MailComposeHelper.showOutOfStockMailComposeView(delegate: self, recipients: [self.modelOutOfStock.fablabMail!], productId: self.selectedProduct!.productId!, productName: self.selectedProduct!.name!), animated: true, completion: nil)
         }
     }
 
@@ -480,10 +480,10 @@ extension ProductsearchViewController : MFMailComposeViewControllerDelegate{
         dismissViewControllerAnimated(true, completion: nil)
         switch result.value{
         case MFMailComposeResultCancelled.value:
-            self.presentViewController(MailComposeHelper().getCancelAlertController(), animated: true, completion: nil)
+            self.presentViewController(MailComposeHelper.getCancelAlertController(), animated: true, completion: nil)
             
         case MFMailComposeResultSent.value:
-            self.presentViewController(MailComposeHelper().getSentAlertController(), animated: true, completion: nil)
+            self.presentViewController(MailComposeHelper.getSentAlertController(), animated: true, completion: nil)
             
         default:
             //TODO
