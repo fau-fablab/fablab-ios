@@ -29,32 +29,48 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     
     @IBAction func buttonChangeAmountPressed(sender: AnyObject) {
         let cartEntry = self.cartModel.cart.getEntry(selectedIndexPath!.row)
+        showChangeAmountPicker(cartEntry, initialValue: cartEntry.amount)
+    }
+    
+    func showChangeAmountPicker(cartEntry: CartEntry, initialValue: Double) {
+        var addToCart = true
+        var currentAmount : Double = cartEntry.amount
         
         var pickerDelegate = ActionSheetPickerDelegate(unit: cartEntry.product.unit, price: cartEntry.product.price, rounding: cartEntry.product.rounding, didSucceedAction: { (amount: Double) -> Void in
-            CartModel.sharedInstance.updateProductInCart(self.selectedIndexPath!.row, amount: Double(amount))
-            self.tableView.reloadData();
-            self.tableView.setEditing(false, animated: true)
-            self.showTotalPrice()
+            if addToCart == false {
+                currentAmount = amount
+                addToCart = true
+            } else {
+                // if currentAmount has initial value, take the amount value
+                if currentAmount == cartEntry.amount {
+                    currentAmount = amount
+                }
+                CartModel.sharedInstance.updateProductInCart(self.selectedIndexPath!.row, amount: Double(currentAmount))
+                self.tableView.reloadData();
+                self.tableView.setEditing(false, animated: true)
+                self.showTotalPrice()
+            }
             }, didCancelAction:{ (Void) -> Void in self.tableView.setEditing(false, animated: true)} )
         
         // set current amount
         pickerDelegate.setAmount(cartEntry.amount)
         
         // initial selection is also needed, to correctly set current amount
-        var picker: ActionSheetCustomPicker = ActionSheetCustomPicker(title: "Menge auswählen".localized, delegate: pickerDelegate, showCancelButton: false, origin: self, initialSelections: [(cartEntry.amount/cartEntry.product.rounding)-1])
+        var picker: ActionSheetCustomPicker = ActionSheetCustomPicker(title: "Menge auswählen".localized, delegate: pickerDelegate, showCancelButton: false, origin: self, initialSelections: [(initialValue/cartEntry.product.rounding)-1])
         
         var doneButton: UIBarButtonItem = UIBarButtonItem()
         doneButton.title = "Übernehmen".localized
         picker.setDoneButton(doneButton)
         picker.addCustomButtonWithTitle("Freitext".localized, actionBlock: {
+            addToCart = false
             picker.delegate.actionSheetPickerDidSucceed!(picker, origin: self)
-            self.alertChangeAmount() })
+            self.alertChangeAmount(currentAmount) })
         picker.tapDismissAction = TapAction.Cancel
         
         picker.showActionSheetPicker()
     }
     
-    func alertChangeAmount() {
+    func alertChangeAmount(currentAmount: Double) {
         let cartEntry = self.cartModel.cart.getEntry(selectedIndexPath!.row)
         
         let formatString : String = "%." + String(cartEntry.product.rounding.digitsAfterComma) + "f"
@@ -66,14 +82,15 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         
         let alertController: UIAlertController = UIAlertController(title: "Menge eingeben".localized, message: message, preferredStyle: .Alert)
 
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in self.buttonChangeAmountPressed(self)})
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in
+                self.showChangeAmountPicker(cartEntry, initialValue: currentAmount)})
         
         let doneAction: UIAlertAction = UIAlertAction(title: "Übernehmen".localized, style: .Default, handler: { (Void) -> Void in
             var amount: Double = NSString(string: inputTextField!.text.stringByReplacingOccurrencesOfString(",", withString: ".")).doubleValue
             
             var invalidInput = false
             if amount < cartEntry.product.rounding || amount > Double(Int.max) {
-                amount = cartEntry.amount
+                amount = currentAmount
                 invalidInput = true
             }
             
@@ -117,7 +134,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         
         alertController.addTextFieldWithConfigurationHandler({ textField -> Void in
             inputTextField = textField
-            inputTextField!.text = String(format: formatString, cartEntry.amount)
+            inputTextField!.text = String(format: formatString, currentAmount)
         })
         
         self.presentViewController(alertController, animated: true, completion: nil)
