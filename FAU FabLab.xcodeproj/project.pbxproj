@@ -38,6 +38,10 @@
 		844793561B93576D0057CF88 /* TriggerPushType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844793551B93576D0057CF88 /* TriggerPushType.swift */; };
 		846100BE1B78696000393E63 /* ProductLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846100BD1B78696000393E63 /* ProductLocationViewController.swift */; };
 		8462E2691B985930003DADE1 /* SettingsDoorOpensPushCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462E2681B985930003DADE1 /* SettingsDoorOpensPushCell.swift */; };
+		849502A01B9B764F006810E3 /* InventoryLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495029F1B9B764F006810E3 /* InventoryLoginViewController.swift */; };
+		849502A21B9B767C006810E3 /* InventoryLoginViaScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849502A11B9B767C006810E3 /* InventoryLoginViaScanViewController.swift */; };
+		849502A41B9B7696006810E3 /* InventoryItemScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849502A31B9B7696006810E3 /* InventoryItemScanViewController.swift */; };
+		849502A61B9B76EA006810E3 /* InventoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849502A51B9B76EA006810E3 /* InventoryListViewController.swift */; };
 		84CDCD2B1B9083C90084D8F3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDCD2A1B9083C90084D8F3 /* SettingsViewController.swift */; };
 		84CDCD2E1B9083ED0084D8F3 /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDCD2D1B9083ED0084D8F3 /* InventoryViewController.swift */; };
 		84CDCD311B9084130084D8F3 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDCD301B9084130084D8F3 /* AboutViewController.swift */; };
@@ -170,6 +174,10 @@
 		846100BD1B78696000393E63 /* ProductLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductLocationViewController.swift; sourceTree = "<group>"; };
 		8462E2681B985930003DADE1 /* SettingsDoorOpensPushCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDoorOpensPushCell.swift; sourceTree = "<group>"; };
 		846BD1991B9392A000BDEEFA /* CoreDataModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataModel 3.xcdatamodel"; sourceTree = "<group>"; };
+		8495029F1B9B764F006810E3 /* InventoryLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryLoginViewController.swift; sourceTree = "<group>"; };
+		849502A11B9B767C006810E3 /* InventoryLoginViaScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryLoginViaScanViewController.swift; sourceTree = "<group>"; };
+		849502A31B9B7696006810E3 /* InventoryItemScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryItemScanViewController.swift; sourceTree = "<group>"; };
+		849502A51B9B76EA006810E3 /* InventoryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryListViewController.swift; sourceTree = "<group>"; };
 		84CDCD2A1B9083C90084D8F3 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		84CDCD2D1B9083ED0084D8F3 /* InventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		84CDCD301B9084130084D8F3 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -424,6 +432,10 @@
 			isa = PBXGroup;
 			children = (
 				84CDCD2D1B9083ED0084D8F3 /* InventoryViewController.swift */,
+				8495029F1B9B764F006810E3 /* InventoryLoginViewController.swift */,
+				849502A11B9B767C006810E3 /* InventoryLoginViaScanViewController.swift */,
+				849502A31B9B7696006810E3 /* InventoryItemScanViewController.swift */,
+				849502A51B9B76EA006810E3 /* InventoryListViewController.swift */,
 			);
 			path = Inventory;
 			sourceTree = "<group>";
@@ -838,6 +850,7 @@
 				4804CA5C1B7E4FB200F75BF5 /* ActionSheetPickerDelegate.swift in Sources */,
 				924DBF731B8DEBB1000CAFB2 /* ICal.swift in Sources */,
 				924DBF6E1B8DEBB1000CAFB2 /* InventoryItem.swift in Sources */,
+				849502A21B9B767C006810E3 /* InventoryLoginViaScanViewController.swift in Sources */,
 				8462E2691B985930003DADE1 /* SettingsDoorOpensPushCell.swift in Sources */,
 				920AECE81B96E43E00523C1B /* FabColors.swift in Sources */,
 				48CC3FFD1B8B6F0600FB9C8E /* CartNavigationButtonController.swift in Sources */,
@@ -846,13 +859,16 @@
 				92078EC01B6E471200A21AD9 /* ProductsearchViewController.swift in Sources */,
 				92078EBD1B6E2D9D00A21AD9 /* ProductsearchModel.swift in Sources */,
 				48CC3FFB1B8B6E2500FB9C8E /* CartViewController.swift in Sources */,
+				849502A01B9B764F006810E3 /* InventoryLoginViewController.swift in Sources */,
 				920AECE91B96E43E00523C1B /* StringExtension.swift in Sources */,
 				487971BA1B9B112D00052FEB /* SearchHelpModel.swift in Sources */,
+				849502A61B9B76EA006810E3 /* InventoryListViewController.swift in Sources */,
 				487971B81B9B0E3F00052FEB /* History.swift in Sources */,
 				920AECEB1B96E5B300523C1B /* NSBundleExtension.swift in Sources */,
 				487971B41B9B0E0200052FEB /* HistoryEntry.swift in Sources */,
 				844793561B93576D0057CF88 /* TriggerPushType.swift in Sources */,
 				923E1F251B7A735F009CC545 /* MalfunctionInfoController.swift in Sources */,
+				849502A41B9B7696006810E3 /* InventoryItemScanViewController.swift in Sources */,
 				92500ED21B72CD7C0093CC45 /* Cart.swift in Sources */,
 				927901CA1B6D3B9300F95B09 /* RestManager.swift in Sources */,
 				923E1F2A1B7AA25A009CC545 /* CartProduct.swift in Sources */,
