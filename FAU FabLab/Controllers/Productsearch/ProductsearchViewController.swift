@@ -358,7 +358,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if(tableView == searchHelpTableView) {
-            let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "autocomplete")
+            let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "searchHelpCell")
             cell.textLabel?.text = searchHelpModel.getEntry(indexPath.section, row: indexPath.row)
             cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             return cell
