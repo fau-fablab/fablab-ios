@@ -31,17 +31,14 @@ class History: NSObject {
         if (word.isEmpty) {
             return
         }
-        //if word already exists, update date only
+        //if word already exists, delete it and add it anew to retain chronological order
         if (!entries.isEmpty) {
-            for index in 0...(entries.count - 1) {
-                if (entries[index].word == word) {
-                    entries[index].date = NSDate()
-                    saveCoreData()
-                    return
+            for entry in entries {
+                if (entry.word == word) {
+                    managedObjectContext.deleteObject(entry)
                 }
             }
         }
-        //if word doesn't exist, create search word
         let entry = NSEntityDescription.insertNewObjectForEntityForName(HistoryEntry.EntityName,
             inManagedObjectContext: self.managedObjectContext) as! HistoryEntry
         entry.word = word
@@ -62,7 +59,7 @@ class History: NSObject {
     func getEntries() -> [String] {
         var words = [String]()
         for entry in entries {
-            words.append(entry.word)
+            words.insert(entry.word, atIndex: 0)
         }
         return words
     }
@@ -73,7 +70,7 @@ class History: NSObject {
         for entry in entries {
             var substringRange: NSRange! = (entry.word as NSString).rangeOfString(substring, options: options)
             if (substringRange.location != NSNotFound) {
-                words.append(entry.word)
+                words.insert(entry.word, atIndex: 0)
             }
         }
         return words
