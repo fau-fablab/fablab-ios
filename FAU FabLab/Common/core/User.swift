@@ -11,6 +11,13 @@ class User : Mappable{
         return User()
     }
     
+    class func newInstance(username: String, password: String) -> User{
+        var user = User()
+        user.username = username
+        user.password = password
+        return user
+    }
+    
     // Mappable
     func mapping(map: Map) {
         username <- map["username"]
