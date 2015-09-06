@@ -104,6 +104,7 @@
 		927F55D41B950D36003A98DF /* ec2-52-28-163-255.eu-central-1.compute.amazonaws.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 927F55D31B950D36003A98DF /* ec2-52-28-163-255.eu-central-1.compute.amazonaws.com.cer */; };
 		928054F41B6D893300D0D4FB /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 928054F31B6D893300D0D4FB /* ObjectMapper.framework */; };
 		928054FB1B6DA22000D0D4FB /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928054FA1B6DA22000D0D4FB /* EventModel.swift */; };
+		929770901B9CE2F800525191 /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9297708F1B9CE2F800525191 /* UserApi.swift */; };
 		92DB85A81B8B72FC0070FAD8 /* MalfunctionInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DB85A71B8B72FC0070FAD8 /* MalfunctionInfoModel.swift */; };
 		92F04A321B87D92100C2ED81 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5060B1E01B4EFE2A008B41FD /* LaunchScreen.xib */; };
 		92F04A331B87D92F00C2ED81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5060B1DB1B4EFE2A008B41FD /* Main.storyboard */; };
@@ -248,6 +249,7 @@
 		928054F31B6D893300D0D4FB /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		928054FA1B6DA22000D0D4FB /* EventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		928841B51B93B3DC00E1BC5B /* CoreDataModel 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataModel 4.xcdatamodel"; sourceTree = "<group>"; };
+		9297708F1B9CE2F800525191 /* UserApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
 		92DB85A71B8B72FC0070FAD8 /* MalfunctionInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MalfunctionInfoModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -514,6 +516,7 @@
 			isa = PBXGroup;
 			children = (
 				920AECED1B96ED3400523C1B /* VersionCheckApi.swift */,
+				9297708F1B9CE2F800525191 /* UserApi.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -896,6 +899,7 @@
 				923E1F2A1B7AA25A009CC545 /* CartProduct.swift in Sources */,
 				846100BE1B78696000393E63 /* ProductLocationViewController.swift in Sources */,
 				923FFDA21B8E4DA5001ACAB1 /* User.swift in Sources */,
+				929770901B9CE2F800525191 /* UserApi.swift in Sources */,
 				502DB1521B7150370036EF6B /* EventsDetailViewController.swift in Sources */,
 				847CEACC1B9BC1F80087F283 /* InventorySearchProductViewController.swift in Sources */,
 				927F55D11B94D9DE003A98DF /* AlertView.swift in Sources */,
