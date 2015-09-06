@@ -10,7 +10,7 @@ struct UserApi {
     
         let params = mapper.toJSON(user)
         
-        api.makeJsonGetRequestWithBasicAuth(resource, username: user.username!, password: user.password!, params: params,
+        api.makeJsonRequestWithBasicAuth(.GET, resource: resource, username: user.username!, password: user.password!, params: params,
             onCompletion: {
                 JSON, err in
                 
