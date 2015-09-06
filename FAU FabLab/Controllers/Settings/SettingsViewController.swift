@@ -85,25 +85,13 @@ class SettingsViewController : UIViewController, UITableViewDataSource, UITableV
     
     func historySwitchValueChanged(switchValue: Bool) {
         settings.updateOrCreate(settings.historyKey, value: switchValue)
+        if (!switchValue) {
+            SearchHelpModel.sharedInstance.removeHistoryEntries()
+        }
     }
     
     func historyButtonClicked() {
-        
-        let optionMenu = UIAlertController(title: "Hiermit wird der gesamte Suchverlauf gelöscht".localized, message: nil, preferredStyle: .ActionSheet)
-        
-        let deleteAction = UIAlertAction(title: "Löschen".localized, style: UIAlertActionStyle.Destructive, handler: {
-            (alert: UIAlertAction!) -> Void in
-            SearchHelpModel.sharedInstance.removeHistoryEntries()
-        })
-        
-        let cancelAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: {
-            (alert: UIAlertAction!) -> Void in
-        })
-        
-        optionMenu.addAction(deleteAction)
-        optionMenu.addAction(cancelAction)
-        
-        self.presentViewController(optionMenu, animated: true, completion: nil)
+        SearchHelpModel.sharedInstance.removeHistoryEntries()
     }
 
 }
