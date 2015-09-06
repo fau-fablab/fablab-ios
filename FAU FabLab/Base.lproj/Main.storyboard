@@ -735,7 +735,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleAspectFill" misplaced="YES" scalesPageToFit="YES" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" keyboardDisplayRequiresUserAction="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hh-xI-Num">
+                            <webView contentMode="scaleAspectFill" scalesPageToFit="YES" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" keyboardDisplayRequiresUserAction="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hh-xI-Num">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <dataDetectorType key="dataDetectorTypes"/>
@@ -1187,7 +1187,6 @@
         <!--Inventur-->
         <scene sceneID="iN3-E4-FrV">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NSq-Yc-KZR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="InventoryView" id="Ovu-64-Y3w" customClass="InventoryViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9tI-nj-tDq"/>
@@ -1340,13 +1339,13 @@
                         <outlet property="productAmountTF" destination="5f1-t2-K6y" id="Vmp-6v-jhF"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NSq-Yc-KZR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1104" y="-3155"/>
         </scene>
         <!--Inventory Login View Controller-->
         <scene sceneID="RIH-2s-5LY">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zvg-NX-t6v" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="InventoryLoginView" id="Gq7-b0-A90" customClass="InventoryLoginViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jEh-y3-1Vq"/>
@@ -1363,7 +1362,7 @@
                                     <constraint firstAttribute="height" constant="21" id="uEP-EG-twv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Benutzername" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="0Vj-fz-oTo">
@@ -1438,6 +1437,7 @@
                         <outlet property="username" destination="0Vj-fz-oTo" id="UMq-25-kRy"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zvg-NX-t6v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1832" y="-3851"/>
         </scene>
@@ -1559,7 +1559,6 @@
         <!--Inventory Search Product View Controller-->
         <scene sceneID="9sv-qH-NxA">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="N12-Ws-vhe" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="InventorySearchProductView" id="7hP-bG-Qpu" customClass="InventorySearchProductViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Sf9-rV-zGm"/>
@@ -1571,6 +1570,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N12-Ws-vhe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2451" y="-3147"/>
         </scene>
@@ -1648,18 +1648,18 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zim-hY-J2X" id="YDP-RY-IY0">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FJB-0a-OFj">
-                                                    <rect key="frame" x="534" y="12" width="51" height="31"/>
-                                                    <connections>
-                                                        <action selector="cellSwitchChanged:" destination="zim-hY-J2X" eventType="valueChanged" id="HF5-6X-p3q"/>
-                                                    </connections>
-                                                </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benachrichte mich sobald das Fablab das nächste mal öffnet" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFF-ln-nsc">
-                                                    <rect key="frame" x="8" y="4" width="504" height="50.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Benachrichte mich sobald das Fablab das nächste mal öffnet" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFF-ln-nsc">
+                                                    <rect key="frame" x="8" y="4" width="504" height="51"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FJB-0a-OFj">
+                                                    <rect key="frame" x="543" y="13" width="51" height="30"/>
+                                                    <connections>
+                                                        <action selector="cellSwitchChanged:" destination="zim-hY-J2X" eventType="valueChanged" id="HF5-6X-p3q"/>
+                                                    </connections>
+                                                </switch>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="yFF-ln-nsc" firstAttribute="leading" secondItem="YDP-RY-IY0" secondAttribute="leadingMargin" id="4qk-oc-ZZJ"/>
@@ -1669,12 +1669,80 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="yFF-ln-nsc" secondAttribute="trailing" constant="80" id="SvF-7S-e1i"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="yFF-ln-nsc" secondAttribute="bottom" constant="-4" id="V0e-bv-gE7"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="FJB-0a-OFj" secondAttribute="trailing" constant="10" id="cbb-dQ-6qf"/>
+                                                <constraint firstItem="FJB-0a-OFj" firstAttribute="trailing" secondItem="YDP-RY-IY0" secondAttribute="trailingMargin" id="xDe-li-jC3"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="cbb-dQ-6qf"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="cellSwitch" destination="FJB-0a-OFj" id="jaS-kY-dXQ"/>
                                             <outlet property="textView" destination="yFF-ln-nsc" id="EhH-2H-8Iv"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCustomCell" id="k7u-70-2Ej" customClass="SwitchCustomCell" customModule="FAU_FabLab" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k7u-70-2Ej" id="daH-Ve-Faj">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6OU-dU-wHs">
+                                                    <rect key="frame" x="8" y="18" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ubs-k6-f6T">
+                                                    <rect key="frame" x="543" y="13" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="switchValueChanged:" destination="k7u-70-2Ej" eventType="valueChanged" id="pRG-zE-kEH"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6OU-dU-wHs" firstAttribute="top" secondItem="daH-Ve-Faj" secondAttribute="topMargin" constant="10" id="LgP-z2-o7f"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ubs-k6-f6T" secondAttribute="bottom" constant="6" id="W28-uE-wdq"/>
+                                                <constraint firstItem="6OU-dU-wHs" firstAttribute="leading" secondItem="daH-Ve-Faj" secondAttribute="leadingMargin" id="aOf-P5-lYZ"/>
+                                                <constraint firstItem="ubs-k6-f6T" firstAttribute="top" secondItem="daH-Ve-Faj" secondAttribute="topMargin" constant="5" id="bdD-Ba-lWo"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="6OU-dU-wHs" secondAttribute="bottom" constant="11" id="gMe-85-nlt"/>
+                                                <constraint firstItem="ubs-k6-f6T" firstAttribute="trailing" secondItem="daH-Ve-Faj" secondAttribute="trailingMargin" id="guT-5M-VWR"/>
+                                                <constraint firstItem="ubs-k6-f6T" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6OU-dU-wHs" secondAttribute="trailing" id="uKK-iK-DFq"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="title" destination="6OU-dU-wHs" id="Z3M-FS-sWf"/>
+                                            <outlet property="toggleSwitch" destination="ubs-k6-f6T" id="19u-J1-dHa"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ButtonCustomCell" id="r98-cD-QuP" customClass="ButtonCustomCell" customModule="FAU_FabLab" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r98-cD-QuP" id="bHn-9b-8ky">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6nT-bf-KXL">
+                                                    <rect key="frame" x="8" y="14" width="49" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <state key="normal" title="Button">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="buttonClicked:" destination="r98-cD-QuP" eventType="touchUpInside" id="VvY-ST-fqZ"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="6nT-bf-KXL" secondAttribute="trailing" id="Bqo-Oc-YCx"/>
+                                                <constraint firstItem="6nT-bf-KXL" firstAttribute="top" secondItem="bHn-9b-8ky" secondAttribute="topMargin" constant="6" id="h9p-dk-mIg"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="6nT-bf-KXL" secondAttribute="bottom" constant="6" id="hB7-mA-kYC"/>
+                                                <constraint firstItem="6nT-bf-KXL" firstAttribute="leading" secondItem="bHn-9b-8ky" secondAttribute="leadingMargin" id="x2r-5b-VXx"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="button" destination="6nT-bf-KXL" id="mnP-ZD-LUd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
