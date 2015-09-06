@@ -23,6 +23,10 @@ class ProductsearchModel : NSObject{
         super.init()
     }
     
+    func getFirstProduct() -> Product{
+        return products.first!
+    }
+    
     func getNumberOfProducts() -> Int {
         var count = 0
         for section in sectionedProducts {

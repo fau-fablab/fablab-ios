@@ -7,10 +7,13 @@ class InventoryViewController : UIViewController {
     
     @IBOutlet weak var loginView: UIView!
     @IBOutlet weak var loggedInLabel: UILabel!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     @IBOutlet weak var productNameTF: UITextField!
-    @IBOutlet weak var productCodeTF: UITextField!
     @IBOutlet weak var productAmountTF: UITextField!
+    
+    
+    private var productSearchModel = ProductsearchModel()
     
     var username = String()
     var password = String()
@@ -25,6 +28,7 @@ class InventoryViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loginView.hidden = false
+        spinner.stopAnimating()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -52,24 +56,44 @@ class InventoryViewController : UIViewController {
    
     
     @IBAction func logoutButtonTouched(sender: AnyObject) {
-        var refreshAlert = UIAlertController(title: "Abmelden", message: "Möchtest du dich abmelden?", preferredStyle: UIAlertControllerStyle.Alert)
+        var alert = UIAlertController(title: "Abmelden", message: "Möchtest du dich abmelden?", preferredStyle: UIAlertControllerStyle.Alert)
         
-        refreshAlert.addAction(UIAlertAction(title: "Ja", style: .Default, handler: { (action: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "Ja", style: .Default, handler: { (action: UIAlertAction!) in
             var inventoryLogin = InventoryLogin()
             inventoryLogin.deleteUser()
             self.loginView.hidden = false
             
         }))
         
-        refreshAlert.addAction(UIAlertAction(title: "Doch nicht", style: .Default, handler: { (action: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "Doch nicht", style: .Default, handler: { (action: UIAlertAction!) in
         }))
         
-        presentViewController(refreshAlert, animated: true, completion: nil)
+        presentViewController(alert, animated: true, completion: nil)
     }
-//OBSERVER
+    
+    
+//OBSERVER (triggert by scanner)
     
     func inventoryItemScanned(notification:NSNotification) {
+        spinner.startAnimating()
         println(notification.object)
+        productSearchModel.searchProductById(notification.object as! String, onCompletion: { err in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                println(self.productSearchModel.getFirstProduct())
+                if(self.productSearchModel.getNumberOfProducts() > 0){
+                    var product = self.productSearchModel.getFirstProduct()
+                    self.productNameTF.text = product.name
+                    self.productAmountTF.text = ""
+                    
+                }else{
+                    var alert = UIAlertController(title: "Fehler".localized, message: "Kein Produkt gefunden!".localized, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Danke".localized, style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
+                self.spinner.stopAnimating()
+            })
+        })
+
     }
     
     
