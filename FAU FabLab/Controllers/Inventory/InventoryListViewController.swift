@@ -6,13 +6,28 @@ class InventoryListViewController: UIViewController, UITableViewDataSource, UITa
     
 
     @IBOutlet weak var spinner: UIActivityIndicatorView!
-    
+
     private var tableViewCellIdentifier = "InventoryListCell"
-  
+    var items : [InventoryItem] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        
+        spinner.startAnimating()
+        let api = InventoryApi()
+        api.getAll({
+            items, err in
+            if(err != nil){
+                println(err)
+            }else{
+                self.items = items!
+                self.tableView.reloadData()
+            }
+            self.spinner.stopAnimating()
+        })
+
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -22,18 +37,18 @@ class InventoryListViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 0
+        return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return items.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
        
-        //doorPushCell = tableView.dequeueReusableCellWithIdentifier(tableViewCellIdentifier, forIndexPath: indexPath) as! SettingsDoorOpensPushCell
-        
-        return UITableViewCell()
+        var cell = tableView.dequeueReusableCellWithIdentifier(tableViewCellIdentifier, forIndexPath: indexPath) as! InventoryListCell
+        cell.configure(items[indexPath.row])
+        return cell
     
     }
     

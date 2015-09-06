@@ -11,8 +11,7 @@ struct InventoryApi{
             JSON, err in
                 if(err != nil){
                     onCompletion(nil, err)
-                }
-                else{
+                }else{
                     onCompletion(self.mapper.mapArray(JSON), nil)
                 }
         })

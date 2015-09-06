@@ -7,13 +7,13 @@ public class InventoryListCell: UITableViewCell {
     @IBOutlet var subtitle: UILabel!
     
     @IBOutlet weak var amount: UILabel!
+
+    private(set) var item : InventoryItem!
     
-    
-    func configure(inventoryItem: InventoryItem!) {
+    func configure(inventoryItem: InventoryItem) {
+        self.item = inventoryItem
         self.title.text = inventoryItem.productName
         self.subtitle.text = inventoryItem.productId
-        self.amount.text = "\(inventoryItem.amount)"
+        self.amount.text = "\(inventoryItem.amount!)"
     }
-    
-    
 }
