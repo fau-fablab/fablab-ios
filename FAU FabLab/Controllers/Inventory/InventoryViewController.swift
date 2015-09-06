@@ -5,25 +5,20 @@ import RSBarcodes
 
 class InventoryViewController : UIViewController {
     
-    @IBOutlet weak var viewBlocker: UIView!
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var loginView: UIView!
     
-    @IBOutlet weak var productCodeTF: UITextField!
+    @IBOutlet weak var loggedInLabel: UILabel!
+    
     @IBOutlet weak var productAmountTF: UITextField!
     
-    
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "productCodeScanned:", name: "InventoryViewNotification", object: nil)
-    }
+    var username = String()
+    var password = String()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        if(true){
-            
-        }else{
-            spinner.stopAnimating()
+        if(count(username) == 0){
+            loginView.hidden = false
         }
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -49,10 +44,6 @@ class InventoryViewController : UIViewController {
     @IBAction func logoutButtonTouched(sender: AnyObject) {
     }
     
-    private func productCodeScanned(notification:NSNotification) {
-        println(notification.object)
-        //notification.object as! String ?!
-    }
     
     @IBAction func scanProductCode(sender: AnyObject) {
         self.cameraAction()
