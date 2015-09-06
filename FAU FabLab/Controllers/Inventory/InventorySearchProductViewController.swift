@@ -27,12 +27,6 @@ class InventorySearchProductViewController : UIViewController, UITableViewDataSo
         return label
     }
     
-    @IBAction func buttonAddToCartPressed(sender: AnyObject) {
-        let cell = tableView.cellForRowAtIndexPath(selectedIndexPath!) as! InventoryProductSearchCell;
-       
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,11 +76,10 @@ class InventorySearchProductViewController : UIViewController, UITableViewDataSo
         view.addConstraint(c3)
         view.addConstraint(searchHelpTableViewHeight)
         
+      
+
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -94,9 +87,6 @@ class InventorySearchProductViewController : UIViewController, UITableViewDataSo
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
     
     func keyboardDidShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
@@ -247,7 +237,10 @@ class InventorySearchProductViewController : UIViewController, UITableViewDataSo
             tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Automatic)
         }
         tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
-        selectedProduct = model.getProduct(indexPath.section, row: indexPath.row)
+ 
+        navigationController?.popViewControllerAnimated(true)
+        var inventoryViewController  = navigationController?.viewControllers.last as? InventoryViewController
+        inventoryViewController?.productForInventoryFound(model.getProduct(indexPath.section, row: indexPath.row))
     }
     
     

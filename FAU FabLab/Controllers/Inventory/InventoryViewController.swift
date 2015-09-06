@@ -99,7 +99,16 @@ class InventoryViewController : UIViewController {
 
     }
     
+//ProductSearched (triggert by productSearchView)
+    func productForInventoryFound(product: Product) {
+        self.productNameTF.text = product.name
+        self.currentItem.setProductId(product.productId!)
+        self.currentItem.setProductName(product.name!)
+        self.currentItem.setAmount(0)
+        self.productAmountTF.text = ""
+    }
     
+
     
 //CAMERA
     @IBAction func scanProductCode(sender: AnyObject) {

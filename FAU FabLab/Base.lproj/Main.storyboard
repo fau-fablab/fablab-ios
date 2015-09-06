@@ -1293,7 +1293,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="sVs-i2-GNs" kind="show" id="8wq-6u-GcE"/>
+                                    <segue destination="sVs-i2-GNs" kind="show" id="JGD-nN-VD6"/>
                                 </connections>
                             </button>
                         </subviews>
