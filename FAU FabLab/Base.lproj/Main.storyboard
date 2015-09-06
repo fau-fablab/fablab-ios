@@ -1232,19 +1232,6 @@
                                     <action selector="logoutButtonTouched:" destination="Ovu-64-Y3w" eventType="touchUpInside" id="SuW-ZT-hMn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="asd-kN-6gO">
-                                <rect key="frame" x="150" y="79" width="141" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="141" id="9WX-Be-viy"/>
-                                    <constraint firstAttribute="height" constant="30" id="c5B-Z0-JuG"/>
-                                </constraints>
-                                <state key="normal" title="Produkt Suchen">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="sVs-i2-GNs" kind="show" id="8wq-6u-GcE"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qqk-C5-E4e">
                                 <rect key="frame" x="16" y="28" width="133" height="30"/>
                                 <constraints>
@@ -1294,7 +1281,19 @@
                                 </state>
                                 <connections>
                                     <action selector="addProductButtonTouched:" destination="Ovu-64-Y3w" eventType="touchUpInside" id="qfc-fd-jqR"/>
-                                    <action selector="scanProductCode:" destination="Ovu-64-Y3w" eventType="touchUpInside" id="RY8-7e-RHz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="asd-kN-6gO">
+                                <rect key="frame" x="150" y="79" width="141" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="141" id="9WX-Be-viy"/>
+                                    <constraint firstAttribute="height" constant="30" id="c5B-Z0-JuG"/>
+                                </constraints>
+                                <state key="normal" title="Produkt Suchen">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="sVs-i2-GNs" kind="show" id="8wq-6u-GcE"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1536,7 +1535,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="Ovu-64-Y3w" kind="show" id="vdN-Eh-LF4"/>
+                                                    <action selector="cancelButtonTouched:" destination="cYW-yV-lGH" eventType="touchUpInside" id="ltU-Ed-bWj"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -1910,7 +1909,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Rvh-64-Faw"/>
-        <segue reference="vdN-Eh-LF4"/>
+        <segue reference="i5n-52-Yy9"/>
         <segue reference="nSb-DT-ktW"/>
     </inferredMetricsTieBreakers>
 </document>

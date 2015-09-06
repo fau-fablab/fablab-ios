@@ -43,7 +43,7 @@ class InventoryItemScanViewController: RSCodeReaderViewController {
         self.navigationController?.navigationBarHidden = false
     }
     
-    @IBAction func cancelButtonTouched(sender: AnyObject) {
+    @IBAction func cancelButtonTouched(sender: AnyObject){
         self.dismissViewControllerAnimated(true, completion:nil )
     }
     
