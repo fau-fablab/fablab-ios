@@ -19,8 +19,7 @@ class InventoryViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if(true){
-            let vc : AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier("InventoryLoginView")
-            self.showViewController(vc as! UIViewController, sender: vc)
+            
         }else{
             spinner.stopAnimating()
         }

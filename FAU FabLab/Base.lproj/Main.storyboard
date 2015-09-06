@@ -1187,6 +1187,7 @@
         <!--Inventur-->
         <scene sceneID="iN3-E4-FrV">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NSq-Yc-KZR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="InventoryView" id="Ovu-64-Y3w" customClass="InventoryViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9tI-nj-tDq"/>
@@ -1215,22 +1216,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Barcode / ID" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="fWj-n1-IJb">
-                                <rect key="frame" x="150" y="125" width="132" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="132" id="8ji-Ov-HgY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Anzahl" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="5f1-t2-K6y">
-                                <rect key="frame" x="150" y="163" width="300" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="NUn-JZ-giy"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Eingelogt als: Textuser1235" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpx-PO-uZU">
                                 <rect key="frame" x="0.0" y="523" width="213" height="20"/>
                                 <constraints>
@@ -1285,32 +1270,36 @@
                                     <action selector="addProductButtonTouched:" destination="Ovu-64-Y3w" eventType="touchUpInside" id="2Gg-bZ-g95"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dEQ-XF-5CW">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="QUg-dn-wRW">
-                                        <rect key="frame" x="290" y="290" width="20" height="20"/>
-                                    </activityIndicatorView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Anzahl" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="5f1-t2-K6y">
+                                <rect key="frame" x="150" y="163" width="300" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="QUg-dn-wRW" secondAttribute="centerX" id="30E-z9-ynw"/>
-                                    <constraint firstAttribute="centerY" secondItem="QUg-dn-wRW" secondAttribute="centerY" id="cMp-Wd-hKh"/>
+                                    <constraint firstAttribute="width" constant="300" id="NUn-JZ-giy"/>
                                 </constraints>
-                            </view>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="asd-kN-6gO">
+                                <rect key="frame" x="150" y="125" width="110" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="9WX-Be-viy"/>
+                                    <constraint firstAttribute="height" constant="30" id="c5B-Z0-JuG"/>
+                                </constraints>
+                                <state key="normal" title="Produkt Suchen">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="RuW-ha-Hwp" secondAttribute="centerX" constant="-70" id="3Ss-lq-9L6"/>
-                            <constraint firstItem="5Sd-0M-Iuz" firstAttribute="top" secondItem="dEQ-XF-5CW" secondAttribute="bottom" id="4EE-PV-cTa"/>
                             <constraint firstItem="Gbi-2Z-grE" firstAttribute="top" secondItem="9tI-nj-tDq" secondAttribute="bottom" id="4z4-cy-gmb"/>
                             <constraint firstItem="5f1-t2-K6y" firstAttribute="top" secondItem="9tI-nj-tDq" secondAttribute="bottom" constant="143" id="7Aw-It-wfe"/>
-                            <constraint firstItem="dEQ-XF-5CW" firstAttribute="leading" secondItem="aFf-MH-tLV" secondAttribute="leadingMargin" constant="-16" id="DfR-ex-teI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="asd-kN-6gO" secondAttribute="trailing" constant="324" id="Bkp-05-S1Y"/>
+                            <constraint firstItem="asd-kN-6gO" firstAttribute="top" secondItem="9tI-nj-tDq" secondAttribute="bottom" constant="105" id="DaJ-3I-TI1"/>
                             <constraint firstItem="ciB-fl-2qX" firstAttribute="top" secondItem="9tI-nj-tDq" secondAttribute="bottom" constant="191" id="Pn6-Yu-fjy"/>
                             <constraint firstAttribute="centerX" secondItem="5f1-t2-K6y" secondAttribute="centerX" id="Q1J-90-k4o"/>
                             <constraint firstItem="UlJ-0H-b6N" firstAttribute="leading" secondItem="zpx-PO-uZU" secondAttribute="trailing" constant="19" id="UQq-jN-8S6"/>
                             <constraint firstItem="zpx-PO-uZU" firstAttribute="leading" secondItem="aFf-MH-tLV" secondAttribute="leadingMargin" constant="-16" id="Vuz-Ii-NSL"/>
-                            <constraint firstAttribute="centerX" secondItem="fWj-n1-IJb" secondAttribute="centerX" constant="84" id="WFr-9L-8In"/>
                             <constraint firstItem="5Sd-0M-Iuz" firstAttribute="top" secondItem="zpx-PO-uZU" secondAttribute="bottom" constant="8" id="WJr-hJ-zNP"/>
                             <constraint firstItem="5Sd-0M-Iuz" firstAttribute="top" secondItem="UlJ-0H-b6N" secondAttribute="bottom" constant="15" id="Y8i-ed-qZf"/>
                             <constraint firstItem="RuW-ha-Hwp" firstAttribute="top" secondItem="9tI-nj-tDq" secondAttribute="bottom" constant="105" id="Yr6-sY-cNR"/>
@@ -1319,13 +1308,10 @@
                             <constraint firstItem="UlJ-0H-b6N" firstAttribute="leading" secondItem="zpx-PO-uZU" secondAttribute="trailing" constant="8" id="ccc-bq-4CJ"/>
                             <constraint firstItem="Gbi-2Z-grE" firstAttribute="leading" secondItem="aFf-MH-tLV" secondAttribute="leadingMargin" constant="-16" id="cnA-Uq-kNt"/>
                             <constraint firstItem="5Sd-0M-Iuz" firstAttribute="top" secondItem="zpx-PO-uZU" secondAttribute="bottom" constant="20" id="hqK-ri-5hK"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="dEQ-XF-5CW" secondAttribute="trailing" constant="-16" id="khn-Kq-CgV"/>
                             <constraint firstAttribute="centerX" secondItem="1tH-NQ-JBq" secondAttribute="centerX" id="rCR-oJ-TQ8"/>
                             <constraint firstItem="zpx-PO-uZU" firstAttribute="leading" secondItem="aFf-MH-tLV" secondAttribute="leadingMargin" constant="-14" id="sr1-tl-ZGE"/>
-                            <constraint firstItem="fWj-n1-IJb" firstAttribute="top" secondItem="9tI-nj-tDq" secondAttribute="bottom" constant="105" id="x1E-7E-Buj"/>
                             <constraint firstAttribute="centerX" secondItem="ciB-fl-2qX" secondAttribute="centerX" id="y7M-jh-lRK"/>
                             <constraint firstItem="1tH-NQ-JBq" firstAttribute="top" secondItem="9tI-nj-tDq" secondAttribute="bottom" constant="229" id="yLL-ZG-xWc"/>
-                            <constraint firstItem="dEQ-XF-5CW" firstAttribute="top" secondItem="aFf-MH-tLV" secondAttribute="topMargin" id="ybh-Kj-iw5"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -1339,12 +1325,8 @@
                     <tabBarItem key="tabBarItem" title="Inventur" image="icon_inventory" id="mCe-bc-pqt"/>
                     <connections>
                         <outlet property="productAmountTF" destination="5f1-t2-K6y" id="Vmp-6v-jhF"/>
-                        <outlet property="productCodeTF" destination="fWj-n1-IJb" id="a1N-1a-bPF"/>
-                        <outlet property="spinner" destination="QUg-dn-wRW" id="V7I-Us-Z5V"/>
-                        <outlet property="viewBlocker" destination="dEQ-XF-5CW" id="2FB-Iy-Oue"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NSq-Yc-KZR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1788" y="-3183"/>
         </scene>
@@ -1555,6 +1537,24 @@
             </objects>
             <point key="canvasLocation" x="2475" y="-3183"/>
         </scene>
+        <!--Inventory Search Product View Controller-->
+        <scene sceneID="9sv-qH-NxA">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N12-Ws-vhe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="InventorySearchProductView" id="7hP-bG-Qpu" customClass="InventorySearchProductViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Sf9-rV-zGm"/>
+                        <viewControllerLayoutGuide type="bottom" id="xTC-ms-M6i"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="u7P-lV-cyK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="3131" y="-3183"/>
+        </scene>
         <!--Inventory List View Controller-->
         <scene sceneID="MQf-O1-LCb">
             <objects>
@@ -1605,7 +1605,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0BG-Hl-B2J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3154" y="-3183"/>
+            <point key="canvasLocation" x="3794" y="-3183"/>
         </scene>
         <!--Einstellungen-->
         <scene sceneID="iRi-M9-lvb">
@@ -1726,7 +1726,7 @@
         <image name="news_nopicture.png" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="i5n-52-Yy9"/>
-        <segue reference="XLI-0u-qjW"/>
+        <segue reference="Rvh-64-Faw"/>
+        <segue reference="vdN-Eh-LF4"/>
     </inferredMetricsTieBreakers>
 </document>
