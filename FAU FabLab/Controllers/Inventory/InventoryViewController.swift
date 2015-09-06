@@ -14,6 +14,7 @@ class InventoryViewController : UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loginView.hidden = false
     }
     
     override func viewWillAppear(animated: Bool) {
