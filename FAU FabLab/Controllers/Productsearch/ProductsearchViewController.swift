@@ -44,94 +44,19 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func showAddToCartPicker(cell: ProductCustomCell, initialValue: Double) {
-        let rounding = cell.product.uom!.rounding!
         
-        var addToCart = true
-        var currentAmount : Double = initialValue
-        
-        var pickerDelegate = ActionSheetPickerDelegate(unit: cell.product.unit!, price: cell.product.price!, rounding: rounding, didSucceedAction: {
-            //INFO Changed cell.product to self.selectedProduct -> Works now with locationString but dunno if this affects other things!
-            (amount: Double) -> Void in
-            
-            if addToCart == false {
-                currentAmount = amount
-                addToCart = true
-            } else {
-                // if currentAmount has initial value, take the amount value
-                if currentAmount == rounding {
-                    currentAmount = amount
-                }
+        ChangeAmountPickerHelper.showChangeAmountPicker(cell, initialValue: initialValue, delegateSucceedAction: { (currentAmount: Double) -> Void in
                 CartModel.sharedInstance.addProductToCart(self.selectedProduct!, amount: Double(currentAmount));
                 self.cartButtonController.updateBadge()
-            }
-            }, didCancelAction: {(Void) -> Void in })
-        
-        var picker: ActionSheetCustomPicker = ActionSheetCustomPicker(title: "Menge auswählen".localized, delegate: pickerDelegate, showCancelButton: false, origin: self, initialSelections: [(currentAmount/rounding)-1])
-        
-        var doneButton: UIBarButtonItem = UIBarButtonItem()
-        doneButton.title = "Hinzufügen".localized
-        picker.setDoneButton(doneButton)
-        
-        picker.addCustomButtonWithTitle("Freitext".localized, actionBlock: {
-            addToCart = false
-            picker.delegate.actionSheetPickerDidSucceed!(picker, origin: self)
-            self.alertChangeAmount(currentAmount) })
-        picker.tapDismissAction = TapAction.Cancel
-        
-        picker.showActionSheetPicker()
-    }
-    
-    func alertChangeAmount(currentAmount: Double) {
-        
-        var inputTextField: UITextField?
-        
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in self.showAddToCartPicker(self.tableView.cellForRowAtIndexPath(self.selectedIndexPath!) as! ProductCustomCell, initialValue: currentAmount)})
-        
-        let doneAction: UIAlertAction = UIAlertAction(title: "Hinzufügen".localized, style: .Default, handler: { (Void) -> Void in
-            
-            var amount: Double = NSString(string: inputTextField!.text.stringByReplacingOccurrencesOfString(",", withString: ".")).doubleValue
-            
-            var invalidInput = ChangeAmountPickerHelper.invalidInput(amount: amount, rounding: self.selectedProduct!.uom!.rounding!)
-            if invalidInput == true {
-                amount = currentAmount
-            }
-            
-            var correctedRounding = ChangeAmountPickerHelper.correctWrongRounding(amount: amount, rounding: self.selectedProduct!.uom!.rounding!)
-            if correctedRounding > 0 {
-                amount = correctedRounding
-            }
-            
-            if correctedRounding > 0 || invalidInput == true {
-                let amountString = String(format: ChangeAmountPickerHelper.getFormatStringForRounding(self.selectedProduct!.uom!.rounding!), amount)
-                
-                var errorMsg : String = ""
-                var errorTitle : String = ""
-                if invalidInput == true {
-                    errorTitle = "Fehlerhafte Eingabe".localized
-                    errorMsg = "Wert ist ungültig".localized
-                    errorMsg += "\n" + "Produkt wurde nicht dem Warenkorb hinzugefügt".localized
-                } else if correctedRounding > 0 {
-                    errorTitle = "Produkt wurde dem Warenkorb hinzugefügt".localized
-                    errorMsg = "Wert wurde aufgerundet auf".localized + ": " + amountString + " " + self.selectedProduct!.unit!
-                }
-                
-                AlertView.showInfoView(errorTitle, message: errorMsg)
-            }
-            
-            if invalidInput == false {
-                CartModel.sharedInstance.addProductToCart(self.selectedProduct!, amount: Double(amount))
-                self.cartButtonController.updateBadge()
-            }
+            }, delegateCancelAction: { (Void) -> Void in
+            }, alertChangeAmountAction: { (currentAmount: Double) -> Void in
+                ChangeAmountPickerHelper.alertChangeAmount(viewController: self, cell: cell, currentAmount: currentAmount, pickerCancelActionHandler: { (Void) -> Void in
+                        self.showAddToCartPicker(self.tableView.cellForRowAtIndexPath(self.selectedIndexPath!) as! ProductCustomCell, initialValue: currentAmount)
+                    }, pickerDoneActionHandlerFinished: { (amount: Double) -> Void in
+                        CartModel.sharedInstance.addProductToCart(self.selectedProduct!, amount: Double(amount))
+                        self.cartButtonController.updateBadge()
+                })
         })
-        
-        let alertController = ChangeAmountPickerHelper.getUIAlertController(productName: self.selectedProduct!.name!, productRounding: self.selectedProduct!.uom!.rounding!, productUnit: self.selectedProduct!.unit!, cancelAction: cancelAction, doneAction: doneAction)
-        
-        alertController.addTextFieldWithConfigurationHandler({ textField -> Void in
-            inputTextField = textField
-            inputTextField!.text = String(format: ChangeAmountPickerHelper.getFormatStringForRounding(self.selectedProduct!.uom!.rounding!), currentAmount)
-        })
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

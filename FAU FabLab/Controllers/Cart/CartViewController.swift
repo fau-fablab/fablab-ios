@@ -33,95 +33,24 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func showChangeAmountPicker(cartEntry: CartEntry, initialValue: Double) {
-        var addToCart = true
-        var currentAmount : Double = cartEntry.amount
-        
-        var pickerDelegate = ActionSheetPickerDelegate(unit: cartEntry.product.unit, price: cartEntry.product.price, rounding: cartEntry.product.rounding, didSucceedAction: { (amount: Double) -> Void in
-            if addToCart == false {
-                currentAmount = amount
-                addToCart = true
-            } else {
-                // if currentAmount has initial value, take the amount value
-                if currentAmount == cartEntry.amount {
-                    currentAmount = amount
-                }
+        ChangeAmountPickerHelper.showChangeAmountPicker(cartEntry, initialValue: initialValue, delegateSucceedAction: { (currentAmount: Double) -> Void in
                 CartModel.sharedInstance.updateProductInCart(self.selectedIndexPath!.row, amount: Double(currentAmount))
                 self.tableView.reloadData();
                 self.tableView.setEditing(false, animated: true)
                 self.showTotalPrice()
-            }
-            }, didCancelAction:{ (Void) -> Void in self.tableView.setEditing(false, animated: true)} )
-        
-        // set current amount
-        pickerDelegate.setAmount(cartEntry.amount)
-        
-        // initial selection is also needed, to correctly set current amount
-        var picker: ActionSheetCustomPicker = ActionSheetCustomPicker(title: "Menge auswählen".localized, delegate: pickerDelegate, showCancelButton: false, origin: self, initialSelections: [(initialValue/cartEntry.product.rounding)-1])
-        
-        var doneButton: UIBarButtonItem = UIBarButtonItem()
-        doneButton.title = "Übernehmen".localized
-        picker.setDoneButton(doneButton)
-        picker.addCustomButtonWithTitle("Freitext".localized, actionBlock: {
-            addToCart = false
-            picker.delegate.actionSheetPickerDidSucceed!(picker, origin: self)
-            self.alertChangeAmount(currentAmount) })
-        picker.tapDismissAction = TapAction.Cancel
-        
-        picker.showActionSheetPicker()
-    }
-    
-    func alertChangeAmount(currentAmount: Double) {
-        let cartEntry = self.cartModel.cart.getEntry(selectedIndexPath!.row)
-    
-        var inputTextField: UITextField?
-
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in
-                self.showChangeAmountPicker(cartEntry, initialValue: currentAmount)})
-        
-        let doneAction: UIAlertAction = UIAlertAction(title: "Übernehmen".localized, style: .Default, handler: { (Void) -> Void in
-            var amount: Double = NSString(string: inputTextField!.text.stringByReplacingOccurrencesOfString(",", withString: ".")).doubleValue
-            
-            var invalidInput = ChangeAmountPickerHelper.invalidInput(amount: amount, rounding: cartEntry.product.rounding)
-            if invalidInput == true {
-                amount = currentAmount
-            }
-            
-            var correctedRounding = ChangeAmountPickerHelper.correctWrongRounding(amount: amount, rounding: cartEntry.product.rounding)
-            if correctedRounding > 0 {
-                amount = correctedRounding
-            }
-
-            if correctedRounding > 0 || invalidInput == true {
-                let amountString = String(format: ChangeAmountPickerHelper.getFormatStringForRounding(cartEntry.product.rounding), amount)
+            }, delegateCancelAction: { (Void) -> Void in
+                self.tableView.setEditing(false, animated: true)
+            }, alertChangeAmountAction: { (currentAmount: Double) -> Void in
+                ChangeAmountPickerHelper.alertChangeAmount(viewController: self, cartEntry: cartEntry, currentAmount: currentAmount, pickerCancelActionHandler: { (Void) -> Void in
+                        self.showChangeAmountPicker(cartEntry, initialValue: currentAmount)
+                    }, pickerDoneActionHandlerFinished: { (amount: Double) -> Void in
+                        CartModel.sharedInstance.updateProductInCart(self.selectedIndexPath!.row, amount: amount)
+                        self.tableView.reloadData();
+                        self.tableView.setEditing(false, animated: true)
+                        self.showTotalPrice()
                 
-                var errorMsg : String = ""
-                var errorTitle : String = ""
-                if invalidInput == true {
-                    errorTitle = "Fehlerhafte Eingabe".localized
-                    errorMsg = "Wert wurde nicht verändert".localized
-                } else if correctedRounding > 0  {
-                    errorTitle = "Anzahl wurde geändert".localized
-                    errorMsg = "Fehlerhafte Eingabe".localized
-                    errorMsg += "\n" + "Wert wurde aufgerundet auf".localized + ": " + amountString + " " + cartEntry.product.unit
-                }
-
-                AlertView.showInfoView(errorTitle, message: errorMsg)
-            }
-
-            CartModel.sharedInstance.updateProductInCart(self.selectedIndexPath!.row, amount: amount)
-            self.tableView.reloadData();
-            self.tableView.setEditing(false, animated: true)
-            self.showTotalPrice()
+                })
         })
-        
-        let alertController = ChangeAmountPickerHelper.getUIAlertController(productName: cartEntry.product.name, productRounding: cartEntry.product.rounding, productUnit: cartEntry.product.unit, cancelAction: cancelAction, doneAction: doneAction)
-        
-        alertController.addTextFieldWithConfigurationHandler({ textField -> Void in
-            inputTextField = textField
-            inputTextField!.text = String(format: ChangeAmountPickerHelper.getFormatStringForRounding(cartEntry.product.rounding), currentAmount)
-        })
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     @IBAction func buttonReportOutOfStockPressed(sender: AnyObject) {
