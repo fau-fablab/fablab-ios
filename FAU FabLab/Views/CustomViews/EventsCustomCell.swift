@@ -10,7 +10,7 @@ public class EventsCustomCell : UITableViewCell{
     @IBOutlet var timeLabel: UILabel!
     //@IBOutlet var placeLabel: UILabel!
         
-    public func configure(#today: Bool, day: String, month: String, title: String, time: String?, place: String?, dateColor: UIColor) {
+    public func configure(#today: Bool, now: Bool, day: String, month: String, title: String, time: String?, place: String?, dateColor: UIColor) {
         
         dayLabel.textColor = dateColor
         monthLabel.textColor = dateColor
@@ -18,7 +18,11 @@ public class EventsCustomCell : UITableViewCell{
         // if today, then show text "Heute"
         if today {
             dayLabel.font = dayLabel.font.fontWithSize(20)
-            dayLabel.text = "Heute".localized
+            if now {
+                dayLabel.text = "Jetzt".localized
+            } else {
+                dayLabel.text = "Heute".localized
+            }
             monthLabel.text = "";
         } else {
             dayLabel.font = dayLabel.font.fontWithSize(33)

@@ -100,7 +100,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         // configure cell
-        cell!.configure(today: event.isToday, day: event.startDayString, month: event.startMonthString, title: event.summery!, time: time, place: event.location, dateColor: event.getCustomColor);
+        cell!.configure(today: event.isToday, now: event.isNow, day: event.startDayString, month: event.startMonthString, title: event.summery!, time: time, place: event.location, dateColor: event.getCustomColor);
         
         return cell!;
     }

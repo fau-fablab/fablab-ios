@@ -68,6 +68,16 @@ class ICal: Mappable {
         dateFormatter.dateFormat = "dd.MM.yyy - HH:mm"
         return dateFormatter.stringFromDate(end!)
     }
+    
+    var isNow : Bool {
+        if isToday {
+            let now = NSDate()
+            return (now.compare(start!) == NSComparisonResult.OrderedDescending &&
+                now.compare(end!) == NSComparisonResult.OrderedAscending)
+        } else {
+            return false
+        }
+    }
 
     var isToday : Bool {
         return NSCalendar.currentCalendar().isDateInToday(start!)
