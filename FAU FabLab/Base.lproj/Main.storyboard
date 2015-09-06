@@ -1294,6 +1294,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="addProductButtonTouched:" destination="Ovu-64-Y3w" eventType="touchUpInside" id="qfc-fd-jqR"/>
                                     <action selector="scanProductCode:" destination="Ovu-64-Y3w" eventType="touchUpInside" id="RY8-7e-RHz"/>
                                 </connections>
                             </button>
@@ -1349,6 +1350,8 @@
                     <connections>
                         <outlet property="loggedInLabel" destination="zpx-PO-uZU" id="qqS-kq-f4H"/>
                         <outlet property="loginView" destination="MLQ-2g-xrR" id="d8y-X7-icJ"/>
+                        <outlet property="productCodeTF" destination="ZYc-G0-4qX" id="P5Q-gY-m6g"/>
+                        <outlet property="productNameTF" destination="U0f-d0-D5r" id="T9F-eT-KKM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NSq-Yc-KZR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1533,9 +1536,9 @@
                                     <navigationItem title="Produkt Scannen" id="HWd-yX-O7Z">
                                         <barButtonItem key="leftBarButtonItem" title=" " style="plain" id="1do-DD-LPE">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nhN-X6-owP">
-                                                <rect key="frame" x="16" y="7" width="50" height="30"/>
+                                                <rect key="frame" x="16" y="7" width="75" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Zurück">
+                                                <state key="normal" title="Abbrechen">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>

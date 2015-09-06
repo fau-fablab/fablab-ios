@@ -7,11 +7,21 @@ class InventoryViewController : UIViewController {
     
     @IBOutlet weak var loginView: UIView!
     @IBOutlet weak var loggedInLabel: UILabel!
+    
+    @IBOutlet weak var productNameTF: UITextField!
+    @IBOutlet weak var productCodeTF: UITextField!
     @IBOutlet weak var productAmountTF: UITextField!
     
     var username = String()
     var password = String()
 
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "inventoryItemScanned:", name: "InventoryItemScanned", object: nil)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loginView.hidden = false
@@ -56,8 +66,15 @@ class InventoryViewController : UIViewController {
         
         presentViewController(refreshAlert, animated: true, completion: nil)
     }
+//OBSERVER
+    
+    func inventoryItemScanned(notification:NSNotification) {
+        println(notification.object)
+    }
     
     
+    
+//CAMERA
     @IBAction func scanProductCode(sender: AnyObject) {
         self.cameraAction()
     }
@@ -108,14 +125,4 @@ class InventoryViewController : UIViewController {
             }
             })
     }
-    
-    
-//    private func getProductIdFromBarcode(barcode: AVMetadataMachineReadableCodeObject) -> String{
-//        let productId = barcode.stringValue as NSString
-//        if (barcode.type == AVMetadataObjectTypeEAN13Code) {
-//            return productId.substringWithRange(NSRange(location: 8, length: 4))
-//        } else {
-//            return productId.substringWithRange(NSRange(location: 3, length: 4))
-//        }
-//    }
 }
