@@ -122,6 +122,7 @@
 "Suverlauf" = "Suchverlauf";
 "Suchverlauf speichern" = "Suchverlauf speichern";
 "Suchverlauf löschen" = "Suchverlauf löschen";
+"Hiermit wird der gesamte Suchverlauf gelöscht" = "Hiermit wird der gesamte Suchverlauf gelöscht.";
 
 //MARK: MailComposeHelper
 "Bestandsmeldung" = "Bestandsmeldung";
