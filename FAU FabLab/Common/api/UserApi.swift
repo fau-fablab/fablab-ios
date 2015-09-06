@@ -4,10 +4,10 @@ struct UserApi {
     
     let api = RestManager.sharedInstance
     let mapper = Mapper<User>()
-    
+    let resource = "/user"
+
     func getUserInfo(user: User, onCompletion: (User?, NSError?) -> Void){
     
-        let resource = api.apiUrl + "/user"
         let params = mapper.toJSON(user)
         
         api.makeJsonGetRequestWithBasicAuth(resource, username: user.username!, password: user.password!, params: params,

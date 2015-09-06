@@ -106,13 +106,14 @@ class RestManager {
     }
     
     func makeJsonGetRequestWithBasicAuth(resource: String, username: String, password: String, params: [String : AnyObject]?, onCompletion : JsonServiceResponse){
-        
+        let endpoint = apiUrl + resource
+
         let credentialData = "\(username):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
         let base64Credentials = credentialData.base64EncodedStringWithOptions(nil)
         
         let headers = ["Authorization": "Basic \(base64Credentials)"]
-        
-        manager.request(.GET, resource, headers: headers)
+
+        manager.request(.GET, endpoint, parameters: params, encoding: .URL, headers: headers)
             .validate(statusCode: 200..<300)
             .responseJSON{
                 request, response, JSON, err in
