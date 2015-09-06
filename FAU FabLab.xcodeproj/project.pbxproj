@@ -47,6 +47,7 @@
 		849502A21B9B767C006810E3 /* InventoryLoginViaScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849502A11B9B767C006810E3 /* InventoryLoginViaScanViewController.swift */; };
 		849502A41B9B7696006810E3 /* InventoryItemScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849502A31B9B7696006810E3 /* InventoryItemScanViewController.swift */; };
 		849502A61B9B76EA006810E3 /* InventoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849502A51B9B76EA006810E3 /* InventoryListViewController.swift */; };
+		84C4186F1B9CCF7B00C2656D /* InventoryProductSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C4186E1B9CCF7B00C2656D /* InventoryProductSearchCell.swift */; };
 		84CDCD2B1B9083C90084D8F3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDCD2A1B9083C90084D8F3 /* SettingsViewController.swift */; };
 		84CDCD2E1B9083ED0084D8F3 /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDCD2D1B9083ED0084D8F3 /* InventoryViewController.swift */; };
 		84CDCD311B9084130084D8F3 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDCD301B9084130084D8F3 /* AboutViewController.swift */; };
@@ -188,6 +189,7 @@
 		849502A11B9B767C006810E3 /* InventoryLoginViaScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryLoginViaScanViewController.swift; sourceTree = "<group>"; };
 		849502A31B9B7696006810E3 /* InventoryItemScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryItemScanViewController.swift; sourceTree = "<group>"; };
 		849502A51B9B76EA006810E3 /* InventoryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryListViewController.swift; sourceTree = "<group>"; };
+		84C4186E1B9CCF7B00C2656D /* InventoryProductSearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryProductSearchCell.swift; sourceTree = "<group>"; };
 		84CDCD2A1B9083C90084D8F3 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		84CDCD2D1B9083ED0084D8F3 /* InventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		84CDCD301B9084130084D8F3 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -656,6 +658,7 @@
 				8462E2681B985930003DADE1 /* SettingsDoorOpensPushCell.swift */,
 				48E9A11E1B9C1A840024C4B9 /* SwitchCustomCell.swift */,
 				48E9A1201B9C1DF00024C4B9 /* ButtonCustomCell.swift */,
+				84C4186E1B9CCF7B00C2656D /* InventoryProductSearchCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -852,6 +855,7 @@
 				9232D7461B9219C600BF77E9 /* PlatformType.swift in Sources */,
 				927901E11B6D3F6300F95B09 /* NewsDetailsViewController.swift in Sources */,
 				48E9A11F1B9C1A840024C4B9 /* SwitchCustomCell.swift in Sources */,
+				84C4186F1B9CCF7B00C2656D /* InventoryProductSearchCell.swift in Sources */,
 				5032249C1B99B55700C0583D /* MailComposeHelper.swift in Sources */,
 				5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */,
 				920AECEE1B96ED3400523C1B /* VersionCheckApi.swift in Sources */,
