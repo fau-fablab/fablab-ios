@@ -13,6 +13,26 @@ class InventoryItem : Mappable{
     class func newInstance() -> Mappable {
         return InventoryItem()
     }
+    
+    func setUser(userName: String){
+        self.userName = userName
+    }
+    
+    func setUUID(UUID: String){
+        self.UUID = UUID
+    }
+    
+    func setProductId(productId: String){
+        self.productId = productId
+    }
+    
+    func setProductName(productName: String){
+        self.productName = productName
+    }
+    
+    func setAmount(amount: Double){
+        self.amount = amount
+    }
 
     func mapping(map: Map) {
         userName <- map["userName"]

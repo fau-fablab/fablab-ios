@@ -14,10 +14,8 @@ class InventoryViewController : UIViewController {
     
     
     private var productSearchModel = ProductsearchModel()
-    
-    var username = String()
-    var password = String()
 
+    var currentItem = InventoryItem()
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -29,6 +27,7 @@ class InventoryViewController : UIViewController {
         super.viewDidLoad()
         loginView.hidden = false
         spinner.stopAnimating()
+        self.currentItem.setUUID(NSUUID().UUIDString)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -83,6 +82,10 @@ class InventoryViewController : UIViewController {
                 if(self.productSearchModel.getNumberOfProducts() > 0){
                     var product = self.productSearchModel.getFirstProduct()
                     self.productNameTF.text = product.name
+                    self.currentItem.setProductId(product.productId!)
+                    self.currentItem.setProductName(product.name!)
+                    self.currentItem.setAmount(0)
+                    
                     self.productAmountTF.text = ""
                     
                 }else{

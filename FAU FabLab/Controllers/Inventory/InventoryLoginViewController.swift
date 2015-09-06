@@ -115,8 +115,7 @@ class InventoryLoginViewController: UIViewController {
     
     private func loginWasSuccessful(username: String, password: String){
         var parentView = self.parentViewController as! InventoryViewController
-        parentView.username = username
-        parentView.password = password
+        parentView.currentItem.setUser(username)
         parentView.loggedInLabel.text = "Angemeldet als: \(username)"
         parentView.hideLogin()
     }
