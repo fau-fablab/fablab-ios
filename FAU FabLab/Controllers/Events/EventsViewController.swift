@@ -49,6 +49,8 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 })
             }
         )
+        // needed to remove past events
+        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {

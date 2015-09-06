@@ -7,7 +7,7 @@ class EventModel : NSObject{
     private var events = [ICal]()
     private var isLoading = false;
     private var loaded = false;
-    private var mapper:Mapper<ICal>;
+    private var mapper: Mapper<ICal>;
     
     override init() {
         mapper = Mapper<ICal>()
@@ -39,6 +39,15 @@ class EventModel : NSObject{
                 self.isLoading = false;
                 self.loaded = true;
             })
+        } else if (!isLoading && loaded) {
+            // check for events to remove
+            let now = NSDate()
+            for var index = (self.getCount()-1); index >= 0; index-- {
+                // if end-date is before now, remove it from the list
+                if now.compare(self.getEvent(index).end!) == NSComparisonResult.OrderedDescending {
+                    self.removeEvent(index)
+                }
+            }
         }
     }
     
@@ -46,11 +55,15 @@ class EventModel : NSObject{
         return events.count;
     }
     
-    func addEvent(entry:ICal) {
+    func addEvent(entry: ICal) {
         events.append(entry)
     }
     
-    func getEvent(position:Int) -> ICal{
+    func removeEvent(position: Int) {
+        events.removeAtIndex(position)
+    }
+    
+    func getEvent(position: Int) -> ICal{
         return events[position];
     }
 }
