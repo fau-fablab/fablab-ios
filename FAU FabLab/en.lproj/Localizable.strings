@@ -122,6 +122,7 @@
 "Suverlauf" = "Search History";
 "Suchverlauf speichern" = "Save search history";
 "Suchverlauf löschen" = "Delete search history";
+"Hiermit wird der gesamte Suchverlauf gelöscht" = "This will delete the search history.";
 
 //MARK: MailComposeHelper
 "Bestandsmeldung" = "Report out of stock";
