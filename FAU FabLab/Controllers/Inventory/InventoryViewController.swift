@@ -6,9 +6,7 @@ import RSBarcodes
 class InventoryViewController : UIViewController {
     
     @IBOutlet weak var loginView: UIView!
-    
     @IBOutlet weak var loggedInLabel: UILabel!
-    
     @IBOutlet weak var productAmountTF: UITextField!
     
     var username = String()
@@ -16,9 +14,6 @@ class InventoryViewController : UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if(count(username) == 0){
-            loginView.hidden = false
-        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -33,7 +28,11 @@ class InventoryViewController : UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    func hideLogin(){
+        loginView.hidden = true
+    }
     
+//BUTTONS
     @IBAction func addProductButtonTouched(sender: AnyObject) {
     }
     
@@ -42,6 +41,19 @@ class InventoryViewController : UIViewController {
    
     
     @IBAction func logoutButtonTouched(sender: AnyObject) {
+        var refreshAlert = UIAlertController(title: "Abmelden", message: "Möchtest du dich abmelden?", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        refreshAlert.addAction(UIAlertAction(title: "Ja", style: .Default, handler: { (action: UIAlertAction!) in
+            var inventoryLogin = InventoryLogin()
+            inventoryLogin.deleteUser()
+            self.loginView.hidden = false
+            
+        }))
+        
+        refreshAlert.addAction(UIAlertAction(title: "Doch nicht", style: .Default, handler: { (action: UIAlertAction!) in
+        }))
+        
+        presentViewController(refreshAlert, animated: true, completion: nil)
     }
     
     

@@ -9,48 +9,51 @@ class InventoryLoginViewController: UIViewController {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+    var inventoryLogin = InventoryLogin()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        spinner.stopAnimating()
-        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        if(inventoryLogin.username != nil
+            && isLoginValid(inventoryLogin.username!, password: inventoryLogin.password!)){
+            loginWasSuccessful(inventoryLogin.username!, password: inventoryLogin.password!)
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        spinner.stopAnimating()
     }
 
+    
     @IBAction func loginButtonTouched(sender: AnyObject) {
-        if(loginIsValid()){
-            var parentView = self.parentViewController as! InventoryViewController
-            parentView.username = username.text
-            parentView.password = password.text
-            parentView.loggedInLabel.text = "Angemeldet als: \(username.text)"
-            self.view.hidden = true
+        if(isLoginValid(username.text, password: password.text)){
+            inventoryLogin.saveUser(username.text, password: password.text)
+            loginWasSuccessful(username.text, password: password.text)
         }else{
-            //TODO 
-            //Display error message as popup or as label?
+            var alert = UIAlertController(title: "Fehler", message: "Name oder Passwort falsch", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Oh", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
     }
 
-    private func loginIsValid() -> Bool{
+    private func isLoginValid(username: String, password: String) -> Bool{
         spinner.startAnimating()
         //TODO send to server and check is login is correct
         spinner.stopAnimating()
         return true
     }
     
+    private func loginWasSuccessful(username: String, password: String){
+        var parentView = self.parentViewController as! InventoryViewController
+        parentView.username = username
+        parentView.password = password
+        parentView.loggedInLabel.text = "Angemeldet als: \(username)"
+        parentView.hideLogin()
+    }
     
     @IBAction func loginViaScannerButtonTouched(sender: AnyObject) {
        self.cameraAction()
