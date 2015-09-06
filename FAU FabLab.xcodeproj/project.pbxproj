@@ -35,6 +35,7 @@
 		50D9F3C61B91C6C400FB0234 /* fablab_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 50D9F3C51B91C6C400FB0234 /* fablab_logo_white.png */; };
 		50DBE9041B6FA93000685B07 /* EventsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */; };
 		8419B6101B6F6050000275A8 /* CheckoutCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8419B60F1B6F6050000275A8 /* CheckoutCodeScannerViewController.swift */; };
+		84293A881B9C875800C3F887 /* InventoryLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84293A871B9C875800C3F887 /* InventoryLogin.swift */; };
 		8429B79A1B739C6D004C7DA0 /* RSBarcodes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DC93121B669E0100981977 /* RSBarcodes.framework */; };
 		8429B79B1B739C6D004C7DA0 /* RSBarcodes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84DC93121B669E0100981977 /* RSBarcodes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		844793561B93576D0057CF88 /* TriggerPushType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844793551B93576D0057CF88 /* TriggerPushType.swift */; };
@@ -175,6 +176,7 @@
 		50D9F3C51B91C6C400FB0234 /* fablab_logo_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fablab_logo_white.png; sourceTree = "<group>"; };
 		50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCustomCell.swift; sourceTree = "<group>"; };
 		8419B60F1B6F6050000275A8 /* CheckoutCodeScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutCodeScannerViewController.swift; sourceTree = "<group>"; };
+		84293A871B9C875800C3F887 /* InventoryLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryLogin.swift; sourceTree = "<group>"; };
 		844793551B93576D0057CF88 /* TriggerPushType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerPushType.swift; sourceTree = "<group>"; };
 		846100BD1B78696000393E63 /* ProductLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductLocationViewController.swift; sourceTree = "<group>"; };
 		8462E2681B985930003DADE1 /* SettingsDoorOpensPushCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDoorOpensPushCell.swift; sourceTree = "<group>"; };
@@ -523,6 +525,7 @@
 		921095321B88D78500396181 /* Inventory */ = {
 			isa = PBXGroup;
 			children = (
+				84293A871B9C875800C3F887 /* InventoryLogin.swift */,
 			);
 			path = Inventory;
 			sourceTree = "<group>";
@@ -852,6 +855,7 @@
 				9207491B1B9B145D00F08792 /* TypeAliases.swift in Sources */,
 				923E1F311B7AA49A009CC545 /* CoreDataHelper.swift in Sources */,
 				84CDCD311B9084130084D8F3 /* AboutViewController.swift in Sources */,
+				84293A881B9C875800C3F887 /* InventoryLogin.swift in Sources */,
 				923FFDA01B8E4C2D001ACAB1 /* UpdateStatus.swift in Sources */,
 				923FFD9E1B8E4BE3001ACAB1 /* Roles.swift in Sources */,
 				923E1F2C1B7AA360009CC545 /* CartEntry.swift in Sources */,
