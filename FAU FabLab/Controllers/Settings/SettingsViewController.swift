@@ -12,9 +12,6 @@ class SettingsViewController : UIViewController, UITableViewDataSource, UITableV
     private var settings = Settings()
     private var doorPushCell : SettingsDoorOpensPushCell!
     
-    private let switchCustomCellIdentifier = "SwitchCustomCell"
-    private let buttonCustomCellIdentifier = "ButtonCustomCell"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -37,61 +34,28 @@ class SettingsViewController : UIViewController, UITableViewDataSource, UITableV
             }else{
                 self.doorPushCell.cellSwitch.on = false
             }
-        
+            
             self.activitySpinner.stopAnimating()
         })
     }
-    
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (section == 0) {
-            return 1
-        } else if (section == 1) {
-            return 2
-        } else {
-            return 0
-        }
-    }
+
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if (indexPath.section == 0) {
-            doorPushCell = tableView.dequeueReusableCellWithIdentifier(tableViewCellIdentifier, forIndexPath: indexPath) as! SettingsDoorOpensPushCell
-            return doorPushCell
-        } else if (indexPath.section == 1 && indexPath.row == 0) {
-            let cell = tableView.dequeueReusableCellWithIdentifier(switchCustomCellIdentifier, forIndexPath: indexPath) as! SwitchCustomCell
-            cell.configure("Suchverlauf speichern".localized, switchValue: true, switchValueChangedAction: historySwitchValueChanged)
-            return cell
-        } else if (indexPath.section == 1 && indexPath.row == 1) {
-            let cell = tableView.dequeueReusableCellWithIdentifier(buttonCustomCellIdentifier, forIndexPath: indexPath) as! ButtonCustomCell
-            cell.configure("Suchverlauf löschen".localized, buttonClickedAction: historyButtonClicked)
-            return cell
-        } else {
-            return UITableViewCell()
-        }
+        doorPushCell = tableView.dequeueReusableCellWithIdentifier(tableViewCellIdentifier, forIndexPath: indexPath) as! SettingsDoorOpensPushCell
+        return doorPushCell
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if (section == 0) {
-            return "Push Einstellungen".localized
-        } else if (section == 1) {
-            return "Suchverlauf".localized
-        } else {
-            return ""
-        }
+        return "Push Einstellungen".localized
     }
     
-    func historySwitchValueChanged(switchValue: Bool) {
-        settings.updateOrCreate(settings.historyKey, value: switchValue)
-        if (!switchValue) {
-            SearchHelpModel.sharedInstance.removeHistoryEntries()
-        }
+    func tableView(tableView: UITableView,
+        numberOfRowsInSection section: Int) -> Int {
+            return 1
     }
     
-    func historyButtonClicked() {
-        SearchHelpModel.sharedInstance.removeHistoryEntries()
+    func tableView(tableView: UITableView,
+        didSelectRowAtIndexPath indexPath: NSIndexPath) {
     }
 
 }

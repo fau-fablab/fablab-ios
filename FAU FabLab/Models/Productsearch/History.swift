@@ -6,7 +6,6 @@ class History: NSObject {
     
     private let managedObjectContext: NSManagedObjectContext
     private let coreData = CoreDataHelper(sqliteDocumentName: "CoreDataModel.db", schemaName: "")
-    private let settings = Settings()
     
     private var entries : [HistoryEntry] {
         get {
@@ -28,10 +27,6 @@ class History: NSObject {
     }
     
     func addEntry(word: String) {
-        //check settings
-        if (settings.getValue(settings.historyKey) == false) {
-            return
-        }
         //ignore empty strings
         if (word.isEmpty) {
             return

@@ -6,8 +6,6 @@ import CoreData
 
 class Settings : NSObject{
     
-    let historyKey = "History"
-    
     private let managedObjectContext : NSManagedObjectContext
     private let coreData = CoreDataHelper(sqliteDocumentName: "CoreDataModel.db", schemaName:"")
     

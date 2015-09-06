@@ -119,9 +119,6 @@
 
 //MARK: SettingsViewController
 "Push Einstellungen" = "Push Settings";
-"Suverlauf" = "Search History";
-"Suchverlauf speichern" = "Save search history";
-"Suchverlauf löschen" = "Delete search history";
 
 //MARK: MailComposeHelper
 "Bestandsmeldung" = "Report out of stock";
