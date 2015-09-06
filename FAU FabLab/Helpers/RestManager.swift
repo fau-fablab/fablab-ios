@@ -92,7 +92,6 @@ class RestManager {
                 onCompletion(json, error)
         }
     }
-    
 
     func makePostRequest(resource: String, params: NSDictionary?, onCompletion : ServiceResponse) {
         let endpoint = apiUrl + resource
@@ -104,6 +103,25 @@ class RestManager {
                 self.printDebug("POST", resource: endpoint, res: res, responseString: answer, error: error);
                 onCompletion(answer, error)
         }
+    }
+    
+    func makeJsonGetRequestWithBasicAuth(resource: String, username: String, password: String, params: [String : AnyObject]?, onCompletion : JsonServiceResponse){
+        
+        let credentialData = "\(username):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
+        let base64Credentials = credentialData.base64EncodedStringWithOptions(nil)
+        
+        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        
+        manager.request(.GET, resource, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON{
+                request, response, JSON, err in
+                    if let err = err{
+                        let error = NSError(domain: "Auth", code: response!.statusCode, userInfo: nil)
+                        onCompletion(JSON, error)
+                    }
+                    onCompletion(JSON, nil)
+            }
     }
     
     private func printDebug(method: String, resource: String, res: NSHTTPURLResponse?, responseJson: AnyObject?, error: NSError?){
