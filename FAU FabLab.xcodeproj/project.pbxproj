@@ -21,6 +21,8 @@
 		48CC3FF91B8B6E0900FB9C8E /* BBBadgeBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 48CC3FF81B8B6E0900FB9C8E /* BBBadgeBarButtonItem.m */; };
 		48CC3FFB1B8B6E2500FB9C8E /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC3FFA1B8B6E2500FB9C8E /* CartViewController.swift */; };
 		48CC3FFD1B8B6F0600FB9C8E /* CartNavigationButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC3FFC1B8B6F0600FB9C8E /* CartNavigationButtonController.swift */; };
+		48E9A11F1B9C1A840024C4B9 /* SwitchCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E9A11E1B9C1A840024C4B9 /* SwitchCustomCell.swift */; };
+		48E9A1211B9C1DF00024C4B9 /* ButtonCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E9A1201B9C1DF00024C4B9 /* ButtonCustomCell.swift */; };
 		502DB1521B7150370036EF6B /* EventsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502DB1511B7150370036EF6B /* EventsDetailViewController.swift */; };
 		5032249C1B99B55700C0583D /* MailComposeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032249B1B99B55700C0583D /* MailComposeHelper.swift */; };
 		505D61501B9B711700C1EE22 /* ChangeAmountPickerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D614F1B9B711700C1EE22 /* ChangeAmountPickerHelper.swift */; };
@@ -149,6 +151,8 @@
 		48CC3FF81B8B6E0900FB9C8E /* BBBadgeBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBadgeBarButtonItem.m; sourceTree = "<group>"; };
 		48CC3FFA1B8B6E2500FB9C8E /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		48CC3FFC1B8B6F0600FB9C8E /* CartNavigationButtonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartNavigationButtonController.swift; sourceTree = "<group>"; };
+		48E9A11E1B9C1A840024C4B9 /* SwitchCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCustomCell.swift; sourceTree = "<group>"; };
+		48E9A1201B9C1DF00024C4B9 /* ButtonCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCustomCell.swift; sourceTree = "<group>"; };
 		5003604E1B97911B0037114C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		5003604F1B97911C0037114C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		502DB1511B7150370036EF6B /* EventsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsDetailViewController.swift; sourceTree = "<group>"; };
@@ -644,6 +648,8 @@
 				489E4C741B79E093004A60FA /* ProductCustomCell.swift */,
 				48545B2C1B92F6D0006F690F /* AboutCustomCell.swift */,
 				8462E2681B985930003DADE1 /* SettingsDoorOpensPushCell.swift */,
+				48E9A11E1B9C1A840024C4B9 /* SwitchCustomCell.swift */,
+				48E9A1201B9C1DF00024C4B9 /* ButtonCustomCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -832,12 +838,14 @@
 				924DBF751B8DEBF3000CAFB2 /* CartStatus.swift in Sources */,
 				927901E51B6D4AE300F95B09 /* NewsModel.swift in Sources */,
 				924DBF6F1B8DEBB1000CAFB2 /* Location.swift in Sources */,
+				48E9A1211B9C1DF00024C4B9 /* ButtonCustomCell.swift in Sources */,
 				48CC3FF91B8B6E0900FB9C8E /* BBBadgeBarButtonItem.m in Sources */,
 				924DBF721B8DEBB1000CAFB2 /* Uom.swift in Sources */,
 				8419B6101B6F6050000275A8 /* CheckoutCodeScannerViewController.swift in Sources */,
 				48545B2D1B92F6D0006F690F /* AboutCustomCell.swift in Sources */,
 				9232D7461B9219C600BF77E9 /* PlatformType.swift in Sources */,
 				927901E11B6D3F6300F95B09 /* NewsDetailsViewController.swift in Sources */,
+				48E9A11F1B9C1A840024C4B9 /* SwitchCustomCell.swift in Sources */,
 				5032249C1B99B55700C0583D /* MailComposeHelper.swift in Sources */,
 				5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */,
 				920AECEE1B96ED3400523C1B /* VersionCheckApi.swift in Sources */,
