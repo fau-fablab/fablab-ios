@@ -7,7 +7,6 @@ class ButtonCustomCell: UITableViewCell {
     private var buttonClickedAction: (Void) -> Void = {}
     
     func configure(title: String, buttonClickedAction: (Void) -> Void) {
-        self.selectionStyle = UITableViewCellSelectionStyle.None
         self.button.setTitle(title, forState: .Normal)
         self.buttonClickedAction = buttonClickedAction
     }
