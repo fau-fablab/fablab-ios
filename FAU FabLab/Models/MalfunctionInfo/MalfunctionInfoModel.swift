@@ -41,7 +41,7 @@ class MalfunctionInfoModel : NSObject{
             return
         }
         let endpoint = "/data" + "/fablab-mail"
-        RestManager.sharedInstance.makeGetRequest(endpoint, params: nil, onCompletion: {
+        RestManager.sharedInstance.makeTextRequest(.GET, encoding: .URL, resource: endpoint, params: nil, onCompletion: {
             json, err in
                 
             if (err != nil) {

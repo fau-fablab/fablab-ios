@@ -54,32 +54,16 @@ class RestManager {
         }
     }
     
-    func makeGetRequest(resource: String, params: [String : AnyObject]?, onCompletion : ServiceResponse) {
+    func makeTextRequest(method: Alamofire.Method, encoding: ParameterEncoding, resource: String, params: NSDictionary?, onCompletion : ServiceResponse) {
         let endpoint = apiUrl+resource
-        manager.request(.GET, endpoint, parameters: params)
+        manager.request(method, endpoint, parameters: params as? [String:AnyObject], encoding: encoding)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["text/plain"])
             .responseString { (req, res, answer, error) in
                 self.printDebug("GET", resource: endpoint, res: res, responseString: answer, error: error);
                 onCompletion(answer, error);
         }
-    }
-        //Can be used to debug the request...
-        //        Alamofire.request(.POST, "http://httpbin.org/post", parameters: params as? [String : AnyObject], encoding: .JSON)
-        //            .responseJSON {(request, response, JSON, error) in
-        //                println(JSON)
-        //        }
 
-    func makePostRequest(resource: String, params: NSDictionary?, onCompletion : ServiceResponse) {
-        let endpoint = apiUrl + resource
-        manager.request(.POST, endpoint, parameters: params as? [String:AnyObject], encoding: .JSON)
-        .validate(statusCode: 200 ..< 300)
-        .validate(contentType: ["text/plain"])
-        .responseString {
-            (req, res, answer, error) in
-                self.printDebug("POST", resource: endpoint, res: res, responseString: answer, error: error);
-                onCompletion(answer, error)
-        }
     }
     
     func makeJsonRequestWithBasicAuth(method: Alamofire.Method, resource: String, username: String, password: String, params: [String : AnyObject]?, onCompletion : JsonServiceResponse){
