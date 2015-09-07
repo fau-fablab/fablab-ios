@@ -3,12 +3,14 @@ import Foundation
 
 class CartModel : NSObject{
     
+    // MARK: Fields
     private let cartResource = "/carts"
     private let checkoutResource = "/checkout"
     private var isLoading = false;
     private(set) var cart = Cart()
     static let sharedInstance = CartModel()
     
+    // MARK: Cart
     func addProductToCart(product:Product, amount:Double){
         cart.addEntry(product, amount: amount)
     }
@@ -28,9 +30,8 @@ class CartModel : NSObject{
     func getNumberOfProductsInCart() -> Int {
         return cart.getCount()
     }
-    
-    /*                      Checkout process              */
 
+    // MARK: Checkout Process
     func sendCartToServer(code: String){
         cart.setCode(code)
         self.cart.setStatus(CartStatus.PENDING)
@@ -51,23 +52,11 @@ class CartModel : NSObject{
         }
     }
     
-    
     func cancelCheckoutProcessByUser(){
         let code = cart.cartCode as String!
         if(!isLoading){
             isLoading = true
             RestManager.sharedInstance.makeTextRequest(.POST, encoding: .JSON, resource: checkoutResource + "/cancelled/\(code)" , params: nil, onCompletion:  {
-                json, err in
-            })
-            isLoading = false
-        }
-    }
-    
-    func payCheckoutProcessByUser()  {
-        let code = cart.cartCode as String!
-        if(!isLoading){
-            isLoading = true
-            RestManager.sharedInstance.makeTextRequest(.POST, encoding: .JSON, resource: checkoutResource + "/paid/\(code)" , params: nil, onCompletion:  {
                 json, err in
             })
             isLoading = false
@@ -113,11 +102,7 @@ class CartModel : NSObject{
         cart.setStatus(CartStatus.SHOPPING)
     }
     
-    
-    
     private func notifyControllerAboutStatusChange(){
         NSNotificationCenter.defaultCenter().postNotificationName("CheckoutStatusChangedNotification", object: self.cart.status.rawValue)
     }
-   
-
 }
