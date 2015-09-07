@@ -10,8 +10,8 @@ class EventModel : NSObject{
     private var loaded = false;
     private var mapper: Mapper<ICal>;
     
-    private var clientTimestamp: Int = Int();
-    private var serverTimestamp: Int = Int();
+    private var clientTimestamp: Int = Int()
+    private var serverTimestamp: Int = Int()
     
     override init() {
         mapper = Mapper<ICal>()
@@ -43,6 +43,7 @@ class EventModel : NSObject{
                 self.isLoading = false;
                 self.loaded = true;
                 
+                // set clientTimestamp to the current server-timestamp
                 self.getLastUpdateTimestamp(onCompletion: { error in
                     if(error != nil){
                         Debug.instance.log("Error!");
