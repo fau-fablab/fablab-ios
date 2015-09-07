@@ -38,6 +38,17 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        model.getLastUpdateTimestamp(onCompletion: { error in
+            if(error != nil){
+                Debug.instance.log("Error!");
+            }
+            
+            // if client-timestamp < server-timestamp, we need to update our event-list!
+            if self.model.getClientTimestamp() < self.model.getServerTimestamp() {
+                self.model.setFlagToReloadEvents()
+            }
+        })
+        
         model.fetchEvents(
             onCompletion:{ error in
                 if(error != nil){
@@ -49,6 +60,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 })
             }
         )
+        
         // needed to remove past events
         self.tableView.reloadData()
     }

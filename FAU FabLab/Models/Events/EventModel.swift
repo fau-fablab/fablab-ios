@@ -4,10 +4,14 @@ import ObjectMapper
 class EventModel : NSObject{
     
     private let resource = "/ical";
+    private let timestampResource = "/ical/timestamp"
     private var events = [ICal]()
     private var isLoading = false;
     private var loaded = false;
     private var mapper: Mapper<ICal>;
+    
+    private var clientTimestamp: Int = Int();
+    private var serverTimestamp: Int = Int();
     
     override init() {
         mapper = Mapper<ICal>()
@@ -38,7 +42,15 @@ class EventModel : NSObject{
                 onCompletion(nil);
                 self.isLoading = false;
                 self.loaded = true;
+                
+                self.getLastUpdateTimestamp(onCompletion: { error in
+                    if(error != nil){
+                        Debug.instance.log("Error!");
+                    }
+                    self.clientTimestamp = self.getServerTimestamp()
+                })
             })
+            
         } else if (!isLoading && loaded) {
             // check for events to remove
             let now = NSDate()
@@ -49,6 +61,18 @@ class EventModel : NSObject{
                 }
             }
         }
+    }
+    
+    func getLastUpdateTimestamp(#onCompletion: ApiResponse) {
+        RestManager.sharedInstance.makeJsonGetRequest(timestampResource, params: nil, onCompletion: {
+            ts, err in
+            if (err != nil) {
+                AlertView.showErrorView("Fehler beim Abrufen der Events".localized)
+                onCompletion(err)
+            }
+            self.serverTimestamp = Int(ts as! NSNumber)
+            onCompletion(nil);
+        })
     }
     
     func getCount() -> Int{
@@ -65,5 +89,17 @@ class EventModel : NSObject{
     
     func getEvent(position: Int) -> ICal{
         return events[position];
+    }
+    
+    func getClientTimestamp() -> Int {
+        return self.clientTimestamp
+    }
+    
+    func getServerTimestamp() -> Int {
+        return self.serverTimestamp
+    }
+    
+    func setFlagToReloadEvents() {
+        self.loaded = false
     }
 }
