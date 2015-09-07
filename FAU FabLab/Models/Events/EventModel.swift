@@ -65,7 +65,7 @@ class EventModel : NSObject{
     }
     
     func getLastUpdateTimestamp(#onCompletion: ApiResponse) {
-        RestManager.sharedInstance.makeJsonGetRequest(timestampResource, params: nil, onCompletion: {
+        RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .URL, resource: timestampResource, params: nil, onCompletion: {
             ts, err in
             if (err != nil) {
                 AlertView.showErrorView("Fehler beim Abrufen der Events".localized)
