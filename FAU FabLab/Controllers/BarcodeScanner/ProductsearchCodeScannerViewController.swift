@@ -6,7 +6,6 @@ class ProductsearchCodeScannerViewController: RSCodeReaderViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.cameraAction()
     }
     
     override func viewDidAppear(animated: Bool) {
