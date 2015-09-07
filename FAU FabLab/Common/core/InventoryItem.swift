@@ -8,7 +8,7 @@ class InventoryItem : Mappable{
     private(set) var productId: String?
     private(set) var productName: String?
     private(set) var amount: Double?
-    private(set) var updatedAt: String?
+    private(set) var updatedAt: NSDate?
 
     class func newInstance() -> Mappable {
         return InventoryItem()
@@ -33,14 +33,29 @@ class InventoryItem : Mappable{
     func setAmount(amount: Double){
         self.amount = amount
     }
+    
+    func setUpdatedAt(time: NSDate){
+        self.updatedAt = time
+    }
 
     func mapping(map: Map) {
         userName <- map["userName"]
-        UUID <- map["UUID"]
+        UUID <- map["uuid"]
         productId <- map["productId"]
         productName <- map["productName"]
         amount <- map["amount"]
-        updatedAt <- map["updated_at"]
+        updatedAt <- (map["updated_at"], DateTransform())
+    }
+    
+    private class DateTransform : DateFormaterTransform {
+        init() {
+            //TODO this conversion might be wrong! has to be checked but works so far
+            let formatter = NSDateFormatter()
+            formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+            formatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'+0000'"
+            
+            super.init(dateFormatter: formatter)
+        }
     }
 }
 
