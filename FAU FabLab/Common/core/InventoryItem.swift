@@ -8,7 +8,7 @@ class InventoryItem : Mappable{
     private(set) var productId: String?
     private(set) var productName: String?
     private(set) var amount: Double?
-    private(set) var updatedAt: NSDate?
+    private(set) var updatedAt: String?
 
     class func newInstance() -> Mappable {
         return InventoryItem()
