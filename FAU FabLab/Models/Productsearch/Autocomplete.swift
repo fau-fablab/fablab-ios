@@ -36,7 +36,7 @@ class Autocomplete: NSObject {
             let params = ["search": ""]
             if (!isLoading) {
                 isLoading = true
-                RestManager.sharedInstance.makeJsonGetRequest(resource, params: params, onCompletion: {
+                RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .URL, resource: resource, params: params, onCompletion: {
                     json, err in
                     if (err != nil) {
                         Debug.instance.log(err)

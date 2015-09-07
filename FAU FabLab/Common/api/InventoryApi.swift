@@ -7,7 +7,7 @@ struct InventoryApi{
     let resource = "/inventory"
     
     func getAll(onCompletion: ([InventoryItem]?, NSError?) -> Void){
-        api.makeJsonGetRequest(resource, params: nil, onCompletion: {
+        api.makeJSONRequest(.GET, encoding: .URL, resource: resource, params: nil, onCompletion: {
             JSON, err in
                 if(err != nil){
                     onCompletion(nil, err)

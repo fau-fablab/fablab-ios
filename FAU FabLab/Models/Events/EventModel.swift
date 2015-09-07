@@ -22,7 +22,7 @@ class EventModel : NSObject{
         if (!isLoading && !loaded) {
             isLoading = true;
             
-            RestManager.sharedInstance.makeJsonGetRequest(resource, params: nil, onCompletion: {
+            RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .JSON, resource: resource, params: nil, onCompletion: {
                 json, err in
                 if (err != nil) {
                     AlertView.showErrorView("Fehler beim Abrufen der Events".localized)

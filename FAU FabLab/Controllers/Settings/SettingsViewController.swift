@@ -29,7 +29,7 @@ class SettingsViewController : UIViewController, UITableViewDataSource, UITableV
         //-> There is no garantie that push will be sent
         //-> so the only save way is to ask the server about the status...
         
-        RestManager.sharedInstance.makeJsonGetRequest("/push/doorOpensNextTime", params: ["token": PushToken.token], onCompletion: {
+        RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .JSON, resource: "/push/doorOpensNextTime", params: ["token": PushToken.token], onCompletion: {
             json, err in
             if json as! Bool == true{
                 print(self.doorPushCell.cellSwitch.on)

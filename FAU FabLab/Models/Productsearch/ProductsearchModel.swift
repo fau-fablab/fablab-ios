@@ -110,7 +110,7 @@ class ProductsearchModel : NSObject{
         if(!isLoading){
             removeAllProducts()
             sorting = Sorting.Unsorted
-            RestManager.sharedInstance.makeJsonGetRequest(endpoint, params: params, onCompletion: {
+            RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .URL, resource: endpoint, params: params, onCompletion: {
                 json, err in
                 if (err != nil) {
                     AlertView.showErrorView("Fehler bei der Produktsuche".localized)
@@ -137,7 +137,7 @@ class ProductsearchModel : NSObject{
         if(!isLoading){
             removeAllProducts()
             sorting = Sorting.Unsorted
-            RestManager.sharedInstance.makeJsonGetRequest(endpoint, params: params, onCompletion: {
+            RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .URL, resource: endpoint, params: params, onCompletion: {
                 json, err in
                 Debug.instance.log("GOT: \(json)")
                 

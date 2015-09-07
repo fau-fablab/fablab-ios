@@ -43,9 +43,9 @@ class RestManager {
         )
     }
     
-    func makeJsonGetRequest(resource: String, params: [String : AnyObject]?, onCompletion : JsonServiceResponse) {
+    func makeJSONRequest(method: Alamofire.Method, encoding: ParameterEncoding, resource: String, params: [String : AnyObject]?, onCompletion : JsonServiceResponse) {
         let endpoint = apiUrl+resource
-        manager.request(.GET, endpoint, parameters: params)
+        manager.request(method, endpoint, parameters: params, encoding: encoding)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { (req, res, json, error) in
@@ -64,34 +64,11 @@ class RestManager {
                 onCompletion(answer, error);
         }
     }
-    
-    func makeJsonPostRequest(resource: String, params: NSDictionary?, onCompletion : JsonServiceResponse) {
-        let endpoint = apiUrl+resource
-        manager.request(.POST, endpoint, parameters: params as? [String : AnyObject], encoding: .JSON)
-            .validate(statusCode: 200..<300)
-            .validate(contentType: ["application/json"])
-            .responseJSON { (req, res, json, error) in
-                self.printDebug("POST", resource: endpoint, res: res, responseJson: json, error: error)
-                onCompletion(json, error)
-        }
-        
         //Can be used to debug the request...
         //        Alamofire.request(.POST, "http://httpbin.org/post", parameters: params as? [String : AnyObject], encoding: .JSON)
         //            .responseJSON {(request, response, JSON, error) in
         //                println(JSON)
         //        }
-    }
-    
-    func makeJsonPutRequest(resource: String, params: NSDictionary?, onCompletion : JsonServiceResponse) {
-        let endpoint = apiUrl+resource
-        manager.request(.PUT, endpoint, parameters: params as? [String : AnyObject], encoding: .JSON)
-            .validate(statusCode: 200..<300)
-            .validate(contentType: ["application/json"])
-            .responseJSON { (req, res, json, error) in
-                self.printDebug("PUT", resource: endpoint, res: res, responseJson: json, error: error)
-                onCompletion(json, error)
-        }
-    }
 
     func makePostRequest(resource: String, params: NSDictionary?, onCompletion : ServiceResponse) {
         let endpoint = apiUrl + resource

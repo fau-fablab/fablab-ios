@@ -42,7 +42,7 @@ class DoorStateModel : NSObject {
     func getDoorState(onStateChanged: () -> Void) {
         let endpoint = resource + "/spaces/" + space
 
-        RestManager.sharedInstance.makeJsonGetRequest(endpoint, params: nil, onCompletion: {
+        RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .JSON, resource: endpoint, params: nil, onCompletion: {
             json, err in
 
             if(err == nil){

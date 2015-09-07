@@ -8,12 +8,12 @@ class SettingsDoorOpensPushCell: UITableViewCell, UITextViewDelegate {
     
     @IBAction func cellSwitchChanged(sender: AnyObject) {
         if(cellSwitch.on){
-            RestManager.sharedInstance.makeJsonPostRequest("/push/doorOpensNextTime", params: PushToken.serialize(), onCompletion: {
+            RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .JSON, resource: "/push/doorOpensNextTime", params: PushToken.serialize() as? [String : AnyObject], onCompletion: {
                 json, err in
             })
             
         }else{
-            RestManager.sharedInstance.makeJsonPutRequest("/push/doorOpensNextTime", params: PushToken.serialize(), onCompletion: {
+            RestManager.sharedInstance.makeJSONRequest(.PUT, encoding: .JSON, resource: "/push/doorOpensNextTime", params: PushToken.serialize() as? [String : AnyObject], onCompletion: {
                 json, err in
             })
         }

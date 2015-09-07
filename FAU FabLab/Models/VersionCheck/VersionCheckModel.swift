@@ -20,7 +20,7 @@ extension VersionCheckModel : VersionCheckApi{
     func checkVersion(platformType: PlatformType, version: Int, onCompletion: (UpdateStatus) -> Void){
         let params: [String : AnyObject] = ["platformType" : platformType.rawValue, "currentVersion" : version]
         println(params)
-        RestManager.sharedInstance.makeJsonGetRequest(resource, params: params, onCompletion: {
+        RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .JSON, resource: resource, params: params, onCompletion: {
             json, error in
             if(error != nil){
                 Debug.instance.log(error)

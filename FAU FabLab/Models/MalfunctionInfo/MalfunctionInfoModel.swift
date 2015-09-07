@@ -64,7 +64,7 @@ class MalfunctionInfoModel : NSObject{
         if(!isFetching){
             isFetching = true
             let endpoint = resource + "/tools"
-            RestManager.sharedInstance.makeJsonGetRequest(endpoint, params: nil, onCompletion:{
+            RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .JSON, resource: endpoint, params: nil, onCompletion:{
                 json, err in
                 
                 if (err != nil) {
