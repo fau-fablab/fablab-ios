@@ -238,20 +238,30 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func cameraAction() {
-        let authStatus = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
-        switch authStatus {
-            case AVAuthorizationStatus.Authorized:
-                var popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("CheckoutCodeScanner") as! UIViewController
-                var nav = UINavigationController(rootViewController: popoverContent)
-                nav.modalPresentationStyle = UIModalPresentationStyle.Popover
-                var popover = nav.popoverPresentationController
-                
-                self.presentViewController(nav, animated: true, completion: nil)
+        
+        #if (arch(i386) || arch(x86_64)) && os(iOS)
+            //App runs inside a simulator, so no camera functionality
+            showTextInputForSimulator()
+        #else
+            //App runs on real device
+            let authStatus = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
+            switch authStatus {
+                case AVAuthorizationStatus.Authorized:
+                    var popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("CheckoutCodeScanner") as! UIViewController
+                    var nav = UINavigationController(rootViewController: popoverContent)
+                    nav.modalPresentationStyle = UIModalPresentationStyle.Popover
+                    var popover = nav.popoverPresentationController
             
-            case AVAuthorizationStatus.Denied: alertToEncourageCameraAccessInitially()
-            case AVAuthorizationStatus.NotDetermined: alertPromptToAllowCameraAccessViaSetting()
-            default: alertToEncourageCameraAccessInitially()
-        }
+                    self.presentViewController(nav, animated: true, completion: nil)
+            
+                case AVAuthorizationStatus.Denied:
+                    alertToEncourageCameraAccessInitially()
+                case AVAuthorizationStatus.NotDetermined:
+                    alertPromptToAllowCameraAccessViaSetting()
+                default:
+                    alertToEncourageCameraAccessInitially()
+            }
+        #endif
     }
     
     func alertToEncourageCameraAccessInitially(){
@@ -301,5 +311,26 @@ extension CartViewController : MFMailComposeViewControllerDelegate{
             //TODO
             Debug.instance.log("Default")
         }
+    }
+}
+
+// MARK: Simulator Debug View
+extension CartViewController {
+    
+    func showTextInputForSimulator(){
+        var inputTextField : UITextField?
+        
+        let doneAction: UIAlertAction = UIAlertAction(title: "Okay", style: .Default,
+            handler: { (Void) -> Void in
+                self.tabBarController?.selectedIndex = 2
+                NSNotificationCenter.defaultCenter().postNotificationName("CheckoutScannerNotification", object: inputTextField?.text)
+        })
+        
+        let alertController: UIAlertController = UIAlertController(title: "Warenkorb ID eingeben".localized, message: "Simulator", preferredStyle: .Alert)
+        alertController.addTextFieldWithConfigurationHandler({ textField -> Void in
+            inputTextField = textField
+        })
+        alertController.addAction(doneAction)
+        presentViewController(alertController, animated: true, completion: nil)
     }
 }

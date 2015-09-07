@@ -12,7 +12,6 @@ class ProductsearchCodeScannerViewController: RSCodeReaderViewController {
         self.cameraAction()
     }
     
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         self.navigationController?.navigationBarHidden = false
     }
@@ -49,16 +48,23 @@ class ProductsearchCodeScannerViewController: RSCodeReaderViewController {
     }
     
     func cameraAction() {
-        let authStatus = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
-        switch authStatus {
-            case AVAuthorizationStatus.Authorized:
-                self.scan()
-            
-            case AVAuthorizationStatus.Denied: alertToEncourageCameraAccessInitially()
-            case AVAuthorizationStatus.NotDetermined: alertPromptToAllowCameraAccessViaSetting()
-            default: alertToEncourageCameraAccessInitially()
-        }
-        
+        #if (arch(i386) || arch(x86_64)) && os(iOS)
+            //App runs inside a simulator, so no camera functionality
+            showTextInputForSimulator()
+        #else
+            //App runs on a real device
+            let authStatus = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
+            switch authStatus {
+                case AVAuthorizationStatus.Authorized:
+                    self.scan()
+                case AVAuthorizationStatus.Denied:
+                    alertToEncourageCameraAccessInitially()
+                case AVAuthorizationStatus.NotDetermined:
+                    alertPromptToAllowCameraAccessViaSetting()
+                default:
+                    alertToEncourageCameraAccessInitially()
+            }
+        #endif
     }
     
     func alertToEncourageCameraAccessInitially(){
@@ -97,5 +103,28 @@ class ProductsearchCodeScannerViewController: RSCodeReaderViewController {
         })
         self.dismissViewControllerAnimated(true, completion:nil)
 
+    }
+}
+
+// MARK: Simulator Debug View
+extension ProductsearchCodeScannerViewController {
+    
+    func showTextInputForSimulator(){
+        self.tabBarController?.view
+        
+        var inputTextField : UITextField?
+        
+        let doneAction: UIAlertAction = UIAlertAction(title: "Okay", style: .Default,
+            handler: { (Void) -> Void in
+                self.tabBarController?.selectedIndex = 2
+                NSNotificationCenter.defaultCenter().postNotificationName("ProductScannerNotification", object: inputTextField?.text)
+        })
+        
+        let alertController: UIAlertController = UIAlertController(title: "Produkt ID eingeben".localized, message: "Simulator", preferredStyle: .Alert)
+        alertController.addTextFieldWithConfigurationHandler({ textField -> Void in
+            inputTextField = textField
+        })
+        alertController.addAction(doneAction)
+        presentViewController(alertController, animated: true, completion: nil)
     }
 }
