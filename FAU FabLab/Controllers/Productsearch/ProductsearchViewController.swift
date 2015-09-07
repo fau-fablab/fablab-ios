@@ -79,7 +79,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         //search bar
         searchBar.delegate = self
         searchBar.enablesReturnKeyAutomatically = false
@@ -126,6 +126,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         view.addConstraint(c3)
         view.addConstraint(searchHelpTableViewHeight)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "searchByBarcodeScanner:", name: "ProductScannerNotification", object: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -136,13 +137,13 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         super.viewWillAppear(animated)
         doorButtonController.setViewController(self)
         cartButtonController.setViewController(self)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "searchByBarcodeScanner:", name: "ProductScannerNotification", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
     }
     
     override func viewWillDisappear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
 
     func keyboardDidShow(notification: NSNotification) {
