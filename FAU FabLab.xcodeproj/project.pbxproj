@@ -38,7 +38,6 @@
 		84293A881B9C875800C3F887 /* InventoryLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84293A871B9C875800C3F887 /* InventoryLogin.swift */; };
 		84293A8A1B9C9B3200C3F887 /* InventoryUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84293A891B9C9B3200C3F887 /* InventoryUser.swift */; };
 		8429B79A1B739C6D004C7DA0 /* RSBarcodes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DC93121B669E0100981977 /* RSBarcodes.framework */; };
-		8429B79B1B739C6D004C7DA0 /* RSBarcodes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84DC93121B669E0100981977 /* RSBarcodes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		844793561B93576D0057CF88 /* TriggerPushType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844793551B93576D0057CF88 /* TriggerPushType.swift */; };
 		846100BE1B78696000393E63 /* ProductLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846100BD1B78696000393E63 /* ProductLocationViewController.swift */; };
 		8462E2691B985930003DADE1 /* SettingsDoorOpensPushCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462E2681B985930003DADE1 /* SettingsDoorOpensPushCell.swift */; };
@@ -129,7 +128,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8429B79B1B739C6D004C7DA0 /* RSBarcodes.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -834,6 +832,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CoreActionSheetPicker.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RSBarcodes.framework",
 			);
 			outputPaths = (
 			);
