@@ -37,6 +37,17 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        model.getLastUpdateTimestamp(onCompletion: { error in
+            if(error != nil){
+                Debug.instance.log("Error!");
+            }
+            
+            // if client-timestamp < server-timestamp, we need to update our event-list!
+            if self.model.getClientTimestamp() < self.model.getServerTimestamp() {
+                self.model.setFlagToReloadNews()
+            }
+        })
+        
         model.fetchNews(
             onCompletion:{ error in
                 if(error != nil){
