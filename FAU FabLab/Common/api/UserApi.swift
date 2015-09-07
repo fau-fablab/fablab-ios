@@ -7,10 +7,7 @@ struct UserApi {
     let resource = "/user"
 
     func getUserInfo(user: User, onCompletion: (User?, NSError?) -> Void){
-    
-        let params = mapper.toJSON(user)
-        
-        api.makeJsonRequestWithBasicAuth(.GET, resource: resource, username: user.username!, password: user.password!, params: params,
+        api.makeJSONRequestWithBasicAuth(.GET, encoding: .URL, resource: resource, username: user.username!, password: user.password!, params: nil,
             onCompletion: {
                 JSON, err in
                 
