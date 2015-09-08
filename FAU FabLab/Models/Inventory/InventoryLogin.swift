@@ -2,19 +2,26 @@
 import Foundation
 
 class InventoryLogin : NSObject{
-
-    private(set) var username = NSUserDefaults.standardUserDefaults().stringForKey("inventoryUserUsername")
-    private(set) var password = NSUserDefaults.standardUserDefaults().stringForKey("inventoryUserPassword")
     
+    private var user = User()
 
-    func saveUser(username: String, password: String){
-        NSUserDefaults.standardUserDefaults().setObject(username, forKey: "inventoryUserUsername")
-        NSUserDefaults.standardUserDefaults().setObject(password, forKey: "inventoryUserPassword")
+    override init(){
+        super.init()
+        user.setUsername(NSUserDefaults.standardUserDefaults().stringForKey("inventoryUserUsername")!)
+        user.setPassword(NSUserDefaults.standardUserDefaults().stringForKey("inventoryUserPassword")!)
+    }
+    func getUser()-> User{
+        return user
+    }
+
+    func saveUser(user: User){
+        NSUserDefaults.standardUserDefaults().setObject(user.username, forKey: "inventoryUserUsername")
+        NSUserDefaults.standardUserDefaults().setObject(user.password, forKey: "inventoryUserPassword")
     }
     
     func deleteUser(){
         NSUserDefaults.standardUserDefaults().removeObjectForKey("inventoryUserUsername")
-         NSUserDefaults.standardUserDefaults().removeObjectForKey("inventoryUserPassword")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("inventoryUserPassword")
     }
     
 }

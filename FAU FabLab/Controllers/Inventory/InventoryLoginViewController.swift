@@ -18,9 +18,9 @@ class InventoryLoginViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if(inventoryLogin.username != nil && isLoginValid(inventoryLogin.username!, password: inventoryLogin.password!)){
-            loginWasSuccessful(inventoryLogin.username!, password: inventoryLogin.password!)
-        }
+        var user = inventoryLogin.getUser()
+        println(user)
+        login(user)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -30,14 +30,14 @@ class InventoryLoginViewController: UIViewController {
 
     
     @IBAction func loginButtonTouched(sender: AnyObject) {
-        var user = InventoryUser()
+        var user = User()
         user.setUsername(username.text)
         user.setPassword(password.text)
-        self.tryToLogin(user)
+        self.login(user)
     }
 
     func inventoryUserScanned(notification:NSNotification) {
-        self.tryToLogin(notification.object as! InventoryUser)
+        self.login(notification.object as! User)
     }
     
     
@@ -92,32 +92,33 @@ class InventoryLoginViewController: UIViewController {
         })
     }
     
-    
-    func tryToLogin(user: InventoryUser){
-        if(isLoginValid(user.username!, password: user.password!)){
-            inventoryLogin.saveUser(user.username!, password: user.password!)
-            loginWasSuccessful(user.username!, password: user.password!)
-        }else{
-             dispatch_async(dispatch_get_main_queue()) {
-                var alert = UIAlertController(title: "Fehler".localized, message: "Name oder Passwort falsch".localized, preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Oh".localized, style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
-            }
-        }
-    }
-    
-    private func isLoginValid(username: String, password: String) -> Bool{
+    private func login(user: User) -> Bool{
         spinner.startAnimating()
-        //TODO send to server and check is login is correct
-        spinner.stopAnimating()
+        var api = UserApi()
+        api.getUserInfo(user, onCompletion: {
+            user, err in
+            self.spinner.stopAnimating()
+            
+            if(err != nil){
+               println(err)
+                dispatch_async(dispatch_get_main_queue()) {
+                    var alert = UIAlertController(title: "Fehler".localized, message: "Name oder Passwort falsch".localized, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Oh".localized, style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
+            }
+            else{
+                self.inventoryLogin.saveUser(user!)
+                self.loginWasSuccessful(user!)
+            }
+        })
+        
         return true
     }
     
-    private func loginWasSuccessful(username: String, password: String){
+    private func loginWasSuccessful(user: User){
         var parentView = self.parentViewController as! InventoryViewController
-        parentView.currentItem.setUser(username)
-        parentView.loggedInLabel.text = "Angemeldet als: \(username)"
-        parentView.hideLogin()
+        parentView.loginWasSuccessful(user)
     }
     
 }

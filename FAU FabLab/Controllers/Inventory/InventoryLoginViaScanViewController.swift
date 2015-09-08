@@ -19,7 +19,7 @@ class InventoryLoginViaScanViewController: RSCodeReaderViewController {
             self.session.stopRunning()
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                if let scanned = Mapper<InventoryUser>().map("\(barcodes[0].stringValue)"){
+                if let scanned = Mapper<User>().map("\(barcodes[0].stringValue)"){
                     if(scanned.username != nil && scanned.password != nil){
                         NSNotificationCenter.defaultCenter().postNotificationName("InventoryUserScanned", object: scanned)
                         self.dismissViewControllerAnimated(true, completion:nil )
