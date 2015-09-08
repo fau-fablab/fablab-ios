@@ -19,8 +19,9 @@ class InventoryLoginViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         var user = inventoryLogin.getUser()
-        println(user)
-        login(user)
+        if user.username != nil{
+            login(user)
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
