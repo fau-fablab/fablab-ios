@@ -3,33 +3,34 @@ import ObjectMapper
 
 public class VersionCheckModel: NSObject {
 
-    private let resource = "/versionCheck";
     private var isLoading = false;
     private var versionCheckLoaded = false;
-    private var mapper:Mapper<UpdateStatus>;
+    private let api = VersionCheckApi()
     
     override init() {
-        mapper = Mapper<UpdateStatus>()
         super.init()
     }
-}
-
-//MARK: VersionCheckApi implementation
-extension VersionCheckModel : VersionCheckApi{
     
-    func checkVersion(platformType: PlatformType, version: Int, onCompletion: (UpdateStatus) -> Void){
-        let params: [String : AnyObject] = ["platformType" : platformType.rawValue, "currentVersion" : version]
-        println(params)
-        RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .JSON, resource: resource, params: params, onCompletion: {
-            json, error in
-            if(error != nil){
-                Debug.instance.log(error)
-            }
-            else{
-                if let updateStatus = self.mapper.map(json){
-                    onCompletion(updateStatus)
+    func checkVersion(){
+        api.checkVersion(PlatformType.APPLE, version: NSBundle.mainBundle().buildNumberAsInt!,
+            onCompletion: { updateStatus, error in
+            
+                if(error != nil){
+                    Debug.instance.log(error)
                 }
-            }
+                else if let status = updateStatus{
+                    let title = "Update verfügbar".localized
+                    let message = "Neue Version".localized + ":" + "\(status.latestVersion!) \n" + "Hinweis".localized + ": \n \(status.updateMessage!)"
+                    
+                    switch (status.updateAvailable!){
+                    case .Required :
+                        AlertView.showInfoView(title, message: "Notwendiges Update".localized + "!\n\(message)")
+                    case .Optional :
+                        AlertView.showInfoView(title, message: "Optionales Update".localized + "!\n\(message)")
+                    default:
+                        return
+                    }
+                }
         })
     }
 }
