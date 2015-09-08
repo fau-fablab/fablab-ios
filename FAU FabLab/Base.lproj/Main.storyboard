@@ -1166,10 +1166,10 @@
             </objects>
             <point key="canvasLocation" x="1110" y="404"/>
         </scene>
-        <!--Produkt suchen-->
+        <!--productsearch-->
         <scene sceneID="lo4-bo-lxz">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wKE-G6-kbN" sceneMemberID="viewController">
+                <navigationController title="productsearch" automaticallyAdjustsScrollViewInsets="NO" id="wKE-G6-kbN" customClass="ProductsearchTabViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Produkt suchen" image="icon_search" id="Ckf-F4-b20"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cmz-pF-vqn">

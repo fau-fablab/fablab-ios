@@ -35,8 +35,7 @@ class ProductsearchCodeScannerViewController: RSCodeReaderViewController {
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 let productId = self.getProductIdFromBarcode(barcodes[0])
                 Debug.instance.log("code:  \(barcodes[0]) id: \(productId)")
-                self.tabBarController?.selectedIndex = 2
-                NSNotificationCenter.defaultCenter().postNotificationName("ProductScannerNotification", object: productId)
+                self.displayProductSearchForCode(productId)
             })
         }
         self.output.metadataObjectTypes = [AVMetadataObjectTypeEAN8Code, AVMetadataObjectTypeEAN13Code]
@@ -104,6 +103,25 @@ class ProductsearchCodeScannerViewController: RSCodeReaderViewController {
         self.dismissViewControllerAnimated(true, completion:nil)
 
     }
+    
+    func displayProductSearchForCode(code: String){
+        //Problem:  We dont know WHERE the tab productSearch is (since it can be resorted)
+        //Problem2: We dont know if the view is already loaded
+        // -> Find the Tab, load it and after transfer the data..
+        var tabBarControllers = self.tabBarController?.viewControllers
+        var controllers  = tabBarControllers!.filter { $0 is ProductsearchTabViewController }
+        
+        for(var i = 0; i < tabBarControllers!.count; i++){
+            if tabBarControllers![i] as! NSObject == controllers.first as! NSObject{
+                self.tabBarController?.selectedIndex = i
+            }
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            while controllers.first!.isViewLoaded() == false{}
+            NSNotificationCenter.defaultCenter().postNotificationName("ProductScannerNotification", object: code)
+        })
+    }
 }
 
 // MARK: Simulator Debug View
@@ -116,8 +134,8 @@ extension ProductsearchCodeScannerViewController {
         
         let doneAction: UIAlertAction = UIAlertAction(title: "Okay", style: .Default,
             handler: { (Void) -> Void in
-                self.tabBarController?.selectedIndex = 2
-                NSNotificationCenter.defaultCenter().postNotificationName("ProductScannerNotification", object: inputTextField?.text)
+             self.displayProductSearchForCode(inputTextField!.text)
+             
         })
         
         let alertController: UIAlertController = UIAlertController(title: "Produkt ID eingeben".localized, message: "Simulator", preferredStyle: .Alert)

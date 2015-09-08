@@ -34,6 +34,7 @@
 		50D9F3C41B91C52F00FB0234 /* fab_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 50D9F3C31B91C52F00FB0234 /* fab_icon.png */; };
 		50D9F3C61B91C6C400FB0234 /* fablab_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 50D9F3C51B91C6C400FB0234 /* fablab_logo_white.png */; };
 		50DBE9041B6FA93000685B07 /* EventsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */; };
+		8411FB7C1B9E69C6005F32F0 /* ProductsearchTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411FB7B1B9E69C6005F32F0 /* ProductsearchTabViewController.swift */; };
 		8419B6101B6F6050000275A8 /* CheckoutCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8419B60F1B6F6050000275A8 /* CheckoutCodeScannerViewController.swift */; };
 		84293A881B9C875800C3F887 /* InventoryLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84293A871B9C875800C3F887 /* InventoryLogin.swift */; };
 		84293A8A1B9C9B3200C3F887 /* InventoryUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84293A891B9C9B3200C3F887 /* InventoryUser.swift */; };
@@ -178,6 +179,7 @@
 		50D9F3C31B91C52F00FB0234 /* fab_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fab_icon.png; sourceTree = "<group>"; };
 		50D9F3C51B91C6C400FB0234 /* fablab_logo_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fablab_logo_white.png; sourceTree = "<group>"; };
 		50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCustomCell.swift; sourceTree = "<group>"; };
+		8411FB7B1B9E69C6005F32F0 /* ProductsearchTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsearchTabViewController.swift; sourceTree = "<group>"; };
 		8419B60F1B6F6050000275A8 /* CheckoutCodeScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutCodeScannerViewController.swift; sourceTree = "<group>"; };
 		84293A871B9C875800C3F887 /* InventoryLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryLogin.swift; sourceTree = "<group>"; };
 		84293A891B9C9B3200C3F887 /* InventoryUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryUser.swift; sourceTree = "<group>"; };
@@ -499,6 +501,7 @@
 			children = (
 				92078EBF1B6E471200A21AD9 /* ProductsearchViewController.swift */,
 				846100BD1B78696000393E63 /* ProductLocationViewController.swift */,
+				8411FB7B1B9E69C6005F32F0 /* ProductsearchTabViewController.swift */,
 			);
 			path = Productsearch;
 			sourceTree = "<group>";
@@ -877,6 +880,7 @@
 				923FFD9C1B8E49CE001ACAB1 /* PushToken.swift in Sources */,
 				84CDCD3A1B90950C0084D8F3 /* Settings.swift in Sources */,
 				84CDCD381B9094360084D8F3 /* SettingsEntry.swift in Sources */,
+				8411FB7C1B9E69C6005F32F0 /* ProductsearchTabViewController.swift in Sources */,
 				4804CA5C1B7E4FB200F75BF5 /* ActionSheetPickerDelegate.swift in Sources */,
 				924DBF731B8DEBB1000CAFB2 /* ICal.swift in Sources */,
 				924DBF6E1B8DEBB1000CAFB2 /* InventoryItem.swift in Sources */,
