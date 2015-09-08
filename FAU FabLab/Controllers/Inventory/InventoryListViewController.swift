@@ -36,6 +36,11 @@ class InventoryListViewController: UIViewController, UITableViewDataSource, UITa
         spinner.stopAnimating()
     }
     
+    
+    
+    @IBAction func deleteListButtonTouched(sender: AnyObject) {
+    }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
