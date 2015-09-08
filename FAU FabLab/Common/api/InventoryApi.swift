@@ -42,7 +42,7 @@ struct InventoryApi{
                     onCompletion(nil, err)
                 }
                 else{
-                    onCompletion(JSON as! Bool, nil)
+                    onCompletion(JSON as? Bool, nil)
                 }
         })
     }

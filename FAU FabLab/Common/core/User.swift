@@ -25,6 +25,14 @@ class User : Mappable{
         roles <- map["roles"]
     }
     
+    func setUsername(username: String){
+        self.username = username
+    }
+    
+    func setPassword(password: String){
+        self.password = password
+    }
+    
     func hasRole(role : Roles) -> Bool{
         if let roles = roles{
             for tmp in roles{
