@@ -12,6 +12,9 @@ class NewsDetailsViewController : UIViewController{
     var imageUrl: NSURL?
     var linkToNews: String?
     
+    var barItemsHidden = false
+    var rightNavItem : UIBarButtonItem?
+    
     func configure(#title: String, desc: String, imageLink: String?, link: String){
         newsTitle = title
         newsImageLink = imageLink;
@@ -36,6 +39,29 @@ class NewsDetailsViewController : UIViewController{
             previewImage.kf_setImageWithURL(NSURL(string: newsImageLink!)!, placeholderImage: nil)
         } else {
             previewImage.image = UIImage(named:"fab_icon.png")
+        }
+        
+        rightNavItem = self.navigationItem.rightBarButtonItem
+
+        var button =  UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        button.frame = CGRectMake(0, 0, 100, 40) as CGRect
+        button.titleLabel?.font = UIFont.boldSystemFontOfSize(17.0)
+        button.setTitle(newsTitle, forState: UIControlState.Normal)
+        button.addTarget(self, action: "showOrHideBarButtons", forControlEvents: UIControlEvents.TouchUpInside)
+        button.titleLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        button.titleLabel?.textAlignment = NSTextAlignment.Center
+        self.navigationItem.titleView = button
+    }
+    
+    func showOrHideBarButtons() {
+        if barItemsHidden {
+            self.navigationItem.rightBarButtonItem = rightNavItem
+            self.navigationItem.hidesBackButton = false
+            barItemsHidden = false
+        } else {
+            self.navigationItem.rightBarButtonItem = nil
+            self.navigationItem.hidesBackButton = true
+            barItemsHidden = true
         }
     }
 
