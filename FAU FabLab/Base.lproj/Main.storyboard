@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -1265,12 +1264,6 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="kqV-UE-mvi">
                                 <rect key="frame" x="290" y="290" width="20" height="20"/>
                             </activityIndicatorView>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MLQ-2g-xrR">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <connections>
-                                    <segue destination="Gq7-b0-A90" kind="embed" id="nSb-DT-ktW"/>
-                                </connections>
-                            </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4LZ-Kq-gHd">
                                 <rect key="frame" x="150" y="193" width="300" height="30"/>
                                 <constraints>
@@ -1296,6 +1289,12 @@
                                     <segue destination="sVs-i2-GNs" kind="show" id="JGD-nN-VD6"/>
                                 </connections>
                             </button>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MLQ-2g-xrR">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="Gq7-b0-A90" kind="embed" id="nSb-DT-ktW"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1327,9 +1326,6 @@
                             <constraint firstItem="qqk-C5-E4e" firstAttribute="top" secondItem="9tI-nj-tDq" secondAttribute="bottom" constant="8" id="whS-in-6cs"/>
                         </constraints>
                         <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="MLQ-2g-xrR"/>
-                            </mask>
                             <mask key="constraints">
                                 <exclude reference="sr1-tl-ZGE"/>
                                 <exclude reference="UQq-jN-8S6"/>
@@ -1344,7 +1340,7 @@
                         <outlet property="loginView" destination="MLQ-2g-xrR" id="d8y-X7-icJ"/>
                         <outlet property="productAmountTF" destination="KQx-00-S0f" id="fg4-FA-2nj"/>
                         <outlet property="productNameTF" destination="U0f-d0-D5r" id="T9F-eT-KKM"/>
-                        <outlet property="spinner" destination="kqV-UE-mvi" id="tT5-LJ-0Gv"/>
+                        <outlet property="spinner" destination="kqV-UE-mvi" id="iaP-AB-LaH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NSq-Yc-KZR" userLabel="First Responder" sceneMemberID="firstResponder"/>

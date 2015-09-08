@@ -7,15 +7,16 @@ class InventoryViewController : UIViewController {
     
     @IBOutlet weak var loginView: UIView!
     @IBOutlet weak var loggedInLabel: UILabel!
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     @IBOutlet weak var productNameTF: UITextField!
     @IBOutlet weak var productAmountTF: UITextField!
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     private var productSearchModel = ProductsearchModel()
 
     var currentItem = InventoryItem()
+    var user = User()
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -26,12 +27,12 @@ class InventoryViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loginView.hidden = false
-        spinner.stopAnimating()
         self.currentItem.setUUID(NSUUID().UUIDString)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        spinner.stopAnimating()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -42,12 +43,31 @@ class InventoryViewController : UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func hideLogin(){
+    func loginWasSuccessful(user: User){
+        self.loggedInLabel.text = "Angemeldet als: \(user.username!)"
+        self.user = user
         loginView.hidden = true
     }
     
 //BUTTONS
     @IBAction func addProductButtonTouched(sender: AnyObject) {
+        spinner.startAnimating()
+        //TODO Make basic checks -> not empty...
+        
+        let api = InventoryApi()
+        api.add(self.user, item: self.currentItem, onCompletion: {
+            items, err in
+            if(err != nil){
+                //TODO Show Erro message
+                println(err)
+            }else{
+                //TODO Clear and show textmessage?
+                println("OK")
+            }
+            self.spinner.stopAnimating()
+        })
+        
+
     }
     
     @IBAction func clearProductButtonTouched(sender: AnyObject) {
@@ -80,13 +100,7 @@ class InventoryViewController : UIViewController {
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 println(self.productSearchModel.getFirstProduct())
                 if(self.productSearchModel.getNumberOfProducts() > 0){
-                    var product = self.productSearchModel.getFirstProduct()
-                    self.productNameTF.text = product.name
-                    self.currentItem.setProductId(product.productId!)
-                    self.currentItem.setProductName(product.name!)
-                    self.currentItem.setAmount(0)
-                    
-                    self.productAmountTF.text = ""
+                    self.productForInventoryFound(self.productSearchModel.getFirstProduct())
                     
                 }else{
                     var alert = UIAlertController(title: "Fehler".localized, message: "Kein Produkt gefunden!".localized, preferredStyle: UIAlertControllerStyle.Alert)
@@ -99,12 +113,13 @@ class InventoryViewController : UIViewController {
 
     }
     
-//ProductSearched (triggert by productSearchView)
+//ProductSearched (triggert by productSearchView and by scanner if product could be found)
     func productForInventoryFound(product: Product) {
         self.productNameTF.text = product.name
         self.currentItem.setProductId(product.productId!)
         self.currentItem.setProductName(product.name!)
         self.currentItem.setAmount(0)
+        self.currentItem.setUser(self.user.username!)
         self.productAmountTF.text = ""
     }
     
