@@ -26,6 +26,9 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
             UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleBottomMargin
         actInd.startAnimating()
         view.addSubview(actInd)
+        
+        // disables the edit button on the "more"-tab. this line should always be in the initial viewcontroller
+        self.tabBarController?.customizableViewControllers = nil
     }
 
     override func viewWillAppear(animated: Bool) {
