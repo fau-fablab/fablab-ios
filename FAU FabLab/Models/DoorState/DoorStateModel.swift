@@ -1,13 +1,9 @@
 import Foundation
-import ObjectMapper
 
 class DoorStateModel : NSObject {
 
-    private let resource = "/spaceapi";
-    private let space = "FAU+FabLab";
-    private let mapper = Mapper<DoorState>()
-
     private var doorState: DoorState?
+    private let api = SpaceApi()
 
     var hasState: Bool{
         return doorState != nil
@@ -40,19 +36,11 @@ class DoorStateModel : NSObject {
     }
 
     func getDoorState(onStateChanged: () -> Void) {
-        let endpoint = resource + "/spaces/" + space
-
-        RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .JSON, resource: endpoint, params: nil, onCompletion: {
-            json, err in
-
-            if(err == nil){
-                let newState = self.mapper.map(json);
-                if(self.doorState == nil || self.doorState! != newState!){
-                    self.doorState = newState
-                    onStateChanged()
-                }
+        api.getSpace({ newState, err in
+            if(self.doorState == nil || self.doorState! != newState!){
+                self.doorState = newState
+                onStateChanged()
             }
-            //TODO error handling
         })
     }
 }
