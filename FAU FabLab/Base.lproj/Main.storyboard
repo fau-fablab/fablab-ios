@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -1230,17 +1230,17 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QbF-Fj-cNs">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <items>
-                                    <barButtonItem title="Produkte anzeigen" id="oVC-fb-FUd">
+                                    <barButtonItem image="icon_inventory" id="oVC-fb-FUd">
                                         <connections>
                                             <segue destination="PmZ-mx-CCU" kind="show" id="cgh-Xa-zbn"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Suchen" id="VyS-c2-1QS">
+                                    <barButtonItem image="icon_search" id="VyS-c2-1QS">
                                         <connections>
                                             <segue destination="sVs-i2-GNs" kind="show" id="G02-mV-oMx"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Scannen" id="WiV-eM-yx8">
+                                    <barButtonItem image="BarcodeScannerIcon" id="WiV-eM-yx8">
                                         <connections>
                                             <action selector="scanProductCode:" destination="Ovu-64-Y3w" id="QVk-gu-igJ"/>
                                         </connections>
@@ -1666,7 +1666,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zim-hY-J2X" id="YDP-RY-IY0">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benachrichte mich sobald das Fablab das nächste mal öffnet" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFF-ln-nsc">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Benachrichte mich sobald das Fablab das nächste mal öffnet" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFF-ln-nsc">
                                                     <rect key="frame" x="8" y="4" width="504" height="51"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1933,6 +1933,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Rvh-64-Faw"/>
-        <segue reference="lTo-pL-Gfj"/>
+        <segue reference="nSb-DT-ktW"/>
     </inferredMetricsTieBreakers>
 </document>
