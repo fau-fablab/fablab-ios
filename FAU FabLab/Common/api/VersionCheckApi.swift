@@ -2,7 +2,7 @@ import ObjectMapper
 
 struct VersionCheckApi {
     
-    let mapper = Mapper<UpdateStatus>()
+    private let mapper = Mapper<UpdateStatus>()
     private let resource = "/versionCheck";
     
     func checkVersion(platformType: PlatformType, version: Int, onCompletion: (UpdateStatus?, NSError?) -> Void){

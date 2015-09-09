@@ -2,9 +2,9 @@ import ObjectMapper
 
 struct InventoryApi{
     
-    let api = RestManager.sharedInstance
-    let inventoryMapper = Mapper<InventoryItem>()
-    let resource = "/inventory"
+    private let api = RestManager.sharedInstance
+    private let inventoryMapper = Mapper<InventoryItem>()
+    private let resource = "/inventory"
     
     func getAll(onCompletion: ([InventoryItem]?, NSError?) -> Void){
         api.makeJSONRequest(.GET, encoding: .URL, resource: resource, params: nil, onCompletion: {
