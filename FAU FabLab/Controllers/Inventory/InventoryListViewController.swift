@@ -39,6 +39,31 @@ class InventoryListViewController: UIViewController, UITableViewDataSource, UITa
     
     
     @IBAction func deleteListButtonTouched(sender: AnyObject) {
+        var alert = UIAlertController(title: "Löschen?", message: "Möchtest du die gesamte Liste löschen?", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addAction(UIAlertAction(title: "Ja", style: .Default, handler: { (action: UIAlertAction!) in
+            self.spinner.startAnimating()
+            
+            var login = InventoryLogin()
+            let api = InventoryApi()
+            api.deleteAll(login.getUser(), onCompletion:{
+                items, err in
+                if(err != nil){
+                    println(err)
+                }else{
+                    self.items = []
+                    self.tableView.reloadData()
+                }
+                self.spinner.stopAnimating()
+            })
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Doch nicht", style: .Default, handler: { (action: UIAlertAction!) in
+        }))
+        
+        presentViewController(alert, animated: true, completion: nil)
+
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
