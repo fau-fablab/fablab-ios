@@ -101,7 +101,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2218" y="-344"/>
+            <point key="canvasLocation" x="3842" y="-344"/>
         </scene>
         <!--NewsDetail-->
         <scene sceneID="shy-KU-sCI">
@@ -185,7 +185,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3086" y="-344"/>
+            <point key="canvasLocation" x="4710" y="-344"/>
         </scene>
         <!--Image Detail View Controller-->
         <scene sceneID="AEO-Yf-ty2">
@@ -233,7 +233,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BVZ-rd-bIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3953" y="-344"/>
+            <point key="canvasLocation" x="5577" y="-344"/>
         </scene>
         <!--EventDetail-->
         <scene sceneID="cfy-oJ-ALh">
@@ -1021,7 +1021,69 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NBD-c7-3vN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1858" y="-1102"/>
+            <point key="canvasLocation" x="3482" y="-1102"/>
+        </scene>
+        <!--Projekte-->
+        <scene sceneID="xKD-6P-RPg">
+            <objects>
+                <tableViewController title="Projekte" id="xZ6-4U-scO" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="bNd-wd-tDh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="HCi-1I-ssZ">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HCi-1I-ssZ" id="vcz-JU-v36">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="xZ6-4U-scO" id="tdv-4d-j5p"/>
+                            <outlet property="delegate" destination="xZ6-4U-scO" id="V6F-0g-OBp"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Projekte" id="jeu-E6-jGC">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="UcT-To-Fuc">
+                            <connections>
+                                <segue destination="dRT-fH-oOH" kind="show" id="uwP-Cm-U04"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ACl-hL-B35" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-783" y="-729"/>
+        </scene>
+        <!--Projekt hinzufügen-->
+        <scene sceneID="uLf-4C-1dU">
+            <objects>
+                <viewController title="Projekt hinzufügen" id="dRT-fH-oOH" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="666-RF-nBn"/>
+                        <viewControllerLayoutGuide type="bottom" id="mtc-mM-UVg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fkx-yv-F2Z">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ibE-sE-wdY">
+                                <rect key="frame" x="0.0" y="507" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Item" id="bh3-jm-Aiy"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Projekt hinzufügen" id="CNf-0Y-c09">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="VHf-M6-lnm"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CBU-Ad-uQt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-783" y="-1459"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -1039,6 +1101,7 @@
                         <segue destination="wKE-G6-kbN" kind="relationship" relationship="viewControllers" id="383-tC-QT0"/>
                         <segue destination="4Rd-fW-vJI" kind="relationship" relationship="viewControllers" id="Gl7-4z-Zij"/>
                         <segue destination="AgM-Bm-SWQ" kind="relationship" relationship="viewControllers" id="xuI-O4-Vb9"/>
+                        <segue destination="UOr-RF-pbN" kind="relationship" relationship="viewControllers" id="DNl-hj-QNS"/>
                         <segue destination="4gd-6i-P19" kind="relationship" relationship="viewControllers" id="BTQ-EO-VLL"/>
                         <segue destination="ezu-Kp-YSK" kind="relationship" relationship="viewControllers" id="g4j-5b-1Fi"/>
                         <segue destination="RIZ-mv-nfx" kind="relationship" relationship="viewControllers" id="uVm-jr-cF0"/>
@@ -1144,7 +1207,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ax8-Z7-GBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1110" y="-344"/>
+            <point key="canvasLocation" x="2734" y="-344"/>
         </scene>
         <!--Termine-->
         <scene sceneID="qfj-MK-Brk">
@@ -1588,7 +1651,7 @@
                                                         <constraint firstAttribute="width" constant="59" id="F4l-xY-dnL"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1811,7 +1874,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JkG-Mp-ljB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1110" y="-1102"/>
+            <point key="canvasLocation" x="2734" y="-1102"/>
         </scene>
         <!--Produkt suchen-->
         <scene sceneID="fwS-AE-Tdx">
@@ -1913,6 +1976,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Odc-yl-gCY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1104" y="-3155"/>
+        </scene>
+        <!--Projekte-->
+        <scene sceneID="ZM1-ZF-Rrs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UOr-RF-pbN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Projekte" id="5ex-i5-0uE"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="N8L-9A-5MV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xZ6-4U-scO" kind="relationship" relationship="rootViewController" id="mlh-gS-jHZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bfg-Py-W2P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1763" y="-729"/>
         </scene>
     </scenes>
     <resources>

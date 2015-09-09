@@ -1,6 +1,7 @@
-github "skywinder/ActionSheetPicker-3.0" "1.7.1"
+github "skywinder/ActionSheetPicker-3.0" "1.7.2"
 github "Alamofire/Alamofire" "1.3.1"
 github "onevcat/Kingfisher" "1.4.5"
+github "0xhansdampf/MarkdownTextView" "1.0"
 github "Hearst-DD/ObjectMapper" "0.14"
 github "yeahdongcn/RSBarcodes_Swift" "0.0.8"
 github "FAU-Inf2/SwiftyJSON" "2.2.1"
