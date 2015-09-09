@@ -4,7 +4,7 @@ import RSBarcodes
 
 class InventoryLoginViewController: UIViewController {
     
-     var inventoryLogin = InventoryLogin()
+    
     
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -18,6 +18,7 @@ class InventoryLoginViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        var inventoryLogin = InventoryLogin()
         var user = inventoryLogin.getUser()
         if user.username != nil{
             login(user)
@@ -109,7 +110,8 @@ class InventoryLoginViewController: UIViewController {
                 }
             }
             else{
-                self.inventoryLogin.saveUser(user!)
+                var inventoryLogin = InventoryLogin()
+                inventoryLogin.saveUser(user!)
                 self.loginWasSuccessful(user!)
             }
         })
