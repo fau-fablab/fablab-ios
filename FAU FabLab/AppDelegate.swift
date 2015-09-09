@@ -4,7 +4,6 @@
 //
 //  Copyright (c) 2015 FAU MAD FabLab. All rights reserved.
 //
-
 import UIKit
 import SwiftyJSON
 
@@ -16,11 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        //Check if there is a new version available
         let versionCheckModel = VersionCheckModel()
         versionCheckModel.checkVersion()
         
-        // Override point for customization after application launch.
-        SearchHelpModel.sharedInstance.fetchAutocompleteEntries();
+        //create and register notifications
         var type = UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound;
         var setting = UIUserNotificationSettings(forTypes: type, categories: nil);
         UIApplication.sharedApplication().registerUserNotificationSettings(setting);
@@ -29,28 +28,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // UI Customization
         // set Global TintColor
         self.window?.tintColor = UIColor.fabLabGreen()
-        
-        // NavBar
+        // TintColor for all Buttons
+        UIBarButtonItem.appearance().tintColor = UIColor.fabLabGreen()
+
+        // NavBar appearance
         var navBarAppearance = UINavigationBar.appearance()
         navBarAppearance.tintColor = UIColor.fabLabGreenNavBar()
         navBarAppearance.barTintColor = UIColor.fabLabBlue()
         navBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         
-        // TableViewCell
+        // TableViewCell appearance
         var selectedBackground = UIView()
         selectedBackground.backgroundColor = UIColor.fabLabGreen().colorWithAlphaComponent(0.1)
         UITableViewCell.appearance().selectedBackgroundView = selectedBackground
         
-        // TintColor for all Buttons
-        UIBarButtonItem.appearance().tintColor = UIColor.fabLabGreen()
-        
         return true
     }
-
+    
     func application( application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData ) {
-        SearchHelpModel.sharedInstance.fetchAutocompleteEntries();
-        var characterSet: NSCharacterSet = NSCharacterSet( charactersInString: "<>" )
         
+        var characterSet: NSCharacterSet = NSCharacterSet( charactersInString: "<>" )
+    
         var deviceTokenString: String = ( deviceToken.description as NSString )
             .stringByTrimmingCharactersInSet( characterSet )
             .stringByReplacingOccurrencesOfString( " ", withString: "" ) as String
@@ -60,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification messge: [NSObject : AnyObject]) {
-        println(messge);
+
         if let apn = messge["aps"] as? Dictionary<String, AnyObject>{
             if let cat = apn["category"] as? String{
                 if(cat == TriggerPushType.DOOR_OPENS_NEXT_TIME.rawValue){
@@ -72,7 +70,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }
-        
     }
     
     func applicationWillResignActive(application: UIApplication) {
@@ -91,6 +88,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        //Fetch autocompletions for product search
+        SearchHelpModel.sharedInstance.fetchAutocompleteEntries();
     }
 
     func applicationWillTerminate(application: UIApplication) {
