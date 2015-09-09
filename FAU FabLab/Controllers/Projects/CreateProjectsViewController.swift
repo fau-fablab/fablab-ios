@@ -4,6 +4,7 @@ import UIKit
 import MarkdownTextView
 
 class CreateProjectsViewController: UIViewController {
+    
     // this is just a basic test
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,8 @@ class CreateProjectsViewController: UIViewController {
         
         let textView = MarkdownTextView(frame: CGRectZero, textStorage: textStorage)
         textView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        textView.text = "TEST"
+        textView.text = "\n###Headline1\n **bold** \n Block\n=== \n```code block``` \n [link to google](http://google.de) \n _test_ ~~durchgestrichen~~ \n\n##Headline2"
+        
         view.addSubview(textView)
         
         let views = ["textView": textView]
