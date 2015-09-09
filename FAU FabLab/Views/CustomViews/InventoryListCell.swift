@@ -12,8 +12,14 @@ public class InventoryListCell: UITableViewCell {
     
     func configure(inventoryItem: InventoryItem) {
         self.item = inventoryItem
-        self.title.text = inventoryItem.productName
-        self.subtitle.text = "von ".localized + inventoryItem.userName! + " @\(inventoryItem.updatedAt!)"
+        if inventoryItem.productName != nil{
+            self.title.text = inventoryItem.productName
+        }
+        if inventoryItem.userName != nil{
+            self.subtitle.text = "von ".localized + inventoryItem.userName! + " @\(inventoryItem.updatedAt!)"
+        }else{
+            self.subtitle.text = " @\(inventoryItem.updatedAt!)"
+        }
         self.amount.text = "\(inventoryItem.amount!)"
     }
 }
