@@ -29,6 +29,7 @@ The [FAU Fablab](https://fablab.fau.de/) iOS app
 * [Alamofire](https://github.com/Alamofire/Alamofire) License: [MIT](https://github.com/Alamofire/Alamofire/blob/master/LICENSE)
 * [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper) License: [MIT](https://github.com/Hearst-DD/ObjectMapper/blob/master/LICENSE)
 * [ActionSheetPicker-3.0](https://github.com/skywinder/ActionSheetPicker-3.0) License: [BSD](https://github.com/skywinder/ActionSheetPicker-3.0/blob/master/LICENSE)
+* [MarkdownTextView](https://github.com/0xhansdampf/MarkdownTextView) License: [MIT](https://github.com/0xhansdampf/MarkdownTextView/blob/master/LICENSE)
 
 ###License:
 --
