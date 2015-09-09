@@ -9,7 +9,7 @@ struct VersionCheckApi {
         
         let params: [String : AnyObject] = ["platformType" : platformType.rawValue, "currentVersion" : version]
 
-        RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .JSON, resource: resource, params: params,
+        RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .URL, resource: resource, params: params,
             onCompletion: { json, error in
                 if(error != nil){
                     Debug.instance.log(error)
