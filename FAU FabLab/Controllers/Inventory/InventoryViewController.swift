@@ -52,22 +52,34 @@ class InventoryViewController : UIViewController {
 //BUTTONS
     @IBAction func addProductButtonTouched(sender: AnyObject) {
         spinner.startAnimating()
-        //TODO Make basic checks -> not empty...
-        
-        let api = InventoryApi()
-        api.add(self.user, item: self.currentItem, onCompletion: {
-            items, err in
-            if(err != nil){
-                //TODO Show Erro message
-                println(err)
+       
+        if ((currentItem.productId) != nil){
+            if count(productAmountTF.text) > 0 {
+                let value = productAmountTF.text.doubleValue as Double?
+                if  nil != value {
+                    self.currentItem.setAmount(value!)
+                    let api = InventoryApi()
+                    api.add(self.user, item: self.currentItem, onCompletion: {
+                        items, err in
+                        if(err != nil){
+                            self.showErrorMessage("Fehler:".localized, message: "\(err)")
+                        }else{
+                            self.showErrorMessage("Produkt Hinzugefügt".localized, message: "Das Produkt wurde zur Liste hinzugefügt".localized)
+                            self.currentItem = InventoryItem()
+                            self.productAmountTF.text = ""
+                            self.productNameTF.text = ""
+                        }
+                    })
+                }else{
+                    self.showErrorMessage("Ungültiger Wert".localized, message: "Bitte gültigen Betrag eingeben (Integer/Double)".localized)
+                }
             }else{
-                //TODO Clear and show textmessage?
-                println("OK")
+                self.showErrorMessage("Betrag Eingeben".localized, message: "Bitte erst einen Betrag eingeben".localized)
             }
-            self.spinner.stopAnimating()
-        })
-        
-
+        }else{
+            self.showErrorMessage("Produkt wählen".localized, message: "Bitte erst ein Produkt auswählen.".localized)
+        }
+        spinner.stopAnimating()
     }
     
     @IBAction func clearProductButtonTouched(sender: AnyObject) {
@@ -118,7 +130,6 @@ class InventoryViewController : UIViewController {
         self.productNameTF.text = product.name
         self.currentItem.setProductId(product.productId!)
         self.currentItem.setProductName(product.name!)
-        self.currentItem.setAmount(0)
         self.currentItem.setUser(self.user.username!)
         self.productAmountTF.text = ""
     }
@@ -175,5 +186,20 @@ class InventoryViewController : UIViewController {
                 }
             }
             })
+    }
+
+    func showErrorMessage(title: String, message: String){
+        var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Oh".localized, style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+}
+
+extension String {
+    struct NumberFormatter {
+        static let instance = NSNumberFormatter()
+    }
+    var doubleValue:Double? {
+        return NumberFormatter.instance.numberFromString(self)?.doubleValue
     }
 }
