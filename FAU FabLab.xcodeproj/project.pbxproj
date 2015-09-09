@@ -31,7 +31,8 @@
 		5067CECB1B90C50300DE8E86 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067CECA1B90C50300DE8E86 /* ImageDetailViewController.swift */; };
 		507493681B5BFE6F0035BEB4 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */; };
 		5087F41B1B97B48B0007C109 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5087F4191B97B48B0007C109 /* Localizable.strings */; };
-		508DB3421BA0DE6300C8F5E7 /* MarkdownTextView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 508DB3401BA0DE4500C8F5E7 /* MarkdownTextView.framework */; };
+		508DB3451BA0DF1300C8F5E7 /* CreateProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508DB3441BA0DF1300C8F5E7 /* CreateProjectsViewController.swift */; };
+		508DB34B1BA0EB1D00C8F5E7 /* MarkdownTextView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 508DB34A1BA0EB1D00C8F5E7 /* MarkdownTextView.framework */; };
 		50D9F3C41B91C52F00FB0234 /* fab_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 50D9F3C31B91C52F00FB0234 /* fab_icon.png */; };
 		50D9F3C61B91C6C400FB0234 /* fablab_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 50D9F3C51B91C6C400FB0234 /* fablab_logo_white.png */; };
 		50DBE9041B6FA93000685B07 /* EventsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */; };
@@ -177,7 +178,8 @@
 		507BA38D1B5A7C0300E5DCF3 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		5087F41A1B97B48B0007C109 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = "FAU FabLab/de.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		5087F41C1B97B4A20007C109 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "FAU FabLab/en.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		508DB3401BA0DE4500C8F5E7 /* MarkdownTextView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MarkdownTextView.framework; path = Carthage/Build/iOS/MarkdownTextView.framework; sourceTree = "<group>"; };
+		508DB3441BA0DF1300C8F5E7 /* CreateProjectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProjectsViewController.swift; sourceTree = "<group>"; };
+		508DB34A1BA0EB1D00C8F5E7 /* MarkdownTextView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MarkdownTextView.framework; path = Carthage/Build/iOS/MarkdownTextView.framework; sourceTree = "<group>"; };
 		50D9F3C31B91C52F00FB0234 /* fab_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fab_icon.png; sourceTree = "<group>"; };
 		50D9F3C51B91C6C400FB0234 /* fablab_logo_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fablab_logo_white.png; sourceTree = "<group>"; };
 		50DBE9031B6FA93000685B07 /* EventsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCustomCell.swift; sourceTree = "<group>"; };
@@ -270,7 +272,7 @@
 				507493681B5BFE6F0035BEB4 /* SwiftyJSON.framework in Frameworks */,
 				925AC32F1B6C245700057C7F /* Alamofire.framework in Frameworks */,
 				8429B79A1B739C6D004C7DA0 /* RSBarcodes.framework in Frameworks */,
-				508DB3421BA0DE6300C8F5E7 /* MarkdownTextView.framework in Frameworks */,
+				508DB34B1BA0EB1D00C8F5E7 /* MarkdownTextView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +314,7 @@
 		500A2CA11B63DCF4005CC8CF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				508DB3431BA0DEDC00C8F5E7 /* Projects */,
 				84CDCD2F1B9084130084D8F3 /* About */,
 				84CDCD2C1B9083ED0084D8F3 /* Inventory */,
 				84CDCD291B9083A70084D8F3 /* Settings */,
@@ -402,6 +405,14 @@
 				5060B1EC1B4EFE2A008B41FD /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		508DB3431BA0DEDC00C8F5E7 /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				508DB3441BA0DF1300C8F5E7 /* CreateProjectsViewController.swift */,
+			);
+			path = Projects;
 			sourceTree = "<group>";
 		};
 		50AD1B231B73F5440014E065 /* DoorState */ = {
@@ -592,7 +603,7 @@
 		927901B91B6D39FF00F95B09 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				508DB3401BA0DE4500C8F5E7 /* MarkdownTextView.framework */,
+				508DB34A1BA0EB1D00C8F5E7 /* MarkdownTextView.framework */,
 				4880CD311B7CC4470025C38A /* CoreActionSheetPicker.framework */,
 				928054F31B6D893300D0D4FB /* ObjectMapper.framework */,
 				925AC32E1B6C245700057C7F /* Alamofire.framework */,
@@ -840,6 +851,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CoreActionSheetPicker.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RSBarcodes.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/MarkdownTextView.framework",
 			);
 			outputPaths = (
 			);
@@ -932,6 +944,7 @@
 				92DB85A81B8B72FC0070FAD8 /* MalfunctionInfoModel.swift in Sources */,
 				929770921B9CE8D300525191 /* InventoryApi.swift in Sources */,
 				84F53FEE1B73DD24008FB605 /* PayOrCancelViewController.swift in Sources */,
+				508DB3451BA0DF1300C8F5E7 /* CreateProjectsViewController.swift in Sources */,
 				923FFD9A1B8E4916001ACAB1 /* MailAddresses.swift in Sources */,
 				489316451B831E3900DCB6BB /* Autocomplete.swift in Sources */,
 				489E4C751B79E093004A60FA /* ProductCustomCell.swift in Sources */,
