@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -1200,9 +1198,6 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Eingelogged als: Textuser1235" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpx-PO-uZU">
                                 <rect key="frame" x="0.0" y="523" width="250" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="sRV-TY-rlT"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1253,8 +1248,9 @@
                                 </items>
                             </toolbar>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UlJ-0H-b6N">
-                                <rect key="frame" x="258" y="523" width="85" height="20"/>
+                                <rect key="frame" x="493" y="523" width="85" height="20"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="g6u-m9-ZXY"/>
                                     <constraint firstAttribute="width" constant="85" id="rdB-nD-h0c"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1279,13 +1275,11 @@
                             <constraint firstItem="QbF-Fj-cNs" firstAttribute="top" secondItem="9tI-nj-tDq" secondAttribute="bottom" id="7CU-Eo-Ree"/>
                             <constraint firstItem="QbF-Fj-cNs" firstAttribute="leading" secondItem="aFf-MH-tLV" secondAttribute="leading" id="7lN-XG-mBk"/>
                             <constraint firstItem="kqV-UE-mvi" firstAttribute="centerX" secondItem="4LZ-Kq-gHd" secondAttribute="centerX" id="8FI-Jb-FlI"/>
-                            <constraint firstItem="UlJ-0H-b6N" firstAttribute="leading" secondItem="zpx-PO-uZU" secondAttribute="trailing" constant="8" symbolic="YES" id="AfY-eA-EQk"/>
-                            <constraint firstItem="kqV-UE-mvi" firstAttribute="centerX" secondItem="UlJ-0H-b6N" secondAttribute="centerX" id="FXc-jH-kfV"/>
+                            <constraint firstAttribute="centerX" secondItem="U0f-d0-D5r" secondAttribute="centerX" id="AfR-0U-Wae"/>
+                            <constraint firstAttribute="centerX" secondItem="KQx-00-S0f" secondAttribute="centerX" id="Grf-4P-Fvk"/>
                             <constraint firstAttribute="bottom" secondItem="MLQ-2g-xrR" secondAttribute="bottom" id="H6Y-TX-rgF"/>
-                            <constraint firstItem="UlJ-0H-b6N" firstAttribute="firstBaseline" secondItem="zpx-PO-uZU" secondAttribute="firstBaseline" id="Rn6-To-jjY"/>
                             <constraint firstItem="KQx-00-S0f" firstAttribute="trailing" secondItem="U0f-d0-D5r" secondAttribute="trailing" id="SJA-sT-zw2"/>
                             <constraint firstItem="UlJ-0H-b6N" firstAttribute="leading" secondItem="zpx-PO-uZU" secondAttribute="trailing" constant="19" id="UQq-jN-8S6"/>
-                            <constraint firstItem="zpx-PO-uZU" firstAttribute="baseline" secondItem="UlJ-0H-b6N" secondAttribute="firstBaseline" id="WGd-3a-64z"/>
                             <constraint firstItem="5Sd-0M-Iuz" firstAttribute="top" secondItem="UlJ-0H-b6N" secondAttribute="bottom" constant="15" id="Y8i-ed-qZf"/>
                             <constraint firstItem="QbF-Fj-cNs" firstAttribute="centerX" secondItem="U0f-d0-D5r" secondAttribute="centerX" id="ZWa-Se-N47"/>
                             <constraint firstItem="4LZ-Kq-gHd" firstAttribute="top" secondItem="KQx-00-S0f" secondAttribute="bottom" constant="8" symbolic="YES" id="cbs-gs-eeZ"/>
@@ -1293,23 +1287,23 @@
                             <constraint firstItem="MLQ-2g-xrR" firstAttribute="centerY" secondItem="kqV-UE-mvi" secondAttribute="centerY" id="fva-N9-PYn"/>
                             <constraint firstItem="5Sd-0M-Iuz" firstAttribute="top" secondItem="zpx-PO-uZU" secondAttribute="bottom" constant="8" symbolic="YES" id="god-ck-onp"/>
                             <constraint firstItem="5Sd-0M-Iuz" firstAttribute="top" secondItem="zpx-PO-uZU" secondAttribute="bottom" constant="20" id="hqK-ri-5hK"/>
-                            <constraint firstItem="UlJ-0H-b6N" firstAttribute="baseline" secondItem="zpx-PO-uZU" secondAttribute="baseline" id="hr6-oB-I72"/>
                             <constraint firstItem="MLQ-2g-xrR" firstAttribute="trailing" secondItem="QbF-Fj-cNs" secondAttribute="trailing" id="irS-0R-GkW"/>
                             <constraint firstAttribute="trailing" secondItem="MLQ-2g-xrR" secondAttribute="trailing" id="iwe-oH-mhQ"/>
                             <constraint firstItem="KQx-00-S0f" firstAttribute="leading" secondItem="U0f-d0-D5r" secondAttribute="leading" id="jBv-6R-ene"/>
                             <constraint firstItem="4LZ-Kq-gHd" firstAttribute="trailing" secondItem="KQx-00-S0f" secondAttribute="trailing" id="kHq-ME-0DU"/>
-                            <constraint firstItem="zpx-PO-uZU" firstAttribute="top" secondItem="UlJ-0H-b6N" secondAttribute="top" id="odc-sd-2qi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UlJ-0H-b6N" secondAttribute="trailing" constant="10" id="p1E-iO-13x"/>
                             <constraint firstItem="zpx-PO-uZU" firstAttribute="leading" secondItem="MLQ-2g-xrR" secondAttribute="leading" id="pVk-iB-TQL"/>
                             <constraint firstItem="MLQ-2g-xrR" firstAttribute="top" secondItem="aFf-MH-tLV" secondAttribute="top" id="rLI-Oj-HlZ"/>
                             <constraint firstItem="zpx-PO-uZU" firstAttribute="leading" secondItem="aFf-MH-tLV" secondAttribute="leadingMargin" constant="-14" id="sr1-tl-ZGE"/>
                             <constraint firstItem="QbF-Fj-cNs" firstAttribute="leading" secondItem="zpx-PO-uZU" secondAttribute="leading" id="tSb-kB-2u1"/>
+                            <constraint firstItem="5Sd-0M-Iuz" firstAttribute="top" secondItem="UlJ-0H-b6N" secondAttribute="bottom" constant="8" id="wnA-Ep-Tay"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="sr1-tl-ZGE"/>
-                                <exclude reference="UQq-jN-8S6"/>
                                 <exclude reference="Y8i-ed-qZf"/>
                                 <exclude reference="hqK-ri-5hK"/>
+                                <exclude reference="UQq-jN-8S6"/>
                             </mask>
                         </variation>
                     </view>
@@ -1422,7 +1416,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zvg-NX-t6v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1830" y="-3945"/>
+            <point key="canvasLocation" x="2294" y="-3945"/>
         </scene>
         <!--Inventory Login Via Scan View Controller-->
         <scene sceneID="otc-sw-V6M">
@@ -1481,7 +1475,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pKS-LQ-GuX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2726" y="-3945"/>
+            <point key="canvasLocation" x="3070" y="-3945"/>
         </scene>
         <!--Inventory Item Scan View Controller-->
         <scene sceneID="oIz-fM-a5O">
@@ -1540,7 +1534,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ydd-qu-NQ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1104" y="-3851"/>
+            <point key="canvasLocation" x="3392" y="-3155"/>
         </scene>
         <!--Inventory List View Controller-->
         <scene sceneID="MQf-O1-LCb">
@@ -1554,11 +1548,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="zVf-sW-Dfi">
-                                <rect key="frame" x="290" y="290" width="20" height="20"/>
-                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tKz-cZ-Kp5">
+                                <rect key="frame" x="217" y="28" width="166" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="166" id="zOQ-FW-T5m"/>
+                                </constraints>
+                                <state key="normal" title="Komplette Liste löschen">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteListButtonTouched:" destination="PmZ-mx-CCU" eventType="touchUpInside" id="yHq-aj-oY0"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hfC-rT-2Y6">
-                                <rect key="frame" x="0.0" y="66" width="600" height="485"/>
+                                <rect key="frame" x="0.0" y="110" width="600" height="485"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="InventoryListCell" editingAccessoryType="checkmark" rowHeight="57" id="3nx-Pg-Rbd" customClass="InventoryListCell" customModule="FAU_FabLab" customModuleProvider="target">
@@ -1615,23 +1618,15 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tKz-cZ-Kp5">
-                                <rect key="frame" x="217" y="28" width="166" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="166" id="zOQ-FW-T5m"/>
-                                </constraints>
-                                <state key="normal" title="Komplette Liste löschen">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="deleteListButtonTouched:" destination="PmZ-mx-CCU" eventType="touchUpInside" id="yHq-aj-oY0"/>
-                                </connections>
-                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="zVf-sW-Dfi">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="hfC-rT-2Y6" firstAttribute="top" secondItem="tKz-cZ-Kp5" secondAttribute="bottom" constant="8" id="30E-Jo-sFY"/>
                             <constraint firstItem="hfC-rT-2Y6" firstAttribute="top" secondItem="tKz-cZ-Kp5" secondAttribute="bottom" constant="8" id="9TJ-yi-Utb"/>
+                            <constraint firstAttribute="centerY" secondItem="zVf-sW-Dfi" secondAttribute="centerY" id="9ar-Qv-qHD"/>
                             <constraint firstItem="cwS-kE-tke" firstAttribute="top" secondItem="hfC-rT-2Y6" secondAttribute="bottom" id="BYf-5Y-xqG"/>
                             <constraint firstAttribute="centerX" secondItem="zVf-sW-Dfi" secondAttribute="centerX" id="Hfz-F1-XKp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hfC-rT-2Y6" secondAttribute="trailing" constant="-16" id="MXM-sf-1s2"/>
@@ -1647,7 +1642,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0BG-Hl-B2J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3253" y="-2586"/>
+            <point key="canvasLocation" x="2228" y="-2374"/>
         </scene>
         <!--Einstellungen-->
         <scene sceneID="iRi-M9-lvb">
@@ -1671,7 +1666,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zim-hY-J2X" id="YDP-RY-IY0">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Benachrichte mich sobald das Fablab das nächste mal öffnet" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFF-ln-nsc">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benachrichte mich sobald das Fablab das nächste mal öffnet" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFF-ln-nsc">
                                                     <rect key="frame" x="8" y="4" width="504" height="51"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1898,7 +1893,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SgY-0X-Hsj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2929" y="-3261"/>
+            <point key="canvasLocation" x="2687" y="-3155"/>
         </scene>
         <!--Inventur-->
         <scene sceneID="FNp-3p-79o">
@@ -1938,6 +1933,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Rvh-64-Faw"/>
-        <segue reference="nSb-DT-ktW"/>
+        <segue reference="lTo-pL-Gfj"/>
     </inferredMetricsTieBreakers>
 </document>
