@@ -1072,8 +1072,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUH-f8-aFi">
-                                        <rect key="frame" x="0.0" y="76" width="600" height="524"/>
+                                        <rect key="frame" x="0.0" y="76" width="600" height="475"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="475" id="wzc-GM-6Nz"/>
+                                        </constraints>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Titel" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="woW-N7-ZC3">
                                         <rect key="frame" x="150" y="39" width="300" height="30"/>
@@ -1087,15 +1090,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="600" id="A1x-sG-My8"/>
-                                    <constraint firstItem="cUH-f8-aFi" firstAttribute="top" secondItem="woW-N7-ZC3" secondAttribute="bottom" constant="7" id="F43-Ej-fXZ"/>
-                                    <constraint firstItem="woW-N7-ZC3" firstAttribute="centerX" secondItem="cUH-f8-aFi" secondAttribute="centerX" id="QRh-L0-xoc"/>
+                                    <constraint firstItem="cUH-f8-aFi" firstAttribute="top" secondItem="woW-N7-ZC3" secondAttribute="bottom" constant="7" id="N1g-gV-eem"/>
                                     <constraint firstAttribute="width" constant="600" id="Wft-LP-Fos"/>
-                                    <constraint firstAttribute="bottom" secondItem="cUH-f8-aFi" secondAttribute="bottom" id="dCR-pi-c0O"/>
                                     <constraint firstAttribute="trailing" secondItem="woW-N7-ZC3" secondAttribute="trailing" constant="150" id="f5v-2V-pKx"/>
                                     <constraint firstItem="woW-N7-ZC3" firstAttribute="top" secondItem="TCp-Bd-Jnd" secondAttribute="top" constant="39" id="fWB-9T-pnr"/>
                                     <constraint firstItem="woW-N7-ZC3" firstAttribute="centerX" secondItem="TCp-Bd-Jnd" secondAttribute="centerX" id="gkd-lV-xRl"/>
-                                    <constraint firstItem="cUH-f8-aFi" firstAttribute="leading" secondItem="TCp-Bd-Jnd" secondAttribute="leading" id="hWe-2X-5a5"/>
                                     <constraint firstAttribute="bottom" secondItem="woW-N7-ZC3" secondAttribute="bottom" constant="531" id="j0p-pb-8G2"/>
+                                    <constraint firstItem="cUH-f8-aFi" firstAttribute="centerX" secondItem="woW-N7-ZC3" secondAttribute="centerX" id="wLm-4v-NTS"/>
+                                    <constraint firstItem="cUH-f8-aFi" firstAttribute="leading" secondItem="TCp-Bd-Jnd" secondAttribute="leading" id="wpx-Uq-1Vd"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">

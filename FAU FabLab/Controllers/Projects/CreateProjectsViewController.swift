@@ -38,8 +38,8 @@ class CreateProjectsViewController: UIViewController {
         viewInScrollView.addSubview(textView!)
         
         let views = ["textView": textView!]
-        var constraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-20-[textView]-20-|", options: nil, metrics: nil, views: views)
-        constraints += NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[textView]-20-|", options: nil, metrics: nil, views: views)
+        var constraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-10-[textView]-10-|", options: nil, metrics: nil, views: views)
+        constraints += NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[textView]-10-|", options: nil, metrics: nil, views: views)
         NSLayoutConstraint.activateConstraints(constraints)
         
         // Keyboard-Customization
