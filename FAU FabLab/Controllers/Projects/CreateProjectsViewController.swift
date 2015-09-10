@@ -5,6 +5,9 @@ import MarkdownTextView
 
 class CreateProjectsViewController: UIViewController {
     
+    var
+    textView : MarkdownTextView?
+    
     // this is just a basic test
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,16 +26,56 @@ class CreateProjectsViewController: UIViewController {
             textStorage.addHighlighter(MarkdownFencedCodeHighlighter(attributes: codeBlockAttributes))
         }
         
-        let textView = MarkdownTextView(frame: CGRectZero, textStorage: textStorage)
-        textView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        textView.text = "\n###Headline1\n **bold** \n Block\n=== \n```code block``` \n [link to google](http://google.de) \n _test_ ~~durchgestrichen~~ \n\n##Headline2"
+        textView = MarkdownTextView(frame: CGRectZero, textStorage: textStorage)
+        // hide autocorrection
+        textView!.autocorrectionType = UITextAutocorrectionType.No
+        textView!.setTranslatesAutoresizingMaskIntoConstraints(false)
+        textView!.text = "_Enter Markdown-Text_"
         
-        view.addSubview(textView)
+        view.addSubview(textView!)
         
-        let views = ["textView": textView]
+        let views = ["textView": textView!]
         var constraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-20-[textView]-20-|", options: nil, metrics: nil, views: views)
         constraints += NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[textView]-20-|", options: nil, metrics: nil, views: views)
         NSLayoutConstraint.activateConstraints(constraints)
+        
+        // Keyboard-Customization
+        let toolBar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: 100.0, height: 44.0))
+        toolBar.items = [
+            UIBarButtonItem(title: "H1", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
+            UIBarButtonItem(title: "H2", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
+            UIBarButtonItem(title: "H3", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
+            UIBarButtonItem(title: "B", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
+            UIBarButtonItem(title: "I", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
+            UIBarButtonItem(title: "*", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
+            UIBarButtonItem(title: ">", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
+            UIBarButtonItem(title: "^", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
+            UIBarButtonItem(title: "~", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
+            UIBarButtonItem(title: "`", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
+            UIBarButtonItem(title: "Code", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
+            UIBarButtonItem(title: "Link", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:")
+        ]
+        textView!.inputAccessoryView = toolBar
+    }
+    
+    func addText(sender: UIBarButtonItem) {
+        if sender.title == "H1" {
+            self.textView!.insertText("#")
+        } else if sender.title == "H2" {
+            self.textView!.insertText("##")
+        } else if sender.title == "H3" {
+            self.textView!.insertText("###")
+        } else if sender.title == "B" {
+            self.textView!.insertText("**")
+        } else if sender.title == "I" {
+            self.textView!.insertText("_")
+        } else if sender.title == "Code" {
+            self.textView!.insertText("```")
+        } else if sender.title == "Link" {
+            self.textView!.insertText("[title](url)")
+        } else {
+            self.textView!.insertText(sender.title!)
+        }
     }
     
 }
