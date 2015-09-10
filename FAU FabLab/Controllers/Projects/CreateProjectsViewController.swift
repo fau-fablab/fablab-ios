@@ -5,8 +5,10 @@ import MarkdownTextView
 
 class CreateProjectsViewController: UIViewController {
     
-    var
-    textView : MarkdownTextView?
+    @IBOutlet var titleText: UITextField!
+    @IBOutlet var viewInScrollView: UIView!
+    
+    var textView : MarkdownTextView?
     
     // this is just a basic test
     override func viewDidLoad() {
@@ -32,7 +34,8 @@ class CreateProjectsViewController: UIViewController {
         textView!.setTranslatesAutoresizingMaskIntoConstraints(false)
         textView!.text = "_Enter Markdown-Text_"
         
-        view.addSubview(textView!)
+        //view.addSubview(textView!)
+        viewInScrollView.addSubview(textView!)
         
         let views = ["textView": textView!]
         var constraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-20-[textView]-20-|", options: nil, metrics: nil, views: views)
@@ -55,6 +58,7 @@ class CreateProjectsViewController: UIViewController {
             UIBarButtonItem(title: "Code", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
             UIBarButtonItem(title: "Link", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:")
         ]
+        
         textView!.inputAccessoryView = toolBar
     }
     
