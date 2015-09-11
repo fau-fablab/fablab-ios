@@ -1115,7 +1115,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Projekt hinzufügen" id="CNf-0Y-c09">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="VHf-M6-lnm"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="VHf-M6-lnm">
+                            <connections>
+                                <action selector="saveProjectButtonTouched:" destination="dRT-fH-oOH" id="17K-jv-7Nr"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="titleText" destination="woW-N7-ZC3" id="9XL-XU-rMX"/>

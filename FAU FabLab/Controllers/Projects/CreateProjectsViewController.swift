@@ -10,7 +10,49 @@ class CreateProjectsViewController: UIViewController {
     
     var textView : MarkdownTextView?
     
-    // this is just a basic test
+    @IBAction func saveProjectButtonTouched(sender: AnyObject) {
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in })
+        
+        let doneAction: UIAlertAction = UIAlertAction(title: "Hochladen".localized, style: .Default, handler: { (Void) -> Void in self.uploadProjectActionHandler()})
+        
+        let alertController: UIAlertController = UIAlertController(title: "Upload zu GitHub".localized, message: "Wollen Sie das Projekt-Snippet hochladen?".localized, preferredStyle: .Alert)
+        alertController.addAction(cancelAction)
+        alertController.addAction(doneAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func uploadProjectActionHandler() {
+        let api = ProjectsApi()
+        
+        let project = ProjectFile()
+        project.setFilename("fab-project.md")
+        project.setDescription(self.titleText.text)
+        project.setContent(self.textView!.text)
+        
+        api.create(project, onCompletion: {
+            url, err in
+            
+            if (err != nil) {
+                AlertView.showErrorView("Projekt-Snippet konnte nicht hochgeladen werden".localized)
+            } else {
+                let doneAction: UIAlertAction = UIAlertAction(title: "OK".localized, style: .Default, handler: { (Void) -> Void in })
+                
+                let browserAction: UIAlertAction = UIAlertAction(title: "Gist anzeigen".localized, style: .Default, handler: { (Void) -> Void in
+                        if let nsurl = NSURL(string: url!) {
+                            UIApplication.sharedApplication().openURL(nsurl)
+                        }
+                    })
+                
+                let alertController: UIAlertController = UIAlertController(title: "Projekt-Snipped wurde erfolgreich hochgeladen".localized, message: "Link".localized + ": " + url!, preferredStyle: .Alert)
+                alertController.addAction(doneAction)
+                alertController.addAction(browserAction)
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
+            }
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

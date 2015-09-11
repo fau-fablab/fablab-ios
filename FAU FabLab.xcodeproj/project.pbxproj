@@ -29,6 +29,8 @@
 		5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1D51B4EFE2A008B41FD /* AppDelegate.swift */; };
 		5060B1EE1B4EFE2A008B41FD /* FAU_FabLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1ED1B4EFE2A008B41FD /* FAU_FabLabTests.swift */; };
 		5067CECB1B90C50300DE8E86 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067CECA1B90C50300DE8E86 /* ImageDetailViewController.swift */; };
+		50732E601BA2E5E60056B77E /* ProjectsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50732E5F1BA2E5E60056B77E /* ProjectsApi.swift */; };
+		50732E621BA2E63D0056B77E /* ProjectFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50732E611BA2E63D0056B77E /* ProjectFile.swift */; };
 		507493681B5BFE6F0035BEB4 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */; };
 		5087F41B1B97B48B0007C109 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5087F4191B97B48B0007C109 /* Localizable.strings */; };
 		508DB3451BA0DF1300C8F5E7 /* CreateProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508DB3441BA0DF1300C8F5E7 /* CreateProjectsViewController.swift */; };
@@ -174,6 +176,8 @@
 		5060B1EC1B4EFE2A008B41FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5060B1ED1B4EFE2A008B41FD /* FAU_FabLabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAU_FabLabTests.swift; sourceTree = "<group>"; };
 		5067CECA1B90C50300DE8E86 /* ImageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
+		50732E5F1BA2E5E60056B77E /* ProjectsApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsApi.swift; sourceTree = "<group>"; };
+		50732E611BA2E63D0056B77E /* ProjectFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectFile.swift; sourceTree = "<group>"; };
 		507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		507BA38D1B5A7C0300E5DCF3 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		5087F41A1B97B48B0007C109 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = "FAU FabLab/de.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -538,6 +542,7 @@
 				9297708F1B9CE2F800525191 /* UserApi.swift */,
 				929770911B9CE8D300525191 /* InventoryApi.swift */,
 				92CDE1661BA037FB00D1DA0E /* SpaceApi.swift */,
+				50732E5F1BA2E5E60056B77E /* ProjectsApi.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -596,6 +601,7 @@
 				923FFD9F1B8E4C2D001ACAB1 /* UpdateStatus.swift */,
 				923FFDA11B8E4DA5001ACAB1 /* User.swift */,
 				844793551B93576D0057CF88 /* TriggerPushType.swift */,
+				50732E611BA2E63D0056B77E /* ProjectFile.swift */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -878,6 +884,7 @@
 				48CC3FF91B8B6E0900FB9C8E /* BBBadgeBarButtonItem.m in Sources */,
 				924DBF721B8DEBB1000CAFB2 /* Uom.swift in Sources */,
 				8419B6101B6F6050000275A8 /* CheckoutCodeScannerViewController.swift in Sources */,
+				50732E621BA2E63D0056B77E /* ProjectFile.swift in Sources */,
 				48545B2D1B92F6D0006F690F /* AboutCustomCell.swift in Sources */,
 				9232D7461B9219C600BF77E9 /* PlatformType.swift in Sources */,
 				927901E11B6D3F6300F95B09 /* NewsDetailsViewController.swift in Sources */,
@@ -914,6 +921,7 @@
 				920AECE91B96E43E00523C1B /* StringExtension.swift in Sources */,
 				487971BA1B9B112D00052FEB /* SearchHelpModel.swift in Sources */,
 				849502A61B9B76EA006810E3 /* InventoryListViewController.swift in Sources */,
+				50732E601BA2E5E60056B77E /* ProjectsApi.swift in Sources */,
 				487971B81B9B0E3F00052FEB /* History.swift in Sources */,
 				920AECEB1B96E5B300523C1B /* NSBundleExtension.swift in Sources */,
 				487971B41B9B0E0200052FEB /* HistoryEntry.swift in Sources */,

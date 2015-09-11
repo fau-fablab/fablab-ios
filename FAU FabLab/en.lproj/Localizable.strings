@@ -136,3 +136,12 @@
 //MARK: SearchHelpModel
 "Verlauf" = "History";
 "Vorschläge" = "Suggestions";
+
+//MARK: CreateProjectsViewController
+"Upload zu GitHub" = "Upload to GitHub";
+"Hochladen" = "Upload";
+"Wollen Sie das Projekt-Snippet hochladen?" = "Do you really want to upload the project-snippet?";
+"Projekt-Snippet konnte nicht hochgeladen werden" = "Project-snippet was not uploaded";
+"Projekt-Snipped wurde erfolgreich hochgeladen" = "Projekt-snipped was successfully uploaded";
+"Gist anzeigen" = "Show Gist";
+"Link" = "Link";
