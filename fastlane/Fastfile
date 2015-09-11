@@ -57,7 +57,7 @@ platform :ios do
 
     xctool "-project FAU\\ Fablab.xcodeproj \
         -scheme 'FAU FabLab' \
-        -configuration Release \
+        -configuration Debug \
         -sdk iphonesimulator \
         clean"
   end
@@ -69,7 +69,7 @@ platform :ios do
     )
     xctool "-project FAU\\ Fablab.xcodeproj \
         -scheme 'FAU FabLab' \
-        -configuration Release \
+        -configuration Debug \
         -sdk iphonesimulator \
         build"
   end
@@ -78,7 +78,7 @@ platform :ios do
   lane :test do
     xctool "-project FAU\\ Fablab.xcodeproj \
         -scheme 'FAU FabLab' \
-        -configuration Release \
+        -configuration Debug \
         -sdk iphonesimulator \
         test -freshSimulator -resetSimulator -freshInstall"
   end
