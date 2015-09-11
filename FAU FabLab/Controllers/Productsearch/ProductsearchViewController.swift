@@ -21,6 +21,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     private let searchHelpModel = SearchHelpModel.sharedInstance
     private var searchHelpTableView: UITableView!
     private var searchHelpTableViewHeight: NSLayoutConstraint!
+    private var scannedBarcode = ""
     
     //table view background
     private var backgroundView: UILabel {
@@ -125,8 +126,8 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         view.addConstraint(c2)
         view.addConstraint(c3)
         view.addConstraint(searchHelpTableViewHeight)
+       
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "searchByBarcodeScanner:", name: "ProductScannerNotification", object: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -134,6 +135,9 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
 
     override func viewWillAppear(animated: Bool) {
+        if(scannedBarcode != ""){
+            self.barCodeWasScanned()
+        }
         super.viewWillAppear(animated)
         doorButtonController.setViewController(self)
         cartButtonController.setViewController(self)
@@ -242,15 +246,17 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         })
     }
     
-    func searchByBarcodeScanner(notification:NSNotification) {
-        Debug.instance.log("Got Notification from Barcodescanner, productId: \(notification.object)")
+    func setScannedBarcode(scannedBarcode: String){
+        self.scannedBarcode = scannedBarcode
+    }
+    func barCodeWasScanned(){
         self.resetTableViewBackground()
         self.searchBar.resignFirstResponder()
         self.searchBar.userInteractionEnabled = false;
         model.removeAllProducts()
         tableView.reloadData()
         self.actInd.startAnimating()
-        model.searchProductById(notification.object as! String, onCompletion: { err in
+        model.searchProductById(scannedBarcode, onCompletion: { err in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.searchActive = false
                 self.searchBar.userInteractionEnabled = true;
@@ -263,6 +269,10 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
                 }
             })
         })
+
+        
+        scannedBarcode = ""
+        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

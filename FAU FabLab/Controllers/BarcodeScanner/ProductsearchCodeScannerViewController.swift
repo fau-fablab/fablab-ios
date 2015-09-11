@@ -105,11 +105,9 @@ class ProductsearchCodeScannerViewController: RSCodeReaderViewController {
     }
     
     func displayProductSearchForCode(code: String){
-        //Problem:  We dont know WHERE the tab productSearch is (since it can be resorted)
-        //Problem2: We dont know if the view is already loaded
-        // -> Find the Tab, load it and after transfer the data..
         var tabBarControllers = self.tabBarController?.viewControllers
         var controllers  = tabBarControllers!.filter { $0 is ProductsearchTabViewController }
+        var productSearchController = controllers.first as! ProductsearchTabViewController
         
         for(var i = 0; i < tabBarControllers!.count; i++){
             if tabBarControllers![i] as! NSObject == controllers.first as! NSObject{
@@ -117,10 +115,8 @@ class ProductsearchCodeScannerViewController: RSCodeReaderViewController {
             }
         }
         
-        dispatch_async(dispatch_get_main_queue(), {
-            while controllers.first!.isViewLoaded() == false{}
-            NSNotificationCenter.defaultCenter().postNotificationName("ProductScannerNotification", object: code)
-        })
+        var productsearchViewController = productSearchController.viewControllers.first as! ProductsearchViewController
+        productsearchViewController.setScannedBarcode(code)
     }
 }
 
