@@ -6,6 +6,7 @@ import MarkdownTextView
 class CreateProjectsViewController: UIViewController {
     
     @IBOutlet var titleText: UITextField!
+    @IBOutlet var descText: UITextField!
     @IBOutlet var viewInScrollView: UIView!
     
     var textView : MarkdownTextView?
@@ -26,8 +27,8 @@ class CreateProjectsViewController: UIViewController {
         let api = ProjectsApi()
         
         let project = ProjectFile()
-        project.setFilename("fab-project.md")
-        project.setDescription(self.titleText.text)
+        project.setFilename(self.titleText.text + ".md")
+        project.setDescription(self.descText.text)
         project.setContent(self.textView!.text)
         
         api.create(project, onCompletion: {
@@ -118,7 +119,7 @@ class CreateProjectsViewController: UIViewController {
         } else if sender.title == "Code" {
             self.textView!.insertText("```")
         } else if sender.title == "Link" {
-            self.textView!.insertText("[title](url)")
+            self.textView!.insertText("[title](http://)")
         } else {
             self.textView!.insertText(sender.title!)
         }
