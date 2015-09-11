@@ -86,7 +86,8 @@ platform :ios do
   desc "Build and deploy the ipa file"
   lane :deploy do
     ipa(
-      scheme: "FAU FabLab"
+      scheme: "FAU FabLab",
+      configuration: "Debug"
     )
 
     if ENV["HIPCHAT_API_TOKEN"]
