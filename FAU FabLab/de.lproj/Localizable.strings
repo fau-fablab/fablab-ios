@@ -148,6 +148,8 @@
 
 //MARK: ProjectsViewController
 "Warenkörbe" = "Warenkörbe";
+"Warenkorb ersetzen" = "Warenkorb ersetzen";
+"Zum Warenkorb hinzufügen" = "Zum Warenkorb hinzufügen";
 
 //MARK: CartCustomCell
 "Einträge" = " Einträge";
