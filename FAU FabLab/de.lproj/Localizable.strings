@@ -146,6 +146,8 @@
 "Projekt-Snippet speichern" = "Projekt-Snippet speichern";
 "Gist anzeigen" = "Gist anzeigen";
 "Link" = "Link";
+"Projekt hinzufügen" = "Projekt hinzufügen";
+"Projekt bearbeiten" = "Projekt bearbeiten";
 
 //MARK: ProjectsViewController
 "Warenkörbe" = "Warenkörbe";

@@ -48,11 +48,14 @@ class CreateProjectsViewController: UIViewController {
         textView!.setTranslatesAutoresizingMaskIntoConstraints(false)
         
         if self.projectId >= 0 {
+            self.title = "Projekt bearbeiten".localized
+            
             let selectedProject = projectsModel.getProject(self.projectId!)
             titleText.text = selectedProject.filename
             descText.text = selectedProject.descr
             textView!.text = selectedProject.content
         } else {
+            self.title = "Projekt hinzufügen".localized
             textView!.text = self.markdownText
         }
         

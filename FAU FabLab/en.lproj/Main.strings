@@ -217,3 +217,12 @@
 
 /* Class = "UILabel"; text = "Benachrichte mich sobald das Fablab das nächste mal öffnet"; ObjectID = "yFF-ln-nsc"; */
 "yFF-ln-nsc.text" = "Send me a notification when the fablab opens the next time";
+
+/* Class = "UITabBarItem"; title = "Gespeicherte Projekte/Warenkörbe"; ObjectID = "5ex-i5-0uE"; */
+"5ex-i5-0uE.title" = "Saved projects/carts";
+
+/* Class = "UITextField"; placeholder = "Titel"; ObjectID = "woW-N7-ZC3"; */
+"woW-N7-ZC3.placeholder" = "Title";
+
+/* Class = "UITextField"; placeholder = "Kurzbeschreibung"; ObjectID = "CfP-qC-Hcj"; */
+"CfP-qC-Hcj.placeholder" = "Short description";
