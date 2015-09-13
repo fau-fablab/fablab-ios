@@ -160,8 +160,6 @@
 		48A8D9D51BA547AC006958D9 /* CartCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartCustomCell.swift; sourceTree = "<group>"; };
 		48B7C0D91B846CDA00DC9B2D /* AutocompleteEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteEntry.swift; sourceTree = "<group>"; };
 		48B7C0DD1B84833400DC9B2D /* CoreDataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataModel 2.xcdatamodel"; sourceTree = "<group>"; };
-		48C993CE1B9B0696000F0F55 /* CoreDataModel 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataModel 6.xcdatamodel"; sourceTree = "<group>"; };
-		48C993CF1B9B0905000F0F55 /* CoreDataModel 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataModel 6.xcdatamodel"; sourceTree = "<group>"; };
 		48CC3FF61B8B6DDD00FB9C8E /* FAU Fablab-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FAU Fablab-Bridging-Header.h"; sourceTree = "<group>"; };
 		48CC3FF71B8B6E0900FB9C8E /* BBBadgeBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBadgeBarButtonItem.h; sourceTree = "<group>"; };
 		48CC3FF81B8B6E0900FB9C8E /* BBBadgeBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBadgeBarButtonItem.m; sourceTree = "<group>"; };
@@ -1316,8 +1314,6 @@
 			isa = XCVersionGroup;
 			children = (
 				4866231A1B9B09FE009E3230 /* CoreDataModel 5.xcdatamodel */,
-				48C993CF1B9B0905000F0F55 /* CoreDataModel 6.xcdatamodel */,
-				48C993CE1B9B0696000F0F55 /* CoreDataModel 6.xcdatamodel */,
 				928841B51B93B3DC00E1BC5B /* CoreDataModel 4.xcdatamodel */,
 				846BD1991B9392A000BDEEFA /* CoreDataModel 3.xcdatamodel */,
 				48B7C0DD1B84833400DC9B2D /* CoreDataModel 2.xcdatamodel */,
