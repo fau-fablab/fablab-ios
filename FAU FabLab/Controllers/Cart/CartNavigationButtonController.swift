@@ -5,7 +5,7 @@ class CartNavigationButtonController: NSObject {
     
     static let sharedInstance = CartNavigationButtonController()
     
-    private let model = CartModel()
+    private let model = CartModel.sharedInstance
     
     private var viewController: UIViewController?
     
