@@ -37,7 +37,11 @@ class ProjectsViewController: UITableViewController {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        if createFromCart {
+            return 1
+        } else {
+            return 2
+        }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -113,6 +117,7 @@ class ProjectsViewController: UITableViewController {
             
             self.createFromCart = true
             self.title = "Warenkorb auswählen...".localized
+            self.tableView.reloadData()
         })
         
         let cancelAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: {
