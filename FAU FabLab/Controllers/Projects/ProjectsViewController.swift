@@ -43,4 +43,18 @@ class ProjectsViewController: UITableViewController {
         return nil
     }
     
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if (indexPath.section == 0 && indexPath.row == 0) {
+            return false
+        }
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (indexPath.section == 0 && editingStyle == UITableViewCellEditingStyle.Delete) {
+            cartHistoryModel.removeCart(indexPath.row)
+            tableView.reloadData()
+        }
+    }
+    
 }
