@@ -68,11 +68,6 @@ class ProjectsViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        if (indexPath.section == 0 && indexPath.row == 0) {
-            return false
-        } else if (indexPath.section == 1 && indexPath.row == 0) {
-            return false
-        }
         return true
     }
     
@@ -85,15 +80,6 @@ class ProjectsViewController: UITableViewController {
             }
             tableView.reloadData()
         }
-        
-        /*
-        if (indexPath.section == 0 && editingStyle == UITableViewCellEditingStyle.Delete) {
-            cartHistoryModel.removeCart(indexPath.row)
-            tableView.reloadData()
-        } else if (indexPath.section == 1 && editingStyle == UITableViewCellEditingStyle.Delete) {
-            projectsModel.removeProject(indexPath.row)
-            tableView.reloadData()
-        }*/
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
