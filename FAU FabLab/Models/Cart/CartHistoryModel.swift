@@ -11,6 +11,8 @@ class CartHistoryModel: NSObject {
     private var carts: [Cart] {
         get {
             let request = NSFetchRequest(entityName: Cart.EntityName)
+            let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+            request.sortDescriptors = [sortDescriptor]
             return managedObjectContext.executeFetchRequest(request, error: nil) as! [Cart]
         }
     }
@@ -42,6 +44,7 @@ class CartHistoryModel: NSObject {
         let cart = NSEntityDescription.insertNewObjectForEntityForName(Cart.EntityName,
             inManagedObjectContext: self.managedObjectContext) as! Cart
         cart.status = CartStatus.SHOPPING.rawValue
+        cart.date = NSDate()
         saveCoreData()
         Debug.instance.log(carts)
     }

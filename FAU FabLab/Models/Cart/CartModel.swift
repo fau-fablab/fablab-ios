@@ -16,7 +16,7 @@ class CartModel: NSObject {
     
     //for current cart
     override init() {
-        cart = cartHistory.getCart(cartHistory.getCount()-1)
+        cart = cartHistory.getCart(0)
         managedObjectContext = cart.managedObjectContext!
         super.init()
     }
@@ -29,6 +29,8 @@ class CartModel: NSObject {
     }
     
     private func saveCoreData() {
+        //update date
+        cart.date = NSDate()
         var error: NSError?
         if !managedObjectContext.save(&error) {
             Debug.instance.log("Error saving: \(error!)")
@@ -121,7 +123,6 @@ class CartModel: NSObject {
     
     func setStatus(cartStatus: CartStatus) {
         cart.cartStatus = cartStatus
-        cart.date = NSDate()
         saveCoreData()
     }
     
@@ -188,7 +189,7 @@ class CartModel: NSObject {
     func checkoutSuccessfulyPaid(){
         self.notifyControllerAboutStatusChange()
         cartHistory.addCart()
-        cart = cartHistory.getCart(cartHistory.getCount()-1)
+        cart = cartHistory.getCart(0)
         CartNavigationButtonController.sharedInstance.updateBadge()
     }
     
