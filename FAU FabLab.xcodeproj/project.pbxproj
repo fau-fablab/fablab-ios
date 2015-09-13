@@ -27,6 +27,8 @@
 		48CC3FFD1B8B6F0600FB9C8E /* CartNavigationButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC3FFC1B8B6F0600FB9C8E /* CartNavigationButtonController.swift */; };
 		48E9A11F1B9C1A840024C4B9 /* SwitchCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E9A11E1B9C1A840024C4B9 /* SwitchCustomCell.swift */; };
 		48E9A1211B9C1DF00024C4B9 /* ButtonCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E9A1201B9C1DF00024C4B9 /* ButtonCustomCell.swift */; };
+		5024EE461BA5A3080025AF91 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE451BA5A3080025AF91 /* Project.swift */; };
+		5024EE481BA5A3AB0025AF91 /* ProjectsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE471BA5A3AB0025AF91 /* ProjectsModel.swift */; };
 		502DB1521B7150370036EF6B /* EventsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502DB1511B7150370036EF6B /* EventsDetailViewController.swift */; };
 		5032249C1B99B55700C0583D /* MailComposeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032249B1B99B55700C0583D /* MailComposeHelper.swift */; };
 		505D61501B9B711700C1EE22 /* ChangeAmountPickerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D614F1B9B711700C1EE22 /* ChangeAmountPickerHelper.swift */; };
@@ -171,6 +173,8 @@
 		48E9A1201B9C1DF00024C4B9 /* ButtonCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCustomCell.swift; sourceTree = "<group>"; };
 		5003604E1B97911B0037114C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		5003604F1B97911C0037114C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		5024EE451BA5A3080025AF91 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		5024EE471BA5A3AB0025AF91 /* ProjectsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsModel.swift; sourceTree = "<group>"; };
 		502DB1511B7150370036EF6B /* EventsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsDetailViewController.swift; sourceTree = "<group>"; };
 		5032249B1B99B55700C0583D /* MailComposeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailComposeHelper.swift; sourceTree = "<group>"; };
 		505D614F1B9B711700C1EE22 /* ChangeAmountPickerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeAmountPickerHelper.swift; sourceTree = "<group>"; };
@@ -342,6 +346,7 @@
 		500A2CA21B63FB6E005CC8CF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5024EE431BA5A1EE0025AF91 /* Projects */,
 				920AECEF1B96EDA000523C1B /* VersionCheck */,
 				84CDCD351B9094360084D8F3 /* Settings */,
 				921095321B88D78500396181 /* Inventory */,
@@ -353,6 +358,23 @@
 				35CE198640C4FC7530DB60A1 /* DoorState */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		5024EE431BA5A1EE0025AF91 /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				5024EE441BA5A1EE0025AF91 /* Managed */,
+				5024EE471BA5A3AB0025AF91 /* ProjectsModel.swift */,
+			);
+			path = Projects;
+			sourceTree = "<group>";
+		};
+		5024EE441BA5A1EE0025AF91 /* Managed */ = {
+			isa = PBXGroup;
+			children = (
+				5024EE451BA5A3080025AF91 /* Project.swift */,
+			);
+			path = Managed;
 			sourceTree = "<group>";
 		};
 		5060B1C71B4EFE29008B41FD = {
@@ -934,7 +956,9 @@
 				487971BA1B9B112D00052FEB /* SearchHelpModel.swift in Sources */,
 				849502A61B9B76EA006810E3 /* InventoryListViewController.swift in Sources */,
 				50732E601BA2E5E60056B77E /* ProjectsApi.swift in Sources */,
+				5024EE461BA5A3080025AF91 /* Project.swift in Sources */,
 				487971B81B9B0E3F00052FEB /* History.swift in Sources */,
+				5024EE481BA5A3AB0025AF91 /* ProjectsModel.swift in Sources */,
 				920AECEB1B96E5B300523C1B /* NSBundleExtension.swift in Sources */,
 				487971B41B9B0E0200052FEB /* HistoryEntry.swift in Sources */,
 				844793561B93576D0057CF88 /* TriggerPushType.swift in Sources */,
