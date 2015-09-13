@@ -27,6 +27,39 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkoutStatusChanged:", name: "CheckoutStatusChangedNotification", object: nil)
     }
     
+    func setCart(index: Int) {
+        cartModel = CartModel(index: index)
+        if (cartModel.getStatus() == CartStatus.PAID) {
+            self.title = "Bezahlt".localized
+            var actionBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "actionBarButtonItemClicked")
+            self.navigationItem.rightBarButtonItem = actionBarButtonItem
+        }
+    }
+    
+    func actionBarButtonItemClicked() {
+        let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        
+        let replaceAction = UIAlertAction(title: "Warenkorb ersetzen".localized, style: UIAlertActionStyle.Default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            self.cartModel.replace()
+        })
+        
+        let addAction = UIAlertAction(title: "Zum Warenkorb hinzufügen".localized, style: UIAlertActionStyle.Default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            self.cartModel.add()
+        })
+        
+        let cancelAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+        })
+        
+        optionMenu.addAction(replaceAction)
+        optionMenu.addAction(addAction)
+        optionMenu.addAction(cancelAction)
+        
+        self.presentViewController(optionMenu, animated: true, completion: nil)
+    }
+    
     @IBAction func buttonChangeAmountPressed(sender: AnyObject) {
         let cartEntry = self.cartModel.getProductInCart(selectedIndexPath!.row)
         showChangeAmountPicker(cartEntry, initialValue: cartEntry.amount)
@@ -127,17 +160,18 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
+        if (cartModel.getStatus() == CartStatus.SHOPPING) {
+            return true
+        }
+        return false
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        /*
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             CartModel.sharedInstance.removeProductFromCart(indexPath.row)
             tableView.reloadData()
             showTotalPrice()
         }
-        */
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -153,28 +187,30 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let previousIndexPath = selectedIndexPath
-        if indexPath == selectedIndexPath {
-            selectedIndexPath = nil
-        } else {
-            selectedIndexPath = indexPath
+        if (cartModel.getStatus() == CartStatus.SHOPPING) {
+            let previousIndexPath = selectedIndexPath
+            if indexPath == selectedIndexPath {
+                selectedIndexPath = nil
+            } else {
+                selectedIndexPath = indexPath
+            }
+            var indexPaths : Array<NSIndexPath> = []
+            if let previous = previousIndexPath{
+                indexPaths += [previous]
+            }
+            if let current = selectedIndexPath {
+                indexPaths += [current]
+            }
+            if indexPaths.count > 0 {
+                tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Automatic)
+            }
+            tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+            selectedProduct = cartModel.getProductInCart(indexPath.row).product
         }
-        var indexPaths : Array<NSIndexPath> = []
-        if let previous = previousIndexPath{
-            indexPaths += [previous]
-        }
-        if let current = selectedIndexPath {
-            indexPaths += [current]
-        }
-        if indexPaths.count > 0 {
-            tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Automatic)
-        }
-        tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
-        selectedProduct = cartModel.getProductInCart(indexPath.row).product
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if (indexPath == selectedIndexPath){
+        if (cartModel.getStatus() == CartStatus.SHOPPING && indexPath == selectedIndexPath){
             return ProductCustomCell.expandedHeight
         } else{
             return ProductCustomCell.defaultHeight
@@ -217,17 +253,6 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
                 
             }
         }
-    }
-    
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
-        var deleteAction = UITableViewRowAction(style: .Default, title: "Löschen".localized) { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
-            CartModel.sharedInstance.removeProductFromCart(indexPath.row)
-            CartNavigationButtonController.sharedInstance.updateBadge()
-            tableView.reloadData()
-            self.refreshCheckoutButton()
-            self.showTotalPrice()
-        }
-        return [deleteAction]
     }
     
 

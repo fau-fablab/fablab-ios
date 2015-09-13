@@ -24,14 +24,29 @@ class Cart: NSManagedObject {
         return items[index] as! CartEntry
     }
     
+    func getEntries() -> [CartEntry] {
+        return self.mutableOrderedSetValueForKey("entries").array as! [CartEntry]
+    }
+    
     func addEntry(entry: CartEntry) {
         var items = self.mutableOrderedSetValueForKey("entries")
         items.addObject(entry)
     }
     
+    func addEntries(entries: [CartEntry]) {
+        for entry in entries {
+            addEntry(entry)
+        }
+    }
+    
     func removeEntry(index: Int) {
         var items = self.mutableOrderedSetValueForKey("entries")
         items.removeObjectAtIndex(index)
+    }
+    
+    func removeEntries() {
+        var items = self.mutableOrderedSetValueForKey("entries")
+        items.removeAllObjects()
     }
     
     func findEntry(id: String) -> CartEntry? {

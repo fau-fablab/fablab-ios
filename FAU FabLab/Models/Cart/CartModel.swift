@@ -30,7 +30,9 @@ class CartModel: NSObject {
     
     private func saveCoreData() {
         //update date
-        cart.date = NSDate()
+        if (getStatus() == CartStatus.SHOPPING) {
+            cart.date = NSDate()   
+        }
         var error: NSError?
         if !managedObjectContext.save(&error) {
             Debug.instance.log("Error saving: \(error!)")
@@ -73,6 +75,41 @@ class CartModel: NSObject {
 
     }
     
+    func addEntryToCart(entry: CartEntry) {
+        
+        if (cart.cartStatus != CartStatus.SHOPPING) {
+            return
+        }
+        
+        if let foundEntry = cart.findEntry(entry.product.id) {
+            foundEntry.amount += entry.amount
+            saveCoreData()
+            return
+        }
+        
+        let cartProduct = NSEntityDescription.insertNewObjectForEntityForName(CartProduct.EntityName,
+            inManagedObjectContext: self.managedObjectContext) as! CartProduct
+        
+        let cartEntry = NSEntityDescription.insertNewObjectForEntityForName(CartEntry.EntityName,
+            inManagedObjectContext: self.managedObjectContext) as! CartEntry
+        
+        cartProduct.name = entry.product.name
+        cartProduct.price = entry.product.price
+        cartProduct.id = entry.product.id
+        cartProduct.unit = entry.product.unit
+        cartProduct.locationStringForMap = entry.product.locationStringForMap
+        cartProduct.rounding = entry.product.rounding
+        
+        cartEntry.product = cartProduct
+        cartEntry.amount = entry.amount
+        
+        cart.addEntry(cartEntry)
+        saveCoreData()
+        
+        CartNavigationButtonController.sharedInstance.updateBadge()
+        
+    }
+    
     func removeProductFromCart(index: Int){
         
         if (cart.cartStatus != CartStatus.SHOPPING) {
@@ -84,6 +121,17 @@ class CartModel: NSObject {
         
         CartNavigationButtonController.sharedInstance.updateBadge()
 
+    }
+    
+    func removeAllProductsFromCart() {
+        
+        if (cart.cartStatus != CartStatus.SHOPPING) {
+            return
+        }
+        
+        cart.removeEntries()
+        saveCoreData()
+        
     }
     
     func updateProductInCart(index: Int, amount: Double) {
@@ -121,11 +169,39 @@ class CartModel: NSObject {
         saveCoreData()
     }
     
+    func getCode() -> String {
+        return cart.code
+    }
+    
     func setStatus(cartStatus: CartStatus) {
         cart.cartStatus = cartStatus
         saveCoreData()
     }
     
+    func getStatus() -> CartStatus {
+        return cart.cartStatus
+    }
+    
+    //replace shopping cart by paid cart
+    func replace() {
+        if (cart.cartStatus != CartStatus.SHOPPING) {
+            CartModel.sharedInstance.removeAllProductsFromCart()
+            for index in 0...cart.getCount()-1 {
+                CartModel.sharedInstance.addEntryToCart(cart.getEntry(index))
+            }
+            CartNavigationButtonController.sharedInstance.updateBadge()
+        }
+    }
+    
+    //add entries of paid cart to shopping cart
+    func add() {
+        if (cart.cartStatus != CartStatus.SHOPPING) {
+            for index in 0...cart.getCount()-1 {
+                CartModel.sharedInstance.addEntryToCart(cart.getEntry(index))
+            }
+            CartNavigationButtonController.sharedInstance.updateBadge()
+        }
+    }
 
     // MARK: Checkout Process
     func sendCartToServer(code: String){
