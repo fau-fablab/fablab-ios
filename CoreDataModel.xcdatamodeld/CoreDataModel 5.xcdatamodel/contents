@@ -4,8 +4,15 @@
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="word" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Cart" representedClassName="FAU_FabLab.Cart" syncable="YES">
+        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="entries" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="CartEntry" inverseName="cart" inverseEntity="CartEntry" syncable="YES"/>
+    </entity>
     <entity name="CartEntry" representedClassName="FAU_FabLab.CartEntry" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="cart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cart" inverseName="entries" inverseEntity="Cart" syncable="YES"/>
         <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CartProduct" inverseName="cartentry" inverseEntity="CartProduct" syncable="YES"/>
     </entity>
     <entity name="CartProduct" representedClassName="FAU_FabLab.CartProduct" syncable="YES">
@@ -27,9 +34,10 @@
     </entity>
     <elements>
         <element name="AutocompleteEntry" positionX="-63" positionY="45" width="128" height="75"/>
-        <element name="CartEntry" positionX="-63" positionY="-18" width="128" height="75"/>
-        <element name="CartProduct" positionX="-54" positionY="-9" width="128" height="150"/>
-        <element name="Settings" positionX="-45" positionY="54" width="128" height="75"/>
-        <element name="HistoryEntry" positionX="-63" positionY="45" width="128" height="75"/>
+        <element name="Cart" positionX="-432" positionY="-322" width="128" height="103"/>
+        <element name="CartEntry" positionX="-486" positionY="-117" width="128" height="88"/>
+        <element name="CartProduct" positionX="-207" positionY="-198" width="128" height="148"/>
+        <element name="HistoryEntry" positionX="126" positionY="-90" width="128" height="75"/>
+        <element name="Settings" positionX="-360" positionY="69" width="128" height="75"/>
     </elements>
 </model>

@@ -28,7 +28,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @IBAction func buttonChangeAmountPressed(sender: AnyObject) {
-        let cartEntry = self.cartModel.cart.getEntry(selectedIndexPath!.row)
+        let cartEntry = self.cartModel.getProductInCart(selectedIndexPath!.row)
         showChangeAmountPicker(cartEntry, initialValue: cartEntry.amount)
     }
     
@@ -74,7 +74,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
     private func showTotalPrice(){
-        labelTotalPrice.text = String(format: "%.2f€", cartModel.cart.getPrice());
+        labelTotalPrice.text = String(format: "%.2f€", cartModel.getTotalPrice());
     }
     
     override func viewDidLoad() {
@@ -106,13 +106,13 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cartModel.cart.getCount()
+        return cartModel.getNumberOfProductsInCart()
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cartEntryCellIdentifier) as? ProductCustomCell
-        let cartEntry = cartModel.cart.getEntry(indexPath.row)
+        let cartEntry = cartModel.getProductInCart(indexPath.row)
         var amountValue = (cartEntry.product.rounding % 1 == 0) ? "\(Int(cartEntry.amount))" : "\(cartEntry.amount)"
         cell!.configure(cartEntry.product.name, unit: "\(amountValue) \(cartEntry.product.unit)", price: cartEntry.product.price * cartEntry.amount)
         cell!.selectionStyle = UITableViewCellSelectionStyle.None
@@ -170,7 +170,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
             tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Automatic)
         }
         tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
-        selectedProduct = cartModel.cart.getEntry(indexPath.row).product
+        selectedProduct = cartModel.getProductInCart(indexPath.row).product
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

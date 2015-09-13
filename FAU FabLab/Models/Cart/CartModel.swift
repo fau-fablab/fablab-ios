@@ -1,40 +1,135 @@
 import Foundation
+import CoreData
 
-
-class CartModel : NSObject{
+class CartModel: NSObject {
     
     // MARK: Fields
     private let cartResource = "/carts"
     private let checkoutResource = "/checkout"
     private var isLoading = false;
-    private(set) var cart = Cart()
+    private(set) var cartHistory = CartHistoryModel()
     static let sharedInstance = CartModel()
+    private var cart: Cart
+    
+    private let coreData = CoreDataHelper(sqliteDocumentName: "CoreDataModel.db", schemaName: "")
+    private let managedObjectContext: NSManagedObjectContext
+    
+    //for current cart
+    override init() {
+        cart = cartHistory.getCart(cartHistory.getCount()-1)
+        managedObjectContext = cart.managedObjectContext!
+        super.init()
+    }
+    
+    //for prior carts
+    init(index: Int) {
+        cart = cartHistory.getCart(index)
+        managedObjectContext = cart.managedObjectContext!
+        super.init()
+    }
+    
+    private func saveCoreData() {
+        var error: NSError?
+        if !managedObjectContext.save(&error) {
+            Debug.instance.log("Error saving: \(error!)")
+        }
+    }
     
     // MARK: Cart
-    func addProductToCart(product:Product, amount:Double){
-        cart.addEntry(product, amount: amount)
+    func addProductToCart(product: Product, amount: Double) {
+        
+        if (cart.cartStatus != CartStatus.SHOPPING) {
+            return
+        }
+        
+        if let entry = cart.findEntry(product.productId!) {
+            entry.amount += amount
+            saveCoreData()
+            return
+        }
+        
+        let cartProduct = NSEntityDescription.insertNewObjectForEntityForName(CartProduct.EntityName,
+            inManagedObjectContext: self.managedObjectContext) as! CartProduct
+        
+        let cartEntry = NSEntityDescription.insertNewObjectForEntityForName(CartEntry.EntityName,
+            inManagedObjectContext: self.managedObjectContext) as! CartEntry
+        
+        cartProduct.name = product.name!
+        cartProduct.price = product.price!
+        cartProduct.id = product.productId!
+        cartProduct.unit = product.unit!
+        cartProduct.locationStringForMap = product.locationStringForMap!
+        cartProduct.rounding = product.uom!.rounding!
+        
+        cartEntry.product = cartProduct
+        cartEntry.amount = amount
+        
+        cart.addEntry(cartEntry)
+        saveCoreData()
+        
+        CartNavigationButtonController.sharedInstance.updateBadge()
+
     }
     
     func removeProductFromCart(index: Int){
+        
+        if (cart.cartStatus != CartStatus.SHOPPING) {
+            return
+        }
+        
         cart.removeEntry(index)
+        saveCoreData()
+        
+        CartNavigationButtonController.sharedInstance.updateBadge()
+
     }
     
-    func removeAllProductsFromCart() {
-        cart.removeAllEntries()
-    }
-    
-    func updateProductInCart(index : Int, amount: Double) {
-        cart.updateEntry(index, amount: amount)
+    func updateProductInCart(index: Int, amount: Double) {
+        
+        if (cart.cartStatus != CartStatus.SHOPPING) {
+            return
+        }
+        
+        let entry = cart.getEntry(index)
+        entry.amount = amount
+        saveCoreData()
+        
     }
     
     func getNumberOfProductsInCart() -> Int {
         return cart.getCount()
     }
+    
+    func getProductInCart(index: Int) -> CartEntry {
+        return cart.getEntry(index)
+    }
+    
+    func getTotalPrice() -> Double {
+        var totalPrice: Double = 0.0
+        if cart.getCount() > 0 {
+            for index in 0...cart.getCount()-1 {
+                totalPrice += cart.getEntry(index).product.price * cart.getEntry(index).amount
+            }
+        }
+        return totalPrice
+    }
+    
+    func setCode(cartCode: String) {
+        cart.code = cartCode
+        saveCoreData()
+    }
+    
+    func setStatus(cartStatus: CartStatus) {
+        cart.cartStatus = cartStatus
+        cart.date = NSDate()
+        saveCoreData()
+    }
+    
 
     // MARK: Checkout Process
     func sendCartToServer(code: String){
-        cart.setCode(code)
-        self.cart.setStatus(CartStatus.PENDING)
+        self.setCode(code)
+        self.setStatus(CartStatus.PENDING)
         let cartAsDict = cart.serialize()
         if(!isLoading){
             isLoading = true
@@ -44,7 +139,7 @@ class CartModel : NSObject{
                     self.notifyControllerAboutStatusChange()
                     var timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("checkCheckoutStatus:"), userInfo: nil, repeats: true)
                 }else{
-                    self.cart.setStatus(CartStatus.SHOPPING)
+                    self.setStatus(CartStatus.SHOPPING)
                     self.notifyControllerAboutStatusChange()
                 }
             })
@@ -53,7 +148,7 @@ class CartModel : NSObject{
     }
     
     func cancelCheckoutProcessByUser(){
-        let code = cart.cartCode as String!
+        let code = cart.code
         if(!isLoading){
             isLoading = true
             RestManager.sharedInstance.makeTextRequest(.POST, encoding: .JSON, resource: checkoutResource + "/cancelled/\(code)" , params: nil, onCompletion:  {
@@ -64,7 +159,7 @@ class CartModel : NSObject{
     }
     
     func checkCheckoutStatus(timer: NSTimer!){
-        let code = cart.cartCode as String!
+        let code = cart.code
         RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .JSON, resource: cartResource + "/status/\(code)", params: nil, onCompletion: {
             json, err in
             
@@ -75,7 +170,7 @@ class CartModel : NSObject{
                 }
                 
                 timer.invalidate()
-                self.cart.setStatus(newStatus)
+                self.setStatus(newStatus)
 
                 switch(newStatus){
                     case CartStatus.PAID:
@@ -92,17 +187,17 @@ class CartModel : NSObject{
     
     func checkoutSuccessfulyPaid(){
         self.notifyControllerAboutStatusChange()
-        self.removeAllProductsFromCart()
+        cartHistory.addCart()
+        cart = cartHistory.getCart(cartHistory.getCount()-1)
         CartNavigationButtonController.sharedInstance.updateBadge()
-        cart = Cart()
     }
     
     func checkoutCancelledOrFailed(){
         self.notifyControllerAboutStatusChange()
-        cart.setStatus(CartStatus.SHOPPING)
+        self.setStatus(CartStatus.SHOPPING)
     }
     
     private func notifyControllerAboutStatusChange(){
-        NSNotificationCenter.defaultCenter().postNotificationName("CheckoutStatusChangedNotification", object: self.cart.status.rawValue)
+        NSNotificationCenter.defaultCenter().postNotificationName("CheckoutStatusChangedNotification", object: cart.cartStatus.rawValue)
     }
 }
