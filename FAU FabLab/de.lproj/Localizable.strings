@@ -152,6 +152,12 @@
 "Warenkorb ersetzen" = "Warenkorb ersetzen";
 "Zum Warenkorb hinzufügen" = "Zum Warenkorb hinzufügen";
 "Gespeicherte Projekte" = "Gespeicherte Projekte";
+"Leeres Projekt-Snippet erstellen" = "Leeres Projekt-Snippet erstellen";
+"Projekt aus Warenkorb erstellen" = "Projekt aus Warenkorb erstellen";
+"Projekte/Warenkörbe" = "Projekte/Warenkörbe";
+"Warenkorb auswählen..." = "Warenkorb auswählen...";
+"Einkaufliste" = "Einkaufliste";
+"Anleitung" = "Anleitung";
 
 //MARK: CartCustomCell
 "Einträge" = " Einträge";

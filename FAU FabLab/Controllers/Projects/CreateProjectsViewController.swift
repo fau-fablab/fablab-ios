@@ -11,13 +11,18 @@ class CreateProjectsViewController: UIViewController {
     
     var textView : MarkdownTextView?
     var projectId : Int?
+    var markdownText : String?
     
     let projectsModel = ProjectsModel.sharedInstance
     
     func configure(#projectId: Int) {
-        print("PROJECT-ID: ")
-        println(projectId)
         self.projectId = projectId
+        self.markdownText = "_Enter Markdown-Text_"
+    }
+    
+    func configure(#projectId: Int, cart: Cart) {
+        configure(projectId: projectId)
+        self.markdownText = getCartAsMDString(cart)
     }
     
     override func viewDidLoad() {
@@ -48,7 +53,7 @@ class CreateProjectsViewController: UIViewController {
             descText.text = selectedProject.descr
             textView!.text = selectedProject.content
         } else {
-            textView!.text = "_Enter Markdown-Text_"
+            textView!.text = self.markdownText
         }
         
         viewInScrollView.addSubview(textView!)
@@ -172,6 +177,20 @@ class CreateProjectsViewController: UIViewController {
                 self.presentViewController(alertController, animated: true, completion: nil)
             }
         })
+    }
+    
+    func getCartAsMDString(cart: Cart) -> String {
+        var text : String = ""
+        text += "#" + "Einkaufliste".localized + "\n"
+        for entry in cart.getEntries() {
+            text += "* "
+            text += String(format: "%." + String(entry.product.rounding.digitsAfterComma) + "f", entry.amount)
+            text += " " + entry.product.unit + " " + entry.product.name
+            text += "\n"
+        }
+        text += "\n"
+        text += "#" + "Anleitung".localized + "\n"
+        return text
     }
     
 }

@@ -1182,7 +1182,6 @@
                                 <connections>
                                     <outlet property="descriptionLabel" destination="mIL-4u-1KM" id="hat-se-zvo"/>
                                     <outlet property="filenameLabel" destination="AV9-a3-uym" id="UuE-nc-Adv"/>
-                                    <segue destination="dRT-fH-oOH" kind="show" identifier="EditProjectsSegue" id="AKh-6R-MlY"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1194,7 +1193,7 @@
                     <navigationItem key="navigationItem" title="Projekte" id="jeu-E6-jGC">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="UcT-To-Fuc">
                             <connections>
-                                <segue destination="dRT-fH-oOH" kind="show" identifier="CreateProjectsSegue" id="uwP-Cm-U04"/>
+                                <action selector="showActionSheet:" destination="xZ6-4U-scO" id="nEp-GM-uqu"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1206,7 +1205,7 @@
         <!--Projekt hinzufügen-->
         <scene sceneID="uLf-4C-1dU">
             <objects>
-                <viewController title="Projekt hinzufügen" id="dRT-fH-oOH" customClass="CreateProjectsViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateProjectViewController" title="Projekt hinzufügen" id="dRT-fH-oOH" customClass="CreateProjectsViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="666-RF-nBn"/>
                         <viewControllerLayoutGuide type="bottom" id="mtc-mM-UVg"/>
@@ -2216,7 +2215,6 @@
         <image name="news_nopicture.png" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AKh-6R-MlY"/>
         <segue reference="nSb-DT-ktW"/>
         <segue reference="XLI-0u-qjW"/>
     </inferredMetricsTieBreakers>

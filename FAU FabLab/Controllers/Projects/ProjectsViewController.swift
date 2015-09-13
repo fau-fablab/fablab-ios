@@ -9,25 +9,16 @@ class ProjectsViewController: UITableViewController {
     let cartCustomCellIdentifier = "CartCustomCell"
     let projectCustomCellIdentifier = "ProjectCustomCell"
     
+    private var createFromCart : Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Projekte/Warenkörbe".localized
     }
     
     override func viewWillAppear(animated: Bool) {
         self.tableView.reloadData()
         super.viewWillAppear(animated)
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        Debug.instance.log(segue.identifier)
-        if segue.identifier == "CreateProjectsSegue" {
-            let destination = segue.destinationViewController as? CreateProjectsViewController
-            destination!.configure(projectId: -1)
-        }
-        if segue.identifier == "EditProjectsSegue" {
-            let destination = segue.destinationViewController as? CreateProjectsViewController
-            destination!.configure(projectId: tableView.indexPathForSelectedRow()!.row)
-        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -84,12 +75,55 @@ class ProjectsViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if (indexPath.section == 0) {
-            let cartViewController = self.storyboard!.instantiateViewControllerWithIdentifier("CartViewController") as! CartViewController
-            cartViewController.setCart(indexPath.row)
-            self.navigationController?.pushViewController(cartViewController, animated: true)
+            if !createFromCart {
+                let cartViewController = self.storyboard!.instantiateViewControllerWithIdentifier("CartViewController") as! CartViewController
+                cartViewController.setCart(indexPath.row)
+                self.navigationController?.pushViewController(cartViewController, animated: true)
+            } else {
+                createFromCart = false
+                self.title = "Projekte/Warenkörbe".localized
+                self.showCreateProjectViewController(projectId: -1, cart: cartHistoryModel.getCart(indexPath.row))
+            }
+        } else if (indexPath.section == 1) {
+            self.showCreateProjectViewController(projectId: indexPath.row, cart: nil)
         }
-        //else if (indexPath.section == 1)
-        // this case is handled in prepareForSegue()
+    }
+    
+    func showCreateProjectViewController(#projectId: Int, cart: Cart?) {
+        let projViewController = self.storyboard!.instantiateViewControllerWithIdentifier("CreateProjectViewController") as! CreateProjectsViewController
+        if cart == nil {
+            projViewController.configure(projectId: projectId)
+        } else {
+            projViewController.configure(projectId: projectId, cart: cart!)
+        }
+        self.navigationController?.pushViewController(projViewController, animated: true)
+    }
+    
+    @IBAction func showActionSheet(sender: AnyObject) {
+        let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        
+        let projectAction = UIAlertAction(title: "Leeres Projekt-Snippet erstellen".localized, style: .Default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            
+            self.showCreateProjectViewController(projectId: -1, cart: nil)
+        })
+        
+        let fromCartAction = UIAlertAction(title: "Projekt aus Warenkorb erstellen".localized, style: .Default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            
+            self.createFromCart = true
+            self.title = "Warenkorb auswählen...".localized
+        })
+        
+        let cancelAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+        })
+        
+        optionMenu.addAction(projectAction)
+        optionMenu.addAction(fromCartAction)
+        optionMenu.addAction(cancelAction)
+        
+        self.presentViewController(optionMenu, animated: true, completion: nil)
     }
     
 }
