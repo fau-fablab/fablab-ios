@@ -8,12 +8,12 @@
         <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="entries" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="CartEntry" inverseName="cart" inverseEntity="CartEntry" syncable="YES"/>
+        <relationship name="entries" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="CartEntry" inverseName="cart" inverseEntity="CartEntry" syncable="YES"/>
     </entity>
     <entity name="CartEntry" representedClassName="FAU_FabLab.CartEntry" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <relationship name="cart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cart" inverseName="entries" inverseEntity="Cart" syncable="YES"/>
-        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CartProduct" inverseName="cartentry" inverseEntity="CartProduct" syncable="YES"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CartProduct" inverseName="cartentry" inverseEntity="CartProduct" syncable="YES"/>
     </entity>
     <entity name="CartProduct" representedClassName="FAU_FabLab.CartProduct" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
