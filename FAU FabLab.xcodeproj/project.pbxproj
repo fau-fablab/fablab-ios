@@ -19,6 +19,8 @@
 		4880CD321B7CC4470025C38A /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4880CD311B7CC4470025C38A /* CoreActionSheetPicker.framework */; };
 		489316451B831E3900DCB6BB /* Autocomplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489316441B831E3900DCB6BB /* Autocomplete.swift */; };
 		489E4C751B79E093004A60FA /* ProductCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E4C741B79E093004A60FA /* ProductCustomCell.swift */; };
+		48A8D9D41BA54154006958D9 /* ProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A8D9D31BA54154006958D9 /* ProjectsViewController.swift */; };
+		48A8D9D61BA547AC006958D9 /* CartCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A8D9D51BA547AC006958D9 /* CartCustomCell.swift */; };
 		48B7C0DA1B846CDA00DC9B2D /* AutocompleteEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B7C0D91B846CDA00DC9B2D /* AutocompleteEntry.swift */; };
 		48CC3FF91B8B6E0900FB9C8E /* BBBadgeBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 48CC3FF81B8B6E0900FB9C8E /* BBBadgeBarButtonItem.m */; };
 		48CC3FFB1B8B6E2500FB9C8E /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC3FFA1B8B6E2500FB9C8E /* CartViewController.swift */; };
@@ -154,6 +156,8 @@
 		4880CD311B7CC4470025C38A /* CoreActionSheetPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreActionSheetPicker.framework; path = Carthage/Build/iOS/CoreActionSheetPicker.framework; sourceTree = "<group>"; };
 		489316441B831E3900DCB6BB /* Autocomplete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Autocomplete.swift; sourceTree = "<group>"; };
 		489E4C741B79E093004A60FA /* ProductCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCustomCell.swift; sourceTree = "<group>"; };
+		48A8D9D31BA54154006958D9 /* ProjectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsViewController.swift; sourceTree = "<group>"; };
+		48A8D9D51BA547AC006958D9 /* CartCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartCustomCell.swift; sourceTree = "<group>"; };
 		48B7C0D91B846CDA00DC9B2D /* AutocompleteEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteEntry.swift; sourceTree = "<group>"; };
 		48B7C0DD1B84833400DC9B2D /* CoreDataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		48C993CE1B9B0696000F0F55 /* CoreDataModel 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataModel 6.xcdatamodel"; sourceTree = "<group>"; };
@@ -417,6 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				508DB3441BA0DF1300C8F5E7 /* CreateProjectsViewController.swift */,
+				48A8D9D31BA54154006958D9 /* ProjectsViewController.swift */,
 			);
 			path = Projects;
 			sourceTree = "<group>";
@@ -693,6 +698,7 @@
 				48E9A1201B9C1DF00024C4B9 /* ButtonCustomCell.swift */,
 				84C4186E1B9CCF7B00C2656D /* InventoryProductSearchCell.swift */,
 				84C418701B9CF1A100C2656D /* InventoryListCell.swift */,
+				48A8D9D51BA547AC006958D9 /* CartCustomCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -907,6 +913,7 @@
 				923E1F2C1B7AA360009CC545 /* CartEntry.swift in Sources */,
 				923FFD9C1B8E49CE001ACAB1 /* PushToken.swift in Sources */,
 				84CDCD3A1B90950C0084D8F3 /* Settings.swift in Sources */,
+				48A8D9D61BA547AC006958D9 /* CartCustomCell.swift in Sources */,
 				84CDCD381B9094360084D8F3 /* SettingsEntry.swift in Sources */,
 				8411FB7C1B9E69C6005F32F0 /* ProductsearchTabViewController.swift in Sources */,
 				4804CA5C1B7E4FB200F75BF5 /* ActionSheetPickerDelegate.swift in Sources */,
@@ -951,6 +958,7 @@
 				927901DC1B6D3F5700F95B09 /* ProductsearchCodeScannerViewController.swift in Sources */,
 				92500ED41B72CD7C0093CC45 /* CartModel.swift in Sources */,
 				927901DE1B6D3F5C00F95B09 /* EventsViewController.swift in Sources */,
+				48A8D9D41BA54154006958D9 /* ProjectsViewController.swift in Sources */,
 				927901E21B6D3F6300F95B09 /* NewsViewController.swift in Sources */,
 				84CDCD2B1B9083C90084D8F3 /* SettingsViewController.swift in Sources */,
 				92DB85A81B8B72FC0070FAD8 /* MalfunctionInfoModel.swift in Sources */,
