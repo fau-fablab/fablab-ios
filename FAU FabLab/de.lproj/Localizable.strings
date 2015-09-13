@@ -145,3 +145,10 @@
 "Projekt-Snipped wurde erfolgreich hochgeladen" = "Projekt-Snipped wurde erfolgreich hochgeladen";
 "Gist anzeigen" = "Gist anzeigen";
 "Link" = "Link";
+
+//MARK: ProjectsViewController
+"Warenkörbe" = "Warenkörbe";
+
+//MARK: CartCustomCell
+"Einträge" = " Einträge";
+"Eintrag" = " Eintrag";
