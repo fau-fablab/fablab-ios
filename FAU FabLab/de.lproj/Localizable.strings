@@ -142,7 +142,8 @@
 "Hochladen" = "Hochladen";
 "Wollen Sie das Projekt-Snippet hochladen?" = "Wollen Sie das Projekt-Snippet hochladen?";
 "Projekt-Snippet konnte nicht hochgeladen werden" = "Projekt-Snippet konnte nicht hochgeladen werden";
-"Projekt-Snipped wurde erfolgreich hochgeladen" = "Projekt-Snipped wurde erfolgreich hochgeladen";
+"Projekt-Snippet wurde erfolgreich hochgeladen" = "Projekt-Snippet wurde erfolgreich hochgeladen";
+"Projekt-Snippet speichern" = "Projekt-Snippet speichern";
 "Gist anzeigen" = "Gist anzeigen";
 "Link" = "Link";
 
@@ -150,6 +151,7 @@
 "Warenkörbe" = "Warenkörbe";
 "Warenkorb ersetzen" = "Warenkorb ersetzen";
 "Zum Warenkorb hinzufügen" = "Zum Warenkorb hinzufügen";
+"Gespeicherte Projekte" = "Gespeicherte Projekte";
 
 //MARK: CartCustomCell
 "Einträge" = " Einträge";

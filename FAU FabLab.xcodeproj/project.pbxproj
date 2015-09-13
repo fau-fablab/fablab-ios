@@ -29,6 +29,7 @@
 		48E9A1211B9C1DF00024C4B9 /* ButtonCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E9A1201B9C1DF00024C4B9 /* ButtonCustomCell.swift */; };
 		5024EE461BA5A3080025AF91 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE451BA5A3080025AF91 /* Project.swift */; };
 		5024EE481BA5A3AB0025AF91 /* ProjectsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE471BA5A3AB0025AF91 /* ProjectsModel.swift */; };
+		5024EE4B1BA5B3CD0025AF91 /* ProjectCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE4A1BA5B3CD0025AF91 /* ProjectCustomCell.swift */; };
 		502DB1521B7150370036EF6B /* EventsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502DB1511B7150370036EF6B /* EventsDetailViewController.swift */; };
 		5032249C1B99B55700C0583D /* MailComposeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5032249B1B99B55700C0583D /* MailComposeHelper.swift */; };
 		505D61501B9B711700C1EE22 /* ChangeAmountPickerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D614F1B9B711700C1EE22 /* ChangeAmountPickerHelper.swift */; };
@@ -173,6 +174,8 @@
 		5003604F1B97911C0037114C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5024EE451BA5A3080025AF91 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		5024EE471BA5A3AB0025AF91 /* ProjectsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsModel.swift; sourceTree = "<group>"; };
+		5024EE491BA5A9650025AF91 /* CoreDataModel 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataModel 6.xcdatamodel"; sourceTree = "<group>"; };
+		5024EE4A1BA5B3CD0025AF91 /* ProjectCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCustomCell.swift; sourceTree = "<group>"; };
 		502DB1511B7150370036EF6B /* EventsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsDetailViewController.swift; sourceTree = "<group>"; };
 		5032249B1B99B55700C0583D /* MailComposeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailComposeHelper.swift; sourceTree = "<group>"; };
 		505D614F1B9B711700C1EE22 /* ChangeAmountPickerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeAmountPickerHelper.swift; sourceTree = "<group>"; };
@@ -719,6 +722,7 @@
 				84C4186E1B9CCF7B00C2656D /* InventoryProductSearchCell.swift */,
 				84C418701B9CF1A100C2656D /* InventoryListCell.swift */,
 				48A8D9D51BA547AC006958D9 /* CartCustomCell.swift */,
+				5024EE4A1BA5B3CD0025AF91 /* ProjectCustomCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -931,6 +935,7 @@
 				485765B01BA2C2250064B42B /* CartHistoryModel.swift in Sources */,
 				923FFD9E1B8E4BE3001ACAB1 /* Roles.swift in Sources */,
 				923E1F2C1B7AA360009CC545 /* CartEntry.swift in Sources */,
+				5024EE4B1BA5B3CD0025AF91 /* ProjectCustomCell.swift in Sources */,
 				923FFD9C1B8E49CE001ACAB1 /* PushToken.swift in Sources */,
 				84CDCD3A1B90950C0084D8F3 /* Settings.swift in Sources */,
 				48A8D9D61BA547AC006958D9 /* CartCustomCell.swift in Sources */,
@@ -1337,13 +1342,14 @@
 		923E1F2D1B7AA3F7009CC545 /* CoreDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				5024EE491BA5A9650025AF91 /* CoreDataModel 6.xcdatamodel */,
 				4866231A1B9B09FE009E3230 /* CoreDataModel 5.xcdatamodel */,
 				928841B51B93B3DC00E1BC5B /* CoreDataModel 4.xcdatamodel */,
 				846BD1991B9392A000BDEEFA /* CoreDataModel 3.xcdatamodel */,
 				48B7C0DD1B84833400DC9B2D /* CoreDataModel 2.xcdatamodel */,
 				923E1F2E1B7AA3F7009CC545 /* CoreDataModel.xcdatamodel */,
 			);
-			currentVersion = 4866231A1B9B09FE009E3230 /* CoreDataModel 5.xcdatamodel */;
+			currentVersion = 5024EE491BA5A9650025AF91 /* CoreDataModel 6.xcdatamodel */;
 			path = CoreDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

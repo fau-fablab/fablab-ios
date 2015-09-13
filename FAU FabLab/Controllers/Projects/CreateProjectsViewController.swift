@@ -10,48 +10,14 @@ class CreateProjectsViewController: UIViewController {
     @IBOutlet var viewInScrollView: UIView!
     
     var textView : MarkdownTextView?
+    var projectId : Int?
     
-    @IBAction func saveProjectButtonTouched(sender: AnyObject) {
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in })
-        
-        let doneAction: UIAlertAction = UIAlertAction(title: "Hochladen".localized, style: .Default, handler: { (Void) -> Void in self.uploadProjectActionHandler()})
-        
-        let alertController: UIAlertController = UIAlertController(title: "Upload zu GitHub".localized, message: "Wollen Sie das Projekt-Snippet hochladen?".localized, preferredStyle: .Alert)
-        alertController.addAction(cancelAction)
-        alertController.addAction(doneAction)
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
-    }
+    let projectsModel = ProjectsModel.sharedInstance
     
-    func uploadProjectActionHandler() {
-        let api = ProjectsApi()
-        
-        let project = ProjectFile()
-        project.setFilename(self.titleText.text + ".md")
-        project.setDescription(self.descText.text)
-        project.setContent(self.textView!.text)
-        
-        api.create(project, onCompletion: {
-            url, err in
-            
-            if (err != nil) {
-                AlertView.showErrorView("Projekt-Snippet konnte nicht hochgeladen werden".localized)
-            } else {
-                let doneAction: UIAlertAction = UIAlertAction(title: "OK".localized, style: .Default, handler: { (Void) -> Void in })
-                
-                let browserAction: UIAlertAction = UIAlertAction(title: "Gist anzeigen".localized, style: .Default, handler: { (Void) -> Void in
-                        if let nsurl = NSURL(string: url!) {
-                            UIApplication.sharedApplication().openURL(nsurl)
-                        }
-                    })
-                
-                let alertController: UIAlertController = UIAlertController(title: "Projekt-Snipped wurde erfolgreich hochgeladen".localized, message: "Link".localized + ": " + url!, preferredStyle: .Alert)
-                alertController.addAction(doneAction)
-                alertController.addAction(browserAction)
-                
-                self.presentViewController(alertController, animated: true, completion: nil)
-            }
-        })
+    func configure(#projectId: Int) {
+        print("PROJECT-ID: ")
+        println(projectId)
+        self.projectId = projectId
     }
     
     override func viewDidLoad() {
@@ -75,9 +41,16 @@ class CreateProjectsViewController: UIViewController {
         // hide autocorrection
         textView!.autocorrectionType = UITextAutocorrectionType.No
         textView!.setTranslatesAutoresizingMaskIntoConstraints(false)
-        textView!.text = "_Enter Markdown-Text_"
         
-        //view.addSubview(textView!)
+        if self.projectId >= 0 {
+            let selectedProject = projectsModel.getProject(self.projectId!)
+            titleText.text = selectedProject.filename
+            descText.text = selectedProject.descr
+            textView!.text = selectedProject.content
+        } else {
+            textView!.text = "_Enter Markdown-Text_"
+        }
+        
         viewInScrollView.addSubview(textView!)
         
         let views = ["textView": textView!]
@@ -123,6 +96,82 @@ class CreateProjectsViewController: UIViewController {
         } else {
             self.textView!.insertText(sender.title!)
         }
+    }
+    
+    @IBAction func showActionSheet(sender: AnyObject) {
+        let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        
+        let saveAction = UIAlertAction(title: "Projekt-Snippet speichern".localized, style: .Default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            self.saveProjectToCoreData()
+        })
+        
+        let uploadAction = UIAlertAction(title: "Upload zu GitHub".localized, style: .Default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            self.saveProjectToCoreData()
+            self.confirmUploadToGitHub()
+        })
+        
+        let cancelAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+        })
+        
+        optionMenu.addAction(saveAction)
+        optionMenu.addAction(uploadAction)
+        optionMenu.addAction(cancelAction)
+        
+        self.presentViewController(optionMenu, animated: true, completion: nil)
+    }
+    
+    func saveProjectToCoreData() {
+        if self.projectId >= 0 {
+            self.projectsModel.updateProject(id: self.projectId!, description: self.descText.text, filename: self.titleText.text, content: self.textView!.text)
+        } else {
+            self.projectsModel.addProject(description: self.descText.text, filename: self.titleText.text, content: self.textView!.text)
+        }
+    }
+    
+    func confirmUploadToGitHub() {
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in })
+        
+        let doneAction: UIAlertAction = UIAlertAction(title: "Hochladen".localized, style: .Default, handler: { (Void) -> Void in self.uploadProjectActionHandler()})
+        
+        let alertController: UIAlertController = UIAlertController(title: "Upload zu GitHub".localized, message: "Wollen Sie das Projekt-Snippet hochladen?".localized, preferredStyle: .Alert)
+        alertController.addAction(cancelAction)
+        alertController.addAction(doneAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func uploadProjectActionHandler() {
+        let api = ProjectsApi()
+        
+        let project = ProjectFile()
+        project.setFilename(self.titleText.text + ".md")
+        project.setDescription(self.descText.text)
+        project.setContent(self.textView!.text)
+        
+        api.create(project, onCompletion: {
+            url, err in
+            
+            if (err != nil) {
+                AlertView.showErrorView("Projekt-Snippet konnte nicht hochgeladen werden".localized)
+            } else {
+                let doneAction: UIAlertAction = UIAlertAction(title: "OK".localized, style: .Default, handler: { (Void) -> Void in })
+                
+                let browserAction: UIAlertAction = UIAlertAction(title: "Gist anzeigen".localized, style: .Default, handler: { (Void) -> Void in
+                    if let nsurl = NSURL(string: url!) {
+                        UIApplication.sharedApplication().openURL(nsurl)
+                    }
+                })
+                
+                let alertController: UIAlertController = UIAlertController(title: "Projekt-Snippet wurde erfolgreich hochgeladen".localized, message: "Link".localized + ": " + url!, preferredStyle: .Alert)
+                alertController.addAction(doneAction)
+                alertController.addAction(browserAction)
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
+            }
+        })
     }
     
 }

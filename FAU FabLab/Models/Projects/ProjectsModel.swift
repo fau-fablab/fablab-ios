@@ -3,7 +3,7 @@ import Foundation
 import CoreData
 
 class ProjectsModel: NSObject {
-    
+
     static let sharedInstance = ProjectsModel()
     
     private let coreData = CoreDataHelper(sqliteDocumentName: "CoreDataModel.db", schemaName: "")
@@ -12,7 +12,7 @@ class ProjectsModel: NSObject {
     private var projects: [Project] {
         get {
             let request = NSFetchRequest(entityName: Project.EntityName)
-            let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+            let sortDescriptor = NSSortDescriptor(key: "filename", ascending: true)
             request.sortDescriptors = [sortDescriptor]
             return managedObjectContext.executeFetchRequest(request, error: nil) as! [Project]
         }
@@ -34,23 +34,31 @@ class ProjectsModel: NSObject {
         return projects.count
     }
     
-    func getProject(index: Int) -> Project {
-        return projects[index]
+    func getProject(id: Int) -> Project {
+        return projects[id]
     }
     
     func addProject(#description: String, filename: String, content: String) {
         let project = NSEntityDescription.insertNewObjectForEntityForName(Project.EntityName,
             inManagedObjectContext: self.managedObjectContext) as! Project
-        project.description = ""
-        project.filename = ""
-        project.content = ""
+        project.descr = description
+        project.filename = filename
+        project.content = content
         saveCoreData()
         Debug.instance.log(projects)
     }
     
-    func removeProject(index: Int) {
-        managedObjectContext.deleteObject(projects[index])
+    func updateProject(#id: Int, description: String, filename: String, content: String) {
+        let project = getProject(id)
+        project.descr = description
+        project.filename = filename
+        project.content = content
+        
         saveCoreData()
     }
     
+    func removeProject(id: Int) {
+        managedObjectContext.deleteObject(projects[id])
+        saveCoreData()
+    }
 }

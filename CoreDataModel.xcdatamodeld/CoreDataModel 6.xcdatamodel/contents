@@ -28,6 +28,11 @@
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="word" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Projects" representedClassName="FAU_FabLab.Project" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="descr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="filename" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Settings" representedClassName="FAU_FabLab.SettingsEntry" syncable="YES">
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -39,5 +44,6 @@
         <element name="CartProduct" positionX="-207" positionY="-198" width="128" height="148"/>
         <element name="HistoryEntry" positionX="126" positionY="-90" width="128" height="75"/>
         <element name="Settings" positionX="-360" positionY="69" width="128" height="75"/>
+        <element name="Projects" positionX="-279" positionY="-171" width="128" height="90"/>
     </elements>
 </model>

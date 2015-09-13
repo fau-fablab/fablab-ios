@@ -142,7 +142,8 @@
 "Hochladen" = "Upload";
 "Wollen Sie das Projekt-Snippet hochladen?" = "Do you really want to upload the project-snippet?";
 "Projekt-Snippet konnte nicht hochgeladen werden" = "Project-snippet was not uploaded";
-"Projekt-Snipped wurde erfolgreich hochgeladen" = "Projekt-snipped was successfully uploaded";
+"Projekt-Snippet wurde erfolgreich hochgeladen" = "Projekt-snippet was successfully uploaded";
+"Projekt-Snippet speichern" = "Save project-snippet";
 "Gist anzeigen" = "Show Gist";
 "Link" = "Link";
 
@@ -150,6 +151,7 @@
 "Warenkörbe" = "Carts";
 "Warenkorb ersetzen" = "Replace cart";
 "Zum Warenkorb hinzufügen" = "Add to cart";
+"Gespeicherte Projekte" = "Saved projects";
 
 //MARK: CartCustomCell
 "Einträge" = " Entries";
