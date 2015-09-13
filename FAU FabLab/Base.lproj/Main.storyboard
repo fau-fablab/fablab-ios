@@ -2182,7 +2182,7 @@
         <scene sceneID="ZM1-ZF-Rrs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UOr-RF-pbN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Gespeicherte Projekte/Warenkörbe" id="5ex-i5-0uE"/>
+                    <tabBarItem key="tabBarItem" title="Gespeicherte Projekte/Warenkörbe" image="icon_project" id="5ex-i5-0uE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="N8L-9A-5MV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2209,6 +2209,7 @@
         <image name="icon_events" width="25" height="25"/>
         <image name="icon_inventory" width="25" height="25"/>
         <image name="icon_news" width="25" height="25"/>
+        <image name="icon_project" width="25" height="25"/>
         <image name="icon_search" width="25" height="25"/>
         <image name="icon_settings" width="25" height="25"/>
         <image name="icon_warning" width="25" height="25"/>
