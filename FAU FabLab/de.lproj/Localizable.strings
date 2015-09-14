@@ -57,6 +57,7 @@
 "Wert wurde aufgerundet auf" = "Wert wurde aufgerundet auf";
 "Wert wurde nicht verändert" = "Wert wurde nicht verändert";
 "Anzahl wurde geändert" = "Anzahl wurde geändert";
+"Keine Produkte im Warenkorb" = "Keine Produkte im Warenkorb";
 
 //MARK: ActionSheetPickerDelegate
 "Platten" = "Platten";
@@ -167,3 +168,8 @@
 
 //CheckoutScanner
 "Kein gültiger Code!" = "No valid code!";
+"Doch nicht" = "Doch nicht";
+"Gerne" = "Gerne";
+"Bezahlprozess einleiten?" = "Bezahlprozess einleiten?";
+"Kein gültiger Code!" = "Kein gültiger Code!";
+

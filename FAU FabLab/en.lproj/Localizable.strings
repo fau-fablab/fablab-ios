@@ -57,6 +57,7 @@
 "Wert wurde aufgerundet auf" = "Amount got rounded up to";
 "Wert wurde nicht verändert" = "Amount was not changed";
 "Anzahl wurde geändert" = "Amount was changed";
+"Keine Produkte im Warenkorb" = "There are no products in the cart!";
 
 //MARK: ActionSheetPickerDelegate
 "Platten" = "Sheets";
@@ -166,4 +167,8 @@
 "Eintrag" = " Entry";
 
 //CheckoutScanner
+"Kein gültiger Code!" = "No valid code!";
+"Doch nicht" = "Rather not";
+"Gerne" = "I'd love to!";
+"Bezahlprozess einleiten?" = "Start checkout process?";
 "Kein gültiger Code!" = "No valid code!";
