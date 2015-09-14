@@ -80,7 +80,7 @@ class ProjectsViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if (indexPath.section == 0) {
             if !createFromCart {
-                let cartViewController = self.storyboard!.instantiateViewControllerWithIdentifier("CartViewController") as! CartViewController
+                let cartViewController = self.storyboard!.instantiateViewControllerWithIdentifier("CartView") as! CartViewController
                 cartViewController.setCart(indexPath.row)
                 self.navigationController?.pushViewController(cartViewController, animated: true)
             } else {
