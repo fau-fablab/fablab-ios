@@ -166,9 +166,34 @@
 "Einträge" = " Entries";
 "Eintrag" = " Entry";
 
-//CheckoutScanner
+//MARK: CheckoutScanner
 "Kein gültiger Code!" = "No valid code!";
 "Doch nicht" = "Rather not";
 "Gerne" = "I'd love to!";
 "Bezahlprozess einleiten?" = "Start checkout process?";
 "Kein gültiger Code!" = "No valid code!";
+
+//MARK: Inventur
+"Angemeldet als:" = "Logged-in as:";
+"Fehler:" = "Error:";
+"Produkt Hinzugefügt" = "Add this product";
+"Das Produkt wurde zur Liste hinzugefügt" = "Product was added to the list";
+"Ungültiger Wert" = "Not an valid value";
+"Bitte gültigen Betrag eingeben (Integer/Double)" = "Please insert a valid value (Integer/Double)";
+"Betrag Eingeben" = "Enter an amount";
+"Produkt wählen" = "Choose product";
+"Bitte erst ein Produkt auswählen." = "Please select a prodcut first";
+"Abmelden" = "Logout";
+"Möchtest du dich abmelden?" = "Do you really want to logout?";
+"Ja" = "Yes";
+"Doch nicht" = "No";
+"Kein Produkt gefunden!"  ="No product found!";
+"Danke" = "Thanks";
+"Dies ist kein gültiger QR Code zum Login" = "This code is not valid for login";
+"Nochmal" = "Again";
+"Löschen?" = "Delete?";
+"Möchtest du die gesamte Liste löschen?" = "Do you really want to delete this list?";
+"Doch nicht" = "Rather not";
+"Inventur" = "Inventory";
+"Name oder Passwort falsch" = "Name oder Password wrong";
+"Bitte erst einen Betrag eingeben" = "Please enter an amount first;

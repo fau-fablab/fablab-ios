@@ -166,10 +166,38 @@
 "Einträge" = " Einträge";
 "Eintrag" = " Eintrag";
 
-//CheckoutScanner
+//MARK: CheckoutScanner
 "Kein gültiger Code!" = "No valid code!";
 "Doch nicht" = "Doch nicht";
 "Gerne" = "Gerne";
 "Bezahlprozess einleiten?" = "Bezahlprozess einleiten?";
 "Kein gültiger Code!" = "Kein gültiger Code!";
+
+//MARK: Inventur
+"Angemeldet als:" = "Angemeldet als:";
+"Fehler:" = "Fehler:";
+"Produkt Hinzugefügt" = "Produkt Hinzugefügt";
+"Das Produkt wurde zur Liste hinzugefügt" = "Das Produkt wurde zur Liste hinzugefügt";
+"Ungültiger Wert" = "Ungültiger Wert";
+"Bitte gültigen Betrag eingeben (Integer/Double)" = "Bitte gültigen Betrag eingeben (Integer/Double)";
+"Betrag Eingeben" = "Betrag Eingeben";
+"Produkt wählen" = "Produkt wählen";
+"Bitte erst ein Produkt auswählen." = "Bitte erst ein Produkt auswählen.";
+"Abmelden" = "Abmelden";
+"Möchtest du dich abmelden?" = "Möchtest du dich abmelden?";
+"Ja" = "Ja";
+"Doch nicht" = "Doch nicht";
+"Kein Produkt gefunden!" = "Kein Produkt gefunden!";
+"Danke" = "Danke";
+"Dies ist kein gültiger QR Code zum Login" = "Dies ist kein gültiger QR Code zum Login";
+"Nochmal" = "Nochmal";
+"Löschen?" = "Löschen?";
+"Möchtest du die gesamte Liste löschen?" = "Möchtest du die gesamte Liste löschen?";
+"Doch nicht" = "Doch nicht";
+"Inventur" = "Inventur";
+"Name oder Passwort falsch" = "Name oder Passwort falsch";
+"Bitte erst einen Betrag eingeben" = "Bitte erst einen Betrag eingeben";
+
+
+
 

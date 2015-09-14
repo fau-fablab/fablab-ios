@@ -44,7 +44,7 @@ class InventoryViewController : UIViewController {
     }
     
     func loginWasSuccessful(user: User){
-        self.loggedInLabel.text = "Angemeldet als: \(user.username!)"
+        self.loggedInLabel.text = "Angemeldet als:".localized + " \(user.username!)"
         self.user = user
         loginView.hidden = true
     }
@@ -87,16 +87,16 @@ class InventoryViewController : UIViewController {
    
     
     @IBAction func logoutButtonTouched(sender: AnyObject) {
-        var alert = UIAlertController(title: "Abmelden", message: "Möchtest du dich abmelden?", preferredStyle: UIAlertControllerStyle.Alert)
+        var alert = UIAlertController(title: "Abmelden".localized, message: "Möchtest du dich abmelden?".localized, preferredStyle: UIAlertControllerStyle.Alert)
         
-        alert.addAction(UIAlertAction(title: "Ja", style: .Default, handler: { (action: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "Ja".localized, style: .Default, handler: { (action: UIAlertAction!) in
             var inventoryLogin = InventoryLogin()
             inventoryLogin.deleteUser()
             self.loginView.hidden = false
             
         }))
         
-        alert.addAction(UIAlertAction(title: "Doch nicht", style: .Default, handler: { (action: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "Doch nicht".localized, style: .Default, handler: { (action: UIAlertAction!) in
         }))
         
         presentViewController(alert, animated: true, completion: nil)

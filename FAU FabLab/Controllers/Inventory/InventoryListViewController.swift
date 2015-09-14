@@ -39,9 +39,9 @@ class InventoryListViewController: UIViewController, UITableViewDataSource, UITa
     
     
     @IBAction func deleteListButtonTouched(sender: AnyObject) {
-        var alert = UIAlertController(title: "Löschen?", message: "Möchtest du die gesamte Liste löschen?", preferredStyle: UIAlertControllerStyle.Alert)
+        var alert = UIAlertController(title: "Löschen?".localized, message: "Möchtest du die gesamte Liste löschen?".localized, preferredStyle: UIAlertControllerStyle.Alert)
         
-        alert.addAction(UIAlertAction(title: "Ja", style: .Default, handler: { (action: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "Ja".localized, style: .Default, handler: { (action: UIAlertAction!) in
             self.spinner.startAnimating()
             
             var login = InventoryLogin()
@@ -59,7 +59,7 @@ class InventoryListViewController: UIViewController, UITableViewDataSource, UITa
             
         }))
         
-        alert.addAction(UIAlertAction(title: "Doch nicht", style: .Default, handler: { (action: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "Doch nicht".localized, style: .Default, handler: { (action: UIAlertAction!) in
         }))
         
         presentViewController(alert, animated: true, completion: nil)
