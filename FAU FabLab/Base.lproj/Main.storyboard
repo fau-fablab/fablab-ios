@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -484,7 +484,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="sbb-Jh-ew9" secondAttribute="trailing" constant="-16" id="Ukm-KM-jgt"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Barcode scannen" id="VxW-zZ-xmh"/>
+                    <navigationItem key="navigationItem" title="Barcode Scannen" id="VxW-zZ-xmh"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qC3-BQ-TU2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -790,16 +790,16 @@
                             <constraint firstAttribute="trailingMargin" secondItem="cVF-NP-8b4" secondAttribute="trailing" constant="-16" id="r8I-1X-ovs"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Barcode scannen" image="BarcodeScannerIcon" id="LvB-5i-Erh"/>
+                    <navigationItem key="navigationItem" title="Barcode Scannen" id="yUN-RU-lc6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hlf-Cv-uGC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="357" y="768"/>
+            <point key="canvasLocation" x="1068" y="1121"/>
         </scene>
         <!--Warenkorb-->
         <scene sceneID="xuf-rf-THF">
             <objects>
-                <viewController storyboardIdentifier="CartViewController" title="Warenkorb" id="ooQ-nD-6sq" customClass="CartViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CartView" title="Warenkorb" id="ooQ-nD-6sq" customClass="CartViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="f20-An-xKa"/>
                         <viewControllerLayoutGuide type="bottom" id="249-cg-0zG"/>
@@ -1299,7 +1299,7 @@
                         <segue destination="l0O-yt-wAF" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="Vq6-YY-mEa" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="wKE-G6-kbN" kind="relationship" relationship="viewControllers" id="383-tC-QT0"/>
-                        <segue destination="4Rd-fW-vJI" kind="relationship" relationship="viewControllers" id="Gl7-4z-Zij"/>
+                        <segue destination="XH8-hg-lUQ" kind="relationship" relationship="viewControllers" id="Jfx-af-tsU"/>
                         <segue destination="AgM-Bm-SWQ" kind="relationship" relationship="viewControllers" id="xuI-O4-Vb9"/>
                         <segue destination="UOr-RF-pbN" kind="relationship" relationship="viewControllers" id="DNl-hj-QNS"/>
                         <segue destination="4gd-6i-P19" kind="relationship" relationship="viewControllers" id="BTQ-EO-VLL"/>
@@ -1445,7 +1445,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pmy-xw-jDH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-494" y="768"/>
+            <point key="canvasLocation" x="-472" y="742"/>
         </scene>
         <!--Inventur-->
         <scene sceneID="iN3-E4-FrV">
@@ -1929,7 +1929,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zim-hY-J2X" id="YDP-RY-IY0">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Benachrichte mich sobald das Fablab das nächste mal öffnet" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFF-ln-nsc">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benachrichte mich sobald das Fablab das nächste mal öffnet" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFF-ln-nsc">
                                                     <rect key="frame" x="8" y="4" width="504" height="51"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -2196,6 +2196,25 @@
             </objects>
             <point key="canvasLocation" x="-1763" y="-729"/>
         </scene>
+        <!--Produkt scannen-->
+        <scene sceneID="FkE-B2-kGG">
+            <objects>
+                <navigationController title="Produkt scannen" automaticallyAdjustsScrollViewInsets="NO" id="XH8-hg-lUQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Barcode Scannen" image="BarcodeScannerIcon" id="4YW-4u-inX"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="v4T-ZZ-Nnc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4Rd-fW-vJI" kind="relationship" relationship="rootViewController" id="1t7-ZT-0El"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ekj-Vz-DnF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="384" y="800"/>
+        </scene>
     </scenes>
     <resources>
         <image name="BarcodeScannerIcon" width="25" height="25"/>
@@ -2215,7 +2234,7 @@
         <image name="news_nopicture.png" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nSb-DT-ktW"/>
         <segue reference="XLI-0u-qjW"/>
+        <segue reference="nSb-DT-ktW"/>
     </inferredMetricsTieBreakers>
 </document>
