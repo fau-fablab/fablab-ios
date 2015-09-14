@@ -45,7 +45,7 @@ class CartNavigationButtonController: NSObject {
 
     
     @objc func showCart() {
-        let cartViewController = viewController?.storyboard!.instantiateViewControllerWithIdentifier("CartViewController") as! CartViewController
+        let cartViewController = viewController?.storyboard!.instantiateViewControllerWithIdentifier("CartView") as! CartViewController
         viewController?.navigationController?.pushViewController(cartViewController, animated: true)
         
     }
