@@ -33,13 +33,40 @@ class ProductsearchCodeScannerViewController: RSCodeReaderViewController {
             self.session.stopRunning()
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                let productId = self.getProductIdFromBarcode(barcodes[0])
-                Debug.instance.log("code:  \(barcodes[0]) id: \(productId)")
-                self.displayProductSearchForCode(productId)
+                
+                if barcodes[0].type == AVMetadataObjectTypeQRCode{
+                    let checkoutCode = barcodes[0].stringValue
+                    let prefix = (checkoutCode as NSString).substringToIndex(3)
+                    if prefix == "FAU" {
+                        var alert = UIAlertController(title: "Achtung".localized, message: "Bezahlprozess einleiten?".localized,    preferredStyle: UIAlertControllerStyle.Alert)
+                        
+                        alert.addAction(UIAlertAction(title: "Gerne".localized, style: .Default, handler: {
+                            (alert) -> Void in
+                            
+                            let cartViewController = self.storyboard!.instantiateViewControllerWithIdentifier("CartView") as! CartViewController
+                            self.navigationController?.pushViewController(cartViewController, animated: true)
+                            NSNotificationCenter.defaultCenter().postNotificationName("CheckoutScannerNotification", object: checkoutCode)
+                        }))
+                        
+                        alert.addAction(UIAlertAction(title: "Doch nicht".localized, style: .Cancel, handler: { (alert) -> Void in
+                            self.session.startRunning()
+                        }))
+                        self.presentViewController(alert, animated: true, completion: nil)
+                        
+                    }else{
+                        var alert = UIAlertController(title: "Fehler".localized, message: "Kein gültiger Code!".localized, preferredStyle: UIAlertControllerStyle.Alert)
+                        alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Default, handler: nil))
+                        self.presentViewController(alert, animated: true, completion: nil)
+                        self.session.startRunning()
+                    }
+                }else{
+                    let productId = self.getProductIdFromBarcode(barcodes[0])
+                    Debug.instance.log("code:  \(barcodes[0]) id: \(productId)")
+                    self.displayProductSearchForCode(productId)
+                }
             })
         }
-        self.output.metadataObjectTypes = [AVMetadataObjectTypeEAN8Code, AVMetadataObjectTypeEAN13Code]
-        
+        self.output.metadataObjectTypes = [AVMetadataObjectTypeEAN8Code, AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeQRCode]
         
         for subview in self.view.subviews {
             self.view.bringSubviewToFront(subview as! UIView)
