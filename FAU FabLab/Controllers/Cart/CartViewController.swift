@@ -220,7 +220,14 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     /*                      Checkout process            */
     //Observer -> Scanner
     func checkoutCodeScanned(notification:NSNotification) {
-        cartModel.sendCartToServer(notification.object as! String)
+        if cartModel.getNumberOfProductsInCart() > 0 {
+            cartModel.sendCartToServer(notification.object as! String)
+        }else{
+            var alert = UIAlertController(title: "Fehler".localized, message: "Keine Produkte im Warenkorb".localized, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+
+        }
     }
     
     //Observer -> Status changed
