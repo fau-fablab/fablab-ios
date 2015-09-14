@@ -164,3 +164,6 @@
 //MARK: CartCustomCell
 "Einträge" = " Entries";
 "Eintrag" = " Entry";
+
+//CheckoutScanner
+"Kein gültiger Code!" = "No valid code!";
