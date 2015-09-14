@@ -236,3 +236,51 @@
 /* Class = "UITextField"; placeholder = "Kurzbeschreibung"; ObjectID = "CfP-qC-Hcj"; */
 "CfP-qC-Hcj.placeholder" = "Short description";
 
+/* Class = "UITextField"; placeholder = "Anzahl"; ObjectID = "KQx-00-S0f"; */
+"KQx-00-S0f.placeholder" = "Amount";
+
+/* Class = "UINavigationItem"; title = "Inventur"; ObjectID = "RWb-He-sbU"; */
+"RWb-He-sbU.title" = "Inventory";
+
+/* Class = "UITextField"; placeholder = "Benutzername"; ObjectID = "0Vj-fz-oTo"; */
+"0Vj-fz-oTo.placeholder" = "Username";
+
+/* Class = "UITextField"; placeholder = "Passwort"; ObjectID = "Bng-yQ-hiQ"; */
+"Bng-yQ-hiQ.placeholder" = "Password";
+
+/* Class = "UIButton"; normalTitle = "Login via Scan"; ObjectID = "qu2-n7-3uo"; */
+"qu2-n7-3uo.normalTitle" = "Login by QR-Code";
+
+/* Class = "UIButton"; normalTitle = "Anmelden"; ObjectID = "osG-3C-v3f"; */
+"osG-3C-v3f.normalTitle" = "Login";
+
+/* Class = "UILabel"; text = "Bitte zunächst Anmelden"; ObjectID = "6sX-XU-PNk"; */
+"6sX-XU-PNk.text" = "Please login first";
+
+/* Class = "UIButton"; normalTitle = "Abbrechen"; ObjectID = "ECA-wq-3T3"; */
+"ECA-wq-3T3.normalTitle" = "Cancel";
+
+/* Class = "UIButton"; normalTitle = "Abbrechen"; ObjectID = "nhN-X6-owP"; */
+"nhN-X6-owP.normalTitle" = "Cancel";
+
+/* Class = "UIButton"; normalTitle = "Hinzufügen"; ObjectID = "4LZ-Kq-gHd"; */
+"4LZ-Kq-gHd.normalTitle" = "Add";
+
+/* Class = "UIButton"; normalTitle = "Abmelden"; ObjectID = "UlJ-0H-b6N"; */
+"UlJ-0H-b6N.normalTitle" = "Logout";
+
+/* Class = "UIButton"; normalTitle = "Komplette Liste löschen"; ObjectID = "tKz-cZ-Kp5"; */
+"tKz-cZ-Kp5.normalTitle" = "Delete this list";
+
+/* Class = "UIViewController"; title = "Produkt suchen"; ObjectID = "sVs-i2-GNs"; */
+"sVs-i2-GNs.title" = "Search product";
+
+/* Class = "UISearchBar"; placeholder = "Alle Produkte suchen"; ObjectID = "C85-7O-rSp"; */
+"C85-7O-rSp.placeholder" = "Search all products";
+
+/* Class = "navigationItem"; title = "Barcode Scannen"; ObjectID = "HWd-yX-O7Z"; */
+"HWd-yX-O7Z.title" = "Scan product";
+
+/* Class = "navigationItem"; title = "QR-Scannen"; ObjectID = "LMg-lc-Zw2"; */
+"LMg-lc-Zw2.title" = "Scan QR code";
+
