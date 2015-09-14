@@ -36,6 +36,16 @@ class CartHistoryModel: NSObject {
         return carts.count
     }
     
+    func countNonEmptyCarts() -> Int {
+        var count : Int = 0
+        for cart in carts {
+            if cart.getCount() > 0 {
+                count++
+            }
+        }
+        return count
+    }
+    
     func getCart(cartPosition: Int) -> Cart {
         return carts[cartPosition]
     }

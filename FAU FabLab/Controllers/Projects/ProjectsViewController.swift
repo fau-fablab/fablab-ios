@@ -46,7 +46,7 @@ class ProjectsViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (section == 0) {
-            return cartHistoryModel.getCount()
+            return cartHistoryModel.countNonEmptyCarts()
         } else if (section == 1) {
             return projectsModel.getCount()
         }
