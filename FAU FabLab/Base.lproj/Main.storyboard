@@ -1708,7 +1708,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="Gq7-b0-A90" kind="show" id="lTo-pL-Gfj"/>
+                                                    <action selector="cancelButtonTouched:" destination="qM6-Ft-yxK" eventType="touchUpInside" id="7c1-2Z-XGM"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -1738,7 +1738,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pKS-LQ-GuX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3070" y="-3945"/>
+            <point key="canvasLocation" x="3007" y="-3955"/>
         </scene>
         <!--Inventory Item Scan View Controller-->
         <scene sceneID="oIz-fM-a5O">
@@ -2235,6 +2235,5 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XLI-0u-qjW"/>
-        <segue reference="nSb-DT-ktW"/>
     </inferredMetricsTieBreakers>
 </document>
