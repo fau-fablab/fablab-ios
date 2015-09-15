@@ -84,6 +84,7 @@
 		923E1F2C1B7AA360009CC545 /* CartEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E1F2B1B7AA360009CC545 /* CartEntry.swift */; };
 		923E1F2F1B7AA3F7009CC545 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 923E1F2D1B7AA3F7009CC545 /* CoreDataModel.xcdatamodeld */; };
 		923E1F311B7AA49A009CC545 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E1F301B7AA49A009CC545 /* CoreDataHelper.swift */; };
+		923F11781BA20EB100F0374E /* ApiResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923F11771BA20EB100F0374E /* ApiResult.swift */; };
 		923FFD9A1B8E4916001ACAB1 /* MailAddresses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923FFD991B8E4916001ACAB1 /* MailAddresses.swift */; };
 		923FFD9C1B8E49CE001ACAB1 /* PushToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923FFD9B1B8E49CE001ACAB1 /* PushToken.swift */; };
 		923FFD9E1B8E4BE3001ACAB1 /* Roles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923FFD9D1B8E4BE3001ACAB1 /* Roles.swift */; };
@@ -240,6 +241,7 @@
 		923E1F2B1B7AA360009CC545 /* CartEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartEntry.swift; sourceTree = "<group>"; };
 		923E1F2E1B7AA3F7009CC545 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		923E1F301B7AA49A009CC545 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		923F11771BA20EB100F0374E /* ApiResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResult.swift; sourceTree = "<group>"; };
 		923FFD991B8E4916001ACAB1 /* MailAddresses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailAddresses.swift; sourceTree = "<group>"; };
 		923FFD9B1B8E49CE001ACAB1 /* PushToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushToken.swift; sourceTree = "<group>"; };
 		923FFD9D1B8E4BE3001ACAB1 /* Roles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Roles.swift; sourceTree = "<group>"; };
@@ -705,6 +707,7 @@
 				5032249B1B99B55700C0583D /* MailComposeHelper.swift */,
 				9207491A1B9B145D00F08792 /* TypeAliases.swift */,
 				505D614F1B9B711700C1EE22 /* ChangeAmountPickerHelper.swift */,
+				923F11771BA20EB100F0374E /* ApiResult.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1001,6 +1004,7 @@
 				489E4C751B79E093004A60FA /* ProductCustomCell.swift in Sources */,
 				924DBF6D1B8DEBB1000CAFB2 /* FabTool.swift in Sources */,
 				35CE1E13F0E8E25DBCE8E9C9 /* DoorStateModel.swift in Sources */,
+				923F11781BA20EB100F0374E /* ApiResult.swift in Sources */,
 				920AECF11B96EDBD00523C1B /* VersionCheckModel.swift in Sources */,
 				35CE1DD759134EC89DBD0D29 /* Debug.swift in Sources */,
 				924DBF711B8DEBB1000CAFB2 /* Product.swift in Sources */,
