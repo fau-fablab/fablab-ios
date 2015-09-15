@@ -284,3 +284,5 @@
 /* Class = "navigationItem"; title = "QR-Scannen"; ObjectID = "LMg-lc-Zw2"; */
 "LMg-lc-Zw2.title" = "Scan QR code";
 
+/* Class = "navigationItem"; title = "Warenkorb Bezahlen"; ObjectID = "il9-Jl-rLY"; */
+"il9-Jl-rLY.title" = "Pay for the cart";
