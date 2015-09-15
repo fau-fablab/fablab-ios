@@ -305,9 +305,11 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
             let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "searchHelpCell")
             cell.textLabel?.text = searchHelpModel.getEntry(indexPath.section, row: indexPath.row)
             cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            /*
             if indexPath.section == 0 {
-                //cell.imageView?.image = UIImage(named: "icon_categories", inBundle: nil, compatibleWithTraitCollection: nil)
+                cell.imageView?.image = UIImage(named: "icon_categories", inBundle: nil, compatibleWithTraitCollection: nil)
             }
+            */
             return cell
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier(productCellIdentifier) as? ProductCustomCell
@@ -376,6 +378,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         switch tableView {
         case searchHelpTableView:
             searchBar.setShowsCancelButton(false, animated: true)
+            /*
             if indexPath.section == 0 {
                 let productCategoryViewController = storyboard!.instantiateViewControllerWithIdentifier("ProductCategoryViewController") as! ProductCategoryViewController
                 productCategoryViewController.reset()
@@ -384,6 +387,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
                 self.searchBar.resignFirstResponder()
                 return
             }
+*/
             searchBar.text = searchHelpTableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text
             searchBarSearchButtonClicked(searchBar)
             return
