@@ -4,7 +4,7 @@ import CoreData
 
 class Autocomplete: NSObject {
     
-    private let resource = "/products/autocompletions"
+    private let api = ProductApi()
     private let managedObjectContext : NSManagedObjectContext
     private let coreData = CoreDataHelper(sqliteDocumentName: "CoreDataModel.db", schemaName:"")
     //24 hours, in seconds
@@ -32,20 +32,16 @@ class Autocomplete: NSObject {
     }
     
     func fetchEntries() {
-        if(entries.isEmpty || Double(NSDate().timeIntervalSinceDate(entries[0].date)) >= refreshInterval) {
-            let params = ["search": ""]
-            if (!isLoading) {
-                isLoading = true
-                RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .URL, resource: resource, params: params, onCompletion: {
-                    json, err in
-                    if (err != nil) {
-                        Debug.instance.log(err)
-                    } else {
-                        self.addEntries(json as! [String])
+        if(!isLoading && entries.isEmpty || Double(NSDate().timeIntervalSinceDate(entries[0].date)) >= refreshInterval) {
+            self.isLoading = true
+            api.getAutoCompletions({ autocompletions, err in
+                if(err == nil){
+                    if let completions = autocompletions{
+                        self.addEntries(completions)
                     }
-                    self.isLoading = false
-                })
-            }
+                }
+                self.isLoading = false
+            })
         }
     }
     
