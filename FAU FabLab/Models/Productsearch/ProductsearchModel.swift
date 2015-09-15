@@ -1,5 +1,4 @@
 import Foundation
-import ObjectMapper
 import SwiftyJSON
 
 class ProductsearchModel : NSObject{
