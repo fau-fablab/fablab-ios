@@ -9,4 +9,5 @@ class Project : NSManagedObject {
     @NSManaged var descr: String
     @NSManaged var filename: String
     @NSManaged var content: String
+    @NSManaged var gistId: String
 }

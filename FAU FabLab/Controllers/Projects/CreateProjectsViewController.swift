@@ -80,7 +80,8 @@ class CreateProjectsViewController: UIViewController {
             UIBarButtonItem(title: "~", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
             UIBarButtonItem(title: "`", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
             UIBarButtonItem(title: "Code", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
-            UIBarButtonItem(title: "Link", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:")
+            UIBarButtonItem(title: "URL", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
+            UIBarButtonItem(title: "IMG", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:")
         ]
         
         textView!.inputAccessoryView = toolBar
@@ -99,7 +100,7 @@ class CreateProjectsViewController: UIViewController {
             self.textView!.insertText("_")
         } else if sender.title == "Code" {
             self.textView!.insertText("```")
-        } else if sender.title == "Link" {
+        } else if sender.title == "URL" {
             self.textView!.insertText("[title](http://)")
         } else {
             self.textView!.insertText(sender.title!)
@@ -133,9 +134,9 @@ class CreateProjectsViewController: UIViewController {
     
     func saveProjectToCoreData() {
         if self.projectId >= 0 {
-            self.projectsModel.updateProject(id: self.projectId!, description: self.descText.text, filename: self.titleText.text, content: self.textView!.text)
+            self.projectsModel.updateProject(id: self.projectId!, description: self.descText.text, filename: self.titleText.text, content: self.textView!.text, gistId: "")
         } else {
-            self.projectsModel.addProject(description: self.descText.text, filename: self.titleText.text, content: self.textView!.text)
+            self.projectsModel.addProject(description: self.descText.text, filename: self.titleText.text, content: self.textView!.text, gistId: "")
         }
     }
     
@@ -160,7 +161,9 @@ class CreateProjectsViewController: UIViewController {
         project.setContent(self.textView!.text)
         
         api.create(project, onCompletion: {
-            url, err in
+            gistId, err in
+            
+            let url = "https://gist.github.com/" + gistId!
             
             if (err != nil) {
                 AlertView.showErrorView("Projekt-Snippet konnte nicht hochgeladen werden".localized)
@@ -168,12 +171,12 @@ class CreateProjectsViewController: UIViewController {
                 let doneAction: UIAlertAction = UIAlertAction(title: "OK".localized, style: .Default, handler: { (Void) -> Void in })
                 
                 let browserAction: UIAlertAction = UIAlertAction(title: "Gist anzeigen".localized, style: .Default, handler: { (Void) -> Void in
-                    if let nsurl = NSURL(string: url!) {
+                    if let nsurl = NSURL(string: url) {
                         UIApplication.sharedApplication().openURL(nsurl)
                     }
                 })
                 
-                let alertController: UIAlertController = UIAlertController(title: "Projekt-Snippet wurde erfolgreich hochgeladen".localized, message: "Link".localized + ": " + url!, preferredStyle: .Alert)
+                let alertController: UIAlertController = UIAlertController(title: "Projekt-Snippet wurde erfolgreich hochgeladen".localized, message: "Link".localized + ": " + url, preferredStyle: .Alert)
                 alertController.addAction(doneAction)
                 alertController.addAction(browserAction)
                 

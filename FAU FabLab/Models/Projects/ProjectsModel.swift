@@ -38,22 +38,29 @@ class ProjectsModel: NSObject {
         return projects[id]
     }
     
-    func addProject(#description: String, filename: String, content: String) {
+    func addProject(#description: String, filename: String, content: String, gistId: String) {
         let project = NSEntityDescription.insertNewObjectForEntityForName(Project.EntityName,
             inManagedObjectContext: self.managedObjectContext) as! Project
         project.descr = description
         project.filename = filename
         project.content = content
+        project.gistId = gistId
         saveCoreData()
         Debug.instance.log(projects)
     }
     
-    func updateProject(#id: Int, description: String, filename: String, content: String) {
+    func updateProject(#id: Int, description: String, filename: String, content: String, gistId: String) {
         let project = getProject(id)
         project.descr = description
         project.filename = filename
         project.content = content
-        
+        project.gistId = gistId
+        saveCoreData()
+    }
+    
+    func updateGistId(#id: Int, gistId: String) {
+        let project = getProject(id)
+        project.gistId = gistId
         saveCoreData()
     }
     
