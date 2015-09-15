@@ -134,7 +134,7 @@ class CreateProjectsViewController: UIViewController {
     
     func saveProjectToCoreData() {
         if self.projectId >= 0 {
-            self.projectsModel.updateProject(id: self.projectId!, description: self.descText.text, filename: self.titleText.text, content: self.textView!.text, gistId: "")
+            self.projectsModel.updateProject(id: self.projectId!, description: self.descText.text, filename: self.titleText.text, content: self.textView!.text)
         } else {
             self.projectsModel.addProject(description: self.descText.text, filename: self.titleText.text, content: self.textView!.text, gistId: "")
         }
@@ -160,29 +160,46 @@ class CreateProjectsViewController: UIViewController {
         project.setDescription(self.descText.text)
         project.setContent(self.textView!.text)
         
-        api.create(project, onCompletion: {
-            gistId, err in
+        let currGistId = self.projectsModel.getGistId(self.projectId!)
+        
+        if currGistId == "" {
+            api.create(project, onCompletion: {
+                gistId, err in
+                
+                // the project has a gist-id now -> save it!
+                self.projectsModel.updateGistId(id: self.projectId!, gistId: gistId!)
+                
+                self.showUploadAlertController(gistId!, err: err)
+            })
+        } else {
+            api.update(currGistId, project: project, onCompletion: {
+                gistId, err in
+                self.showUploadAlertController(gistId!, err: err)
+            })
+        }
+    }
+    
+    func showUploadAlertController(gistId: String, err: NSError?) {
+        if (err != nil) {
+            AlertView.showErrorView("Projekt-Snippet konnte nicht hochgeladen werden".localized)
+        } else {
             
-            let url = "https://gist.github.com/" + gistId!
+            let url = "https://gist.github.com/" + gistId
             
-            if (err != nil) {
-                AlertView.showErrorView("Projekt-Snippet konnte nicht hochgeladen werden".localized)
-            } else {
-                let doneAction: UIAlertAction = UIAlertAction(title: "OK".localized, style: .Default, handler: { (Void) -> Void in })
-                
-                let browserAction: UIAlertAction = UIAlertAction(title: "Gist anzeigen".localized, style: .Default, handler: { (Void) -> Void in
-                    if let nsurl = NSURL(string: url) {
-                        UIApplication.sharedApplication().openURL(nsurl)
-                    }
-                })
-                
-                let alertController: UIAlertController = UIAlertController(title: "Projekt-Snippet wurde erfolgreich hochgeladen".localized, message: "Link".localized + ": " + url, preferredStyle: .Alert)
-                alertController.addAction(doneAction)
-                alertController.addAction(browserAction)
-                
-                self.presentViewController(alertController, animated: true, completion: nil)
-            }
-        })
+            let doneAction: UIAlertAction = UIAlertAction(title: "OK".localized, style: .Default, handler: { (Void) -> Void in })
+            
+            let browserAction: UIAlertAction = UIAlertAction(title: "Gist anzeigen".localized, style: .Default, handler: { (Void) -> Void in
+                if let nsurl = NSURL(string: url) {
+                    UIApplication.sharedApplication().openURL(nsurl)
+                }
+            })
+            
+            let alertController: UIAlertController = UIAlertController(title: "Projekt-Snippet wurde erfolgreich hochgeladen".localized, message: "Link".localized + ": " + url, preferredStyle: .Alert)
+            alertController.addAction(doneAction)
+            alertController.addAction(browserAction)
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
     }
     
     func getCartAsMDString(cart: Cart) -> String {

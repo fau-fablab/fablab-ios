@@ -49,12 +49,11 @@ class ProjectsModel: NSObject {
         Debug.instance.log(projects)
     }
     
-    func updateProject(#id: Int, description: String, filename: String, content: String, gistId: String) {
+    func updateProject(#id: Int, description: String, filename: String, content: String) {
         let project = getProject(id)
         project.descr = description
         project.filename = filename
         project.content = content
-        project.gistId = gistId
         saveCoreData()
     }
     
@@ -62,6 +61,11 @@ class ProjectsModel: NSObject {
         let project = getProject(id)
         project.gistId = gistId
         saveCoreData()
+    }
+    
+    func getGistId(id: Int) -> String {
+        let project = getProject(id)
+        return project.gistId
     }
     
     func removeProject(id: Int) {
