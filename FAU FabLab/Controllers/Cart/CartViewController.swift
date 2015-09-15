@@ -240,11 +240,9 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
                     alertView.show()
                 
                 case CartStatus.PENDING:
-                    var popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("PayOrCancelView") as! PayOrCancelViewController
-                    var nav = UINavigationController(rootViewController: popoverContent)
-                    nav.modalPresentationStyle = UIModalPresentationStyle.Popover
-                    var popover = nav.popoverPresentationController
-                    self.presentViewController(nav, animated: true, completion: nil)
+                    var payOrCancelViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PayOrCancelView") as! PayOrCancelViewController
+                    payOrCancelViewController.setCartModel(cartModel)
+                    self.presentViewController(payOrCancelViewController, animated: true, completion: nil)
               
                 case CartStatus.PAID:
                     let alertView = UIAlertView(title: "Bezahlt".localized, message: "Ihr Warenkorb wurde erfolgreich bezahlt".localized, delegate: nil, cancelButtonTitle: "OK".localized)
