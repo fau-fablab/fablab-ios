@@ -789,39 +789,42 @@
             </objects>
             <point key="canvasLocation" x="-82" y="1560"/>
         </scene>
-        <!--Kategorien-->
-        <scene sceneID="s1n-id-eGu">
+        <!--Product Category View Controller-->
+        <scene sceneID="IKR-sb-9ho">
             <objects>
-                <tableViewController restorationIdentifier="ProductCategoryViewController" storyboardIdentifier="ProductCategoryViewController" title="Kategorien" id="qWa-qw-AFo" customClass="ProductCategoryViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="AnQ-T5-b6s">
+                <viewController restorationIdentifier="ProductCategoryViewController" storyboardIdentifier="ProductCategoryViewController" id="SmL-Bh-p1c" customClass="ProductCategoryViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JFS-je-A9U"/>
+                        <viewControllerLayoutGuide type="bottom" id="7q2-vX-xQY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2dF-KH-hdo">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CategoryCell" textLabel="aG1-b4-3oh" style="IBUITableViewCellStyleDefault" id="FFJ-88-h9Q">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FFJ-88-h9Q" id="ioD-bU-cf0">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aG1-b4-3oh">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="qWa-qw-AFo" id="WH4-OQ-UIk"/>
-                            <outlet property="delegate" destination="qWa-qw-AFo" id="xUH-sU-pv2"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="akY-HA-25k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="RV8-Rm-ChS">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="SmL-Bh-p1c" id="WGv-EJ-Z7J"/>
+                                    <outlet property="delegate" destination="SmL-Bh-p1c" id="5Ag-4g-C2a"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7q2-vX-xQY" firstAttribute="top" secondItem="RV8-Rm-ChS" secondAttribute="bottom" id="Ka8-ET-ggB"/>
+                            <constraint firstItem="RV8-Rm-ChS" firstAttribute="leading" secondItem="2dF-KH-hdo" secondAttribute="leadingMargin" constant="-16" id="fDa-Ke-Nnl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RV8-Rm-ChS" secondAttribute="trailing" constant="-16" id="q6X-1Y-ogk"/>
+                            <constraint firstItem="RV8-Rm-ChS" firstAttribute="top" secondItem="2dF-KH-hdo" secondAttribute="topMargin" id="qOA-AO-VbJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="RV8-Rm-ChS" id="CJZ-ge-B28"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0FJ-B0-uoB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-82" y="2340"/>
+            <point key="canvasLocation" x="-82" y="2311"/>
         </scene>
         <!--Standort-->
         <scene sceneID="bo2-Ki-dW7">

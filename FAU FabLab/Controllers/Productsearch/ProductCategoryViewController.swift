@@ -1,13 +1,15 @@
 import Foundation
 import UIKit
 
-class ProductCategoryViewController: UITableViewController {
+class ProductCategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet var tableView: UITableView!
     
     private let model = CategoryModel.sharedInstance
     private let reuseIdentifier = "CategoryCell"
     
     private var backBarButtonItem: UIBarButtonItem!
-    private var activityIndicator: UIActivityIndicatorView!
+    //private var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,15 +46,15 @@ class ProductCategoryViewController: UITableViewController {
         CartNavigationButtonController.sharedInstance.setViewController(self)
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return model.getNumberOfSections()
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.getNumberOfRowsInSection(section)
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         Debug.instance.log(indexPath)
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: reuseIdentifier)
         cell.textLabel?.text = model.getNameOfCategory(indexPath.section, row: indexPath.row)
@@ -60,7 +62,7 @@ class ProductCategoryViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         Debug.instance.log(indexPath.section)
         Debug.instance.log(indexPath.row)
         model.setCategory(indexPath.section, row: indexPath.row)

@@ -306,7 +306,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
             cell.textLabel?.text = searchHelpModel.getEntry(indexPath.section, row: indexPath.row)
             cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             if indexPath.section == 0 {
-                cell.imageView?.image = UIImage(named: "icon_categories", inBundle: nil, compatibleWithTraitCollection: nil)
+                //cell.imageView?.image = UIImage(named: "icon_categories", inBundle: nil, compatibleWithTraitCollection: nil)
             }
             return cell
         default:
