@@ -22,6 +22,9 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     private var searchHelpTableView: UITableView!
     private var searchHelpTableViewHeight: NSLayoutConstraint!
     private var scannedBarcode = ""
+    //search by category
+    private let categoryModel = CategoryModel.sharedInstance
+    private var categoryTableView: UITableView!
     
     //table view background
     private var backgroundView: UILabel {
@@ -91,14 +94,33 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         tableView.dataSource = self
         tableView.separatorColor = UIColor.fabLabBlueSeperator()
         
-        //activity indicator
-        actInd = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
-        actInd.center = self.view.center
-        actInd.hidesWhenStopped = true
-        actInd.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleWidth |
-            UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleTopMargin |
-            UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleBottomMargin
-        view.addSubview(actInd)
+        
+        //search by category
+        categoryTableView = UITableView()
+        categoryTableView.delegate = self
+        categoryTableView.dataSource = self
+        categoryTableView.scrollEnabled = true
+        categoryTableView.hidden = true
+        categoryTableView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.addSubview(categoryTableView)
+        
+        let c4 = NSLayoutConstraint(item: categoryTableView, attribute: NSLayoutAttribute.LeftMargin,
+            relatedBy: NSLayoutRelation.Equal, toItem: self.tableView, attribute: NSLayoutAttribute.LeftMargin,
+            multiplier: 1, constant: 0)
+        let c5 = NSLayoutConstraint(item: categoryTableView, attribute: NSLayoutAttribute.RightMargin,
+            relatedBy: NSLayoutRelation.Equal, toItem: self.tableView, attribute: NSLayoutAttribute.RightMargin,
+            multiplier: 1, constant: 0)
+        let c6 = NSLayoutConstraint(item: categoryTableView, attribute: NSLayoutAttribute.TopMargin,
+            relatedBy: NSLayoutRelation.Equal, toItem: self.tableView, attribute: NSLayoutAttribute.TopMargin,
+            multiplier: 1, constant: 0)
+        let c7 = NSLayoutConstraint(item: categoryTableView, attribute: NSLayoutAttribute.BottomMargin,
+            relatedBy: NSLayoutRelation.Equal, toItem: self.tableView, attribute: NSLayoutAttribute.BottomMargin,
+            multiplier: 1, constant: 0)
+        
+        view.addConstraint(c4)
+        view.addConstraint(c5)
+        view.addConstraint(c6)
+        view.addConstraint(c7)
         
         //search help
         searchHelpTableView = UITableView()
@@ -126,8 +148,16 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         view.addConstraint(c2)
         view.addConstraint(c3)
         view.addConstraint(searchHelpTableViewHeight)
-       
         
+        //activity indicator
+        actInd = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+        actInd.center = self.view.center
+        actInd.hidesWhenStopped = true
+        actInd.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleWidth |
+            UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleTopMargin |
+            UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleBottomMargin
+        view.addSubview(actInd)
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -226,6 +256,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         self.searchHelpModel.addHistoryEntry(searchBar.text)
         self.resetTableViewBackground()
         self.searchHelpTableView.hidden = true
+        self.categoryTableView.hidden = true
         self.searchBar.resignFirstResponder()
         self.searchBar.userInteractionEnabled = false;
         model.removeAllProducts()
@@ -249,7 +280,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     func setScannedBarcode(scannedBarcode: String){
         self.scannedBarcode = scannedBarcode
     }
-    func barCodeWasScanned(){
+    func barCodeWasScanned() {
         self.resetTableViewBackground()
         self.searchBar.resignFirstResponder()
         self.searchBar.userInteractionEnabled = false;
@@ -269,45 +300,90 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
                 }
             })
         })
-
-        
         scannedBarcode = ""
+    }
+    
+    func categoryWasSelected(category: String) {
+        self.resetTableViewBackground()
+        self.searchHelpTableView.hidden = true
+        self.categoryTableView.hidden = true
+        self.searchBar.resignFirstResponder()
+        self.searchBar.userInteractionEnabled = false;
+        model.removeAllProducts()
+        tableView.reloadData()
+        self.actInd.startAnimating()
+        model.searchProductByCategory(category, onCompletion: { err in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.searchActive = false
+                self.searchBar.userInteractionEnabled = true;
+                self.actInd.stopAnimating();
+                self.setTableViewBackground()
+                if(self.searchBar.selectedScopeButtonIndex == 0) {
+                    self.sortProductsByName()
+                } else {
+                    self.sortProductsByPrice()
+                }
+            })
+        })
+
         
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if(tableView == searchHelpTableView) {
+        switch tableView {
+        case searchHelpTableView:
             let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "searchHelpCell")
             cell.textLabel?.text = searchHelpModel.getEntry(indexPath.section, row: indexPath.row)
             cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            if indexPath.section == 0 {
+                cell.imageView?.image = UIImage(named: "icon_categories", inBundle: nil, compatibleWithTraitCollection: nil)
+            }
             return cell
+        case categoryTableView:
+            let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "categoryCell")
+            cell.textLabel?.text = categoryModel.getNameOfCategory(indexPath.section, row: indexPath.row)
+            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCellWithIdentifier(productCellIdentifier) as? ProductCustomCell
+            let product = model.getProduct(indexPath.section, row: indexPath.row)
+            cell!.configure(product)
+            return cell!
         }
-        let cell = tableView.dequeueReusableCellWithIdentifier(productCellIdentifier) as? ProductCustomCell
-        let product = model.getProduct(indexPath.section, row: indexPath.row)
-        cell!.configure(product)
-        return cell!;
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if(tableView == searchHelpTableView) {
+        switch tableView {
+        case searchHelpTableView:
             return searchHelpModel.getNumberOfSections()
+        case categoryTableView:
+            return categoryModel.getNumberOfSections()
+        default:
+            return model.getNumberOfSections()
         }
-        return model.getNumberOfSections()
     }
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(tableView == searchHelpTableView) {
+        switch tableView {
+        case searchHelpTableView:
             return searchHelpModel.getNumberOfRowsInSection(section)
+        case categoryTableView:
+            return categoryModel.getNumberOfRowsInSection(section)
+        default:
+            return model.getNumberOfRowsInSection(section)
         }
-        return model.getNumberOfRowsInSection(section)
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if (tableView == searchHelpTableView) {
+        switch tableView {
+        case searchHelpTableView:
             return searchHelpModel.getTitleOfSection(section)
+        case categoryTableView:
+            return categoryModel.getTitleOfSection(section)
+        default:
+            return model.getTitleOfSection(section)
         }
-        return model.getTitleOfSection(section)
     }
     
     func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject] {
@@ -338,44 +414,72 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if(tableView == searchHelpTableView) {
+        switch tableView {
+        case searchHelpTableView:
+            searchBar.setShowsCancelButton(false, animated: true)
+            if indexPath.section == 0 {
+                searchHelpTableView.hidden = true
+                categoryTableView.hidden = false
+                view.bringSubviewToFront(actInd)
+                actInd.hidden = false
+                actInd.startAnimating()
+                categoryModel.fetchCategories({
+                    (err) -> Void in
+                    self.actInd.stopAnimating()
+                    self.categoryTableView.reloadData()
+                    self.searchBar.resignFirstResponder()
+                })
+                return
+            }
             searchBar.text = searchHelpTableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text
             searchBarSearchButtonClicked(searchBar)
             return
-        }
-        let previousIndexPath = selectedIndexPath
-        if indexPath == selectedIndexPath {
-            selectedIndexPath = nil
-        } else {
-            selectedIndexPath = indexPath
-        }
-        var indexPaths : Array<NSIndexPath> = []
-        if let previous = previousIndexPath{
-            indexPaths += [previous]
-        }
-        if let current = selectedIndexPath {
-            indexPaths += [current]
-        }
-        if indexPaths.count > 0 {
-            tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Automatic)
-        }
-        tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
-        selectedProduct = model.getProduct(indexPath.section, row: indexPath.row)
-        if let cell = tableView.cellForRowAtIndexPath(indexPath) as? ProductCustomCell{
-            if(!selectedProduct!.hasLocation){
-                cell.disableProductLocationButton()
-            }else{
-                cell.enableProductLocationButton()
+        case categoryTableView:
+            categoryModel.setCategory(indexPath.section, row: indexPath.row)
+            if !categoryModel.hasSubcategories() {
+                categoryWasSelected(categoryModel.getCategory())
+                return
+            }
+            categoryTableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: UITableViewRowAnimation.Left)
+            categoryTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Left)
+            return
+        default:
+            let previousIndexPath = selectedIndexPath
+            if indexPath == selectedIndexPath {
+                selectedIndexPath = nil
+            } else {
+                selectedIndexPath = indexPath
+            }
+            var indexPaths : Array<NSIndexPath> = []
+            if let previous = previousIndexPath{
+                indexPaths += [previous]
+            }
+            if let current = selectedIndexPath {
+                indexPaths += [current]
+            }
+            if indexPaths.count > 0 {
+                tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Automatic)
+            }
+            tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+            selectedProduct = model.getProduct(indexPath.section, row: indexPath.row)
+            if let cell = tableView.cellForRowAtIndexPath(indexPath) as? ProductCustomCell{
+                if(!selectedProduct!.hasLocation){
+                    cell.disableProductLocationButton()
+                }else{
+                    cell.enableProductLocationButton()
+                }
             }
         }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if(tableView == searchHelpTableView) {
+        switch tableView {
+        case searchHelpTableView, categoryTableView:
             return UITableViewAutomaticDimension
-        } else if (indexPath == selectedIndexPath){
-            return ProductCustomCell.expandedHeight
-        } else{
+        default:
+            if indexPath == selectedIndexPath {
+                return ProductCustomCell.expandedHeight
+            }
             return ProductCustomCell.defaultHeight
         }
     }
