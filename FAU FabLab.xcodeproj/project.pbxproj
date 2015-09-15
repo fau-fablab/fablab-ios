@@ -84,6 +84,7 @@
 		923E1F2C1B7AA360009CC545 /* CartEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E1F2B1B7AA360009CC545 /* CartEntry.swift */; };
 		923E1F2F1B7AA3F7009CC545 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 923E1F2D1B7AA3F7009CC545 /* CoreDataModel.xcdatamodeld */; };
 		923E1F311B7AA49A009CC545 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E1F301B7AA49A009CC545 /* CoreDataHelper.swift */; };
+		923F11761BA1FC0800F0374E /* NewsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923F11751BA1FC0800F0374E /* NewsApi.swift */; };
 		923F11781BA20EB100F0374E /* ApiResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923F11771BA20EB100F0374E /* ApiResult.swift */; };
 		923FFD9A1B8E4916001ACAB1 /* MailAddresses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923FFD991B8E4916001ACAB1 /* MailAddresses.swift */; };
 		923FFD9C1B8E49CE001ACAB1 /* PushToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923FFD9B1B8E49CE001ACAB1 /* PushToken.swift */; };
@@ -241,6 +242,7 @@
 		923E1F2B1B7AA360009CC545 /* CartEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartEntry.swift; sourceTree = "<group>"; };
 		923E1F2E1B7AA3F7009CC545 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		923E1F301B7AA49A009CC545 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		923F11751BA1FC0800F0374E /* NewsApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsApi.swift; sourceTree = "<group>"; };
 		923F11771BA20EB100F0374E /* ApiResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResult.swift; sourceTree = "<group>"; };
 		923FFD991B8E4916001ACAB1 /* MailAddresses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailAddresses.swift; sourceTree = "<group>"; };
 		923FFD9B1B8E49CE001ACAB1 /* PushToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushToken.swift; sourceTree = "<group>"; };
@@ -577,6 +579,7 @@
 				929770911B9CE8D300525191 /* InventoryApi.swift */,
 				92CDE1661BA037FB00D1DA0E /* SpaceApi.swift */,
 				50732E5F1BA2E5E60056B77E /* ProjectsApi.swift */,
+				923F11751BA1FC0800F0374E /* NewsApi.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -999,6 +1002,7 @@
 				929770921B9CE8D300525191 /* InventoryApi.swift in Sources */,
 				84F53FEE1B73DD24008FB605 /* PayOrCancelViewController.swift in Sources */,
 				508DB3451BA0DF1300C8F5E7 /* CreateProjectsViewController.swift in Sources */,
+				923F11761BA1FC0800F0374E /* NewsApi.swift in Sources */,
 				923FFD9A1B8E4916001ACAB1 /* MailAddresses.swift in Sources */,
 				489316451B831E3900DCB6BB /* Autocomplete.swift in Sources */,
 				489E4C751B79E093004A60FA /* ProductCustomCell.swift in Sources */,
