@@ -3,47 +3,30 @@ import ObjectMapper
 struct InventoryApi{
     
     private let api = RestManager.sharedInstance
-    private let inventoryMapper = Mapper<InventoryItem>()
+    private let mapper = Mapper<InventoryItem>()
     private let resource = "/inventory"
     
     func getAll(onCompletion: ([InventoryItem]?, NSError?) -> Void){
-        api.makeJSONRequest(.GET, encoding: .URL, resource: resource, params: nil, onCompletion: {
-            JSON, err in
-                if(err != nil){
-                    onCompletion(nil, err)
-                }else{
-                    onCompletion(self.inventoryMapper.mapArray(JSON), nil)
-                }
+        api.makeJSONRequest(.GET, encoding: .URL, resource: resource, params: nil,
+            onCompletion: { json, err in
+                ApiResult.getArray(json, error: err, completionHandler: onCompletion)
         })
     }
     
     func add(user: User, item: InventoryItem, onCompletion: (InventoryItem?, NSError?) -> Void){
-        let params = inventoryMapper.toJSON(item)
+        let params = mapper.toJSON(item)
                 
         api.makeJSONRequestWithBasicAuth(.POST, encoding: .JSON, resource: resource, username: user.username!, password: user.password!, params: params,
-            onCompletion: {
-                JSON, err in
-                
-                if(err != nil){
-                    onCompletion(nil, err)
-                }
-                else{
-                    onCompletion(self.inventoryMapper.map(JSON), nil)
-                }
+            onCompletion: { json, err in
+                ApiResult.get(json, error: err, completionHandler: onCompletion)
         })
     }
     
     func deleteAll(user: User, onCompletion: (Bool?, NSError?) -> Void){
-        api.makeJSONRequestWithBasicAuth(.DELETE, encoding: .URL, resource: resource, username: user.username!, password: user.password!, params: nil,
-            onCompletion: {
-                JSON, err in
-
-                if(err != nil){
-                    onCompletion(nil, err)
-                }
-                else{
-                    onCompletion(JSON as? Bool, nil)
-                }
+        api.makeJSONRequestWithBasicAuth(.DELETE, encoding: .URL, resource: resource, username: user.username!, password: user.password!,
+            params: nil,
+            onCompletion: { json, err in
+                ApiResult.getSimpleType(json, error: err, completionHandler: onCompletion)
         })
     }
 }
