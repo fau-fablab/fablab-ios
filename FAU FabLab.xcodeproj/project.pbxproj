@@ -80,6 +80,7 @@
 		920AECEE1B96ED3400523C1B /* VersionCheckApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920AECED1B96ED3400523C1B /* VersionCheckApi.swift */; };
 		920AECF11B96EDBD00523C1B /* VersionCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920AECF01B96EDBD00523C1B /* VersionCheckModel.swift */; };
 		920AECF31B97208000523C1B /* ec2-52-28-126-35.eu-central-1.compute.amazonaws.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 920AECF21B97208000523C1B /* ec2-52-28-126-35.eu-central-1.compute.amazonaws.com.cer */; };
+		922617FA1BA87C1100F74912 /* ProductApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922617F91BA87C1100F74912 /* ProductApi.swift */; };
 		9232D7461B9219C600BF77E9 /* PlatformType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9232D7451B9219C600BF77E9 /* PlatformType.swift */; };
 		923E1F231B7A728C009CC545 /* DoorNavigationButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E1F221B7A728C009CC545 /* DoorNavigationButtonController.swift */; };
 		923E1F251B7A735F009CC545 /* MalfunctionInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923E1F241B7A735F009CC545 /* MalfunctionInfoController.swift */; };
@@ -242,6 +243,7 @@
 		920AECED1B96ED3400523C1B /* VersionCheckApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionCheckApi.swift; sourceTree = "<group>"; };
 		920AECF01B96EDBD00523C1B /* VersionCheckModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionCheckModel.swift; sourceTree = "<group>"; };
 		920AECF21B97208000523C1B /* ec2-52-28-126-35.eu-central-1.compute.amazonaws.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ec2-52-28-126-35.eu-central-1.compute.amazonaws.com.cer"; sourceTree = "<group>"; };
+		922617F91BA87C1100F74912 /* ProductApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductApi.swift; sourceTree = "<group>"; };
 		9232D7451B9219C600BF77E9 /* PlatformType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformType.swift; sourceTree = "<group>"; };
 		923E1F221B7A728C009CC545 /* DoorNavigationButtonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoorNavigationButtonController.swift; sourceTree = "<group>"; };
 		923E1F241B7A735F009CC545 /* MalfunctionInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MalfunctionInfoController.swift; sourceTree = "<group>"; };
@@ -589,6 +591,7 @@
 				92CDE1661BA037FB00D1DA0E /* SpaceApi.swift */,
 				50732E5F1BA2E5E60056B77E /* ProjectsApi.swift */,
 				923F11751BA1FC0800F0374E /* NewsApi.swift */,
+				922617F91BA87C1100F74912 /* ProductApi.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -967,6 +970,7 @@
 				924DBF6E1B8DEBB1000CAFB2 /* InventoryItem.swift in Sources */,
 				849502A21B9B767C006810E3 /* InventoryLoginViaScanViewController.swift in Sources */,
 				92CDE1671BA037FB00D1DA0E /* SpaceApi.swift in Sources */,
+				922617FA1BA87C1100F74912 /* ProductApi.swift in Sources */,
 				8462E2691B985930003DADE1 /* SettingsDoorOpensPushCell.swift in Sources */,
 				920AECE81B96E43E00523C1B /* FabColors.swift in Sources */,
 				48CC3FFD1B8B6F0600FB9C8E /* CartNavigationButtonController.swift in Sources */,
