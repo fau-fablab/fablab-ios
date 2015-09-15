@@ -53,6 +53,7 @@
 		846100BE1B78696000393E63 /* ProductLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846100BD1B78696000393E63 /* ProductLocationViewController.swift */; };
 		8462E2691B985930003DADE1 /* SettingsDoorOpensPushCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462E2681B985930003DADE1 /* SettingsDoorOpensPushCell.swift */; };
 		847CEACC1B9BC1F80087F283 /* InventorySearchProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CEACB1B9BC1F80087F283 /* InventorySearchProductViewController.swift */; };
+		8487B1B11BA79C8F001998BC /* PayOrCancelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487B1B01BA79C8F001998BC /* PayOrCancelCell.swift */; };
 		849502A01B9B764F006810E3 /* InventoryLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495029F1B9B764F006810E3 /* InventoryLoginViewController.swift */; };
 		849502A21B9B767C006810E3 /* InventoryLoginViaScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849502A11B9B767C006810E3 /* InventoryLoginViaScanViewController.swift */; };
 		849502A41B9B7696006810E3 /* InventoryItemScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849502A31B9B7696006810E3 /* InventoryItemScanViewController.swift */; };
@@ -207,6 +208,7 @@
 		8462E2681B985930003DADE1 /* SettingsDoorOpensPushCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDoorOpensPushCell.swift; sourceTree = "<group>"; };
 		846BD1991B9392A000BDEEFA /* CoreDataModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataModel 3.xcdatamodel"; sourceTree = "<group>"; };
 		847CEACB1B9BC1F80087F283 /* InventorySearchProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventorySearchProductViewController.swift; sourceTree = "<group>"; };
+		8487B1B01BA79C8F001998BC /* PayOrCancelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayOrCancelCell.swift; sourceTree = "<group>"; };
 		8495029F1B9B764F006810E3 /* InventoryLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryLoginViewController.swift; sourceTree = "<group>"; };
 		849502A11B9B767C006810E3 /* InventoryLoginViaScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryLoginViaScanViewController.swift; sourceTree = "<group>"; };
 		849502A31B9B7696006810E3 /* InventoryItemScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryItemScanViewController.swift; sourceTree = "<group>"; };
@@ -723,6 +725,7 @@
 				84C418701B9CF1A100C2656D /* InventoryListCell.swift */,
 				48A8D9D51BA547AC006958D9 /* CartCustomCell.swift */,
 				5024EE4A1BA5B3CD0025AF91 /* ProjectCustomCell.swift */,
+				8487B1B01BA79C8F001998BC /* PayOrCancelCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -906,6 +909,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				920AECE71B96E43E00523C1B /* DoubleExtension.swift in Sources */,
+				8487B1B11BA79C8F001998BC /* PayOrCancelCell.swift in Sources */,
 				505D61501B9B711700C1EE22 /* ChangeAmountPickerHelper.swift in Sources */,
 				48B7C0DA1B846CDA00DC9B2D /* AutocompleteEntry.swift in Sources */,
 				84CDCD2E1B9083ED0084D8F3 /* InventoryViewController.swift in Sources */,
