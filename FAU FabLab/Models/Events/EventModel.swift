@@ -1,78 +1,76 @@
 import Foundation
-import ObjectMapper
 
 class EventModel : NSObject{
     
-    private let resource = "/ical";
-    private let timestampResource = "/ical/timestamp"
+    private let api = ICalApi()
+    
     private var events = [ICal]()
     private var isLoading = false;
-    private var loaded = false;
-    private var mapper: Mapper<ICal>;
     
-    private var clientTimestamp: Int = Int()
-    private var serverTimestamp: Int = Int()
+    private var clientTimestamp: Int64 = 0
+    private var serverTimestamp: Int64 = -1
+    
+    private var loaded: Bool{
+        return clientTimestamp == serverTimestamp
+    };
     
     override init() {
-        mapper = Mapper<ICal>()
         super.init()
     }
     
+    private func updateNeeded(onCompletion: (Bool) -> Void){
+        self.api.lastUpdate({ timestamp, error in
+            if(error != nil){
+                Debug.instance.log("Error!");
+                onCompletion(false)
+            }
+            self.serverTimestamp = timestamp!
+            onCompletion(self.loaded)
+        })
+    }
+    
     func fetchEvents(#onCompletion: ApiResponse) {
-        if (!isLoading && !loaded) {
-            isLoading = true;
+        if(isLoading){
+            return
+        }
+        //get the latest timestamp from server
+        updateNeeded({ result in
+            //if we have the latest version look if old ones can be removed and return
+            if (self.loaded) {
+                Debug.instance.log("Latest version of Events! Check if we could remove some")
+                // check for events to remove
+                let now = NSDate()
+                for var index = (self.getCount()-1); index >= 0; index-- {
+                    // if end-date is before now, remove it from the list
+                    if now.compare(self.getEvent(index).end!) == NSComparisonResult.OrderedDescending {
+                        self.removeEvent(index)
+                    }
+                }
+                return
+            }
+            //else mark ourself as loading and fetch the latest events
+            self.isLoading = true;
             
-            RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .JSON, resource: resource, params: nil, onCompletion: {
-                json, err in
-                if (err != nil) {
+            self.api.findAll({  events, err in
+                if(err != nil){
                     AlertView.showErrorView("Fehler beim Abrufen der Events".localized)
                     onCompletion(err)
                 }
-                
-                if let eventList = self.mapper.mapArray(json) {
+                    //if we fetched the news, set our timestamp
+                else if let events = events{
                     let now = NSDate()
-                    for tmp in eventList {
+                    for event in events {
                         // if end-date is after now, add it to the list
-                        if now.compare(tmp.end!) == NSComparisonResult.OrderedAscending {
-                            self.addEvent(tmp)
+                        if now.compare(event.end!) == NSComparisonResult.OrderedAscending {
+                            self.addEvent(event)
                         }
                     }
+                    onCompletion(nil);
+                    self.isLoading = false;
+                    self.clientTimestamp = self.serverTimestamp
                 }
-                
-                onCompletion(nil);
                 self.isLoading = false;
-                self.loaded = true;
-                
-                // set clientTimestamp to the current server-timestamp
-                self.getLastUpdateTimestamp(onCompletion: { error in
-                    if(error != nil){
-                        Debug.instance.log("Error!");
-                    }
-                    self.clientTimestamp = self.getServerTimestamp()
-                })
             })
-            
-        } else if (!isLoading && loaded) {
-            // check for events to remove
-            let now = NSDate()
-            for var index = (self.getCount()-1); index >= 0; index-- {
-                // if end-date is before now, remove it from the list
-                if now.compare(self.getEvent(index).end!) == NSComparisonResult.OrderedDescending {
-                    self.removeEvent(index)
-                }
-            }
-        }
-    }
-    
-    func getLastUpdateTimestamp(#onCompletion: ApiResponse) {
-        RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .URL, resource: timestampResource, params: nil, onCompletion: {
-            ts, err in
-            if (err != nil || ts == nil) {
-                AlertView.showErrorView("Fehler beim Abrufen der Events".localized)
-                onCompletion(err)
-            }
-            self.serverTimestamp = Int(ts as! NSNumber)
-            onCompletion(nil);
         })
     }
     
@@ -90,17 +88,5 @@ class EventModel : NSObject{
     
     func getEvent(position: Int) -> ICal{
         return events[position];
-    }
-    
-    func getClientTimestamp() -> Int {
-        return self.clientTimestamp
-    }
-    
-    func getServerTimestamp() -> Int {
-        return self.serverTimestamp
-    }
-    
-    func setFlagToReloadEvents() {
-        self.loaded = false
     }
 }
