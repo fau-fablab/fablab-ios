@@ -10,9 +10,10 @@ class ProductsearchModel : NSObject{
         case SortedByPrice
     }
     
+    private let api = ProductApi()
+    
     private let collation = UILocalizedIndexedCollation.currentCollation() as! UILocalizedIndexedCollation
-    private let resource = "/products"
-    private var mapper = Mapper<Product>()
+
     private var products = [Product]()
     private var sectionedProducts = [[Product]]()
     private var isLoading = false
@@ -104,83 +105,79 @@ class ProductsearchModel : NSObject{
         sorting = Sorting.SortedByPrice
     }
     
-    func searchProductByName(name: String, onCompletion: ApiResponse) {
-        let endpoint = resource + "/find/name"
-        let params = ["search": name]
-        if (!isLoading) {
-            removeAllProducts()
-            sorting = Sorting.Unsorted
-            RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .URL, resource: endpoint, params: params, onCompletion: {
-                json, err in
-                if (err != nil) {
+    func searchProductByName(name:String, onCompletion: ApiResponse){
+        if(isLoading){
+            return
+        }
+        
+        isLoading = true
+        removeAllProducts()
+        sorting = Sorting.Unsorted
+            
+        api.findByName(name, limit: 0, offset: 0,
+            onCompletion: { results, err in
+                if(err != nil){
                     AlertView.showErrorView("Fehler bei der Produktsuche".localized)
                     onCompletion(err)
                 }
-                if let productList = self.mapper.mapArray(json) {
-                    for tmp in productList {
-                        Debug.instance.log(tmp.name!)
-                        self.products.append(tmp)
+                else if let results = results{
+                    for product in results {
+                        self.products.append(product)
                     }
                     self.sectionedProducts.removeAll(keepCapacity: false)
                     self.sectionedProducts.append(self.products)
                 }
                 onCompletion(nil)
                 self.isLoading = false
-            })
-
-        }
+        })
     }
     
-    func searchProductById(id: String, onCompletion: ApiResponse) {
-        let endpoint = resource + "/find/id"
-        let params = ["search": id]
-        if(!isLoading) {
-            removeAllProducts()
-            sorting = Sorting.Unsorted
-            RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .URL, resource: endpoint, params: params, onCompletion: {
-                json, err in
-                Debug.instance.log("GOT: \(json)")
-                
-                if (err != nil) {
-                    AlertView.showErrorView("Fehler bei der Produktsuche".localized)
-                    onCompletion(err)
-                }
-                if let product = self.mapper.map(json) {
-                    Debug.instance.log(product.name!)
-                    self.products.append(product)
-                    self.sectionedProducts.append(self.products)
-                }
-                onCompletion(nil);
-                self.isLoading = false;
-            })
-            
+    func searchProductById(id:String, onCompletion: ApiResponse){
+        if(isLoading){
+            return
         }
+        isLoading = true
+        removeAllProducts()
+        sorting = Sorting.Unsorted
+        
+        api.findById(id, onCompletion: { result, err in
+            if(err != nil){
+                AlertView.showErrorView("Fehler bei der Produktsuche".localized)
+                onCompletion(err)
+            }
+            else if let result = result{
+                Debug.instance.log(result.name!)
+                self.products.append(result)
+                self.sectionedProducts.append(self.products)
+            }
+            onCompletion(nil);
+            self.isLoading = false;
+        })
     }
     
     func searchProductByCategory(category: String, onCompletion: ApiResponse) {
-        let endpoint = resource + "/find/category"
-        let params = ["search": category]
-        if (!isLoading) {
-            removeAllProducts()
-            sorting = Sorting.Unsorted
-            RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .URL, resource: endpoint, params: params, onCompletion: {
-                json, err in
-                if (err != nil) {
-                    AlertView.showErrorView("Fehler bei der Produktsuche".localized)
-                    onCompletion(err)
-                }
-                if let productList = self.mapper.mapArray(json) {
-                    for tmp in productList {
-                        Debug.instance.log(tmp.name!)
-                        self.products.append(tmp)
-                    }
-                    self.sectionedProducts.removeAll(keepCapacity: false)
-                    self.sectionedProducts.append(self.products)
-                }
-                onCompletion(nil)
-                self.isLoading = false
-            })
+        if (isLoading) {
+            return
         }
+        isLoading = true
+        removeAllProducts()
+        sorting = Sorting.Unsorted
+        
+        api.findByCategory(category, limit: 0, offset: 0, onCompletion: { results, err in
+            if (err != nil) {
+                AlertView.showErrorView("Fehler bei der Produktsuche".localized)
+                onCompletion(err)
+            }
+            if let results = results {
+                for product in results {
+                    Debug.instance.log(product.name!)
+                    self.products.append(product)
+                }
+                self.sectionedProducts.removeAll(keepCapacity: false)
+                self.sectionedProducts.append(self.products)
+            }
+            onCompletion(nil)
+            self.isLoading = false
+        })
     }
-
 }
