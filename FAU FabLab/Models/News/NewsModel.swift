@@ -5,89 +5,71 @@ import ObjectMapper
 
 public class NewsModel: NSObject {
 
-    private let resource = "/news";
-    private let timestampResource = "/news/timestamp"
-    private var news = [News]()
-    private var isLoading = false;
-    private var newsLoaded = false;
-    private var mapper:Mapper<News>;
+    let api = NewsApi()
     
-    private var clientTimestamp: Int = Int()
-    private var serverTimestamp: Int = Int()
+    private var news = [News]()
+    
+    //The initial values have to be different so we initially fetch the news
+    private var clientTimestamp: Int64 = 0
+    private var serverTimestamp: Int64 = -1
+    
+    private var isLoading = false;
+    private var newsLoaded: Bool{
+        return clientTimestamp == serverTimestamp
+    };
 
     override init() {
-        mapper = Mapper<News>()
         super.init()
     }
 
     func getCount() -> Int {
         return news.count;
     }
-
+    
     func fetchNews(#onCompletion: ApiResponse) {
-        if (!isLoading && !newsLoaded) {
-            isLoading = true;
-
-            RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .JSON, resource: resource, params: nil, onCompletion: {
-                json, err in
-                if (err != nil) {
+        //If we are already loading just return
+        if(isLoading){
+            return
+        }
+        //get the latest timestamp from server
+        updateNeeded({ result in
+            //if we have the latest version just return
+            if (self.newsLoaded) {
+                Debug.instance.log("Latest version of news!")
+                return
+            }
+            //mark ourself as loading and fetch the news
+            self.isLoading = true;
+                    
+            self.api.findAll({  news, err in
+                if(err != nil){
                     AlertView.showErrorView("Fehler beim Abrufen der News".localized)
                     onCompletion(err)
                 }
-                
-                if let news = self.mapper.mapArray(json) {
-                    for tmp in news {
-                        self.addNews(tmp)
-                        Debug.instance.log("Added news ! ")
-                    }
+                //if we fetched the news, set our timestamp
+                else if let news = news{
+                    self.news = news
+                    self.clientTimestamp = self.serverTimestamp
+                    onCompletion(nil);
                 }
-                
-                onCompletion(nil);
                 self.isLoading = false;
-                self.newsLoaded = true;
-                
-                // set clientTimestamp to the current server-timestamp
-                self.getLastUpdateTimestamp(onCompletion: { error in
-                    if(error != nil){
-                        Debug.instance.log("Error!");
-                    }
-                    self.clientTimestamp = self.getServerTimestamp()
-                })
             })
-        }
-    }
-    
-    func getLastUpdateTimestamp(#onCompletion: ApiResponse) {
-        RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .URL, resource: timestampResource, params: nil, onCompletion: {
-            ts, err in
-            if (err != nil || ts == nil) {
-                AlertView.showErrorView("Fehler beim Abrufen der News".localized)
-                onCompletion(err)
-            }
-            self.serverTimestamp = Int(ts as! NSNumber)
-            onCompletion(nil);
         })
-    }
-
-    func addNews(entry:News) {
-        news.append(entry)
     }
     
     func getNews(position:Int) -> News{
         return news[position];
     }
     
-    func getClientTimestamp() -> Int {
-        return self.clientTimestamp
+    private func updateNeeded(onCompletion: (Bool) -> Void){
+        self.api.lastUpdate({ timestamp, error in
+            if(error != nil){
+                Debug.instance.log("Error!");
+                onCompletion(false)
+            }
+            self.serverTimestamp = timestamp!
+            onCompletion(self.newsLoaded)
+        })
     }
-    
-    func getServerTimestamp() -> Int {
-        return self.serverTimestamp
-    }
-    
-    func setFlagToReloadNews() {
-        self.newsLoaded = false
-    }
-
 }
 
