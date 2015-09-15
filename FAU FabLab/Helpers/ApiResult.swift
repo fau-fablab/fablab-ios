@@ -20,4 +20,14 @@ struct ApiResult{
             completionHandler(result, nil)
         }
     }
+    
+    static func getSimpleType<T>(data: AnyObject?, error: NSError?, completionHandler: (T?, NSError?) -> Void){
+        if(error != nil){
+            completionHandler(nil, error)
+        }
+        else{
+            let result = data as? T
+            completionHandler(result, nil)
+        }
+    }
 }
