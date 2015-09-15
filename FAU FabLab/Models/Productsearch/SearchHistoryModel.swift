@@ -2,7 +2,7 @@ import Foundation
 import CoreData
 import UIKit
 
-class History: NSObject {
+class SearchHistoryModel: NSObject {
     
     private let managedObjectContext: NSManagedObjectContext
     private let coreData = CoreDataHelper(sqliteDocumentName: "CoreDataModel.db", schemaName: "")
