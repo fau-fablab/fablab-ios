@@ -36,6 +36,7 @@
 		5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1D51B4EFE2A008B41FD /* AppDelegate.swift */; };
 		5060B1EE1B4EFE2A008B41FD /* FAU_FabLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060B1ED1B4EFE2A008B41FD /* FAU_FabLabTests.swift */; };
 		5067CECB1B90C50300DE8E86 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067CECA1B90C50300DE8E86 /* ImageDetailViewController.swift */; };
+		5069171A1BA8AA4300E48006 /* ProjectImageUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506917191BA8AA4300E48006 /* ProjectImageUpload.swift */; };
 		50732E601BA2E5E60056B77E /* ProjectsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50732E5F1BA2E5E60056B77E /* ProjectsApi.swift */; };
 		50732E621BA2E63D0056B77E /* ProjectFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50732E611BA2E63D0056B77E /* ProjectFile.swift */; };
 		507493681B5BFE6F0035BEB4 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */; };
@@ -191,6 +192,7 @@
 		5060B1EC1B4EFE2A008B41FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5060B1ED1B4EFE2A008B41FD /* FAU_FabLabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAU_FabLabTests.swift; sourceTree = "<group>"; };
 		5067CECA1B90C50300DE8E86 /* ImageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
+		506917191BA8AA4300E48006 /* ProjectImageUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectImageUpload.swift; sourceTree = "<group>"; };
 		50732E5F1BA2E5E60056B77E /* ProjectsApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsApi.swift; sourceTree = "<group>"; };
 		50732E611BA2E63D0056B77E /* ProjectFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectFile.swift; sourceTree = "<group>"; };
 		507493671B5BFE6F0035BEB4 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -640,6 +642,7 @@
 				923FFDA11B8E4DA5001ACAB1 /* User.swift */,
 				844793551B93576D0057CF88 /* TriggerPushType.swift */,
 				50732E611BA2E63D0056B77E /* ProjectFile.swift */,
+				506917191BA8AA4300E48006 /* ProjectImageUpload.swift */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -921,6 +924,7 @@
 				84CDCD2E1B9083ED0084D8F3 /* InventoryViewController.swift in Sources */,
 				924DBF701B8DEBB1000CAFB2 /* News.swift in Sources */,
 				924DBF751B8DEBF3000CAFB2 /* CartStatus.swift in Sources */,
+				5069171A1BA8AA4300E48006 /* ProjectImageUpload.swift in Sources */,
 				927901E51B6D4AE300F95B09 /* NewsModel.swift in Sources */,
 				924DBF6F1B8DEBB1000CAFB2 /* Location.swift in Sources */,
 				48E9A1211B9C1DF00024C4B9 /* ButtonCustomCell.swift in Sources */,
