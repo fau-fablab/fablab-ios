@@ -68,6 +68,7 @@
 "Wert ist ungültig" = "Value is not valid";
 "Produkt wurde dem Warenkorb hinzugefügt" = "Product was added to the cart";
 "Produkt wurde nicht dem Warenkorb hinzugefügt" = "Product was not added to the cart";
+"Alle anzeigen" = "Show all";
 
 //MARK: EventsViewController
 "ganztägig" = "all-day";
