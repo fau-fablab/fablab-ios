@@ -2,7 +2,7 @@ import Foundation
 import SwiftyJSON
 import CoreData
 
-class Autocomplete: NSObject {
+class AutocompletionModel: NSObject {
     
     private let api = ProductApi()
     private let managedObjectContext : NSManagedObjectContext
@@ -14,8 +14,8 @@ class Autocomplete: NSObject {
     
     private var entries : [AutocompleteEntry] {
         get {
-            let reqeust = NSFetchRequest(entityName: AutocompleteEntry.EntityName)
-            return managedObjectContext.executeFetchRequest(reqeust, error: nil) as! [AutocompleteEntry]
+            let request = NSFetchRequest(entityName: AutocompleteEntry.EntityName)
+            return managedObjectContext.executeFetchRequest(request, error: nil) as! [AutocompleteEntry]
         }
     }
     

@@ -6,7 +6,7 @@ class SearchHelpModel: NSObject {
     static let sharedInstance = SearchHelpModel()
     
     private let history = History()
-    private let autocomplete = Autocomplete()
+    private let autocomplete = AutocompletionModel()
     
     private var entries = [[String]]()
     
