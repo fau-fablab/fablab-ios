@@ -104,10 +104,10 @@ class ProductsearchModel : NSObject{
         sorting = Sorting.SortedByPrice
     }
     
-    func searchProductByName(name:String, onCompletion: ApiResponse){
+    func searchProductByName(name: String, onCompletion: ApiResponse) {
         let endpoint = resource + "/find/name"
         let params = ["search": name]
-        if(!isLoading){
+        if (!isLoading) {
             removeAllProducts()
             sorting = Sorting.Unsorted
             RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .URL, resource: endpoint, params: params, onCompletion: {
@@ -131,10 +131,10 @@ class ProductsearchModel : NSObject{
         }
     }
     
-    func searchProductById(id:String, onCompletion: ApiResponse){
+    func searchProductById(id: String, onCompletion: ApiResponse) {
         let endpoint = resource + "/find/id"
         let params = ["search": id]
-        if(!isLoading){
+        if(!isLoading) {
             removeAllProducts()
             sorting = Sorting.Unsorted
             RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .URL, resource: endpoint, params: params, onCompletion: {
@@ -154,6 +154,36 @@ class ProductsearchModel : NSObject{
                 self.isLoading = false;
             })
             
+        }
+    }
+    
+    func searchProductByCategory(category: String, onCompletion: ApiResponse) {
+        let endpoint = resource + "/find/category"
+        let params = ["search": category]
+        if (!isLoading) {
+            removeAllProducts()
+            sorting = Sorting.Unsorted
+            RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .URL, resource: endpoint, params: params, onCompletion: {
+                json, err in
+                Debug.instance.log("GOT: \(json)")
+                if (err != nil) {
+                    AlertView.showErrorView("Fehler bei der Produktsuche".localized)
+                    self.isLoading = false
+                    onCompletion(err)
+                    return
+                }
+                if let productList = self.mapper.mapArray(json) {
+                    for tmp in productList {
+                        Debug.instance.log(tmp.name!)
+                        self.products.append(tmp)
+                    }
+                    self.sectionedProducts.removeAll(keepCapacity: false)
+                    self.sectionedProducts.append(self.products)
+                }
+                self.isLoading = false
+                onCompletion(nil)
+                return
+            })
         }
     }
 
