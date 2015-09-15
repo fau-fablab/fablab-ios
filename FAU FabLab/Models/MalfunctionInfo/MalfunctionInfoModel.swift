@@ -1,13 +1,13 @@
 import Foundation
-import ObjectMapper
 
 class MalfunctionInfoModel : NSObject{
     
     static let sharedInstance = MalfunctionInfoModel()
     
-    private let resource = "/drupal";
+    private let drupalApi   = DrupalApi()
+    private let dataApi     = DataApi()
+    
     private var tools = [FabTool]()
-    private var mapper: Mapper<FabTool>;
     
     private var isFetching = false
     private var fetchingMailDone = false
@@ -15,7 +15,6 @@ class MalfunctionInfoModel : NSObject{
     private(set) var fablabMail: String?
 
     override init() {
-        mapper = Mapper<FabTool>()
         super.init()
     }
     
@@ -40,49 +39,40 @@ class MalfunctionInfoModel : NSObject{
             onCompletion()
             return
         }
-        let endpoint = "/data" + "/fablab-mail"
-        RestManager.sharedInstance.makeTextRequest(.GET, encoding: .URL, resource: endpoint, params: nil, onCompletion: {
-            json, err in
-                
+        dataApi.getFablabMailAddress({ mail, err in
             if (err != nil) {
                 AlertView.showErrorView("Fehler beim Abrufen der FabLab Email".localized)
                 onCompletion()
                 return
             }
-            self.fablabMail = json
+            self.fablabMail = mail
             self.fetchingMailDone = true
-            Debug.instance.log(json)
+            Debug.instance.log(mail)
             onCompletion()
         })
     }
     
     func fetchAllTools(onCompletion: () -> Void){
-        if(fetchingToolsDone){
+        if(fetchingToolsDone || isFetching){
             onCompletion()
             return
         }
-        if(!isFetching){
-            isFetching = true
-            let endpoint = resource + "/tools"
-            RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .JSON, resource: endpoint, params: nil, onCompletion:{
-                json, err in
-                
-                if (err != nil) {
-                    AlertView.showErrorView("Fehler beim Abrufen der FabLab Tools".localized)
-                    onCompletion()
+
+        isFetching = true
+        drupalApi.findAllTools({ tools, err in
+            if (err != nil) {
+                AlertView.showErrorView("Fehler beim Abrufen der FabLab Tools".localized)
+                onCompletion()
+            }
+            else if let tools = tools{
+                for tool in tools{
+                    Debug.instance.log(tool.title)
+                    self.tools.append(tool)
                 }
-                
-                if let tools = self.mapper.mapArray(json){
-                    for tmp in tools{
-                        Debug.instance.log(tmp.title)
-                        self.tools.append(tmp)
-                    }
-                    self.fetchingToolsDone = true
-                    onCompletion()
-                }
-            })
-            isFetching = false
-            return
-        }
+                self.isFetching = false
+                self.fetchingToolsDone = true
+                onCompletion()
+            }
+        })
     }
 }
