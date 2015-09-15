@@ -127,6 +127,7 @@
 		92DB85A81B8B72FC0070FAD8 /* MalfunctionInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DB85A71B8B72FC0070FAD8 /* MalfunctionInfoModel.swift */; };
 		92E147111BA8C29A006B239D /* DrupalApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E147101BA8C29A006B239D /* DrupalApi.swift */; };
 		92E147131BA8C459006B239D /* DataApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E147121BA8C459006B239D /* DataApi.swift */; };
+		92E147151BA8C6AA006B239D /* ICalApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E147141BA8C6AA006B239D /* ICalApi.swift */; };
 		92F04A321B87D92100C2ED81 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5060B1E01B4EFE2A008B41FD /* LaunchScreen.xib */; };
 		92F04A331B87D92F00C2ED81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5060B1DB1B4EFE2A008B41FD /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -293,6 +294,7 @@
 		92DB85A71B8B72FC0070FAD8 /* MalfunctionInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MalfunctionInfoModel.swift; sourceTree = "<group>"; };
 		92E147101BA8C29A006B239D /* DrupalApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrupalApi.swift; sourceTree = "<group>"; };
 		92E147121BA8C459006B239D /* DataApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataApi.swift; sourceTree = "<group>"; };
+		92E147141BA8C6AA006B239D /* ICalApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICalApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -598,6 +600,7 @@
 				922617F91BA87C1100F74912 /* ProductApi.swift */,
 				92E147101BA8C29A006B239D /* DrupalApi.swift */,
 				92E147121BA8C459006B239D /* DataApi.swift */,
+				92E147141BA8C6AA006B239D /* ICalApi.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -959,6 +962,7 @@
 				920AECEE1B96ED3400523C1B /* VersionCheckApi.swift in Sources */,
 				9207491B1B9B145D00F08792 /* TypeAliases.swift in Sources */,
 				923E1F311B7AA49A009CC545 /* CoreDataHelper.swift in Sources */,
+				92E147151BA8C6AA006B239D /* ICalApi.swift in Sources */,
 				84CDCD311B9084130084D8F3 /* AboutViewController.swift in Sources */,
 				84293A881B9C875800C3F887 /* InventoryLogin.swift in Sources */,
 				923FFDA01B8E4C2D001ACAB1 /* UpdateStatus.swift in Sources */,

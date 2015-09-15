@@ -44,7 +44,7 @@ struct NewsApi {
         RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .URL, resource: endpoint, params: nil,
             onCompletion: { json, err in
                 if(err != nil){
-                    onCompletion(-1, err)
+                    onCompletion(nil, err)
                 }
                 else{
                     var num = json as? NSNumber
