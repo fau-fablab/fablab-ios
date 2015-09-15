@@ -124,8 +124,8 @@ class ProductsearchModel : NSObject{
                     self.sectionedProducts.removeAll(keepCapacity: false)
                     self.sectionedProducts.append(self.products)
                 }
-                onCompletion(nil);
-                self.isLoading = false;
+                onCompletion(nil)
+                self.isLoading = false
             })
 
         }
@@ -165,12 +165,9 @@ class ProductsearchModel : NSObject{
             sorting = Sorting.Unsorted
             RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .URL, resource: endpoint, params: params, onCompletion: {
                 json, err in
-                Debug.instance.log("GOT: \(json)")
                 if (err != nil) {
                     AlertView.showErrorView("Fehler bei der Produktsuche".localized)
-                    self.isLoading = false
                     onCompletion(err)
-                    return
                 }
                 if let productList = self.mapper.mapArray(json) {
                     for tmp in productList {
@@ -180,9 +177,8 @@ class ProductsearchModel : NSObject{
                     self.sectionedProducts.removeAll(keepCapacity: false)
                     self.sectionedProducts.append(self.products)
                 }
-                self.isLoading = false
                 onCompletion(nil)
-                return
+                self.isLoading = false
             })
         }
     }

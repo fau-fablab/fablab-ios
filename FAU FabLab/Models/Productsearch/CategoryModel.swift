@@ -11,7 +11,6 @@ class CategoryModel: NSObject {
     private var isLoading = false
     private var categoriesLoaded = false
     
-    private var supercategory: String!
     private var category: String!
     private var subcategories = [String]()
     private var showAll = false
@@ -23,7 +22,6 @@ class CategoryModel: NSObject {
     
     func reset() {
         showAll = false
-        supercategory = ""
         category = "Alle Produkte"
         subcategories = getSubcategories(category)
     }
@@ -62,7 +60,6 @@ class CategoryModel: NSObject {
             
         }
         
-        reset()
         onCompletion(nil)
         return
         
@@ -106,6 +103,24 @@ class CategoryModel: NSObject {
         
     }
     
+    //only for testing
+    func getSupercategory(subcategory: String) -> String {
+        
+        let tmp = split(subcategory, allowEmptySlices: false, isSeparator: {$0 == "/"})
+        
+        if tmp.count > 1 {
+            var supercategory = tmp[0]
+            if tmp.count > 2 {
+                for index in 1...tmp.count - 2 {
+                    supercategory += "/" + tmp[index]
+                }
+            }
+            return supercategory
+        }
+        
+        return ""
+    }
+    
     func getNumberOfSections() -> Int {
         return 2
     }
@@ -121,12 +136,20 @@ class CategoryModel: NSObject {
         return ""
     }
     
+    func setCategory(category: String) {
+        if category.isEmpty {
+            return
+        }
+        self.category = category
+        subcategories = getSubcategories(self.category)
+    }
+    
     func setCategory(section: Int, row: Int) {
         if section == 0 {
             showAll = true
             return
         }
-        supercategory = category
+        Debug.instance.log(subcategories)
         category = subcategories[row]
         subcategories = getSubcategories(category)
     }
@@ -164,6 +187,10 @@ class CategoryModel: NSObject {
     
     func getCategory() -> String {
         return category
+    }
+    
+    func getCategoriesLoaded() -> Bool {
+        return categoriesLoaded
     }
     
 }

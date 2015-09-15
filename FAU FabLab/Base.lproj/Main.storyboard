@@ -612,7 +612,7 @@
         <!--Produkt suchen-->
         <scene sceneID="tda-UB-Mvw">
             <objects>
-                <viewController storyboardIdentifier="ProductsearchView" title="Produkt suchen" id="YOP-IL-BaU" customClass="ProductsearchViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="ProductsearchView" storyboardIdentifier="ProductsearchView" title="Produkt suchen" id="YOP-IL-BaU" customClass="ProductsearchViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="I9Y-Ab-fth"/>
                         <viewControllerLayoutGuide type="bottom" id="u7Y-Nt-pji"/>
@@ -775,7 +775,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Produktsuche" id="3G3-bQ-XHf">
-                        <barButtonItem key="leftBarButtonItem" image="icon_door_closed" id="zDc-al-KgO">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="zDc-al-KgO">
                             <color key="tintColor" red="0.80392156859999997" green="0.0078431372550000003" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="icon_cart" id="N8d-Xk-Moq"/>
@@ -788,6 +788,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XdC-vR-fPp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-82" y="1560"/>
+        </scene>
+        <!--Kategorien-->
+        <scene sceneID="s1n-id-eGu">
+            <objects>
+                <tableViewController restorationIdentifier="ProductCategoryViewController" storyboardIdentifier="ProductCategoryViewController" title="Kategorien" id="qWa-qw-AFo" customClass="ProductCategoryViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="AnQ-T5-b6s">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CategoryCell" textLabel="aG1-b4-3oh" style="IBUITableViewCellStyleDefault" id="FFJ-88-h9Q">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FFJ-88-h9Q" id="ioD-bU-cf0">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aG1-b4-3oh">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="qWa-qw-AFo" id="WH4-OQ-UIk"/>
+                            <outlet property="delegate" destination="qWa-qw-AFo" id="xUH-sU-pv2"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="akY-HA-25k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-82" y="2340"/>
         </scene>
         <!--Standort-->
         <scene sceneID="bo2-Ki-dW7">
@@ -1995,7 +2029,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zim-hY-J2X" id="YDP-RY-IY0">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benachrichte mich sobald das Fablab das nächste mal öffnet" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFF-ln-nsc">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Benachrichte mich sobald das Fablab das nächste mal öffnet" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFF-ln-nsc">
                                                     <rect key="frame" x="8" y="4" width="504" height="51"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
