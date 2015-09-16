@@ -1,32 +1,24 @@
-
 import Foundation
-import ObjectMapper
-import SwiftyJSON
 import CoreData
 
-class Settings : NSObject{
+class SettingsModel : NSObject{
     
     let historyKey = "History"
     
     private let managedObjectContext : NSManagedObjectContext
     private let coreData = CoreDataHelper(sqliteDocumentName: "CoreDataModel.db", schemaName:"")
-    
 
-    
     private var entries : [SettingsEntry] {
         get {
             let request = NSFetchRequest(entityName: SettingsEntry.SettingsName)
             return managedObjectContext.executeFetchRequest(request, error: nil) as! [SettingsEntry]
         }
     }
-    
-    
+
     override init(){
         self.managedObjectContext = coreData.createManagedObjectContext()
         super.init()
     }
-    
-
     
     func getValue(key:String) -> Bool?{
         for res in entries{
@@ -42,7 +34,6 @@ class Settings : NSObject{
             self.createNewKeyValue(key, value: value);
         }
     }
-    
     
     private func updateKeyValue(key: String, value: Bool) -> Bool{
         for res in entries{
@@ -62,5 +53,4 @@ class Settings : NSObject{
         newKeyValue.value = value
         self.managedObjectContext.save(nil)
     }
-    
 }

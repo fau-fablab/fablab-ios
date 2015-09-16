@@ -6,7 +6,7 @@ class SearchHistoryModel: NSObject {
     
     private let managedObjectContext: NSManagedObjectContext
     private let coreData = CoreDataHelper(sqliteDocumentName: "CoreDataModel.db", schemaName: "")
-    private let settings = Settings()
+    private let settings = SettingsModel()
     
     private var entries : [HistoryEntry] {
         get {

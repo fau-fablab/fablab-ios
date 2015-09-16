@@ -18,7 +18,7 @@ class InventoryLoginViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        var inventoryLogin = InventoryLogin()
+        var inventoryLogin = InventoryLoginModel()
         var user = inventoryLogin.getUser()
         if user.username != nil{
             login(user)
@@ -110,7 +110,7 @@ class InventoryLoginViewController: UIViewController {
                 }
             }
             else{
-                var inventoryLogin = InventoryLogin()
+                var inventoryLogin = InventoryLoginModel()
                 inventoryLogin.saveUser(user!)
                 self.loginWasSuccessful(user!)
             }

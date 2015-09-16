@@ -9,7 +9,7 @@ class SettingsViewController : UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
     
     private var tableViewCellIdentifier = "SettingsDoorOpensPushCell"
-    private var settings = Settings()
+    private var settings = SettingsModel()
     private var doorPushCell : SettingsDoorOpensPushCell!
     
     private let switchCustomCellIdentifier = "SwitchCustomCell"

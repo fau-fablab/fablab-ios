@@ -1,7 +1,7 @@
 
 import Foundation
 
-class InventoryLogin : NSObject{
+class InventoryLoginModel : NSObject{
     
     private var user = User()
 
@@ -12,6 +12,7 @@ class InventoryLogin : NSObject{
             user.setPassword(NSUserDefaults.standardUserDefaults().stringForKey("inventoryUserPassword")!)
         }
     }
+    
     func getUser()-> User{
         return user
     }

@@ -44,7 +44,7 @@ class InventoryListViewController: UIViewController, UITableViewDataSource, UITa
         alert.addAction(UIAlertAction(title: "Ja".localized, style: .Default, handler: { (action: UIAlertAction!) in
             self.spinner.startAnimating()
             
-            var login = InventoryLogin()
+            var login = InventoryLoginModel()
             let api = InventoryApi()
             api.deleteAll(login.getUser(), onCompletion:{
                 items, err in

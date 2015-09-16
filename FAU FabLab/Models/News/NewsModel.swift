@@ -1,11 +1,10 @@
 import UIKit
 import SwiftyJSON
 import Foundation.NSURL
-import ObjectMapper
 
 public class NewsModel: NSObject {
 
-    let api = NewsApi()
+    private let api = NewsApi()
     
     private var news = [News]()
     

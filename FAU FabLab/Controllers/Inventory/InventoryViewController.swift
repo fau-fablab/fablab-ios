@@ -90,7 +90,7 @@ class InventoryViewController : UIViewController {
         var alert = UIAlertController(title: "Abmelden".localized, message: "Möchtest du dich abmelden?".localized, preferredStyle: UIAlertControllerStyle.Alert)
         
         alert.addAction(UIAlertAction(title: "Ja".localized, style: .Default, handler: { (action: UIAlertAction!) in
-            var inventoryLogin = InventoryLogin()
+            var inventoryLogin = InventoryLoginModel()
             inventoryLogin.deleteUser()
             self.loginView.hidden = false
             
