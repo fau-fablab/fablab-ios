@@ -74,14 +74,14 @@ class CreateProjectsViewController: UIViewController {
             UIBarButtonItem(title: "H3", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
             UIBarButtonItem(title: "B", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
             UIBarButtonItem(title: "I", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
+            UIBarButtonItem(title: "Url", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
+            UIBarButtonItem(title: "Img", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
             UIBarButtonItem(title: "*", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
             UIBarButtonItem(title: ">", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
             UIBarButtonItem(title: "^", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
             UIBarButtonItem(title: "~", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
             UIBarButtonItem(title: "`", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
             UIBarButtonItem(title: "Code", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
-            UIBarButtonItem(title: "URL", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
-            UIBarButtonItem(title: "IMG", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:")
         ]
         
         textView!.inputAccessoryView = toolBar
@@ -143,11 +143,7 @@ class CreateProjectsViewController: UIViewController {
     func confirmUploadToGitHub() {
         let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in })
         
-        let doneAction: UIAlertAction = UIAlertAction(title: "Hochladen".localized, style: .Default, handler: { (Void) -> Void in
-                // before uploading, save the project also to core-data
-                self.saveProjectToCoreData()
-                self.uploadProjectActionHandler()
-            })
+        let doneAction: UIAlertAction = UIAlertAction(title: "Hochladen".localized, style: .Default, handler: { (Void) -> Void in self.uploadProjectActionHandler()})
         
         let alertController: UIAlertController = UIAlertController(title: "Upload zu GitHub".localized, message: "Wollen Sie das Projekt-Snippet hochladen?".localized, preferredStyle: .Alert)
         alertController.addAction(cancelAction)
