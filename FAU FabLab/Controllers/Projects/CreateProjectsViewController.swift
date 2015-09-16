@@ -3,7 +3,7 @@ import Foundation
 import UIKit
 import MarkdownTextView
 
-class CreateProjectsViewController: UIViewController {
+class CreateProjectsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet var titleText: UITextField!
     @IBOutlet var descText: UITextField!
@@ -75,7 +75,7 @@ class CreateProjectsViewController: UIViewController {
             UIBarButtonItem(title: "B", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
             UIBarButtonItem(title: "I", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
             UIBarButtonItem(title: "Url", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
-            UIBarButtonItem(title: "Img", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
+            UIBarButtonItem(title: "Img", style: UIBarButtonItemStyle.Plain, target: self, action: "addImage"),
             UIBarButtonItem(title: "*", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
             UIBarButtonItem(title: ">", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
             UIBarButtonItem(title: "^", style: UIBarButtonItemStyle.Plain, target: self, action: "addText:"),
@@ -105,6 +105,35 @@ class CreateProjectsViewController: UIViewController {
         } else {
             self.textView!.insertText(sender.title!)
         }
+    }
+    
+    func addImage() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .PhotoLibrary
+        
+        // todo choose between camera and PhotoLibrary
+        
+        self.presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    // MARK: - UIImagePickerControllerDelegate
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+
+            self.dismissViewControllerAnimated(true, completion: { () -> Void in self.confirmImageUploadToGitHub(pickedImage)})
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
+        // needed to change the status-bar color in the picker view to white
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
     }
     
     @IBAction func showActionSheet(sender: AnyObject) {
@@ -152,6 +181,25 @@ class CreateProjectsViewController: UIViewController {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
+    func confirmImageUploadToGitHub(image: UIImage) {
+        
+        var inputTextField: UITextField?
+        
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in })
+        
+        let doneAction: UIAlertAction = UIAlertAction(title: "Hochladen".localized, style: .Default, handler: { (Void) -> Void in self.uploadImageActionHandler(name: inputTextField!.text, image: image)})
+        
+        let alertController: UIAlertController = UIAlertController(title: "Upload zu GitHub".localized, message: "Wollen Sie das Bild wirklich hochladen?".localized + "\n" + "Bitte geben Sie einen Namen für das Bild ein".localized + ":", preferredStyle: .Alert)
+        alertController.addAction(cancelAction)
+        alertController.addAction(doneAction)
+        
+        alertController.addTextFieldWithConfigurationHandler({ textField -> Void in
+            inputTextField = textField
+        })
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
     func uploadProjectActionHandler() {
         let api = ProjectsApi()
         
@@ -179,6 +227,42 @@ class CreateProjectsViewController: UIViewController {
         }
     }
     
+    func uploadImageActionHandler(#name: String, image: UIImage) {
+        let api = ProjectsApi()
+        
+        let currGistId = self.projectsModel.getGistId(self.projectId!)
+        
+        if currGistId == "" {
+            // if the project has no gist-id yet, then upload the project and then retry the image upload
+            uploadProjectActionHandler()
+            uploadImageActionHandler(name: name, image: image)
+        } else {
+            
+            let imageUpload = ProjectImageUpload()
+            imageUpload.setFilename(name+".png")
+            imageUpload.setData(UIImagePNGRepresentation(image).base64EncodedStringWithOptions(.allZeros))
+            imageUpload.setRepoId(currGistId)
+            
+            var activityIndicator = UIActivityIndicatorView()
+            activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
+            activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+            activityIndicator.center = self.view.center
+            self.view.addSubview(activityIndicator)
+            
+            activityIndicator.startAnimating()
+            activityIndicator.backgroundColor = UIColor.fabLabGreen().colorWithAlphaComponent(0.3)
+            
+            api.uploadImage(imageUpload, onCompletion: {
+                imageLink, err in
+                
+                activityIndicator.stopAnimating()
+                activityIndicator.hidesWhenStopped = true
+                
+                self.pasteImageLink(imageLink!, err: err)
+            })
+        }
+    }
+    
     func showUploadAlertController(gistId: String, err: NSError?) {
         if (err != nil) {
             AlertView.showErrorView("Projekt-Snippet konnte nicht hochgeladen werden".localized)
@@ -202,6 +286,15 @@ class CreateProjectsViewController: UIViewController {
         }
     }
     
+    func pasteImageLink(imageLink: String, err: NSError?) {
+        if (err != nil) {
+            AlertView.showErrorView("Bild konnte nicht hochgeladen werden".localized)
+        } else {
+            //insert image to md-view
+            self.textView!.insertText("![title](\(imageLink))")
+        }
+    }
+    
     func getCartAsMDString(cart: Cart) -> String {
         var text : String = ""
         text += "#" + "Einkaufliste".localized + "\n"
@@ -215,5 +308,4 @@ class CreateProjectsViewController: UIViewController {
         text += "#" + "Anleitung".localized + "\n"
         return text
     }
-    
 }

@@ -150,6 +150,9 @@
 "Link" = "Link";
 "Projekt hinzufügen" = "Create project";
 "Projekt bearbeiten" = "Edit project";
+"Wollen Sie das Bild wirklich hochladen?" = "Do you really want to upload this image?";
+"Bitte geben Sie einen Namen für das Bild ein" = "Then please enter a filename for the image";
+"Bild konnte nicht hochgeladen werden" = "Image was not uploaded";
 
 //MARK: ProjectsViewController
 "Warenkörbe" = "Carts";

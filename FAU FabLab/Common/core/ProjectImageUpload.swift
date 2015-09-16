@@ -5,7 +5,7 @@ import ObjectMapper
 class ProjectImageUpload: Mappable {
 
     private(set) var filename: String?
-    private(set) var data: [UInt8]?
+    private(set) var data: String?
     private(set) var repoId: String?
     
     class func newInstance() -> Mappable {
@@ -22,7 +22,7 @@ class ProjectImageUpload: Mappable {
         self.filename = filename
     }
     
-    func setData(data: [UInt8]) {
+    func setData(data: String) {
         self.data = data
     }
     
