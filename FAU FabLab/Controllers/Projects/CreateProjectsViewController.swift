@@ -143,7 +143,11 @@ class CreateProjectsViewController: UIViewController {
     func confirmUploadToGitHub() {
         let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in })
         
-        let doneAction: UIAlertAction = UIAlertAction(title: "Hochladen".localized, style: .Default, handler: { (Void) -> Void in self.uploadProjectActionHandler()})
+        let doneAction: UIAlertAction = UIAlertAction(title: "Hochladen".localized, style: .Default, handler: { (Void) -> Void in
+                // before uploading, save the project also to core-data
+                self.saveProjectToCoreData()
+                self.uploadProjectActionHandler()
+            })
         
         let alertController: UIAlertController = UIAlertController(title: "Upload zu GitHub".localized, message: "Wollen Sie das Projekt-Snippet hochladen?".localized, preferredStyle: .Alert)
         alertController.addAction(cancelAction)
