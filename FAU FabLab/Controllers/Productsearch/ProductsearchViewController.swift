@@ -306,11 +306,9 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
             let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "searchHelpCell")
             cell.textLabel?.text = searchHelpModel.getEntry(indexPath.section, row: indexPath.row)
             cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-            /*
             if indexPath.section == 0 {
                 cell.imageView?.image = UIImage(named: "icon_categories", inBundle: nil, compatibleWithTraitCollection: nil)
             }
-            */
             return cell
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier(productCellIdentifier) as? ProductCustomCell
