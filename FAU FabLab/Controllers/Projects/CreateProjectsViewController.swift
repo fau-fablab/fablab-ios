@@ -110,14 +110,22 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
     }
     
     func addImage() {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = .PhotoLibrary
         
-        // todo choose between camera and PhotoLibrary
+        if self.projectId < 0 {
+            // if the project has no (gist-)id yet, then save it CoreData first and then ask to upload the project
+            self.saveProjectToCoreData();
+            self.confirmUploadToGitHub(message: "Bitte laden Sie zuerst das Project auf GitHub hoch und versuchen dann erneut den Bild-Upload".localized);
+        } else {
         
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = false
+            imagePicker.sourceType = .PhotoLibrary
+        
+            // todo choose between camera and PhotoLibrary
+        
+            self.presentViewController(imagePicker, animated: true, completion: nil)
+        }
     }
     
     // MARK: - UIImagePickerControllerDelegate
@@ -149,7 +157,7 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
         let uploadAction = UIAlertAction(title: "Upload zu GitHub".localized, style: .Default, handler: {
             (alert: UIAlertAction!) -> Void in
             self.saveProjectToCoreData()
-            self.confirmUploadToGitHub()
+            self.confirmUploadToGitHub(message: "Wollen Sie das Projekt-Snippet hochladen?".localized)
         })
         
         let cancelAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: {
@@ -172,12 +180,12 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
         }
     }
     
-    func confirmUploadToGitHub() {
+    func confirmUploadToGitHub(#message: String) {
         let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in })
         
         let doneAction: UIAlertAction = UIAlertAction(title: "Hochladen".localized, style: .Default, handler: { (Void) -> Void in self.uploadProjectActionHandler()})
         
-        let alertController: UIAlertController = UIAlertController(title: "Upload zu GitHub".localized, message: "Wollen Sie das Projekt-Snippet hochladen?".localized, preferredStyle: .Alert)
+        let alertController: UIAlertController = UIAlertController(title: "Upload zu GitHub".localized, message: message, preferredStyle: .Alert)
         alertController.addAction(cancelAction)
         alertController.addAction(doneAction)
         
@@ -233,29 +241,25 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
     func uploadImageActionHandler(#name: String, image: UIImage) {
         let api = ProjectsApi()
         
-        if self.projectId < 0 {
-            // if the project has no (gist-)id yet, then save it CoreData first, upload the project and then continue with the image upload
-            saveProjectToCoreData()
-            uploadProjectActionHandler()
+        if self.projectId >= 0 {
+            let currGistId = self.projectsModel.getGistId(self.projectId!)
+        
+            let imageUpload = ProjectImageUpload()
+            imageUpload.setFilename(name+".png")
+            imageUpload.setData(UIImagePNGRepresentation(image).base64EncodedStringWithOptions(.allZeros))
+            imageUpload.setRepoId(currGistId)
+        
+            self.activityIndicator.color = UIColor.fabLabGreen()
+            self.activityIndicator.startAnimating()
+        
+            api.uploadImage(imageUpload, onCompletion: {
+                imageLink, err in
+            
+                self.activityIndicator.stopAnimating()
+            
+                self.pasteImageLink(imageLink!, err: err)
+            })
         }
-        
-        let currGistId = self.projectsModel.getGistId(self.projectId!)
-        
-        let imageUpload = ProjectImageUpload()
-        imageUpload.setFilename(name+".png")
-        imageUpload.setData(UIImagePNGRepresentation(image).base64EncodedStringWithOptions(.allZeros))
-        imageUpload.setRepoId(currGistId)
-        
-        self.activityIndicator.color = UIColor.fabLabGreen()
-        self.activityIndicator.startAnimating()
-        
-        api.uploadImage(imageUpload, onCompletion: {
-            imageLink, err in
-            
-            self.activityIndicator.stopAnimating()
-            
-            self.pasteImageLink(imageLink!, err: err)
-        })
     }
     
     func showUploadAlertController(gistId: String, err: NSError?) {
