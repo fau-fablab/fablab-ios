@@ -38,7 +38,16 @@ class ProjectsModel: NSObject {
         return projects[id]
     }
     
-    func addProject(#description: String, filename: String, content: String, gistId: String) {
+    func getIdForProject(project: Project) -> Int {
+        for var i = 0; i < projects.count; i++ {
+            if projects[i] == project {
+                return i
+            }
+        }
+        return -1
+    }
+    
+    func addProject(#description: String, filename: String, content: String, gistId: String) -> Project {
         let project = NSEntityDescription.insertNewObjectForEntityForName(Project.EntityName,
             inManagedObjectContext: self.managedObjectContext) as! Project
         project.descr = description
@@ -47,6 +56,7 @@ class ProjectsModel: NSObject {
         project.gistId = gistId
         saveCoreData()
         Debug.instance.log(projects)
+        return project
     }
     
     func updateProject(#id: Int, description: String, filename: String, content: String) {

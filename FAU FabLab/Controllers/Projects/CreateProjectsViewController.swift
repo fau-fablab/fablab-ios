@@ -167,7 +167,8 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
         if self.projectId >= 0 {
             self.projectsModel.updateProject(id: self.projectId!, description: self.descText.text, filename: self.titleText.text, content: self.textView!.text)
         } else {
-            self.projectsModel.addProject(description: self.descText.text, filename: self.titleText.text, content: self.textView!.text, gistId: "")
+            let proj = self.projectsModel.addProject(description: self.descText.text, filename: self.titleText.text, content: self.textView!.text, gistId: "")
+            self.projectId = self.projectsModel.getIdForProject(proj)
         }
     }
     
@@ -232,30 +233,29 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
     func uploadImageActionHandler(#name: String, image: UIImage) {
         let api = ProjectsApi()
         
+        if self.projectId < 0 {
+            // if the project has no (gist-)id yet, then save it CoreData first, upload the project and then continue with the image upload
+            saveProjectToCoreData()
+            uploadProjectActionHandler()
+        }
+        
         let currGistId = self.projectsModel.getGistId(self.projectId!)
         
-        if currGistId == "" {
-            // if the project has no gist-id yet, then upload the project and then retry the image upload
-            uploadProjectActionHandler()
-            uploadImageActionHandler(name: name, image: image)
-        } else {
+        let imageUpload = ProjectImageUpload()
+        imageUpload.setFilename(name+".png")
+        imageUpload.setData(UIImagePNGRepresentation(image).base64EncodedStringWithOptions(.allZeros))
+        imageUpload.setRepoId(currGistId)
+        
+        self.activityIndicator.color = UIColor.fabLabGreen()
+        self.activityIndicator.startAnimating()
+        
+        api.uploadImage(imageUpload, onCompletion: {
+            imageLink, err in
             
-            let imageUpload = ProjectImageUpload()
-            imageUpload.setFilename(name+".png")
-            imageUpload.setData(UIImagePNGRepresentation(image).base64EncodedStringWithOptions(.allZeros))
-            imageUpload.setRepoId(currGistId)
+            self.activityIndicator.stopAnimating()
             
-            self.activityIndicator.color = UIColor.fabLabGreen()
-            self.activityIndicator.startAnimating()
-            
-            api.uploadImage(imageUpload, onCompletion: {
-                imageLink, err in
-                
-                self.activityIndicator.stopAnimating()
-                
-                self.pasteImageLink(imageLink!, err: err)
-            })
-        }
+            self.pasteImageLink(imageLink!, err: err)
+        })
     }
     
     func showUploadAlertController(gistId: String, err: NSError?) {
