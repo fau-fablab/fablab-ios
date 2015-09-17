@@ -8,9 +8,6 @@ class ProductCategoryViewController: UIViewController, UITableViewDataSource, UI
     private let model = CategoryModel.sharedInstance
     private let reuseIdentifier = "CategoryCell"
     
-    private var backBarButtonItem: UIBarButtonItem!
-    //private var activityIndicator: UIActivityIndicatorView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,27 +20,33 @@ class ProductCategoryViewController: UIViewController, UITableViewDataSource, UI
                     return
                 }
                 self.tableView.reloadData()
+                self.setTitle()
             })
         }
         
-        title = model.getNameOfCategory(model.getCategory())
+        setTitle()
+
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        CartNavigationButtonController.sharedInstance.setViewController(self)
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
         if (self.isMovingFromParentViewController() || self.isBeingDismissed()) {
-            model.setCategory(model.getSupercategory(model.getCategory()))
+            if model.hasSupercategory() {
+                model.setCategory(model.getSupercategory()!)   
+            }
         }
     }
     
-    func reset() {
-        model.reset()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        CartNavigationButtonController.sharedInstance.setViewController(self)
+    private func setTitle() {
+        if let category = model.getCategory() {
+            title = category.name!
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -55,16 +58,17 @@ class ProductCategoryViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        Debug.instance.log(indexPath)
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: reuseIdentifier)
-        cell.textLabel?.text = model.getNameOfCategory(indexPath.section, row: indexPath.row)
+        if indexPath.section == 0 {
+            cell.textLabel?.text = "Alles anzeigen".localized
+        } else {
+            cell.textLabel?.text = model.getSubcategory(indexPath.section, row: indexPath.row)!.name
+        }
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        Debug.instance.log(indexPath.section)
-        Debug.instance.log(indexPath.row)
         model.setCategory(indexPath.section, row: indexPath.row)
         if model.hasSubcategories() {
             let productCategoryViewController = storyboard!.instantiateViewControllerWithIdentifier("ProductCategoryViewController") as! ProductCategoryViewController

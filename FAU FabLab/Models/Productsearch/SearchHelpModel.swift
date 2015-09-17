@@ -16,13 +16,13 @@ class SearchHelpModel: NSObject {
     
     func fetchEntries() {
         entries.removeAll(keepCapacity: false)
-        //entries.append(["Kategorien".localized])
+        entries.append(["Kategorien".localized])
         entries.append(history.getEntries())
     }
     
     func fetchEntriesWithSubstring(substring: String) {
         entries.removeAll(keepCapacity: false)
-        //entries.append(["Kategorien".localized])
+        entries.append(["Kategorien".localized])
         entries.append(history.getEntriesWithSubstring(substring))
         if (count(substring) > 1) {
             entries.append(autocomplete.getEntriesWithSubstring(substring))
@@ -46,9 +46,9 @@ class SearchHelpModel: NSObject {
     }
     
     func getTitleOfSection(section: Int) -> String {
-        if (section == 0 && !entries[0].isEmpty) {
+        if (section == 1 && !entries[0].isEmpty) {
             return "Verlauf".localized
-        } else if (section == 1 && !entries[1].isEmpty) {
+        } else if (section == 2 && !entries[1].isEmpty) {
             return "Vorschläge".localized
         }
         return ""

@@ -173,7 +173,8 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         model.removeAllProducts()
         tableView.reloadData()
         self.actInd.startAnimating()
-        model.searchProductByCategory((notification.object as! String), onCompletion: { err in
+        let category = notification.object as! Category
+        model.searchProductByCategory(category.name!, onCompletion: { err in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.searchActive = false
                 self.searchBar.userInteractionEnabled = true;
@@ -378,16 +379,16 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         switch tableView {
         case searchHelpTableView:
             searchBar.setShowsCancelButton(false, animated: true)
-            /*
+            
             if indexPath.section == 0 {
+                CategoryModel.sharedInstance.reset()
                 let productCategoryViewController = storyboard!.instantiateViewControllerWithIdentifier("ProductCategoryViewController") as! ProductCategoryViewController
-                productCategoryViewController.reset()
                 navigationController?.pushViewController(productCategoryViewController, animated: true)
                 self.searchHelpTableView.hidden = true
                 self.searchBar.resignFirstResponder()
                 return
             }
-*/
+
             searchBar.text = searchHelpTableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text
             searchBarSearchButtonClicked(searchBar)
             return

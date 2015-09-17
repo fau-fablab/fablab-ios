@@ -10,7 +10,6 @@
 		35CE1DD759134EC89DBD0D29 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE11C7BEE60991B0702A2A /* Debug.swift */; };
 		35CE1E13F0E8E25DBCE8E9C9 /* DoorStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE1698E311B04F89744CDB /* DoorStateModel.swift */; };
 		4804CA5C1B7E4FB200F75BF5 /* ActionSheetPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4804CA5B1B7E4FB200F75BF5 /* ActionSheetPickerDelegate.swift */; };
-		48283B691BA6E06300FE08D2 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48283B681BA6E06300FE08D2 /* CategoryModel.swift */; };
 		483E1F9B1BA8485400A34232 /* ProductCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483E1F9A1BA8485400A34232 /* ProductCategoryViewController.swift */; };
 		48545B2D1B92F6D0006F690F /* AboutCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48545B2C1B92F6D0006F690F /* AboutCustomCell.swift */; };
 		485765AE1BA2BBBD0064B42B /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485765AD1BA2BBBD0064B42B /* Cart.swift */; };
@@ -27,6 +26,8 @@
 		48CC3FF91B8B6E0900FB9C8E /* BBBadgeBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 48CC3FF81B8B6E0900FB9C8E /* BBBadgeBarButtonItem.m */; };
 		48CC3FFB1B8B6E2500FB9C8E /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC3FFA1B8B6E2500FB9C8E /* CartViewController.swift */; };
 		48CC3FFD1B8B6F0600FB9C8E /* CartNavigationButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CC3FFC1B8B6F0600FB9C8E /* CartNavigationButtonController.swift */; };
+		48D266C61BA9844D009E642B /* CategoryApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D266C51BA9844D009E642B /* CategoryApi.swift */; };
+		48D266C81BA987C7009E642B /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D266C71BA987C7009E642B /* CategoryModel.swift */; };
 		48E9A11F1B9C1A840024C4B9 /* SwitchCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E9A11E1B9C1A840024C4B9 /* SwitchCustomCell.swift */; };
 		48E9A1211B9C1DF00024C4B9 /* ButtonCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E9A1201B9C1DF00024C4B9 /* ButtonCustomCell.swift */; };
 		5024EE461BA5A3080025AF91 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE451BA5A3080025AF91 /* Project.swift */; };
@@ -159,7 +160,6 @@
 		35CE11C7BEE60991B0702A2A /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		35CE1698E311B04F89744CDB /* DoorStateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoorStateModel.swift; sourceTree = "<group>"; };
 		4804CA5B1B7E4FB200F75BF5 /* ActionSheetPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetPickerDelegate.swift; sourceTree = "<group>"; };
-		48283B681BA6E06300FE08D2 /* CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		483E1F9A1BA8485400A34232 /* ProductCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCategoryViewController.swift; sourceTree = "<group>"; };
 		48545B2C1B92F6D0006F690F /* AboutCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCustomCell.swift; sourceTree = "<group>"; };
 		485765AD1BA2BBBD0064B42B /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
@@ -180,6 +180,8 @@
 		48CC3FF81B8B6E0900FB9C8E /* BBBadgeBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBadgeBarButtonItem.m; sourceTree = "<group>"; };
 		48CC3FFA1B8B6E2500FB9C8E /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		48CC3FFC1B8B6F0600FB9C8E /* CartNavigationButtonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartNavigationButtonController.swift; sourceTree = "<group>"; };
+		48D266C51BA9844D009E642B /* CategoryApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryApi.swift; sourceTree = "<group>"; };
+		48D266C71BA987C7009E642B /* CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		48E9A11E1B9C1A840024C4B9 /* SwitchCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCustomCell.swift; sourceTree = "<group>"; };
 		48E9A1201B9C1DF00024C4B9 /* ButtonCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCustomCell.swift; sourceTree = "<group>"; };
 		5003604E1B97911B0037114C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -561,7 +563,7 @@
 				487971B71B9B0E3F00052FEB /* SearchHistoryModel.swift */,
 				489316441B831E3900DCB6BB /* AutocompletionModel.swift */,
 				487971B91B9B112D00052FEB /* SearchHelpModel.swift */,
-				48283B681BA6E06300FE08D2 /* CategoryModel.swift */,
+				48D266C71BA987C7009E642B /* CategoryModel.swift */,
 			);
 			path = Productsearch;
 			sourceTree = "<group>";
@@ -598,6 +600,7 @@
 				50732E5F1BA2E5E60056B77E /* ProjectsApi.swift */,
 				923F11751BA1FC0800F0374E /* NewsApi.swift */,
 				922617F91BA87C1100F74912 /* ProductApi.swift */,
+				48D266C51BA9844D009E642B /* CategoryApi.swift */,
 				92E147101BA8C29A006B239D /* DrupalApi.swift */,
 				92E147121BA8C459006B239D /* DataApi.swift */,
 				92E147141BA8C6AA006B239D /* ICalApi.swift */,
@@ -1003,7 +1006,6 @@
 				487971B41B9B0E0200052FEB /* HistoryEntry.swift in Sources */,
 				844793561B93576D0057CF88 /* TriggerPushType.swift in Sources */,
 				923E1F251B7A735F009CC545 /* MalfunctionInfoController.swift in Sources */,
-				48283B691BA6E06300FE08D2 /* CategoryModel.swift in Sources */,
 				849502A41B9B7696006810E3 /* InventoryItemScanViewController.swift in Sources */,
 				927901CA1B6D3B9300F95B09 /* RestManager.swift in Sources */,
 				923E1F2A1B7AA25A009CC545 /* CartProduct.swift in Sources */,
@@ -1026,6 +1028,7 @@
 				48A8D9D41BA54154006958D9 /* ProjectsViewController.swift in Sources */,
 				927901E21B6D3F6300F95B09 /* NewsViewController.swift in Sources */,
 				84CDCD2B1B9083C90084D8F3 /* SettingsViewController.swift in Sources */,
+				48D266C61BA9844D009E642B /* CategoryApi.swift in Sources */,
 				92DB85A81B8B72FC0070FAD8 /* MalfunctionInfoModel.swift in Sources */,
 				929770921B9CE8D300525191 /* InventoryApi.swift in Sources */,
 				84F53FEE1B73DD24008FB605 /* PayOrCancelViewController.swift in Sources */,
@@ -1036,6 +1039,7 @@
 				489316451B831E3900DCB6BB /* AutocompletionModel.swift in Sources */,
 				489E4C751B79E093004A60FA /* ProductCustomCell.swift in Sources */,
 				924DBF6D1B8DEBB1000CAFB2 /* FabTool.swift in Sources */,
+				48D266C81BA987C7009E642B /* CategoryModel.swift in Sources */,
 				35CE1E13F0E8E25DBCE8E9C9 /* DoorStateModel.swift in Sources */,
 				923F11781BA20EB100F0374E /* ApiResult.swift in Sources */,
 				920AECF11B96EDBD00523C1B /* VersionCheckModel.swift in Sources */,

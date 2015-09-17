@@ -1,147 +1,69 @@
 import Foundation
-import ObjectMapper
 
 class CategoryModel: NSObject {
     
     static let sharedInstance = CategoryModel()
     
-    private let resource = "/products"
-    private var mapper = Mapper<Product>()
-    private var categories = [String]()
+    private let api = CategoryApi()
     private var isLoading = false
     private var categoriesLoaded = false
-    
-    private var category: String!
-    private var subcategories = [String]()
+    private var categories = [Category]()
+    private var category: Category!
     private var showAll = false
     
-    override init() {
-        super.init()
-        reset()
+    func fetchCategories(onCompletion: ApiResponse) {
+        if isLoading || categoriesLoaded {
+            return
+        }
+        
+        isLoading = true
+        categories.removeAll(keepCapacity: false)
+        
+        api.findAll { (categories, error) -> Void in
+            if error != nil {
+                AlertView.showErrorView("Fehler bei der Produktsuche".localized)
+                onCompletion(error)
+            } else if categories != nil {
+                self.categoriesLoaded = true
+                self.categories = categories!
+                self.reset()
+                onCompletion(nil)
+            }
+            self.isLoading = false
+        }
     }
     
     func reset() {
         showAll = false
-        category = "Alle Produkte"
-        subcategories = getSubcategories(category)
+        category = findRootCategory()
     }
     
-    //only for testing
-    func fetchCategories(onCompletion: ApiResponse){
-        
-        let endpoint = resource + "/find/name"
-        let params = ["search": ""]
-        
-        if(!isLoading && !categoriesLoaded){
-            
-            isLoading = true
-            categories.removeAll(keepCapacity: false)
-            
-            RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .URL, resource: endpoint, params: params, onCompletion: {
-                json, err in
-                if (err != nil) {
-                    AlertView.showErrorView("Fehler bei der Produktsuche".localized)
-                    onCompletion(err)
-                    self.isLoading = false
-                    return
-                }
-                if let productList = self.mapper.mapArray(json) {
-                    for tmp in productList {
-                        self.categories.append(tmp.categoryString!)
-                        Debug.instance.log(tmp.categoryString)
-                    }
-                }
-                self.reset()
-                self.isLoading = false;
-                self.categoriesLoaded = true
-                onCompletion(nil);
-                return
-            })
-            
-        }
-        
-        onCompletion(nil)
-        return
-        
-    }
-    
-    //only for testing
-    func getSubcategories(supercategory: String) -> [String] {
-        
-        var subcategories = [String]()
-        
-        let depth = split(supercategory, allowEmptySlices: false, isSeparator: {$0 == "/"}).count
-        
-        for category in categories  {
-            
-            let tmp = split(category, allowEmptySlices: false, isSeparator: {$0 == "/"})
-            
-            if tmp.count <= depth {
-                continue
-            }
-            
-            var subcategory = tmp[0]
-            for index in 1...depth {
-                subcategory += "/" + tmp[index]
-            }
-            
-            if subcategory.hasSuffix(" ") {
-                subcategory = dropLast(subcategory)
-            }
-            if subcategory.hasPrefix(" ") {
-                subcategory = dropFirst(subcategory)
-            }
-            
-            if let range = subcategory.rangeOfString(supercategory) {
-                if !contains(subcategories, subcategory) {
-                    subcategories.append(subcategory)
-                }
+    private func findRootCategory() -> Category? {
+        for category in categories {
+            if category.parentCategoryId == 0 {
+                return category
             }
         }
         
-        return subcategories
-        
+        return nil
     }
     
-    //only for testing
-    func getSupercategory(subcategory: String) -> String {
-        
-        let tmp = split(subcategory, allowEmptySlices: false, isSeparator: {$0 == "/"})
-        
-        if tmp.count > 1 {
-            var supercategory = tmp[0]
-            if tmp.count > 2 {
-                for index in 1...tmp.count - 2 {
-                    supercategory += "/" + tmp[index]
-                }
+    private func findCategoryById(id: Int) -> Category? {
+        for category in categories {
+            if category.categoryId == id {
+                return category
             }
-            return supercategory
         }
         
-        return ""
+        return nil
     }
     
-    func getNumberOfSections() -> Int {
-        return 2
+    func getCategory() -> Category? {
+        return category
     }
     
-    func getNumberOfRowsInSection(section: Int) -> Int {
-        if section == 0 && !subcategories.isEmpty {
-            return 1
-        }
-        return subcategories.count
-    }
-    
-    func getTitleOfSection(section: Int) -> String {
-        return ""
-    }
-    
-    func setCategory(category: String) {
-        if category.isEmpty {
-            return
-        }
+    func setCategory(category: Category) {
         self.category = category
-        subcategories = getSubcategories(self.category)
     }
     
     func setCategory(section: Int, row: Int) {
@@ -149,48 +71,71 @@ class CategoryModel: NSObject {
             showAll = true
             return
         }
-        Debug.instance.log(subcategories)
-        category = subcategories[row]
-        subcategories = getSubcategories(category)
+        
+        if category != nil && category.categories != nil {
+            category = findCategoryById(category.categories![row])
+        }
     }
     
-    func getNameOfCategory(section: Int, row: Int) -> String {
+    func getSubcategory(section: Int, row: Int) -> Category? {
         if section == 0 {
-            return "Alle anzeigen".localized
+            return category
         }
-        let tmp = split(subcategories[row], allowEmptySlices: false, isSeparator: {$0 == "/"})
-        var name = tmp[tmp.count - 1]
-        if name.hasPrefix(" ") {
-            name = dropFirst(name)
+        
+        if category != nil && category.categories != nil {
+            return findCategoryById(category.categories![row])
         }
-        return name
+        
+        return nil
     }
     
-    func getNameOfCategory(category: String) -> String {
-        if category.isEmpty {
-            return ""
+    func getSupercategory() -> Category? {
+        if category != nil {
+            return findCategoryById(category.parentCategoryId!)
         }
-        let tmp = split(category, allowEmptySlices: false, isSeparator: {$0 == "/"})
-        var name = tmp[tmp.count - 1]
-        if name.hasPrefix(" ") {
-            name = dropFirst(name)
+        
+        return nil
+    }
+    
+    func getNumberOfSections() -> Int {
+        return 2
+    }
+    
+    func getNumberOfRowsInSection(section: Int) -> Int {
+        if section == 0 && categoriesLoaded {
+            return 1
         }
-        return name
+        
+        if category != nil && category.categories != nil {
+            return category.categories!.count
+        }
+        
+        return 0
+    }
+    
+    func getTitleOfSection(section: Int) -> String {
+        return ""
     }
     
     func hasSubcategories() -> Bool {
         if showAll {
             return false
         }
-        return !subcategories.isEmpty
+        
+        if category != nil {
+            return category.categories != nil && category.categories?.count > 0
+        }
+        
+        return false
     }
     
-    func getCategory() -> String {
-        return category
-    }
-    
-    func getCategoriesLoaded() -> Bool {
-        return categoriesLoaded
+    func hasSupercategory() -> Bool {
+        if category != nil {
+            return category.parentCategoryId != 0
+        }
+        
+        return false
     }
     
 }
+
