@@ -3,16 +3,35 @@ import ObjectMapper
 
 class ICal: Mappable {
 
-    private(set) var uid: String?
-    private(set) var summery: String?
-    private(set) var start: NSDate?
-    private(set) var end: NSDate?
-    private(set) var url: String?
-    private(set) var location: String?
-    private(set) var description: String?
-    private(set) var allday: Bool?
-
+    private(set) var uid:           String?
+    private(set) var summery:       String?
+    private(set) var start:         NSDate?
+    private(set) var end:           NSDate?
+    private(set) var url:           String?
+    private(set) var location:      String?
+    private(set) var description:   String?
+    private(set) var allday:        Bool?
+    
     private var dateFormatter = NSDateFormatter()
+
+    class func newInstance() -> Mappable {
+        let iCal = ICal();
+        iCal.dateFormatter.timeZone = NSTimeZone(name: "UTC+2")
+        
+        return iCal
+    }
+    
+    // Mappable
+    func mapping(map: Map) {
+        uid         <-  map["uid"]
+        summery     <-  map["summery"]
+        start       <- (map["start"],   EventDateTransform())
+        end         <- (map["end"],     EventDateTransform())
+        url         <-  map["url"]
+        location    <-  map["location"]
+        description <-  map["description"]
+        allday      <-  map["allday"]
+    }
 
     var startDayString : String {
         dateFormatter.dateFormat = "dd"
@@ -95,25 +114,6 @@ class ICal: Mappable {
         } else {
             return UIColor.fabLabRed()
         }
-    }
-
-    class func newInstance() -> Mappable {
-        let iCal = ICal();
-        iCal.dateFormatter.timeZone = NSTimeZone(name: "UTC+2")
-
-        return iCal
-    }
-
-    // Mappable
-    func mapping(map: Map) {
-        uid <- map["uid"]
-        summery <- map["summery"]
-        start <- (map["start"], EventDateTransform())
-        end <- (map["end"], EventDateTransform())
-        url <- map["url"]
-        location <- map["location"]
-        description <- map["description"]
-        allday <- map["allday"]
     }
 
     private class EventDateTransform : DateFormaterTransform {

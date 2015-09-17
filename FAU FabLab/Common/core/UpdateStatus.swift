@@ -9,11 +9,11 @@ class UpdateStatus : Mappable{
         case Required       = "Required"
     }
     
-    private(set) var latestVersion: String?
+    private(set) var latestVersion:     String?
     private(set) var latestVersionCode: Int?
-    private(set) var oldVersionCode: Int?
-    private(set) var updateAvailable: UpdateAvailability?
-    private(set) var updateMessage: String?
+    private(set) var oldVersionCode:    Int?
+    private(set) var updateAvailable:   UpdateAvailability?
+    private(set) var updateMessage:     String?
 
     
     class func newInstance() -> Mappable {
@@ -22,10 +22,10 @@ class UpdateStatus : Mappable{
     
     // Mappable
     func mapping(map: Map) {
-        latestVersion <- map["latestVersion"]
-        latestVersionCode <- map["latestVersionCode"]
-        oldVersionCode <- map["oldVersionCode"]
-        updateAvailable <- map["updateAvailable"]
-        updateMessage <- map["updateMessage"]
+        latestVersion       <- map["latestVersion"]
+        latestVersionCode   <- map["latestVersionCode"]
+        oldVersionCode      <- map["oldVersionCode"]
+        updateAvailable     <- map["updateAvailable"]
+        updateMessage       <- map["updateMessage"]
     }
 }

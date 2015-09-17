@@ -4,9 +4,9 @@ import ObjectMapper
 
 class ProjectFile : Mappable {
     
-    private(set) var description: String?
-    private(set) var filename: String?
-    private(set) var content: String?
+    private(set) var description:   String?
+    private(set) var filename:      String?
+    private(set) var content:       String?
     
     class func newInstance() -> Mappable {
         return ProjectFile()
@@ -14,8 +14,8 @@ class ProjectFile : Mappable {
     
     func mapping(map: Map) {
         description <- map["description"]
-        filename <- map["filename"]
-        content <- map["content"]
+        filename    <- map["filename"]
+        content     <- map["content"]
     }
     
     func setDescription(description: String) {

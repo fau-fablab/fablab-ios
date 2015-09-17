@@ -3,9 +3,9 @@ import ObjectMapper
 
 class User : Mappable{
     
-    private(set) var username: String?
-    private(set) var password: String?
-    private(set) var roles: [Roles]?
+    private(set) var username:  String?
+    private(set) var password:  String?
+    private(set) var roles:     [Roles]?
     
     class func newInstance() -> Mappable {
         return User()
@@ -20,9 +20,9 @@ class User : Mappable{
     
     // Mappable
     func mapping(map: Map) {
-        username <- map["username"]
-        password <- map["password"]
-        roles <- map["roles"]
+        username    <- map["username"]
+        password    <- map["password"]
+        roles       <- map["roles"]
     }
     
     func setUsername(username: String){

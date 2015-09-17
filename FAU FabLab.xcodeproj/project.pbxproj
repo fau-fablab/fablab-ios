@@ -123,6 +123,7 @@
 		927F55D41B950D36003A98DF /* ec2-52-28-163-255.eu-central-1.compute.amazonaws.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 927F55D31B950D36003A98DF /* ec2-52-28-163-255.eu-central-1.compute.amazonaws.com.cer */; };
 		928054F41B6D893300D0D4FB /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 928054F31B6D893300D0D4FB /* ObjectMapper.framework */; };
 		928054FB1B6DA22000D0D4FB /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928054FA1B6DA22000D0D4FB /* EventModel.swift */; };
+		928E76AD1BAB0F6C007E2BDA /* Int64Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928E76AC1BAB0F6C007E2BDA /* Int64Transform.swift */; };
 		929770901B9CE2F800525191 /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9297708F1B9CE2F800525191 /* UserApi.swift */; };
 		929770921B9CE8D300525191 /* InventoryApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929770911B9CE8D300525191 /* InventoryApi.swift */; };
 		92CDE1671BA037FB00D1DA0E /* SpaceApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CDE1661BA037FB00D1DA0E /* SpaceApi.swift */; };
@@ -292,6 +293,7 @@
 		928054F31B6D893300D0D4FB /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		928054FA1B6DA22000D0D4FB /* EventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		928841B51B93B3DC00E1BC5B /* CoreDataModel 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataModel 4.xcdatamodel"; sourceTree = "<group>"; };
+		928E76AC1BAB0F6C007E2BDA /* Int64Transform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Int64Transform.swift; sourceTree = "<group>"; };
 		9297708F1B9CE2F800525191 /* UserApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
 		929770911B9CE8D300525191 /* InventoryApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryApi.swift; sourceTree = "<group>"; };
 		92CDE1661BA037FB00D1DA0E /* SpaceApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceApi.swift; sourceTree = "<group>"; };
@@ -729,6 +731,7 @@
 		927901C81B6D3B8400F95B09 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				928E76AB1BAB0B8E007E2BDA /* ObjectMapper */,
 				920AECE31B96E39E00523C1B /* Extensions */,
 				48CC3FF61B8B6DDD00FB9C8E /* FAU Fablab-Bridging-Header.h */,
 				927901C91B6D3B9300F95B09 /* RestManager.swift */,
@@ -806,6 +809,14 @@
 				928054FA1B6DA22000D0D4FB /* EventModel.swift */,
 			);
 			path = Events;
+			sourceTree = "<group>";
+		};
+		928E76AB1BAB0B8E007E2BDA /* ObjectMapper */ = {
+			isa = PBXGroup;
+			children = (
+				928E76AC1BAB0F6C007E2BDA /* Int64Transform.swift */,
+			);
+			path = ObjectMapper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -986,6 +997,7 @@
 				924DBF6E1B8DEBB1000CAFB2 /* InventoryItem.swift in Sources */,
 				849502A21B9B767C006810E3 /* InventoryLoginViaScanViewController.swift in Sources */,
 				92CDE1671BA037FB00D1DA0E /* SpaceApi.swift in Sources */,
+				928E76AD1BAB0F6C007E2BDA /* Int64Transform.swift in Sources */,
 				922617FA1BA87C1100F74912 /* ProductApi.swift in Sources */,
 				92E147131BA8C459006B239D /* DataApi.swift in Sources */,
 				8462E2691B985930003DADE1 /* SettingsDoorOpensPushCell.swift in Sources */,

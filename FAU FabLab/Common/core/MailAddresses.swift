@@ -3,8 +3,8 @@ import ObjectMapper
 
 class MailAddresses : Mappable{
     
-    private(set) var feedbackMail: String?
-    private(set) var fabLabMail: String?
+    private(set) var feedbackMail:  String?
+    private(set) var fabLabMail:    String?
     
     class func newInstance() -> Mappable {
         return MailAddresses()
@@ -12,7 +12,7 @@ class MailAddresses : Mappable{
     
     // Mappable
     func mapping(map: Map) {
-        feedbackMail <- map["feedbackMail"]
-        fabLabMail <- map["fabLabMail"]
+        feedbackMail    <- map["feedbackMail"]
+        fabLabMail      <- map["fabLabMail"]
     }
 }

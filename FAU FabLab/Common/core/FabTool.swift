@@ -3,10 +3,10 @@ import ObjectMapper
 
 class FabTool : Mappable{
 
-    private(set) var title: String?
-    private(set) var link: String?
-    private(set) var description: String?
-    private(set) var details: String?
+    private(set) var title:         String?
+    private(set) var link:          String?
+    private(set) var description:   String?
+    private(set) var details:       String?
     private(set) var linkToPicture: String?
 
     class func newInstance() -> Mappable {
@@ -14,10 +14,10 @@ class FabTool : Mappable{
     }
 
     func mapping(map: Map) {
-        title <- map["title"]
-        link <- map["link"]
-        description <- map["description"]
-        details <- map["details"]
-        linkToPicture <- map["linkToPicture"]
+        title           <- map["title"]
+        link            <- map["link"]
+        description     <- map["description"]
+        details         <- map["details"]
+        linkToPicture   <- map["linkToPicture"]
     }
 }
