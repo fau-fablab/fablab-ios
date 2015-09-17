@@ -3,13 +3,12 @@ import ObjectMapper
 
 class Category : Mappable{
     
+    private(set) var categoryId: Int?
     private(set) var name: String?
-    private(set) var categoryId: Int64?
-    private(set) var parentCategoryId: Int64?
-    private(set) var locationId: Int64?
     private(set) var locationString: String?
     private(set) var locationObject: Location?
-    private(set) var categories: [Int64]?
+    private(set) var parentCategoryId: Int?
+    private(set) var categories: [Int]?
     
     class func newInstance() -> Mappable {
         return Category()
@@ -17,12 +16,11 @@ class Category : Mappable{
     
     // Mappable
     func mapping(map: Map) {
-        name <- map["name"]
         categoryId <- map["categoryId"]
-        parentCategoryId <- map["parentCategoryId"]
-        locationId <- map["location_id"]
+        name <- map["name"]
         locationString <- map["locationString"]
         locationObject <- map["location"]
+        parentCategoryId <- map["parentCategoryId"]
         categories <- map["categoryChilds"]
     }
     
