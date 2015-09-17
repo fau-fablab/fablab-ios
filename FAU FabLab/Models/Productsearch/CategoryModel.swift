@@ -95,7 +95,7 @@ class CategoryModel: NSObject {
         return nil
     }
     
-    private func findCategoryById(id: Int) -> CategoryEntity? {
+    private func findCategoryById(id: Int64) -> CategoryEntity? {
         for categoryEntity in categoryEntities {
             if categoryEntity.categoryId == id {
                 return categoryEntity

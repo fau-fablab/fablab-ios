@@ -5,7 +5,7 @@ class CategoryEntity: NSManagedObject {
     
     static let EntityName = "CategoryEntity"
     
-    @NSManaged var categoryId: Int
+    @NSManaged var categoryId: Int64
     @NSManaged var name: String
     @NSManaged var supercategory: CategoryEntity?
     @NSManaged var subcategories: NSOrderedSet?
