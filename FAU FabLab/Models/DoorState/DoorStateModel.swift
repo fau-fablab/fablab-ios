@@ -37,7 +37,9 @@ class DoorStateModel : NSObject {
 
     func getDoorState(onStateChanged: () -> Void) {
         api.getSpace({ newState, err in
-            if(self.doorState == nil || self.doorState! != newState!){
+            if (err != nil) {
+                AlertView.showErrorView(err!.localizedDescription)
+            } else if (self.doorState == nil || self.doorState! != newState!) {
                 self.doorState = newState
                 onStateChanged()
             }
