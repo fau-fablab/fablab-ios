@@ -20,7 +20,12 @@ class CategoryEntity: NSManagedObject {
     }
     
     func getSubcategory(index: Int) -> CategoryEntity {
-        var items = self.mutableOrderedSetValueForKey("subcategories")
+        var items = self.mutableOrderedSetValueForKey("subcategories").sortedArrayUsingComparator {
+            (c1, c2) -> NSComparisonResult in
+            let c1 = c1 as! CategoryEntity
+            let c2 = c2 as! CategoryEntity
+            return c1.name.compare(c2.name)
+        }
         return items[index] as! CategoryEntity
     }
     

@@ -17,6 +17,8 @@ class CategoryModel: NSObject {
     private var categoryEntities : [CategoryEntity] {
         get {
             let request = NSFetchRequest(entityName: CategoryEntity.EntityName)
+            let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+            request.sortDescriptors = [sortDescriptor]
             return managedObjectContext.executeFetchRequest(request, error: nil) as! [CategoryEntity]
         }
     }
