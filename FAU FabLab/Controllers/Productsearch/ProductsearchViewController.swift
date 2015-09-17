@@ -379,7 +379,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         switch tableView {
         case searchHelpTableView:
             searchBar.setShowsCancelButton(false, animated: true)
-            
+            /*
             if indexPath.section == 0 {
                 CategoryModel.sharedInstance.reset()
                 let productCategoryViewController = storyboard!.instantiateViewControllerWithIdentifier("ProductCategoryViewController") as! ProductCategoryViewController
@@ -388,7 +388,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
                 self.searchBar.resignFirstResponder()
                 return
             }
-
+            */
             searchBar.text = searchHelpTableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text
             searchBarSearchButtonClicked(searchBar)
             return
