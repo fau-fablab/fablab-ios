@@ -9,6 +9,8 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
     @IBOutlet var descText: UITextField!
     @IBOutlet var viewInScrollView: UIView!
     
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    
     var textView : MarkdownTextView?
     var projectId : Int?
     var markdownText : String?
@@ -243,20 +245,13 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
             imageUpload.setData(UIImagePNGRepresentation(image).base64EncodedStringWithOptions(.allZeros))
             imageUpload.setRepoId(currGistId)
             
-            var activityIndicator = UIActivityIndicatorView()
-            activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
-            activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
-            activityIndicator.center = self.view.center
-            self.view.addSubview(activityIndicator)
-            
-            activityIndicator.startAnimating()
-            activityIndicator.backgroundColor = UIColor.fabLabGreen().colorWithAlphaComponent(0.3)
+            self.activityIndicator.color = UIColor.fabLabGreen()
+            self.activityIndicator.startAnimating()
             
             api.uploadImage(imageUpload, onCompletion: {
                 imageLink, err in
                 
-                activityIndicator.stopAnimating()
-                activityIndicator.hidesWhenStopped = true
+                self.activityIndicator.stopAnimating()
                 
                 self.pasteImageLink(imageLink!, err: err)
             })

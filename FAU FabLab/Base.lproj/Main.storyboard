@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -1340,6 +1340,10 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ilv-o4-IGc">
+                                        <rect key="frame" x="282" y="281" width="37" height="37"/>
+                                        <color key="color" red="0.0" green="0.61206016969999999" blue="0.44008759619999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1348,6 +1352,8 @@
                                     <constraint firstItem="cUH-f8-aFi" firstAttribute="top" secondItem="CfP-qC-Hcj" secondAttribute="bottom" constant="8" symbolic="YES" id="P01-ND-WBM"/>
                                     <constraint firstItem="CfP-qC-Hcj" firstAttribute="trailing" secondItem="woW-N7-ZC3" secondAttribute="trailing" id="QUf-nP-RIL"/>
                                     <constraint firstAttribute="width" constant="600" id="Wft-LP-Fos"/>
+                                    <constraint firstAttribute="centerX" secondItem="ilv-o4-IGc" secondAttribute="centerX" constant="-0.5" id="abb-cC-bkH"/>
+                                    <constraint firstAttribute="centerY" secondItem="ilv-o4-IGc" secondAttribute="centerY" constant="0.5" id="bKm-RN-G3m"/>
                                     <constraint firstAttribute="trailing" secondItem="woW-N7-ZC3" secondAttribute="trailing" constant="150" id="f5v-2V-pKx"/>
                                     <constraint firstItem="woW-N7-ZC3" firstAttribute="top" secondItem="TCp-Bd-Jnd" secondAttribute="top" constant="19" id="fWB-9T-pnr"/>
                                     <constraint firstItem="woW-N7-ZC3" firstAttribute="centerX" secondItem="TCp-Bd-Jnd" secondAttribute="centerX" id="gkd-lV-xRl"/>
@@ -1379,6 +1385,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="ilv-o4-IGc" id="S0H-hP-0Zw"/>
                         <outlet property="descText" destination="CfP-qC-Hcj" id="T1x-O9-SX5"/>
                         <outlet property="titleText" destination="woW-N7-ZC3" id="9XL-XU-rMX"/>
                         <outlet property="viewInScrollView" destination="cUH-f8-aFi" id="CnM-XC-z7f"/>
