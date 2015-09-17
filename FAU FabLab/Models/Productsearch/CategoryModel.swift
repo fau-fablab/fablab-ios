@@ -12,7 +12,6 @@ class CategoryModel: NSObject {
     
     private var isLoading = false
     private var categoryEntity: CategoryEntity!
-    private var showAll = false
     
     private var categoryEntities : [CategoryEntity] {
         get {
@@ -29,7 +28,6 @@ class CategoryModel: NSObject {
     }
     
     func reset() {
-        showAll = false
         categoryEntity = findRootCategory()
     }
     
@@ -115,46 +113,15 @@ class CategoryModel: NSObject {
         self.categoryEntity = categoryEntity
     }
     
-    func setCategory(section: Int, row: Int) {
-        if section == 0 {
-            showAll = true
-            return
-        }
-        
-        if categoryEntity != nil && categoryEntity.getNumberOfSubcategories() > 0 {
-            categoryEntity = categoryEntity.getSubcategory(row)
-        }
-    }
-    
-    func getSubcategory(section: Int, row: Int) -> CategoryEntity? {
-        if section == 0 {
-            return categoryEntity
-        }
-        
-        if categoryEntity != nil && categoryEntity.getNumberOfSubcategories() > 0 {
-            return categoryEntity.getSubcategory(row)
-        }
-        
-        return nil
-    }
-    
-    func getSupercategory() -> CategoryEntity? {
+    func hasSubcategories() -> Bool {
         if categoryEntity != nil {
-            return categoryEntity.supercategory
+            return categoryEntity.getNumberOfSubcategories() > 0
         }
         
-        return nil
+        return false
     }
     
-    func getNumberOfSections() -> Int {
-        return 2
-    }
-    
-    func getNumberOfRowsInSection(section: Int) -> Int {
-        if section == 0 && !categoryEntities.isEmpty {
-            return 1
-        }
-        
+    func getNumberOfSubcategories() -> Int {
         if categoryEntity != nil {
             return categoryEntity.getNumberOfSubcategories()
         }
@@ -162,20 +129,12 @@ class CategoryModel: NSObject {
         return 0
     }
     
-    func getTitleOfSection(section: Int) -> String {
-        return ""
-    }
-    
-    func hasSubcategories() -> Bool {
-        if showAll {
-            return false
+    func getSubcategory(index: Int) -> CategoryEntity? {
+        if categoryEntity != nil && categoryEntity.getNumberOfSubcategories() > 0 {
+            return categoryEntity.getSubcategory(index)
         }
         
-        if categoryEntity != nil {
-            return categoryEntity.getNumberOfSubcategories() > 0
-        }
-        
-        return false
+        return nil
     }
     
     func hasSupercategory() -> Bool {
@@ -184,6 +143,14 @@ class CategoryModel: NSObject {
         }
         
         return false
+    }
+    
+    func getSupercategory() -> CategoryEntity? {
+        if categoryEntity != nil {
+            return categoryEntity.supercategory
+        }
+        
+        return nil
     }
     
 }

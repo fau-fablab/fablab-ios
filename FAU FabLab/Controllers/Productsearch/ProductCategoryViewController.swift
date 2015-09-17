@@ -32,11 +32,15 @@ class ProductCategoryViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return model.getNumberOfSections()
+        return 2
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.getNumberOfRowsInSection(section)
+        if section == 0 {
+            return 1
+        } else {
+            return model.getNumberOfSubcategories()
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -44,15 +48,17 @@ class ProductCategoryViewController: UIViewController, UITableViewDataSource, UI
         if indexPath.section == 0 {
             cell.textLabel?.text = "Alles anzeigen".localized
         } else {
-            cell.textLabel?.text = model.getSubcategory(indexPath.section, row: indexPath.row)!.name
+            cell.textLabel?.text = model.getSubcategory(indexPath.row)!.name
         }
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        model.setCategory(indexPath.section, row: indexPath.row)
-        if model.hasSubcategories() {
+        if indexPath.section == 1 {
+            model.setCategory(model.getSubcategory(indexPath.row)!)
+        }
+        if indexPath.section == 1 && model.hasSubcategories() {
             let productCategoryViewController = storyboard!.instantiateViewControllerWithIdentifier("ProductCategoryViewController") as! ProductCategoryViewController
             navigationController?.pushViewController(productCategoryViewController, animated: true)
         } else {
