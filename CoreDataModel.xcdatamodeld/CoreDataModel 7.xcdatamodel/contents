@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14F27" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="AutocompleteEntry" representedClassName="FAU_FabLab.AutocompleteEntry" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="word" optional="YES" attributeType="String" syncable="YES"/>
@@ -24,6 +24,13 @@
         <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="cartentry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CartEntry" inverseName="product" inverseEntity="CartEntry" syncable="YES"/>
     </entity>
+    <entity name="CategoryEntity" representedClassName="FAU_FabLab.CategoryEntity" syncable="YES">
+        <attribute name="categoryId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="subcategories" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="CategoryEntity" inverseName="supercategory" inverseEntity="CategoryEntity" syncable="YES"/>
+        <relationship name="supercategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CategoryEntity" inverseName="subcategories" inverseEntity="CategoryEntity" syncable="YES"/>
+    </entity>
     <entity name="HistoryEntry" representedClassName="FAU_FabLab.HistoryEntry" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="word" optional="YES" attributeType="String" syncable="YES"/>
@@ -44,7 +51,8 @@
         <element name="CartEntry" positionX="-486" positionY="-117" width="128" height="88"/>
         <element name="CartProduct" positionX="-207" positionY="-198" width="128" height="148"/>
         <element name="HistoryEntry" positionX="126" positionY="-90" width="128" height="75"/>
-        <element name="Projects" positionX="-279" positionY="-171" width="128" height="105"/>
+        <element name="Projects" positionX="-216" positionY="-339" width="128" height="105"/>
         <element name="Settings" positionX="-360" positionY="69" width="128" height="75"/>
+        <element name="CategoryEntity" positionX="7" positionY="-315" width="128" height="118"/>
     </elements>
 </model>

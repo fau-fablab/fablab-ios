@@ -1,5 +1,4 @@
 import Foundation
-import SwiftyJSON
 import CoreData
 
 class AutocompletionModel: NSObject {

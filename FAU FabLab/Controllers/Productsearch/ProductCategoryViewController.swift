@@ -11,21 +11,9 @@ class ProductCategoryViewController: UIViewController, UITableViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        model.fetchCategories {
-            (error) -> Void in
-            dispatch_async(dispatch_get_main_queue(), {
-                () -> Void in
-                if error != nil {
-                    Debug.instance.log(error)
-                    return
-                }
-                self.tableView.reloadData()
-                self.setTitle()
-            })
+        if let category = model.getCategory() {
+            title = category.name
         }
-        
-        setTitle()
-
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -40,12 +28,6 @@ class ProductCategoryViewController: UIViewController, UITableViewDataSource, UI
             if model.hasSupercategory() {
                 model.setCategory(model.getSupercategory()!)   
             }
-        }
-    }
-    
-    private func setTitle() {
-        if let category = model.getCategory() {
-            title = category.name!
         }
     }
     

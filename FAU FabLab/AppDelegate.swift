@@ -91,6 +91,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Fetch autocompletions for product search
         SearchHelpModel.sharedInstance.fetchAutocompleteEntries();
+        //Fetch categories for product serach
+        CategoryModel.sharedInstance.fetchCategories { (error) -> Void in }
     }
 
     func applicationWillTerminate(application: UIApplication) {
