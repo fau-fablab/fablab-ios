@@ -8,9 +8,8 @@ public class EventsCustomCell : UITableViewCell{
     @IBOutlet var monthLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
-    //@IBOutlet var placeLabel: UILabel!
         
-    public func configure(#today: Bool, now: Bool, day: String, month: String, title: String, time: String?, place: String?, dateColor: UIColor) {
+    public func configure(#today: Bool, now: Bool, day: String, month: String, title: String, time: String?,dateColor: UIColor) {
         
         dayLabel.textColor = dateColor
         monthLabel.textColor = dateColor
@@ -37,11 +36,5 @@ public class EventsCustomCell : UITableViewCell{
         } else {
             timeLabel.text = time;
         }
-        
-        /*if place == nil {
-            placeLabel.text = "";
-        } else {
-            placeLabel.text = place;
-        }*/
     }
 }
