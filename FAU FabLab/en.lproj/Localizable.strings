@@ -93,26 +93,8 @@
 "Quellcode & Kontakt" = "Source Code & Contact";
 "Die App wurde im Rahmen des MAD-Projektes an der FAU Erlangen-Nürnberg entwickelt. Der Quellcode kann unter GitHub gefunden werden. Feedback jederzeit gerne per E-Mail.\n\nDie Entwickler sind:\n\nEmanuel Eimer\nStefan Herpich\nMichael Sander\nJulia Schottenhamml\nJohannes Pfann\nMax Jalowski\nSebastian Haubner\nKatharina Full\nPhilip Kranhäußer\nJulian Lorz\nDaniel Rosenmüller" = "This app was devaloped during the MAD-Project at the FAU Erlangen-Nuremberg. The source code can be found at GitHub. Send us your feedback via Mail! \n\nThe developers are:\n\nEmanuel Eimer\nStefan Herpich\nMichael Sander\nJulia Schottenhamml\nJohannes Pfann\nMax Jalowski\nSebastian Haubner\nKatharina Full\nPhilip Kranhäußer\nJulian Lorz\nDaniel Rosenmüller";
 "Open Source Bibliotheken" = "Open Source Libraries";
-"ActionSheetPicker\n(BSD License)\n\nAlamofire\n(MIT License)\n\nBBBadgeBarButtonItem\n(MIT License)\n\nKingfisher\n(MIT License)\n\nObjectMapper\n(MIT License)\n\nRSBarcodes\n(MIT License)\n\nSwiftyJson\n(MIT License)" = "ActionSheetPicker\n(BSD License)\n\nAlamofire\n(MIT License)\n\nBBBadgeBarButtonItem\n(MIT License)\n\nKingfisher\n(MIT License)\n\nObjectMapper\n(MIT License)\n\nRSBarcodes\n(MIT License)\n\nSwiftyJson\n(MIT License)";
-"https://www2.informatik.uni-erlangen.de/teaching/SS2015/MAD/index.html" = "https://www2.informatik.uni-erlangen.de/teaching/SS2015/MAD/index.html";
-"https://github.com/FAU-Inf2/fablab-ios" = "https://github.com/FAU-Inf2/fablab-ios";
 "E-Mail" = "Mail";
 "MAD-Projektes" = "MAD-Project";
-"GitHub" = "GitHub";
-"ActionSheetPicker" = "ActionSheetPicker";
-"Alamofire" = "Alamofire";
-"BBBadgeBarButtonItem" = "BBBadgeBarButtonItem";
-"Kingfihser" = "Kingfisher";
-"ObjectMapper" = "ObjectMapper";
-"RSBarcodes" = "RSBarcodes";
-"SwiftyJson" = "SwiftyJson";
-"https://github.com/skywinder/ActionSheetPicker-3.0" = "https://github.com/skywinder/ActionSheetPicker-3.0";
-"https://github.com/Alamofire/Alamofire" = "https://github.com/Alamofire/Alamofire";
-"https://github.com/TanguyAladenise/BBBadgeBarButtonItem" = "https://github.com/TanguyAladenise/BBBadgeBarButtonItem";
-"https://github.com/onevcat/Kingfisher" = "https://github.com/onevcat/Kingfisher";
-"https://github.com/Hearst-DD/ObjectMapper" = "https://github.com/Hearst-DD/ObjectMapper";
-"https://github.com/yeahdongcn/RSBarcodes" = "https://github.com/yeahdongcn/RSBarcodes";
-"https://github.com/SwiftyJSON/SwiftyJSON" = "https://github.com/SwiftyJSON/SwiftyJSON";
 "Nachricht wurde versendet." = "Messages was sent";
 "Nachricht wurde abgebrochen." = "Messages was not sent";
 

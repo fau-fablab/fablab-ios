@@ -93,26 +93,28 @@ class AboutViewController : UIViewController, UITableViewDataSource, UITableView
     private func createTextAttributedStrings() {
         var licenseAttributedString = NSMutableAttributedString(string: "The MIT License (MIT)\n\nCopyright (c) 2015 MAD FabLab Team\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.".localized)
         var codeAttributedString = NSMutableAttributedString(string: "Die App wurde im Rahmen des MAD-Projektes an der FAU Erlangen-Nürnberg entwickelt. Der Quellcode kann unter GitHub gefunden werden. Feedback jederzeit gerne per E-Mail.\n\nDie Entwickler sind:\n\nEmanuel Eimer\nStefan Herpich\nMichael Sander\nJulia Schottenhamml\nJohannes Pfann\nMax Jalowski\nSebastian Haubner\nKatharina Full\nPhilip Kranhäußer\nJulian Lorz\nDaniel Rosenmüller".localized)
-        var librariesAttributedString = NSMutableAttributedString(string: "ActionSheetPicker\n(BSD License)\n\nAlamofire\n(MIT License)\n\nBBBadgeBarButtonItem\n(MIT License)\n\nKingfisher\n(MIT License)\n\nObjectMapper\n(MIT License)\n\nRSBarcodes\n(MIT License)\n\nSwiftyJson\n(MIT License)".localized)
+        var librariesAttributedString = NSMutableAttributedString(string: "ActionSheetPicker\n(BSD License)\n\nAlamofire\n(MIT License)\n\nBBBadgeBarButtonItem\n(MIT License)\n\nKingfisher\n(MIT License)\n\nMarkdownTextView\n(MIT License)\n\nObjectMapper\n(MIT License)\n\nRSBarcodes\n(MIT License)\n\nSwiftyJson\n(MIT License)")
         //add hyperlinks
-        codeAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://www2.informatik.uni-erlangen.de/teaching/SS2015/MAD/index.html".localized)!,
-            range: getNSRangeOfSubstring(codeAttributedString.string, substring: "MAD-Projektes".localized))
-        codeAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/FAU-Inf2/fablab-ios".localized)!,
-            range: getNSRangeOfSubstring(codeAttributedString.string, substring: "GitHub".localized))
-        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/skywinder/ActionSheetPicker-3.0".localized)!,
-            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "ActionSheetPicker".localized))
-        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/Alamofire/Alamofire".localized)!,
-            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "Alamofire".localized))
-        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/TanguyAladenise/BBBadgeBarButtonItem".localized)!,
-            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "BBBadgeBarButtonItem".localized))
-        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/onevcat/Kingfisher".localized)!,
-            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "Kingfisher".localized))
-        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/Hearst-DD/ObjectMapper".localized)!,
-            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "ObjectMapper".localized))
-        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/yeahdongcn/RSBarcodes".localized)!,
-            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "RSBarcodes".localized))
-        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/SwiftyJSON/SwiftyJSON".localized)!,
-            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "SwiftyJson".localized))
+        codeAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://www2.informatik.uni-erlangen.de/teaching/SS2015/MAD/index.html")!,
+            range: getNSRangeOfSubstring(codeAttributedString.string, substring: "MAD-Projektes"))
+        codeAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/FAU-Inf2/fablab-ios")!,
+            range: getNSRangeOfSubstring(codeAttributedString.string, substring: "GitHub"))
+        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/skywinder/ActionSheetPicker-3.0")!,
+            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "ActionSheetPicker"))
+        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/Alamofire/Alamofire")!,
+            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "Alamofire"))
+        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/TanguyAladenise/BBBadgeBarButtonItem")!,
+            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "BBBadgeBarButtonItem"))
+        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/onevcat/Kingfisher")!,
+            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "Kingfisher"))
+        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/0xhansdampf/MarkdownTextView")!,
+            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "MarkdownTextView"))
+        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/Hearst-DD/ObjectMapper")!,
+            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "ObjectMapper"))
+        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/yeahdongcn/RSBarcodes")!,
+            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "RSBarcodes"))
+        librariesAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "https://github.com/SwiftyJSON/SwiftyJSON")!,
+            range: getNSRangeOfSubstring(librariesAttributedString.string, substring: "SwiftyJson"))
         //add mail action
         codeAttributedString.addAttribute(NSLinkAttributeName, value: NSURL(string: "E-Mail".localized)!,
             range: getNSRangeOfSubstring(codeAttributedString.string, substring: "E-Mail".localized))
