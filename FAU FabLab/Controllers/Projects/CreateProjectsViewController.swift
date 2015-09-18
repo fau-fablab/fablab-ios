@@ -116,16 +116,34 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
             self.saveProjectToCoreData();
             self.confirmUploadToGitHub(message: "Bitte laden Sie zuerst das Project auf GitHub hoch und versuchen dann erneut den Bild-Upload".localized);
         } else {
-        
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.allowsEditing = false
-            imagePicker.sourceType = .PhotoLibrary
-        
-            // todo choose between camera and PhotoLibrary
-        
-            self.presentViewController(imagePicker, animated: true, completion: nil)
+            self.showChoosePickerSourceAlert()
         }
+    }
+    
+    func showChoosePickerSourceAlert() {
+        var inputTextField: UITextField?
+        
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in })
+        
+        let cameraAction: UIAlertAction = UIAlertAction(title: "Kamera".localized, style: .Default, handler: { (Void) -> Void in self.presentImagePickerController(sourceType: UIImagePickerControllerSourceType.Camera)})
+        
+        let galleryAction: UIAlertAction = UIAlertAction(title: "Galerie".localized, style: .Default, handler: { (Void) -> Void in self.presentImagePickerController(sourceType: UIImagePickerControllerSourceType.PhotoLibrary)})
+        
+        let alertController: UIAlertController = UIAlertController(title: "Bild auswählen".localized, message: "", preferredStyle: .Alert)
+        alertController.addAction(cancelAction)
+        alertController.addAction(cameraAction)
+        alertController.addAction(galleryAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func presentImagePickerController(#sourceType: UIImagePickerControllerSourceType) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = sourceType
+        
+        self.presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     // MARK: - UIImagePickerControllerDelegate

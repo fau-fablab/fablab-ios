@@ -154,6 +154,9 @@
 "Bitte geben Sie einen Namen für das Bild ein" = "Then please enter a filename for the image";
 "Bild konnte nicht hochgeladen werden" = "Image was not uploaded";
 "Bitte laden Sie zuerst das Project auf GitHub hoch und versuchen dann erneut den Bild-Upload" = "Please upload the project first and then retry the image-upload";
+"Bild auswählen" = "Choose image";
+"Kamera" = "Camera";
+"Galerie" = "Photo Library";
 
 //MARK: ProjectsViewController
 "Warenkörbe" = "Carts";
