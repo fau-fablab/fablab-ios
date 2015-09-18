@@ -10,6 +10,10 @@ import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    class var APP_VERSION: Int{
+        return 2
+    }
 
     var window: UIWindow?
 
