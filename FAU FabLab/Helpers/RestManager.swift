@@ -81,6 +81,19 @@ class RestManager {
 
         makeJSONRequest(method, encoding: encoding, resource: resource, params: params, headers: headers, onCompletion: onCompletion)
     }
+    
+    func downloadFile(resource: String){
+        let endpoint = apiUrl + resource
+        
+        manager.download(.GET, endpoint) { temporaryURL, response in
+            let fileManager = NSFileManager.defaultManager()
+            if let directoryURL = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as? NSURL {
+                let pathComponent = response.suggestedFilename
+                return directoryURL.URLByAppendingPathComponent(pathComponent!)
+            }
+            return temporaryURL
+        }
+    }
 
     private func printDebug(method: String, resource: String, res: NSHTTPURLResponse?, responseJson: AnyObject?, error: NSError?) {
         if let res = res {

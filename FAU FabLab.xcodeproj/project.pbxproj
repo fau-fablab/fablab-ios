@@ -126,6 +126,7 @@
 		928E76AD1BAB0F6C007E2BDA /* Int64Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928E76AC1BAB0F6C007E2BDA /* Int64Transform.swift */; };
 		929770901B9CE2F800525191 /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9297708F1B9CE2F800525191 /* UserApi.swift */; };
 		929770921B9CE8D300525191 /* InventoryApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929770911B9CE8D300525191 /* InventoryApi.swift */; };
+		92A7FBA71BAC3C55005C927E /* ProductLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A7FBA61BAC3C55005C927E /* ProductLocationModel.swift */; };
 		92CDE1671BA037FB00D1DA0E /* SpaceApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CDE1661BA037FB00D1DA0E /* SpaceApi.swift */; };
 		92DB85A81B8B72FC0070FAD8 /* MalfunctionInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DB85A71B8B72FC0070FAD8 /* MalfunctionInfoModel.swift */; };
 		92E147111BA8C29A006B239D /* DrupalApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E147101BA8C29A006B239D /* DrupalApi.swift */; };
@@ -296,6 +297,7 @@
 		928E76AC1BAB0F6C007E2BDA /* Int64Transform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Int64Transform.swift; sourceTree = "<group>"; };
 		9297708F1B9CE2F800525191 /* UserApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
 		929770911B9CE8D300525191 /* InventoryApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryApi.swift; sourceTree = "<group>"; };
+		92A7FBA61BAC3C55005C927E /* ProductLocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductLocationModel.swift; sourceTree = "<group>"; };
 		92CDE1661BA037FB00D1DA0E /* SpaceApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceApi.swift; sourceTree = "<group>"; };
 		92DB85A71B8B72FC0070FAD8 /* MalfunctionInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MalfunctionInfoModel.swift; sourceTree = "<group>"; };
 		92E147101BA8C29A006B239D /* DrupalApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrupalApi.swift; sourceTree = "<group>"; };
@@ -569,6 +571,7 @@
 				489316441B831E3900DCB6BB /* AutocompletionModel.swift */,
 				487971B91B9B112D00052FEB /* SearchHelpModel.swift */,
 				48D266C71BA987C7009E642B /* CategoryModel.swift */,
+				92A7FBA61BAC3C55005C927E /* ProductLocationModel.swift */,
 			);
 			path = Productsearch;
 			sourceTree = "<group>";
@@ -973,6 +976,7 @@
 				927901E11B6D3F6300F95B09 /* NewsDetailsViewController.swift in Sources */,
 				485765AE1BA2BBBD0064B42B /* Cart.swift in Sources */,
 				48E9A11F1B9C1A840024C4B9 /* SwitchCustomCell.swift in Sources */,
+				92A7FBA71BAC3C55005C927E /* ProductLocationModel.swift in Sources */,
 				84C4186F1B9CCF7B00C2656D /* InventoryProductSearchCell.swift in Sources */,
 				5032249C1B99B55700C0583D /* MailComposeHelper.swift in Sources */,
 				5060B1D61B4EFE2A008B41FD /* AppDelegate.swift in Sources */,
