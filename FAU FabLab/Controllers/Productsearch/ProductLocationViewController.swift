@@ -6,6 +6,8 @@ class ProductLocationViewController : UIViewController {
     var locationId: String?
     var productName: String?
     
+    let model = ProductLocationModel.sharedInstance
+    
     @IBOutlet weak var webView: UIWebView!
     
     func configure(#id: String, name: String){
@@ -18,9 +20,13 @@ class ProductLocationViewController : UIViewController {
         super.viewDidLoad()
         self.title = productName
         
-        let url = NSURL (string: RestManager.sharedInstance.apiUrl + "/productMap/productMap.html?id=" + locationId!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!);
-        let requestObj = NSURLRequest(URL: url!);
-        webView.loadRequest(requestObj);
+        let url = model.getLocalFileUrl(locationId!)
+        
+        if(url != nil){
+            let requestObj = NSURLRequest(URL: url!);
+            webView.loadRequest(requestObj);
+        }else{
+            AlertView.showInfoView("Error", message: "Fehler beim Laden der Karte aufgetreten")
+        }
     }
-   
 }

@@ -92,11 +92,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        
         //Fetch autocompletions for product search
         SearchHelpModel.sharedInstance.fetchAutocompleteEntries();
         //Fetch categories for product serach
         CategoryModel.sharedInstance.fetchCategories { (error) -> Void in }
+        //Load the product map
+        ProductLocationModel.sharedInstance.loadProductMap({ result in })
     }
 
     func applicationWillTerminate(application: UIApplication) {
