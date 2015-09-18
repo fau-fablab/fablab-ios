@@ -12,7 +12,7 @@ public class VersionCheckModel: NSObject {
     }
     
     func checkVersion(){
-        api.checkVersion(PlatformType.APPLE, version: NSBundle.mainBundle().buildNumberAsInt!,
+        api.checkVersion(PlatformType.APPLE, version: AppDelegate.APP_VERSION,
             onCompletion: { updateStatus, error in
             
                 if(error != nil){
