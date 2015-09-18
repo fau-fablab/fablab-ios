@@ -8,18 +8,18 @@ class ChangeAmountPickerHelper {
     
     class func showChangeAmountPicker(cartEntry: CartEntry, initialValue: Double, delegateSucceedAction: (currentAmount: Double) -> Void, delegateCancelAction: () -> Void, alertChangeAmountAction: (currentAmount: Double) -> Void) {
         
-        showChangeAmountPicker(productSearchAlertStrings: false, productName: cartEntry.product.name, productPrice: cartEntry.product.price, productUnit: cartEntry.product.unit, productRounding: cartEntry.product.rounding, productAmount: cartEntry.amount, initialValue: initialValue, delegateSucceedAction: delegateSucceedAction, delegateCancelAction: delegateCancelAction, alertChangeAmountAction: alertChangeAmountAction)
+        showChangeAmountPicker(productSearchAlertStrings: false, productName: cartEntry.product.name, productPrice: cartEntry.product.price, productUnit: cartEntry.product.unit, productRounding: cartEntry.product.rounding, initialValue: initialValue, delegateSucceedAction: delegateSucceedAction, delegateCancelAction: delegateCancelAction, alertChangeAmountAction: alertChangeAmountAction)
     }
     
     class func showChangeAmountPicker(cell: ProductCustomCell, initialValue: Double, delegateSucceedAction: (currentAmount: Double) -> Void, delegateCancelAction: () -> Void, alertChangeAmountAction: (currentAmount: Double) -> Void) {
         
-        showChangeAmountPicker(productSearchAlertStrings: true, productName: cell.product.name!, productPrice: cell.product.price!, productUnit: cell.product.unit!, productRounding: cell.product.uom!.rounding!, productAmount: initialValue, initialValue: initialValue, delegateSucceedAction: delegateSucceedAction, delegateCancelAction: delegateCancelAction, alertChangeAmountAction: alertChangeAmountAction)
+        showChangeAmountPicker(productSearchAlertStrings: true, productName: cell.product.name!, productPrice: cell.product.price!, productUnit: cell.product.unit!, productRounding: cell.product.uom!.rounding!, initialValue: initialValue, delegateSucceedAction: delegateSucceedAction, delegateCancelAction: delegateCancelAction, alertChangeAmountAction: alertChangeAmountAction)
     }
     
-    class func showChangeAmountPicker(#productSearchAlertStrings: Bool, productName: String, productPrice: Double, productUnit: String, productRounding: Double, productAmount: Double, initialValue: Double, delegateSucceedAction: (currentAmount: Double) -> Void, delegateCancelAction: () -> Void, alertChangeAmountAction: (currentAmount: Double) -> Void) {
+    class func showChangeAmountPicker(#productSearchAlertStrings: Bool, productName: String, productPrice: Double, productUnit: String, productRounding: Double, initialValue: Double, delegateSucceedAction: (currentAmount: Double) -> Void, delegateCancelAction: () -> Void, alertChangeAmountAction: (currentAmount: Double) -> Void) {
         
         var addToCart = true
-        var currentAmount : Double = productAmount
+        var currentAmount : Double = initialValue
         
         var pickerDelegate = ActionSheetPickerDelegate(unit: productUnit, price: productPrice, rounding: productRounding, didSucceedAction: { (amount: Double) -> Void in
             if addToCart == false {
@@ -27,7 +27,7 @@ class ChangeAmountPickerHelper {
                 addToCart = true
             } else {
                 // if currentAmount has initial value, take the amount value
-                if currentAmount == productAmount {
+                if currentAmount == initialValue {
                     currentAmount = amount
                 }
                 
@@ -37,7 +37,7 @@ class ChangeAmountPickerHelper {
             }, didCancelAction: { delegateCancelAction()} )
         
         // set current amount
-        pickerDelegate.setAmount(productAmount)
+        pickerDelegate.setAmount(initialValue)
         
         // initial selection is also needed, to correctly set current amount
         var picker: ActionSheetCustomPicker = ActionSheetCustomPicker(title: "Menge auswählen".localized, delegate: pickerDelegate, showCancelButton: false, origin: self, initialSelections: [(initialValue/productRounding)-1])
