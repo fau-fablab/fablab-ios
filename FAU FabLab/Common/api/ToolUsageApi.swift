@@ -31,18 +31,18 @@ struct ToolUsageApi{
         
         let url = NSURL(string: endpoint)
         let encoding = Alamofire.ParameterEncoding.URL
-        var request = NSURLRequest(URL: url!)
+        var request = NSMutableURLRequest(URL: url!)
         (request, _) = encoding.encode(request, parameters: headerParams)
         
         
         if(user == nil){
-            RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .JSON, resource: request.URL!.absoluteString, params: bodyParams,
+            RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .JSON, resource: request.URL!.absoluteString!, params: bodyParams,
                 onCompletion: { json, err in
                     ApiResult.get(json, error: err, completionHandler: onCompletion)
             })
         }
         else{
-            RestManager.sharedInstance.makeJSONRequestWithBasicAuth(.GET, encoding: .JSON, resource: request.URL!.absoluteString,
+            RestManager.sharedInstance.makeJSONRequestWithBasicAuth(.GET, encoding: .JSON, resource: request.URL!.absoluteString!,
                 username: user!.username!, password: user!.password!, params: bodyParams,
                 onCompletion: { json, err in
                     ApiResult.get(json, error: err, completionHandler: onCompletion)
