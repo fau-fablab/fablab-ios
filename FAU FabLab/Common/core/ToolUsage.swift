@@ -10,14 +10,16 @@ class ToolUsage : Mappable {
     private(set) var project        :String?
     private(set) var token          :String?
     private(set) var duration       :Int64?
-    private(set) var creationTime   :String?
+    private(set) var creationTime   :Int64?
     
     class func newInstance() -> Mappable {
-        return ProjectFile()
+        return ToolUsage()
     }
     
+    init(){}
+    
     init(toolId: Int64, user: String, project: String, duration: Int64){
-        self.id = toolId
+        self.toolId = toolId
         self.user = user
         self.project = project
         self.duration = duration
@@ -31,6 +33,6 @@ class ToolUsage : Mappable {
         project         <-  map["project"]
         token           <-  map["token"]
         duration        <- (map["duration"], Int64Transform())
-        creationTime    <-  map["creationTime"]
+        creationTime    <- (map["creationTime"], Int64Transform())
     }
 }
