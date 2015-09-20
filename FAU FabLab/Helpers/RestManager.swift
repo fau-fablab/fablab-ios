@@ -70,6 +70,17 @@ class RestManager {
             onCompletion(answer, error);
         }
     }
+    
+    func makeRequestWithBasicAuth(method: Alamofire.Method, encoding: ParameterEncoding, resource: String, username: String, password: String, params: [String:AnyObject]?, onCompletion: ServiceResponse) {
+        let endpoint = apiUrl + resource
+        
+        let credentialData = "\(username):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
+        let base64Credentials = credentialData.base64EncodedStringWithOptions(nil)
+        
+        let headers = ["Authorization": "Basic \(base64Credentials)", "Accept": "text/plain"]
+        
+        makeTextRequest(method, encoding: encoding, resource: resource, params: params, headers: headers, onCompletion: onCompletion)
+    }
 
     func makeJSONRequestWithBasicAuth(method: Alamofire.Method, encoding: ParameterEncoding, resource: String, username: String, password: String, params: [String:AnyObject]?, onCompletion: JsonServiceResponse) {
         let endpoint = apiUrl + resource
