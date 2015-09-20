@@ -166,6 +166,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func categorySelected(notification: NSNotification) {
+        self.searchBar.text.removeAll(keepCapacity: false)
         self.resetTableViewBackground()
         self.searchHelpTableView.hidden = true
         self.searchBar.resignFirstResponder()
