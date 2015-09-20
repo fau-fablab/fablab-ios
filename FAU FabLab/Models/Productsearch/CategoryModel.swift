@@ -48,6 +48,7 @@ class CategoryModel: NSObject {
                 self.reset()
                 onCompletion(nil)
             }
+            NSNotificationCenter.defaultCenter().postNotificationName("CategoriesLoadedNotification", object: nil)
             self.isLoading = false
         }
     }
