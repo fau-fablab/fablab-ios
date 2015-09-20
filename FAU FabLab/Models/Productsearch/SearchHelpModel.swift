@@ -46,9 +46,9 @@ class SearchHelpModel: NSObject {
     }
     
     func getTitleOfSection(section: Int) -> String {
-        if (section == 1 && !entries[0].isEmpty) {
+        if (section == 1 && !entries[1].isEmpty) {
             return "Verlauf".localized
-        } else if (section == 2 && !entries[1].isEmpty) {
+        } else if (section == 2 && !entries[2].isEmpty) {
             return "Vorschläge".localized
         }
         return ""
