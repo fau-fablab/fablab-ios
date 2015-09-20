@@ -49,4 +49,41 @@ struct ToolUsageApi{
             })
         }
     }
+    
+    func removeUsage(user: User? = nil, token: String, toolId: Int64, usageId: Int64, onCompletion: (NSError?) -> Void){
+        let endpoint = resource + "/\(toolId)/\(usageId)"
+
+        if(user == nil){
+            RestManager.sharedInstance.makeTextRequest(.DELETE, encoding: .URL, resource: endpoint, params: nil,
+                onCompletion: { _, err in
+                    if(err != nil){
+                        onCompletion(err)
+                    }
+                    onCompletion(nil)
+            })
+        }
+        else{
+            RestManager.sharedInstance.makeRequestWithBasicAuth(.DELETE, encoding: .URL, resource: endpoint,
+                username: user!.username!, password: user!.password!, params: nil,
+                onCompletion: { _, err in
+                    if(err != nil){
+                        onCompletion(err)
+                    }
+                    onCompletion(nil)
+            })
+        }
+    }
+    
+    func removeUsagesForTool(user: User, toolId: Int64, onCompletion: (NSError?) -> Void){
+        let endpoint = resource + "/\(toolId)"
+        
+        RestManager.sharedInstance.makeRequestWithBasicAuth(.DELETE, encoding: .URL, resource: endpoint,
+            username: user.username!, password: user.password!, params: nil,
+            onCompletion: { _, err in
+                if(err != nil){
+                    onCompletion(err)
+                }
+                onCompletion(nil)
+        })
+    }
 }
