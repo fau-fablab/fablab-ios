@@ -52,9 +52,10 @@ struct ToolUsageApi{
     
     func removeUsage(user: User? = nil, token: String, toolId: Int64, usageId: Int64, onCompletion: (NSError?) -> Void){
         let endpoint = resource + "/\(toolId)/\(usageId)"
+        let headerParams = ["token" : token]
 
         if(user == nil){
-            RestManager.sharedInstance.makeTextRequest(.DELETE, encoding: .URL, resource: endpoint, params: nil,
+            RestManager.sharedInstance.makeTextRequest(.DELETE, encoding: .URL, resource: endpoint, params: headerParams,
                 onCompletion: { _, err in
                     if(err != nil){
                         onCompletion(err)
