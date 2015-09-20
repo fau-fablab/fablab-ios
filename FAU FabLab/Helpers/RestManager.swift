@@ -77,7 +77,7 @@ class RestManager {
         let credentialData = "\(username):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
         let base64Credentials = credentialData.base64EncodedStringWithOptions(nil)
         
-        let headers = ["Authorization": "Basic \(base64Credentials)", "Accept": "text/plain"]
+        let headers = ["Authorization": "Basic \(base64Credentials)"]
         
         makeTextRequest(method, encoding: encoding, resource: resource, params: params, headers: headers, onCompletion: onCompletion)
     }
