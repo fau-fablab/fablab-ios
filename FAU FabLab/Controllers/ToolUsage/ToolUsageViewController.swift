@@ -78,7 +78,7 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
                 picker, index, value in
                 Debug.instance.log(index)
                 self.toolId = Int64(index)
-                self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Fade)
+                self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
                 self.activityIndicator.startAnimating()
                 self.toolUsageModel.fetchToolUsagesForTool(self.toolId, onCompletion: {
                     (error) -> Void in
