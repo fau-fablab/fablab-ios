@@ -27,8 +27,6 @@ class ToolUsageModel: NSObject {
                 AlertView.showErrorView("Fehler beim Laden der Reservierungen".localized)
             } else if let result = result {
                 self.toolUsages = result
-                Debug.instance.log(result)
-                Debug.instance.log(self.toolUsages)
             }
             
             self.isLoading = false
@@ -56,7 +54,6 @@ class ToolUsageModel: NSObject {
     }
     
     func getCount() -> Int {
-        Debug.instance.log(toolUsages.count)
         return toolUsages.count
     }
     

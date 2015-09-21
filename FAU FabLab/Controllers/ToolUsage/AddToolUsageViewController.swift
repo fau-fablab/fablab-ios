@@ -61,7 +61,6 @@ class AddToolUsageViewController: UIViewController, UITableViewDataSource, UITab
             cell.configure("User".localized, placeholder: "User".localized, acceptIntegersOnly: false,
                 editingDidEndAction: {
                     (text) -> Void in
-                    Debug.instance.log(text)
                     self.user = text
             })
             return cell
@@ -70,7 +69,6 @@ class AddToolUsageViewController: UIViewController, UITableViewDataSource, UITab
             cell.configure("Projekt".localized, placeholder: "Projekt".localized, acceptIntegersOnly: false,
                 editingDidEndAction: {
                     (text) -> Void in
-                    Debug.instance.log(text)
                     self.project = text
             })
             return cell
