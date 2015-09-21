@@ -9,11 +9,12 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
     private let toolUsageModel = ToolUsageModel.sharedInstance
     private let buttonCustomCellIdentifier = "ButtonCustomCell"
     private let toolUsageCustomCellIdentifier = "ToolUsageCustomCell"
+    private let addToolUsageViewControllerIndentifier = "AddToolUsageViewController"
     private var activityIndicator: UIActivityIndicatorView!
     private var toolId: Int64 = 0
     
     @IBAction func addToolUsage(sender: AnyObject) {
-        let addToolUsageViewController = storyboard?.instantiateViewControllerWithIdentifier("AddToolUsageViewController") as! AddToolUsageViewController
+        let addToolUsageViewController = storyboard?.instantiateViewControllerWithIdentifier(addToolUsageViewControllerIndentifier) as! AddToolUsageViewController
         addToolUsageViewController.configure(toolId)
         navigationController?.pushViewController(addToolUsageViewController, animated: true)
     }
@@ -27,7 +28,18 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
         activityIndicator.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleWidth |
             UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleTopMargin |
             UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleBottomMargin
+        activityIndicator.startAnimating()
         view.addSubview(activityIndicator)
+        
+        toolModel.fetchTools({
+            (error) -> Void in
+            self.activityIndicator.stopAnimating()
+            if error != nil {
+                Debug.instance.log(error)
+                return
+            }
+            self.setTool(self.toolId)
+        })
         
     }
     
@@ -85,16 +97,7 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
                 Debug.instance.log(index)
                 self.toolId = Int64(index)
                 self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
-                self.activityIndicator.startAnimating()
-                self.toolUsageModel.fetchToolUsagesForTool(self.toolId, onCompletion: {
-                    (error) -> Void in
-                    self.activityIndicator.stopAnimating()
-                    if error != nil {
-                        Debug.instance.log(error)
-                        return
-                    }
-                    self.tableView.reloadData()
-                })
+                self.setTool(self.toolId)
                 return
             },
             cancelBlock: nil, origin: nil)
@@ -110,6 +113,19 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
         picker.setCancelButton(cancelButton)
         picker.tapDismissAction = TapAction.Cancel
         picker.showActionSheetPicker()
+    }
+    
+    private func setTool(toolId: Int64) {
+        self.activityIndicator.startAnimating()
+        self.toolUsageModel.fetchToolUsagesForTool(toolId, onCompletion: {
+            (error) -> Void in
+            self.activityIndicator.stopAnimating()
+            if error != nil {
+                Debug.instance.log(error)
+                return
+            }
+            self.tableView.reloadData()
+        })
     }
     
 }

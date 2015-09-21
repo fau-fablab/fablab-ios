@@ -48,12 +48,9 @@ class ToolModel: NSObject {
     
     func getToolName(index: Int) -> String {
         if tools.isEmpty || tools.count <= index {
-            return "Maschine wählen".localized
-        } else {
-            Debug.instance.log(index)
-            Debug.instance.log(tools[index].title!)
-            return tools[index].title!
+            return ""
         }
+        return tools[index].title!
     }
     
     func getToolNames() -> [String] {
