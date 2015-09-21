@@ -11,7 +11,7 @@ class AddToolUsageViewController: UIViewController, UITableViewDataSource, UITab
     private var toolId: Int64!
     private var user: String!
     private var project: String!
-    private var duration: String!
+    private var duration: Int64!
     
     
     override func viewDidLoad() {
@@ -38,26 +38,29 @@ class AddToolUsageViewController: UIViewController, UITableViewDataSource, UITab
             return cell
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier(textFieldCustomCellIdentifier) as! TextFieldCustomCell
-            cell.configure("User".localized, placeholder: "User".localized, editingDidEndAction: {
-                (text) -> Void in
-                Debug.instance.log(text)
-                self.user = text
+            cell.configure("User".localized, placeholder: "User".localized, acceptIntegersOnly: false,
+                editingDidEndAction: {
+                    (text) -> Void in
+                    Debug.instance.log(text)
+                    self.user = text
             })
             return cell
         case 2:
             let cell = tableView.dequeueReusableCellWithIdentifier(textFieldCustomCellIdentifier) as! TextFieldCustomCell
-            cell.configure("Projekt".localized, placeholder: "Projekt".localized, editingDidEndAction: {
-                (text) -> Void in
-                Debug.instance.log(text)
-                self.project = text
+            cell.configure("Projekt".localized, placeholder: "Projekt".localized, acceptIntegersOnly: false,
+                editingDidEndAction: {
+                    (text) -> Void in
+                    Debug.instance.log(text)
+                    self.project = text
             })
             return cell
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier(textFieldCustomCellIdentifier) as! TextFieldCustomCell
-            cell.configure("Dauer".localized, placeholder: "Dauer in Minuten".localized, editingDidEndAction: {
-                (text) -> Void in
-                Debug.instance.log(text)
-                self.duration = text
+            cell.configure("Dauer".localized, placeholder: "Dauer in Minuten".localized, acceptIntegersOnly: true,
+                editingDidEndAction: {
+                    (text) -> Void in
+                    Debug.instance.log(text)
+                    self.duration = (text as NSString).longLongValue
             })
             return cell
         }

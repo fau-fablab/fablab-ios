@@ -880,9 +880,6 @@
                                                             <exclude reference="5M5-G6-s93"/>
                                                         </mask>
                                                     </variation>
-                                                    <connections>
-                                                        <action selector="editingDidEnd:" destination="2V3-mT-14P" eventType="editingDidEnd" id="Mlg-EA-vqB"/>
-                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
