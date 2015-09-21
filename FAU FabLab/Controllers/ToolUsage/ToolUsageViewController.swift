@@ -38,9 +38,16 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
                 Debug.instance.log(error)
                 return
             }
+            self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
             self.setTool(self.toolId)
         })
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setTool(self.toolId)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -74,6 +81,12 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
             let cell = tableView.dequeueReusableCellWithIdentifier(toolUsageCustomCellIdentifier) as! ToolUsageCustomCell
             cell.configure(toolUsageModel.getToolUsage(indexPath.row), startingTime: toolUsageModel.getStartingTimeOfToolUsage(indexPath.row))
             return cell
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 0 {
+            toolButtonClicked()
         }
     }
     

@@ -37,6 +37,24 @@ class ToolUsageModel: NSObject {
         
     }
     
+    func addToolUsage(toolUsage: ToolUsage, user: User?, token: String, onCompletion: ApiResponse) {
+        if isLoading {
+            onCompletion(nil)
+            return
+        }
+        
+        isLoading = true
+        
+        api.addUsage(user: user, token: token, toolId: toolUsage.toolId!, usage: toolUsage) {
+            (result, error) -> Void in
+            if error != nil {
+                AlertView.showErrorView("Fehler beim Laden der Reservierungen".localized)
+            }
+            self.isLoading = false
+            onCompletion(error)
+        }
+    }
+    
     func getCount() -> Int {
         Debug.instance.log(toolUsages.count)
         return toolUsages.count

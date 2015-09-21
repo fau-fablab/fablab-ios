@@ -18,7 +18,7 @@ class TextFieldCustomCell: UITableViewCell, UITextFieldDelegate {
             self.title.text = title
             
             textField.delegate = self
-            textField.placeholder = title
+            textField.placeholder = placeholder
             if acceptIntegersOnly {
                     textField.keyboardType = UIKeyboardType.NumbersAndPunctuation
             }

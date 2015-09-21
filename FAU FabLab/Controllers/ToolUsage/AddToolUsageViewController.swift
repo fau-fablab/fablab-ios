@@ -14,12 +14,31 @@ class AddToolUsageViewController: UIViewController, UITableViewDataSource, UITab
     private var duration: Int64!
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     func configure(toolId: Int64) {
         self.toolId = toolId
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: "save")
+        navigationItem.rightBarButtonItem = saveButton
+    }
+    
+    func save() {
+        if toolId == nil || user == nil || project == nil || duration == nil {
+            AlertView.showErrorView("Angaben unvollständig".localized)
+            return
+        }
+        
+        let toolUsage = ToolUsage(toolId: toolId, user: user, project: project, duration: duration)
+        toolUsageModel.addToolUsage(toolUsage, user: nil, token: "794") {
+            (error) -> Void in
+            if error != nil {
+                Debug.instance.log(error)
+            }
+            self.navigationController?.popViewControllerAnimated(true)
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -64,10 +83,6 @@ class AddToolUsageViewController: UIViewController, UITableViewDataSource, UITab
             })
             return cell
         }
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
     }
     
 }
