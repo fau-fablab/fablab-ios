@@ -19,6 +19,9 @@
 		487971B81B9B0E3F00052FEB /* SearchHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487971B71B9B0E3F00052FEB /* SearchHistoryModel.swift */; };
 		487971BA1B9B112D00052FEB /* SearchHelpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487971B91B9B112D00052FEB /* SearchHelpModel.swift */; };
 		4880CD321B7CC4470025C38A /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4880CD311B7CC4470025C38A /* CoreActionSheetPicker.framework */; };
+		488E2AD51BAEF9B200E719FC /* ToolUsageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488E2AD41BAEF9B200E719FC /* ToolUsageModel.swift */; };
+		488E2AD71BAEFA4300E719FC /* ToolModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488E2AD61BAEFA4300E719FC /* ToolModel.swift */; };
+		488E2ADA1BAEFF5F00E719FC /* ToolUsageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488E2AD91BAEFF5F00E719FC /* ToolUsageViewController.swift */; };
 		489316451B831E3900DCB6BB /* AutocompletionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489316441B831E3900DCB6BB /* AutocompletionModel.swift */; };
 		489E4C751B79E093004A60FA /* ProductCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E4C741B79E093004A60FA /* ProductCustomCell.swift */; };
 		48A8D9D41BA54154006958D9 /* ProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A8D9D31BA54154006958D9 /* ProjectsViewController.swift */; };
@@ -31,6 +34,7 @@
 		48D266C81BA987C7009E642B /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D266C71BA987C7009E642B /* CategoryModel.swift */; };
 		48E9A11F1B9C1A840024C4B9 /* SwitchCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E9A11E1B9C1A840024C4B9 /* SwitchCustomCell.swift */; };
 		48E9A1211B9C1DF00024C4B9 /* ButtonCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E9A1201B9C1DF00024C4B9 /* ButtonCustomCell.swift */; };
+		48F1CE711BAFE86F005E4CB7 /* ToolUsageCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F1CE701BAFE86F005E4CB7 /* ToolUsageCustomCell.swift */; };
 		5024EE461BA5A3080025AF91 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE451BA5A3080025AF91 /* Project.swift */; };
 		5024EE481BA5A3AB0025AF91 /* ProjectsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE471BA5A3AB0025AF91 /* ProjectsModel.swift */; };
 		5024EE4B1BA5B3CD0025AF91 /* ProjectCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE4A1BA5B3CD0025AF91 /* ProjectCustomCell.swift */; };
@@ -175,6 +179,9 @@
 		487971B71B9B0E3F00052FEB /* SearchHistoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHistoryModel.swift; sourceTree = "<group>"; };
 		487971B91B9B112D00052FEB /* SearchHelpModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHelpModel.swift; sourceTree = "<group>"; };
 		4880CD311B7CC4470025C38A /* CoreActionSheetPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreActionSheetPicker.framework; path = Carthage/Build/iOS/CoreActionSheetPicker.framework; sourceTree = "<group>"; };
+		488E2AD41BAEF9B200E719FC /* ToolUsageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolUsageModel.swift; sourceTree = "<group>"; };
+		488E2AD61BAEFA4300E719FC /* ToolModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolModel.swift; sourceTree = "<group>"; };
+		488E2AD91BAEFF5F00E719FC /* ToolUsageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolUsageViewController.swift; sourceTree = "<group>"; };
 		489316441B831E3900DCB6BB /* AutocompletionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompletionModel.swift; sourceTree = "<group>"; };
 		489E4C741B79E093004A60FA /* ProductCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCustomCell.swift; sourceTree = "<group>"; };
 		48A8D9D31BA54154006958D9 /* ProjectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsViewController.swift; sourceTree = "<group>"; };
@@ -190,7 +197,8 @@
 		48D266C71BA987C7009E642B /* CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		48E9A11E1B9C1A840024C4B9 /* SwitchCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCustomCell.swift; sourceTree = "<group>"; };
 		48E9A1201B9C1DF00024C4B9 /* ButtonCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCustomCell.swift; sourceTree = "<group>"; };
-		5003604E1B97911B0037114C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		48F1CE701BAFE86F005E4CB7 /* ToolUsageCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolUsageCustomCell.swift; sourceTree = "<group>"; };
+		48F1CE761BAFFA6D005E4CB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		5003604F1B97911C0037114C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5024EE451BA5A3080025AF91 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		5024EE471BA5A3AB0025AF91 /* ProjectsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsModel.swift; sourceTree = "<group>"; };
@@ -350,6 +358,23 @@
 			path = DoorState;
 			sourceTree = "<group>";
 		};
+		488E2AD31BAEF97300E719FC /* ToolUsage */ = {
+			isa = PBXGroup;
+			children = (
+				488E2AD41BAEF9B200E719FC /* ToolUsageModel.swift */,
+				488E2AD61BAEFA4300E719FC /* ToolModel.swift */,
+			);
+			path = ToolUsage;
+			sourceTree = "<group>";
+		};
+		488E2AD81BAEFF4000E719FC /* ToolUsage */ = {
+			isa = PBXGroup;
+			children = (
+				488E2AD91BAEFF5F00E719FC /* ToolUsageViewController.swift */,
+			);
+			path = ToolUsage;
+			sourceTree = "<group>";
+		};
 		48B7C0D81B8460FF00DC9B2D /* Managed */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,6 +388,7 @@
 		500A2CA11B63DCF4005CC8CF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				488E2AD81BAEFF4000E719FC /* ToolUsage */,
 				508DB3431BA0DEDC00C8F5E7 /* Projects */,
 				84CDCD2F1B9084130084D8F3 /* About */,
 				84CDCD2C1B9083ED0084D8F3 /* Inventory */,
@@ -381,6 +407,7 @@
 		500A2CA21B63FB6E005CC8CF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				488E2AD31BAEF97300E719FC /* ToolUsage */,
 				5024EE431BA5A1EE0025AF91 /* Projects */,
 				920AECEF1B96EDA000523C1B /* VersionCheck */,
 				84CDCD351B9094360084D8F3 /* Settings */,
@@ -772,6 +799,7 @@
 				48A8D9D51BA547AC006958D9 /* CartCustomCell.swift */,
 				5024EE4A1BA5B3CD0025AF91 /* ProjectCustomCell.swift */,
 				8487B1B01BA79C8F001998BC /* PayOrCancelCell.swift */,
+				48F1CE701BAFE86F005E4CB7 /* ToolUsageCustomCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -969,6 +997,7 @@
 				84CDCD2E1B9083ED0084D8F3 /* InventoryViewController.swift in Sources */,
 				924DBF701B8DEBB1000CAFB2 /* News.swift in Sources */,
 				924DBF751B8DEBF3000CAFB2 /* CartStatus.swift in Sources */,
+				488E2AD71BAEFA4300E719FC /* ToolModel.swift in Sources */,
 				5069171A1BA8AA4300E48006 /* ProjectImageUpload.swift in Sources */,
 				927901E51B6D4AE300F95B09 /* NewsModel.swift in Sources */,
 				924DBF6F1B8DEBB1000CAFB2 /* Location.swift in Sources */,
@@ -981,6 +1010,7 @@
 				48545B2D1B92F6D0006F690F /* AboutCustomCell.swift in Sources */,
 				9232D7461B9219C600BF77E9 /* PlatformType.swift in Sources */,
 				927901E11B6D3F6300F95B09 /* NewsDetailsViewController.swift in Sources */,
+				488E2AD51BAEF9B200E719FC /* ToolUsageModel.swift in Sources */,
 				485765AE1BA2BBBD0064B42B /* Cart.swift in Sources */,
 				48E9A11F1B9C1A840024C4B9 /* SwitchCustomCell.swift in Sources */,
 				92A7FBA71BAC3C55005C927E /* ProductLocationModel.swift in Sources */,
@@ -1034,6 +1064,7 @@
 				923E1F251B7A735F009CC545 /* MalfunctionInfoController.swift in Sources */,
 				849502A41B9B7696006810E3 /* InventoryItemScanViewController.swift in Sources */,
 				927901CA1B6D3B9300F95B09 /* RestManager.swift in Sources */,
+				48F1CE711BAFE86F005E4CB7 /* ToolUsageCustomCell.swift in Sources */,
 				923E1F2A1B7AA25A009CC545 /* CartProduct.swift in Sources */,
 				846100BE1B78696000393E63 /* ProductLocationViewController.swift in Sources */,
 				923FFDA21B8E4DA5001ACAB1 /* User.swift in Sources */,
@@ -1046,6 +1077,7 @@
 				927901D71B6D3EED00F95B09 /* NewsCustomCell.swift in Sources */,
 				928054FB1B6DA22000D0D4FB /* EventModel.swift in Sources */,
 				50DBE9041B6FA93000685B07 /* EventsCustomCell.swift in Sources */,
+				488E2ADA1BAEFF5F00E719FC /* ToolUsageViewController.swift in Sources */,
 				924DBF6B1B8DEBB1000CAFB2 /* Category.swift in Sources */,
 				923E1F231B7A728C009CC545 /* DoorNavigationButtonController.swift in Sources */,
 				927901DC1B6D3F5700F95B09 /* ProductsearchCodeScannerViewController.swift in Sources */,
@@ -1099,7 +1131,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5060B1DC1B4EFE2A008B41FD /* Base */,
-				5003604E1B97911B0037114C /* en */,
+				48F1CE761BAFFA6D005E4CB7 /* en */,
 			);
 			name = Main.storyboard;
 			path = ..;
