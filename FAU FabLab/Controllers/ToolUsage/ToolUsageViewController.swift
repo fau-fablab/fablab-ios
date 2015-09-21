@@ -12,6 +12,12 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
     private var activityIndicator: UIActivityIndicatorView!
     private var toolId: Int64 = 0
     
+    @IBAction func addToolUsage(sender: AnyObject) {
+        let addToolUsageViewController = storyboard?.instantiateViewControllerWithIdentifier("AddToolUsageViewController") as! AddToolUsageViewController
+        addToolUsageViewController.configure(toolId)
+        navigationController?.pushViewController(addToolUsageViewController, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -105,5 +111,5 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
         picker.tapDismissAction = TapAction.Cancel
         picker.showActionSheetPicker()
     }
-
+    
 }

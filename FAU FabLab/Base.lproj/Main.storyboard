@@ -832,6 +832,129 @@
             </objects>
             <point key="canvasLocation" x="-82" y="2311"/>
         </scene>
+        <!--Reservierung hinzufügen-->
+        <scene sceneID="s9l-h5-JXf">
+            <objects>
+                <viewController restorationIdentifier="AddToolUsageViewController" storyboardIdentifier="AddToolUsageViewController" title="Reservierung hinzufügen" id="7Ya-nq-aMT" customClass="AddToolUsageViewController" customModule="FAU_FabLab" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cUI-s7-ziW"/>
+                        <viewControllerLayoutGuide type="bottom" id="jgE-SG-fNY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7GY-Jk-MoP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KtV-6o-OMl">
+                                <rect key="frame" x="0.0" y="512" width="600" height="44"/>
+                                <items/>
+                            </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="60" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="US6-h6-dSs">
+                                <rect key="frame" x="0.0" y="64" width="600" height="448"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextFieldCustomCell" rowHeight="60" id="2V3-mT-14P" customClass="TextFieldCustomCell" customModule="FAU_FabLab" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2V3-mT-14P" id="gbr-49-oNI">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maschine" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rvl-j4-sKt">
+                                                    <rect key="frame" x="8" y="19" width="75" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="75" id="aNR-lX-MVG"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kOl-Ep-WGG">
+                                                    <rect key="frame" x="91" y="15" width="501" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="475" id="5M5-G6-s93"/>
+                                                    </constraints>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="5M5-G6-s93"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <connections>
+                                                        <action selector="editingDidEnd:" destination="2V3-mT-14P" eventType="editingDidEnd" id="Mlg-EA-vqB"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="kOl-Ep-WGG" firstAttribute="trailing" secondItem="gbr-49-oNI" secondAttribute="trailingMargin" id="1kc-x6-kpJ"/>
+                                                <constraint firstItem="kOl-Ep-WGG" firstAttribute="top" secondItem="gbr-49-oNI" secondAttribute="topMargin" constant="7" id="2Ys-4a-8fi"/>
+                                                <constraint firstItem="Rvl-j4-sKt" firstAttribute="top" secondItem="gbr-49-oNI" secondAttribute="topMargin" constant="11" id="5zS-6y-j3L"/>
+                                                <constraint firstItem="Rvl-j4-sKt" firstAttribute="leading" secondItem="gbr-49-oNI" secondAttribute="leadingMargin" id="9r0-an-L1F"/>
+                                                <constraint firstItem="kOl-Ep-WGG" firstAttribute="trailing" secondItem="gbr-49-oNI" secondAttribute="trailingMargin" id="GgP-tP-Fuf"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="kOl-Ep-WGG" secondAttribute="bottom" constant="6" id="Hb9-he-9Pq"/>
+                                                <constraint firstItem="kOl-Ep-WGG" firstAttribute="trailing" secondItem="gbr-49-oNI" secondAttribute="trailingMargin" id="K4u-5z-0oJ"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="kOl-Ep-WGG" secondAttribute="bottom" constant="6" id="Moz-WB-zhn"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Rvl-j4-sKt" secondAttribute="bottom" constant="11" id="NH2-Th-uze"/>
+                                                <constraint firstItem="kOl-Ep-WGG" firstAttribute="leading" secondItem="Rvl-j4-sKt" secondAttribute="trailing" constant="8" id="PFz-B0-5EU"/>
+                                                <constraint firstItem="kOl-Ep-WGG" firstAttribute="top" secondItem="gbr-49-oNI" secondAttribute="topMargin" constant="7" id="UXp-GY-xmE"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="kOl-Ep-WGG" secondAttribute="bottom" constant="6" id="V3V-40-ngq"/>
+                                                <constraint firstItem="kOl-Ep-WGG" firstAttribute="top" secondItem="gbr-49-oNI" secondAttribute="topMargin" constant="7" id="Wlb-tD-psh"/>
+                                                <constraint firstItem="kOl-Ep-WGG" firstAttribute="trailing" secondItem="gbr-49-oNI" secondAttribute="trailingMargin" id="ehV-0p-iOv"/>
+                                                <constraint firstItem="kOl-Ep-WGG" firstAttribute="top" secondItem="gbr-49-oNI" secondAttribute="topMargin" constant="7" id="khp-3e-Ygt"/>
+                                                <constraint firstItem="kOl-Ep-WGG" firstAttribute="leading" secondItem="gbr-49-oNI" secondAttribute="leadingMargin" id="ug5-I7-Bli"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="kOl-Ep-WGG" secondAttribute="bottom" constant="6" id="yuX-bM-XWu"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="1kc-x6-kpJ"/>
+                                                    <exclude reference="GgP-tP-Fuf"/>
+                                                    <exclude reference="Moz-WB-zhn"/>
+                                                    <exclude reference="UXp-GY-xmE"/>
+                                                    <exclude reference="V3V-40-ngq"/>
+                                                    <exclude reference="Wlb-tD-psh"/>
+                                                    <exclude reference="ehV-0p-iOv"/>
+                                                    <exclude reference="khp-3e-Ygt"/>
+                                                    <exclude reference="ug5-I7-Bli"/>
+                                                    <exclude reference="yuX-bM-XWu"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="textField" destination="kOl-Ep-WGG" id="abd-IB-h4K"/>
+                                            <outlet property="title" destination="Rvl-j4-sKt" id="Elb-Wf-Tmb"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="7Ya-nq-aMT" id="SFA-pQ-2dW"/>
+                                    <outlet property="delegate" destination="7Ya-nq-aMT" id="3OP-5H-tUF"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="US6-h6-dSs" firstAttribute="leading" secondItem="7GY-Jk-MoP" secondAttribute="leadingMargin" constant="-16" id="3WF-5L-Y9O"/>
+                            <constraint firstItem="KtV-6o-OMl" firstAttribute="top" secondItem="US6-h6-dSs" secondAttribute="bottom" id="GPD-1Z-kiT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KtV-6o-OMl" secondAttribute="trailing" constant="-16" id="J2C-bn-xbv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="US6-h6-dSs" secondAttribute="trailing" constant="-16" id="dIF-Vd-9VB"/>
+                            <constraint firstItem="US6-h6-dSs" firstAttribute="top" secondItem="cUI-s7-ziW" secondAttribute="bottom" id="i6p-oj-rOg"/>
+                            <constraint firstItem="jgE-SG-fNY" firstAttribute="top" secondItem="KtV-6o-OMl" secondAttribute="bottom" id="pwq-Df-b3Z"/>
+                            <constraint firstItem="KtV-6o-OMl" firstAttribute="leading" secondItem="7GY-Jk-MoP" secondAttribute="leadingMargin" constant="-16" id="sad-Yt-jVX"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Reservierung hinzufügen" id="qTE-J6-BkG">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="JFg-AJ-Mbl"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="US6-h6-dSs" id="aHK-oO-Clg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ffa-Dz-aID" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2019" y="1568"/>
+        </scene>
         <!--Standort-->
         <scene sceneID="bo2-Ki-dW7">
             <objects>
@@ -844,7 +967,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleAspectFill" scalesPageToFit="YES" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" keyboardDisplayRequiresUserAction="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hh-xI-Num">
+                            <webView contentMode="scaleAspectFill" misplaced="YES" scalesPageToFit="YES" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" keyboardDisplayRequiresUserAction="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hh-xI-Num">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <dataDetectorType key="dataDetectorTypes"/>
@@ -1703,8 +1826,12 @@
                             <constraint firstItem="8FQ-o4-ti1" firstAttribute="leading" secondItem="3Rv-3Q-iMV" secondAttribute="leadingMargin" constant="-16" id="n1X-mG-m7i"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Maschinenreservierung" id="v0W-HC-oWg">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="lvP-Hl-zQL"/>
+                    <navigationItem key="navigationItem" title="Reservierung" id="v0W-HC-oWg">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="lvP-Hl-zQL">
+                            <connections>
+                                <action selector="addToolUsage:" destination="uxX-pP-dP0" id="pRI-na-Tt2"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="1Pf-cZ-9ud" id="iie-B3-UpU"/>
