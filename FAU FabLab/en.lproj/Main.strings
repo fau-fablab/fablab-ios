@@ -286,3 +286,9 @@
 
 /* Class = "navigationItem"; title = "Warenkorb Bezahlen"; ObjectID = "il9-Jl-rLY"; */
 "il9-Jl-rLY.title" = "Pay for the cart";
+
+/* Class = "UITabBarItem"; title = "Maschinenreservierung"; ObjectID = "cR7-ak-K9N"; */
+"cR7-ak-K9N.title" = "Machine Reservation";
+
+/* Class = "UINavigationItem"; title = "Maschinenreservierung"; ObjectID = "v0W-HC-oWg"; */
+"v0W-HC-oWg.title" = "Machine Reservation";

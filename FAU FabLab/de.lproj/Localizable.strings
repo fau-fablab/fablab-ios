@@ -188,6 +188,18 @@
 "Name oder Passwort falsch" = "Name oder Passwort falsch";
 "Bitte erst einen Betrag eingeben" = "Bitte erst einen Betrag eingeben";
 
+//MARK: ToolUsageViewController
+"Maschine" = "Maschine";
+"Reservierung" = "Reservierung";
+"Maschine wählen" = "Maschine wählen";
+"Fehler beim Laden der Reservierungen" = "Fehler beim Laden der Reservierungen";
+"Fehler beim Laden der Maschinen" = "Fehler beim Laden der Maschinen";
+
+//MARK: ToolUsageCustomCell
+"Minuten" = "Minuten";
+"ab" = "ab";
+"Uhr" = "Uhr";
+
 
 
 

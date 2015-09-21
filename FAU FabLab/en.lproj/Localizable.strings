@@ -187,3 +187,15 @@
 "Inventur" = "Inventory";
 "Name oder Passwort falsch" = "Name oder Password wrong";
 "Bitte erst einen Betrag eingeben" = "Please enter an amount first";
+
+//MARK: ToolUsageViewController
+"Maschine" = "Machine";
+"Reservierung" = "Reservation";
+"Maschine wählen" = "Choose machine";
+"Fehler beim Laden der Reservierungen" = "Error while loading the reservations";
+"Fehler beim Laden der Maschinen" = "Error while loading the machines";
+
+//MARK: ToolUsageCustomCell
+"Minuten" = "minutes";
+"ab" = "from";
+"Uhr" = "";
