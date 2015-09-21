@@ -26,13 +26,14 @@ class AddToolUsageViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func save() {
-        if toolId == nil || user == nil || project == nil || duration == nil {
-            AlertView.showErrorView("Angaben unvollständig".localized)
-            return
+        if toolId == nil || user == nil || user.isEmpty || project == nil || project.isEmpty ||
+            duration == nil || duration == 0 {
+                AlertView.showErrorView("Angaben unvollständig".localized)
+                return
         }
         
         let toolUsage = ToolUsage(toolId: toolId, user: user, project: project, duration: duration)
-        toolUsageModel.addToolUsage(toolUsage, user: nil, token: "794") {
+        toolUsageModel.addToolUsage(toolUsage, user: nil, token: UIDevice.currentDevice().identifierForVendor.UUIDString) {
             (error) -> Void in
             if error != nil {
                 Debug.instance.log(error)
@@ -78,8 +79,9 @@ class AddToolUsageViewController: UIViewController, UITableViewDataSource, UITab
             cell.configure("Dauer".localized, placeholder: "Dauer in Minuten".localized, acceptIntegersOnly: true,
                 editingDidEndAction: {
                     (text) -> Void in
-                    Debug.instance.log(text)
-                    self.duration = (text as NSString).longLongValue
+                    if let text = text {
+                        self.duration = (text as NSString).longLongValue
+                    }
             })
             return cell
         }

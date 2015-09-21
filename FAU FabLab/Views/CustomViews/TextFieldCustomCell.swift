@@ -5,11 +5,11 @@ class TextFieldCustomCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet var title: UILabel!
     @IBOutlet var textField: UITextField!
     
-    private var editingDidEndAction: (String) -> Void = {text in}
+    private var editingDidEndAction: (String?) -> Void = {text in}
     private var acceptIntegersOnly: Bool = false
     
     func configure(title: String, placeholder: String, acceptIntegersOnly: Bool,
-        editingDidEndAction: (String) -> Void) {
+        editingDidEndAction: (String?) -> Void) {
             selectionStyle = UITableViewCellSelectionStyle.None
         
             self.acceptIntegersOnly = acceptIntegersOnly
@@ -52,6 +52,11 @@ class TextFieldCustomCell: UITableViewCell, UITextFieldDelegate {
     
     func textFieldDidEndEditing(textField: UITextField) {
         editingDidEndAction(textField.text)
+    }
+    
+    func textFieldShouldClear(textField: UITextField) -> Bool {
+        editingDidEndAction(nil)
+        return true
     }
 
 }
