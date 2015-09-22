@@ -28,17 +28,17 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
         activityIndicator.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleWidth |
             UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleTopMargin |
             UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleBottomMargin
-        activityIndicator.startAnimating()
         view.addSubview(activityIndicator)
         
+        startLoading()
         toolModel.fetchTools({
             (error) -> Void in
-            self.activityIndicator.stopAnimating()
             if error != nil {
                 Debug.instance.log(error)
                 return
             }
             self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
+            self.stopLoading()
             self.setTool(self.toolId)
         })
         
@@ -48,6 +48,16 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewWillAppear(animated)
         
         setTool(self.toolId)
+    }
+
+    private func startLoading() {
+        tableView.userInteractionEnabled = false
+        activityIndicator.startAnimating()
+    }
+    
+    private func stopLoading() {
+        tableView.userInteractionEnabled = true
+        activityIndicator.stopAnimating()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -105,11 +115,11 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            activityIndicator.startAnimating()
+            startLoading()
             toolUsageModel.removeToolUsage(toolUsageModel.getToolUsage(indexPath.row), user: nil, token: UIDevice.currentDevice().identifierForVendor.UUIDString,
                 onCompletion: {
                     (error) -> Void in
-                    self.activityIndicator.stopAnimating()
+                    self.stopLoading()
                     if error != nil {
                         Debug.instance.log(error)
                     }
@@ -121,10 +131,10 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func toolButtonClicked() {
-        activityIndicator.stopAnimating()
+        startLoading()
         toolModel.fetchTools({
             (error) -> Void in
-            self.activityIndicator.stopAnimating()
+            self.stopLoading()
             if error != nil {
                 Debug.instance.log(error)
                 return
@@ -159,10 +169,10 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     private func setTool(toolId: Int64) {
-        self.activityIndicator.startAnimating()
+        self.startLoading()
         self.toolUsageModel.fetchToolUsagesForTool(toolId, onCompletion: {
             (error) -> Void in
-            self.activityIndicator.stopAnimating()
+            self.stopLoading()
             if error != nil {
                 Debug.instance.log(error)
                 return
