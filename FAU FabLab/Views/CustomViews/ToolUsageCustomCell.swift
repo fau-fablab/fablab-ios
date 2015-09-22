@@ -10,6 +10,7 @@ class ToolUsageCustomCell: UITableViewCell {
     @IBOutlet var time: UILabel!
     
     func configure(toolUsage: ToolUsage, startingTime: Int64) {
+        selectionStyle = UITableViewCellSelectionStyle.None
         
         user.text = toolUsage.user
         project.text = toolUsage.project
