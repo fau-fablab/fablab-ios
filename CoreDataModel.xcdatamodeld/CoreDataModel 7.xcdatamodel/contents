@@ -35,6 +35,9 @@
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="word" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="OwnToolUsage" representedClassName="FAU_FabLab.OwnToolUsage" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="Projects" representedClassName="FAU_FabLab.Project" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="descr" optional="YES" attributeType="String" syncable="YES"/>
@@ -54,5 +57,6 @@
         <element name="HistoryEntry" positionX="126" positionY="-90" width="128" height="75"/>
         <element name="Projects" positionX="-216" positionY="-339" width="128" height="105"/>
         <element name="Settings" positionX="-360" positionY="69" width="128" height="75"/>
+        <element name="OwnToolUsage" positionX="-279" positionY="-189" width="128" height="60"/>
     </elements>
 </model>

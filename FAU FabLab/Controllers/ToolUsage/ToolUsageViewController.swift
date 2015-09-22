@@ -90,6 +90,36 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if indexPath.section == 0 {
+            return false
+        }
+        
+        let toolUsage = toolUsageModel.getToolUsage(indexPath.row)
+        if toolUsageModel.isOwnToolUsage(toolUsage.id!) {
+            return true
+        }
+        
+        return false
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            activityIndicator.startAnimating()
+            toolUsageModel.removeToolUsage(toolUsageModel.getToolUsage(indexPath.row), user: nil, token: UIDevice.currentDevice().identifierForVendor.UUIDString,
+                onCompletion: {
+                    (error) -> Void in
+                    self.activityIndicator.stopAnimating()
+                    if error != nil {
+                        Debug.instance.log(error)
+                    }
+                    self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+                    self.setTool(self.toolId)
+                    
+            })
+        }
+    }
+    
     func toolButtonClicked() {
         activityIndicator.stopAnimating()
         toolModel.fetchTools({
