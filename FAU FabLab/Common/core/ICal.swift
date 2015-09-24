@@ -13,14 +13,11 @@ class ICal: Mappable {
     private(set) var allday:        Bool?
     
     private var dateFormatter = NSDateFormatter()
-
-    class func newInstance() -> Mappable {
-        let iCal = ICal();
-        iCal.dateFormatter.timeZone = NSTimeZone(name: "UTC+2")
-        
-        return iCal
-    }
     
+    required init?(_ map: Map){
+        self.dateFormatter.timeZone = NSTimeZone(name: "UTC+2")
+    }
+
     // Mappable
     func mapping(map: Map) {
         uid         <-  map["uid"]

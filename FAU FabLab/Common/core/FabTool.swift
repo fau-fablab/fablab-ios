@@ -9,10 +9,8 @@ class FabTool : Mappable{
     private(set) var details:       String?
     private(set) var linkToPicture: String?
 
-    class func newInstance() -> Mappable {
-        return FabTool()
-    }
-
+    required init?(_ map: Map){}
+    
     func mapping(map: Map) {
         title           <- map["title"]
         link            <- map["link"]

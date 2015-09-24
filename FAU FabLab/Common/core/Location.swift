@@ -7,9 +7,7 @@ class Location : Mappable{
     private(set) var code:          String?
     private(set) var locationId:    Int64?
     
-    class func newInstance() -> Mappable {
-        return Location()
-    }
+    required init?(_ map: Map){}
     
     // Mappable
     func mapping(map: Map) {

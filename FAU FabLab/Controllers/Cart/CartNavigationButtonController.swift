@@ -16,8 +16,8 @@ class CartNavigationButtonController: NSObject {
         super.init()
         
         //create custom bar buttom item with badge
-        var button = UIButton(frame: CGRectMake(0, 0, 22.5, 22.5))
-        var image = UIImage(named: "icon_cart", inBundle: nil, compatibleWithTraitCollection: nil)?
+        let button = UIButton(frame: CGRectMake(0, 0, 22.5, 22.5))
+        let image = UIImage(named: "icon_cart", inBundle: nil, compatibleWithTraitCollection: nil)?
             .imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         button.setImage(image, forState: .Normal)
         button.tintColor = UIColor.fabLabGreenNavBar()

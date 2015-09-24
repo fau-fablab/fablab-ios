@@ -25,7 +25,7 @@ public class NewsModel: NSObject {
         return news.count;
     }
     
-    func fetchNews(#onCompletion: ApiResponse) {
+    func fetchNews(onCompletion onCompletion: ApiResponse) {
         //If we are already loading just return
         if(isLoading){
             return

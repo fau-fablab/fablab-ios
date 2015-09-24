@@ -157,7 +157,7 @@ extension ProductsearchCodeScannerViewController {
         
         let doneAction: UIAlertAction = UIAlertAction(title: "Okay", style: .Default,
             handler: { (Void) -> Void in
-             self.displayProductSearchForCode(inputTextField!.text)
+             self.displayProductSearchForCode(inputTextField!.text!)
              
         })
         

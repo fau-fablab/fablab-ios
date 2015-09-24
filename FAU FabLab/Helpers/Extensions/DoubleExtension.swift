@@ -1,11 +1,11 @@
 extension Double {
     var digitsAfterComma: Int {
         let s : String = String(stringInterpolationSegment: self)
-        let substring = s.substringFromIndex(find(s, ".")!.successor())
+        let substring = s.substringFromIndex(s.characters.indexOf(".")!.successor())
         if substring == "0" {
             return 0
         }
-        return count(substring) as Int
+        return substring.characters.count as Int
     }
     
     func roundDown(digitsAfterComma: Int) -> Double {

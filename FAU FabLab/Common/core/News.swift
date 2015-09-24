@@ -15,10 +15,8 @@ class News: Mappable {
     private(set) var isPermaLink:           Bool?
     private(set) var linkToPreviewImage:    String?
     
-    class func newInstance() -> Mappable {
-        return News()
-    }
-
+    required init?(_ map: Map){}
+    
     // Mappable
     func mapping(map: Map) {
         title               <-  map["title"]

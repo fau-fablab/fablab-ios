@@ -11,7 +11,7 @@ class SettingsModel : NSObject{
     private var entries : [SettingsEntry] {
         get {
             let request = NSFetchRequest(entityName: SettingsEntry.SettingsName)
-            return managedObjectContext.executeFetchRequest(request, error: nil) as! [SettingsEntry]
+            return (try! managedObjectContext.executeFetchRequest(request)) as! [SettingsEntry]
         }
     }
 
@@ -39,7 +39,10 @@ class SettingsModel : NSObject{
         for res in entries{
             if( res.key == key){
                 res.value = value;
-                self.managedObjectContext.save(nil)
+                do {
+                    try self.managedObjectContext.save()
+                } catch _ {
+                }
                 return true
             }
         }
@@ -51,6 +54,9 @@ class SettingsModel : NSObject{
             inManagedObjectContext: self.managedObjectContext) as! SettingsEntry
         newKeyValue.key = key
         newKeyValue.value = value
-        self.managedObjectContext.save(nil)
+        do {
+            try self.managedObjectContext.save()
+        } catch _ {
+        }
     }
 }

@@ -9,7 +9,7 @@ class CartCustomCell: UITableViewCell {
     
     func configure(date: NSDate, count: Int, status: CartStatus) {
         
-        var dateFormatter = NSDateFormatter()
+        let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
         dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
         dateLabel.text = dateFormatter.stringFromDate(date)

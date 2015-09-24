@@ -30,7 +30,7 @@ class CategoryEntity: NSManagedObject {
     }
     
     func addSubcategory(subcategory: CategoryEntity) {
-        var items = self.mutableOrderedSetValueForKey("subcategories")
+        let items = self.mutableOrderedSetValueForKey("subcategories")
         items.addObject(subcategory)
     }
     

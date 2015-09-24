@@ -12,9 +12,7 @@ class ToolUsage : Mappable {
     private(set) var duration       :Int64?
     private(set) var creationTime   :Int64?
     
-    class func newInstance() -> Mappable {
-        return ToolUsage()
-    }
+    required init?(_ map: Map){}
     
     init(){}
     

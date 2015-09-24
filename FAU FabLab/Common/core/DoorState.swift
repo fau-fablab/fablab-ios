@@ -5,10 +5,8 @@ class DoorState : Mappable{
 
     private(set) var open:          Bool?
     private(set) var lastchange:    Double?
-
-    class func newInstance() -> Mappable {
-        return DoorState()
-    }
+    
+    required init?(_ map: Map){}
 
     func mapping(map: Map) {
         open        <- map["state.open"]

@@ -25,9 +25,7 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
         activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleWidth |
-            UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleTopMargin |
-            UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleBottomMargin
+        activityIndicator.autoresizingMask = [UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleBottomMargin]
         view.addSubview(activityIndicator)
         
         startLoading()
@@ -116,7 +114,7 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             startLoading()
-            toolUsageModel.removeToolUsage(toolUsageModel.getToolUsage(indexPath.row), user: nil, token: UIDevice.currentDevice().identifierForVendor.UUIDString,
+            toolUsageModel.removeToolUsage(toolUsageModel.getToolUsage(indexPath.row), user: nil, token: UIDevice.currentDevice().identifierForVendor!.UUIDString,
                 onCompletion: {
                     (error) -> Void in
                     self.stopLoading()
@@ -144,7 +142,7 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     private func showToolPicker() {
-        var picker = ActionSheetStringPicker(title: "Maschine wählen".localized, rows: toolModel.getToolNames(), initialSelection: 0,
+        let picker = ActionSheetStringPicker(title: "Maschine wählen".localized, rows: toolModel.getToolNames(), initialSelection: 0,
             doneBlock: {
                 picker, index, value in
                 Debug.instance.log(index)
@@ -155,10 +153,10 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
             },
             cancelBlock: nil, origin: nil)
         
-        var doneButton: UIBarButtonItem = UIBarButtonItem()
+        let doneButton: UIBarButtonItem = UIBarButtonItem()
         doneButton.title = "Auswählen".localized
         doneButton.tintColor = UIColor.fabLabGreen()
-        var cancelButton: UIBarButtonItem = UIBarButtonItem()
+        let cancelButton: UIBarButtonItem = UIBarButtonItem()
         cancelButton.title = "Abbrechen".localized
         cancelButton.tintColor = UIColor.fabLabGreen()
         

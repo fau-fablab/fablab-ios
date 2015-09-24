@@ -22,9 +22,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         actInd = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
         actInd.center = self.view.center
         actInd.hidesWhenStopped = true
-        actInd.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleWidth |
-            UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleTopMargin |
-            UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleBottomMargin
+        actInd.autoresizingMask = [UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleBottomMargin]
         actInd.startAnimating()
         view.addSubview(actInd)
     }
@@ -64,7 +62,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if segue.identifier == "EventsDetailSegue" {
             let destination = segue.destinationViewController as? EventsDetailsViewController
             
-            let event = model.getEvent(tableView.indexPathForSelectedRow()!.row);
+            let event = model.getEvent(tableView.indexPathForSelectedRow!.row);
             
             destination!.configure(event)
         }

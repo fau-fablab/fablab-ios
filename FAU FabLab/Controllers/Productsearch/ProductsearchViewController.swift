@@ -25,7 +25,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     
     //table view background
     private var backgroundView: UILabel {
-        var label = UILabel()
+        let label = UILabel()
         label.center = view.center
         label.textAlignment = NSTextAlignment.Center
         label.text = "Keine Produkte gefunden".localized
@@ -74,7 +74,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         }
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -97,7 +97,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         searchHelpTableView.dataSource = self
         searchHelpTableView.scrollEnabled = true
         searchHelpTableView.hidden = true
-        searchHelpTableView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        searchHelpTableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(searchHelpTableView)
         
         let c1 = NSLayoutConstraint(item: searchHelpTableView, attribute: NSLayoutAttribute.LeftMargin,
@@ -122,9 +122,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         actInd = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
         actInd.center = self.view.center
         actInd.hidesWhenStopped = true
-        actInd.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleWidth |
-            UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleTopMargin |
-            UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleBottomMargin
+        actInd.autoresizingMask = [UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleBottomMargin]
         view.addSubview(actInd)
 
     }
@@ -166,7 +164,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func categorySelected(notification: NSNotification) {
-        self.searchBar.text.removeAll(keepCapacity: false)
+        self.searchBar.text!.removeAll(keepCapacity: false)
         self.resetTableViewBackground()
         self.searchHelpTableView.hidden = true
         self.searchBar.resignFirstResponder()
@@ -193,10 +191,10 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
         searchActive = true;
-        if (searchBar.text.isEmpty) {
+        if (searchBar.text!.isEmpty) {
             searchHelpModel.fetchEntries()
         } else {
-            searchHelpModel.fetchEntriesWithSubstring(searchBar.text)
+            searchHelpModel.fetchEntriesWithSubstring(searchBar.text!)
         }
         searchHelpTableView.reloadData()
         searchHelpTableView.hidden = false
@@ -207,7 +205,8 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        var newString = (searchBar.text as NSString).stringByReplacingCharactersInRange(range, withString: text)
+        let text = searchBar.text ?? ""
+        let newString = (text as NSString).stringByReplacingCharactersInRange(range, withString: text)
         searchHelpModel.fetchEntriesWithSubstring(newString)
         searchHelpTableView.reloadData()
         searchHelpTableView.hidden = false
@@ -215,7 +214,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        if (count(searchText) == 0) {
+        if (searchText.characters.count == 0) {
             searchHelpModel.fetchEntries()
             searchHelpTableView.reloadData()
         }
@@ -249,7 +248,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        self.searchHelpModel.addHistoryEntry(searchBar.text)
+        self.searchHelpModel.addHistoryEntry(searchBar.text ?? "")
         self.resetTableViewBackground()
         self.searchHelpTableView.hidden = true
         self.searchBar.resignFirstResponder()
@@ -257,7 +256,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         model.removeAllProducts()
         tableView.reloadData()
         self.actInd.startAnimating()
-        model.searchProductByName(searchBar.text, onCompletion: { err in
+        model.searchProductByName(searchBar.text ?? "", onCompletion: { err in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.searchActive = false
                 self.searchBar.userInteractionEnabled = true;
@@ -347,9 +346,9 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         }
     }
     
-    func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject] {
+    func sectionIndexTitlesForTableView(tableView: UITableView) -> [String] {
         if(tableView == self.tableView) {
-            return model.getSectionIndexTitles()
+            return model.getSectionIndexTitles() as! [String]
         }
         return []
     }
@@ -447,13 +446,13 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
 
 extension ProductsearchViewController : MFMailComposeViewControllerDelegate{
     
-    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         dismissViewControllerAnimated(true, completion: nil)
-        switch result.value{
-        case MFMailComposeResultCancelled.value:
+        switch result.rawValue{
+        case MFMailComposeResultCancelled.rawValue:
             self.presentViewController(MailComposeHelper.getCancelAlertController(), animated: true, completion: nil)
             
-        case MFMailComposeResultSent.value:
+        case MFMailComposeResultSent.rawValue:
             self.presentViewController(MailComposeHelper.getSentAlertController(), animated: true, completion: nil)
             
         default:

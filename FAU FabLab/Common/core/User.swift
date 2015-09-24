@@ -7,12 +7,12 @@ class User : Mappable{
     private(set) var password:  String?
     private(set) var roles:     [Roles]?
     
-    class func newInstance() -> Mappable {
-        return User()
-    }
+    required init?(_ map: Map){}
+    
+    init(){}
     
     class func newInstance(username: String, password: String) -> User{
-        var user = User()
+        let user = User()
         user.username = username
         user.password = password
         return user

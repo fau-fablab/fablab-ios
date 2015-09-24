@@ -8,9 +8,9 @@ class ProjectFile : Mappable {
     private(set) var filename:      String?
     private(set) var content:       String?
     
-    class func newInstance() -> Mappable {
-        return ProjectFile()
-    }
+    required init?(_ map: Map){}
+    
+    init(){}
     
     func mapping(map: Map) {
         description <- map["description"]

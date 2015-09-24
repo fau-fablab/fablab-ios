@@ -36,7 +36,7 @@ class PayOrCancelViewController : UIViewController, UITableViewDataSource, UITab
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(tableViewCellIdentifier, forIndexPath: indexPath) as! PayOrCancelCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(tableViewCellIdentifier, forIndexPath: indexPath) as! PayOrCancelCell
         cell.configure(cartModel.getProductInCart(indexPath.row))
         return cell
         

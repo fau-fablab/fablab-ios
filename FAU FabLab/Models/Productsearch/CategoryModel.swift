@@ -18,7 +18,7 @@ class CategoryModel: NSObject {
             let request = NSFetchRequest(entityName: CategoryEntity.EntityName)
             let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
             request.sortDescriptors = [sortDescriptor]
-            return managedObjectContext.executeFetchRequest(request, error: nil) as! [CategoryEntity]
+            return (try! managedObjectContext.executeFetchRequest(request)) as! [CategoryEntity]
         }
     }
     
@@ -81,7 +81,10 @@ class CategoryModel: NSObject {
     
     private func saveCoreData() {
         var error : NSError?
-        if !self.managedObjectContext.save(&error) {
+        do {
+            try self.managedObjectContext.save()
+        } catch let error1 as NSError {
+            error = error1
             Debug.instance.log("Error saving: \(error!)")
         }
     }

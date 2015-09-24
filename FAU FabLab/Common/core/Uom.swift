@@ -13,10 +13,8 @@ class Uom : Mappable{
     private(set) var name:      String?
     private(set) var rounding:  Double?
 
-    class func newInstance() -> Mappable {
-        return Uom()
-    }
-
+    required init?(_ map: Map){}
+    
     func mapping(map: Map) {
         uomId       <- (map["uomId"], Int64Transform())
         uomType     <-  map["uomType"]

@@ -8,9 +8,9 @@ class ProjectImageUpload: Mappable {
     private(set) var data:      String?
     private(set) var repoId:    String?
     
-    class func newInstance() -> Mappable {
-        return ProjectFile()
-    }
+    required init?(_ map: Map){}
+    
+    init(){}
     
     func mapping(map: Map) {
         filename    <- map["filename"]

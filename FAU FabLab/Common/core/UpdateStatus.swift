@@ -16,9 +16,7 @@ class UpdateStatus : Mappable{
     private(set) var updateMessage:     String?
 
     
-    class func newInstance() -> Mappable {
-        return UpdateStatus()
-    }
+    required init?(_ map: Map){}
     
     // Mappable
     func mapping(map: Map) {

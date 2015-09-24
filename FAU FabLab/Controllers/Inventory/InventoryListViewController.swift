@@ -20,7 +20,7 @@ class InventoryListViewController: UIViewController, UITableViewDataSource, UITa
         api.getAll({
             items, err in
             if(err != nil){
-                println(err)
+                print(err)
             }else{
                 self.items = items!
                 self.tableView.reloadData()
@@ -39,17 +39,17 @@ class InventoryListViewController: UIViewController, UITableViewDataSource, UITa
     
     
     @IBAction func deleteListButtonTouched(sender: AnyObject) {
-        var alert = UIAlertController(title: "Löschen?".localized, message: "Möchtest du die gesamte Liste löschen?".localized, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Löschen?".localized, message: "Möchtest du die gesamte Liste löschen?".localized, preferredStyle: UIAlertControllerStyle.Alert)
         
-        alert.addAction(UIAlertAction(title: "Ja".localized, style: .Default, handler: { (action: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "Ja".localized, style: .Default, handler: { (action: UIAlertAction) in
             self.spinner.startAnimating()
             
-            var login = InventoryLoginModel()
+            let login = InventoryLoginModel()
             let api = InventoryApi()
             api.deleteAll(login.getUser(), onCompletion:{
                 items, err in
                 if(err != nil){
-                    println(err)
+                    print(err)
                 }else{
                     self.items = []
                     self.tableView.reloadData()
@@ -59,7 +59,7 @@ class InventoryListViewController: UIViewController, UITableViewDataSource, UITa
             
         }))
         
-        alert.addAction(UIAlertAction(title: "Doch nicht".localized, style: .Default, handler: { (action: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "Doch nicht".localized, style: .Default, handler: { (action: UIAlertAction) in
         }))
         
         presentViewController(alert, animated: true, completion: nil)
@@ -76,7 +76,7 @@ class InventoryListViewController: UIViewController, UITableViewDataSource, UITa
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
        
-        var cell = tableView.dequeueReusableCellWithIdentifier(tableViewCellIdentifier, forIndexPath: indexPath) as! InventoryListCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(tableViewCellIdentifier, forIndexPath: indexPath) as! InventoryListCell
         cell.configure(items[indexPath.row])
         return cell
     

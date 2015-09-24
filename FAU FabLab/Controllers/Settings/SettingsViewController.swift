@@ -32,7 +32,7 @@ class SettingsViewController : UIViewController, UITableViewDataSource, UITableV
         RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .URL, resource: "/push/doorOpensNextTime", params: ["token": PushToken.token], onCompletion: {
             json, err in
             if json as! Bool == true{
-                print(self.doorPushCell.cellSwitch.on)
+                print(self.doorPushCell.cellSwitch.on, terminator: "")
                 self.doorPushCell.cellSwitch.on = true
             }else{
                 self.doorPushCell.cellSwitch.on = false
@@ -92,12 +92,12 @@ class SettingsViewController : UIViewController, UITableViewDataSource, UITableV
         let optionMenu = UIAlertController(title: "Hiermit wird der gesamte Suchverlauf gelöscht".localized, message: nil, preferredStyle: .ActionSheet)
         
         let deleteAction = UIAlertAction(title: "Löschen".localized, style: UIAlertActionStyle.Destructive, handler: {
-            (alert: UIAlertAction!) -> Void in
+            (alert: UIAlertAction) -> Void in
             SearchHelpModel.sharedInstance.removeHistoryEntries()
         })
         
         let cancelAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: {
-            (alert: UIAlertAction!) -> Void in
+            (alert: UIAlertAction) -> Void in
         })
         
         optionMenu.addAction(deleteAction)

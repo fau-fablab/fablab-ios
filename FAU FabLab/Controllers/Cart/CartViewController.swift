@@ -21,7 +21,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     private var selectedIndexPath: NSIndexPath?
     private var selectedProduct: CartProduct?
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkoutCodeScanned:", name: "CheckoutScannerNotification", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkoutStatusChanged:", name: "CheckoutStatusChangedNotification", object: nil)
@@ -31,7 +31,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         cartModel = CartModel(index: index)
         if (cartModel.getStatus() == CartStatus.PAID) {
             self.title = "Bezahlt".localized
-            var actionBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "actionBarButtonItemClicked")
+            let actionBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "actionBarButtonItemClicked")
             self.navigationItem.rightBarButtonItem = actionBarButtonItem
         }
     }
@@ -40,17 +40,17 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         
         let replaceAction = UIAlertAction(title: "Warenkorb ersetzen".localized, style: UIAlertActionStyle.Default, handler: {
-            (alert: UIAlertAction!) -> Void in
+            (alert: UIAlertAction) -> Void in
             self.cartModel.replace()
         })
         
         let addAction = UIAlertAction(title: "Zum Warenkorb hinzufügen".localized, style: UIAlertActionStyle.Default, handler: {
-            (alert: UIAlertAction!) -> Void in
+            (alert: UIAlertAction) -> Void in
             self.cartModel.add()
         })
         
         let cancelAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: {
-            (alert: UIAlertAction!) -> Void in
+            (alert: UIAlertAction) -> Void in
         })
         
         optionMenu.addAction(replaceAction)
@@ -125,7 +125,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
    
     // we have to unregister all observers!
     override func viewWillDisappear(animated: Bool) {
-        for cell in tableView.visibleCells() {
+        for cell in tableView.visibleCells {
             (cell as! ProductCustomCell).ignoreFrameChanges()
         }
     }
@@ -146,7 +146,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cartEntryCellIdentifier) as? ProductCustomCell
         let cartEntry = cartModel.getProductInCart(indexPath.row)
-        var amountValue = (cartEntry.product.rounding % 1 == 0) ? "\(Int(cartEntry.amount))" : "\(cartEntry.amount)"
+        let amountValue = (cartEntry.product.rounding % 1 == 0) ? "\(Int(cartEntry.amount))" : "\(cartEntry.amount)"
         cell!.configure(cartEntry.product.name, unit: "\(amountValue) \(cartEntry.product.unit)", price: cartEntry.product.price * cartEntry.amount)
         cell!.selectionStyle = UITableViewCellSelectionStyle.None
         
@@ -223,7 +223,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         if cartModel.getNumberOfProductsInCart() > 0 {
             cartModel.sendCartToServer(notification.object as! String)
         }else{
-            var alert = UIAlertController(title: "Fehler".localized, message: "Keine Produkte im Warenkorb".localized, preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Fehler".localized, message: "Keine Produkte im Warenkorb".localized, preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
 
@@ -240,7 +240,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
                     alertView.show()
                 
                 case CartStatus.PENDING:
-                    var payOrCancelViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PayOrCancelView") as! PayOrCancelViewController
+                    let payOrCancelViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PayOrCancelView") as! PayOrCancelViewController
                     payOrCancelViewController.setCartModel(cartModel)
                     self.presentViewController(payOrCancelViewController, animated: true, completion: nil)
               
@@ -295,7 +295,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func alertToEncourageCameraAccessInitially(){
-        var alert = UIAlertController(title: "Achtung".localized, message: "Es wird ein Zugriff auf die Kamera benötigt".localized, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Achtung".localized, message: "Es wird ein Zugriff auf die Kamera benötigt".localized, preferredStyle: UIAlertControllerStyle.Alert)
         
         alert.addAction(UIAlertAction(title: "Abbrechen".localized, style: .Default, handler: { (alert) -> Void in
             dispatch_async(dispatch_get_main_queue()) {
@@ -311,7 +311,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func alertPromptToAllowCameraAccessViaSetting() {
-        var alert = UIAlertController(title: "Achtung".localized, message: "Es wird ein Zugriff auf die Kamera benötigt".localized, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Achtung".localized, message: "Es wird ein Zugriff auf die Kamera benötigt".localized, preferredStyle: UIAlertControllerStyle.Alert)
         
         alert.addAction(UIAlertAction(title: "Abbrechen".localized, style: .Cancel) { alert in
             if AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo).count > 0 {
@@ -328,13 +328,13 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
 
 extension CartViewController : MFMailComposeViewControllerDelegate{
     
-    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         dismissViewControllerAnimated(true, completion: nil)
-        switch result.value{
-        case MFMailComposeResultCancelled.value:
+        switch result.rawValue{
+        case MFMailComposeResultCancelled.rawValue:
             self.presentViewController(MailComposeHelper.getCancelAlertController(), animated: true, completion: nil)
             
-        case MFMailComposeResultSent.value:
+        case MFMailComposeResultSent.rawValue:
             self.presentViewController(MailComposeHelper.getSentAlertController(), animated: true, completion: nil)
             
         default:

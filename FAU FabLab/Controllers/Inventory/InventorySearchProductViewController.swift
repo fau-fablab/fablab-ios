@@ -19,7 +19,7 @@ class InventorySearchProductViewController : UIViewController, UITableViewDataSo
     
     //table view background
     private var backgroundView: UILabel {
-        var label = UILabel()
+        let label = UILabel()
         label.center = view.center
         label.textAlignment = NSTextAlignment.Center
         label.text = "Keine Produkte gefunden".localized
@@ -44,9 +44,7 @@ class InventorySearchProductViewController : UIViewController, UITableViewDataSo
         actInd = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
         actInd.center = self.view.center
         actInd.hidesWhenStopped = true
-        actInd.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleWidth |
-            UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleTopMargin |
-            UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleBottomMargin
+        actInd.autoresizingMask = [UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleBottomMargin]
         view.addSubview(actInd)
         
         //search help
@@ -55,7 +53,7 @@ class InventorySearchProductViewController : UIViewController, UITableViewDataSo
         searchHelpTableView.dataSource = self
         searchHelpTableView.scrollEnabled = true
         searchHelpTableView.hidden = true
-        searchHelpTableView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        searchHelpTableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(searchHelpTableView)
         
         let c1 = NSLayoutConstraint(item: searchHelpTableView, attribute: NSLayoutAttribute.LeftMargin,
@@ -105,10 +103,11 @@ class InventorySearchProductViewController : UIViewController, UITableViewDataSo
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
         searchActive = true;
-        if (searchBar.text.isEmpty) {
+        let text = searchBar.text ?? ""
+        if (text.isEmpty) {
             searchHelpModel.fetchEntries()
         } else {
-            searchHelpModel.fetchEntriesWithSubstring(searchBar.text)
+            searchHelpModel.fetchEntriesWithSubstring(text)
         }
         searchHelpTableView.reloadData()
         searchHelpTableView.hidden = false
@@ -119,7 +118,8 @@ class InventorySearchProductViewController : UIViewController, UITableViewDataSo
     }
     
     func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        var newString = (searchBar.text as NSString).stringByReplacingCharactersInRange(range, withString: text)
+        let textValue = searchBar.text ?? ""
+        let newString = (textValue as NSString).stringByReplacingCharactersInRange(range, withString: text)
         searchHelpModel.fetchEntriesWithSubstring(newString)
         searchHelpTableView.reloadData()
         searchHelpTableView.hidden = false
@@ -127,7 +127,7 @@ class InventorySearchProductViewController : UIViewController, UITableViewDataSo
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        if (count(searchText) == 0) {
+        if (searchText.characters.count == 0) {
             searchHelpModel.fetchEntries()
             searchHelpTableView.reloadData()
         }
@@ -143,7 +143,7 @@ class InventorySearchProductViewController : UIViewController, UITableViewDataSo
    
   
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        self.searchHelpModel.addHistoryEntry(searchBar.text)
+        self.searchHelpModel.addHistoryEntry(searchBar.text!)
         self.resetTableViewBackground()
         self.searchHelpTableView.hidden = true
         self.searchBar.resignFirstResponder()
@@ -151,7 +151,7 @@ class InventorySearchProductViewController : UIViewController, UITableViewDataSo
         model.removeAllProducts()
         tableView.reloadData()
         self.actInd.startAnimating()
-        model.searchProductByName(searchBar.text, onCompletion: { err in
+        model.searchProductByName(searchBar.text!, onCompletion: { err in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.searchActive = false
                 self.searchBar.userInteractionEnabled = true;
@@ -199,9 +199,9 @@ class InventorySearchProductViewController : UIViewController, UITableViewDataSo
         return model.getTitleOfSection(section)
     }
     
-    func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject] {
+    func sectionIndexTitlesForTableView(tableView: UITableView) -> [String] {
         if(tableView == self.tableView) {
-            return model.getSectionIndexTitles()
+            return model.getSectionIndexTitles() as! [String]
         }
         return []
     }
@@ -239,7 +239,7 @@ class InventorySearchProductViewController : UIViewController, UITableViewDataSo
         tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
  
         navigationController?.popViewControllerAnimated(true)
-        var inventoryViewController  = navigationController?.viewControllers.last as? InventoryViewController
+        let inventoryViewController  = navigationController?.viewControllers.last as? InventoryViewController
         inventoryViewController?.productForInventoryFound(model.getProduct(indexPath.section, row: indexPath.row))
     }
     

@@ -9,7 +9,7 @@ public class EventsCustomCell : UITableViewCell{
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
         
-    public func configure(#today: Bool, now: Bool, day: String, month: String, title: String, time: String?,dateColor: UIColor) {
+    public func configure(today today: Bool, now: Bool, day: String, month: String, title: String, time: String?,dateColor: UIColor) {
         
         dayLabel.textColor = dateColor
         monthLabel.textColor = dateColor

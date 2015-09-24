@@ -80,24 +80,30 @@ class EventsDetailsViewController : UIViewController {
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         
         let calendarAction = UIAlertAction(title: "In Kalender eintragen".localized, style: .Default, handler: {
-            (alert: UIAlertAction!) -> Void in
+            (alert: UIAlertAction) -> Void in
             
             let eventStore = EKEventStore()
             
-            eventStore.requestAccessToEntityType(EKEntityTypeEvent, completion: {
+            eventStore.requestAccessToEntityType(EKEntityType.Event, completion: {
                 (granted, error) in
                 if (granted) && (error == nil) {
                     
                     var event = EKEvent(eventStore: eventStore)
                     event.calendar = eventStore.defaultCalendarForNewEvents
                     
-                    event.startDate = self.event!.start
-                    event.endDate = self.event!.end
-                    event.title = self.event!.summery
+                    event.startDate = self.event!.start!
+                    event.endDate = self.event!.end!
+                    event.title = self.event!.summery!
                     event.location = self.event!.location
                     event.notes = self.event!.description
                     
-                    let result = eventStore.saveEvent(event, span: EKSpanThisEvent, error: nil)
+                    let result: Bool
+                    do {
+                        try eventStore.saveEvent(event, span: .ThisEvent)
+                        result = true
+                    } catch _ {
+                        result = false
+                    }
                     
                     if result == true {
                         self.alertOK()
@@ -112,7 +118,7 @@ class EventsDetailsViewController : UIViewController {
         })
         
         let shareAction = UIAlertAction(title: "Teilen".localized, style: .Default, handler: {
-            (alert: UIAlertAction!) -> Void in
+            (alert: UIAlertAction) -> Void in
             
             let text = self.event!.summery
             
@@ -125,14 +131,14 @@ class EventsDetailsViewController : UIViewController {
         })
         
         let browserAction = UIAlertAction(title: "Im Browser ansehen".localized, style: .Default, handler: {
-            (alert: UIAlertAction!) -> Void in
+            (alert: UIAlertAction) -> Void in
             if let url = NSURL(string: self.event!.url!) {
                 UIApplication.sharedApplication().openURL(url)
             }
         })
         
         let cancelAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: {
-            (alert: UIAlertAction!) -> Void in
+            (alert: UIAlertAction) -> Void in
         })
         
         optionMenu.addAction(calendarAction)
@@ -144,13 +150,13 @@ class EventsDetailsViewController : UIViewController {
     }
     
     func alertOK() {
-        var alert = UIAlertController(title: "Termin erfolgreich dem Kalender hinzugefügt".localized, message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Termin erfolgreich dem Kalender hinzugefügt".localized, message: "", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func alertError() {
-        var alert = UIAlertController(title: "Fehler".localized, message: "Termin konnte nicht dem Kalender hinzugefügt werden".localized, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Fehler".localized, message: "Termin konnte nicht dem Kalender hinzugefügt werden".localized, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }

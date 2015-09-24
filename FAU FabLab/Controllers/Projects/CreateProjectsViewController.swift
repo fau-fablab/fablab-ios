@@ -17,12 +17,12 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
     
     let projectsModel = ProjectsModel.sharedInstance
     
-    func configure(#projectId: Int) {
+    func configure(projectId projectId: Int) {
         self.projectId = projectId
         self.markdownText = "_Enter Markdown-Text_"
     }
     
-    func configure(#projectId: Int, cart: Cart) {
+    func configure(projectId projectId: Int, cart: Cart) {
         configure(projectId: projectId)
         self.markdownText = getCartAsMDString(cart)
     }
@@ -33,9 +33,11 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
         let attributes = MarkdownAttributes()
         let textStorage = MarkdownTextStorage(attributes: attributes)
         var error: NSError?
-        if let linkHighlighter = LinkHighlighter(errorPtr: &error) {
+        do {
+            let linkHighlighter = try LinkHighlighter()
             textStorage.addHighlighter(linkHighlighter)
-        } else {
+        } catch var error1 as NSError {
+            error = error1
             assertionFailure("Error initializing LinkHighlighter: \(error)")
         }
         textStorage.addHighlighter(MarkdownStrikethroughHighlighter())
@@ -47,7 +49,7 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
         textView = MarkdownTextView(frame: CGRectZero, textStorage: textStorage)
         // hide autocorrection
         textView!.autocorrectionType = UITextAutocorrectionType.No
-        textView!.setTranslatesAutoresizingMaskIntoConstraints(false)
+        textView!.translatesAutoresizingMaskIntoConstraints = false
         
         if self.projectId >= 0 {
             self.title = "Projekt bearbeiten".localized
@@ -64,8 +66,8 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
         viewInScrollView.addSubview(textView!)
         
         let views = ["textView": textView!]
-        var constraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-10-[textView]-10-|", options: nil, metrics: nil, views: views)
-        constraints += NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[textView]-10-|", options: nil, metrics: nil, views: views)
+        var constraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-10-[textView]-10-|", options: [], metrics: nil, views: views)
+        constraints += NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[textView]-10-|", options: [], metrics: nil, views: views)
         NSLayoutConstraint.activateConstraints(constraints)
         
         // Keyboard-Customization
@@ -137,7 +139,7 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    func presentImagePickerController(#sourceType: UIImagePickerControllerSourceType) {
+    func presentImagePickerController(sourceType sourceType: UIImagePickerControllerSourceType) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
@@ -147,7 +149,7 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
     }
     
     // MARK: - UIImagePickerControllerDelegate
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
 
             self.dismissViewControllerAnimated(true, completion: { () -> Void in self.confirmImageUploadToGitHub(pickedImage)})
@@ -168,18 +170,18 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         
         let saveAction = UIAlertAction(title: "Projekt-Snippet speichern".localized, style: .Default, handler: {
-            (alert: UIAlertAction!) -> Void in
+            (alert: UIAlertAction) -> Void in
             self.saveProjectToCoreData()
         })
         
         let uploadAction = UIAlertAction(title: "Upload zu GitHub".localized, style: .Default, handler: {
-            (alert: UIAlertAction!) -> Void in
+            (alert: UIAlertAction) -> Void in
             self.saveProjectToCoreData()
             self.confirmUploadToGitHub(message: "Wollen Sie das Projekt-Snippet hochladen?".localized)
         })
         
         let cancelAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: {
-            (alert: UIAlertAction!) -> Void in
+            (alert: UIAlertAction) -> Void in
         })
         
         optionMenu.addAction(saveAction)
@@ -191,14 +193,14 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
     
     func saveProjectToCoreData() {
         if self.projectId >= 0 {
-            self.projectsModel.updateProject(id: self.projectId!, description: self.descText.text, filename: self.titleText.text, content: self.textView!.text)
+            self.projectsModel.updateProject(id: self.projectId!, description: self.descText.text!, filename: self.titleText.text!, content: self.textView!.text)
         } else {
-            let proj = self.projectsModel.addProject(description: self.descText.text, filename: self.titleText.text, content: self.textView!.text, gistId: "")
+            let proj = self.projectsModel.addProject(description: self.descText.text!, filename: self.titleText.text!, content: self.textView!.text, gistId: "")
             self.projectId = self.projectsModel.getIdForProject(proj)
         }
     }
     
-    func confirmUploadToGitHub(#message: String) {
+    func confirmUploadToGitHub(message message: String) {
         let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in })
         
         let doneAction: UIAlertAction = UIAlertAction(title: "Hochladen".localized, style: .Default, handler: { (Void) -> Void in self.uploadProjectActionHandler()})
@@ -216,7 +218,7 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
         
         let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in })
         
-        let doneAction: UIAlertAction = UIAlertAction(title: "Hochladen".localized, style: .Default, handler: { (Void) -> Void in self.uploadImageActionHandler(name: inputTextField!.text, image: image)})
+        let doneAction: UIAlertAction = UIAlertAction(title: "Hochladen".localized, style: .Default, handler: { (Void) -> Void in self.uploadImageActionHandler(name: inputTextField!.text!, image: image)})
         
         let alertController: UIAlertController = UIAlertController(title: "Upload zu GitHub".localized, message: "Wollen Sie das Bild wirklich hochladen?".localized + "\n" + "Bitte geben Sie einen Namen für das Bild ein".localized + ":", preferredStyle: .Alert)
         alertController.addAction(cancelAction)
@@ -233,8 +235,8 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
         let api = ProjectsApi()
         
         let project = ProjectFile()
-        project.setFilename(self.titleText.text + ".md")
-        project.setDescription(self.descText.text)
+        project.setFilename(self.titleText.text! + ".md")
+        project.setDescription(self.descText.text ?? "")
         project.setContent(self.textView!.text)
         
         let currGistId = self.projectsModel.getGistId(self.projectId!)
@@ -256,7 +258,7 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
         }
     }
     
-    func uploadImageActionHandler(#name: String, image: UIImage) {
+    func uploadImageActionHandler(name name: String, image: UIImage) {
         let api = ProjectsApi()
         
         if self.projectId >= 0 {
@@ -264,7 +266,7 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
         
             let imageUpload = ProjectImageUpload()
             imageUpload.setFilename(name+".png")
-            imageUpload.setData(UIImagePNGRepresentation(image).base64EncodedStringWithOptions(.allZeros))
+            imageUpload.setData(UIImagePNGRepresentation(image)!.base64EncodedStringWithOptions([]))
             imageUpload.setRepoId(currGistId)
         
             self.activityIndicator.color = UIColor.fabLabGreen()

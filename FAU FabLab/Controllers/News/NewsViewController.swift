@@ -21,9 +21,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         actInd = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
         actInd.center = self.view.center
         actInd.hidesWhenStopped = true
-        actInd.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleWidth |
-            UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleTopMargin |
-            UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleBottomMargin
+        actInd.autoresizingMask = [UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleBottomMargin]
         actInd.startAnimating()
         view.addSubview(actInd)
         
@@ -63,7 +61,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         if segue.identifier == "NewsDetailSegue" {
             let destination = segue.destinationViewController as? NewsDetailsViewController
 
-            let news = model.getNews(tableView.indexPathForSelectedRow()!.row);
+            let news = model.getNews(tableView.indexPathForSelectedRow!.row);
             destination!.configure(title: news.title!, desc:news.description!, imageLink: news.linkToPreviewImage, link: news.link!)
         }
     }

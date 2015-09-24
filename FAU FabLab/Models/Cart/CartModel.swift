@@ -34,7 +34,10 @@ class CartModel: NSObject {
             cart.date = NSDate()   
         }
         var error: NSError?
-        if !managedObjectContext.save(&error) {
+        do {
+            try managedObjectContext.save()
+        } catch let error1 as NSError {
+            error = error1
             Debug.instance.log("Error saving: \(error!)")
         }
     }

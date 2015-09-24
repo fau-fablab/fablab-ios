@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         versionCheckModel.checkVersion()
         
         //create and register notifications
-        var type = UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound;
-        var setting = UIUserNotificationSettings(forTypes: type, categories: nil);
+        let type: UIUserNotificationType = [UIUserNotificationType.Badge, UIUserNotificationType.Alert, UIUserNotificationType.Sound];
+        let setting = UIUserNotificationSettings(forTypes: type, categories: nil);
         UIApplication.sharedApplication().registerUserNotificationSettings(setting);
         UIApplication.sharedApplication().registerForRemoteNotifications();
         
@@ -36,13 +36,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIBarButtonItem.appearance().tintColor = UIColor.fabLabGreen()
 
         // NavBar appearance
-        var navBarAppearance = UINavigationBar.appearance()
+        let navBarAppearance = UINavigationBar.appearance()
         navBarAppearance.tintColor = UIColor.fabLabGreenNavBar()
         navBarAppearance.barTintColor = UIColor.fabLabBlue()
         navBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         
         // TableViewCell appearance
-        var selectedBackground = UIView()
+        let selectedBackground = UIView()
         selectedBackground.backgroundColor = UIColor.fabLabGreen().colorWithAlphaComponent(0.1)
         UITableViewCell.appearance().selectedBackgroundView = selectedBackground
         
@@ -51,9 +51,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application( application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData ) {
         
-        var characterSet: NSCharacterSet = NSCharacterSet( charactersInString: "<>" )
+        let characterSet: NSCharacterSet = NSCharacterSet( charactersInString: "<>" )
     
-        var deviceTokenString: String = ( deviceToken.description as NSString )
+        let deviceTokenString: String = ( deviceToken.description as NSString )
             .stringByTrimmingCharactersInSet( characterSet )
             .stringByReplacingOccurrencesOfString( " ", withString: "" ) as String
         
@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let cat = apn["category"] as? String{
                 if(cat == TriggerPushType.DOOR_OPENS_NEXT_TIME.rawValue){
                     if let alertMsg = apn["alert"] as? String{
-                        var alert = UIAlertController(title: "Fablab wurde geöffnet".localized, message: alertMsg, preferredStyle: UIAlertControllerStyle.Alert)
+                        let alert = UIAlertController(title: "Fablab wurde geöffnet".localized, message: alertMsg, preferredStyle: UIAlertControllerStyle.Alert)
                         alert.addAction(UIAlertAction(title: "Coole Sache".localized, style: UIAlertActionStyle.Default, handler: nil))
                         self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
                     }

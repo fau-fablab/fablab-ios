@@ -13,9 +13,7 @@ class Product : NSObject, Mappable{
     private(set) var categoryString:        String?
     private(set) var uom:                   Uom?
 
-    class func newInstance() -> Mappable {
-        return Product()
-    }
+    required init?(_ map: Map){}
     
     override init(){}
 

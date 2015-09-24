@@ -24,7 +24,7 @@ class SearchHelpModel: NSObject {
         entries.removeAll(keepCapacity: false)
         entries.append(["Kategorien".localized])
         entries.append(history.getEntriesWithSubstring(substring))
-        if (count(substring) > 1) {
+        if (substring.characters.count > 1) {
             entries.append(autocomplete.getEntriesWithSubstring(substring))
         }
     }

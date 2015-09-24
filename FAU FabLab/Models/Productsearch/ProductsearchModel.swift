@@ -11,7 +11,7 @@ class ProductsearchModel : NSObject{
     
     private let api = ProductApi()
     
-    private let collation = UILocalizedIndexedCollation.currentCollation() as! UILocalizedIndexedCollation
+    private let collation = UILocalizedIndexedCollation.currentCollation() 
 
     private var products = [Product]()
     private var sectionedProducts = [[Product]]()
@@ -82,7 +82,7 @@ class ProductsearchModel : NSObject{
         sectionedProducts.removeAll(keepCapacity: false)
         sectionedProducts = [[Product]](count: self.collation.sectionTitles.count, repeatedValue: []);
         for index in 0..<products.count {
-            var sectionIndex = self.collation.sectionForObject(products[index], collationStringSelector: selector)
+            let sectionIndex = self.collation.sectionForObject(products[index], collationStringSelector: selector)
             sectionedProducts[sectionIndex].append(products[index])
         }
         //sort products
@@ -99,7 +99,7 @@ class ProductsearchModel : NSObject{
         //section and sort products
         sectionedProducts.removeAll(keepCapacity: false)
         var sortedProducts = products
-        sortedProducts.sort({$0.price < $1.price})
+        sortedProducts.sortInPlace({$0.price < $1.price})
         sectionedProducts.append(sortedProducts)
         sorting = Sorting.SortedByPrice
     }

@@ -13,7 +13,7 @@ class CartHistoryModel: NSObject {
             let request = NSFetchRequest(entityName: Cart.EntityName)
             let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
             request.sortDescriptors = [sortDescriptor]
-            return managedObjectContext.executeFetchRequest(request, error: nil) as! [Cart]
+            return (try! managedObjectContext.executeFetchRequest(request)) as! [Cart]
         }
     }
     
@@ -27,7 +27,10 @@ class CartHistoryModel: NSObject {
     
     private func saveCoreData() {
         var error: NSError?
-        if !managedObjectContext.save(&error) {
+        do {
+            try managedObjectContext.save()
+        } catch let error1 as NSError {
+            error = error1
             Debug.instance.log("Error saving: \(error!)")
         }
     }

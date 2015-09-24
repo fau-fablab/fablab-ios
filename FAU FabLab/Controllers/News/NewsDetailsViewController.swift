@@ -15,7 +15,7 @@ class NewsDetailsViewController : UIViewController{
     var barItemsHidden = false
     var rightNavItem : UIBarButtonItem?
     
-    func configure(#title: String, desc: String, imageLink: String?, link: String){
+    func configure(title title: String, desc: String, imageLink: String?, link: String){
         newsTitle = title
         newsImageLink = imageLink;
         linkToNews = link
@@ -25,7 +25,7 @@ class NewsDetailsViewController : UIViewController{
             NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
             NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding
         ]
-        newsAttrDescription = NSAttributedString(data: htmlText, options: attributedOptions, documentAttributes: nil, error: nil)!
+        newsAttrDescription = try! NSAttributedString(data: htmlText, options: attributedOptions, documentAttributes: nil)
     }
     
     override func viewDidLoad() {
@@ -43,7 +43,7 @@ class NewsDetailsViewController : UIViewController{
         
         rightNavItem = self.navigationItem.rightBarButtonItem
 
-        var button =  UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        var button =  UIButton(type: UIButtonType.Custom)
         button.frame = CGRectMake(0, 0, 100, 40) as CGRect
         button.titleLabel?.font = UIFont.boldSystemFontOfSize(17.0)
         button.setTitle(newsTitle, forState: UIControlState.Normal)
@@ -82,7 +82,7 @@ class NewsDetailsViewController : UIViewController{
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         
         let shareAction = UIAlertAction(title: "Teilen".localized, style: .Default, handler: {
-            (alert: UIAlertAction!) -> Void in
+            (alert: UIAlertAction) -> Void in
             
             let text = self.title
             
@@ -95,14 +95,14 @@ class NewsDetailsViewController : UIViewController{
         })
         
         let browserAction = UIAlertAction(title: "Im Browser ansehen".localized, style: .Default, handler: {
-            (alert: UIAlertAction!) -> Void in
+            (alert: UIAlertAction) -> Void in
             if let url = NSURL(string: self.linkToNews!) {
                 UIApplication.sharedApplication().openURL(url)
             }
         })
         
         let cancelAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: {
-            (alert: UIAlertAction!) -> Void in
+            (alert: UIAlertAction) -> Void in
         })
         
         optionMenu.addAction(shareAction)

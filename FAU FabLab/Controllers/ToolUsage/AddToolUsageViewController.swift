@@ -33,7 +33,7 @@ class AddToolUsageViewController: UIViewController, UITableViewDataSource, UITab
         }
         
         let toolUsage = ToolUsage(toolId: toolId, user: user, project: project, duration: duration)
-        toolUsageModel.addToolUsage(toolUsage, user: nil, token: UIDevice.currentDevice().identifierForVendor.UUIDString) {
+        toolUsageModel.addToolUsage(toolUsage, user: nil, token: UIDevice.currentDevice().identifierForVendor!.UUIDString) {
             (error) -> Void in
             if error != nil {
                 Debug.instance.log(error)

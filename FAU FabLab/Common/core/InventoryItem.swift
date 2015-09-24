@@ -10,9 +10,9 @@ class InventoryItem : Mappable{
     private(set) var amount:        Double?
     private(set) var updatedAt:     NSDate?
 
-    class func newInstance() -> Mappable {
-        return InventoryItem()
-    }
+    required init?(_ map: Map){}
+    
+    init(){}
     
     func mapping(map: Map) {
         userName    <-  map["userName"]

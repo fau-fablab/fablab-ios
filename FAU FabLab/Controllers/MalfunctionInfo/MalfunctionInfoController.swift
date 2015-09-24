@@ -51,7 +51,7 @@ class MalfunctionInfoController: UIViewController, MFMailComposeViewControllerDe
     }
     
     func showMailView(){
-        var picker = MFMailComposeViewController()
+        let picker = MFMailComposeViewController()
         picker.mailComposeDelegate = self
         picker.navigationBar.tintColor = UIColor.fabLabGreen()
         picker.setToRecipients([model.fablabMail!])
@@ -61,17 +61,17 @@ class MalfunctionInfoController: UIViewController, MFMailComposeViewControllerDe
         presentViewController(picker, animated: true, completion: nil)
     }
     
-    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         dismissViewControllerAnimated(true, completion: nil)
         
         var alert: UIAlertController?
 
-        switch result.value{
-            case MFMailComposeResultCancelled.value:
+        switch result.rawValue{
+            case MFMailComposeResultCancelled.rawValue:
                 Debug.instance.log("Cancelled")
                 alert = UIAlertController(title: "Abgebrochen".localized, message: "Störungsmeldung wurde nicht versendet!".localized, preferredStyle: UIAlertControllerStyle.Alert)
 
-            case MFMailComposeResultSent.value:
+            case MFMailComposeResultSent.rawValue:
                 Debug.instance.log("Sent!")
                 var alert = UIAlertController(title: "Versendet".localized, message: "Störungsmeldung wurde erfolgreich versendet!".localized, preferredStyle: UIAlertControllerStyle.Alert)
 
@@ -89,7 +89,7 @@ class MalfunctionInfoController: UIViewController, MFMailComposeViewControllerDe
     }
     
     private func showPicker(){
-        var picker: ActionSheetStringPicker = ActionSheetStringPicker(title: "Betroffenes Gerät".localized, rows: self.model.getAllNames(), initialSelection: 0,
+        let picker: ActionSheetStringPicker = ActionSheetStringPicker(title: "Betroffenes Gerät".localized, rows: self.model.getAllNames(), initialSelection: 0,
             doneBlock: {
                 picker, value, index in
                     self.selectedMachine = "\(index)"
@@ -101,10 +101,10 @@ class MalfunctionInfoController: UIViewController, MFMailComposeViewControllerDe
             },
             origin: nil)
         
-        var doneButton: UIBarButtonItem = UIBarButtonItem()
+        let doneButton: UIBarButtonItem = UIBarButtonItem()
         doneButton.title = "Auswählen".localized
         doneButton.tintColor = UIColor.fabLabGreen()
-        var cancelButton: UIBarButtonItem = UIBarButtonItem()
+        let cancelButton: UIBarButtonItem = UIBarButtonItem()
         cancelButton.title = "Abbrechen".localized
         cancelButton.tintColor = UIColor.fabLabGreen()
             

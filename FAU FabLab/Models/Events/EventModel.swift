@@ -29,7 +29,7 @@ class EventModel : NSObject{
         })
     }
     
-    func fetchEvents(#onCompletion: ApiResponse) {
+    func fetchEvents(onCompletion onCompletion: ApiResponse) {
         if(isLoading){
             return
         }

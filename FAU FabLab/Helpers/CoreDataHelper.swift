@@ -21,11 +21,12 @@ public class CoreDataHelper : NSObject {
             NSLog("%@", storeURL!.path!);
         }
         
-        var error : NSError?
         persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
-        
-        if (persistentStoreCoordinator.addPersistentStoreWithType(storeType, configuration: nil, URL: storeURL, options: options, error: &error) == nil) {
-            NSLog("Unresolved error %@, %@", error!, error!.userInfo!)
+        do{
+            try self.persistentStoreCoordinator.addPersistentStoreWithType(storeType, configuration: nil, URL: storeURL, options: options)
+            
+        }catch _{
+            NSLog("Unresolved error")
             abort()
         }
     }
@@ -41,7 +42,7 @@ public class CoreDataHelper : NSObject {
     }
     
     private class func applicationDocumentsDirectory() -> NSURL {
-        return NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last as! NSURL
+        return NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last!
     }
     
     public func createManagedObjectContext() -> NSManagedObjectContext {

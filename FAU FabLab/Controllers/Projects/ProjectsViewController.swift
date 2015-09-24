@@ -93,7 +93,7 @@ class ProjectsViewController: UITableViewController {
         }
     }
     
-    func showCreateProjectViewController(#projectId: Int, cart: Cart?) {
+    func showCreateProjectViewController(projectId projectId: Int, cart: Cart?) {
         let projViewController = self.storyboard!.instantiateViewControllerWithIdentifier("CreateProjectViewController") as! CreateProjectsViewController
         if cart == nil {
             projViewController.configure(projectId: projectId)
@@ -107,13 +107,13 @@ class ProjectsViewController: UITableViewController {
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         
         let projectAction = UIAlertAction(title: "Leeres Projekt-Snippet erstellen".localized, style: .Default, handler: {
-            (alert: UIAlertAction!) -> Void in
+            (alert: UIAlertAction) -> Void in
             
             self.showCreateProjectViewController(projectId: -1, cart: nil)
         })
         
         let fromCartAction = UIAlertAction(title: "Projekt aus Warenkorb erstellen".localized, style: .Default, handler: {
-            (alert: UIAlertAction!) -> Void in
+            (alert: UIAlertAction) -> Void in
             
             self.createFromCart = true
             self.title = "Warenkorb auswählen...".localized
@@ -121,7 +121,7 @@ class ProjectsViewController: UITableViewController {
         })
         
         let cancelAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: {
-            (alert: UIAlertAction!) -> Void in
+            (alert: UIAlertAction) -> Void in
         })
         
         optionMenu.addAction(projectAction)

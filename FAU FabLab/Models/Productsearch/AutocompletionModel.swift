@@ -14,7 +14,7 @@ class AutocompletionModel: NSObject {
     private var entries : [AutocompleteEntry] {
         get {
             let request = NSFetchRequest(entityName: AutocompleteEntry.EntityName)
-            return managedObjectContext.executeFetchRequest(request, error: nil) as! [AutocompleteEntry]
+            return (try! managedObjectContext.executeFetchRequest(request)) as! [AutocompleteEntry]
         }
     }
     
@@ -25,7 +25,10 @@ class AutocompletionModel: NSObject {
     
     private func saveCoreData() {
         var error : NSError?
-        if !self.managedObjectContext.save(&error) {
+        do {
+            try self.managedObjectContext.save()
+        } catch let error1 as NSError {
+            error = error1
             Debug.instance.log("Error saving: \(error!)")
         }
     }
@@ -71,21 +74,21 @@ class AutocompletionModel: NSObject {
             words.append(entry.word)
         }
         //sort suggestions alphabetically
-        words.sort({$0 < $1})
+        words.sortInPlace({$0 < $1})
         return words
     }
     
     func getEntriesWithSubstring(substring: String) -> [String] {
         var words = [String]()
-        var options = NSStringCompareOptions.CaseInsensitiveSearch
+        let options = NSStringCompareOptions.CaseInsensitiveSearch
         for entry in entries {
-            var substringRange: NSRange! = (entry.word as NSString).rangeOfString(substring, options: options)
+            let substringRange: NSRange! = (entry.word as NSString).rangeOfString(substring, options: options)
             if (substringRange.location != NSNotFound) {
                 words.append(entry.word)
             }
         }
         //sort suggestions alphabetically
-        words.sort({$0 < $1})
+        words.sortInPlace({$0 < $1})
         return words
     }
     

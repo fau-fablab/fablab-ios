@@ -54,7 +54,7 @@ class ActionSheetPickerDelegate: NSObject, ActionSheetCustomPickerDelegate {
             if (unit.hasPrefix("Platte")) {
                 unit = "Platten".localized
             }
-            var value = (rounding % 1 == 0) ? "\(Int(amounts[row]))" : "\(amounts[row])"
+            let value = (rounding % 1 == 0) ? "\(Int(amounts[row]))" : "\(amounts[row])"
             return "\(value) \(unit!)"
         } else {
             return String(format: "%.2f€", Double (amount) * price!)

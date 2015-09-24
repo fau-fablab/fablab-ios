@@ -10,8 +10,8 @@ class ProductLocationViewController : UIViewController {
     
     @IBOutlet weak var webView: UIWebView!
     
-    func configure(#id: String, name: String){
-        println(locationId)
+    func configure(id id: String, name: String){
+        print(locationId)
         locationId = "\(id)"
         productName = name
     }

@@ -11,7 +11,7 @@ class SearchHistoryModel: NSObject {
     private var entries : [HistoryEntry] {
         get {
             let reqeust = NSFetchRequest(entityName: HistoryEntry.EntityName)
-            return managedObjectContext.executeFetchRequest(reqeust, error: nil) as! [HistoryEntry]
+            return (try! managedObjectContext.executeFetchRequest(reqeust)) as! [HistoryEntry]
         }
     }
     
@@ -22,7 +22,10 @@ class SearchHistoryModel: NSObject {
     
     private func saveCoreData() {
         var error : NSError?
-        if !self.managedObjectContext.save(&error) {
+        do {
+            try self.managedObjectContext.save()
+        } catch let error1 as NSError {
+            error = error1
             Debug.instance.log("Error saving: \(error!)")
         }
     }
@@ -71,9 +74,9 @@ class SearchHistoryModel: NSObject {
     
     func getEntriesWithSubstring(substring: String) -> [String] {
         var words = [String]()
-        var options = NSStringCompareOptions.CaseInsensitiveSearch
+        let options = NSStringCompareOptions.CaseInsensitiveSearch
         for entry in entries {
-            var substringRange: NSRange! = (entry.word as NSString).rangeOfString(substring, options: options)
+            let substringRange: NSRange! = (entry.word as NSString).rangeOfString(substring, options: options)
             if (substringRange.location != NSNotFound) {
                 words.insert(entry.word, atIndex: 0)
             }

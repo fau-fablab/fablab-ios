@@ -10,9 +10,7 @@ class Category : Mappable{
     private(set) var parentCategoryId:  Int64?
     private(set) var categories:        [Int64]?
     
-    class func newInstance() -> Mappable {
-        return Category()
-    }
+    required init?(_ map: Map){}
     
     // Mappable
     func mapping(map: Map) {

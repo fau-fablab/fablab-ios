@@ -48,9 +48,14 @@ class RestManager {
         manager.request(method, endpoint, parameters: params, headers: headers, encoding: encoding)
             .validate(statusCode: 200 ..< 300)
             .validate(contentType: ["application/json"])
-            .responseJSON { (req, res, json, error) in
-                self.printDebug("GET", resource: endpoint, res: res, responseJson: json, error: error)
-                onCompletion(json, error);
+            .responseJSON { _, _, result in
+                //self.printDebug("GET", resource: endpoint, res: result, responseJson: json, error: error)
+                switch result{
+                case .Success:
+                    onCompletion(result.value, nil)
+                case .Failure:
+                    onCompletion(nil, result.error as! NSError)
+                }
         }
     }
 
@@ -65,9 +70,14 @@ class RestManager {
         manager.request(method, endpoint, parameters: params as? [String:AnyObject], headers: headers, encoding: encoding)
         .validate(statusCode: 200 ..< 300)
         .validate(contentType: ["text/plain"])
-        .responseString { (req, res, answer, error) in
-            self.printDebug("GET", resource: endpoint, res: res, responseString: answer, error: error);
-            onCompletion(answer, error);
+        .responseString { _, _, result in
+            //self.printDebug("GET", resource: endpoint, res: res, responseString: answer, error: error);
+            switch result{
+            case .Success:
+                onCompletion(result.value, nil)
+            case .Failure:
+                onCompletion(nil, result.error as! NSError)
+            }
         }
     }
     
@@ -75,7 +85,7 @@ class RestManager {
         let endpoint = apiUrl + resource
         
         let credentialData = "\(username):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
-        let base64Credentials = credentialData.base64EncodedStringWithOptions(nil)
+        let base64Credentials = credentialData.base64EncodedStringWithOptions([])
         
         let headers = ["Authorization": "Basic \(base64Credentials)"]
         
@@ -86,7 +96,7 @@ class RestManager {
         let endpoint = apiUrl + resource
 
         let credentialData = "\(username):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
-        let base64Credentials = credentialData.base64EncodedStringWithOptions(nil)
+        let base64Credentials = credentialData.base64EncodedStringWithOptions([])
 
         let headers = ["Authorization": "Basic \(base64Credentials)", "Accept": "application/json"]
 

@@ -18,7 +18,7 @@ class InventoryViewController : UIViewController {
     var currentItem = InventoryItem()
     var user = User()
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "inventoryItemScanned:", name: "InventoryItemScanned", object: nil)
     }
@@ -54,8 +54,8 @@ class InventoryViewController : UIViewController {
         spinner.startAnimating()
        
         if ((currentItem.productId) != nil){
-            if count(productAmountTF.text) > 0 {
-                let value = productAmountTF.text.doubleValue as Double?
+            if productAmountTF.text?.characters.count > 0 {
+                let value = productAmountTF.text?.doubleValue as Double?
                 if  nil != value {
                     self.currentItem.setAmount(value!)
                     let api = InventoryApi()
@@ -87,16 +87,16 @@ class InventoryViewController : UIViewController {
    
     
     @IBAction func logoutButtonTouched(sender: AnyObject) {
-        var alert = UIAlertController(title: "Abmelden".localized, message: "Möchtest du dich abmelden?".localized, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Abmelden".localized, message: "Möchtest du dich abmelden?".localized, preferredStyle: UIAlertControllerStyle.Alert)
         
-        alert.addAction(UIAlertAction(title: "Ja".localized, style: .Default, handler: { (action: UIAlertAction!) in
-            var inventoryLogin = InventoryLoginModel()
+        alert.addAction(UIAlertAction(title: "Ja".localized, style: .Default, handler: { (action: UIAlertAction) in
+            let inventoryLogin = InventoryLoginModel()
             inventoryLogin.deleteUser()
             self.loginView.hidden = false
             
         }))
         
-        alert.addAction(UIAlertAction(title: "Doch nicht".localized, style: .Default, handler: { (action: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "Doch nicht".localized, style: .Default, handler: { (action: UIAlertAction) in
         }))
         
         presentViewController(alert, animated: true, completion: nil)
@@ -107,15 +107,15 @@ class InventoryViewController : UIViewController {
     
     func inventoryItemScanned(notification:NSNotification) {
         spinner.startAnimating()
-        println(notification.object)
+        print(notification.object)
         productSearchModel.searchProductById(notification.object as! String, onCompletion: { err in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                println(self.productSearchModel.getFirstProduct())
+                print(self.productSearchModel.getFirstProduct())
                 if(self.productSearchModel.getNumberOfProducts() > 0){
                     self.productForInventoryFound(self.productSearchModel.getFirstProduct())
                     
                 }else{
-                    var alert = UIAlertController(title: "Fehler".localized, message: "Kein Produkt gefunden!".localized, preferredStyle: UIAlertControllerStyle.Alert)
+                    let alert = UIAlertController(title: "Fehler".localized, message: "Kein Produkt gefunden!".localized, preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "Danke".localized, style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(alert, animated: true, completion: nil)
                 }
@@ -145,10 +145,9 @@ class InventoryViewController : UIViewController {
         let authStatus = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
         switch authStatus {
         case AVAuthorizationStatus.Authorized:
-            var popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("InventoryItemScanView") as! UIViewController
-            var nav = UINavigationController(rootViewController: popoverContent)
+            let popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("InventoryItemScanView")
+            let nav = UINavigationController(rootViewController: popoverContent!)
             nav.modalPresentationStyle = UIModalPresentationStyle.Popover
-            var popover = nav.popoverPresentationController
             
             self.presentViewController(nav, animated: true, completion: nil)
             
@@ -159,7 +158,7 @@ class InventoryViewController : UIViewController {
     }
     
     func alertToEncourageCameraAccessInitially(){
-        var alert = UIAlertController(title: "Achtung".localized, message: "Es wird ein Zugriff auf die Kamera benötigt".localized, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Achtung".localized, message: "Es wird ein Zugriff auf die Kamera benötigt".localized, preferredStyle: UIAlertControllerStyle.Alert)
         
         alert.addAction(UIAlertAction(title: "Abbrechen".localized, style: .Default, handler: { (alert) -> Void in
             dispatch_async(dispatch_get_main_queue()) {
@@ -175,7 +174,7 @@ class InventoryViewController : UIViewController {
     }
     
     func alertPromptToAllowCameraAccessViaSetting() {
-        var alert = UIAlertController(title: "Achtung".localized, message: "Es wird ein Zugriff auf die Kamera benötigt".localized, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Achtung".localized, message: "Es wird ein Zugriff auf die Kamera benötigt".localized, preferredStyle: UIAlertControllerStyle.Alert)
         
         alert.addAction(UIAlertAction(title: "Abbrechen".localized, style: .Cancel) { alert in
             if AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo).count > 0 {
@@ -189,7 +188,7 @@ class InventoryViewController : UIViewController {
     }
 
     func showErrorMessage(title: String, message: String){
-        var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Oh".localized, style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }

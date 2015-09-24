@@ -38,7 +38,7 @@ class TextFieldCustomCell: UITableViewCell, UITextFieldDelegate {
         }
         
         let invalidCharacters = NSCharacterSet(charactersInString: "0123456789").invertedSet
-        if let range = string.rangeOfCharacterFromSet(invalidCharacters, options: nil,
+        if let range = string.rangeOfCharacterFromSet(invalidCharacters, options: [],
             range:Range<String.Index>(start: string.startIndex, end: string.endIndex)) {
                 return false
         }

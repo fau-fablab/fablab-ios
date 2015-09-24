@@ -17,13 +17,17 @@ class ProductLocationModel : NSObject{
         let fileManager = NSFileManager.defaultManager()
         let urls = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         
-        if let documentDirectory: NSURL = urls.first as? NSURL {
+        if let documentDirectory: NSURL = urls.first {
             let productMapUrl = documentDirectory.URLByAppendingPathComponent("productMap.html")
             
-            if productMapUrl.checkResourceIsReachableAndReturnError(nil) {
-                let urlString = productMapUrl.absoluteString!.stringByAppendingString(
+            do {
+                var error: NSError?
+                try productMapUrl.checkResourceIsReachableAndReturnError(&error)
+                let urlString = productMapUrl.absoluteString.stringByAppendingString(
                     "?id=" + locationId.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
                 return NSURL(string: urlString)
+            } catch _ {
+                
             }
         }
         return nil

@@ -6,9 +6,7 @@ class MailAddresses : Mappable{
     private(set) var feedbackMail:  String?
     private(set) var fabLabMail:    String?
     
-    class func newInstance() -> Mappable {
-        return MailAddresses()
-    }
+    required init?(_ map: Map){}
     
     // Mappable
     func mapping(map: Map) {

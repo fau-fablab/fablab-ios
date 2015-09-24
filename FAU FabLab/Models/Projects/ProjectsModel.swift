@@ -14,7 +14,7 @@ class ProjectsModel: NSObject {
             let request = NSFetchRequest(entityName: Project.EntityName)
             let sortDescriptor = NSSortDescriptor(key: "filename", ascending: true)
             request.sortDescriptors = [sortDescriptor]
-            return managedObjectContext.executeFetchRequest(request, error: nil) as! [Project]
+            return (try! managedObjectContext.executeFetchRequest(request)) as! [Project]
         }
     }
     
@@ -25,7 +25,10 @@ class ProjectsModel: NSObject {
     
     private func saveCoreData() {
         var error: NSError?
-        if !managedObjectContext.save(&error) {
+        do {
+            try managedObjectContext.save()
+        } catch let error1 as NSError {
+            error = error1
             Debug.instance.log("Error saving: \(error!)")
         }
     }
@@ -47,7 +50,7 @@ class ProjectsModel: NSObject {
         return -1
     }
     
-    func addProject(#description: String, filename: String, content: String, gistId: String) -> Project {
+    func addProject(description description: String, filename: String, content: String, gistId: String) -> Project {
         let project = NSEntityDescription.insertNewObjectForEntityForName(Project.EntityName,
             inManagedObjectContext: self.managedObjectContext) as! Project
         project.descr = description
@@ -59,7 +62,7 @@ class ProjectsModel: NSObject {
         return project
     }
     
-    func updateProject(#id: Int, description: String, filename: String, content: String) {
+    func updateProject(id id: Int, description: String, filename: String, content: String) {
         let project = getProject(id)
         project.descr = description
         project.filename = filename
@@ -67,7 +70,7 @@ class ProjectsModel: NSObject {
         saveCoreData()
     }
     
-    func updateGistId(#id: Int, gistId: String) {
+    func updateGistId(id id: Int, gistId: String) {
         let project = getProject(id)
         project.gistId = gistId
         saveCoreData()

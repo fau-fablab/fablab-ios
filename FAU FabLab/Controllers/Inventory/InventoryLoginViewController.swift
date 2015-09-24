@@ -11,15 +11,15 @@ class InventoryLoginViewController: UIViewController {
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "inventoryUserScanned:", name: "InventoryUserScanned", object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        var inventoryLogin = InventoryLoginModel()
-        var user = inventoryLogin.getUser()
+        let inventoryLogin = InventoryLoginModel()
+        let user = inventoryLogin.getUser()
         if user.username != nil{
             login(user)
         }
@@ -32,9 +32,9 @@ class InventoryLoginViewController: UIViewController {
 
     
     @IBAction func loginButtonTouched(sender: AnyObject) {
-        var user = User()
-        user.setUsername(username.text)
-        user.setPassword(password.text)
+        let user = User()
+        user.setUsername(username.text!)
+        user.setPassword(password.text!)
         self.login(user)
     }
 
@@ -51,10 +51,9 @@ class InventoryLoginViewController: UIViewController {
         let authStatus = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
         switch authStatus {
         case AVAuthorizationStatus.Authorized:
-            var popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("InventoryLoginViaScanView") as! UIViewController
-            var nav = UINavigationController(rootViewController: popoverContent)
+            let popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("InventoryLoginViaScanView")
+            let nav = UINavigationController(rootViewController: popoverContent!)
             nav.modalPresentationStyle = UIModalPresentationStyle.Popover
-            var popover = nav.popoverPresentationController
             
             self.presentViewController(nav, animated: true, completion: nil)
             
@@ -65,7 +64,7 @@ class InventoryLoginViewController: UIViewController {
     }
     
     func alertToEncourageCameraAccessInitially(){
-        var alert = UIAlertController(title: "Achtung".localized, message: "Es wird ein Zugriff auf die Kamera benötigt".localized, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Achtung".localized, message: "Es wird ein Zugriff auf die Kamera benötigt".localized, preferredStyle: UIAlertControllerStyle.Alert)
         
         alert.addAction(UIAlertAction(title: "Abbrechen".localized, style: .Default, handler: { (alert) -> Void in
             dispatch_async(dispatch_get_main_queue()) {
@@ -81,7 +80,7 @@ class InventoryLoginViewController: UIViewController {
     }
     
     func alertPromptToAllowCameraAccessViaSetting() {
-        var alert = UIAlertController(title: "Achtung".localized, message: "Es wird ein Zugriff auf die Kamera benötigt".localized, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Achtung".localized, message: "Es wird ein Zugriff auf die Kamera benötigt".localized, preferredStyle: UIAlertControllerStyle.Alert)
         
         alert.addAction(UIAlertAction(title: "Abbrechen".localized, style: .Cancel) { alert in
             if AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo).count > 0 {
@@ -96,21 +95,21 @@ class InventoryLoginViewController: UIViewController {
     
     private func login(user: User) -> Bool{
         spinner.startAnimating()
-        var api = UserApi()
+        let api = UserApi()
         api.getUserInfo(user, onCompletion: {
             user, err in
             self.spinner.stopAnimating()
             
             if(err != nil){
-               println(err)
+               print(err)
                 dispatch_async(dispatch_get_main_queue()) {
-                    var alert = UIAlertController(title: "Fehler".localized, message: "Name oder Passwort falsch".localized, preferredStyle: UIAlertControllerStyle.Alert)
+                    let alert = UIAlertController(title: "Fehler".localized, message: "Name oder Passwort falsch".localized, preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "Oh".localized, style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(alert, animated: true, completion: nil)
                 }
             }
             else{
-                var inventoryLogin = InventoryLoginModel()
+                let inventoryLogin = InventoryLoginModel()
                 inventoryLogin.saveUser(user!)
                 self.loginWasSuccessful(user!)
             }
@@ -120,7 +119,7 @@ class InventoryLoginViewController: UIViewController {
     }
     
     private func loginWasSuccessful(user: User){
-        var parentView = self.parentViewController as! InventoryViewController
+        let parentView = self.parentViewController as! InventoryViewController
         parentView.loginWasSuccessful(user)
     }
     

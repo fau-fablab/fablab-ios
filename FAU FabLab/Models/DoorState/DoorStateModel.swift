@@ -19,8 +19,8 @@ class DoorStateModel : NSObject {
     var lastChangeAsString : String {
         if let state = doorState{
             let lastChangeAsDate = NSDate(timeIntervalSince1970: doorState!.lastchange!)
-            let flags = NSCalendarUnit.CalendarUnitMinute | NSCalendarUnit.CalendarUnitHour
-            let components = NSCalendar.currentCalendar().components(flags, fromDate: lastChangeAsDate, toDate: NSDate(), options: nil)
+            let flags: NSCalendarUnit = [NSCalendarUnit.Minute, NSCalendarUnit.Hour]
+            let components = NSCalendar.currentCalendar().components(flags, fromDate: lastChangeAsDate, toDate: NSDate(), options: [])
             
             if(components.hour >= 1){
                 return "\(components.hour)h"

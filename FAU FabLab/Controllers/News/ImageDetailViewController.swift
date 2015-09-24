@@ -9,7 +9,7 @@ class ImageDetailViewController : UIViewController{
     var newsTitle: String?
     var image: UIImage?
     
-    func configure(#title: String, image: UIImage){
+    func configure(title title: String, image: UIImage){
         newsTitle = title
         self.image = image
     }

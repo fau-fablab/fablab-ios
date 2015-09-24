@@ -32,7 +32,7 @@ public class ProductCustomCell: UITableViewCell {
     
     func watchFrameChanges(){
         if(!isObserving){
-            addObserver(self, forKeyPath: "frame", options: .New | .Old, context: nil)
+            addObserver(self, forKeyPath: "frame", options: [.New, .Old], context: nil)
             isObserving = true;
             checkHeight()
         }
@@ -45,7 +45,7 @@ public class ProductCustomCell: UITableViewCell {
         }
     }
     
-    public override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+    public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if (keyPath == "frame"){
             checkHeight()
         }
@@ -57,7 +57,7 @@ public class ProductCustomCell: UITableViewCell {
     }
     
     func configure(name: String, unit: String, price: Double) {
-        let separatedName = split(name, maxSplit: 1, allowEmptySlices: false, isSeparator: isSeparator)
+        let separatedName = name.characters.split(1, allowEmptySlices: false, isSeparator: isSeparator).map { String($0) }
         self.title.text = separatedName[0];
         if(separatedName.count > 1) {
             self.subtitle.text = separatedName[1];

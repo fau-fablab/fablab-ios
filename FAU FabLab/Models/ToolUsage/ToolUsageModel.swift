@@ -15,7 +15,7 @@ class ToolUsageModel: NSObject {
     private var ownToolUsages: [OwnToolUsage] {
         get {
             let request = NSFetchRequest(entityName: OwnToolUsage.EntityName)
-            return managedObjectContext.executeFetchRequest(request, error: nil) as! [OwnToolUsage]
+            return (try! managedObjectContext.executeFetchRequest(request)) as! [OwnToolUsage]
         }
     }
     
@@ -54,7 +54,7 @@ class ToolUsageModel: NSObject {
         
         isLoading = true
         
-        api.addUsage(user: user, token: token, toolId: toolUsage.toolId!, usage: toolUsage) {
+        api.addUsage(user, token: token, toolId: toolUsage.toolId!, usage: toolUsage) {
             (result, error) -> Void in
             if error != nil {
                 AlertView.showErrorView("Fehler beim Hinzufügen der Reservierung".localized)
@@ -74,7 +74,7 @@ class ToolUsageModel: NSObject {
         
         isLoading = true
         
-        api.removeUsage(user: user, token: token, toolId: toolUsage.toolId!, usageId: toolUsage.id!) {
+        api.removeUsage(user, token: token, toolId: toolUsage.toolId!, usageId: toolUsage.id!) {
             (error) -> Void in
             if error != nil {
                 AlertView.showErrorView("Fehler beim Löschen der Reservierung".localized)
@@ -135,7 +135,10 @@ class ToolUsageModel: NSObject {
     
     private func saveCoreData() {
         var error : NSError?
-        if !self.managedObjectContext.save(&error) {
+        do {
+            try self.managedObjectContext.save()
+        } catch let error1 as NSError {
+            error = error1
             Debug.instance.log("Error saving: \(error!)")
         }
     }

@@ -36,13 +36,13 @@ struct ToolUsageApi{
         
         
         if(user == nil){
-            RestManager.sharedInstance.makeJSONRequest(.PUT, encoding: .JSON, resource: request.URL!.absoluteString!, params: bodyParams,
+            RestManager.sharedInstance.makeJSONRequest(.PUT, encoding: .JSON, resource: request.URL!.absoluteString, params: bodyParams,
                 onCompletion: { json, err in
                     ApiResult.get(json, error: err, completionHandler: onCompletion)
             })
         }
         else{
-            RestManager.sharedInstance.makeJSONRequestWithBasicAuth(.PUT, encoding: .JSON, resource: request.URL!.absoluteString!,
+            RestManager.sharedInstance.makeJSONRequestWithBasicAuth(.PUT, encoding: .JSON, resource: request.URL!.absoluteString,
                 username: user!.username!, password: user!.password!, params: bodyParams,
                 onCompletion: { json, err in
                     ApiResult.get(json, error: err, completionHandler: onCompletion)

@@ -20,7 +20,7 @@ class Cart: NSManagedObject {
     }
     
     func getEntry(index: Int) -> CartEntry {
-        var items = self.mutableOrderedSetValueForKey("entries")
+        let items = self.mutableOrderedSetValueForKey("entries")
         return items[index] as! CartEntry
     }
     
@@ -29,7 +29,7 @@ class Cart: NSManagedObject {
     }
     
     func addEntry(entry: CartEntry) {
-        var items = self.mutableOrderedSetValueForKey("entries")
+        let items = self.mutableOrderedSetValueForKey("entries")
         items.addObject(entry)
     }
     
@@ -40,12 +40,12 @@ class Cart: NSManagedObject {
     }
     
     func removeEntry(index: Int) {
-        var items = self.mutableOrderedSetValueForKey("entries")
+        let items = self.mutableOrderedSetValueForKey("entries")
         items.removeObjectAtIndex(index)
     }
     
     func removeEntries() {
-        var items = self.mutableOrderedSetValueForKey("entries")
+        let items = self.mutableOrderedSetValueForKey("entries")
         items.removeAllObjects()
     }
     

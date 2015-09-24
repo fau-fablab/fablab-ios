@@ -16,12 +16,12 @@ class ChangeAmountPickerHelper {
         showChangeAmountPicker(productSearchAlertStrings: true, productName: cell.product.name!, productPrice: cell.product.price!, productUnit: cell.product.unit!, productRounding: cell.product.uom!.rounding!, initialValue: initialValue, delegateSucceedAction: delegateSucceedAction, delegateCancelAction: delegateCancelAction, alertChangeAmountAction: alertChangeAmountAction)
     }
     
-    class func showChangeAmountPicker(#productSearchAlertStrings: Bool, productName: String, productPrice: Double, productUnit: String, productRounding: Double, initialValue: Double, delegateSucceedAction: (currentAmount: Double) -> Void, delegateCancelAction: () -> Void, alertChangeAmountAction: (currentAmount: Double) -> Void) {
+    class func showChangeAmountPicker(productSearchAlertStrings productSearchAlertStrings: Bool, productName: String, productPrice: Double, productUnit: String, productRounding: Double, initialValue: Double, delegateSucceedAction: (currentAmount: Double) -> Void, delegateCancelAction: () -> Void, alertChangeAmountAction: (currentAmount: Double) -> Void) {
         
         var addToCart = true
         var currentAmount : Double = initialValue
         
-        var pickerDelegate = ActionSheetPickerDelegate(unit: productUnit, price: productPrice, rounding: productRounding, didSucceedAction: { (amount: Double) -> Void in
+        let pickerDelegate = ActionSheetPickerDelegate(unit: productUnit, price: productPrice, rounding: productRounding, didSucceedAction: { (amount: Double) -> Void in
             if addToCart == false {
                 currentAmount = amount
                 addToCart = true
@@ -40,9 +40,9 @@ class ChangeAmountPickerHelper {
         pickerDelegate.setAmount(initialValue)
         
         // initial selection is also needed, to correctly set current amount
-        var picker: ActionSheetCustomPicker = ActionSheetCustomPicker(title: "Menge auswählen".localized, delegate: pickerDelegate, showCancelButton: false, origin: self, initialSelections: [(initialValue/productRounding)-1])
+        let picker: ActionSheetCustomPicker = ActionSheetCustomPicker(title: "Menge auswählen".localized, delegate: pickerDelegate, showCancelButton: false, origin: self, initialSelections: [(initialValue/productRounding)-1])
         
-        var doneButton: UIBarButtonItem = UIBarButtonItem()
+        let doneButton: UIBarButtonItem = UIBarButtonItem()
 
         if productSearchAlertStrings == true {
             doneButton.title = "Hinzufügen".localized
@@ -63,17 +63,17 @@ class ChangeAmountPickerHelper {
     
     // Helper-functions to show the freetext-alert-dialog
     
-    class func alertChangeAmount(#viewController: UIViewController, cartEntry: CartEntry, currentAmount: Double, pickerCancelActionHandler: () -> Void, pickerDoneActionHandlerFinished: (amount: Double) -> Void) {
+    class func alertChangeAmount(viewController viewController: UIViewController, cartEntry: CartEntry, currentAmount: Double, pickerCancelActionHandler: () -> Void, pickerDoneActionHandlerFinished: (amount: Double) -> Void) {
         
         alertChangeAmount(productSearchAlertStrings: false, viewController: viewController, productName: cartEntry.product.name, productPrice: cartEntry.product.price, productUnit: cartEntry.product.unit, productRounding: cartEntry.product.rounding, currentAmount: currentAmount, pickerCancelActionHandler: pickerCancelActionHandler, pickerDoneActionHandlerFinished: pickerDoneActionHandlerFinished)
     }
     
-    class func alertChangeAmount(#viewController: UIViewController, cell: ProductCustomCell, currentAmount: Double, pickerCancelActionHandler: () -> Void, pickerDoneActionHandlerFinished: (amount: Double) -> Void) {
+    class func alertChangeAmount(viewController viewController: UIViewController, cell: ProductCustomCell, currentAmount: Double, pickerCancelActionHandler: () -> Void, pickerDoneActionHandlerFinished: (amount: Double) -> Void) {
         
         alertChangeAmount(productSearchAlertStrings: true, viewController: viewController, productName: cell.product.name!, productPrice: cell.product.price!, productUnit: cell.product.unit!, productRounding: cell.product.uom!.rounding!, currentAmount: currentAmount, pickerCancelActionHandler: pickerCancelActionHandler, pickerDoneActionHandlerFinished: pickerDoneActionHandlerFinished)
     }
     
-    class func alertChangeAmount(#productSearchAlertStrings: Bool, viewController: UIViewController, productName: String, productPrice: Double, productUnit: String, productRounding: Double, currentAmount: Double, pickerCancelActionHandler: () -> Void, pickerDoneActionHandlerFinished: (amount: Double) -> Void) {
+    class func alertChangeAmount(productSearchAlertStrings productSearchAlertStrings: Bool, viewController: UIViewController, productName: String, productPrice: Double, productUnit: String, productRounding: Double, currentAmount: Double, pickerCancelActionHandler: () -> Void, pickerDoneActionHandlerFinished: (amount: Double) -> Void) {
         
         let formatString : String = "%." + String(productRounding.digitsAfterComma) + "f"
         
@@ -89,7 +89,7 @@ class ChangeAmountPickerHelper {
         }
         
         let doneAction: UIAlertAction = UIAlertAction(title: doneActionTitle, style: .Default, handler: { (Void) -> Void in
-            var amount: Double = NSString(string: inputTextField!.text.stringByReplacingOccurrencesOfString(",", withString: ".")).doubleValue
+            var amount: Double = NSString(string: inputTextField!.text!.stringByReplacingOccurrencesOfString(",", withString: ".")).doubleValue
             
             let invalidInput : Bool
             if amount < productRounding || amount > Double(Int.max) {
