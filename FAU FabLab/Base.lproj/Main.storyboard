@@ -121,7 +121,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jO6-XV-PqA">
-                                        <rect key="frame" x="25" y="156" width="550" height="386"/>
+                                        <rect key="frame" x="25" y="176" width="550" height="386"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <attributedString key="attributedText">
                                             <fragment>
@@ -145,16 +145,27 @@
                                             <outletCollection property="gestureRecognizers" destination="09X-fp-0V6" appends="YES" id="xyv-T7-zg4"/>
                                         </connections>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="22.09.2015 - 16:45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Muv-r8-DKj">
+                                        <rect key="frame" x="30" y="156" width="230" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="230" id="r01-qB-YdI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="QSW-LP-qh5" secondAttribute="trailing" id="2t5-E9-OuG"/>
                                     <constraint firstItem="QSW-LP-qh5" firstAttribute="top" secondItem="isz-26-qpY" secondAttribute="top" constant="20" id="3K6-aR-RbK"/>
-                                    <constraint firstItem="jO6-XV-PqA" firstAttribute="top" secondItem="QSW-LP-qh5" secondAttribute="bottom" constant="8" symbolic="YES" id="4qX-Aw-ufn"/>
+                                    <constraint firstItem="jO6-XV-PqA" firstAttribute="top" secondItem="QSW-LP-qh5" secondAttribute="bottom" constant="28" id="4qX-Aw-ufn"/>
                                     <constraint firstAttribute="trailing" secondItem="jO6-XV-PqA" secondAttribute="trailing" constant="25" id="JVJ-NY-42L"/>
                                     <constraint firstItem="QSW-LP-qh5" firstAttribute="centerX" secondItem="isz-26-qpY" secondAttribute="centerX" id="Q8e-oS-M63"/>
+                                    <constraint firstItem="Muv-r8-DKj" firstAttribute="leading" secondItem="isz-26-qpY" secondAttribute="leading" constant="30" id="WhC-le-TnR"/>
                                     <constraint firstItem="QSW-LP-qh5" firstAttribute="leading" secondItem="isz-26-qpY" secondAttribute="leading" id="cmV-nx-zd6"/>
-                                    <constraint firstAttribute="bottom" secondItem="jO6-XV-PqA" secondAttribute="bottom" constant="58" id="fXg-1a-rRz"/>
+                                    <constraint firstAttribute="bottom" secondItem="jO6-XV-PqA" secondAttribute="bottom" constant="38" id="fXg-1a-rRz"/>
                                     <constraint firstItem="jO6-XV-PqA" firstAttribute="leading" secondItem="isz-26-qpY" secondAttribute="leading" constant="25" id="gke-0H-tad"/>
+                                    <constraint firstItem="Muv-r8-DKj" firstAttribute="top" secondItem="QSW-LP-qh5" secondAttribute="bottom" constant="8" id="t2b-bJ-bcx"/>
                                     <constraint firstItem="QSW-LP-qh5" firstAttribute="centerX" secondItem="jO6-XV-PqA" secondAttribute="centerX" id="vUP-a1-Oa6"/>
                                 </constraints>
                             </scrollView>
@@ -175,6 +186,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dateText" destination="Muv-r8-DKj" id="Zhd-ij-Wpf"/>
                         <outlet property="descriptionText" destination="jO6-XV-PqA" id="7pR-Tx-t75"/>
                         <outlet property="previewImage" destination="QSW-LP-qh5" id="ejp-DQ-LvA"/>
                     </connections>

@@ -15,7 +15,11 @@ class News: Mappable {
     private(set) var isPermaLink:           Bool?
     private(set) var linkToPreviewImage:    String?
     
-    required init?(_ map: Map){}
+    private var dateFormatter = NSDateFormatter()
+    
+    required init?(_ map: Map) {
+        self.dateFormatter.timeZone = NSTimeZone(name: "UTC+2")
+    }
     
     // Mappable
     func mapping(map: Map) {
@@ -28,5 +32,10 @@ class News: Mappable {
         creator             <-  map["creator"]
         isPermaLink         <-  map["isPermaLink"]
         linkToPreviewImage  <-  map["linkToPreviewImage"]
+    }
+    
+    var pubDateString : String {
+        dateFormatter.dateFormat = "dd.MM.yyy - HH:mm"
+        return dateFormatter.stringFromDate(pubDate!)
     }
 }

@@ -3,10 +3,12 @@ import UIKit
 
 class NewsDetailsViewController : UIViewController{
 
+    @IBOutlet var dateText: UILabel!
     @IBOutlet var descriptionText: UITextView!
     @IBOutlet var previewImage: UIImageView!
 
     var newsTitle: String?
+    var newsDate: String?
     var newsAttrDescription: NSAttributedString?
     var newsImageLink: String?
     var imageUrl: NSURL?
@@ -15,10 +17,11 @@ class NewsDetailsViewController : UIViewController{
     var barItemsHidden = false
     var rightNavItem : UIBarButtonItem?
     
-    func configure(title title: String, desc: String, imageLink: String?, link: String){
+    func configure(title title: String, desc: String, date: String, imageLink: String?, link: String){
         newsTitle = title
-        newsImageLink = imageLink;
+        newsImageLink = imageLink
         linkToNews = link
+        newsDate = date
         
         let htmlText = desc.dataUsingEncoding(NSUTF8StringEncoding)!
         let attributedOptions: [String:AnyObject] = [
@@ -32,6 +35,7 @@ class NewsDetailsViewController : UIViewController{
         super.viewDidLoad()
 
         self.title = newsTitle; // sets the title in the navigation-bar
+        dateText.text = newsDate
         descriptionText.attributedText = newsAttrDescription
         descriptionText.font = UIFont(name: "Helvetica Neue", size: 14.0)
         
