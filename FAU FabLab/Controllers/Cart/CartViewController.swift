@@ -277,8 +277,8 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
             let authStatus = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
             switch authStatus {
                 case AVAuthorizationStatus.Authorized:
-                    var popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("CheckoutCodeScanner") as! UIViewController
-                    var nav = UINavigationController(rootViewController: popoverContent)
+                    let popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("CheckoutCodeScanner")
+                    var nav = UINavigationController(rootViewController: popoverContent!)
                     nav.modalPresentationStyle = UIModalPresentationStyle.Popover
                     var popover = nav.popoverPresentationController
             

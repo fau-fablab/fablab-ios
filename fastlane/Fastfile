@@ -85,10 +85,21 @@ platform :ios do
 
   desc "Build and deploy the ipa file"
   lane :deploy do
-    ipa(
+    #ipa(
+    #  scheme: "FAU FabLab",
+    #  configuration: "Debug"
+    #)
+    gym(
+      project: "FAU Fablab.xcodeproj",
+      configuration: "Debug",
       scheme: "FAU FabLab",
-      configuration: "Debug"
+      silent: false,
+      clean: true,
+      #output_directory: "../", # Destination directory. Defaults to current directory.
+      output_name: "fablab.ipa",       # specify the name of the .ipa file to generate (including file extension)
+      #sdk: "10.0"                     # use SDK as the name or path of the base SDK when building the project.
     )
+
 
     if ENV["HIPCHAT_API_TOKEN"]
       sh "sh deploy.sh"
