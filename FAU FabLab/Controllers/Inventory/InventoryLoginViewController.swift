@@ -20,7 +20,6 @@ class InventoryLoginViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-
         if inventoryLogin.notLoggedIn(){
             login(inventoryLogin.getUser())
         }

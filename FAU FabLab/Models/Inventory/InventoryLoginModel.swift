@@ -29,9 +29,9 @@ class InventoryLoginModel : NSObject{
     
     func notLoggedIn() -> Bool{
         if user.username != nil{
-            return false
+            return true
         }
-        return true
+        return false
     }
     
 }
