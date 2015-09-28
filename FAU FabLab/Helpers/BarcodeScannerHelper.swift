@@ -1,9 +1,14 @@
-//
-//  BarcodeScannerHelper.swift
-//  FAU FabLab
-//
-//  Created by Emanuel Eimer on 29.09.15.
-//  Copyright © 2015 FAU MAD FabLab. All rights reserved.
-//
+import UIKit
+import AVFoundation
+import RSBarcodes
 
-import Foundation
+class BarcodeScannerHelper{
+    class func getProductIdFromBarcode(barcode: AVMetadataMachineReadableCodeObject) -> String{
+        let productId = barcode.stringValue as NSString
+        if (barcode.type == AVMetadataObjectTypeEAN13Code) {
+            return productId.substringWithRange(NSRange(location: 8, length: 4))
+        } else {
+            return productId.substringWithRange(NSRange(location: 3, length: 4))
+        }
+    }
+}
