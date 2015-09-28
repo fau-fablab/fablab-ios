@@ -26,7 +26,7 @@ class InventoryLoginViaScanViewController: RSCodeReaderViewController {
                     }
                 }else{
                     dispatch_async(dispatch_get_main_queue()) {
-                        var alert = UIAlertController(title: "Achtung".localized, message: "Dies ist kein gültiger QR Code zum Login".localized,    preferredStyle: UIAlertControllerStyle.Alert)
+                        let alert = UIAlertController(title: "Achtung".localized, message: "Dies ist kein gültiger QR Code zum Login".localized,    preferredStyle: UIAlertControllerStyle.Alert)
                     
                         alert.addAction(UIAlertAction(title: "Abbrechen".localized, style: .Default, handler: { (alert) -> Void in
                             dispatch_async(dispatch_get_main_queue()) {
@@ -47,7 +47,7 @@ class InventoryLoginViaScanViewController: RSCodeReaderViewController {
         self.output.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
         
         for subview in self.view.subviews {
-            self.view.bringSubviewToFront(subview as! UIView)
+            self.view.bringSubviewToFront(subview )
         }
         
     }

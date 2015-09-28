@@ -30,7 +30,7 @@ class InventoryItemScanViewController: RSCodeReaderViewController {
         
         
         for subview in self.view.subviews {
-            self.view.bringSubviewToFront(subview as! UIView)
+            self.view.bringSubviewToFront(subview )
         }
         
     }
