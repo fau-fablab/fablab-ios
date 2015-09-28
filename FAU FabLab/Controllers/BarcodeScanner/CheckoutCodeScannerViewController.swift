@@ -26,7 +26,7 @@ class CheckoutCodeScannerViewController: RSCodeReaderViewController {
                     self.dismissViewControllerAnimated(true, completion:nil )
                     NSNotificationCenter.defaultCenter().postNotificationName("CheckoutScannerNotification", object: checkoutCode)
                 }else{
-                    var alert = UIAlertController(title: "Fehler".localized, message: "Kein gültiger Code!".localized, preferredStyle: UIAlertControllerStyle.Alert)
+                    let alert = UIAlertController(title: "Fehler".localized, message: "Kein gültiger Code!".localized, preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(alert, animated: true, completion: nil)
                     self.session.startRunning()
@@ -41,7 +41,7 @@ class CheckoutCodeScannerViewController: RSCodeReaderViewController {
         
         
         for subview in self.view.subviews {
-            self.view.bringSubviewToFront(subview as! UIView)
+            self.view.bringSubviewToFront(subview)
         }
 
     }

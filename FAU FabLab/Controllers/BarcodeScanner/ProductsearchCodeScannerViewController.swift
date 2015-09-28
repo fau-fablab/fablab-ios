@@ -16,14 +16,6 @@ class ProductsearchCodeScannerViewController: RSCodeReaderViewController {
         self.navigationController?.navigationBarHidden = false
     }
     
-    private func getProductIdFromBarcode(barcode: AVMetadataMachineReadableCodeObject) -> String{
-        let productId = barcode.stringValue as NSString
-        if (barcode.type == AVMetadataObjectTypeEAN13Code) {
-            return productId.substringWithRange(NSRange(location: 8, length: 4))
-        } else {
-            return productId.substringWithRange(NSRange(location: 3, length: 4))
-        }
-    }
     
     private func scan(){
         self.focusMarkLayer.strokeColor = UIColor.greenColor().CGColor
@@ -38,7 +30,7 @@ class ProductsearchCodeScannerViewController: RSCodeReaderViewController {
                     let checkoutCode = barcodes[0].stringValue
                     let prefix = (checkoutCode as NSString).substringToIndex(3)
                     if prefix == "FAU" {
-                        var alert = UIAlertController(title: "Achtung".localized, message: "Bezahlprozess einleiten?".localized,    preferredStyle: UIAlertControllerStyle.Alert)
+                        let alert = UIAlertController(title: "Achtung".localized, message: "Bezahlprozess einleiten?".localized,    preferredStyle: UIAlertControllerStyle.Alert)
                         
                         alert.addAction(UIAlertAction(title: "Gerne".localized, style: .Default, handler: {
                             (alert) -> Void in
@@ -54,13 +46,13 @@ class ProductsearchCodeScannerViewController: RSCodeReaderViewController {
                         self.presentViewController(alert, animated: true, completion: nil)
                         
                     }else{
-                        var alert = UIAlertController(title: "Fehler".localized, message: "Kein gültiger Code!".localized, preferredStyle: UIAlertControllerStyle.Alert)
+                        let alert = UIAlertController(title: "Fehler".localized, message: "Kein gültiger Code!".localized, preferredStyle: UIAlertControllerStyle.Alert)
                         alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.Default, handler: nil))
                         self.presentViewController(alert, animated: true, completion: nil)
                         self.session.startRunning()
                     }
                 }else{
-                    let productId = self.getProductIdFromBarcode(barcodes[0])
+                    let productId = BarcodeScannerHelper.getProductIdFromBarcode(barcodes[0])
                     Debug.instance.log("code:  \(barcodes[0]) id: \(productId)")
                     self.displayProductSearchForCode(productId)
                 }
@@ -69,7 +61,7 @@ class ProductsearchCodeScannerViewController: RSCodeReaderViewController {
         self.output.metadataObjectTypes = [AVMetadataObjectTypeEAN8Code, AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeQRCode]
         
         for subview in self.view.subviews {
-            self.view.bringSubviewToFront(subview as! UIView)
+            self.view.bringSubviewToFront(subview)
         }
     }
     
@@ -94,7 +86,7 @@ class ProductsearchCodeScannerViewController: RSCodeReaderViewController {
     }
     
     func alertToEncourageCameraAccessInitially(){
-        var alert = UIAlertController(title: "Achtung".localized, message: "Es wird ein Zugriff auf die Kamera benötigt".localized, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Achtung".localized, message: "Es wird ein Zugriff auf die Kamera benötigt".localized, preferredStyle: UIAlertControllerStyle.Alert)
         
         alert.addAction(UIAlertAction(title: "Abbrechen".localized, style: .Default){
             UIAlertAction in
@@ -113,7 +105,7 @@ class ProductsearchCodeScannerViewController: RSCodeReaderViewController {
     }
     
     func alertPromptToAllowCameraAccessViaSetting() {
-        var alert = UIAlertController(title: "Achtung".localized, message: "Es wird ein Zugriff auf die Kamera benötigt".localized, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Achtung".localized, message: "Es wird ein Zugriff auf die Kamera benötigt".localized, preferredStyle: UIAlertControllerStyle.Alert)
         
         alert.addAction(UIAlertAction(title: "Abbrechen".localized, style: .Cancel) { alert in
            
@@ -133,16 +125,16 @@ class ProductsearchCodeScannerViewController: RSCodeReaderViewController {
     
     func displayProductSearchForCode(code: String){
         var tabBarControllers = self.tabBarController?.viewControllers
-        var controllers  = tabBarControllers!.filter { $0 is ProductsearchTabViewController }
-        var productSearchController = controllers.first as! ProductsearchTabViewController
+        let controllers  = tabBarControllers!.filter { $0 is ProductsearchTabViewController }
+        let productSearchController = controllers.first as! ProductsearchTabViewController
         
         for(var i = 0; i < tabBarControllers!.count; i++){
-            if tabBarControllers![i] as! NSObject == controllers.first as! NSObject{
+            if tabBarControllers![i] == controllers.first{
                 self.tabBarController?.selectedIndex = i
             }
         }
         
-        var productsearchViewController = productSearchController.viewControllers.first as! ProductsearchViewController
+        let productsearchViewController = productSearchController.viewControllers.first as! ProductsearchViewController
         productsearchViewController.setScannedBarcode(code)
     }
 }

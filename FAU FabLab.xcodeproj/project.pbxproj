@@ -65,6 +65,7 @@
 		846100BE1B78696000393E63 /* ProductLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846100BD1B78696000393E63 /* ProductLocationViewController.swift */; };
 		8462E2691B985930003DADE1 /* SettingsDoorOpensPushCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462E2681B985930003DADE1 /* SettingsDoorOpensPushCell.swift */; };
 		8474181A1BB9F4E100DD0E65 /* InventoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847418191BB9F4E100DD0E65 /* InventoryModel.swift */; settings = {ASSET_TAGS = (); }; };
+		8474181C1BB9FD7D00DD0E65 /* BarcodeScannerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474181B1BB9FD7D00DD0E65 /* BarcodeScannerHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		847CEACC1B9BC1F80087F283 /* InventorySearchProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CEACB1B9BC1F80087F283 /* InventorySearchProductViewController.swift */; };
 		8487B1B11BA79C8F001998BC /* PayOrCancelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487B1B01BA79C8F001998BC /* PayOrCancelCell.swift */; };
 		849502A01B9B764F006810E3 /* InventoryLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495029F1B9B764F006810E3 /* InventoryLoginViewController.swift */; };
@@ -244,6 +245,7 @@
 		8462E2681B985930003DADE1 /* SettingsDoorOpensPushCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDoorOpensPushCell.swift; sourceTree = "<group>"; };
 		846BD1991B9392A000BDEEFA /* CoreDataModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataModel 3.xcdatamodel"; sourceTree = "<group>"; };
 		847418191BB9F4E100DD0E65 /* InventoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryModel.swift; sourceTree = "<group>"; };
+		8474181B1BB9FD7D00DD0E65 /* BarcodeScannerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerHelper.swift; sourceTree = "<group>"; };
 		847CEACB1B9BC1F80087F283 /* InventorySearchProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventorySearchProductViewController.swift; sourceTree = "<group>"; };
 		8487B1B01BA79C8F001998BC /* PayOrCancelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayOrCancelCell.swift; sourceTree = "<group>"; };
 		8495029F1B9B764F006810E3 /* InventoryLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryLoginViewController.swift; sourceTree = "<group>"; };
@@ -797,6 +799,7 @@
 				9207491A1B9B145D00F08792 /* TypeAliases.swift */,
 				505D614F1B9B711700C1EE22 /* ChangeAmountPickerHelper.swift */,
 				923F11771BA20EB100F0374E /* ApiResult.swift */,
+				8474181B1BB9FD7D00DD0E65 /* BarcodeScannerHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1075,6 +1078,7 @@
 				92078EBD1B6E2D9D00A21AD9 /* ProductsearchModel.swift in Sources */,
 				48CC3FFB1B8B6E2500FB9C8E /* CartViewController.swift in Sources */,
 				849502A01B9B764F006810E3 /* InventoryLoginViewController.swift in Sources */,
+				8474181C1BB9FD7D00DD0E65 /* BarcodeScannerHelper.swift in Sources */,
 				920AECE91B96E43E00523C1B /* StringExtension.swift in Sources */,
 				487971BA1B9B112D00052FEB /* SearchHelpModel.swift in Sources */,
 				849502A61B9B76EA006810E3 /* InventoryListViewController.swift in Sources */,
