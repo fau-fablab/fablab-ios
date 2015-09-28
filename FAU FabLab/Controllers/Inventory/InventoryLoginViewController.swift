@@ -11,6 +11,8 @@ class InventoryLoginViewController: UIViewController {
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
+    let inventoryLogin = InventoryLoginModel()
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "inventoryUserScanned:", name: "InventoryUserScanned", object: nil)
@@ -18,10 +20,9 @@ class InventoryLoginViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        let inventoryLogin = InventoryLoginModel()
-        let user = inventoryLogin.getUser()
-        if user.username != nil{
-            login(user)
+
+        if inventoryLogin.notLoggedIn(){
+            login(inventoryLogin.getUser())
         }
     }
     

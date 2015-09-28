@@ -27,4 +27,11 @@ class InventoryLoginModel : NSObject{
         NSUserDefaults.standardUserDefaults().removeObjectForKey("inventoryUserPassword")
     }
     
+    func notLoggedIn() -> Bool{
+        if user.username != nil{
+            return false
+        }
+        return true
+    }
+    
 }
