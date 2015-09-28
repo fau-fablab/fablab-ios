@@ -9,6 +9,8 @@ class InventoryListViewController: UIViewController, UITableViewDataSource, UITa
 
     private var tableViewCellIdentifier = "InventoryListCell"
     var items : [InventoryItem] = []
+    let inventoryApi = InventoryApi()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,8 +18,8 @@ class InventoryListViewController: UIViewController, UITableViewDataSource, UITa
         tableView.delegate = self
         
         spinner.startAnimating()
-        let api = InventoryApi()
-        api.getAll({
+        
+        inventoryApi.getAll({
             items, err in
             if(err != nil){
                 print(err)
@@ -45,8 +47,7 @@ class InventoryListViewController: UIViewController, UITableViewDataSource, UITa
             self.spinner.startAnimating()
             
             let login = InventoryLoginModel()
-            let api = InventoryApi()
-            api.deleteAll(login.getUser(), onCompletion:{
+            self.inventoryApi.deleteAll(login.getUser(), onCompletion:{
                 items, err in
                 if(err != nil){
                     print(err)
