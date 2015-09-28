@@ -110,8 +110,7 @@ class InventoryLoginViewController: UIViewController {
                 }
             }
             else{
-                let inventoryLogin = InventoryLoginModel()
-                inventoryLogin.saveUser(user!)
+                self.inventoryLogin.saveUser(user!)
                 self.loginWasSuccessful(user!)
             }
         })
@@ -120,6 +119,8 @@ class InventoryLoginViewController: UIViewController {
     }
     
     private func loginWasSuccessful(user: User){
+        self.resignFirstResponder()
+        self.view.endEditing(true)
         let parentView = self.parentViewController as! InventoryViewController
         parentView.loginWasSuccessful(user)
     }
