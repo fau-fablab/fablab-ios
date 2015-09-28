@@ -8,9 +8,8 @@ class InventoryListViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet weak var spinner: UIActivityIndicatorView!
 
     private var tableViewCellIdentifier = "InventoryListCell"
-    var items : [InventoryItem] = []
     let inventoryApi = InventoryApi()
-    
+    var inventoryListModel = InventoryListModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +23,7 @@ class InventoryListViewController: UIViewController, UITableViewDataSource, UITa
             if(err != nil){
                 print(err)
             }else{
-                self.items = items!
+                self.inventoryListModel.setItems(items!)
                 self.tableView.reloadData()
             }
             self.spinner.stopAnimating()
@@ -52,7 +51,7 @@ class InventoryListViewController: UIViewController, UITableViewDataSource, UITa
                 if(err != nil){
                     print(err)
                 }else{
-                    self.items = []
+                    self.inventoryListModel.removeAllItems()
                     self.tableView.reloadData()
                 }
                 self.spinner.stopAnimating()
@@ -72,13 +71,13 @@ class InventoryListViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return inventoryListModel.items.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
        
         let cell = tableView.dequeueReusableCellWithIdentifier(tableViewCellIdentifier, forIndexPath: indexPath) as! InventoryListCell
-        cell.configure(items[indexPath.row])
+        cell.configure(inventoryListModel.items[indexPath.row])
         return cell
     
     }

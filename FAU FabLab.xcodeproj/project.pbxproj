@@ -66,6 +66,7 @@
 		8462E2691B985930003DADE1 /* SettingsDoorOpensPushCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462E2681B985930003DADE1 /* SettingsDoorOpensPushCell.swift */; };
 		8474181A1BB9F4E100DD0E65 /* InventoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847418191BB9F4E100DD0E65 /* InventoryModel.swift */; settings = {ASSET_TAGS = (); }; };
 		8474181C1BB9FD7D00DD0E65 /* BarcodeScannerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474181B1BB9FD7D00DD0E65 /* BarcodeScannerHelper.swift */; settings = {ASSET_TAGS = (); }; };
+		8474181E1BBA01D400DD0E65 /* InventoryListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474181D1BBA01D400DD0E65 /* InventoryListModel.swift */; settings = {ASSET_TAGS = (); }; };
 		847CEACC1B9BC1F80087F283 /* InventorySearchProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CEACB1B9BC1F80087F283 /* InventorySearchProductViewController.swift */; };
 		8487B1B11BA79C8F001998BC /* PayOrCancelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487B1B01BA79C8F001998BC /* PayOrCancelCell.swift */; };
 		849502A01B9B764F006810E3 /* InventoryLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495029F1B9B764F006810E3 /* InventoryLoginViewController.swift */; };
@@ -246,6 +247,7 @@
 		846BD1991B9392A000BDEEFA /* CoreDataModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataModel 3.xcdatamodel"; sourceTree = "<group>"; };
 		847418191BB9F4E100DD0E65 /* InventoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryModel.swift; sourceTree = "<group>"; };
 		8474181B1BB9FD7D00DD0E65 /* BarcodeScannerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerHelper.swift; sourceTree = "<group>"; };
+		8474181D1BBA01D400DD0E65 /* InventoryListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryListModel.swift; sourceTree = "<group>"; };
 		847CEACB1B9BC1F80087F283 /* InventorySearchProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventorySearchProductViewController.swift; sourceTree = "<group>"; };
 		8487B1B01BA79C8F001998BC /* PayOrCancelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayOrCancelCell.swift; sourceTree = "<group>"; };
 		8495029F1B9B764F006810E3 /* InventoryLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryLoginViewController.swift; sourceTree = "<group>"; };
@@ -681,6 +683,7 @@
 			children = (
 				84293A871B9C875800C3F887 /* InventoryLoginModel.swift */,
 				847418191BB9F4E100DD0E65 /* InventoryModel.swift */,
+				8474181D1BBA01D400DD0E65 /* InventoryListModel.swift */,
 			);
 			path = Inventory;
 			sourceTree = "<group>";
@@ -1124,6 +1127,7 @@
 				92E147111BA8C29A006B239D /* DrupalApi.swift in Sources */,
 				508DB3451BA0DF1300C8F5E7 /* CreateProjectsViewController.swift in Sources */,
 				923F11761BA1FC0800F0374E /* NewsApi.swift in Sources */,
+				8474181E1BBA01D400DD0E65 /* InventoryListModel.swift in Sources */,
 				923FFD9A1B8E4916001ACAB1 /* MailAddresses.swift in Sources */,
 				489316451B831E3900DCB6BB /* AutocompletionModel.swift in Sources */,
 				489E4C751B79E093004A60FA /* ProductCustomCell.swift in Sources */,
