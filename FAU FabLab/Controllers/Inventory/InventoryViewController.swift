@@ -14,9 +14,8 @@ class InventoryViewController : UIViewController {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     private var productSearchModel = ProductsearchModel()
+    private var inventoryModel = InventoryModel()
 
-    var currentItem = InventoryItem()
-    var user = User()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -27,7 +26,6 @@ class InventoryViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loginView.hidden = false
-        self.currentItem.setUUID(NSUUID().UUIDString)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -45,7 +43,7 @@ class InventoryViewController : UIViewController {
     
     func loginWasSuccessful(user: User){
         self.loggedInLabel.text = "Angemeldet als:".localized + " \(user.username!)"
-        self.user = user
+        inventoryModel.setUser(user)
         loginView.hidden = true
     }
     
@@ -53,19 +51,19 @@ class InventoryViewController : UIViewController {
     @IBAction func addProductButtonTouched(sender: AnyObject) {
         spinner.startAnimating()
        
-        if ((currentItem.productId) != nil){
+        if ((inventoryModel.getCurrentItem().productId) != nil){
             if productAmountTF.text?.characters.count > 0 {
                 let value = productAmountTF.text?.doubleValue as Double?
                 if  nil != value {
-                    self.currentItem.setAmount(value!)
+                   inventoryModel.getCurrentItem().setAmount(value!)
                     let api = InventoryApi()
-                    api.add(self.user, item: self.currentItem, onCompletion: {
+                    api.add(inventoryModel.getUser(), item: self.inventoryModel.getCurrentItem(), onCompletion: {
                         items, err in
                         if(err != nil){
                             self.showErrorMessage("Fehler:".localized, message: "\(err)")
                         }else{
                             self.showErrorMessage("Produkt Hinzugefügt".localized, message: "Das Produkt wurde zur Liste hinzugefügt".localized)
-                            self.currentItem = InventoryItem()
+                            self.inventoryModel.setCurrentItem(InventoryItem())
                             self.productAmountTF.text = ""
                             self.productNameTF.text = ""
                         }
@@ -128,9 +126,9 @@ class InventoryViewController : UIViewController {
 //ProductSearched (triggert by productSearchView and by scanner if product could be found)
     func productForInventoryFound(product: Product) {
         self.productNameTF.text = product.name
-        self.currentItem.setProductId(product.productId!)
-        self.currentItem.setProductName(product.name!)
-        self.currentItem.setUser(self.user.username!)
+        inventoryModel.getCurrentItem().setProductId(product.productId!)
+        inventoryModel.getCurrentItem().setProductName(product.name!)
+        inventoryModel.getCurrentItem().setUser(inventoryModel.getUser().username!)
         self.productAmountTF.text = ""
     }
     
