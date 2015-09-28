@@ -7,7 +7,7 @@ class InventoryLoginModel : NSObject{
 
     override init(){
         super.init()
-        if let name = NSUserDefaults.standardUserDefaults().stringForKey("inventoryUserUsername") {
+        if let _ = NSUserDefaults.standardUserDefaults().stringForKey("inventoryUserUsername") {
             user.setUsername(NSUserDefaults.standardUserDefaults().stringForKey("inventoryUserUsername")!)
             user.setPassword(NSUserDefaults.standardUserDefaults().stringForKey("inventoryUserPassword")!)
         }
