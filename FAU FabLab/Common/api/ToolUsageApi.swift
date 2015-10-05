@@ -87,4 +87,13 @@ struct ToolUsageApi{
                 onCompletion(nil)
         })
     }
+    
+    func getEnabledTools(onCompletion: ([FabTool]?, NSError?) -> Void) {
+        let endpoint = resource + "/tools"
+        
+        RestManager.sharedInstance.makeJSONRequest(.GET, encoding: .URL, resource: endpoint,
+            params: nil, headers: nil) { (json, error) -> Void in
+                ApiResult.getArray(json, error: error, completionHandler: onCompletion)
+        }
+    }
 }

@@ -4,7 +4,7 @@ class ToolModel: NSObject {
     
     static let sharedInstance = ToolModel()
     
-    private let api = DrupalApi()
+    private let api = ToolUsageApi()
     
     private var tools = [FabTool]()
     private var isLoading = false
@@ -22,8 +22,7 @@ class ToolModel: NSObject {
         
         isLoading = true
         
-        api.findAllTools {
-            (result, error) -> Void in
+        api.getEnabledTools({ (result, error) -> Void in
             if error != nil {
                 AlertView.showErrorView("Fehler beim Laden der Maschinen".localized)
             } else if let result = result {
@@ -35,7 +34,7 @@ class ToolModel: NSObject {
             
             self.isLoading = false
             onCompletion(error)
-        }
+        })
     }
     
     func getCount() -> Int {

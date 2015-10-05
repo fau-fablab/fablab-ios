@@ -10,7 +10,7 @@ class ToolUsage : Mappable {
     private(set) var project        :String?
     private(set) var token          :String?
     private(set) var duration       :Int64?
-    private(set) var creationTime   :Int64?
+    private(set) var startTime      :Int64?
     
     required init?(_ map: Map){}
     
@@ -31,6 +31,6 @@ class ToolUsage : Mappable {
         project         <-  map["project"]
         token           <-  map["token"]
         duration        <- (map["duration"], Int64Transform())
-        creationTime    <- (map["creationTime"], Int64Transform())
+        startTime       <- (map["startTime"], Int64Transform())
     }
 }
