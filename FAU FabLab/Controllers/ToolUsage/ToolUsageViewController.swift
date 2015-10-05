@@ -12,8 +12,14 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
     private let addToolUsageViewControllerIndentifier = "AddToolUsageViewController"
     private var activityIndicator: UIActivityIndicatorView!
     private var toolId: Int64 = 0
+    private var toolSelected = false
     
     @IBAction func addToolUsage(sender: AnyObject) {
+        if !toolSelected {
+            AlertView.showInfoView("Keine Maschine ausgewählt".localized, message: "Es wurde noch keine Maschine ausgewählt".localized)
+            return
+        }
+        
         let addToolUsageViewController = storyboard?.instantiateViewControllerWithIdentifier(addToolUsageViewControllerIndentifier) as! AddToolUsageViewController
         addToolUsageViewController.configure(toolId)
         navigationController?.pushViewController(addToolUsageViewController, animated: true)
@@ -27,18 +33,6 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
         activityIndicator.hidesWhenStopped = true
         activityIndicator.autoresizingMask = [UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleBottomMargin]
         view.addSubview(activityIndicator)
-        
-        startLoading()
-        toolModel.fetchTools({
-            (error) -> Void in
-            if error != nil {
-                Debug.instance.log(error)
-                return
-            }
-            self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
-            self.stopLoading()
-            self.setTool(self.toolId)
-        })
         
     }
     
@@ -82,8 +76,14 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
+            var name: String
+            if toolModel.getCount() > 0 {
+                name = toolModel.getToolName(Int(toolId))
+            } else {
+                name = "Maschine wählen".localized
+            }
             let cell = tableView.dequeueReusableCellWithIdentifier(buttonCustomCellIdentifier) as! ButtonCustomCell
-            cell.configure(toolModel.getToolName(Int(toolId)), buttonClickedAction: toolButtonClicked)
+            cell.configure(name, buttonClickedAction: toolButtonClicked)
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier(toolUsageCustomCellIdentifier) as! ToolUsageCustomCell
@@ -149,6 +149,7 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
                 self.toolId = Int64(index)
                 self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
                 self.setTool(self.toolId)
+                self.toolSelected = true
                 return
             },
             cancelBlock: nil, origin: nil)

@@ -191,9 +191,11 @@
 //MARK: ToolUsageViewController
 "Maschine" = "Machine";
 "Reservierung" = "Reservation";
-"Maschine wählen" = "Choose machine";
+"Maschine wählen" = "Select machine";
 "Fehler beim Laden der Reservierungen" = "Error while loading the reservations";
 "Fehler beim Laden der Maschinen" = "Error while loading the machines";
+"Keine Maschine ausgewählt" = "No machine selected";
+"Es wurde noch keine Maschine ausgewählt" = "No machine has been selected so far.";
 
 //MARK: ToolUsageCustomCell
 "Minuten" = "minutes";

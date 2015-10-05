@@ -194,6 +194,8 @@
 "Maschine wählen" = "Maschine wählen";
 "Fehler beim Laden der Reservierungen" = "Fehler beim Laden der Reservierungen";
 "Fehler beim Laden der Maschinen" = "Fehler beim Laden der Maschinen";
+"Keine Maschine ausgewählt" = "Keine Maschine ausgewählt";
+"Es wurde noch keine Maschine ausgewählt" = "Es wurde noch keine Maschine ausgewählt.";
 
 //MARK: ToolUsageCustomCell
 "Minuten" = "Minuten";
