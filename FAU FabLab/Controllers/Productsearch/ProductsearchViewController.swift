@@ -205,8 +205,7 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
     }
     
     func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        let text = searchBar.text ?? ""
-        let newString = (text as NSString).stringByReplacingCharactersInRange(range, withString: text)
+        let newString = (searchBar.text! as NSString).stringByReplacingCharactersInRange(range, withString: text)
         searchHelpModel.fetchEntriesWithSubstring(newString)
         searchHelpTableView.reloadData()
         searchHelpTableView.hidden = false
