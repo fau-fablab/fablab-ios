@@ -9,8 +9,10 @@ class ToolUsageModel: NSObject {
     private let coreData = CoreDataHelper(sqliteDocumentName: "CoreDataModel.db", schemaName:"")
     private let managedObjectContext : NSManagedObjectContext
     
+    private var tools = [FabTool]()
     private var toolUsages = [ToolUsage]()
     private var isLoading = false
+    private var toolsLoaded = false
     
     private var ownToolUsages: [OwnToolUsage] {
         get {
@@ -22,6 +24,53 @@ class ToolUsageModel: NSObject {
     override init(){
         self.managedObjectContext = coreData.createManagedObjectContext()
         super.init()
+    }
+    
+    func fetchTools(onCompletion: ApiResponse) {
+        if isLoading || toolsLoaded {
+            onCompletion(nil)
+            return
+        }
+        
+        isLoading = true
+        
+        api.getEnabledTools({ (result, error) -> Void in
+            if error != nil {
+                AlertView.showErrorView("Fehler beim Laden der Maschinen".localized)
+            } else if let result = result {
+                self.tools = result
+                self.toolsLoaded = true
+                Debug.instance.log(result)
+                Debug.instance.log(self.tools)
+            }
+            
+            self.isLoading = false
+            onCompletion(error)
+        })
+
+    }
+    
+    func getNumberOfTools() -> Int {
+        return tools.count
+    }
+    
+    func getTool(index: Int) -> FabTool {
+        return tools[index]
+    }
+    
+    func getToolName(index: Int) -> String {
+        if tools.isEmpty || tools.count <= index {
+            return ""
+        }
+        return tools[index].title!
+    }
+    
+    func getToolNames() -> [String] {
+        var names = [String]()
+        for tool in tools {
+            names.append(tool.title!)
+        }
+        return names
     }
     
     func fetchToolUsagesForTool(toolId: Int64, onCompletion: ApiResponse) {
@@ -86,7 +135,7 @@ class ToolUsageModel: NSObject {
         }
     }
     
-    func getCount() -> Int {
+    func getNumberOfToolUsages() -> Int {
         return toolUsages.count
     }
     

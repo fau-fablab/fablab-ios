@@ -5,8 +5,7 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBOutlet var tableView: UITableView!
     
-    private let toolModel = ToolModel.sharedInstance
-    private let toolUsageModel = ToolUsageModel.sharedInstance
+    private let model = ToolUsageModel.sharedInstance
     private let buttonCustomCellIdentifier = "ButtonCustomCell"
     private let toolUsageCustomCellIdentifier = "ToolUsageCustomCell"
     private let addToolUsageViewControllerIndentifier = "AddToolUsageViewController"
@@ -60,7 +59,7 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
         if section == 0 {
             return "Maschine".localized
         } else {
-            if toolUsageModel.getCount() > 0 {
+            if model.getNumberOfToolUsages() > 0 {
                 return "Reservierung".localized
             }
             return ""
@@ -71,14 +70,14 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
         if section == 0 {
             return 1
         }
-        return toolUsageModel.getCount()
+        return model.getNumberOfToolUsages()
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             var name: String
-            if toolModel.getCount() > 0 {
-                name = toolModel.getToolName(Int(toolId))
+            if model.getNumberOfTools() > 0 {
+                name = model.getToolName(Int(toolId))
             } else {
                 name = "Maschine wählen".localized
             }
@@ -87,7 +86,7 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier(toolUsageCustomCellIdentifier) as! ToolUsageCustomCell
-            cell.configure(toolUsageModel.getToolUsage(indexPath.row), startingTime: toolUsageModel.getStartingTimeOfToolUsage(indexPath.row))
+            cell.configure(model.getToolUsage(indexPath.row), startingTime: model.getStartingTimeOfToolUsage(indexPath.row))
             return cell
         }
     }
@@ -103,8 +102,8 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
             return false
         }
         
-        let toolUsage = toolUsageModel.getToolUsage(indexPath.row)
-        if toolUsageModel.isOwnToolUsage(toolUsage.id!) {
+        let toolUsage = model.getToolUsage(indexPath.row)
+        if model.isOwnToolUsage(toolUsage.id!) {
             return true
         }
         
@@ -114,7 +113,7 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             startLoading()
-            toolUsageModel.removeToolUsage(toolUsageModel.getToolUsage(indexPath.row), user: nil, token: UIDevice.currentDevice().identifierForVendor!.UUIDString,
+            model.removeToolUsage(model.getToolUsage(indexPath.row), user: nil, token: UIDevice.currentDevice().identifierForVendor!.UUIDString,
                 onCompletion: {
                     (error) -> Void in
                     self.stopLoading()
@@ -130,7 +129,7 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
     
     func toolButtonClicked() {
         startLoading()
-        toolModel.fetchTools({
+        model.fetchTools({
             (error) -> Void in
             self.stopLoading()
             if error != nil {
@@ -142,7 +141,7 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     private func showToolPicker() {
-        let picker = ActionSheetStringPicker(title: "Maschine wählen".localized, rows: toolModel.getToolNames(), initialSelection: 0,
+        let picker = ActionSheetStringPicker(title: "Maschine wählen".localized, rows: model.getToolNames(), initialSelection: 0,
             doneBlock: {
                 picker, index, value in
                 Debug.instance.log(index)
@@ -169,7 +168,7 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
     
     private func setTool(toolId: Int64) {
         self.startLoading()
-        self.toolUsageModel.fetchToolUsagesForTool(toolId, onCompletion: {
+        self.model.fetchToolUsagesForTool(toolId, onCompletion: {
             (error) -> Void in
             self.stopLoading()
             if error != nil {

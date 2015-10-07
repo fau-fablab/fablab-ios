@@ -4,8 +4,7 @@ class AddToolUsageViewController: UIViewController, UITableViewDataSource, UITab
     
     @IBOutlet var tableView: UITableView!
     
-    private let toolModel = ToolModel.sharedInstance
-    private let toolUsageModel = ToolUsageModel.sharedInstance
+    private let model = ToolUsageModel.sharedInstance
     
     private var textFieldCustomCellIdentifier = "TextFieldCustomCell"
     private var toolId: Int64!
@@ -33,7 +32,7 @@ class AddToolUsageViewController: UIViewController, UITableViewDataSource, UITab
         }
         
         let toolUsage = ToolUsage(toolId: toolId, user: user, project: project, duration: duration)
-        toolUsageModel.addToolUsage(toolUsage, user: nil, token: UIDevice.currentDevice().identifierForVendor!.UUIDString) {
+        model.addToolUsage(toolUsage, user: nil, token: UIDevice.currentDevice().identifierForVendor!.UUIDString) {
             (error) -> Void in
             if error != nil {
                 Debug.instance.log(error)
@@ -54,7 +53,7 @@ class AddToolUsageViewController: UIViewController, UITableViewDataSource, UITab
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCellWithIdentifier(textFieldCustomCellIdentifier) as! TextFieldCustomCell
-            cell.configure("Maschine".localized, text: toolModel.getToolName(Int(toolId)))
+            cell.configure("Maschine".localized, text: model.getToolName(Int(toolId)))
             return cell
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier(textFieldCustomCellIdentifier) as! TextFieldCustomCell
