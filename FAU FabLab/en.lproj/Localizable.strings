@@ -199,6 +199,12 @@
 "Keine Maschine aktiviert" = "No tool enabled";
 "Momentan ist keine Maschine zur Reservierung aktiviert." = "No tool is enabled for reservation at the moment.";
 
+//MARK: AddToolUsageViewController
+"Angaben unvollständig" = "Input incomplete";
+"Die Angaben zur Benutzung der Maschine sind unvollständig." = "The input about the tool usage is incompete.";
+"Angaben fehlerhaft" = "Input incorrect";
+"Die maximale Benutzungsdauer der Maschine beträgt 300 Minuten." = "The maximum duration of a tool usage is 300 minutes.";
+
 //MARK: ToolUsageCustomCell
 "Minuten" = "minutes";
 "ab" = "from";

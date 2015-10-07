@@ -199,6 +199,13 @@
 "Keine Maschine aktiviert" = "Keine Maschine aktiviert";
 "Momentan ist keine Maschine zur Reservierung aktiviert." = "Momentan ist keine Maschine zur Reservierung aktiviert.";
 
+
+//MARK: AddToolUsageViewController
+"Angaben unvollständig" = "Angaben unvollständig";
+"Die Angaben zur Benutzung der Maschine sind unvollständig." = "Die Angaben zur Benutzung der Maschine sind unvollständig.";
+"Angaben fehlerhaft" = "Angaben fehlerhaft";
+"Die maximale Benutzungsdauer der Maschine beträgt 300 Minuten." = "Die maximale Benutzungsdauer der Maschine beträgt 300 Minuten.";
+
 //MARK: ToolUsageCustomCell
 "Minuten" = "Minuten";
 "ab" = "ab";

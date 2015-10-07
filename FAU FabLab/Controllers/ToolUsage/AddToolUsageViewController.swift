@@ -7,6 +7,9 @@ class AddToolUsageViewController: UIViewController, UITableViewDataSource, UITab
     
     private let model = ToolUsageModel.sharedInstance
     
+    //maximum duration of a tool usage, in minutes
+    private let maxDuration: Int64 = 300
+    
     private var activityIndicator: UIActivityIndicatorView!
     private var textFieldCustomCellIdentifier = "TextFieldCustomCell"
     private var toolId: Int64!
@@ -82,8 +85,13 @@ class AddToolUsageViewController: UIViewController, UITableViewDataSource, UITab
     func save() {
         if toolId == nil || user == nil || user.isEmpty || project == nil || project.isEmpty ||
             duration == nil || duration == 0 {
-                AlertView.showErrorView("Angaben unvollständig".localized)
+                AlertView.showInfoView("Angaben unvollständig".localized, message: "Die Angaben zur Benutzung der Maschine sind unvollständig.".localized)
                 return
+        }
+        
+        if duration > maxDuration {
+            AlertView.showInfoView("Angaben fehlerhaft".localized, message: "Die maximale Benutzungsdauer der Maschine beträgt 300 Minuten.".localized)
+            return
         }
         
         startLoading()
