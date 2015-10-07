@@ -145,7 +145,7 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     private func showToolPicker() {
-        let picker = ActionSheetStringPicker(title: "Maschine wählen".localized, rows: model.getToolNames(), initialSelection: 0,
+        let picker = ActionSheetStringPicker(title: "Maschine wählen".localized, rows: model.getToolNames(), initialSelection: Int(toolId),
             doneBlock: {
                 picker, index, value in
                 Debug.instance.log(index)
