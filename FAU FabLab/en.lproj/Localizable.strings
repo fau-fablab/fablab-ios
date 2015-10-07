@@ -189,13 +189,15 @@
 "Bitte erst einen Betrag eingeben" = "Please enter an amount first";
 
 //MARK: ToolUsageViewController
-"Maschine" = "Machine";
+"Maschine" = "Tool";
 "Reservierung" = "Reservation";
-"Maschine wählen" = "Select machine";
+"Maschine wählen" = "Select tool";
 "Fehler beim Laden der Reservierungen" = "Error while loading the reservations";
 "Fehler beim Laden der Maschinen" = "Error while loading the machines";
-"Keine Maschine ausgewählt" = "No machine selected";
-"Es wurde noch keine Maschine ausgewählt" = "No machine has been selected so far.";
+"Keine Maschine ausgewählt" = "No tool selected";
+"Es wurde noch keine Maschine ausgewählt" = "No tool has been selected so far.";
+"Keine Maschine aktiviert" = "No tool enabled";
+"Momentan ist keine Maschine zur Reservierung aktiviert." = "No tool is enabled for reservation at the moment.";
 
 //MARK: ToolUsageCustomCell
 "Minuten" = "minutes";

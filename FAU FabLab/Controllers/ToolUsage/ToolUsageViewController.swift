@@ -136,7 +136,11 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
                 Debug.instance.log(error)
                 return
             }
-            self.showToolPicker()
+            if self.model.getNumberOfTools() > 0 {
+                self.showToolPicker()
+            } else {
+                AlertView.showInfoView("Keine Maschine aktiviert".localized, message: "Momentan ist keine Maschine zur Reservierung aktiviert.".localized)
+            }
         })
     }
     
