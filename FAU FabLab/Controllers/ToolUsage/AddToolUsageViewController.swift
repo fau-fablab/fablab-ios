@@ -3,6 +3,7 @@ import Foundation
 class AddToolUsageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var tableViewBottomConstraint: NSLayoutConstraint!
     
     private let model = ToolUsageModel.sharedInstance
     
@@ -11,7 +12,6 @@ class AddToolUsageViewController: UIViewController, UITableViewDataSource, UITab
     private var user: String!
     private var project: String!
     private var duration: Int64!
-    
     
     func configure(toolId: Int64) {
         self.toolId = toolId
@@ -22,6 +22,41 @@ class AddToolUsageViewController: UIViewController, UITableViewDataSource, UITab
         
         let saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: "save")
         navigationItem.rightBarButtonItem = saveButton
+    
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func keyboardDidShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            if let tabBarSize = self.tabBarController?.tabBar.frame.size {
+                UIView.animateWithDuration(1) { () -> Void in
+                    self.tableViewBottomConstraint.constant = keyboardSize.height - tabBarSize.height
+                    self.tableView.setNeedsUpdateConstraints()
+                    self.tableView.layoutIfNeeded()
+                }
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        UIView.animateWithDuration(1) { () -> Void in
+            self.tableViewBottomConstraint.constant = 0
+            self.tableView.setNeedsUpdateConstraints()
+            self.tableView.layoutIfNeeded()
+        }
     }
     
     func save() {

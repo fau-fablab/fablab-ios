@@ -861,12 +861,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KtV-6o-OMl">
-                                <rect key="frame" x="0.0" y="512" width="600" height="44"/>
-                                <items/>
-                            </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="60" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="US6-h6-dSs">
-                                <rect key="frame" x="0.0" y="64" width="600" height="448"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="60" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="US6-h6-dSs">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextFieldCustomCell" rowHeight="60" id="2V3-mT-14P" customClass="TextFieldCustomCell" customModule="FAU_FabLab" customModuleProvider="target">
@@ -948,14 +944,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="US6-h6-dSs" firstAttribute="leading" secondItem="7GY-Jk-MoP" secondAttribute="leadingMargin" constant="-20" id="0ts-nj-SPV"/>
                             <constraint firstItem="US6-h6-dSs" firstAttribute="leading" secondItem="7GY-Jk-MoP" secondAttribute="leadingMargin" constant="-16" id="3WF-5L-Y9O"/>
-                            <constraint firstItem="KtV-6o-OMl" firstAttribute="top" secondItem="US6-h6-dSs" secondAttribute="bottom" id="GPD-1Z-kiT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="KtV-6o-OMl" secondAttribute="trailing" constant="-16" id="J2C-bn-xbv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="US6-h6-dSs" secondAttribute="trailing" constant="-20" id="O7g-0w-cdM"/>
+                            <constraint firstItem="jgE-SG-fNY" firstAttribute="top" secondItem="US6-h6-dSs" secondAttribute="bottom" id="UbW-Kf-nah"/>
                             <constraint firstAttribute="trailingMargin" secondItem="US6-h6-dSs" secondAttribute="trailing" constant="-16" id="dIF-Vd-9VB"/>
                             <constraint firstItem="US6-h6-dSs" firstAttribute="top" secondItem="cUI-s7-ziW" secondAttribute="bottom" id="i6p-oj-rOg"/>
-                            <constraint firstItem="jgE-SG-fNY" firstAttribute="top" secondItem="KtV-6o-OMl" secondAttribute="bottom" id="pwq-Df-b3Z"/>
-                            <constraint firstItem="KtV-6o-OMl" firstAttribute="leading" secondItem="7GY-Jk-MoP" secondAttribute="leadingMargin" constant="-16" id="sad-Yt-jVX"/>
+                            <constraint firstItem="US6-h6-dSs" firstAttribute="top" secondItem="7GY-Jk-MoP" secondAttribute="topMargin" id="zSS-hl-kUQ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="3WF-5L-Y9O"/>
+                                <exclude reference="dIF-Vd-9VB"/>
+                                <exclude reference="i6p-oj-rOg"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Reservierung hinzufügen" id="qTE-J6-BkG">
@@ -964,6 +967,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="US6-h6-dSs" id="aHK-oO-Clg"/>
+                        <outlet property="tableViewBottomConstraint" destination="UbW-Kf-nah" id="V71-hP-7cG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ffa-Dz-aID" userLabel="First Responder" sceneMemberID="firstResponder"/>
