@@ -1723,7 +1723,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="60" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="1Pf-cZ-9ud">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ButtonCustomCell" rowHeight="60" id="iA3-0K-LFq" customClass="ButtonCustomCell" customModule="FAU_FabLab" customModuleProvider="target">
@@ -1840,6 +1840,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="1Pf-cZ-9ud" firstAttribute="top" secondItem="3Rv-3Q-iMV" secondAttribute="topMargin" id="0tM-7h-Ral"/>
                             <constraint firstItem="1Pf-cZ-9ud" firstAttribute="top" secondItem="Txj-2B-Ex4" secondAttribute="bottom" id="ByA-mM-faQ"/>
                             <constraint firstItem="qjs-GS-Szs" firstAttribute="top" secondItem="1Pf-cZ-9ud" secondAttribute="bottom" id="E3N-iW-wgV"/>
                             <constraint firstItem="1Pf-cZ-9ud" firstAttribute="leading" secondItem="3Rv-3Q-iMV" secondAttribute="leadingMargin" constant="-16" id="Hpo-3P-6VC"/>
@@ -1849,6 +1850,7 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="ByA-mM-faQ"/>
                                 <exclude reference="Hpo-3P-6VC"/>
                                 <exclude reference="UeQ-8c-2Kc"/>
                             </mask>
