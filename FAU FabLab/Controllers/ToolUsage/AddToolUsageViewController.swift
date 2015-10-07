@@ -7,6 +7,7 @@ class AddToolUsageViewController: UIViewController, UITableViewDataSource, UITab
     
     private let model = ToolUsageModel.sharedInstance
     
+    private var activityIndicator: UIActivityIndicatorView!
     private var textFieldCustomCellIdentifier = "TextFieldCustomCell"
     private var toolId: Int64!
     private var user: String!
@@ -18,10 +19,17 @@ class AddToolUsageViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
         let saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: "save")
         navigationItem.rightBarButtonItem = saveButton
+        
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.autoresizingMask = [UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleBottomMargin]
+        view.addSubview(activityIndicator)
+        
+        super.viewDidLoad()
     
     }
     
@@ -59,6 +67,18 @@ class AddToolUsageViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
+    private func startLoading() {
+        tableView.userInteractionEnabled = false
+        navigationItem.rightBarButtonItem?.enabled = false
+        activityIndicator.startAnimating()
+    }
+    
+    private func stopLoading() {
+        tableView.userInteractionEnabled = true
+        navigationItem.rightBarButtonItem?.enabled = true
+        activityIndicator.stopAnimating()
+    }
+    
     func save() {
         if toolId == nil || user == nil || user.isEmpty || project == nil || project.isEmpty ||
             duration == nil || duration == 0 {
@@ -66,9 +86,11 @@ class AddToolUsageViewController: UIViewController, UITableViewDataSource, UITab
                 return
         }
         
+        startLoading()
         let toolUsage = ToolUsage(toolId: toolId, user: user, project: project, duration: duration)
         model.addToolUsage(toolUsage, user: nil, token: UIDevice.currentDevice().identifierForVendor!.UUIDString) {
             (error) -> Void in
+            self.stopLoading()
             if error != nil {
                 Debug.instance.log(error)
             }
@@ -88,7 +110,7 @@ class AddToolUsageViewController: UIViewController, UITableViewDataSource, UITab
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCellWithIdentifier(textFieldCustomCellIdentifier) as! TextFieldCustomCell
-            cell.configure("Maschine".localized, text: model.getToolName(Int(toolId)))
+            cell.configure("Maschine".localized, text: (model.getToolWithId(toolId)?.title)!)
             return cell
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier(textFieldCustomCellIdentifier) as! TextFieldCustomCell

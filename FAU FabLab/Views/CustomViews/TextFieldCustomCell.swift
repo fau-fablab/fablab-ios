@@ -56,6 +56,10 @@ class TextFieldCustomCell: UITableViewCell, UITextFieldDelegate {
         textFieldDidChangeAction(textField.text)
     }
     
+    func textFieldDidEndEditing(textField: UITextField) {
+        textFieldDidChangeAction(textField.text)
+    }
+    
     func textFieldShouldClear(textField: UITextField) -> Bool {
         textFieldDidChangeAction(nil)
         return true

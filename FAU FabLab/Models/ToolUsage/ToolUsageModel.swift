@@ -12,7 +12,6 @@ class ToolUsageModel: NSObject {
     private var tools = [FabTool]()
     private var toolUsages = [ToolUsage]()
     private var isLoading = false
-    private var toolsLoaded = false
     
     private var ownToolUsages: [OwnToolUsage] {
         get {
@@ -27,7 +26,7 @@ class ToolUsageModel: NSObject {
     }
     
     func fetchTools(onCompletion: ApiResponse) {
-        if isLoading || toolsLoaded {
+        if isLoading {
             onCompletion(nil)
             return
         }
@@ -39,7 +38,6 @@ class ToolUsageModel: NSObject {
                 AlertView.showErrorView("Fehler beim Laden der Maschinen".localized)
             } else if let result = result {
                 self.tools = result
-                self.toolsLoaded = true
                 Debug.instance.log(result)
                 Debug.instance.log(self.tools)
             }
@@ -54,15 +52,17 @@ class ToolUsageModel: NSObject {
         return tools.count
     }
     
-    func getTool(index: Int) -> FabTool {
+    func getToolAtIndex(index: Int) -> FabTool {
         return tools[index]
     }
     
-    func getToolName(index: Int) -> String {
-        if tools.isEmpty || tools.count <= index {
-            return ""
+    func getToolWithId(id: Int64) -> FabTool? {
+        for tool in tools {
+            if tool.id == id {
+                return tool
+            }
         }
-        return tools[index].title!
+        return nil
     }
     
     func getToolNames() -> [String] {

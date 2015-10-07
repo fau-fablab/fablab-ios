@@ -10,17 +10,16 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
     private let toolUsageCustomCellIdentifier = "ToolUsageCustomCell"
     private let addToolUsageViewControllerIndentifier = "AddToolUsageViewController"
     private var activityIndicator: UIActivityIndicatorView!
-    private var toolId: Int64 = 0
-    private var toolSelected = false
+    private var selectedTool: FabTool?
     
     @IBAction func addToolUsage(sender: AnyObject) {
-        if !toolSelected {
+        if selectedTool == nil {
             AlertView.showInfoView("Keine Maschine ausgewählt".localized, message: "Es wurde noch keine Maschine ausgewählt".localized)
             return
         }
         
         let addToolUsageViewController = storyboard?.instantiateViewControllerWithIdentifier(addToolUsageViewControllerIndentifier) as! AddToolUsageViewController
-        addToolUsageViewController.configure(toolId)
+        addToolUsageViewController.configure(selectedTool!.id!)
         navigationController?.pushViewController(addToolUsageViewController, animated: true)
     }
     
@@ -38,7 +37,7 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        setTool(self.toolId)
+        setTool(selectedTool)
     }
 
     private func startLoading() {
@@ -76,10 +75,10 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             var name: String
-            if model.getNumberOfTools() > 0 {
-                name = model.getToolName(Int(toolId))
-            } else {
+            if selectedTool == nil {
                 name = "Maschine wählen".localized
+            } else {
+                name = selectedTool!.title!
             }
             let cell = tableView.dequeueReusableCellWithIdentifier(buttonCustomCellIdentifier) as! ButtonCustomCell
             cell.configure(name, buttonClickedAction: toolButtonClicked)
@@ -121,7 +120,7 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
                         Debug.instance.log(error)
                     }
                     self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
-                    self.setTool(self.toolId)
+                    self.setTool(self.selectedTool!)
                     
             })
         }
@@ -145,14 +144,22 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     private func showToolPicker() {
-        let picker = ActionSheetStringPicker(title: "Maschine wählen".localized, rows: model.getToolNames(), initialSelection: Int(toolId),
+        var initialSelection = 0
+        for index in 0...model.getNumberOfTools() {
+            if let selectedTool = selectedTool {
+                if model.getToolAtIndex(index).id == selectedTool.id {
+                    initialSelection = index
+                    break
+                }
+            }
+        }
+        
+        let picker = ActionSheetStringPicker(title: "Maschine wählen".localized, rows: model.getToolNames(), initialSelection: initialSelection,
             doneBlock: {
                 picker, index, value in
-                Debug.instance.log(index)
-                self.toolId = Int64(index)
+                self.selectedTool = self.model.getToolAtIndex(index)
                 self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
-                self.setTool(self.toolId)
-                self.toolSelected = true
+                self.setTool(self.selectedTool!)
                 return
             },
             cancelBlock: nil, origin: nil)
@@ -170,14 +177,17 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
         picker.showActionSheetPicker()
     }
     
-    private func setTool(toolId: Int64) {
+    private func setTool(tool: FabTool?) {
+        if tool == nil {
+            return
+        }
+        
         self.startLoading()
-        self.model.fetchToolUsagesForTool(toolId, onCompletion: {
+        self.model.fetchToolUsagesForTool(tool!.id!, onCompletion: {
             (error) -> Void in
             self.stopLoading()
             if error != nil {
                 Debug.instance.log(error)
-                return
             }
             self.tableView.reloadData()
         })
