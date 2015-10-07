@@ -5,19 +5,20 @@ class TextFieldCustomCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet var title: UILabel!
     @IBOutlet var textField: UITextField!
     
-    private var editingDidEndAction: (String?) -> Void = {text in}
+    private var textFieldDidChangeAction: (String?) -> Void = {text in}
     private var acceptIntegersOnly: Bool = false
     
     func configure(title: String, placeholder: String, acceptIntegersOnly: Bool,
-        editingDidEndAction: (String?) -> Void) {
+        textFieldDidChangeAction: (String?) -> Void) {
             selectionStyle = UITableViewCellSelectionStyle.None
         
             self.acceptIntegersOnly = acceptIntegersOnly
-            self.editingDidEndAction = editingDidEndAction
+            self.textFieldDidChangeAction = textFieldDidChangeAction
             
             self.title.text = title
             
             textField.delegate = self
+            textField.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
             textField.placeholder = placeholder
             if acceptIntegersOnly {
                     textField.keyboardType = UIKeyboardType.NumbersAndPunctuation
@@ -34,11 +35,12 @@ class TextFieldCustomCell: UITableViewCell, UITextFieldDelegate {
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         if !acceptIntegersOnly {
+            
             return true
         }
         
         let invalidCharacters = NSCharacterSet(charactersInString: "0123456789").invertedSet
-        if let range = string.rangeOfCharacterFromSet(invalidCharacters, options: [],
+        if let _ = string.rangeOfCharacterFromSet(invalidCharacters, options: [],
             range:Range<String.Index>(start: string.startIndex, end: string.endIndex)) {
                 return false
         }
@@ -50,12 +52,12 @@ class TextFieldCustomCell: UITableViewCell, UITextFieldDelegate {
         return true
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
-        editingDidEndAction(textField.text)
+    func textFieldDidChange(textField: UITextField) {
+        textFieldDidChangeAction(textField.text)
     }
     
     func textFieldShouldClear(textField: UITextField) -> Bool {
-        editingDidEndAction(nil)
+        textFieldDidChangeAction(nil)
         return true
     }
 

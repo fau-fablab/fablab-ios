@@ -58,7 +58,7 @@ class AddToolUsageViewController: UIViewController, UITableViewDataSource, UITab
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier(textFieldCustomCellIdentifier) as! TextFieldCustomCell
             cell.configure("User".localized, placeholder: "User".localized, acceptIntegersOnly: false,
-                editingDidEndAction: {
+                textFieldDidChangeAction: {
                     (text) -> Void in
                     self.user = text
             })
@@ -66,7 +66,7 @@ class AddToolUsageViewController: UIViewController, UITableViewDataSource, UITab
         case 2:
             let cell = tableView.dequeueReusableCellWithIdentifier(textFieldCustomCellIdentifier) as! TextFieldCustomCell
             cell.configure("Projekt".localized, placeholder: "Projekt".localized, acceptIntegersOnly: false,
-                editingDidEndAction: {
+                textFieldDidChangeAction: {
                     (text) -> Void in
                     self.project = text
             })
@@ -74,7 +74,7 @@ class AddToolUsageViewController: UIViewController, UITableViewDataSource, UITab
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier(textFieldCustomCellIdentifier) as! TextFieldCustomCell
             cell.configure("Dauer".localized, placeholder: "Dauer in Minuten".localized, acceptIntegersOnly: true,
-                editingDidEndAction: {
+                textFieldDidChangeAction: {
                     (text) -> Void in
                     if let text = text {
                         self.duration = (text as NSString).longLongValue
