@@ -7,7 +7,7 @@ struct ProjectsApi {
     private let imageMapper = Mapper<ProjectImageUpload>()
     
     private let resourceCreate = "/projects/create"
-    private let resourceUpdate = "/projects/update/"
+    private let resourceUpdate = "/projects/"
     private let resourceImage = "/projects/image/upload"
     
     func create(project: ProjectFile, onCompletion: (String?, NSError?) -> Void) {
@@ -19,11 +19,20 @@ struct ProjectsApi {
         })
     }
     
+    func delete(repoId: String, onCompletion: (String?, NSError?) -> Void) {
+        let url = resourceUpdate + repoId
+        
+        api.makeTextRequest(.DELETE, encoding: .JSON, resource: url, params: nil,
+            onCompletion: { response, err in
+                ApiResult.getSimpleType(response, error: err, completionHandler: onCompletion)
+        })
+    }
+    
     func update(repoId: String, project: ProjectFile, onCompletion: (String?, NSError?) -> Void) {
         let params = mapper.toJSON(project)
         let url = resourceUpdate + repoId
         
-        api.makeTextRequest(.POST, encoding: .JSON, resource: url, params: params,
+        api.makeTextRequest(.PUT, encoding: .JSON, resource: url, params: params,
             onCompletion: { response, err in
                 ApiResult.getSimpleType(response, error: err, completionHandler: onCompletion)
         })
