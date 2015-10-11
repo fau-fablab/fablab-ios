@@ -176,7 +176,7 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
         let uploadAction = UIAlertAction(title: "Upload zu GitHub".localized, style: .Default, handler: {
             (alert: UIAlertAction) -> Void in
             self.saveProjectToCoreData()
-            self.confirmUploadToGitHub(message: "Wollen Sie das Projekt-Snippet hochladen?".localized)
+            self.confirmUploadToGitHub(message: "Um Ihr Projekt auf Github hochzuladen, müssen Sie der CC0-Lizenz für sämtliche Inhalte zustimmen".localized)
         })
         
         let cancelAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: {
@@ -200,12 +200,20 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
     }
     
     func confirmUploadToGitHub(message message: String) {
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in })
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Ablehnen".localized, style: .Cancel, handler: { (Void) -> Void in })
         
-        let doneAction: UIAlertAction = UIAlertAction(title: "Hochladen".localized, style: .Default, handler: { (Void) -> Void in self.uploadProjectActionHandler()})
+        let licenseAction = UIAlertAction(title: "Lizenz ansehen".localized, style: .Default, handler: {
+            (alert: UIAlertAction) -> Void in
+            if let url = NSURL(string: "https://creativecommons.org/publicdomain/zero/1.0/") {
+                UIApplication.sharedApplication().openURL(url)
+            }
+        })
+        
+        let doneAction: UIAlertAction = UIAlertAction(title: "Zustimmen und hochladen".localized, style: .Default, handler: { (Void) -> Void in self.uploadProjectActionHandler()})
         
         let alertController: UIAlertController = UIAlertController(title: "Upload zu GitHub".localized, message: message, preferredStyle: .Alert)
         alertController.addAction(cancelAction)
+        alertController.addAction(licenseAction)
         alertController.addAction(doneAction)
         
         self.presentViewController(alertController, animated: true, completion: nil)
@@ -215,12 +223,20 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
         
         var inputTextField: UITextField?
         
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in })
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Ablehnen".localized, style: .Cancel, handler: { (Void) -> Void in })
         
-        let doneAction: UIAlertAction = UIAlertAction(title: "Hochladen".localized, style: .Default, handler: { (Void) -> Void in self.uploadImageActionHandler(name: inputTextField!.text!, image: image)})
+        let licenseAction = UIAlertAction(title: "Lizenz ansehen".localized, style: .Default, handler: {
+            (alert: UIAlertAction) -> Void in
+            if let url = NSURL(string: "https://creativecommons.org/publicdomain/zero/1.0/") {
+                UIApplication.sharedApplication().openURL(url)
+            }
+        })
         
-        let alertController: UIAlertController = UIAlertController(title: "Upload zu GitHub".localized, message: "Wollen Sie das Bild wirklich hochladen?".localized + "\n" + "Bitte geben Sie einen Namen für das Bild ein".localized + ":", preferredStyle: .Alert)
+        let doneAction: UIAlertAction = UIAlertAction(title: "Zustimmen und hochladen".localized, style: .Default, handler: { (Void) -> Void in self.uploadImageActionHandler(name: inputTextField!.text!, image: image)})
+        
+        let alertController: UIAlertController = UIAlertController(title: "Upload zu GitHub".localized, message: "Wollen Sie das Bild wirklich unter der CC0-Lizenz hochladen?".localized + "\n" + "Bitte geben Sie einen Namen für das Bild ein".localized + ":", preferredStyle: .Alert)
         alertController.addAction(cancelAction)
+        alertController.addAction(licenseAction)
         alertController.addAction(doneAction)
         
         alertController.addTextFieldWithConfigurationHandler({ textField -> Void in

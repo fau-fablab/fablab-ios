@@ -20,6 +20,8 @@
 "Löschen" = "Löschen";
 "OK" = "OK";
 "Übernehmen" = "Übernehmen";
+"Ablehnen" = "Ablehnen";
+"Zustimmen und hochladen" = "Zustimmen und hochladen";
 
 //MARK: StringFormats
 "%.2f€" = "%.2f€";
@@ -132,13 +134,15 @@
 "Link" = "Link";
 "Projekt hinzufügen" = "Projekt hinzufügen";
 "Projekt bearbeiten" = "Projekt bearbeiten";
-"Wollen Sie das Bild wirklich hochladen?" = "Wollen Sie das Bild wirklich hochladen?";
+"Wollen Sie das Bild wirklich unter der CC0-Lizenz hochladen?" = "Wollen Sie das Bild wirklich unter der CC0-Lizenz hochladen?";
 "Bitte geben Sie einen Namen für das Bild ein" = "Bitte geben Sie einen Namen für das Bild ein";
 "Bild konnte nicht hochgeladen werden" = "Bild konnte nicht hochgeladen werden";
 "Bitte laden Sie zuerst das Project auf GitHub hoch und versuchen dann erneut den Bild-Upload" = "Bitte laden Sie zuerst das Project auf GitHub hoch und versuchen dann erneut den Bild-Upload";
 "Bild auswählen" = "Bild auswählen";
 "Kamera" = "Kamera";
 "Galerie" = "Galerie";
+"Um Ihr Projekt auf Github hochzuladen, müssen Sie der CC0-Lizenz für sämtliche Inhalte zustimmen." = "Um Ihr Projekt auf Github hochzuladen, müssen Sie der CC0-Lizenz für sämtliche Inhalte zustimmen.";
+"Lizenz ansehen" = "Lizenz ansehen";
 
 //MARK: ProjectsViewController
 "Warenkörbe" = "Warenkörbe";
