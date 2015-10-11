@@ -17,7 +17,7 @@ class DoorStateModel : NSObject {
     }
 
     var lastChangeAsString : String {
-        if let state = doorState{
+        if let _ = doorState{
             let lastChangeAsDate = NSDate(timeIntervalSince1970: doorState!.lastchange!)
             let flags: NSCalendarUnit = [NSCalendarUnit.Minute, NSCalendarUnit.Hour]
             let components = NSCalendar.currentCalendar().components(flags, fromDate: lastChangeAsDate, toDate: NSDate(), options: [])
