@@ -124,18 +124,19 @@ class ProductsearchCodeScannerViewController: RSCodeReaderViewController {
     }
     
     func displayProductSearchForCode(code: String){
+        
         var tabBarControllers = self.tabBarController?.viewControllers
         let controllers  = tabBarControllers!.filter { $0 is ProductsearchTabViewController }
         let productSearchController = controllers.first as! ProductsearchTabViewController
-        
+        let productsearchViewController = productSearchController.viewControllers.first as! ProductsearchViewController
+        productsearchViewController.setScannedBarcode(code)
         for(var i = 0; i < tabBarControllers!.count; i++){
             if tabBarControllers![i] == controllers.first{
                 self.tabBarController?.selectedIndex = i
             }
         }
         
-        let productsearchViewController = productSearchController.viewControllers.first as! ProductsearchViewController
-        productsearchViewController.setScannedBarcode(code)
+        
     }
 }
 
