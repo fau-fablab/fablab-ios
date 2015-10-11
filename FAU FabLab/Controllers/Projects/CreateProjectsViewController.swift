@@ -36,7 +36,7 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
         do {
             let linkHighlighter = try LinkHighlighter()
             textStorage.addHighlighter(linkHighlighter)
-        } catch var error1 as NSError {
+        } catch let error1 as NSError {
             error = error1
             assertionFailure("Error initializing LinkHighlighter: \(error)")
         }
