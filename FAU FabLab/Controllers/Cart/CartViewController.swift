@@ -97,8 +97,6 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         if segue.identifier == "ProductLocationSegueCart" {
             let destination = segue.destinationViewController as? ProductLocationViewController
             
-            let cell = tableView.cellForRowAtIndexPath(selectedIndexPath!) as! ProductCustomCell;
-            
             let locationId = selectedProduct!.locationStringForMap
             let productName = selectedProduct!.name
             
@@ -278,10 +276,9 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
             switch authStatus {
                 case AVAuthorizationStatus.Authorized:
                     let popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("CheckoutCodeScanner")
-                    var nav = UINavigationController(rootViewController: popoverContent!)
+                    let nav = UINavigationController(rootViewController: popoverContent!)
                     nav.modalPresentationStyle = UIModalPresentationStyle.Popover
-                    var popover = nav.popoverPresentationController
-            
+                  
                     self.presentViewController(nav, animated: true, completion: nil)
             
                 case AVAuthorizationStatus.Denied:
