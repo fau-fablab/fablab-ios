@@ -76,13 +76,12 @@ class RestManager {
             case .Success:
                 onCompletion(result.value, nil)
             case .Failure:
-                onCompletion(nil, result.error as! NSError)
+                onCompletion(nil, result.error as? NSError)
             }
         }
     }
     
     func makeRequestWithBasicAuth(method: Alamofire.Method, encoding: ParameterEncoding, resource: String, username: String, password: String, params: [String:AnyObject]?, onCompletion: ServiceResponse) {
-        let endpoint = apiUrl + resource
         
         let credentialData = "\(username):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
         let base64Credentials = credentialData.base64EncodedStringWithOptions([])
@@ -93,7 +92,6 @@ class RestManager {
     }
 
     func makeJSONRequestWithBasicAuth(method: Alamofire.Method, encoding: ParameterEncoding, resource: String, username: String, password: String, params: [String:AnyObject]?, onCompletion: JsonServiceResponse) {
-        let endpoint = apiUrl + resource
 
         let credentialData = "\(username):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
         let base64Credentials = credentialData.base64EncodedStringWithOptions([])
