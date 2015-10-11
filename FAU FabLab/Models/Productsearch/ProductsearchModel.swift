@@ -45,7 +45,7 @@ class ProductsearchModel : NSObject{
     
     func getTitleOfSection(section: Int) -> String {
         if (sorting == Sorting.SortedByName && !sectionedProducts[section].isEmpty) {
-            return (collation.sectionTitles[section] as? String)!
+            return collation.sectionTitles[section]
         }
         return ""
     }
