@@ -217,7 +217,7 @@ class CartModel: NSObject {
                 json, error in
                 if (error == nil) {
                     self.notifyControllerAboutStatusChange()
-                    var timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("checkCheckoutStatus:"), userInfo: nil, repeats: true)
+                    _ = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("checkCheckoutStatus:"), userInfo: nil, repeats: true)
                 }else{
                     self.setStatus(CartStatus.SHOPPING)
                     self.notifyControllerAboutStatusChange()
