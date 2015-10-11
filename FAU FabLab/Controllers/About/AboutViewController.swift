@@ -35,7 +35,7 @@ class AboutViewController : UIViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView,
         cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCellWithIdentifier(tableViewCellIdentifier, forIndexPath: indexPath) as? AboutCustomCell
-            if let index = expandedTableViewCells.indexOf(indexPath.row) {
+            if let _ = expandedTableViewCells.indexOf(indexPath.row) {
                 let textView = cell!.configureWithText(titleStrings[indexPath.row], text: textAttributedStrings[indexPath.row])
                 textView.delegate = self
             } else {
@@ -65,7 +65,7 @@ class AboutViewController : UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if let index = expandedTableViewCells.indexOf(indexPath.row) {
+        if let _ = expandedTableViewCells.indexOf(indexPath.row) {
             return UITableViewAutomaticDimension
         } else {
             return unexpandedRowHeight
