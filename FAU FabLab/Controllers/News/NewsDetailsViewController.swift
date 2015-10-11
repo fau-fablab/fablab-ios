@@ -47,7 +47,7 @@ class NewsDetailsViewController : UIViewController{
         
         rightNavItem = self.navigationItem.rightBarButtonItem
 
-        var button =  UIButton(type: UIButtonType.Custom)
+        let button =  UIButton(type: UIButtonType.Custom)
         button.frame = CGRectMake(0, 0, 100, 40) as CGRect
         button.titleLabel?.font = UIFont.boldSystemFontOfSize(17.0)
         button.setTitle(newsTitle, forState: UIControlState.Normal)
