@@ -88,7 +88,7 @@ class EventsDetailsViewController : UIViewController {
                 (granted, error) in
                 if (granted) && (error == nil) {
                     
-                    var event = EKEvent(eventStore: eventStore)
+                    let event = EKEvent(eventStore: eventStore)
                     event.calendar = eventStore.defaultCalendarForNewEvents
                     
                     event.startDate = self.event!.start!
