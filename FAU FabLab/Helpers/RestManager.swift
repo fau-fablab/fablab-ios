@@ -54,7 +54,7 @@ class RestManager {
                 case .Success:
                     onCompletion(result.value, nil)
                 case .Failure:
-                    onCompletion(nil, result.error as! NSError)
+                    onCompletion(nil, result.error as? NSError)
                 }
         }
     }
