@@ -123,7 +123,6 @@ class CreateProjectsViewController: UIViewController, UIImagePickerControllerDel
     }
     
     func showChoosePickerSourceAlert() {
-        var inputTextField: UITextField?
         
         let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in })
         
