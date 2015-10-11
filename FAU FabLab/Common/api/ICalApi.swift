@@ -43,8 +43,8 @@ struct ICalApi{
                     onCompletion(nil, err)
                 }
                 else{
-                    var num = json as? NSNumber
-                    var result = num?.longLongValue
+                    let num = json as? NSNumber
+                    let result = num?.longLongValue
                     onCompletion(result, nil)
                 }
         })
