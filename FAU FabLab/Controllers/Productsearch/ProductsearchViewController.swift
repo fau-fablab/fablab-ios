@@ -345,9 +345,9 @@ class ProductsearchViewController : UIViewController, UITableViewDataSource, UIT
         }
     }
     
-    func sectionIndexTitlesForTableView(tableView: UITableView) -> [String] {
+    func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
         if(tableView == self.tableView) {
-            return model.getSectionIndexTitles() as! [String]
+            return model.getSectionIndexTitles() as? [String]
         }
         return []
     }
