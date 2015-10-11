@@ -73,7 +73,7 @@ class MalfunctionInfoController: UIViewController, MFMailComposeViewControllerDe
 
             case MFMailComposeResultSent.rawValue:
                 Debug.instance.log("Sent!")
-                var alert = UIAlertController(title: "Versendet".localized, message: "Störungsmeldung wurde erfolgreich versendet!".localized, preferredStyle: UIAlertControllerStyle.Alert)
+                _ = UIAlertController(title: "Versendet".localized, message: "Störungsmeldung wurde erfolgreich versendet!".localized, preferredStyle: UIAlertControllerStyle.Alert)
 
             default:
                 Debug.instance.log("Default")
