@@ -141,7 +141,7 @@
 "Bild auswählen" = "Choose image";
 "Kamera" = "Camera";
 "Galerie" = "Photo Library";
-"Um Ihr Projekt auf Github hochzuladen, müssen Sie der CC0-Lizenz für sämtliche Inhalte zustimmen." = "To upload the project to Github, you have to accept the CC0-License for all contents.";
+"Um Ihr Projekt auf Github hochzuladen, müssen Sie der CC0-Lizenz für sämtliche Inhalte zustimmen" = "To upload the project to Github, you have to accept the CC0-License for all contents";
 "Lizenz ansehen" = "Show license";
 
 //MARK: ProjectsViewController
@@ -155,6 +155,13 @@
 "Warenkorb auswählen..." = "Select cart...";
 "Einkaufliste" = "Shopping list";
 "Anleitung" = "Instruction";
+"Projekt löschen" = "Delete project";
+"Lokal und auf GitHub" = "Locally and from GitHub";
+"Auf GitHub" = "From GitHub";
+"Lokal" = "Locally";
+"Wo wollen Sie das Projekt löschen?" = "Where do you want to delete the project?";
+"Projekt konnte nicht gelöscht werden" = "Project was not deleted";
+"Projekt wurde erfolgreich gelöscht" = "Project was deleted successfully";
 
 //MARK: CartCustomCell
 "Einträge" = " Entries";

@@ -71,7 +71,7 @@ class ProjectsViewController: UITableViewController {
             if (indexPath.section == 0) {
                 cartHistoryModel.removeCart(indexPath.row)
             } else if (indexPath.section == 1) {
-                projectsModel.removeProject(indexPath.row)
+                showDeleteProjectAlertController(indexPath.row)
             }
             tableView.reloadData()
         }
@@ -101,6 +101,53 @@ class ProjectsViewController: UITableViewController {
             projViewController.configure(projectId: projectId, cart: cart!)
         }
         self.navigationController?.pushViewController(projViewController, animated: true)
+    }
+    
+    func showDeleteProjectAlertController(projectId: Int) {
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Abbrechen".localized, style: .Cancel, handler: { (Void) -> Void in })
+        
+        let deleteLocalAction: UIAlertAction = UIAlertAction(title: "Lokal".localized, style: .Default, handler: { (Void) -> Void in
+                self.projectsModel.removeProject(projectId)
+                self.tableView.reloadData()
+        })
+        
+        let deleteBothAction: UIAlertAction = UIAlertAction(title: "Lokal und auf GitHub".localized, style: .Default, handler: { (Void) -> Void in
+                self.deleteFromGitHub(projectId)
+                self.projectsModel.removeProject(projectId)
+                self.tableView.reloadData()
+        })
+        
+        let deleteGitHubAction: UIAlertAction = UIAlertAction(title: "Auf GitHub".localized, style: .Default, handler: { (Void) -> Void in
+                self.deleteFromGitHub(projectId)
+                self.projectsModel.updateGistId(id: projectId, gistId: "")
+        })
+        
+        let alertController: UIAlertController = UIAlertController(title: "Projekt löschen".localized, message: "Wo wollen Sie das Projekt löschen?".localized, preferredStyle: .Alert)
+        alertController.addAction(cancelAction)
+        alertController.addAction(deleteLocalAction)
+        if (self.projectsModel.getGistId(projectId) != "") {
+            alertController.addAction(deleteGitHubAction)
+            alertController.addAction(deleteBothAction)
+        }
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func deleteFromGitHub(projectId: Int) {
+        let api = ProjectsApi()
+        let gistId = self.projectsModel.getGistId(projectId)
+        api.delete(gistId, onCompletion: {
+            gistId, err in
+            self.showDeleteAlertController(gistId!, err: err)
+        })
+    }
+    
+    func showDeleteAlertController(gistId: String, err: NSError?) {
+        if (err != nil) {
+            AlertView.showErrorView("Projekt konnte nicht gelöscht werden".localized)
+        } else {
+            AlertView.showInfoView("Projekt löschen".localized, message: "Projekt wurde erfolgreich gelöscht".localized)
+        }
     }
     
     @IBAction func showActionSheet(sender: AnyObject) {
