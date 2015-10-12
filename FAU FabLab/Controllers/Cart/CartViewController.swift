@@ -169,6 +169,7 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
             CartModel.sharedInstance.removeProductFromCart(indexPath.row)
             tableView.reloadData()
             showTotalPrice()
+            refreshCheckoutButton()
         }
     }
     
