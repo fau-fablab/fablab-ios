@@ -143,16 +143,7 @@ class ToolUsageModel: NSObject {
     
     //in seconds
     func getStartingTimeOfToolUsage(index: Int) -> Int64 {
-        if index == 0 {
-            return (toolUsages[0].startTime!)/1000
-        } else if index == 1 {
-            return ((toolUsages[0].startTime!)+(toolUsages[0].duration!*60*1000))/1000
-        }
-        var time = toolUsages[0].startTime!
-        for i in 0...index-1 {
-            time = time + (toolUsages[i].duration!*60*1000)
-        }
-        return time/1000
+        return toolUsages[index].startTime!/1000
     }
     
     func addOwnToolUsage(toolUsageId: Int64) {
