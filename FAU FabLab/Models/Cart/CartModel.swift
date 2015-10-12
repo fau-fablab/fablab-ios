@@ -22,8 +22,8 @@ class CartModel: NSObject {
     }
     
     //for prior carts
-    init(index: Int) {
-        cart = cartHistory.getCart(index)
+    init(cart: Cart) {
+        self.cart = cart
         managedObjectContext = cart.managedObjectContext!
         super.init()
     }

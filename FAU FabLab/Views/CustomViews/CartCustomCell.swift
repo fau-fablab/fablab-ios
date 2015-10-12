@@ -25,6 +25,8 @@ class CartCustomCell: UITableViewCell {
         if (status == CartStatus.PAID) {
             statusImageView.image = UIImage(named: "icon_done", inBundle: nil, compatibleWithTraitCollection: nil)?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
             statusImageView.tintColor = UIColor.fabLabGreen()
+        } else {
+            statusImageView.image = nil
         }
         
     }

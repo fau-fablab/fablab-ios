@@ -27,8 +27,8 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkoutStatusChanged:", name: "CheckoutStatusChangedNotification", object: nil)
     }
     
-    func setCart(index: Int) {
-        cartModel = CartModel(index: index)
+    func setCart(cart: Cart) {
+        cartModel = CartModel(cart: cart)
         if (cartModel.getStatus() == CartStatus.PAID) {
             self.title = "Bezahlt".localized
             let actionBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "actionBarButtonItemClicked")

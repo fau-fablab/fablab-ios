@@ -24,7 +24,7 @@ class ProjectsViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if (indexPath.section == 0) {
             let cell = tableView.dequeueReusableCellWithIdentifier(cartCustomCellIdentifier) as? CartCustomCell
-            let cart = cartHistoryModel.getCart(indexPath.row)
+            let cart = cartHistoryModel.getNonEmptyCart(indexPath.row)
             cell!.configure(cart.date, count: cart.getCount(), status: cart.cartStatus)
             return cell!
         } else if (indexPath.section == 1) {
@@ -46,7 +46,7 @@ class ProjectsViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (section == 0) {
-            return cartHistoryModel.countNonEmptyCarts()
+            return cartHistoryModel.getCountOfNonEmptyCarts()
         } else if (section == 1) {
             return projectsModel.getCount()
         }
@@ -63,13 +63,19 @@ class ProjectsViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if indexPath.section == 0 {
+            let cart = cartHistoryModel.getNonEmptyCart(indexPath.row)
+            if cart.status == CartStatus.SHOPPING.rawValue {
+                return false
+            }
+        }
         return true
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             if (indexPath.section == 0) {
-                cartHistoryModel.removeCart(indexPath.row)
+                cartHistoryModel.removeNonEmptyCart(indexPath.row)
             } else if (indexPath.section == 1) {
                 showDeleteProjectAlertController(indexPath.row)
             }
@@ -81,12 +87,12 @@ class ProjectsViewController: UITableViewController {
         if (indexPath.section == 0) {
             if !createFromCart {
                 let cartViewController = self.storyboard!.instantiateViewControllerWithIdentifier("CartView") as! CartViewController
-                cartViewController.setCart(indexPath.row)
+                cartViewController.setCart(cartHistoryModel.getNonEmptyCart(indexPath.row))
                 self.navigationController?.pushViewController(cartViewController, animated: true)
             } else {
                 createFromCart = false
                 self.title = "Projekte/Warenkörbe".localized
-                self.showCreateProjectViewController(projectId: -1, cart: cartHistoryModel.getCart(indexPath.row))
+                self.showCreateProjectViewController(projectId: -1, cart: cartHistoryModel.getNonEmptyCart(indexPath.row))
             }
         } else if (indexPath.section == 1) {
             self.showCreateProjectViewController(projectId: indexPath.row, cart: nil)

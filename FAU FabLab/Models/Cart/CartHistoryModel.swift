@@ -35,24 +35,6 @@ class CartHistoryModel: NSObject {
         }
     }
     
-    func getCount() -> Int {
-        return carts.count
-    }
-    
-    func countNonEmptyCarts() -> Int {
-        var count : Int = 0
-        for cart in carts {
-            if cart.getCount() > 0 {
-                count++
-            }
-        }
-        return count
-    }
-    
-    func getCart(cartPosition: Int) -> Cart {
-        return carts[cartPosition]
-    }
-    
     func addCart() {
         let cart = NSEntityDescription.insertNewObjectForEntityForName(Cart.EntityName,
             inManagedObjectContext: self.managedObjectContext) as! Cart
@@ -62,8 +44,39 @@ class CartHistoryModel: NSObject {
         Debug.instance.log(carts)
     }
     
-    func removeCart(cartPosition: Int) {
-        managedObjectContext.deleteObject(carts[cartPosition])
+    func getCount() -> Int {
+        return carts.count
+    }
+
+    func getCart(index: Int) -> Cart {
+        return carts[index]
+    }
+    
+    func removeCart(index: Int) {
+        managedObjectContext.deleteObject(carts[index])
+        saveCoreData()
+    }
+    
+    private func getNonEmptyCarts() -> [Cart] {
+        var nonEmptyCarts = [Cart]()
+        for cart in carts {
+            if cart.getCount() > 0 {
+                nonEmptyCarts.append(cart)
+            }
+        }
+        return nonEmptyCarts
+    }
+    
+    func getCountOfNonEmptyCarts() -> Int {
+        return getNonEmptyCarts().count
+    }
+    
+    func getNonEmptyCart(index: Int) -> Cart {
+        return getNonEmptyCarts()[index]
+    }
+    
+    func removeNonEmptyCart(index: Int) {
+        managedObjectContext.deleteObject(getNonEmptyCarts()[index])
         saveCoreData()
     }
     
