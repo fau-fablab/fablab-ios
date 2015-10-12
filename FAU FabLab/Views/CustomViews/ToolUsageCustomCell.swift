@@ -24,6 +24,8 @@ class ToolUsageCustomCell: UITableViewCell {
         
         if isOwnToolUsage {
             backgroundColor = UIColor.lightTextColor()
+        } else {
+            backgroundColor = UIColor.whiteColor()
         }
         
         time.text = "ab".localized + " \(dateFormatter.stringFromDate(date)) " + "Uhr".localized
