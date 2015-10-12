@@ -9,8 +9,10 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
     private let buttonCustomCellIdentifier = "ButtonCustomCell"
     private let toolUsageCustomCellIdentifier = "ToolUsageCustomCell"
     private let addToolUsageViewControllerIndentifier = "AddToolUsageViewController"
+    
     private var activityIndicator: UIActivityIndicatorView!
     private var selectedTool: FabTool?
+    private var refreshControl: UIRefreshControl!
     
     @IBAction func addToolUsage(sender: AnyObject) {
         if selectedTool == nil {
@@ -32,7 +34,28 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
         activityIndicator.autoresizingMask = [UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleBottomMargin]
         view.addSubview(activityIndicator)
         
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.addSubview(refreshControl)
+        
     }
+    
+    func refresh(sender: AnyObject) {
+        if selectedTool == nil {
+            refreshControl.endRefreshing()
+            return
+        }
+        
+        self.model.fetchToolUsagesForTool(selectedTool!.id!, onCompletion: {
+            (error) -> Void in
+            self.refreshControl.endRefreshing()
+            if error != nil {
+                Debug.instance.log(error)
+            }
+            self.tableView.reloadData()
+        })
+    }
+
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

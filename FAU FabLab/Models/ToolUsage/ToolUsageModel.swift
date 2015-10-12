@@ -38,8 +38,6 @@ class ToolUsageModel: NSObject {
                 AlertView.showErrorView("Fehler beim Laden der Maschinen".localized)
             } else if let result = result {
                 self.tools = result
-                Debug.instance.log(result)
-                Debug.instance.log(self.tools)
             }
             
             self.isLoading = false
