@@ -28,6 +28,10 @@ class CartViewController : UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func setCart(cart: Cart) {
+        if cart.status == CartStatus.SHOPPING.rawValue {
+            cartModel = CartModel.sharedInstance
+            return
+        }
         cartModel = CartModel(cart: cart)
         if (cartModel.getStatus() == CartStatus.PAID) {
             self.title = "Bezahlt".localized
