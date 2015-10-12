@@ -141,11 +141,6 @@ class ToolUsageModel: NSObject {
         return toolUsages[index]
     }
     
-    //in seconds
-    func getStartingTimeOfToolUsage(index: Int) -> Int64 {
-        return toolUsages[index].startTime!/1000
-    }
-    
     func addOwnToolUsage(toolUsageId: Int64) {
         let ownToolUsage = NSEntityDescription.insertNewObjectForEntityForName(OwnToolUsage.EntityName,
             inManagedObjectContext: self.managedObjectContext) as! OwnToolUsage

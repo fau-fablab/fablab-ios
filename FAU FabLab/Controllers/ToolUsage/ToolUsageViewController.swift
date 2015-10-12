@@ -40,23 +40,6 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
         
     }
     
-    func refresh(sender: AnyObject) {
-        if selectedTool == nil {
-            refreshControl.endRefreshing()
-            return
-        }
-        
-        self.model.fetchToolUsagesForTool(selectedTool!.id!, onCompletion: {
-            (error) -> Void in
-            self.refreshControl.endRefreshing()
-            if error != nil {
-                Debug.instance.log(error)
-            }
-            self.tableView.reloadData()
-        })
-    }
-
-    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -71,6 +54,22 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
     private func stopLoading() {
         tableView.userInteractionEnabled = true
         activityIndicator.stopAnimating()
+    }
+    
+    func refresh(sender: AnyObject) {
+        if selectedTool == nil {
+            refreshControl.endRefreshing()
+            return
+        }
+        
+        self.model.fetchToolUsagesForTool(selectedTool!.id!, onCompletion: {
+            (error) -> Void in
+            self.refreshControl.endRefreshing()
+            if error != nil {
+                Debug.instance.log(error)
+            }
+            self.tableView.reloadData()
+        })
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -108,7 +107,8 @@ class ToolUsageViewController: UIViewController, UITableViewDataSource, UITableV
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier(toolUsageCustomCellIdentifier) as! ToolUsageCustomCell
-            cell.configure(model.getToolUsage(indexPath.row), startingTime: model.getStartingTimeOfToolUsage(indexPath.row))
+            let toolUsage = model.getToolUsage(indexPath.row)
+            cell.configure(toolUsage, isOwnToolUsage: model.isOwnToolUsage(toolUsage.id!))
             return cell
         }
     }
