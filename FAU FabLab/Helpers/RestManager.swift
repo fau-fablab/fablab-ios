@@ -48,13 +48,13 @@ class RestManager {
         manager.request(method, endpoint, parameters: params, headers: headers, encoding: encoding)
             .validate(statusCode: 200 ..< 300)
             .validate(contentType: ["application/json"])
-            .responseJSON { _, _, result in
+            .responseJSON { response in
                 //self.printDebug("GET", resource: endpoint, res: result, responseJson: json, error: error)
-                switch result{
+                switch response.result{
                 case .Success:
-                    onCompletion(result.value, nil)
+                    onCompletion(response.result.value, nil)
                 case .Failure:
-                    onCompletion(nil, result.error as? NSError)
+                    onCompletion(nil, response.result.error)
                 }
         }
     }
@@ -70,13 +70,13 @@ class RestManager {
         manager.request(method, endpoint, parameters: params as? [String:AnyObject], headers: headers, encoding: encoding)
         .validate(statusCode: 200 ..< 300)
         .validate(contentType: ["text/plain"])
-        .responseString { _, _, result in
+        .responseString { response in
             //self.printDebug("GET", resource: endpoint, res: res, responseString: answer, error: error);
-            switch result{
+            switch response.result{
             case .Success:
-                onCompletion(result.value, nil)
+                onCompletion(response.result.value, nil)
             case .Failure:
-                onCompletion(nil, result.error as? NSError)
+                onCompletion(nil, response.result.error)
             }
         }
     }

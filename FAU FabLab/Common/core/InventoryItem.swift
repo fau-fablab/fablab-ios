@@ -47,7 +47,7 @@ class InventoryItem : Mappable{
         self.updatedAt = time
     }
 
-    private class DateTransform : DateFormaterTransform {
+    private class DateTransform : DateFormatterTransform {
         init() {
             //TODO this conversion might be wrong! has to be checked but works so far
             let formatter = NSDateFormatter()

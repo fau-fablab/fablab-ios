@@ -113,7 +113,7 @@ class ICal: Mappable {
         }
     }
 
-    private class EventDateTransform : DateFormaterTransform {
+    private class EventDateTransform : DateFormatterTransform {
         init() {
             let formatter = NSDateFormatter()
             formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
