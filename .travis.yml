@@ -12,7 +12,6 @@ before_install:
 - rm "Carthage.pkg"
 
 script:
-- carthage bootstrap
 - fastlane clean
 - fastlane build
 - fastlane test

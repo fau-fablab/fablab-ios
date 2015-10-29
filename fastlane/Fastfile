@@ -64,8 +64,8 @@ platform :ios do
 
   desc "Build project with xctool"
   lane :build do
-    carthageverbose(
-      verbose: false
+    carthage(
+      platform: "iphonesimulator"
     )
     xctool "-project FAU\\ Fablab.xcodeproj \
         -scheme 'FAU FabLab' \
@@ -104,7 +104,7 @@ platform :ios do
 
     if ENV["HIPCHAT_API_TOKEN"]
       sh "sh deploy.sh"
-      
+
       commit_sha = `git rev-parse HEAD`.strip;
 
       log_url = ENV["LOG_URL"]
