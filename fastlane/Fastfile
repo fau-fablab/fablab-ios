@@ -65,7 +65,7 @@ platform :ios do
   desc "Build project with xctool"
   lane :build do
     carthage(
-      platform: "iphonesimulator"
+      platform: "iOS"
     )
     xctool "-project FAU\\ Fablab.xcodeproj \
         -scheme 'FAU FabLab' \
