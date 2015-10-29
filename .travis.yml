@@ -1,19 +1,18 @@
 language: objective-c
 osx_image: xcode7
-
 xcode_project: FAU FabLab.xcodeproj
 xcode_scheme: FAU FabLab Release
-
 before_install:
-  - brew update
-  - brew outdated xctool || brew upgrade xctool
-  - brew install carthage
-  - gem update --system
-  - gem install fastlane
-
+- brew update
+- brew outdated xctool || brew upgrade xctool
+- brew install carthage
+- gem update --system
+- gem install fastlane
 script:
-  - carthage bootstrap
-  - fastlane clean
-  - fastlane build
-  - fastlane test
-
+- carthage bootstrap
+- fastlane clean
+- fastlane build
+- fastlane test
+env:
+  global:
+    secure: v4Kt8RHWUyjAijwiro2dwlZjLv9QQLOBzWTzPy/zC/NDETmDvFVFMii+N7+cwtWVYcYTK4dnpgHKm2JbSg/8M9EtVft2zB/DkJBZ0j0BwQMIEAKLeIhOw5rVwVNitaVk/ZbunJd2Bkt/44PgUckUvbUcQXS33k3Txl2MROBT8wMpEIKxgaqnVNrKOTpX9dmVgp39v/RWi2NAj63fzq/tTlns0PNob1wtyNT2K4+pagaD2xFaFuGr7h/t+suDA/wlIaiYKLXdkQNwNxy/efMAYBQfYZp/XjMLU1mVeAvAqhQtuIwOxGMsWBFciR37+PM2W7n181wTpYmYczvjR8d8epE0O5/m+Bdz70KutOWs07jFXW5b8M7aLLAGxN+Di0MsogyUEStCZBO5mvKFbbRU9OOPHn0mJSOPAQj8plIWo0InrgvHOhS56sx7eDmDNyZTwkwy/wBxHRdUYliiVepl+snzqWk2xseg7FltKai1f3xJzoVNXUzRDoehkcdyOERoFLk/wBDjK7fdkm5VSbNEyqg4/4lxJFvQ6ovN81W3+m3GpVq3rHwY2PQQVJxQ8i/pECkyr60DCNr0Szl7abUeIo9M4NeZt/GJysxyHdR/BIhkyRYc0vnkcHEIVj5b8ErvwNjdAMGaBNPTdGbQQvnltQ7gluVyG5rtLfN+q/ZmSjA=
