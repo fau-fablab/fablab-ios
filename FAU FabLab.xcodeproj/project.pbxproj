@@ -63,9 +63,9 @@
 		844793561B93576D0057CF88 /* TriggerPushType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844793551B93576D0057CF88 /* TriggerPushType.swift */; };
 		846100BE1B78696000393E63 /* ProductLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846100BD1B78696000393E63 /* ProductLocationViewController.swift */; };
 		8462E2691B985930003DADE1 /* SettingsDoorOpensPushCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462E2681B985930003DADE1 /* SettingsDoorOpensPushCell.swift */; };
-		8474181A1BB9F4E100DD0E65 /* InventoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847418191BB9F4E100DD0E65 /* InventoryModel.swift */; settings = {ASSET_TAGS = (); }; };
-		8474181C1BB9FD7D00DD0E65 /* BarcodeScannerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474181B1BB9FD7D00DD0E65 /* BarcodeScannerHelper.swift */; settings = {ASSET_TAGS = (); }; };
-		8474181E1BBA01D400DD0E65 /* InventoryListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474181D1BBA01D400DD0E65 /* InventoryListModel.swift */; settings = {ASSET_TAGS = (); }; };
+		8474181A1BB9F4E100DD0E65 /* InventoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847418191BB9F4E100DD0E65 /* InventoryModel.swift */; };
+		8474181C1BB9FD7D00DD0E65 /* BarcodeScannerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474181B1BB9FD7D00DD0E65 /* BarcodeScannerHelper.swift */; };
+		8474181E1BBA01D400DD0E65 /* InventoryListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474181D1BBA01D400DD0E65 /* InventoryListModel.swift */; };
 		847CEACC1B9BC1F80087F283 /* InventorySearchProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847CEACB1B9BC1F80087F283 /* InventorySearchProductViewController.swift */; };
 		8487B1B11BA79C8F001998BC /* PayOrCancelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487B1B01BA79C8F001998BC /* PayOrCancelCell.swift */; };
 		849502A01B9B764F006810E3 /* InventoryLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495029F1B9B764F006810E3 /* InventoryLoginViewController.swift */; };
@@ -932,7 +932,7 @@
 				TargetAttributes = {
 					5060B1CF1B4EFE2A008B41FD = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 3928PFTW6V;
+						DevelopmentTeam = 5FYKAJV57K;
 					};
 					5060B1E61B4EFE2A008B41FD = {
 						CreatedOnToolsVersion = 6.4;
@@ -1283,6 +1283,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1291,8 +1292,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-DDEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = de.fau.cs.mad.fablab.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = de.cs.fablab.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/FAU FabLab/Helpers/FAU Fablab-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1305,6 +1307,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1313,8 +1316,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-DPRODUCTION";
-				PRODUCT_BUNDLE_IDENTIFIER = de.fau.cs.mad.fablab.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = de.cs.fablab.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/FAU FabLab/Helpers/FAU Fablab-Bridging-Header.h";
 			};
@@ -1410,6 +1414,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1418,8 +1423,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-DDEBUG -DPRODUCTION";
-				PRODUCT_BUNDLE_IDENTIFIER = de.fau.cs.mad.fablab.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = de.cs.fablab.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/FAU FabLab/Helpers/FAU Fablab-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
