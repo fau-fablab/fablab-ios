@@ -143,8 +143,10 @@
 		92E147111BA8C29A006B239D /* DrupalApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E147101BA8C29A006B239D /* DrupalApi.swift */; };
 		92E147131BA8C459006B239D /* DataApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E147121BA8C459006B239D /* DataApi.swift */; };
 		92E147151BA8C6AA006B239D /* ICalApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E147141BA8C6AA006B239D /* ICalApi.swift */; };
-		92F04A321B87D92100C2ED81 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5060B1E01B4EFE2A008B41FD /* LaunchScreen.xib */; };
 		92F04A331B87D92F00C2ED81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5060B1DB1B4EFE2A008B41FD /* Main.storyboard */; };
+		9DA8CD831C501D260001E23A /* fablab_logo_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DA8CD821C501D260001E23A /* fablab_logo_black.png */; };
+		9DA8CD851C501D2F0001E23A /* fab_icon_clean.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DA8CD841C501D2F0001E23A /* fab_icon_clean.png */; };
+		9DA8CD871C501DAE0001E23A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DA8CD861C501DAE0001E23A /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -206,7 +208,6 @@
 		48F1CE761BAFFA6D005E4CB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		48F1CE771BB00820005E4CB7 /* AddToolUsageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToolUsageViewController.swift; sourceTree = "<group>"; };
 		48F1CE791BB00E20005E4CB7 /* TextFieldCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCustomCell.swift; sourceTree = "<group>"; };
-		5003604F1B97911C0037114C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5024EE451BA5A3080025AF91 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		5024EE471BA5A3AB0025AF91 /* ProjectsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsModel.swift; sourceTree = "<group>"; };
 		5024EE491BA5A9650025AF91 /* CoreDataModel 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataModel 6.xcdatamodel"; sourceTree = "<group>"; };
@@ -218,7 +219,6 @@
 		5060B1D41B4EFE2A008B41FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5060B1D51B4EFE2A008B41FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5060B1DC1B4EFE2A008B41FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		5060B1E11B4EFE2A008B41FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		5060B1E71B4EFE2A008B41FD /* FAU FabLabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FAU FabLabTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5060B1EC1B4EFE2A008B41FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5060B1ED1B4EFE2A008B41FD /* FAU_FabLabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAU_FabLabTests.swift; sourceTree = "<group>"; };
@@ -325,6 +325,9 @@
 		92E147101BA8C29A006B239D /* DrupalApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrupalApi.swift; sourceTree = "<group>"; };
 		92E147121BA8C459006B239D /* DataApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataApi.swift; sourceTree = "<group>"; };
 		92E147141BA8C6AA006B239D /* ICalApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICalApi.swift; sourceTree = "<group>"; };
+		9DA8CD821C501D260001E23A /* fablab_logo_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fablab_logo_black.png; sourceTree = "<group>"; };
+		9DA8CD841C501D2F0001E23A /* fab_icon_clean.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fab_icon_clean.png; sourceTree = "<group>"; };
+		9DA8CD861C501DAE0001E23A /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -767,6 +770,8 @@
 		927901C01B6D3AE400F95B09 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				9DA8CD841C501D2F0001E23A /* fab_icon_clean.png */,
+				9DA8CD821C501D260001E23A /* fablab_logo_black.png */,
 				50D9F3C31B91C52F00FB0234 /* fab_icon.png */,
 				50D9F3C51B91C6C400FB0234 /* fablab_logo_white.png */,
 				84F53FF11B7419E7008FB605 /* checkout.png */,
@@ -780,7 +785,7 @@
 			children = (
 				927901D51B6D3EC300F95B09 /* CustomViews */,
 				5060B1DB1B4EFE2A008B41FD /* Main.storyboard */,
-				5060B1E01B4EFE2A008B41FD /* LaunchScreen.xib */,
+				9DA8CD861C501DAE0001E23A /* LaunchScreen.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -969,9 +974,11 @@
 				920AECF31B97208000523C1B /* ec2-52-28-126-35.eu-central-1.compute.amazonaws.com.cer in Resources */,
 				927F55D41B950D36003A98DF /* ec2-52-28-163-255.eu-central-1.compute.amazonaws.com.cer in Resources */,
 				50D9F3C61B91C6C400FB0234 /* fablab_logo_white.png in Resources */,
+				9DA8CD871C501DAE0001E23A /* LaunchScreen.xib in Resources */,
+				9DA8CD851C501D2F0001E23A /* fab_icon_clean.png in Resources */,
 				50D9F3C41B91C52F00FB0234 /* fab_icon.png in Resources */,
 				92F04A331B87D92F00C2ED81 /* Main.storyboard in Resources */,
-				92F04A321B87D92100C2ED81 /* LaunchScreen.xib in Resources */,
+				9DA8CD831C501D260001E23A /* fablab_logo_black.png in Resources */,
 				927901C21B6D3AF300F95B09 /* news_nopicture.png in Resources */,
 				84F53FF21B7419E7008FB605 /* checkout.png in Resources */,
 				927901C41B6D3B2B00F95B09 /* Images.xcassets in Resources */,
@@ -1164,16 +1171,6 @@
 				48F1CE761BAFFA6D005E4CB7 /* en */,
 			);
 			name = Main.storyboard;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		5060B1E01B4EFE2A008B41FD /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5060B1E11B4EFE2A008B41FD /* Base */,
-				5003604F1B97911C0037114C /* en */,
-			);
-			name = LaunchScreen.xib;
 			path = ..;
 			sourceTree = "<group>";
 		};
