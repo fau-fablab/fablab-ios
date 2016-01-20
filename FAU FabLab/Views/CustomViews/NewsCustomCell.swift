@@ -15,7 +15,7 @@ public class NewsCustomCell : UITableViewCell{
             previewImage.kf_setImageWithURL(NSURL(string: link)!, placeholderImage: nil)
         }else{
             //previewImage.image = UIImage(named:"news_nopicture.png")
-            previewImage.image = UIImage(named:"fab_icon.png")
+            previewImage.image = UIImage(named:"fab_icon_clean.png")
         }
     }
 }
