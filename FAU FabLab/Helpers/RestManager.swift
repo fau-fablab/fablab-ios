@@ -11,30 +11,13 @@ class RestManager {
     private var manager: Manager;
 
 #if PRODUCTION
-    let apiUrl = "https://ec2-52-28-126-35.eu-central-1.compute.amazonaws.com:4433"
-    let serverTrustPolicies: [String:ServerTrustPolicy] = [
-            "ec2-52-28-126-35.eu-central-1.compute.amazonaws.com": .PinCertificates(
-            certificates: ServerTrustPolicy.certificatesInBundle(),
-                    validateCertificateChain: true,
-                    validateHost: true
-            )
-    ]
+    let apiUrl = "https://app.fablab.fau.de/api"
 #else
-    let apiUrl = "https://ec2-52-28-163-255.eu-central-1.compute.amazonaws.com:4433"
-    let serverTrustPolicies: [String:ServerTrustPolicy] = [
-            "ec2-52-28-163-255.eu-central-1.compute.amazonaws.com": .PinCertificates(
-            certificates: ServerTrustPolicy.certificatesInBundle(),
-                    validateCertificateChain: true,
-                    validateHost: true
-            )
-    ]
+    let apiUrl = "https://app.fablab.fau.de/api"
 #endif
 
     init() {
-        manager = Manager(
-        configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
-                serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
-        )
+        manager = Manager(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
     }
 
     func makeJSONRequest(method: Alamofire.Method,

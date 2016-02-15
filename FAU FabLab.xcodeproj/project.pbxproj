@@ -90,7 +90,6 @@
 		920AECEB1B96E5B300523C1B /* NSBundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920AECEA1B96E5B300523C1B /* NSBundleExtension.swift */; };
 		920AECEE1B96ED3400523C1B /* VersionCheckApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920AECED1B96ED3400523C1B /* VersionCheckApi.swift */; };
 		920AECF11B96EDBD00523C1B /* VersionCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920AECF01B96EDBD00523C1B /* VersionCheckModel.swift */; };
-		920AECF31B97208000523C1B /* ec2-52-28-126-35.eu-central-1.compute.amazonaws.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 920AECF21B97208000523C1B /* ec2-52-28-126-35.eu-central-1.compute.amazonaws.com.cer */; };
 		920B9ED31BAD9E1B0091093C /* ToolUsageApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920B9ED21BAD9E1B0091093C /* ToolUsageApi.swift */; };
 		920B9ED51BAD9E5B0091093C /* ToolUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920B9ED41BAD9E5B0091093C /* ToolUsage.swift */; };
 		922617FA1BA87C1100F74912 /* ProductApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922617F91BA87C1100F74912 /* ProductApi.swift */; };
@@ -131,7 +130,6 @@
 		927901E21B6D3F6300F95B09 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927901E01B6D3F6300F95B09 /* NewsViewController.swift */; };
 		927901E51B6D4AE300F95B09 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927901E41B6D4AE300F95B09 /* NewsModel.swift */; };
 		927F55D11B94D9DE003A98DF /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927F55D01B94D9DE003A98DF /* AlertView.swift */; };
-		927F55D41B950D36003A98DF /* ec2-52-28-163-255.eu-central-1.compute.amazonaws.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 927F55D31B950D36003A98DF /* ec2-52-28-163-255.eu-central-1.compute.amazonaws.com.cer */; };
 		928054F41B6D893300D0D4FB /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 928054F31B6D893300D0D4FB /* ObjectMapper.framework */; };
 		928054FB1B6DA22000D0D4FB /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928054FA1B6DA22000D0D4FB /* EventModel.swift */; };
 		928E76AD1BAB0F6C007E2BDA /* Int64Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928E76AC1BAB0F6C007E2BDA /* Int64Transform.swift */; };
@@ -271,7 +269,6 @@
 		920AECEA1B96E5B300523C1B /* NSBundleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSBundleExtension.swift; sourceTree = "<group>"; };
 		920AECED1B96ED3400523C1B /* VersionCheckApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionCheckApi.swift; sourceTree = "<group>"; };
 		920AECF01B96EDBD00523C1B /* VersionCheckModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionCheckModel.swift; sourceTree = "<group>"; };
-		920AECF21B97208000523C1B /* ec2-52-28-126-35.eu-central-1.compute.amazonaws.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ec2-52-28-126-35.eu-central-1.compute.amazonaws.com.cer"; sourceTree = "<group>"; };
 		920B9ED21BAD9E1B0091093C /* ToolUsageApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolUsageApi.swift; sourceTree = "<group>"; };
 		920B9ED41BAD9E5B0091093C /* ToolUsage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolUsage.swift; sourceTree = "<group>"; };
 		922617F91BA87C1100F74912 /* ProductApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductApi.swift; sourceTree = "<group>"; };
@@ -312,7 +309,6 @@
 		927901E01B6D3F6300F95B09 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		927901E41B6D4AE300F95B09 /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		927F55D01B94D9DE003A98DF /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
-		927F55D31B950D36003A98DF /* ec2-52-28-163-255.eu-central-1.compute.amazonaws.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ec2-52-28-163-255.eu-central-1.compute.amazonaws.com.cer"; sourceTree = "<group>"; };
 		928054F31B6D893300D0D4FB /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		928054FA1B6DA22000D0D4FB /* EventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		928841B51B93B3DC00E1BC5B /* CoreDataModel 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataModel 4.xcdatamodel"; sourceTree = "<group>"; };
@@ -753,18 +749,8 @@
 			children = (
 				927901C31B6D3B2B00F95B09 /* Images.xcassets */,
 				927901C01B6D3AE400F95B09 /* images */,
-				927901BB1B6D3A6800F95B09 /* certs */,
 			);
 			path = Assets;
-			sourceTree = "<group>";
-		};
-		927901BB1B6D3A6800F95B09 /* certs */ = {
-			isa = PBXGroup;
-			children = (
-				920AECF21B97208000523C1B /* ec2-52-28-126-35.eu-central-1.compute.amazonaws.com.cer */,
-				927F55D31B950D36003A98DF /* ec2-52-28-163-255.eu-central-1.compute.amazonaws.com.cer */,
-			);
-			path = certs;
 			sourceTree = "<group>";
 		};
 		927901C01B6D3AE400F95B09 /* images */ = {
@@ -971,8 +957,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5087F41B1B97B48B0007C109 /* Localizable.strings in Resources */,
-				920AECF31B97208000523C1B /* ec2-52-28-126-35.eu-central-1.compute.amazonaws.com.cer in Resources */,
-				927F55D41B950D36003A98DF /* ec2-52-28-163-255.eu-central-1.compute.amazonaws.com.cer in Resources */,
 				50D9F3C61B91C6C400FB0234 /* fablab_logo_white.png in Resources */,
 				9DA8CD871C501DAE0001E23A /* LaunchScreen.xib in Resources */,
 				9DA8CD851C501D2F0001E23A /* fab_icon_clean.png in Resources */,
@@ -1012,8 +996,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "/usr/local/bin/carthage copy-frameworks";
-			shellScript = "";
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 /* End PBXShellScriptBuildPhase section */
 
