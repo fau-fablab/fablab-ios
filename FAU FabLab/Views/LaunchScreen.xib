@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -17,30 +17,21 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fablab_logo_black.png" translatesAutoresizingMaskIntoConstraints="NO" id="fhB-A6-UfW">
-                    <rect key="frame" x="15" y="15" width="450" height="90"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="fhB-A6-UfW" secondAttribute="height" multiplier="5:1" id="oy5-L9-REf"/>
-                    </constraints>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fab_icon_clean.png" translatesAutoresizingMaskIntoConstraints="NO" id="all-53-5iM">
-                    <rect key="frame" x="140" y="140" width="200" height="200"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="all-53-5iM" secondAttribute="height" multiplier="1:1" id="sOS-l9-AiV"/>
-                    </constraints>
-                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Licensed under the MIT License" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eqw-18-LHn">
                     <rect key="frame" x="0.0" y="439" width="480" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="fab_icon_clean.png" translatesAutoresizingMaskIntoConstraints="NO" id="all-53-5iM">
+                    <rect key="frame" x="78" y="41" width="325" height="269"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="all-53-5iM" secondAttribute="height" multiplier="1:1" id="sOS-l9-AiV"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="fhB-A6-UfW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="2do-rL-FAg"/>
                 <constraint firstItem="Eqw-18-LHn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="LmJ-Ha-3t0"/>
-                <constraint firstAttribute="trailing" secondItem="fhB-A6-UfW" secondAttribute="trailing" constant="15" id="ZDL-bd-lem"/>
-                <constraint firstItem="fhB-A6-UfW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="b03-jm-tTq"/>
                 <constraint firstAttribute="centerX" secondItem="all-53-5iM" secondAttribute="centerX" id="bla-WD-dDa"/>
                 <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="38" id="cVe-Ar-LVr"/>
                 <constraint firstItem="Eqw-18-LHn" firstAttribute="top" secondItem="all-53-5iM" secondAttribute="bottom" constant="99" id="dd9-0K-OUn"/>
@@ -59,6 +50,5 @@
     </objects>
     <resources>
         <image name="fab_icon_clean.png" width="531" height="531"/>
-        <image name="fablab_logo_black.png" width="500" height="100"/>
     </resources>
 </document>
