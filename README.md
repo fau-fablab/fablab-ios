@@ -1,4 +1,4 @@
-# fablab-ios
+# fablab-ios [![Build Status](https://travis-ci.org/fau-fablab/fablab-ios.svg?branch=master)](https://travis-ci.org/fau-fablab/fablab-ios)
 
 The [FAU Fablab](https://fablab.fau.de/) iOS app
 
