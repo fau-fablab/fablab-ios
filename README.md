@@ -57,4 +57,4 @@ THE SOFTWARE.
 
 ###Contact
 * Create a github issue
-* contact us: fablab@i2.cs.fau.de 
+* contact us: app@fablab.fau.de
